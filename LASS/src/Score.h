@@ -28,6 +28,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //----------------------------------------------------------------------------//
 #include "StandardHeaders.h"
 
+#include <mutex>
+#include <thread>
+
+#include "Semaphore.h"
 #include "XmlReader.h"
 #include "Types.h"
 #include "Collection.h"
@@ -279,8 +283,8 @@ private:
     /**
     * An array to hold thread objects
     **/
-    pthread_t* threads;
-    pthread_t compositeThread;
+    std::thread* threads;
+    std::thread compositeThread;
     
     /**
     * counter: # of sounds rendered.
@@ -302,26 +306,21 @@ private:
     /**
     * mutex to protect vector<Sound*> sounds
     **/
-    pthread_mutex_t mutexSoundVector;
-    
+    std::mutex mutexSoundVector;
+
     /**
     * mutex to protect MultiTrack* scoreMultiTrack
     **/
-    pthread_mutex_t mutexVectorRenderedSound;
-    
-    // Rubin Du July 2024: restructured and replaced conditions with semaphores for better resources management and synchronization
-    ///**
-    //* cond to brocast to worker threads the status of vector<Sound*> sounds
-    //**/
-    //pthread_cond_t conditionSoundVector;
+    std::mutex mutexVectorRenderedSound;
 
+    // Rubin Du July 2024: restructured and replaced conditions with semaphores for better resources management and synchronization
     /**
     * semaphores for work queue management
     **/
-    sem_t semEmptySlotsSounds;
-    sem_t semFullSlotsSounds;
-    sem_t semEmptySlotsRendered;
-    sem_t semFullSlotsRendered;
+    Semaphore semEmptySlotsSounds;
+    Semaphore semFullSlotsSounds;
+    Semaphore semEmptySlotsRendered;
+    Semaphore semFullSlotsRendered;
     
     /**
     * Number of channels

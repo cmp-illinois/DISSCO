@@ -223,7 +223,7 @@ protected:
 
     // This thing sorta works, but killing a thread waiting for cin causes
     // memory leak..   -- Ming-ching May 06, 2013
-    pthread_t discreteWaitForInputIfFailedThread;
+    std::thread discreteWaitForInputIfFailedThread;
     string discreteFailedResponse;
 
 

@@ -905,14 +905,13 @@ Event::~Event() {
 //----------------------------------------------------------------------------//
 //Checked
 
-void* waitForDiscreteResponse(void* _event){
-  Event* event = (Event*) _event;
+string* waitForDiscreteResponse(Event* event){
   string response = "";
   cin >>response;
 	string * retval = new string(response);
 
   event->setDiscreteFailedResponse(response);
-  return (void *) retval;
+  return retval;
 }
 
 
@@ -937,10 +936,11 @@ void Event::tryToRestart(void) {
     string answer = "";
     while (!inputAccepted){
       discreteFailedResponse = "";
-      pthread_create(&discreteWaitForInputIfFailedThread, NULL, waitForDiscreteResponse, (void*) this);
-			void * myfail;
-      pthread_join(discreteWaitForInputIfFailedThread, &myfail);
-			string thisfail = *((string *)myfail);
+      string* myfail = nullptr;
+      discreteWaitForInputIfFailedThread = std::thread(
+        [this, &myfail]() { myfail = waitForDiscreteResponse(this); });
+      discreteWaitForInputIfFailedThread.join();
+			string thisfail = *myfail;
       /*int counter = 30;
       while (counter != 0){
         if (discreteFailedResponse !=""){
@@ -957,7 +957,7 @@ void Event::tryToRestart(void) {
 
       //answer = (counter ==0)? "y" : discreteFailedResponse;
 			answer = thisfail;
-			delete ((string*)myfail);
+			delete myfail;
       if (answer == "y" || answer == "Y" || answer =="n" || answer == "N") inputAccepted = true;
       else {
         cout<<"Please enter 'y' or 'n'."<<endl;
