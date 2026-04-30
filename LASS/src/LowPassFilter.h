@@ -92,6 +92,11 @@ public:
         **/
 	void xml_print();
 
+	/** Returns the current filter state (last output value). **/
+	float get_state() const;
+	/** Overwrites the filter state (for block-processing continuations). **/
+	void set_state(float s);
+
 private:
 
 	/**

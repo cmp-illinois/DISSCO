@@ -74,6 +74,37 @@ m_sample_type LPCombFilter::do_filter(m_sample_type x_t)
 }
 
 //----------------------------------------------------------------------------//
+#ifdef __APPLE__
+void LPCombFilter::do_filter_buffer(const float* in, float* out, long n)
+{
+	// Access ring-buffer internals directly to eliminate per-sample call overhead.
+	float* arr  = x_hist->raw_array();
+	long   len  = x_hist->raw_length();   // == D
+	long   back = x_hist->raw_back();
+	long   front = x_hist->raw_front();
+	float  lpf_s = lpf->get_state();
+
+	for (long i = 0; i < n; i++) {
+		float delayed = arr[back];
+		if (++back >= len) back = 0;
+
+		// Inline 1st-order IIR: lpf_out = delayed + lpf_g * lpf_state
+		float lpf_out = delayed + lpf_g * lpf_s;
+		lpf_s = lpf_out;
+
+		arr[front] = in[i] + g * lpf_out;
+		if (++front >= len) front = 0;
+
+		out[i] = delayed;
+	}
+
+	x_hist->raw_back()  = back;
+	x_hist->raw_front() = front;
+	lpf->set_state(lpf_s);
+}
+#endif
+
+//----------------------------------------------------------------------------//
 void LPCombFilter::reset()
 {
 	// recreate the low-pass-feedback unit and the x-history queue

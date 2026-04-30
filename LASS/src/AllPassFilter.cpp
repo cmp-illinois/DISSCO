@@ -38,6 +38,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "LowPassFilter.h"
 #include "AllPassFilter.h"
 
+#ifdef __APPLE__
+#include <vecLib/vDSP.h>
+#endif
+
 //----------------------------------------------------------------------------//
 
 AllPassFilter::AllPassFilter(float gain, long delay)
@@ -76,6 +80,60 @@ m_sample_type AllPassFilter::do_filter(m_sample_type x_t)
         y_hist->enqueue(y_t);
 	return y_t;
 }
+
+//----------------------------------------------------------------------------//
+
+#ifdef __APPLE__
+void AllPassFilter::do_filter_buffer(const float* in, float* out, long n)
+{
+	// y(t) = -g*x(t) + (1-g²)*(x(t-D) + g*y(t-D))
+	//
+	// Since the recurrence closes over D samples (not 1), within each
+	// D-sample block all outputs are independent — x(t-D) and y(t-D)
+	// are fully determined by the previous block.  vDSP handles the
+	// arithmetic for each block.
+	//
+	// Coefficients (precomputed from g and g_sqrd):
+	//   coef_g          = g
+	//   one_minus_gsq   = 1 - g²
+	//   neg_g           = -g
+	const float one_minus_gsq = 1.0f - g_sqrd;
+	const float neg_g         = -g;
+
+	std::vector<float> x_prev(D), y_prev(D), tmp(D);
+
+	long i = 0;
+	while (i < n) {
+		long block = std::min((long)D, n - i);
+
+		// Drain the D oldest values from each history queue.
+		for (long j = 0; j < block; j++) {
+			x_prev[j] = x_hist->dequeue();
+			y_prev[j] = y_hist->dequeue();
+		}
+
+		// tmp[j] = g * y_prev[j] + x_prev[j]
+		vDSP_vsma(y_prev.data(), 1, &g, x_prev.data(), 1, tmp.data(), 1,
+		          (vDSP_Length)block);
+
+		// tmp[j] = (1 - g²) * tmp[j]
+		vDSP_vsmul(tmp.data(), 1, &one_minus_gsq, tmp.data(), 1,
+		           (vDSP_Length)block);
+
+		// out[i+j] = (-g) * in[i+j] + tmp[j]
+		vDSP_vsma(in + i, 1, &neg_g, tmp.data(), 1, out + i, 1,
+		          (vDSP_Length)block);
+
+		// Push new input and output into the history queues.
+		for (long j = 0; j < block; j++) {
+			x_hist->enqueue(in[i + j]);
+			y_hist->enqueue(out[i + j]);
+		}
+
+		i += block;
+	}
+}
+#endif
 
 //----------------------------------------------------------------------------//
 

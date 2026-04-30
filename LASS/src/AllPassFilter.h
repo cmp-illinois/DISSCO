@@ -70,6 +70,18 @@ public:
 	 **/
 	m_sample_type do_filter(m_sample_type x_t);
 
+#ifdef __APPLE__
+	/**
+	 * macOS-optimised block version: equivalent to calling do_filter n times.
+	 * Processes in D-sample batches; within each batch all outputs are
+	 * independent of one another, enabling vDSP SIMD acceleration.
+	 * \param in  Input sample array (length n)
+	 * \param out Output sample array (length n)
+	 * \param n   Number of samples to process
+	 **/
+	void do_filter_buffer(const float* in, float* out, long n);
+#endif
+
 	/**
 	 * This method should be redefined by each class derived from Filter
 	 * to reset the filter to an initial state.  It should have the 

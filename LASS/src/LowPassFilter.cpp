@@ -76,6 +76,18 @@ void LowPassFilter::reset()
 }
 
 //----------------------------------------------------------------------------//
+float LowPassFilter::get_state() const
+{
+	return y_hist->index_from_oldest(0);
+}
+
+void LowPassFilter::set_state(float s)
+{
+	y_hist->dequeue();
+	y_hist->enqueue(s);
+}
+
+//----------------------------------------------------------------------------//
 void LowPassFilter::xml_print()
 {
 

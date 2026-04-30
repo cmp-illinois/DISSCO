@@ -249,6 +249,12 @@ public:
 			return array[idx];
 		}
 
+		// Raw access for performance-critical buffer processing (use carefully).
+		ElemType* raw_array() { return array; }
+		long raw_length() const { return length; }
+		long& raw_back() { return back_idx; }
+		long& raw_front() { return front_idx; }
+
 	private:
 
 		/**

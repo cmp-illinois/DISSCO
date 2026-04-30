@@ -23,6 +23,11 @@ add_library(LASS STATIC ${LASS_SRC})
 target_link_libraries(LASS PUBLIC ${SNDFILE_LIBRARY})
 message(STATUS "libsndfile linked with target!")
 
+if(APPLE)
+    target_link_libraries(LASS PUBLIC "-framework Accelerate")
+    message(STATUS "Accelerate framework linked for vDSP reverb optimisation!")
+endif()
+
 target_include_directories(LASS PUBLIC
     "${PROJECT_SOURCE_DIR}/src"
     ${SNDFILE_INCLUDE_DIR}

@@ -29,6 +29,10 @@
 #include "Reverb.h"
 #include "Types.h"
 
+#ifdef __APPLE__
+#include <vecLib/vDSP.h>
+#endif
+
 //----------------------------------------------------------------------------//
 
 
@@ -385,21 +389,61 @@ SoundSample *Reverb::do_reverb_SoundSample(SoundSample *inWave)
 }
 SoundSample *Reverb::do_reverb_SoundSample(SoundSample *inWave, Envelope *percentReverbinput)
 {
-  int i;
   SoundSample *outWave;
-  // delete percentReverb;
-  // percentReverb = new Envelope(*percentReverbinput);
 
   Envelope* temp = new Envelope(*percentReverbinput);
   delete percentReverb;
   percentReverb = temp;
-  // create new SoundSample
+
   outWave = new SoundSample(inWave->getSampleCount(),
 			    inWave->getSamplingRate());
 
-  for(i=0;i<inWave->getSampleCount();i++)
-    (*outWave)[i] = do_reverb((*inWave)[i],(float) i / inWave->getSampleCount()
-			      , percentReverb);
+#ifdef __APPLE__
+  // macOS buffer path: process entire audio buffer at once using
+  // do_filter_buffer (tight loops / vDSP SIMD) instead of per-sample calls.
+  long N = (long)inWave->getSampleCount();
+  float* inData  = &(*inWave)[0];
+  float* outData = &(*outWave)[0];
+
+  // Accumulate the 6 comb filter outputs.
+  vector<float> combSum(N, 0.0f);
+  vector<float> filterBuf(N);
+  for (int f = 0; f < REVERB_NUM_COMB_FILTERS; f++) {
+    lpcfilter[f]->do_filter_buffer(inData, filterBuf.data(), N);
+    vDSP_vadd(combSum.data(), 1, filterBuf.data(), 1,
+              combSum.data(), 1, (vDSP_Length)N);
+  }
+
+  // Scale by 1 / REVERB_NUM_COMB_FILTERS.
+  float scale = 1.0f / (float)REVERB_NUM_COMB_FILTERS;
+  vDSP_vsmul(combSum.data(), 1, &scale, combSum.data(), 1, (vDSP_Length)N);
+
+  // All-pass filter into outData.
+  apfilter->do_filter_buffer(combSum.data(), outData, N);
+
+  // Precompute envelope values and apply wet/dry mix:
+  //   out[i] = env[i] * apOut[i] + (1-env[i]) * in[i]
+  //          = env[i] * (apOut[i] - in[i]) + in[i]
+  float duration = percentReverb->getDuration();
+  float invN = 1.0f / (float)N;
+  vector<float> envVals(N);
+  for (long i = 0; i < N; i++)
+    envVals[i] = percentReverb->getValue((float)i * invN, duration);
+
+  // diff[i] = apOut[i] - in[i]  (vDSP_vsub: C = B - A)
+  vector<float> diff(N);
+  vDSP_vsub(inData, 1, outData, 1, diff.data(), 1, (vDSP_Length)N);
+
+  // outData[i] = envVals[i] * diff[i] + in[i]
+  vDSP_vma(envVals.data(), 1, diff.data(), 1, inData, 1,
+           outData, 1, (vDSP_Length)N);
+
+#else
+  for (int i = 0; i < inWave->getSampleCount(); i++)
+    (*outWave)[i] = do_reverb((*inWave)[i],
+                              (float)i / inWave->getSampleCount(),
+                              percentReverb);
+#endif
 
   return outWave;
 }
