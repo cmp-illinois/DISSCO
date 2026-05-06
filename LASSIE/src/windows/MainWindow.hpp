@@ -24,6 +24,7 @@ class MainWindow : public QMainWindow
         static MainWindow* instance() { return instance_; }
         ~MainWindow() override;
         void setCurrentFile(const QString &file, bool modified = false);
+        void openFile(const QString &path);
 
         std::unique_ptr<Ui::MainWindow> ui;
         std::unique_ptr<EnvelopeLibraryWindow> envelopeLibraryWindow;

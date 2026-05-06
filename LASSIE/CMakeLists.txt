@@ -5,6 +5,16 @@ message(STATUS "== LASSIE ==")
 
 find_package(Qt6 REQUIRED COMPONENTS Widgets Core Xml)
 
+if(CMAKE_BUILD_TYPE MATCHES "^(Release|RelWithDebInfo|MinSizeRel)$")
+    set(_lassie_claim_default ON)
+else()
+    set(_lassie_claim_default OFF)
+endif()
+option(LASSIE_CLAIM_DISSCO
+    "Register LASSIE as the OS-level handler for .dissco files (Info.plist on macOS, .desktop+mime on Linux). Off by default for non-release builds to avoid worktree/debug builds fighting over the file association."
+    ${_lassie_claim_default})
+message(STATUS "LASSIE_CLAIM_DISSCO = ${LASSIE_CLAIM_DISSCO}")
+
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -34,6 +44,7 @@ qt_add_executable(LASSIE
     src/widgets/Stochos.cpp src/widgets/Stochos.hpp
     src/widgets/Select.cpp src/widgets/Select.hpp
     src/widgets/generic/FunctionEntryRow.cpp src/widgets/generic/FunctionEntryRow.hpp
+    src/win/file_association.cpp src/win/file_association.hpp
 )
 
 target_precompile_headers(LASSIE PRIVATE <QtWidgets> <QtCore> <QtXml>)
@@ -55,13 +66,54 @@ target_include_directories(LASSIE PRIVATE
 set_target_properties(LASSIE PROPERTIES
     WIN32_EXECUTABLE ON
     MACOSX_BUNDLE ON
+    MACOSX_BUNDLE_BUNDLE_NAME "LASSIE"
+    MACOSX_BUNDLE_GUI_IDENTIFIER "org.dissco.LASSIE"
+    MACOSX_BUNDLE_BUNDLE_VERSION "${DISSCO_VERSION}"
+    MACOSX_BUNDLE_SHORT_VERSION_STRING "${DISSCO_VERSION}"
+    MACOSX_BUNDLE_LONG_VERSION_STRING "${DISSCO_VERSION}"
 )
+
+if(APPLE AND LASSIE_CLAIM_DISSCO)
+    set_target_properties(LASSIE PROPERTIES
+        MACOSX_BUNDLE_INFO_PLIST "${CMAKE_SOURCE_DIR}/packaging/macos/MacOSXBundleInfo.plist.in"
+    )
+endif()
+
+if(LASSIE_CLAIM_DISSCO)
+    target_compile_definitions(LASSIE PRIVATE LASSIE_CLAIM_DISSCO)
+endif()
+
+if(WIN32)
+    # SHChangeNotify (shell32) + Reg* (advapi32) — usually pulled in implicitly,
+    # but list them so non-default Windows toolchains link cleanly.
+    target_link_libraries(LASSIE PRIVATE shell32 advapi32)
+endif()
 
 install(TARGETS LASSIE
     BUNDLE  DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+if(LINUX AND LASSIE_CLAIM_DISSCO)
+    # .in templates live in the project-root packaging/ tree. configure_file
+    # drops the .in suffix and lets us substitute @VAR@ if we ever need to
+    # (right now neither file uses substitutions, but the .in convention
+    # signals "this is a generated install artifact, edit the template").
+    configure_file(${CMAKE_SOURCE_DIR}/packaging/linux/LASSIE.desktop.in
+        ${CMAKE_CURRENT_BINARY_DIR}/LASSIE.desktop @ONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/packaging/linux/dissco-mime.xml.in
+        ${CMAKE_CURRENT_BINARY_DIR}/dissco-mime.xml @ONLY)
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/LASSIE.desktop
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/dissco-mime.xml
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/mime/packages)
+endif()
+
+# Windows has no CMake-installed packaging asset — LASSIE.exe self-registers
+# via the helper in src/win/file_association.cpp. The .reg under
+# packaging/windows/ is a manual-install fallback users can edit + import; it
+# isn't wired into the build.
 
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(LASSIE)

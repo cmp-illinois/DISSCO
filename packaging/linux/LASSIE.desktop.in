@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=LASSIE
+GenericName=DISSCO Composition Environment
+Comment=Edit DISSCO project files
+Exec=LASSIE %f
+Terminal=false
+Categories=AudioVideo;Audio;Music;
+MimeType=application/x-dissco;

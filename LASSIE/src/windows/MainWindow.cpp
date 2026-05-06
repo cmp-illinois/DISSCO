@@ -150,11 +150,19 @@ void MainWindow::openFile()
     if (fileName.isEmpty())
         return;
 
-    QFile file(fileName);
+    openFile(fileName);
+}
+
+void MainWindow::openFile(const QString &path)
+{
+    if (path.isEmpty())
+        return;
+
+    QFile file(path);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
         QMessageBox::warning(this, tr("LASSIE"),
                         tr("Cannot read file %1:\n%2.")
-                        .arg(QDir::toNativeSeparators(fileName),
+                        .arg(QDir::toNativeSeparators(path),
                             file.errorString()));
         return;
     }
@@ -165,7 +173,7 @@ void MainWindow::openFile()
 
     closeCurrentProject();
 
-    currentFile = fileName;
+    currentFile = path;
     Inst::get_project_manager()->open(currentFile, nullptr);
     showFile();
 }
@@ -317,7 +325,7 @@ void MainWindow::createActions()
     openAct = new QAction(QIcon::fromTheme("document-open"), tr("&Open Project"), this);
     openAct->setShortcuts(QKeySequence::Open);
     openAct->setStatusTip(tr("Open an existing project"));
-    connect(openAct, &QAction::triggered, this, &MainWindow::openFile);
+    connect(openAct, &QAction::triggered, this, qOverload<>(&MainWindow::openFile));
     
     saveAct = new QAction(QIcon::fromTheme("document-save"), tr("&Save"), this);
     saveAct->setShortcuts(QKeySequence::Save);

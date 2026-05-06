@@ -70,3 +70,14 @@ to build.
 By running this command in `build`, one generates a so-called *out-of-source* (OOS) build. The alternative, an in-source build, is heavily discouraged (including [by the CMake maintainers](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Getting%20Started.html#directory-structure)), and the root `CMakeLists.txt` reflects this distaste. The rationale is that OOS builds minimize clutter and collect all build files in one directory, whereas in-source builds put build files virtually everywhere. (This is bad.)
 
 From `build`, you can clean `build` using `cmake --build . --target clean`. Alternatively, you can do `rm -r build` from outside of `build`. Yet another option, from within build: `rm CMakeCache.txt`.
+
+`.dissco` File Association
+--------------------------
+
+LASSIE's macOS bundle can claim `.dissco` files via Launch Services so that double-clicking a project in Finder opens it in LASSIE. This is **only enabled in release builds** (or when you explicitly pass `-DLASSIE_CLAIM_DISSCO=ON`) so that multiple debug/worktree bundles on the same machine don't fight over the association.
+
+    cmake -S .. -B . -DCMAKE_BUILD_TYPE=Release
+    cmake --build . --target LASSIE
+    cp -R LASSIE/LASSIE.app /Applications/        # or: lsregister -f LASSIE/LASSIE.app
+
+After this, right-clicking a `.dissco` in Finder should offer LASSIE under "Open With", and `mdls -name kMDItemContentTypeTree some.dissco` should list `org.dissco.project`.

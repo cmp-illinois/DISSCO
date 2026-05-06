@@ -99,3 +99,21 @@ to build.
 By running this command in `build`, one generates a so-called *out-of-source* (OOS) build. The alternative, an in-source build, is heavily discouraged (including [by the CMake maintainers](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Getting%20Started.html#directory-structure)), and the root `CMakeLists.txt` reflects this distaste. The rationale is that OOS builds minimize clutter and collect all build files in one directory, whereas in-source builds put build files virtually everywhere. (This is bad.)
 
 From `build`, you can clean `build` using `cmake --build . --target clean`. Alternatively, you can do `rmdir /s build` from outside of `build`.
+
+`.dissco` File Association
+--------------------------
+
+LASSIE registers itself as the handler for `.dissco` files automatically on first launch. The first time you run a release build of `LASSIE.exe`, it writes (per-user, no admin required):
+
+    HKCU\Software\Classes\.dissco                      (Default) = "DISSCO.Project"
+    HKCU\Software\Classes\DISSCO.Project               (Default) = "DISSCO Project"
+    HKCU\Software\Classes\DISSCO.Project\shell\open\command
+                                                       (Default) = "<path-to-LASSIE.exe>" "%1"
+
+After that, double-clicking a `.dissco` in Explorer opens LASSIE.
+
+The self-registration is gated by `LASSIE_CLAIM_DISSCO`, which **defaults to ON only for release-type builds** (`Release`, `RelWithDebInfo`, `MinSizeRel`). Debug or worktree builds will not touch the registry, so multiple in-flight LASSIE checkouts on the same machine won't fight over the extension. To force the behavior on or off, configure with `-DLASSIE_CLAIM_DISSCO=ON|OFF`.
+
+If you move `LASSIE.exe` to a new path, just launch it once from the new path — the registration is idempotent and updates the command line to point at the current exe. To remove it manually, delete `HKCU\Software\Classes\.dissco` and `HKCU\Software\Classes\DISSCO.Project` with `regedit`.
+
+A manual-install fallback `.reg` lives at [packaging/windows/dissco-association.reg](packaging/windows/dissco-association.reg) for offline/scripted setups where you'd rather not launch LASSIE first. Edit the placeholder exe path inside and double-click to import.
