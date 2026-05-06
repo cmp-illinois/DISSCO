@@ -813,7 +813,9 @@ void EventAttributesViewController::fixedButtonClicked() {
     ui->numOfChildLabel2->setText("");
     ui->numOfChildLabel3->setText("");
     ui->childCountEntry2->setEnabled(false);
+    ui->numOfChildFunButton2->setEnabled(false);
     ui->childCountEntry3->setEnabled(false);
+    ui->numOfChildFunButton3->setEnabled(false);
     for (auto* box : m_layerBoxes) box->setWeightEnabled(false);
 }
 
@@ -822,8 +824,11 @@ void EventAttributesViewController::densityButtonClicked() {
     ui->numOfChildLabel2->setText("Area:");
     ui->numOfChildLabel3->setText("Under One:");
     ui->childCountEntry1->setEnabled(true);
+    ui->numOfChildFunButton1->setEnabled(true);
     ui->childCountEntry2->setEnabled(true);
+    ui->numOfChildFunButton2->setEnabled(true);
     ui->childCountEntry3->setEnabled(true);
+    ui->numOfChildFunButton3->setEnabled(true);
     for (auto* box : m_layerBoxes) box->setWeightEnabled(false);
 }
 
@@ -832,8 +837,11 @@ void EventAttributesViewController::byLayerButtonClicked() {
     ui->numOfChildLabel2->setText("");
     ui->numOfChildLabel3->setText("");
     ui->childCountEntry1->setEnabled(false);
+    ui->numOfChildFunButton1->setEnabled(false);
     ui->childCountEntry2->setEnabled(false);
+    ui->numOfChildFunButton2->setEnabled(false);
     ui->childCountEntry3->setEnabled(false);
+    ui->numOfChildFunButton3->setEnabled(false);
     for (auto* box : m_layerBoxes) box->setWeightEnabled(true);
 }
 
@@ -844,17 +852,6 @@ void EventAttributesViewController::continuumButtonClicked() {
     ui->childEventDefContSweepPage->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     ui->childEventDefStack->updateGeometry();
     for (LayerBox* box : m_layerBoxes) box->setPackageFieldsVisible(false);
-    // ui->childDefEntry1->setEnabled(true);
-    // ui->childDefEntry2->setEnabled(true);
-    // ui->childDefEntry3->setEnabled(true);
-    // ui->attackSieveEntry->setEnabled(false);
-    // ui->durationSieveEntry->setEnabled(false);
-    // ui->startTypePercentRadio->setEnabled(true);
-    // ui->startTypeUnitsRadio->setEnabled(true);
-    // ui->startTypeSecondsRadio->setEnabled(true);
-    // ui->durationTypePercentRadio->setEnabled(true);
-    // ui->durationTypeUnitsRadio->setEnabled(true);
-    // ui->durationTypeSecondsRadio->setEnabled(true);
 }
 
 void EventAttributesViewController::sweepButtonClicked() {
