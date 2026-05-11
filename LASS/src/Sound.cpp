@@ -379,7 +379,7 @@ void Sound::setup_detuning_env(ExponentialInterpolator *detuning_env)
   }
 
   double x[3], y[3], spread0, spread, vel;
-  double randy = (float)random() / (float)RAND_MAX;
+  double randy = (float)std::rand() / (float)RAND_MAX;
 
   // determine the shape of the envelope
   vel = getParam(DETUNE_VELOCITY);
@@ -447,7 +447,7 @@ void Sound::setup_detuning_env(LinearInterpolator *detuning_env){
   }
 
   float x[3], y[3], spread0, spread, vel;
-  double randy = (float)random() / (float)RAND_MAX;
+  double randy = (float)std::rand() / (float)RAND_MAX;
 
   // determine the shape of the envelope
   vel = getParam(DETUNE_VELOCITY);
