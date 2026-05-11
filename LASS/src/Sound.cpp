@@ -559,7 +559,7 @@ void Sound::xml_print( ofstream& xmlOutput, list<Reverb*>& revObjs, list<Dynamic
 }
 
 //----------------------------------------------------------------------------//
-void Sound::xml_read(XmlReader::xmltag* soundtag, DISSCO_HASHMAP<long, Reverb *>* reverbHash, DISSCO_HASHMAP<long, DynamicVariable *>* dvHash)
+void Sound::xml_read(XmlReader::xmltag* soundtag, unordered_map<long, Reverb *>* reverbHash, unordered_map<long, DynamicVariable *>* dvHash)
 {
 	if(strcmp("sound",soundtag->name))
 	{

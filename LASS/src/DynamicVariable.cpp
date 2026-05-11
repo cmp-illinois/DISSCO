@@ -75,7 +75,7 @@ m_sample_count_type DynamicVariable::getSampleCount()
 }
 
 //----------------------------------------------------------------------------//
-//DynamicVariable* DynamicVariable::create_dv_from_xml(XmlReader::xmltag *dvtag, hash_map<long,DynamicVariable*> dvHash)
+//DynamicVariable* DynamicVariable::create_dv_from_xml(XmlReader::xmltag *dvtag, unordered_map<long,DynamicVariable*> dvHash)
 DynamicVariable* DynamicVariable::create_dv_from_xml(XmlReader::xmltag *dvtag)
 {
 	// First look up the dv_type which is always a child tag

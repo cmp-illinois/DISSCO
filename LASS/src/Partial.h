@@ -214,7 +214,7 @@ public:
 	/**
 	* \deprecated
 	**/
-	void xml_read( XmlReader::xmltag* partialtag, DISSCO_HASHMAP<long, Reverb *>* reverbHash, DISSCO_HASHMAP<long, DynamicVariable *> *dvHash);
+	void xml_read( XmlReader::xmltag* partialtag, unordered_map<long, Reverb *>* reverbHash, unordered_map<long, DynamicVariable *> *dvHash);
 
 	/**
 	 *  This returns the total length (in seconds) of the partial.  
@@ -231,7 +231,7 @@ private:
 	 * \deprecated
 	 *  Auxillary function to assist in loading dv's from XML
 	 **/
-	void auxLoadParam(enum PartialDynamicParam param,XmlReader::xmltag *tag, DISSCO_HASHMAP<long, DynamicVariable *> *dvHash);
+	void auxLoadParam(enum PartialDynamicParam param,XmlReader::xmltag *tag, unordered_map<long, DynamicVariable *> *dvHash);
         
 	/**
 	 * This is phase-modulation. It basically does an inline 

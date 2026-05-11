@@ -40,22 +40,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <map>
 #include <sstream>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
-
-/*The C++ standards committee only recently agreed on the new name
-for "unordered_map". It used to be referred to as a hash_map, which
-will be used here for now.*/
-#include <ext/hash_map>
-#define DISSCO_HASHMAP hash_map
-
-/* C++0x Alternative (must compile with -std=c++0x):
-  #include <unordered_map>
-  #define DISSCO_HASHMAP unordered_map
-*/
-
 using namespace std;
-using namespace __gnu_cxx; 
 
 #endif
 

@@ -128,12 +128,12 @@ private:
     /**
     *	Holds the static parameters in an association
     **/
-    DISSCO_HASHMAP<int , m_value_type> staticParams_;
+    unordered_map<int , m_value_type> staticParams_;
     
     /**
     *	Holds the dynamic parameters in an association
     **/
-    DISSCO_HASHMAP<int , DynamicVariable*> dynamicParams_;
+    unordered_map<int , DynamicVariable*> dynamicParams_;
     
 };
 

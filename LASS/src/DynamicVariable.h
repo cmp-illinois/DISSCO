@@ -128,7 +128,7 @@ public:
     virtual void xml_print( ofstream& xmlOutput ) = 0;
 
 
-    //static DynamicVariable* create_dv_from_xml(XmlReader::xmltag *dvtag, hash_map<long,DynamicVariable*> *dvHash);
+    //static DynamicVariable* create_dv_from_xml(XmlReader::xmltag *dvtag, unordered_map<long,DynamicVariable*> *dvHash);
 
     /**
     *	\deprecated
