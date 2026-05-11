@@ -26,6 +26,27 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "XmlReader.h"
 
+#include <cctype>
+
+using namespace std;
+
+namespace {
+// Portable case-insensitive C-string equality. strcasecmp is POSIX-only
+// (Windows MSVC ships _stricmp instead), so we hand-roll the small amount of
+// logic we actually need. Returns true iff the two NUL-terminated strings
+// are equal under ASCII case-folding.
+inline bool iequals(const char* a, const char* b) {
+    while (*a && *b) {
+        if (std::tolower(static_cast<unsigned char>(*a)) !=
+            std::tolower(static_cast<unsigned char>(*b)))
+            return false;
+        ++a;
+        ++b;
+    }
+    return *a == *b;  // both must have reached the terminator simultaneously
+}
+} // namespace
+
 //----------------------------------------------------------------------------//
 XmlReader::tagparam::tagparam(char *n, char *v)
 {
@@ -86,7 +107,7 @@ XmlReader::tagparam* XmlReader::xmltag::findParam(const char *pname)
 	tagparam *tp=params;
 	while(tp!=NULL)
 	{
-		if(!strcasecmp(tp->name,pname))
+		if(iequals(tp->name,pname))
 			return tp;
 
 		tp=tp->next;
@@ -334,8 +355,8 @@ bool XmlReader::fillTagBuffer()
 {
 	char *start,*end;
 
-	start=index(inputbuffer,'<');
-	end=index(inputbuffer,'>');
+	start=strchr(inputbuffer,'<');
+	end=strchr(inputbuffer,'>');
 
 	// Lets find a tag!
 	if(!start)
@@ -350,11 +371,11 @@ bool XmlReader::fillTagBuffer()
 			if(!readLineInto(inputbuffer,XML_BUFFER_SIZE-nibuf,fp))
 				return false;
 		
-			start=index(inputbuffer,'<');
+			start=strchr(inputbuffer,'<');
 		}
 
 		nibuf=strlen(inputbuffer);
-		end=index(inputbuffer,'>');
+		end=strchr(inputbuffer,'>');
 	}
 	
 	while(!end)
@@ -368,7 +389,7 @@ bool XmlReader::fillTagBuffer()
 			return false;
 		
 		nibuf=strlen(inputbuffer);
-		end=index(inputbuffer,'>');
+		end=strchr(inputbuffer,'>');
 	}
 	
 	// okay, now have and end and a beginning pointer, and a valid nibuf
@@ -419,14 +440,14 @@ bool XmlReader::readTag(xmltag *tag)
 	if(!fillTagBuffer())
 		return false;
 
-	char *tagstart=index(tagbuffer,'<')+1;
+	char *tagstart=strchr(tagbuffer,'<')+1;
 
 	// HACK
 	// Since Xerces doesn't put a space before the closing tag slash
 	// (<tag/> instead of <tag />), this checks for the closing condition
 	// and should make both occasions work.
 	// Check for />, and make / a > and > null.
-	char *end=index(tagstart,'>')-1;
+	char *end=strchr(tagstart,'>')-1;
 	if(end[0]=='/')
 	{
 		tag->isClosing=true;
@@ -455,7 +476,7 @@ bool XmlReader::readTag(xmltag *tag)
 			continue;
 		else
 		{
-			char *eq=index(n,'=');
+			char *eq=strchr(n,'=');
 			if(eq==NULL)
 				tp=new tagparam(n,NULL);
 			else
