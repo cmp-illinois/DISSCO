@@ -32,6 +32,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Output.h"
 #include "Random.h"
 #include "Utilities.h"
+#include <filesystem>
 #include <fstream>
 
 //----------------------------------------------------------------------------//
@@ -221,7 +222,7 @@ Piece::Piece(string _workingPath, string _projectTitle){
   path = _workingPath;
   projectName = _projectTitle;
   //Change working directory.
-  chdir(_workingPath.c_str());
+  std::filesystem::current_path(_workingPath);
 
   //Parse .dissco File
   XMLPlatformUtils::Initialize();

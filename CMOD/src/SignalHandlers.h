@@ -15,7 +15,6 @@
 #include <csignal>
 #include <execinfo.h>
 #include <cstdlib>
-#include <unistd.h>
 #include <cxxabi.h>
 #include <algorithm>
 #include <cstring>
