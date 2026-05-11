@@ -125,7 +125,7 @@ private:
     
     m_rate_type samplingRate_;
     
-    vector<m_sample_type> data_;
+    std::vector<m_sample_type> data_;
 
 };
 

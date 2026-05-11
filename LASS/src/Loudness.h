@@ -128,8 +128,8 @@ private:
     public:
 	/** An identifier for the critical band **/
         int ID_;
-	/** A vector to hold partial snapshots **/
-        vector<PartialSnapshot> partials_;
+	/** A std::vector to hold partial snapshots **/
+        std::vector<PartialSnapshot> partials_;
         
 	/** This is a constructor.
 	*	\param ID Which critical band

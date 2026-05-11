@@ -39,28 +39,28 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 struct PieceHelper {
 
   ///Lists contents of directory.
-  static int getDirectoryList(string dir, vector<string> &files);
+  static int getDirectoryList(std::string dir, std::vector<std::string> &files);
 
   ///Ensures a path has a backslash on the end.
-  static string getFixedPath(string path);
+  static std::string getFixedPath(std::string path);
 
   ///Determines the name of the project in the given directory.
-  static string getProjectName(string path);
+  static std::string getProjectName(std::string path);
 
-  ///Converts a seed string into a seed number.
-  static int getSeedNumber(string seed);
+  ///Converts a seed std::string into a seed number.
+  static int getSeedNumber(std::string seed);
 
   ///Creates the sound files directory if it does not exist.
-  static void createSoundFilesDirectory(string path);
+  static void createSoundFilesDirectory(std::string path);
 
   ///Creates the score files directory if it does not exist.
-  static void createScoreFilesDirectory(string path);
+  static void createScoreFilesDirectory(std::string path);
 
   ///Checks to see if a file exists.
-  static bool doesFileExist(string path, string filename);
+  static bool doesFileExist(std::string path, std::string filename);
 
   ///Gets the next available sound file.
-  static string getNextSoundFile(string path, string projectName);
+  static std::string getNextSoundFile(std::string path, std::string projectName);
 };
 
 //----------------------------------------------------------------------------//
@@ -75,7 +75,7 @@ class Piece {
   /**
   * Constructor
   **/
-  Piece(string _workingPath, string _projectTitle);
+  Piece(std::string _workingPath, std::string _projectTitle);
 
   /**
   * Destructor
@@ -88,44 +88,44 @@ class Piece {
   void Print();
 
   ///Gets the next available sound file.
-  string getNextSoundFile();
+  std::string getNextSoundFile();
 
-  //Modifies the Piece by writing to the DOMDocument. Returns vector of its children.
+  //Modifies the Piece by writing to the DOMDocument. Returns std::vector of its children.
   // Experimental
-  vector<DOMElement*> modifyPiece(DOMElement* eventElement);
+  std::vector<DOMElement*> modifyPiece(DOMElement* eventElement);
 
   //Identifies function and modifies their numbers. Experimental
   void functionModifier(DOMElement* functionElement, int maxValue);
 
-  //Calculates Aesthetic value for every event. Returns vector of events children.
+  //Calculates Aesthetic value for every event. Returns std::vector of events children.
   //Experimental
-  vector<DOMElement*> calculateAesthetic(DOMElement* eventElement);
+  std::vector<DOMElement*> calculateAesthetic(DOMElement* eventElement);
 
   //Calculates Shannon Entropy ratio based on sampled values
-  double calculateEntropyRatio(vector<double> sampleData, string partitionMethod,
+  double calculateEntropyRatio(std::vector<double> sampleData, std::string partitionMethod,
                                 double min, double max);
 
   // Genetic Evolution Algorithm.
-  void geneticOptimization(string fitnessFunction, double optimum);
+  void geneticOptimization(std::string fitnessFunction, double optimum);
 
   // Crossover and Mutation Function
   void crossoverMutation(DOMElement* parent1, DOMElement* parent2, DOMElement* child,
                          double mutationProb);
 
   // Experiment 2: Calculate M val for an event
-  vector<DOMElement *> calcEventM(DOMElement* eventElement);
+  std::vector<DOMElement *> calcEventM(DOMElement* eventElement);
 
   // Exp 2: List
 
   private:
 
-  string path;
-  string projectName;
-  string title;
-  string fileFlags;
-  string fileList;
-  string pieceStartTime;
-  string pieceDuration;
+  std::string path;
+  std::string projectName;
+  std::string title;
+  std::string fileFlags;
+  std::string fileList;
+  std::string pieceStartTime;
+  std::string pieceDuration;
 
   Utilities* utilities;
 

@@ -230,11 +230,11 @@ public:
     *	\deprecated
     *   This outputs an XML representation of the object to STDOUT
     **/
-    void xml_print( ofstream& xmlOutput, list<Reverb*>& revObjs, list<DynamicVariable*>& dynObjs );
+    void xml_print( std::ofstream& xmlOutput, std::list<Reverb*>& revObjs, std::list<DynamicVariable*>& dynObjs );
     /**
     *	\deprecated
     **/
-    void xml_read(XmlReader::xmltag* soundtag, unordered_map<long, Reverb *>* reverbHash, unordered_map<long, DynamicVariable *>* dvHash);
+    void xml_read(XmlReader::xmltag* soundtag, std::unordered_map<long, Reverb *>* reverbHash, std::unordered_map<long, DynamicVariable *>* dvHash);
 
     /**
      *  This returns the total duration of the sound.  If there is no reverb

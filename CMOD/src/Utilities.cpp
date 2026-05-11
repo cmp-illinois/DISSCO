@@ -37,6 +37,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "ProbabilityEnvelope.h" // consider moving this into LASS.h
 #include <string>
 
+using namespace std;
+
 Utilities::Utilities(DOMElement* root,
                      string _workingPath,
                      bool _soundSynthesis,

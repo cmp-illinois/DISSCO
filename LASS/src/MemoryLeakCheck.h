@@ -54,7 +54,7 @@ class MemoryLeak
     Initialized = true;
   }
   
-  ///Calculates a hash code based on a given line number and class type string.
+  ///Calculates a hash code based on a given line number and class type std::string.
   static inline unsigned short GetCode(int LineNumber, const char* Type)
   {
     unsigned short Code = 0;

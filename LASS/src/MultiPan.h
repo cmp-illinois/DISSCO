@@ -69,11 +69,11 @@ public:
 	 *
 	 * \param nChans The number of channels (speakers) to pan
 	 *  across
-	 * \param List A vector of envs (nChan number of
+	 * \param List A std::vector of envs (nChan number of
 	 *  envs, to be precise).  Each env will control the percent 
 	 * that the corresponding speaker will  respond to input sound.
 	 **/
-	MultiPan(int nChans, vector<Envelope*> &List);
+	MultiPan(int nChans, std::vector<Envelope*> &List);
 
 	/**
 	 * This is the destructor.
@@ -140,7 +140,7 @@ public:
 	/**
 	* \deprecated
 	**/
-	void xml_print( ofstream& xmlOutput );
+	void xml_print( std::ofstream& xmlOutput );
 	
 	
 	void print();
@@ -158,11 +158,11 @@ private:
 	MultiPan();
 
 	bool useEnvDirectly;
-	vector<Envelope*> EnvList;
-	vector<Collection<xy_point>*> xyCollectionsList;
-	vector<Collection<envelope_segment>*> segCollectionsList;
+	std::vector<Envelope*> EnvList;
+	std::vector<Collection<xy_point>*> xyCollectionsList;
+	std::vector<Collection<envelope_segment>*> segCollectionsList;
 	//not in used elsewhere in the program so I commented it out. --Ming-ching May 06, 2013
-	//vector<int> nPoints;
+	//std::vector<int> nPoints;
 	int n_channels;
 };
 

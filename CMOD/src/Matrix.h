@@ -54,14 +54,14 @@ struct MatPoint {
 class Matrix {
 
   private:
-    vector< vector< vector<MatPoint> > > matr;
-    vector<int> typeLayers;
-    vector<double> typeProb;
-    set<int> att;
+    std::vector< std::vector< std::vector<MatPoint> > > matr;
+    std::vector<int> typeLayers;
+    std::vector<double> typeProb;
+    std::set<int> att;
     bool sieveAligned;
     Tempo tempo;
     int sweepStart;
-    vector<int> short_attime;
+    std::vector<int> short_attime;
     int beatEDUs;
 
   public:
@@ -75,7 +75,7 @@ class Matrix {
     *  \param maxVal - limit for the last duration (endDur) allowed by the parent
     **/
     Matrix(int numTypes, int numAttacks, int numDurations,
-           vector<int> numTypesInLayers, int maxVal,
+           std::vector<int> numTypesInLayers, int maxVal,
            Tempo tempo, bool wellAligned=false);
 
     /**
@@ -98,25 +98,25 @@ class Matrix {
      *  each type of each layer to set probabilities of occurrence for each
      *  stime at each layer.
      *  \param Sieve* attackSieve
-    *  \param vector<Envelope*> attackEnvs
+    *  \param std::vector<Envelope*> attackEnvs
     **/
-    void setAttacks(Sieve* attackSieve, vector<Envelope*> attackEnvs = vector<Envelope*>());
+    void setAttacks(Sieve* attackSieve, std::vector<Envelope*> attackEnvs = std::vector<Envelope*>());
 
     /**
      *  Uses the sieve defining possible durations and the envelopes
      *  corresponding to each type of each layer to set probabilities of
      *  occurrence for each duration at each layer.
      *  \param Sieve* durSieve
-     *  \param vector<Envelope*> durEnvs
+     *  \param std::vector<Envelope*> durEnvs
      *  \param maxVal - limit for the last duration (endDur) allowed by the parent
      **/
-    void setDurations(Sieve* durSieve, int maxVal, vector<Envelope*> durEnvs = vector<Envelope*>());
+    void setDurations(Sieve* durSieve, int maxVal, std::vector<Envelope*> durEnvs = std::vector<Envelope*>());
 
     /**
      *  Sets the probabilities of occurrence for each type
-     *  \param vector<double> typeProbVect
+     *  \param std::vector<double> typeProbVect
      **/
-    void setTypeProbs(vector<double> typeProbVect);
+    void setTypeProbs(std::vector<double> typeProbVect);
 
     /**
      *  Chooses a matrix location corresponding to an event of type, stime, and
@@ -202,13 +202,13 @@ class Matrix {
 //    int GetY();
 
     /**
-     *  Assign a vector - one value for each type or row of the matrix
+     *  Assign a std::vector - one value for each type or row of the matrix
      *  \param newVector read from a file somewhere else
      **/
-//    void SetVector(vector<float> newVector);
+//    void SetVector(std::vector<float> newVector);
 
     /**
-    *  Loads e vector of nvelopes and finds the values corresponding to each
+    *  Loads e std::vector of nvelopes and finds the values corresponding to each
     *  sieve location (attack point).
     *  NB. we deal here with sieve locations and not with actual time values.
     *    ====  first version does not need "probs" not used inside  ====
@@ -216,18 +216,18 @@ class Matrix {
     *    ====  no need to overload  ====
     *  \param envList list of envelopes to be used
     **/
-//    void Envelopes(vector<Envelope*> envList);
+//    void Envelopes(std::vector<Envelope*> envList);
 /*
-    void Envelopes(vector<float> probs, vector<Envelope*> envList)
-    void Envelopes(vector<Collection<xy_point> > xyCollection,
-                   vector<vector<string> > segmentTypes,
-                   vector<vector<string> > segmentFixed);
+    void Envelopes(std::vector<float> probs, std::vector<Envelope*> envList)
+    void Envelopes(std::vector<Collection<xy_point> > xyCollection,
+                   std::vector<std::vector<std::string> > segmentTypes,
+                   std::vector<std::vector<std::string> > segmentFixed);
 */
 
     /**
-    *  Multiplies the elements of an existing matrix with those of a vector
-    *  of doubles.  Each matrix line is multiplied by the same vector elemet,
-    *  one vector element per line.
+    *  Multiplies the elements of an existing matrix with those of a std::vector
+    *  of doubles.  Each matrix line is multiplied by the same std::vector elemet,
+    *  one std::vector element per line.
     **/
 //    void IncludeVector();
 
@@ -241,7 +241,7 @@ class Matrix {
     *  \param to upper limit for rows
     **/
 //    void IncludeArray(double array[], int from, int to);
-//    void IncludeArray(vector<double> array, int from, int to);
+//    void IncludeArray(std::vector<double> array, int from, int to);
 
     /**
     *  Takes a two-dimenssional array of doubles, divides
@@ -279,14 +279,14 @@ class Matrix {
 //                      int from, int to);
 
     /**
-    *  If remainO is -1, sets each element of the vector (a row number) in the
+    *  If remainO is -1, sets each element of the std::vector (a row number) in the
     *  range specified by from and to to 0.
-    *  If remainO is 0, sets the vector element (a row number) specified by
+    *  If remainO is 0, sets the std::vector element (a row number) specified by
     *  type to 0.
-    *  Otherwise, decreases the vector element specified by type by
+    *  Otherwise, decreases the std::vector element specified by type by
     *  1/(remain0 + 1) for each element in the matrix row specified by type
     *  that is greater than 0.
-    *  Finally, normalizes the vector element range specified by from and to.
+    *  Finally, normalizes the std::vector element range specified by from and to.
     *  \param type a Matrix row corresponding to an (sub)object type
     *  \param numObjs the total number of children
     *  \param newObj the new objects number
@@ -329,10 +329,10 @@ class Matrix {
      *  \param starTarray array of possible stimes.
      **/
 //    void Mult(int remain0, float density, int type, int durLoc,
-//              vector<int> durArray, int stimeMatrix, vector<int> startArray);
+//              std::vector<int> durArray, int stimeMatrix, std::vector<int> startArray);
 
     /**
-     *  PrintVectors.  Prints a vector/array on a 8 column format.
+     *  PrintVectors.  Prints a std::vector/array on a 8 column format.
      **/
 //    void PrintVector();
 
@@ -346,7 +346,7 @@ class Matrix {
 //    void Clear();
 
     /**
-    *  Sets the dimensions of the matrix, vector, and the probability array.
+    *  Sets the dimensions of the matrix, std::vector, and the probability array.
     *  \param x number of rows
     *  \param y number of columns
     **/

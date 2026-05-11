@@ -75,7 +75,7 @@ protected:
     /**
     *	This class works by keeping entries in a queue.
     **/
-    list<Entry> queue_;
+    std::list<Entry> queue_;
 
     /**
     *	The number of steps left until the next entry needs

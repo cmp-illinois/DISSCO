@@ -26,30 +26,30 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 struct OutputNode
 {
-  string nodeName;
+  std::string nodeName;
   
-  vector<string> propertyNames;
-  vector<string> propertyValues;
-  vector<string> propertyUnits;
+  std::vector<std::string> propertyNames;
+  std::vector<std::string> propertyValues;
+  std::vector<std::string> propertyUnits;
   
-  vector<OutputNode*> subNodes;  //vector of pointers to the class itself
+  std::vector<OutputNode*> subNodes;  //std::vector of pointers to the class itself
   
-  OutputNode(string name);
+  OutputNode(std::string name);
   ~OutputNode();
   
-  void addProperty(string name, string value, string units);
-  string getProperty(string name);
+  void addProperty(std::string name, std::string value, std::string units);
+  std::string getProperty(std::string name);
   bool isBottom(void);
   bool isNote(void);
   bool isBuildPhase(void);
-  string getXML(void);
+  std::string getXML(void);
   
-  static string findAndReplace(string in, string needle, string replace);
+  static std::string findAndReplace(std::string in, std::string needle, std::string replace);
 
   /**
    *  Sanitize - remove illegal symbols
    **/
-  static string sanitize(string name);
+  static std::string sanitize(std::string name);
 };
 
 // The static output class.
@@ -57,30 +57,30 @@ class Output
 {
   static OutputNode* top;
   
-  static ofstream *particelFile;
+  static std::ofstream *particelFile;
   static int level;
   
-  static void writeLineToParticel(string line);
+  static void writeLineToParticel(std::string line);
   
   protected:
-  static string getLevelIndentation(bool isProperty, bool isEndLevel);
-  static string getPropertyIndentation(void);
+  static std::string getLevelIndentation(bool isProperty, bool isEndLevel);
+  static std::string getPropertyIndentation(void);
  
   public:
   static NotationScore notation_score_;
 
-  static void initialize(string particelFilename);
+  static void initialize(std::string particelFilename);
   static void free(void);
   static OutputNode* getCurrentLevelNode(void);
-  static void beginSubLevel(string name);
-  static void addProperty(string name, string value, string units="");
+  static void beginSubLevel(std::string name);
+  static void addProperty(std::string name, std::string value, std::string units="");
   template <class T>
-  static void addProperty(string name, T value, string units="") {
-    stringstream oss;
+  static void addProperty(std::string name, T value, std::string units="") {
+    std::stringstream oss;
     oss.setf(ios::fixed, ios::floatfield);
     oss.precision(2);
     oss << value;
-    addProperty(name, string(oss.str()), units);
+    addProperty(name, std::string(oss.str()), units);
   }
   static void endSubLevel(void);
 };

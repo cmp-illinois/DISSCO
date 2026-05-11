@@ -19,6 +19,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "Output.h"
 #include "Note.h"
+
+using namespace std;
 // #include "Note.cpp"
 
 OutputNode* Output::top;

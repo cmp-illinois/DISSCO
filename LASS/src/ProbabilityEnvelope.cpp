@@ -1,6 +1,8 @@
 #include "ProbabilityEnvelope.h"
 #include <cmath>
 
+using namespace std;
+
 m_value_type lerp(m_value_type a, m_value_type b, double c) {
   return (1-c) * a + c * b;
 }

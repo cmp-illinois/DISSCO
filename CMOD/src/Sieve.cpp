@@ -27,6 +27,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Sieve.h"
 #include "Random.h"
 #include "ModParser.h"
+
+using namespace std;
 //---------------------------------------------------------------------------//
 
 Sieve::Sieve() {

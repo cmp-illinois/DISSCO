@@ -38,9 +38,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <vector>
 #include <thread>
 
-//Pseudo-standard, but widely used headers
-#include <dirent.h>
-
 //The LASS library for additive sound synthesis
 #include "LASS.h"
 #include "Score.h"

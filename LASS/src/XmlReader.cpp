@@ -26,6 +26,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "XmlReader.h"
 
+using namespace std;
+
 //----------------------------------------------------------------------------//
 XmlReader::tagparam::tagparam(char *n, char *v)
 {

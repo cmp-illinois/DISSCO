@@ -45,7 +45,7 @@ public:
   int getStateSize() const;
 
   /* Get the transition probability of a given state */
-  const vector<double>& getTransitionProbabilities(int state) const;
+  const std::vector<double>& getTransitionProbabilities(int state) const;
 
   T getStateValue(int state) {
     return stateValues[state];
@@ -77,10 +77,10 @@ private:
   /* assert a given state is valid */
   void checkState(int state, std::string functionName="");
 
-  vector< vector<double> > transitionMatrix;
-  vector<double> initialDistribution;
+  std::vector< std::vector<double> > transitionMatrix;
+  std::vector<double> initialDistribution;
 
-  vector<T> stateValues;
+  std::vector<T> stateValues;
 
   int thisIndex;
 };
@@ -111,7 +111,7 @@ int MarkovModel<T>::getStateSize() const {
 
 
 template<typename T>
-const vector<double>& MarkovModel<T>::getTransitionProbabilities(int state) const {
+const std::vector<double>& MarkovModel<T>::getTransitionProbabilities(int state) const {
   checkState(state, "MarkovModel::getTransitionProbabilities()");
   return transitionMatrix[state];
 }
@@ -120,7 +120,7 @@ const vector<double>& MarkovModel<T>::getTransitionProbabilities(int state) cons
 template<typename T>
 void MarkovModel<T>::makeConsistent() {
   for (unsigned i = 0; i < transitionMatrix.size(); i++) {
-    vector<double>& row = transitionMatrix[i];
+    std::vector<double>& row = transitionMatrix[i];
     // find row sum
     double sum = 0.0;
     for (unsigned i = 0; i < row.size(); i++) {
@@ -205,7 +205,7 @@ void MarkovModel<T>::from_str(std::string str) {
 
 template<typename T>
 T MarkovModel<T>::nextSample(double rand) {
-  vector<double> samplelist;
+  std::vector<double> samplelist;
   if (thisIndex < 0) {
     samplelist = initialDistribution;
     // double sum;

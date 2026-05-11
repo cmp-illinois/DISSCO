@@ -31,6 +31,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "EnvelopeIterator.h"
 #include "Envelope.h"
 
+using namespace std;
+
 // #define DEBUG_MODE
 
 //----------------------------------------------------------------------------//

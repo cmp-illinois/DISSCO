@@ -1,5 +1,7 @@
 #include "SignalHandlers.h"
 
+using namespace std;
+
 void segfaultHandler(int signal) {
     void *buf[BACKTRACE_NUM + 2];
     size_t size = backtrace(buf, BACKTRACE_NUM + 2);        // Do a backtrace of the stack

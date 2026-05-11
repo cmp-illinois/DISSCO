@@ -119,16 +119,16 @@ public:
     *	\deprecated
     *	This outputs an XML representation of the object to STDOUT
     **/
-    virtual void xml_print( ofstream& xmlOutput, list<DynamicVariable*>& dynObjs ) = 0;
+    virtual void xml_print( std::ofstream& xmlOutput, std::list<DynamicVariable*>& dynObjs ) = 0;
 
     /**
     *	\deprecated
     *	This outputs an XML representation of the object to STDOUT
     **/
-    virtual void xml_print( ofstream& xmlOutput ) = 0;
+    virtual void xml_print( std::ofstream& xmlOutput ) = 0;
 
 
-    //static DynamicVariable* create_dv_from_xml(XmlReader::xmltag *dvtag, unordered_map<long,DynamicVariable*> *dvHash);
+    //static DynamicVariable* create_dv_from_xml(XmlReader::xmltag *dvtag, std::unordered_map<long,DynamicVariable*> *dvHash);
 
     /**
     *	\deprecated

@@ -118,7 +118,7 @@ public:
   /**
    * Get this section as a flattened entity ready for output.
   **/
-  const list<Note*>& GetSectionFlat();
+  const std::list<Note*>& GetSectionFlat();
 
   bool operator<(const TimeSignature& other) const;
 
@@ -128,16 +128,16 @@ public:
 
   bool operator!=(const TimeSignature& other) const;
 
-  void PrintAllNotesFlat(const string& title) const {
+  void PrintAllNotesFlat(const std::string& title) const {
     size_t note_idx = 0;
     std::ofstream outfile;
     outfile.open("./all_notes_flat.txt", std::ofstream::app);
-    outfile << endl << endl;
+    outfile << std::endl << std::endl;
     outfile << "ALL NOTES FLAT SECTION " << 
-            time_signature_.tempo_.getRootExactAncestor() << " : " << endl;
-    outfile << "Title: " << title << endl;
-    outfile << "Size: " << section_flat_.size() << endl;
-    for (list<Note*>::const_iterator iter = section_flat_.begin();
+            time_signature_.tempo_.getRootExactAncestor() << " : " << std::endl;
+    outfile << "Title: " << title << std::endl;
+    outfile << "Size: " << section_flat_.size() << std::endl;
+    for (std::list<Note*>::const_iterator iter = section_flat_.begin();
          iter != section_flat_.end();
          ++iter) {
       const Note* note = *iter;
@@ -159,7 +159,7 @@ public:
           break;
       }
       outfile << "start: " << note->start_t << " end: " << note->end_t << " text: " <<
-          note->type_out << " ID: " << note->rootExactAncestor << endl;
+          note->type_out << " ID: " << note->rootExactAncestor << std::endl;
       ++note_idx;
     }
   }
@@ -276,7 +276,7 @@ private:
    * 
    * @return The first bar of this Section
   **/
-  list<Note*> PopFirstBar();
+  std::list<Note*> PopFirstBar();
 
   /**
    * Get __only the notes__ of the last bar of this Section 
@@ -284,19 +284,19 @@ private:
    * 
    * @return The notes of the last bar of this Section
   **/
-  list<Note*> PopLastBarNotes();
+  std::list<Note*> PopLastBarNotes();
 
   TimeSignature time_signature_;
 
-  vector< vector<Note*> > section_;
-  list<Note*> section_flat_;
+  std::vector< std::vector<Note*> > section_;
+  std::list<Note*> section_flat_;
   bool is_built_;
 
   int remaining_edus_;
   bool is_edu_limit_; // true if the Section has an edu allotment; else false
   Section* cap_; // TODO - this is poor. the solution is to stop using pointers for Notes.
 
-  static string prev_loudness; // the previous loudness mark in notation loop
+  static std::string prev_loudness; // the previous loudness mark in notation loop
 };
 
 #endif

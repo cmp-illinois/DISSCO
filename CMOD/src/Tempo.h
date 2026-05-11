@@ -92,12 +92,12 @@ class Tempo {
   
   Also accepts decimal for the BPM: "quarter=60.5"  --> 1/4 = 121/2
   */
-  void setTempo(string newTempo);
+  void setTempo(std::string newTempo);
   
-  void setTimeSignature(string newTimeSignature);
+  void setTimeSignature(std::string newTimeSignature);
 
   // in order to remove the errer in valgrind...
-  //void setEDUPerTimeSignatureBeat(string newEDUPerTimeSignatureBeat);
+  //void setEDUPerTimeSignatureBeat(std::string newEDUPerTimeSignatureBeat);
   void setEDUPerTimeSignatureBeat(Ratio newEDUPerTimeSignatureBeat);
 
   void setRootExactAncestor(const Event* root_exact_ancestor);
@@ -115,7 +115,7 @@ class Tempo {
   
   Ratio getTimeSignatureBeatsPerMinute(void);
   
-  string getTimeSignature(void);
+  std::string getTimeSignature(void);
   
   Ratio getTempoBeatDurationInSeconds(void);
   

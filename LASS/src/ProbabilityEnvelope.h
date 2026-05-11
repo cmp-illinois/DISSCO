@@ -57,16 +57,16 @@ public:
 
 private:
   /** the "height" of probability at each time step */
-  vector<m_value_type> stepCounts;
+  std::vector<m_value_type> stepCounts;
 
   /** current step count + all previous step counts */
-  vector<m_value_type> cumulativeStepCounts;
+  std::vector<m_value_type> cumulativeStepCounts;
 
   /** integral of stepCounts over stepTimes*/
   m_value_type totalCounts;
 
   /** the time value of each time step */
-  vector<m_value_type> stepTimes;
+  std::vector<m_value_type> stepTimes;
 };
 
 #endif /* __PROBABILITYENVELOPE_H */

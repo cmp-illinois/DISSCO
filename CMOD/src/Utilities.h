@@ -65,7 +65,7 @@ public:
    * \param _piece
    **/
   Utilities(DOMElement* _root,
-            string _workingPath,
+            std::string _workingPath,
             bool _soundSynthesis,
             bool _outputParticel,
             int _numThreads,
@@ -83,18 +83,18 @@ public:
 
 
   /**
-   * Evaluate an XML string to a number.
+   * Evaluate an XML std::string to a number.
    * An object (mostly an Event) must be provided to evaluate static functions
    * such as current_child_num (see evaluateFunction).
-   * \param _input The XML string to evaluate
+   * \param _input The XML std::string to evaluate
    * \param _object
-   * \return The XML string evaluated as a number
+   * \return The XML std::string evaluated as a number
    *
    * \\ TODO: Figure out what significance _object has
    */
-  double evaluate(string _input, void* _object);
+  double evaluate(std::string _input, void* _object);
 
-  Sieve* evaluateSieve(string _input, void* _object);
+  Sieve* evaluateSieve(std::string _input, void* _object);
 
   /**
    * Returns whether the input DOMElement is a sieve function for the purposes
@@ -105,31 +105,31 @@ public:
   static bool isSieveFunction(DOMElement* input);
 
   /**
-   * Evaluate a function string to a CMOD object
+   * Evaluate a function std::string to a CMOD object
    * The caller has to cast the returned pointer properly by itself.
-   * \param _input The function string to evaluate
+   * \param _input The function std::string to evaluate
    * \param _object
    * \param _returnType The type of CMOD object that this function must return
    * \return The CMOD object this function returns
    *
    * \\ TODO: Figure out what significance _object has
    */
-  void* evaluateObject(string _input, void* _object, EventType _returnType);
+  void* evaluateObject(std::string _input, void* _object, EventType _returnType);
 
   /**
-   * Evaluate a string to a DOMElement (which represents a CMOD Event)
-   * \param _type The type of event this string represents
+   * Evaluate a std::string to a DOMElement (which represents a CMOD Event)
+   * \param _type The type of event this std::string represents
    * \param _eventName This event's name
-   * \return The DOMElement the string represents
+   * \return The DOMElement the std::string represents
    */
-  DOMElement* getEventElement(EventType _type, string _eventName);
+  DOMElement* getEventElement(EventType _type, std::string _eventName);
 
   /**
-   * Convert a DOMElement to a string
+   * Convert a DOMElement to a std::string
    * \param _thisFunctionElement The DOMElement to convert
-   * \return A string representing the DOMElement
+   * \return A std::string representing the DOMElement
    */
-  static string XMLTranscode(DOMElement* _thisFunctionElement);
+  static std::string XMLTranscode(DOMElement* _thisFunctionElement);
 
   // --- Getters --- //
 
@@ -160,30 +160,30 @@ public:
 
   //Name to Aesthetic value mapping. Experimental.
 
-    std::map<string, double> eventValues;
-    std::map<string, double> topEventValues;
-    std::map<string, double> highEventValues;
-    std::map<string, double> midEventValues;
-    std::map<string, double> lowEventValues;
-    std::map<string, double> bottomEventValues;
+    std::map<std::string, double> eventValues;
+    std::map<std::string, double> topEventValues;
+    std::map<std::string, double> highEventValues;
+    std::map<std::string, double> midEventValues;
+    std::map<std::string, double> lowEventValues;
+    std::map<std::string, double> bottomEventValues;
 
   int currChild;
 
   //Number to name mapping for modification. Experimental.
 
- std::map<int, string> topEventnames;
- std::map<int, string> highEventnames;
- std::map<int, string> midEventnames;
- std::map<int, string> lowEventnames;
- std::map<int, string> bottomEventnames;
- std::map<int, string> spectrumEventnames;
- std::map<int, string> envelopeEventnames;
- std::map<int, string> sieveEventnames;
- std::map<int, string> spatializationEventnames;
- std::map<int, string> patternEventnames;
- std::map<int, string> reverbEventnames;
- std::map<int, string> filterEventnames;
-std::map<int, string> notesEventnames;
+ std::map<int, std::string> topEventnames;
+ std::map<int, std::string> highEventnames;
+ std::map<int, std::string> midEventnames;
+ std::map<int, std::string> lowEventnames;
+ std::map<int, std::string> bottomEventnames;
+ std::map<int, std::string> spectrumEventnames;
+ std::map<int, std::string> envelopeEventnames;
+ std::map<int, std::string> sieveEventnames;
+ std::map<int, std::string> spatializationEventnames;
+ std::map<int, std::string> patternEventnames;
+ std::map<int, std::string> reverbEventnames;
+ std::map<int, std::string> filterEventnames;
+std::map<int, std::string> notesEventnames;
 
 
   //----------------------------- Other tasks --------------------------------//
@@ -210,17 +210,17 @@ std::map<int, string> notesEventnames;
   MultiTrack* doneCMOD();
 
   /**
-   * Removes the unnecessary space in a string
-   * \param _originalString The string to clean upper
+   * Removes the unnecessary space in a std::string
+   * \param _originalString The std::string to clean upper
    * \return The _originalString without any spaces
    **/
-  static string removeSpaces(string _originalString);
+  static std::string removeSpaces(std::string _originalString);
 
   /**
-   * Helper function to convert a string, in the format of a list separated by
-   * commas, to a vector containing each of those separate elements.
+   * Helper function to convert a std::string, in the format of a list separated by
+   * commas, to a std::vector containing each of those separate elements.
    * \param _listElement The list to convert
-   * \return A vector containing the separate elements
+   * \return A std::vector containing the separate elements
    */
   static std::vector<std::string> listElementToStringVector(DOMElement* _listElement);
 
@@ -230,7 +230,7 @@ private:
 
 
   // Helper for getting Envelopes
-  Envelope* getEnvelope(string _input, void* _object);
+  Envelope* getEnvelope(std::string _input, void* _object);
   Envelope* envLib(DOMElement* _functionElement, void* _object);
   Envelope* readEnvFile (DOMElement* _functionElement, void* _object);
   Envelope* makeEnvelope (DOMElement* _functionElement, void* _object);
@@ -240,14 +240,14 @@ private:
   // --- Helper for getting Pattern --- //
 
   /**
-   * Evaluates a function string to a Patter.
-   * \param _functionString The function string to evaluate
+   * Evaluates a function std::string to a Patter.
+   * \param _functionString The function std::string to evaluate
    * \param _object
    * \return The Patter this _functionString represents
    *
    * \TODO: Figure out what _object is
    */
-  Patter* getPattern(string _functionString, void* _object);
+  Patter* getPattern(std::string _functionString, void* _object);
 
   /**
    * Converts a DOMElement to a Patter.
@@ -264,14 +264,14 @@ private:
   // --- Helper for getting Sieve --- //
 
   /**
-   * Evaluates a function string to a Sieve.
-   * \param _functionString The function string to evaluate
+   * Evaluates a function std::string to a Sieve.
+   * \param _functionString The function std::string to evaluate
    * \param _object
    * \return The Sieve this _functionString represents
    *
    * \TODO: Figure out what _object is
    */
-  Sieve* getSieve(string _functionString, void* _object);
+  Sieve* getSieve(std::string _functionString, void* _object);
 
   /**
    * Converts a DOMElement to a Sieve.
@@ -295,22 +295,22 @@ private:
   DOMElement* getFILFunctionElement(void* _object);
   DOMElement* getFILFunctionElementHelper(void* _object, DOMElement* _FILFunction, bool _initialCall);
 
-  DOMElement* getSpectrum(string _functionString, void* _object);
+  DOMElement* getSpectrum(std::string _functionString, void* _object);
   /**
    * Helper function for Utilities::evaluate() to evaluate CMOD functions
    **/
-  string evaluateFunction(string _functionString, void* _object);
+  std::string evaluateFunction(std::string _functionString, void* _object);
 
-  Sieve* evaluateSieveFunction(string _functionString, void* _object);
+  Sieve* evaluateSieveFunction(std::string _functionString, void* _object);
 
   /**
-   * Helper function for finding, in a string, the substring which represents
+   * Helper function for finding, in a std::string, the substring which represents
    * a CMOD function.
-   * This function assume that at least 1 "<Fun>" exists in the string.
-   * \param _input The string to search
+   * This function assume that at least 1 "<Fun>" exists in the std::string.
+   * \param _input The std::string to search
    * \return The index of _input where the substring begins
    **/
-  static size_t findTheEndOfFirstFunction(string _input);
+  static size_t findTheEndOfFirstFunction(std::string _input);
 
 
   //--------------------------- CMOD Functions -------------------------------//
@@ -323,29 +323,29 @@ private:
    *
    * \TODO: Figure out what _functionElement is
    */
-  string function_RandomInt(DOMElement* _functionElement, void* _object);
-  string function_RandomOrderInt(DOMElement* _functionElement, void* _object);
-  string function_Random(DOMElement* _functionElement, void* _object);
-  string function_Select(DOMElement* _functionElement, void* _object);
-  string function_SelectObject(DOMElement* _functionElement, void* _object);
-  string function_GetPattern(DOMElement* _functionElement, void* _object);
-  string function_Randomizer(DOMElement* _functionElement, void* _object);
-  string function_Inverse(DOMElement* _functionElement, void* _object);
-  string function_Markov(DOMElement* _functionElement, void* _object);
-  string function_LN(DOMElement* _functionElement, void* _object);
-  string function_RandomDensity(DOMElement* _functionElement, void* _object);
+  std::string function_RandomInt(DOMElement* _functionElement, void* _object);
+  std::string function_RandomOrderInt(DOMElement* _functionElement, void* _object);
+  std::string function_Random(DOMElement* _functionElement, void* _object);
+  std::string function_Select(DOMElement* _functionElement, void* _object);
+  std::string function_SelectObject(DOMElement* _functionElement, void* _object);
+  std::string function_GetPattern(DOMElement* _functionElement, void* _object);
+  std::string function_Randomizer(DOMElement* _functionElement, void* _object);
+  std::string function_Inverse(DOMElement* _functionElement, void* _object);
+  std::string function_Markov(DOMElement* _functionElement, void* _object);
+  std::string function_LN(DOMElement* _functionElement, void* _object);
+  std::string function_RandomDensity(DOMElement* _functionElement, void* _object);
 
   /**
    * Not yet implemented.
    */
-  string function_Fibonacci(DOMElement* _functionElement, void* _object);
-  string function_MakeList(DOMElement* _functionElement, void* _object);
+  std::string function_Fibonacci(DOMElement* _functionElement, void* _object);
+  std::string function_MakeList(DOMElement* _functionElement, void* _object);
   
 // I believe the following ARE implemented (sever)
-  string function_Decay(DOMElement* _functionElement, void* _object);
-  string function_Stochos(DOMElement* _functionElement, void* _object);
-  string function_ValuePick(DOMElement* _functionElement, void* _object);
-  string function_ChooseL(DOMElement* _functionElement, void* _object);
+  std::string function_Decay(DOMElement* _functionElement, void* _object);
+  std::string function_Stochos(DOMElement* _functionElement, void* _object);
+  std::string function_ValuePick(DOMElement* _functionElement, void* _object);
+  std::string function_ChooseL(DOMElement* _functionElement, void* _object);
   Sieve* sieve_ValuePick(DOMElement* _functionElement, void* _object);
   Sieve* sieve_ChooseL(DOMElement* _functionElement, void* _object);
   //------------------------ CMOD Static Functions ---------------------------//
@@ -355,52 +355,52 @@ private:
    * \param _object The event to analyse
    * \return That event's current child type
    */
-  string static_function_CURRENT_TYPE(void* _object);
+  std::string static_function_CURRENT_TYPE(void* _object);
 
   /**
    * Returns the event's current child number
    * \param _object The event to analyse
    * \return The number of children the event has
    */
-  string static_function_CURRENT_CHILD_NUM(void* _object);
+  std::string static_function_CURRENT_CHILD_NUM(void* _object);
 
   /**
    * Returns the number of the current partial.
    * \param _object The event to analyse
    * \return The number of the event's current partial
    */
-  string static_function_CURRENT_PARTIAL_NUM(void* _object);
+  std::string static_function_CURRENT_PARTIAL_NUM(void* _object);
 
   /**
    * Not yet implemented.
    */
-  string static_function_CURRENT_DENSITY(void* _object);
+  std::string static_function_CURRENT_DENSITY(void* _object);
 
   /**
    * Not yet implemented.
    */
-  string static_function_CURRENT_SEGMENT(void* _object);
+  std::string static_function_CURRENT_SEGMENT(void* _object);
 
   /**
    * Returns an event's duration in EDU.
    * \param _object The event to analyse
    * \return The event's duration in EDU
    */
-  string static_function_AVAILABLE_EDU(void* _object);
+  std::string static_function_AVAILABLE_EDU(void* _object);
 
   /**
    * Returns the layer of an event's current child.
    * \param _object The event to analyse
    * \return The layer of an event's current child
    */
-  string static_function_CURRENT_LAYER(void* _object);
+  std::string static_function_CURRENT_LAYER(void* _object);
 
   /**
    * Returns the previous child's duration
    * \param _object The event to analyse
    * \return The event's previous child's duration
    */
-  string static_function_PREVIOUS_CHILD_DURATION(void* _object);
+  std::string static_function_PREVIOUS_CHILD_DURATION(void* _object);
 
 
 
@@ -408,23 +408,23 @@ private:
   //------------------------------- Fields -----------------------------------//
 
   //Storage of DOMElement representations of CMOD Events
-  std::map<string,DOMElement*> topEventElements;
-  std::map<string,DOMElement*> highEventElements;
-  std::map<string,DOMElement*> midEventElements;
-  std::map<string,DOMElement*> lowEventElements;
-  std::map<string,DOMElement*> bottomEventElements;
-  std::map<string,DOMElement*> spectrumElements;
-  std::map<string,DOMElement*> envelopeElements;
-  std::map<string,DOMElement*> sieveElements;
-  std::map<string,DOMElement*> spatializationElements;
-  std::map<string,DOMElement*> patternElements;
-  std::map<string,DOMElement*> reverbElements;
-  std::map<string,DOMElement*> filterElements;
-  std::map<string,DOMElement*> notesElements;
+  std::map<std::string,DOMElement*> topEventElements;
+  std::map<std::string,DOMElement*> highEventElements;
+  std::map<std::string,DOMElement*> midEventElements;
+  std::map<std::string,DOMElement*> lowEventElements;
+  std::map<std::string,DOMElement*> bottomEventElements;
+  std::map<std::string,DOMElement*> spectrumElements;
+  std::map<std::string,DOMElement*> envelopeElements;
+  std::map<std::string,DOMElement*> sieveElements;
+  std::map<std::string,DOMElement*> spatializationElements;
+  std::map<std::string,DOMElement*> patternElements;
+  std::map<std::string,DOMElement*> reverbElements;
+  std::map<std::string,DOMElement*> filterElements;
+  std::map<std::string,DOMElement*> notesElements;
 
   // Storage of LASS Parsed/generated Envelopes
 
-  vector< MarkovModel<float> > markovModelLibrary;
+  std::vector< MarkovModel<float> > markovModelLibrary;
 
   // Piece Configurations
   bool soundSynthesis = true;

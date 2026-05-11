@@ -82,7 +82,7 @@ public:
 	 * This outputs an XML representation of the object to STDOUT.
 	 * \param xmlOutput The output channel
 	 **/
-	void xml_print( ofstream& xmlOutput );
+	void xml_print( std::ofstream& xmlOutput );
 
 	/**
 	 * This is a constructor.

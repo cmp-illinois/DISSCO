@@ -1,5 +1,7 @@
 #include "Section.h"
 
+using namespace std;
+
 string Section::prev_loudness;
 
 Section::Section(TimeSignature time_signature) : 

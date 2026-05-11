@@ -41,7 +41,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 class Sieve {
   private:
-    string fileName;
+    std::string fileName;
     std::list<int> eList;      //list of elements allowed by the sieve
     std::list<double> wList;   //probabilities for sieve elements
     int skip;             //elemets < minVal, skipped
@@ -81,7 +81,7 @@ class Sieve {
     *  \param maxVal largest value allowed on list
     *  \param eMethod method for selecting elements of sieve
     *  \param wMethod method for selecting weights
-    *  \param expr string to parse into a list
+    *  \param expr std::string to parse into a list
     *  \param wArgVector data for selecting weights
     **/
     void BuildFromExpr(int minVal, int maxVal,
@@ -106,8 +106,8 @@ class Sieve {
     *  FillInVectors calls CumulWeights to normalize and and add the result in
     *  a cumulative way resulting in probabilities from 0 to 1 and then copies
     *  them into the vectors
-    *  \param intVect a vector of ints
-    *  \param doubleVect a vector of doubles
+    *  \param intVect a std::vector of ints
+    *  \param doubleVect a std::vector of doubles
     **/
     void FillInVectors(std::vector<int>& intVect, std::vector<double>& doubleVect);
 
@@ -147,7 +147,7 @@ class Sieve {
     *  elements of a sieve to be stored in a linkList of integers.
     *  \param minVal smallest value allowed by the sieve
     *  \param maxVal largest value allowed by the sieve
-    *  \param eArgVect vector containing the elements of the sieve
+    *  \param eArgVect std::vector containing the elements of the sieve
     *  \param offsetVector offset of the elements
     **/
     void Elements(int minVal, int maxVal,
@@ -158,7 +158,7 @@ class Sieve {
     *  Weights assigns weights to be stored in a linkList of doubles.
     *  by calling methods like PERIODIC, HIERARCHIC, INCLUDE, etc.
     *  \param method method of assigning weights
-    *  \param wArgVect vector of ints contains info about weights
+    *  \param wArgVect std::vector of ints contains info about weights
     **/
     void Weights(std::vector<int> eArgVect,
 		 const char *method,
@@ -180,7 +180,7 @@ class Sieve {
     *  (equivalence classes) within min and max values.
     *  \param minVal smallest value allowed
     *  \param maxVal largest value allowed
-    *  \param numMods vector containing the moduli to be used
+    *  \param numMods std::vector containing the moduli to be used
     *  \param offsetVector offset of elements
     **/
     void Multiples(int minVal, int maxVal,
@@ -198,7 +198,7 @@ class Sieve {
     *  through a given ordered list of weights.  It stores them in a list
     *  of weights (wList) of the same size as a companion list of sieve
     *  elemets (eList).
-    *  \param wArgVector vector of ints contains info about weights
+    *  \param wArgVector std::vector of ints contains info about weights
     **/
     //TODO: you should really pass in value by reference, try change it to other functions
     void PeriodicWeights(const std::vector<int>& wArgVect);
@@ -207,7 +207,7 @@ class Sieve {
     *  HierarchicWeights assigns weights to the elemets of a sieve by
     *  adding for each elemet the probabilities associated with each
     *  equivalence class and stores them in the wList linkList.
-    *  \param wArgVector vector of ints contains info about weights
+    *  \param wArgVector std::vector of ints contains info about weights
     **/
     void HierarchicWeights(const std::vector<int>& eArgVect,
 			   std::vector<int> wArgVect,
@@ -216,7 +216,7 @@ class Sieve {
     /**
     *  IncludeWeights reads weights corresponding to a list of elements.
     *  Used frequently as a companion to the Meaningful function.
-    *  \param wArgVector vector of ints contains info about weights
+    *  \param wArgVector std::vector of ints contains info about weights
     **/
     void IncludeWeights(const std::vector<int>& wArgVect);
 

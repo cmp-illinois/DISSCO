@@ -130,7 +130,7 @@ class Random {
     static unsigned int seed;
     
     /**
-     * Returns a vector containing ints [low, high]
+     * Returns a std::vector containing ints [low, high]
      */
     static std::vector<int> InitializeChoices(int low, int high);
 };

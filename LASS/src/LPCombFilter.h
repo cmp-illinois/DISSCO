@@ -106,7 +106,7 @@ public:
 	 *	\deprecated
          *   This outputs an XML representation of the object to STDOUT
         **/
-	void xml_print( ofstream& xmlOutput );
+	void xml_print( std::ofstream& xmlOutput );
 
 	/**
 	 * This constructor is used when recreating the object from an XML

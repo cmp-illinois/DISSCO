@@ -55,7 +55,7 @@ public:
     *   \return pointer to the copy
     **/
     Constant* clone();
-    ~Constant(){/*cout<<"constant destructor get called"<<endl;*/}
+    ~Constant(){/*std::cout<<"constant destructor get called"<<std::endl;*/}
     
     /**
     *	Sets the value of this constant.
@@ -91,11 +91,11 @@ public:
     *	\deprecated
     *   This outputs an XML representation of the object to STDOUT
     **/
-    void xml_print( ofstream& xmlOutput, list<DynamicVariable*>& dynObjs );
+    void xml_print( std::ofstream& xmlOutput, std::list<DynamicVariable*>& dynObjs );
     /**
     *	\deprecated
     **/
-    void xml_print( ofstream& xmlOutput );
+    void xml_print( std::ofstream& xmlOutput );
 
     /**
     *	\deprecated

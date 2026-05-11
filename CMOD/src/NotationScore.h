@@ -49,9 +49,9 @@ public:
    * 
    * @param score_title The title of this score
   **/
-  // NotationScore(const string& score_title);
+  // NotationScore(const std::string& score_title);
   // multistaffs
-  NotationScore(const string& score_title,bool grandStaff, int numberOfStaff);
+  NotationScore(const std::string& score_title,bool grandStaff, int numberOfStaff);
 
   /**
    * Insert a Tempo into this score.
@@ -83,29 +83,29 @@ public:
    * @param notation_score The score whose text representation to output
    * @returns The modified stream
   **/
-  friend ostream& operator<<(ostream& output_stream, 
+  friend std::ostream& operator<<(std::ostream& output_stream, 
                              NotationScore& notation_score);
 
 private:
   void PrintScoreFlat() const {
     size_t section_idx = 0;
-    cout << endl << endl;
-    cout << "SCORE: " << endl;
-    for (vector<Section>::const_iterator iter = score_.begin();
+    std::cout << std::endl << std::endl;
+    std::cout << "SCORE: " << std::endl;
+    for (std::vector<Section>::const_iterator iter = score_.begin();
          iter != score_.end();
          ++iter) {
       const Section& section = *iter;
-      cout << "SECTION " << section_idx << endl;
+      std::cout << "SECTION " << section_idx << std::endl;
       section.PrintAllNotesFlat("Score printing");
       ++section_idx;
     }
-    cout << endl << endl;
+    std::cout << std::endl << std::endl;
   }
 
-  string score_title_;
+  std::string score_title_;
 
-  vector<Section> score_;
-  vector< vector <Section> > score_staff;
+  std::vector<Section> score_;
+  std::vector< std::vector <Section> > score_staff;
   bool is_built_;
   bool is_grand;
   // the total number of staffs

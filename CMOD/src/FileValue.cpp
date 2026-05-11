@@ -1,3 +1,5 @@
+using namespace std;
+
 // /*
 // CMOD (composition module)
 //    Copyright (C) 2007  Sever Tipei (s-tipei@uiuc.edu)

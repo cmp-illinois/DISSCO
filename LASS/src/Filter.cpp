@@ -36,6 +36,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "MultiTrack.h"
 #include "Filter.h"
 
+using namespace std;
+
 //----------------------------------------------------------------------------//
 MultiTrack &Filter::do_filter_MultiTrack(MultiTrack &inWave)
 {

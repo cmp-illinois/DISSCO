@@ -37,6 +37,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Filter.h"
 #include "LowPassFilter.h"
 
+using namespace std;
+
 //----------------------------------------------------------------------------//
 LowPassFilter::LowPassFilter(float gain)
 {

@@ -427,7 +427,7 @@ public:
 #ifdef RATIONAL_USES_STRINGS
   Rational(const char* str)
   {
-    *this = fromString(string(str));
+    *this = fromString(std::string(str));
   }
   
   Rational(std::string str)
@@ -525,17 +525,17 @@ public:
     return (difference.n <= 0);
   }
 
-  string toString(void)
+  std::string toString(void)
   {
     if(d == 0)
       return "NaN";
 
-    stringstream os;
+    std::stringstream os;
     os << n << "/" << d;
     return os.str();
   }
 
-  string toPrettyString(void) const
+  std::string toPrettyString(void) const
   {
     if(d == 0)
       return "indeterminate";
@@ -592,7 +592,7 @@ public:
   }
 
   operator const char*() const {
-    static string temp;  // Make it static to avoid stack memory issues
+    static std::string temp;  // Make it static to avoid stack memory issues
     temp = toPrettyString();
     return temp.c_str();
   }

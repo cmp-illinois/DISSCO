@@ -79,7 +79,7 @@ public:
     
     /**
     * This function is called by the working threads to test if CMOD
-    * has finished adding sounds to the score. If vector<Sound*> sounds has 
+    * has finished adding sounds to the score. If std::vector<Sound*> sounds has 
     * size 0 and doneGettingSoundObjects is true, the working thread returns.
     **/
     bool isDoneGettingSoundObjects(){return doneGettingSoundObjects;}
@@ -203,7 +203,7 @@ public:
 //    /**
 //    *	\deprecated
 //    **/
-//    void xml_print( ofstream& xmlOutput );
+//    void xml_print( std::ofstream& xmlOutput );
 //    /**
 //    *	\deprecated
 //    **/
@@ -213,8 +213,8 @@ public:
 //    **/
 //    void xml_read( XmlReader::xmltag *scoretag);
     
-    unordered_map<long, Reverb *>* reverbHash;
-    unordered_map<long, DynamicVariable *>* dvHash;
+    std::unordered_map<long, Reverb *>* reverbHash;
+    std::unordered_map<long, DynamicVariable *>* dvHash;
 
 private:
     ClippingManagementMode cmm_;
@@ -304,7 +304,7 @@ private:
     bool workerThreadsAllJoined;
   
     /**
-    * mutex to protect vector<Sound*> sounds
+    * mutex to protect std::vector<Sound*> sounds
     **/
     std::mutex mutexSoundVector;
 

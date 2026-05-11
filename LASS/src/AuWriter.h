@@ -57,7 +57,7 @@ public:
     *	\retval true On success
     *	\retval false On failure
     **/
-    static bool write(SoundSample& ss, string filename, int bits = _16_BIT_LINEAR);
+    static bool write(SoundSample& ss, std::string filename, int bits = _16_BIT_LINEAR);
     
     /**
     *	This writes a Track object out as an AU file.
@@ -67,7 +67,7 @@ public:
     *	\retval true On success
     *	\retval false On failure
     **/
-    static bool write(Track& t, string filename, int bits = _16_BIT_LINEAR);
+    static bool write(Track& t, std::string filename, int bits = _16_BIT_LINEAR);
 
     /**
     *	This writes a MultiTrack object out as an AU file.
@@ -78,7 +78,7 @@ public:
     *	\retval true On success
     *	\retval false On failure
     **/
-    static bool write(MultiTrack& mt, string filename, int bits = _16_BIT_LINEAR);
+    static bool write(MultiTrack& mt, std::string filename, int bits = _16_BIT_LINEAR);
 
     /**
     *	This writes the individual Tracks in a MultiTrack to a set of
@@ -93,19 +93,19 @@ public:
 private:
     /**
     *	This write the channels of a SoundSample out as an AU file
-    *	\param channels A vector of SoundSamples to write out
+    *	\param channels A std::vector of SoundSamples to write out
     *	\param filename The name of the file to write out to
 	*	\param bits per sample set to either _16_BIT_LINEAR, _24_BIT_LINEAR, or _32_BIT_LINEAR
     *	\retval true On success
     *	\retval false On failure 
     **/
-    static bool write(vector<SoundSample*>& channels, string filename, 
+    static bool write(std::vector<SoundSample*>& channels, std::string filename, 
 					int bits = _16_BIT_LINEAR);
         
     /**
     *	\todo Recursive inlining?  This is insane.  This needs to be reworked.
     **/
-    void static inline WriteIntMsb(ostream &out, long l, int size);
+    void static inline WriteIntMsb(std::ostream &out, long l, int size);
 };
 
 

@@ -35,22 +35,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <filesystem>
 #include <fstream>
 
+using namespace std;
+
 //----------------------------------------------------------------------------//
 
 int PieceHelper::getDirectoryList(string dir, vector<string> &files) {
-  DIR *dp;
-  struct dirent *dirp;
-  if((dp  = opendir(dir.c_str())) == NULL) {
-    cout << "Error(" << errno << ") opening " << dir << endl;
-    return errno;
+  std::error_code ec;
+  for (const auto& entry : std::filesystem::directory_iterator(dir, ec)) {
+    files.push_back(entry.path().filename().string());
   }
-
-  while ((dirp = readdir(dp)) != NULL) {
-    files.push_back(string(dirp->d_name));
+  if (ec) {
+    cout << "Error(" << ec.value() << ") opening " << dir << endl;
+    return ec.value();
   }
-  closedir(dp);
   return 0;
-
 }
 
 //----------------------------------------------------------------------------//

@@ -210,11 +210,11 @@ public:
 	*	\deprecated
 	*   This outputs an XML representation of the object to STDOUT
 	**/
-	void xml_print( ofstream& xmlOutput, list<Reverb*>& revObjs, list<DynamicVariable*>& dynObjs );
+	void xml_print( std::ofstream& xmlOutput, std::list<Reverb*>& revObjs, std::list<DynamicVariable*>& dynObjs );
 	/**
 	* \deprecated
 	**/
-	void xml_read( XmlReader::xmltag* partialtag, unordered_map<long, Reverb *>* reverbHash, unordered_map<long, DynamicVariable *> *dvHash);
+	void xml_read( XmlReader::xmltag* partialtag, std::unordered_map<long, Reverb *>* reverbHash, std::unordered_map<long, DynamicVariable *> *dvHash);
 
 	/**
 	 *  This returns the total length (in seconds) of the partial.  
@@ -231,7 +231,7 @@ private:
 	 * \deprecated
 	 *  Auxillary function to assist in loading dv's from XML
 	 **/
-	void auxLoadParam(enum PartialDynamicParam param,XmlReader::xmltag *tag, unordered_map<long, DynamicVariable *> *dvHash);
+	void auxLoadParam(enum PartialDynamicParam param,XmlReader::xmltag *tag, std::unordered_map<long, DynamicVariable *> *dvHash);
         
 	/**
 	 * This is phase-modulation. It basically does an inline 

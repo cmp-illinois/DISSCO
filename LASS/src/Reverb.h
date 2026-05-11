@@ -225,7 +225,7 @@ class Reverb
    *   This outputs an XML representation of the object to STDOUT
    *
    **/
-  void xml_print( ofstream& xmlOutput );
+  void xml_print( std::ofstream& xmlOutput );
 
   // These functions are used by the XMLParser to reconstruct a Reverb object
 

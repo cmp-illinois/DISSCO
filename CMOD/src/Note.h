@@ -66,7 +66,7 @@ class Note {
     //The number of the pitches within the octave
     int octavePitch;
 
-    //The string name of this pitch
+    //The std::string name of this pitch
     std::string pitchName;
 
     //Dynamic number
@@ -76,18 +76,18 @@ class Note {
     std::string loudnessMark;
 
     //Modifiers
-    std::vector<std::string> modifiers; //string names of the modifiers
+    std::vector<std::string> modifiers; //std::string names of the modifiers
     
     /* variables for output notes */
-    string pitch_out;
-    string type_out;
-    string loudness_out;
+    std::string pitch_out;
+    std::string type_out;
+    std::string loudness_out;
 
     int start_t;
     int end_t;
 
     int tuplet;
-    string tuplet_name;
+    std::string tuplet_name;
     int split;
 
     std::vector<std::string> modifiers_out;
@@ -157,7 +157,7 @@ class Note {
      *  Assigns the loudness of a note
      *  \param dynamicNum The index into the noteDynamicMark array
      *  \param dynamicNames The names of the dynamics ( mf, f, ppp ...)
-     *  \note: not in use; vector<string> dynamicNames not available yet
+     *  \note: not in use; std::vector<std::string> dynamicNames not available yet
      **/
     void setLoudnessMark(int dynamicNum, std::vector<std::string> dynamicNames);
 
@@ -204,23 +204,23 @@ class Note {
      * 
      * \return the text associated with this Note.
     **/
-    const string& GetText() const;
+    const std::string& GetText() const;
 
     /**
-     * Parse a string to an integer.
+     * Parse a std::string to an integer.
      * 
-     * \param s The string to parse to an int
+     * \param s The std::string to parse to an int
      * \return The parsed int
     **/
-    static int str_to_int(string s);
+    static int str_to_int(std::string s);
 
     /**
-     * Convert an integer to a string.
+     * Convert an integer to a std::string.
      * 
-     * \param n The int to convert to a string
-     * \return The string representation of the given int
+     * \param n The int to convert to a std::string
+     * \return The std::string representation of the given int
     **/
-    static string int_to_str(int n);
+    static std::string int_to_str(int n);
 
 };
 

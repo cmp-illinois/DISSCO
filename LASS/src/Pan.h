@@ -85,7 +85,7 @@ public:
 	/** 
 	* \deprecated
 	**/
-	void xml_print( ofstream& xmlOutput );
+	void xml_print( std::ofstream& xmlOutput );
 };
 
 

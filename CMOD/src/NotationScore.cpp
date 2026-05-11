@@ -1,5 +1,7 @@
 #include "NotationScore.h"
 
+using namespace std;
+
 NotationScore::NotationScore() : 
     score_title_("Score"),
     is_built_(false) {}

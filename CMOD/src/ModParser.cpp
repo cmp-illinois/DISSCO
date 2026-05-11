@@ -1,5 +1,7 @@
 #include "ModParser.h"
 
+using namespace std;
+
 ModParser::Token::Token(int n, int minVal, int maxVal, int offset)
                        : n(n)
                        , minVal(minVal)

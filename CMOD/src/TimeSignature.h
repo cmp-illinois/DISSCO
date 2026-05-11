@@ -103,7 +103,7 @@ struct TimeSignature {
 
     for(int i = 0; i < tuplet_limit_; ++i) {
       int l = CalculateNearestPow2(i);
-      string t = "\\tuplet ";
+      std::string t = "\\tuplet ";
       t += Note::int_to_str(i) + "/" + Note::int_to_str(l) + "{ ";
       tuplet_types_.push_back(t);
     }
@@ -138,11 +138,11 @@ struct TimeSignature {
   }
 
   /**
-   * Print this TimeSignature to an ostream.
+   * Print this TimeSignature to an std::ostream.
   **/
-  friend ostream& operator<<(ostream& stream, const TimeSignature& ts) {
+  friend std::ostream& operator<<(std::ostream& stream, const TimeSignature& ts) {
     stream << ts.time_signature_ << '\n' << ts.beat_edus_ << '\n' << ts.bar_edus_ << 
-          '\n' << ts.unit_note_ << '\n' << ts.start_time_global_ << endl;
+          '\n' << ts.unit_note_ << '\n' << ts.start_time_global_ << std::endl;
 
     return stream;
   }
@@ -208,13 +208,13 @@ struct TimeSignature {
   Tempo tempo_;
   float start_time_global_; // global start time in seconds
 
-  string time_signature_;
+  std::string time_signature_;
   int beat_edus_;
   int bar_edus_;
   int unit_note_ ; // the note that represents one beat
 
-  vector<string> tuplet_types_;
-  vector<int> valid_dividers_;
+  std::vector<std::string> tuplet_types_;
+  std::vector<int> valid_dividers_;
   int tuplet_limit_;
 };
 

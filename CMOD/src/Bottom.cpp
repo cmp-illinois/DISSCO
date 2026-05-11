@@ -27,6 +27,8 @@
 #include "Bottom.h"
 #include "Random.h"
 #include "Output.h"
+
+using namespace std;
 static int test=0;
 
 

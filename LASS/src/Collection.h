@@ -37,7 +37,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 /**
 *	Represents a collection of objects.  They are kept in order,
 *	with consecutive index numbers running from 0 to (size-1).
-*	Each entry is also accompanied by a string name.
+*	Each entry is also accompanied by a std::string name.
 *	Note: This class is heavily modeled from Java Collection and Vector 
 *	\author Braden Kowitz
 **/
@@ -143,7 +143,7 @@ public:
 
 private:
     
-    vector<T> vector_;
+    std::vector<T> vector_;
 
     /**
     *   An abstract iterator that makes it possible to iterate over
@@ -154,10 +154,10 @@ private:
     public:
 
         /**
-        *	Constructor that takes two STL vector iterators
+        *	Constructor that takes two STL std::vector iterators
         *	over which the iterator will iterate.
         **/
-        CollectionIterator(typename vector<T>::iterator it, typename vector<T>::iterator end);
+        CollectionIterator(typename std::vector<T>::iterator it, typename std::vector<T>::iterator end);
 
         /**
         *	Creates an exact copy of this iterator.
@@ -184,12 +184,12 @@ private:
         /**
         *	Iterator which this class wraps.
         **/
-        typename vector<T>::iterator it_;
+        typename std::vector<T>::iterator it_;
         
         /**
         *	The end position, so this iterator knows when to stop.
         **/
-        typename vector<T>::iterator end_;
+        typename std::vector<T>::iterator end_;
     };
 };
 

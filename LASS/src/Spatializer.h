@@ -96,7 +96,7 @@ public:
     /**
     *	\deprecated
     **/
-    virtual void xml_print( ofstream& xmlOutput );
+    virtual void xml_print( std::ofstream& xmlOutput );
     
     
 

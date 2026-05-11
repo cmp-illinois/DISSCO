@@ -26,6 +26,8 @@ CMOD (composition module)
 #include "Modifier.h"
 #include "Random.h"
 
+using namespace std;
+
 //----------------------------------------------------------------------------//
 
 Modifier::Modifier() {

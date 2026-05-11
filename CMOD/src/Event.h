@@ -47,12 +47,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 class PatternPair{
 
 protected:
-  string key;
+  std::string key;
   Patter* pattern;
 public:
-  PatternPair(string _key, Patter* _pat):key(_key),pattern(_pat){}
+  PatternPair(std::string _key, Patter* _pat):key(_key),pattern(_pat){}
   ~PatternPair();
-  string getKey(){return key;}
+  std::string getKey(){return key;}
   Patter* getPattern (){return pattern;}
 
 };
@@ -67,7 +67,7 @@ public:
   // or of the note
   DOMElement* element;
   TimeSpan ts;
-  string name;
+  std::string name;
   int type;
   Tempo tempo;
 
@@ -75,7 +75,7 @@ public:
   // DOMElement* staffs;
   // DOMElement* modifiers;
 
-  SoundAndNoteWrapper(DOMElement* _element, TimeSpan _ts, string _name, int _type, Tempo _tempo ):
+  SoundAndNoteWrapper(DOMElement* _element, TimeSpan _ts, std::string _name, int _type, Tempo _tempo ):
     element(_element),
     ts(_ts),
     name(_name),
@@ -92,7 +92,7 @@ public:
     //---------------------------- Information -------------------------------//
 
     //Name of the event
-    string name;
+    std::string name;
 
     //Type of the event
     int type;
@@ -104,7 +104,7 @@ public:
     Tempo tempo;
 
     //stores the pattern needed for the Event and its XML representation
-    vector<PatternPair*> patternStorage;
+    std::vector<PatternPair*> patternStorage;
 
     //Utilities needs these
     DOMElement* AttackSieveElement;
@@ -122,7 +122,7 @@ public:
     // Storage for temporary parsers. For evaluating objects, XML parsers are
     // sometimes created by the utilities object. The event has the ownership
     // of these temporary parsers and is responsible to clean up.
-    vector<XercesDOMParser*> temporaryXMLParsers;
+    std::vector<XercesDOMParser*> temporaryXMLParsers;
 
 protected:
     //------------------------------ Children --------------------------------//
@@ -131,10 +131,10 @@ protected:
 
 
     //Children of the event
-    vector<Event*> childEvents;
+    std::vector<Event*> childEvents;
 
     //this is only used for bottom to stored its children
-    vector<SoundAndNoteWrapper*> childSoundsAndNotes;
+    std::vector<SoundAndNoteWrapper*> childSoundsAndNotes;
     //------------------------------ Building --------------------------------//
 
     //Child Event Def
@@ -161,31 +161,31 @@ protected:
     //-------------------------- Layers and Types ----------------------------//
 
     //Names of the layers
-    vector< vector<string> > layerVect;
-    vector<DOMElement*> layerElements;
+    std::vector< std::vector<std::string> > layerVect;
+    std::vector<DOMElement*> layerElements;
 
 
     //Names of the children by type.
-    vector<string> typeVect;
-    vector<DOMElement*> childTypeElements; //discretepackage
+    std::vector<std::string> typeVect;
+    std::vector<DOMElement*> childTypeElements; //discretepackage
     //Number of children to create (all layers)
     int numChildren;
 
     //Number of children to create for each layer
-    vector<int> layerNumChildren;
+    std::vector<int> layerNumChildren;
 
     //Number of children yet to create (initially equal to layerNumChildren)
-    vector<int> layerRemainingChildren;
+    std::vector<int> layerRemainingChildren;
 
     //Density of each layer.
-    vector<float> layerDensity;
+    std::vector<float> layerDensity;
 
     //--------------------------- Restart Control ----------------------------//
 
     /*Putative child events are stored here. The children are not added
     immediately because the build process can fail and need to be restarted in
     the case of buildDiscrete.*/
-    vector<Event*> temporaryChildEvents;
+    std::vector<Event*> temporaryChildEvents;
 
     //Number of restarts remaining.
     int restartsRemaining;
@@ -221,10 +221,10 @@ protected:
     DOMElement* childStartTypeFlag;
     DOMElement* childDurationTypeFlag;
 
-    // This thing sorta works, but killing a thread waiting for cin causes
+    // This thing sorta works, but killing a thread waiting for std::cin causes
     // memory leak..   -- Ming-ching May 06, 2013
     std::thread discreteWaitForInputIfFailedThread;
-    string discreteFailedResponse;
+    std::string discreteFailedResponse;
 
 
   public:
@@ -251,7 +251,7 @@ protected:
 	 * Finds and prints (right now) all leaf events
 	 * TO BE USED ONLY AFTER THE BUILD HAS COMPLETED.
 	 */
-    void findLeafChildren(vector<Event*> &leafChildren);
+    void findLeafChildren(std::vector<Event*> &leafChildren);
 
     /**
     *   buildChildren. Builds sub-events from parsed information and
@@ -285,7 +285,7 @@ protected:
     /**
      *	Returns the events name
      **/
-    string getEventName() {return name;};
+    std::string getEventName() {return name;};
 
     /**
     *	Returns the number of the child this event is currently building
@@ -341,11 +341,11 @@ protected:
     virtual void outputProperties();
 
     /**
-    * Adds pointers to any notes in this Event (or any children) to a vector
+    * Adds pointers to any notes in this Event (or any children) to a std::vector
     *
-    * \param noteVect a reference to a vector of notes
+    * \param noteVect a reference to a std::vector of notes
     **/
-    virtual list<Note> getNotes();
+    virtual std::list<Note> getNotes();
 
     /**
     * gives the ownership of the temporary XML parser to the event.
@@ -360,7 +360,7 @@ protected:
     /**
     * todo: incomplete function
     **/
-    void setDiscreteFailedResponse(string _input)
+    void setDiscreteFailedResponse(std::string _input)
       { discreteFailedResponse = _input;}
 
   //------------- Private helper functions  ------------//
@@ -374,7 +374,7 @@ protected:
     *  "Yes" can only occur when the result is exactly divisible. "No" occurs
     *  for all other case (i.e., when there are 3.2 EDU for the total duration).
     **/
-    string getEDUDurationExactness(void);
+    std::string getEDUDurationExactness(void);
 
     /**
     *  Method for assigning float values for stimeSec and duration using
@@ -406,14 +406,14 @@ protected:
     /**
     *  Converts "SECONDS" to "sec.", "PERCENTAGE" to "%", etc.
     **/
-    string unitTypeToUnits(string type);
+    std::string unitTypeToUnits(std::string type);
 
     /**
     *  helper functions
     **/
-    string getTempoStringFromDOMElement(DOMElement* _element);
+    std::string getTempoStringFromDOMElement(DOMElement* _element);
 
-    string getTimeSignatureStringFromDOMElement(DOMElement* _element);
+    std::string getTimeSignatureStringFromDOMElement(DOMElement* _element);
 
     void buildMatrix(bool discrete);
     

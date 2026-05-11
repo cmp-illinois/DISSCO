@@ -173,7 +173,7 @@ public:
 			front_idx = back_idx = 0;
 			if((array = new ElemType[length]) == NULL)
 			{
-				cerr << "Couldn't create array for Filter queue of length " << length << endl;
+				std::cerr << "Couldn't create array for Filter queue of length " << length << std::endl;
 				exit(0);
 			}
 		}

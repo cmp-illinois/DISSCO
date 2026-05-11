@@ -39,6 +39,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "LPCombFilter.h"
 #include "LowPassFilter.h"
 
+using namespace std;
+
 //----------------------------------------------------------------------------//
 LPCombFilter::LPCombFilter(float gain, long delay, float lpf_gain)
 {

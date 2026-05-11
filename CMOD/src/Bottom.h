@@ -69,7 +69,7 @@ class Bottom : public Event {
 
     /*Maps each mod name to an indicator if it's being used:
      -1 = initVal, 0 = notUsed, 1 = used.*/
-    map<string, double> mod_used;
+    std::map<std::string, double> mod_used;
 
     //Pitch number for a well-tempered frequency (used to create notes)
 
@@ -77,8 +77,8 @@ class Bottom : public Event {
 //  float wellTempPitch;
     int absPitchNum;
 
-    vector<Sound*> childSounds;
-    vector<Note*> childNotes;
+    std::vector<Sound*> childSounds;
+    std::vector<Note*> childNotes;
 
 //----------------------------------------------------------------------------//
 
@@ -135,7 +135,7 @@ class Bottom : public Event {
      *  Creates a note (traditional notation) with all its attributes.
      **/
     void buildNote(SoundAndNoteWrapper* _soundNoteWrapper);
-//  void buildNote(TimeSpan tsChild, int type, string name);
+//  void buildNote(TimeSpan tsChild, int type, std::string name);
 
     /**
      *  Overloaded to prevent Event from printing.
@@ -153,7 +153,7 @@ class Bottom : public Event {
      * \param type type of the note
      * \param name filename of the note
      **/
-    void printNote(Note& n, int type, string name);
+    void printNote(Note& n, int type, std::string name);
 
     /**
      * Prints a note
@@ -161,13 +161,13 @@ class Bottom : public Event {
      * \param type type of the note
      * \param name filename of the note
      **/
-    void printNoteParticel(Note& n, int type, string name);
+    void printNoteParticel(Note& n, int type, std::string name);
 
     /**
-     * Adds pointers to any notes in this Bottom event to a vector (LIST ?)
-     * \param noteVect a reference to a vector of notes
+     * Adds pointers to any notes in this Bottom event to a std::vector (LIST ?)
+     * \param noteVect a reference to a std::vector of notes
     **/
-    list<Note> getNotes();
+    std::list<Note> getNotes();
 
     /**
      * building the notes / sounds. However in the new version building notes
@@ -178,7 +178,7 @@ class Bottom : public Event {
     /**
      * construct each child.
      **/
-    void constructChild(TimeSpan ts, int type, string name, Tempo tempo);
+    void constructChild(TimeSpan ts, int type, std::string name, Tempo tempo);
 
     //getters
     DOMElement* getSPAElement(){return spatializationElement;}
@@ -271,26 +271,26 @@ class Bottom : public Event {
 
     /** ZIYUAN CHEN, July 2023
      *  Computes a Pan for applying spatializationStereo to a sound.
-     *  \param envstr transcoded envelope string to be applied
+     *  \param envstr transcoded envelope std::string to be applied
      *  \return a Pan object parameterized by the envelope
      **/
-    Pan computeSpatializationStereo(string envstr);
+    Pan computeSpatializationStereo(std::string envstr);
 
     /** ZIYUAN CHEN, July 2023
      *  Computes a MultiPan for applying spatializationMultiPan to a sound.
      *  \param mult a list of envelopes to be applied
      *  \return a MultiPan object associated with the designated partial
      **/
-    MultiPan computeSpatializationMultiPan(vector<Envelope*> mult);
+    MultiPan computeSpatializationMultiPan(std::vector<Envelope*> mult);
 
     /** ZIYUAN CHEN, July 2023
      *  Computes a MultiPan for applying spatializationPolar to a sound.
-     *  \param thetaEnvStr transcoded "theta" envelope string to be applied
-     *  \param radiusEnvStr transcoded "radius" envelope string to be applied
+     *  \param thetaEnvStr transcoded "theta" envelope std::string to be applied
+     *  \param radiusEnvStr transcoded "radius" envelope std::string to be applied
      *  \return a MultiPan object with 100 entry locations
      *     parameterized by theta and radius
      **/
-    MultiPan computeSpatializationPolar(string thetaEnvStr, string radiusEnvStr);
+    MultiPan computeSpatializationPolar(std::string thetaEnvStr, std::string radiusEnvStr);
 
     /** ZIYUAN CHEN, July 2023
      *  Computes a Reverb for applying reverberationSimple to a sound.
@@ -346,13 +346,13 @@ class Bottom : public Event {
      *  Sets the spatialization of a sound according to a stereo environment
      *  \param s pointer to a sound
      *  \param envList List of FileValues (envelopes)
-     *  \param applyHow string containing info if it applies to sound or
+     *  \param applyHow std::string containing info if it applies to sound or
      *     individual partials
      *  \param numParts the number of partials in this sound
      **/
     void spatializationStereo(Sound *s,
                               DOMElement* _channels,
-                              string applyHow,
+                              std::string applyHow,
                               int numParts);
 
     /**
@@ -360,13 +360,13 @@ class Bottom : public Event {
      *     array its own envelope
      *  \param s pointer to a sound
      *  \param outerList List of Lists of FileValues (envelopes)
-     *  \param applyHow string containing info if it applies to sound or
+     *  \param applyHow std::string containing info if it applies to sound or
      *     individual partials
      *  \param numParts the number of partials in this sound
      **/
     void spatializationMultiPan(Sound *s,
                                 DOMElement* _channels,
-                                string applyHow,
+                                std::string applyHow,
                                 int numParts);
 
     /**
@@ -376,13 +376,13 @@ class Bottom : public Event {
      *  \param s pointer to a sound
      *  \param channels are actually theta and radius
 
-     *  \param applyHow string containing info if it applies to sound or
+     *  \param applyHow std::string containing info if it applies to sound or
      *     individual partials
      *  \param numParts the number of partials in this sound
      **/
     void spatializationPolar(Sound *s,
                              DOMElement* _channels,
-                             string applyHow,
+                             std::string applyHow,
                              int numParts);
 
     /**
@@ -397,13 +397,13 @@ class Bottom : public Event {
      *     "room size" parameter
      *  \param s a pointer to the sound being created
      *  \param paramsElement pointer to the <Sizes> element
-     *  \param applyHow string containing info if it applies to sound or
+     *  \param applyHow std::string containing info if it applies to sound or
      *     individual partials
      *  \param numPartials the number of partials contained in the sound
      **/
     void reverberationSimple(Sound *s,
                              DOMElement* paramsElement,
-                             string applyHow,
+                             std::string applyHow,
                              int numPartials);
 
     /**
@@ -412,13 +412,13 @@ class Bottom : public Event {
      *     ==== Applying by partial not implemented in LASSIE ====
      * \param s a pointer to the sound being created
      * \param paramsElement pointer to the <Percent> (envelope) element
-     * \param applyHow string containing info if it applies to sound or
+     * \param applyHow std::string containing info if it applies to sound or
      *     individual partials
      * \param numPartials the number of partials contained in the sound
      **/
     void reverberationMedium(Sound *s,
                              DOMElement* paramsElement,
-                             string applyHow,
+                             std::string applyHow,
                              int numPartials);
 
     /**
@@ -428,13 +428,13 @@ class Bottom : public Event {
      *     ==== Applying by partial not implemented in LASSIE ====
      * \param s a pointer to the sound being created
      * \param paramsElement pointer to the <Percent> (envelope) element
-     * \param applyHow string containing info if it applies to sound or
+     * \param applyHow std::string containing info if it applies to sound or
      *     individual partials
      * \param numPartials the number of partials contained in the sound
      **/
     void reverberationAdvanced(Sound *s,
                                DOMElement* paramsElement,
-                               string applyHow,
+                               std::string applyHow,
                                int numPartials);
 
     /**
@@ -450,9 +450,9 @@ class Bottom : public Event {
     /**
      *  Apply modifiers for a note.
      **/
-    //  vector<string> applyNoteModifiers();
-    vector<string> applyNoteModifiers(DOMElement* _playingMethods);
-    vector<string> applyNoteModifiersOld();
+    //  std::vector<std::string> applyNoteModifiers();
+    std::vector<std::string> applyNoteModifiers(DOMElement* _playingMethods);
+    std::vector<std::string> applyNoteModifiersOld();
     // multistaffs
     /**
      *  Apply staff for a note.

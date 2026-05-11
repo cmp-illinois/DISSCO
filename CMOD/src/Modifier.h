@@ -26,8 +26,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 class Modifier {
   private:
-    string type;      // TREMOLO, VIBRATO, BEND, etc
-    string applyHow;  // SOUND or PARTIAL
+    std::string type;      // TREMOLO, VIBRATO, BEND, etc
+    std::string applyHow;  // SOUND or PARTIAL
     Envelope* probEnv;
     double spread;
     double direction;
@@ -35,7 +35,7 @@ class Modifier {
     deque<Envelope*> env_values; // values for the mod
     double checkPt;  // hold onto the checkpoint in case mod is WAVE_TYPE
     int partialNum;  // Partial num if applyHow==PARTIAL
-    string partialResultString; // Partial result string for applying a modifier to multiple partials
+    std::string partialResultString; // Partial result std::string for applying a modifier to multiple partials
 
   public:
    /**
@@ -49,7 +49,7 @@ class Modifier {
      *  \param prob probability envelope
      *  \param modApplyHow apply to SOUND or PARTIAL
     **/
-    Modifier(string modType, Envelope* prob, string modApplyHow, int modPartialNum=0);
+    Modifier(std::string modType, Envelope* prob, std::string modApplyHow, int modPartialNum=0);
 
    /**
      *  Copy constructor for a Modifier.
@@ -103,7 +103,7 @@ class Modifier {
      *  Get the name of the modifier
      *  \return the name/type of the modifier
      **/
-    string getModName();
+    std::string getModName();
 
     /**
      *  Get the partial number of the modifier for applyHow == PARTIAL
@@ -111,7 +111,7 @@ class Modifier {
      **/
     int getPartialNum();
 
-    string getPartialResultString();
+    std::string getPartialResultString();
 
    /**
      *  Checks whether a Modifier should occur, given a checkpoint

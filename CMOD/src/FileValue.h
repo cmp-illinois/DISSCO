@@ -36,7 +36,7 @@
 // //   and the rest of the CMOD.  Whe information is read  from the data files
 // //   it is stored in various keywords that are defined in the parser (see
 // //   parser.l for a complete list).  These file values are then flagged with
-// //   an appropriate type (number, string, list, function, envelope) and
+// //   an appropriate type (number, std::string, list, function, envelope) and
 // //   the useful values from within then can be accessed using the appropriate
 // //   getter functions.
 // //
@@ -87,19 +87,19 @@
 //   file_value_data_type orig_type;  // the type in the original file
 //   file_value_data_type return_type;  // the type to return
 
-//   string ftnString;   // the string rep of a function
-//   list<FileValue> ftnArgs;  // arguments for a function
+//   std::string ftnString;   // the std::string rep of a function
+//   std::list<FileValue> ftnArgs;  // arguments for a function
 //   static int segmentNum;  // static segment for making envelopes
 
   
-//   string patterMethod;
+//   std::string patterMethod;
 //   int patterOrigin;
   
 
 //   /* return data */
-//   string s;
+//   std::string s;
 //   double n;
-//   list<FileValue> l;
+//   std::list<FileValue> l;
 //   void * obj;
   
   
@@ -128,7 +128,7 @@
 //   /**
 //    *  String output
 //    **/
-//   string toString();
+//   std::string toString();
 
 //   /**
 //    *  DESTRUCTOR: ~FileValue
@@ -149,32 +149,32 @@
 //   const file_value_data_type getReturnType() const { return return_type; }
 
 //   /**
-//    *  Method to return value of string ftnString
-//    *  \return Reference to the string ftnString
+//    *  Method to return value of std::string ftnString
+//    *  \return Reference to the std::string ftnString
 //    **/
-//   const string & getFtnString() const { return ftnString; }
+//   const std::string & getFtnString() const { return ftnString; }
   
 //   /**
 //    *  Return a reference to a list of FileValue objects (function arguments)
 //    *  \return Reference to a list of FileValue objects
 //    **/
-//   const list<FileValue> & getFtnArgs() const { return ftnArgs; }
+//   const std::list<FileValue> & getFtnArgs() const { return ftnArgs; }
 
 //   /**
 //    *  Return a pointer to a list of FileValue objects (function arguments)
 //    *  \return Pointer to a list of FileValue objects
 //    **/
-//   list<FileValue> * getFtnArgsPtr() { return &ftnArgs; }
+//   std::list<FileValue> * getFtnArgsPtr() { return &ftnArgs; }
 
 
 //   //-----------  Return values that can be dependant on an event  ----------------//
 //   //-----------    (will be Evaluate()-ed before returning!)      ----------------//
 //   /**
-//    *  Evaluate any functions and return a string
-//    *  \return Reference to the string s
+//    *  Evaluate any functions and return a std::string
+//    *  \return Reference to the std::string s
 //    **/
-//   const string & getString(Event* ev) { Evaluate(ev); return s; }
-//   const string & getString() const { return s; }
+//   const std::string & getString(Event* ev) { Evaluate(ev); return s; }
+//   const std::string & getString() const { return s; }
 
 //   /**
 //    *  Evaluate any functions and return an int
@@ -191,13 +191,13 @@
 //   /**
 //    *  Evaluate any functions and return a list of FileValues
 //    **/
-//   const list<FileValue> & getList(Event* ev) { Evaluate(ev); return l; }
-//   const list<FileValue> & getList() const { return l; }
+//   const std::list<FileValue> & getList(Event* ev) { Evaluate(ev); return l; }
+//   const std::list<FileValue> & getList() const { return l; }
 
 //   /**
 //    *  Evaluate any functions and return a pointer to a list of FileValues
 //    **/
-//   list<FileValue>* getListPtr(Event* ev) { Evaluate(ev); return &l; }
+//   std::list<FileValue>* getListPtr(Event* ev) { Evaluate(ev); return &l; }
 
 //   /**
 //    *  Evaluate any functions and return a pointer to an Envelope
@@ -230,19 +230,19 @@
 
 //   /**
 //    *  Sets the function name
-//    *  \param ss The string name of the function
+//    *  \param ss The std::string name of the function
 //    **/
-//   void setFtnString(string ss) { ftnString = ss; }
+//   void setFtnString(std::string ss) { ftnString = ss; }
 
 //   /**
 //    *  Sets the function arguments to a list of FileValues
 //    *  \param ll list of FileValue objects
 //    **/
-//   void setFtnArgs(list<FileValue> ll) { ftnArgs = ll; }
+//   void setFtnArgs(std::list<FileValue> ll) { ftnArgs = ll; }
 
 //   /**
-//    *  Sets the class variable "s" to the string argument ss
-//    *  \param ss The string to set s to
+//    *  Sets the class variable "s" to the std::string argument ss
+//    *  \param ss The std::string to set s to
 //    **/
 //   void setString(std::string ss) { s = ss; }
 
@@ -329,9 +329,9 @@
 //   //------------------------  Evaluating Methods  -----------------------------//
 
 //   /**
-//   *  Converts the class variable "type" to its string representation
+//   *  Converts the class variable "type" to its std::string representation
 //   **/
-//   const string TypeToString() const;
+//   const std::string TypeToString() const;
 
 //   /**
 //   *  Wrapper function that calls Evaluate().  Class variable 'evptr' is set 
@@ -340,7 +340,7 @@
 //   void Evaluate();
 
 //   /**
-//   *  Function that sets class variables based on the value of the string s
+//   *  Function that sets class variables based on the value of the std::string s
 //   *  \param ev Pointer to an Event object
 //   **/
 //   void Evaluate(Event *ev);
@@ -353,7 +353,7 @@
 //   *  \param n Size of list
 //   *  \param A number of file_value_data_type values
 //   **/
-//   vector<FileValue*> EvaluateArgs(int n, ...);
+//   std::vector<FileValue*> EvaluateArgs(int n, ...);
 
 
 //   /**
