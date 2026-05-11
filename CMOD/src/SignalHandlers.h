@@ -3,7 +3,7 @@
 //
 //   SignalHandlers.h
 //
-//   This file contains the declarations for signal handlers that can 
+//   This file contains the declarations for signal handlers that can
 //   be installed for custom behaviors when a signal is raised.
 //
 //----------------------------------------------------------------------------//
@@ -11,18 +11,18 @@
 #ifndef SIGNALHANDLERS_H
 #define SIGNALHANDLERS_H
 
-#include <iostream>
 #include <csignal>
-#include <execinfo.h>
 #include <cstdlib>
-#include <cxxabi.h>
-#include <algorithm>
-#include <cstring>
+#include <iostream>
 
-#define BACKTRACE_NUM 10    // Number of stack frames to print
-
-// Rubin Du 2024
-// Custom signal handler to print stack trace on segfault and then exit
+// Originally authored by Rubin Du (2024) with a glibc/Itanium-ABI backtrace
+// printer; the backtrace was removed in 2026 when DISSCO gained Windows
+// support — std::stacktrace (C++23) is the eventual portable replacement,
+// but isn't broadly available yet on the toolchains we target. Until then,
+// attach a debugger (gdb / lldb / MSVC) for stack-trace detail.
+//
+// Custom signal handler that announces a segfault and re-raises with the
+// default handler so the OS produces its usual diagnostics / core dump.
 void segfaultHandler(int signal);
 
 // Unimplemented, can be used to detect ctrl+c while the output is generating and decide whether to abandon and clean up the output or not, and release resources
