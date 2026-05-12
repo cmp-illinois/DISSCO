@@ -13,4 +13,6 @@ add_library(MUPARSER STATIC ${MUPARSER_SRC})
 
 target_include_directories(MUPARSER PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
+target_compile_definitions(MUPARSER PUBLIC MUPARSER_STATIC)
+
 message(STATUS "DONE!")
