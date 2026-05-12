@@ -1,10 +1,5 @@
-Building on Windows 
+Building on Windows
 =================
-(WIP, not yet building without some hacking)
-
-What is marked as not yet supported (denoted by ❌ and understood as referring to the entire line/paragraph) will be supported, soon.
-
-We intend to offer static binaries at some point.
 
 Preliminary Requirements
 --------------------------
@@ -12,40 +7,53 @@ Preliminary Requirements
 The following are *necessary* to compile CMOD and LASS:
 
 - git
-- Visual Studio 2022,
-- A C/C++ compiler (like MSVC `cl`),
 - cmake >= 3.25,
-- vcpkg >= 2024.X.X
+- vcpkg,
+- LLVM (`lld`, `clang`, `llvm-objdump`, ...),
 - libsndfile >= 1.0,
 - libxerces-c >= 3.2, and
 <!-- - muparser >= 2.X -->
 
 To compile with LASSIE, the following is *necessary*:
 
-- (🟡) Qt >= 6.8
+- Qt >= 6.8 (the **MSVC 2022** variant matching your CPU architecture)
 
-Note: There are definitely other ways to compile DISSCO on Windows, but this is the way the author decided to go.
+Note: There are definitely other ways to compile DISSCO on Windows, but this is the way the author decided to go. In particular, the MinGW variant of Qt will *not* link against an MSVC/clang-cl toolchain, so make sure your installs match your compiler and architecture.
 
 Installing requirements and recommendations:
 --------------------------------------------
 
 <!-- *For all methods*, it's worth keeping in mind that we statically link `muparser`, meaning you don't need to worry about installing it. Please report any issues related to muparser during compilation. -->
 
-You should [install Visual Studio 2022](https://visualstudio.microsoft.com/) from Microsoft and, in the process, install the Microsoft Visual C/C++ compilers, CMake, and vcpkg. You will need to run all the commands given hereafter in **Developer PowerShell**, which you can access either within a VS project or through the PowerShell script provided at `C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Launch-VsDevShell.ps1`.
 
-If you didn't install CMake during the VS install or don't want to install through VS, you can get an installer [from CMake directly](https://cmake.org/download/).
+### LLVM (via winget)
 
-Dependency management will be handled via `vcpkg`. **It's worth reminding that this should be done in Developer PowerShell.** If you didn't install during the VS install, you can build `vcpkg` from source, like so:
+Install the LLVM compiler suite:
 
-    git clone https://github.com/microsoft/vcpkg.git
-    cd vcpkg; .\bootstrap-vcpkg.bat
+    winget install LLVM.LLVM
 
-You should then set two environmental variables to simplify our scripts:
+After install, ensure `LLVM\bin` is in your `$env:Path`. You may also want to set your `CC`, `CXX`, and `RC` environment variables to `clang`, `clang++`, and `llvm-rc`, respectively.
 
-    $env:VCPKG_ROOT = "C:\path\to\vcpkg"
-    $env:PATH = "$env:VCPKG_ROOT;$env:PATH"
+### vcpkg
 
-We'll come back to `vcpkg` in the Building section.
+Dependency management is handled via `vcpkg`. Clone and bootstrap it somewhere persistent (e.g. `C:\vcpkg`):
+
+    git clone https://github.com/microsoft/vcpkg.git C:\vcpkg
+    cd C:\vcpkg
+    .\bootstrap-vcpkg.bat
+
+Then set the environment variable `VCPKG_ROOT` to `C:\vcpkg` (or wherever), and add `vcpkg` to your `$env:Path`.
+
+### Qt 6
+
+Install Qt with the [Qt online installer](https://www.qt.io/download-qt-installer). When the component selector appears, expand the latest Qt >6.10 release and pick **one** variant that matches your CPU architecture:
+
+- **MSVC 2022 64-bit** — if you're on Intel/AMD x64 (most desktops/laptops).
+- **MSVC 2022 ARM64** — if you're on Windows-on-ARM (Surface Pro X / 11, Snapdragon X laptops, etc.).
+
+To figure out which one you are: `echo $env:PROCESSOR_ARCHITECTURE` in PowerShell. `AMD64` → x64; `ARM64` → ARM64.
+
+After install, note the Qt prefix path. The default is something like `C:\Qt\6.8.1\msvc2022_64` (or `…\msvc2022_arm64`). We'll point CMake at this directory in the Building section.
 
 Installing DISSCO
 -----------------
@@ -56,20 +64,25 @@ Just `git clone` this repo; explicitly:
 Building
 --------
 
-**Dependencies with `vcpkg`**
+### Declare dependencies for vcpkg
 
-From the project's root directory (by default: `C:\path\to\DISSCO-X.X.X`), run the following commands to tell `vcpkg` what dependencies you'll need when building:
+From the project's root directory (by default: `C:\path\to\DISSCO-X.X.X`), tell vcpkg what we need:
 
     vcpkg new --application
 
-which will create a `vcpkg-configuration.json` file, and
+which creates a `vcpkg-configuration.json` file, and
 
     vcpkg add port libsndfile
     vcpkg add port xerces-c
 
-which will create a `vcpkg.json` file and add dependencies to it.
+which creates a `vcpkg.json` and adds the two ports to it. These files are local [manifests](https://learn.microsoft.com/en-us/vcpkg/concepts/manifest-mode), and vcpkg will auto-install the listed deps the first time CMake configures.
 
-Now, make a `CMakeUserPresets.json` file with the following:
+### Wire up a CMakeUserPresets.json
+
+A `vcpkg` configure preset already lives in `CMakePresets.json` at the repo root — it points CMake at the vcpkg toolchain file so that `find_package(SndFile)` and `find_package(XercesC)` resolve to vcpkg's installs. You'll add a *user* preset on top of it that supplies the two paths that are specific to your machine: `VCPKG_ROOT` and `CMAKE_PREFIX_PATH` (the Qt install dir).
+
+Create a `CMakeUserPresets.json` in the repo root (this filename is gitignored — it's per-developer):
+
 ```json
 {
     "version": 2,
@@ -78,27 +91,41 @@ Now, make a `CMakeUserPresets.json` file with the following:
             "name": "windows",
             "inherits": "vcpkg",
             "environment": {
-                "VCPKG_ROOT": "C:/path/to/vcpkg"
+                "VCPKG_ROOT": "C:/vcpkg"
+            },
+            "cacheVariables": {
+                "CMAKE_PREFIX_PATH": "C:/Qt/6.8.1/msvc2022_64"
             }
         }
     ]
 }
 ```
-where `C:/path/to/vcpkg` is the path to the directory you installed `vcpkg` in.
 
-Finally, run `cmake --preset=windows -G Ninja`.
+Substitute your actual `vcpkg` and Qt paths. The Qt path should be the directory containing `bin\`, `lib\cmake\Qt6\` etc. — `msvc2022_arm64` instead of `msvc2022_64` if that's what you installed.
 
-**(❌) Rest of the Build** 
+### Configure and build
 
-From `build/`, do
+In the project root:
 
-    cmake --build .
+    cmake --preset windows
+    cmake --build build
 
-to build.
+`cmake --preset windows` will, on first run, trigger vcpkg to download and build `libsndfile` and `xerces-c` (plus their transitive deps — FLAC, ogg, opus, etc.). This takes a while the first time and is cached afterward (so it'll be faster, hopefully :).
 
-By running this command in `build`, one generates a so-called *out-of-source* (OOS) build. The alternative, an in-source build, is heavily discouraged (including [by the CMake maintainers](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Getting%20Started.html#directory-structure)), and the root `CMakeLists.txt` reflects this distaste. The rationale is that OOS builds minimize clutter and collect all build files in one directory, whereas in-source builds put build files virtually everywhere. (This is bad.)
+Then `cmake --build build` produces:
 
-From `build`, you can clean `build` using `cmake --build . --target clean`. Alternatively, you can do `rmdir /s build` from outside of `build`.
+- `build\LASS\LASS.lib` — additive synthesis library (static),
+- `build\external-libs\muParser\MUPARSER.lib` — expression parser (static),
+- `build\CMOD\CMOD.exe` — composition module (CLI binary),
+- `build\LASSIE\LASSIE.exe` — Qt GUI editor.
+
+The LASSIE link step automatically runs `windeployqt` to copy `Qt6Widgets.dll`, `Qt6Core.dll`, `Qt6Gui.dll`, the platform plugin, and friends next to `LASSIE.exe`. vcpkg's applocal step does the same for `sndfile.dll`, `xerces-c*.dll`, and their deps. After the build finishes, `build\LASSIE\LASSIE.exe` should launch by double-click.
+
+### Cleaning
+
+From the project root: `Remove-Item -Recurse build` (PowerShell) or `rmdir /s build` (cmd). Or from inside `build`: `cmake --build . --target clean`.
+
+By running `cmake --preset windows` (which sets `binaryDir` to `${sourceDir}/build`), one generates a so-called *out-of-source* (OOS) build. The alternative, an in-source build, is heavily discouraged (including [by the CMake maintainers](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Getting%20Started.html#directory-structure)), and the root `CMakeLists.txt` reflects this distaste. The rationale is that OOS builds minimize clutter and collect all build files in one directory, whereas in-source builds put build files virtually everywhere. (This is bad.)
 
 `.dissco` File Association
 --------------------------
