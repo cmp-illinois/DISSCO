@@ -12,7 +12,10 @@ file(GLOB_RECURSE CMOD_SRC
 )
 
 add_executable(CMOD ${CMOD_SRC})
-set_property(TARGET CMOD PROPERTY ENABLE_EXPORTS TRUE)
+# CMOD is consumed by LASSIE as a standalone subprocess (QProcess::start),
+# not linked into it. No ENABLE_EXPORTS / WINDOWS_EXPORT_ALL_SYMBOLS is
+# needed — and adding them just to "make the link work" backfires on
+# Windows, where it requires an import library that no consumer actually uses.
 
 ### libsndfile must be linked in just the same way as it is in LASS ###
 target_link_libraries(CMOD PUBLIC ${SNDFILE_LIBRARY})
