@@ -1070,7 +1070,8 @@ void FunctionGenerator::handleFunctionChanged(int index)
             break;
         case functionDecay:
             currPageIndex = 9;
-            ui->decayIndexEdit->setText("CURRENT_PARTIAL_NUM");
+            ui->decayIndexEdit->clear();
+            ui->decayIndexEdit->setPlaceholderText("CURRENT_PARTIAL_NUM");
             ui->decayTypeExponential->setChecked(true);
             decayEntryChanged();
             break;
@@ -1094,26 +1095,34 @@ void FunctionGenerator::handleFunctionChanged(int index)
         case functionValuePick:
             currPageIndex = 13;
             ui->valuePickAbsRangeEdit->setText("1");
-            ui->valuePickLowEdit->setText("ENV");
-            ui->valuePickHighEdit->setText("ENV");
-            ui->valuePickDistEdit->setText("ENV");
+            ui->valuePickLowEdit->clear();
+            ui->valuePickLowEdit->setPlaceholderText("ENV");
+            ui->valuePickHighEdit->clear();
+            ui->valuePickHighEdit->setPlaceholderText("ENV");
+            ui->valuePickDistEdit->clear();
+            ui->valuePickDistEdit->setPlaceholderText("ENV");
             ui->valuePickElementsMeaningful->setChecked(true);
-            ui->valuePickValuesElementsEdit->setText("INT1, INT2, INT3 ...");
+            ui->valuePickValuesElementsEdit->clear();
+            ui->valuePickValuesElementsEdit->setPlaceholderText("INT1, INT2, INT3 ...");
             ui->valuePickWeightsPeriodic->setChecked(true);
-            ui->valuePickValuesWeightsEdit->setText("INT1, INT2, INT3 ...");
+            ui->valuePickValuesWeightsEdit->clear();
+            ui->valuePickValuesWeightsEdit->setPlaceholderText("INT1, INT2, INT3 ...");
             ui->valuePickTypeVariable->setChecked(true);
-            ui->valuePickOffsetEdit->setText("INT1, INT2, INT3 ...");
+            ui->valuePickOffsetEdit->clear();
+            ui->valuePickOffsetEdit->setPlaceholderText("INT1, INT2, INT3 ...");
             valuePickTextChanged();
             break;
         case functionChooseL:
             currPageIndex = 14;
-            ui->chooseLEdit->setText("SIV");
+            ui->chooseLEdit->clear();
+            ui->chooseLEdit->setPlaceholderText("SIV");
             chooseLEntryChanged();
             break;
         case functionGetPattern:
             currPageIndex = 15;
             ui->getPatternMethodInOrder->setChecked(true);
-            ui->getPatternChooseEdit->setText("PAT");
+            ui->getPatternChooseEdit->clear();
+            ui->getPatternChooseEdit->setPlaceholderText("PAT");
             getPatternEntryChanged();
             break;
         case functionEnvLib:
@@ -1158,7 +1167,8 @@ void FunctionGenerator::handleFunctionChanged(int index)
             break;
         case functionMakePattern:
             currPageIndex = 24;
-            ui->makePatternIntervalsEdit->setText("INT1, INT2, INT3 ...");
+            ui->makePatternIntervalsEdit->clear();
+            ui->makePatternIntervalsEdit->setPlaceholderText("INT1, INT2, INT3 ...");
             makePatternTextChanged();
             break;  
         case functionExpandPattern:
@@ -1212,18 +1222,24 @@ void FunctionGenerator::handleFunctionChanged(int index)
             break; 
         case functionSpectrum_Gen:
             currPageIndex = 29;
-            ui->spectrumGenEnvelopeEdit->setText("ENV");
+            ui->spectrumGenEnvelopeEdit->clear();
+            ui->spectrumGenEnvelopeEdit->setPlaceholderText("ENV");
             Spectrum_GenTextChanged();
             break;
         case functionMakeSieve:
             currPageIndex = 30;
-            ui->makeSieveLowBoundEdit->setText("ENV");
-            ui->makeSieveHighBoundEdit->setText("ENV");
+            ui->makeSieveLowBoundEdit->clear();
+            ui->makeSieveLowBoundEdit->setPlaceholderText("ENV");
+            ui->makeSieveHighBoundEdit->clear();
+            ui->makeSieveHighBoundEdit->setPlaceholderText("ENV");
             ui->makeSieveElementsMeaningful->setChecked(true);
-            ui->makeSieveElementsValuesEdit->setText("INT1, INT2, INT3 ...");
-            ui->makeSieveOffsetEdit->setText("INT1, INT2, INT3 ...");
+            ui->makeSieveElementsValuesEdit->clear();
+            ui->makeSieveElementsValuesEdit->setPlaceholderText("INT1, INT2, INT3 ...");
+            ui->makeSieveOffsetEdit->clear();
+            ui->makeSieveOffsetEdit->setPlaceholderText("INT1, INT2, INT3 ...");
             ui->makeSieveWeightsPeriodic->setChecked(true);
-            ui->makeSieveWeightsValuesEdit->setText("INT1, INT2, INT3 ...");
+            ui->makeSieveWeightsValuesEdit->clear();
+            ui->makeSieveWeightsValuesEdit->setPlaceholderText("INT1, INT2, INT3 ...");
             makeSieveTextChanged();
             break;
         case functionReadSIVFile:
