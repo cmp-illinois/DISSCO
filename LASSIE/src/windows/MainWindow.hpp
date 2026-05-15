@@ -5,6 +5,9 @@
 #include <memory>
 #include <QStatusBar>
 
+class QListWidgetItem;
+class QTreeWidgetItem;
+
 #include "../inst.hpp"
 
 QT_BEGIN_NAMESPACE
@@ -50,10 +53,18 @@ class MainWindow : public QMainWindow
         void showPropertiesDialog() const;
         void showFileNewObjectDialog() const;
 
+        // Welcome / recent projects
+        void openRecentProject(QListWidgetItem *item);
+        void openRecentProjectTree(QTreeWidgetItem *item, int column);
+        void toggleRecentViewMode();
+        void showRecentListContextMenu(const QPoint &pos);
+        void showRecentTreeContextMenu(const QPoint &pos);
+
         
 
     protected:
         void closeEvent(QCloseEvent *event) override;
+        bool eventFilter(QObject *watched, QEvent *event) override;
         void readSettings();
         void writeSettings() const;
 
@@ -65,6 +76,7 @@ class MainWindow : public QMainWindow
         void createStatusBar() const { statusBar()->showMessage(tr("Ready")); }
         void runProject();
         void showFile();
+        void openProjectPath(const QString &path);
 
         // Returns false if the user cancelled, true otherwise.
         // Prompts to save unsaved changes when a project is already open.
@@ -72,7 +84,18 @@ class MainWindow : public QMainWindow
         // Tears down the current project view and project data, resetting UI state.
         void closeCurrentProject();
 
+        // Welcome / recent projects helpers
+        void showWelcomePage();
+        void showProjectPage() const;
+        void refreshRecentProjects() const;
+        void addToRecentProjects(const QString &path) const;
+        void applyRecentViewMode() const;
+        QStringList selectedRecentPaths() const;
+        void removeRecents(const QStringList &paths) const;
+        void promptAndRemoveSelectedRecents();
+
         QString currentFile;
+        bool recentIconMode = true;
         
         // Actions
         QAction *newAct = nullptr;
