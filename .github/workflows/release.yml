@@ -1,0 +1,109 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag/version to release (e.g. v2.2.0). Optional; if empty, a draft release for the current SHA is produced."
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  macos:
+    name: macOS DMG
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          brew update
+          brew install cmake ninja libsndfile xerces-c qt@6
+          brew link --force qt@6
+
+      - name: Configure
+        run: |
+          cmake -S . -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_PREFIX_PATH="$(brew --prefix qt@6)"
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Package (DMG)
+        run: cmake --build build --target package
+
+      - name: Locate artifact
+        id: artifact
+        run: |
+          dmg=$(ls build/DISSCO-*-Darwin.dmg | head -n1)
+          echo "path=${dmg}" >> "$GITHUB_OUTPUT"
+          echo "name=$(basename "${dmg}")" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.artifact.outputs.name }}
+          path: ${{ steps.artifact.outputs.path }}
+
+  linux:
+    name: Linux AppImage
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential cmake ninja-build \
+            libsndfile1-dev libxerces-c-dev \
+            qt6-base-dev qt6-base-dev-tools libqt6xml6 \
+            libgl1-mesa-dev libfuse2 \
+            file desktop-file-utils
+
+      - name: Configure
+        run: |
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Package (AppImage)
+        env:
+          # linuxdeploy-plugin-qt needs to know where qmake lives.
+          QMAKE: /usr/lib/qt6/bin/qmake6
+        run: cmake --build build --target appimage
+
+      - name: Locate artifact
+        id: artifact
+        run: |
+          img=$(ls build/DISSCO-*.AppImage | head -n1)
+          echo "path=${img}" >> "$GITHUB_OUTPUT"
+          echo "name=$(basename "${img}")" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.artifact.outputs.name }}
+          path: ${{ steps.artifact.outputs.path }}
+
+  release:
+    name: Publish GitHub release
+    needs: [macos, linux]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          draft: true
+          generate_release_notes: true
