@@ -51,4 +51,17 @@ if(NOT CMOD_BINARY)
 endif()
 message(STATUS "CMOD_BINARY set to ${CMOD_BINARY}")
 
+include(GNUInstallDirs)
+if(APPLE)
+    install(TARGETS CMOD
+        RUNTIME DESTINATION LASSIE.app/Contents/MacOS
+        COMPONENT Runtime
+    )
+else()
+    install(TARGETS CMOD
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        COMPONENT Runtime
+    )
+endif()
+
 message(STATUS "DONE!")
