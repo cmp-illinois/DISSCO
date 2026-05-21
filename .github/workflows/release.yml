@@ -55,31 +55,50 @@ jobs:
 
   linux:
     name: Linux AppImage
+    # Pinned to 22.04 for older glibc: AppImages built here run on more
+    # downstream distros than ones built on 24.04+.
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
             build-essential cmake ninja-build \
             libsndfile1-dev libxerces-c-dev \
-            qt6-base-dev qt6-base-dev-tools libqt6xml6 \
             libgl1-mesa-dev libfuse2 \
-            file desktop-file-utils
+            file desktop-file-utils \
+            libxkbcommon-dev '^libxcb.*-dev' libx11-xcb-dev \
+            libglu1-mesa-dev libxrender-dev libxi-dev libxkbfile-dev
+
+      - name: Install Qt 6.8
+        uses: jurplel/install-qt-action@v4
+        with:
+          # DISSCO's source uses Qt::StringLiterals (6.4+) and project docs
+          # require >= 6.8. Ubuntu 22.04's apt qt6-base-dev is 6.2 — too old.
+          version: "6.8.0"
+          host: linux
+          target: desktop
+          arch: linux_gcc_64
+          modules: ""
+          cache: true
 
       - name: Configure
         run: |
-          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          cmake -S . -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_PREFIX_PATH="${Qt6_DIR}"
 
       - name: Build
         run: cmake --build build --parallel
 
       - name: Package (AppImage)
         env:
-          # linuxdeploy-plugin-qt needs to know where qmake lives.
-          QMAKE: /usr/lib/qt6/bin/qmake6
+          # linuxdeploy-plugin-qt picks up qmake via QMAKE; install-qt-action
+          # exports QT_ROOT_DIR and prepends Qt's bin/ to PATH, so qmake6 is
+          # findable, but be explicit to avoid surprises.
+          QMAKE: ${{ env.QT_ROOT_DIR }}/bin/qmake
         run: cmake --build build --target appimage
 
       - name: Locate artifact
