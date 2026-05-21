@@ -70,3 +70,18 @@ to build.
 By running this command in `build`, one generates a so-called *out-of-source* (OOS) build. The alternative, an in-source build, is heavily discouraged (including [by the CMake maintainers](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Getting%20Started.html#directory-structure)), and the root `CMakeLists.txt` reflects this distaste. The rationale is that OOS builds minimize clutter and collect all build files in one directory, whereas in-source builds put build files virtually everywhere. (This is bad.)
 
 From `build`, you can clean `build` using `cmake --build . --target clean`. Alternatively, you can do `rm -r build` from outside of `build`. Yet another option, from within build: `rm CMakeCache.txt`.
+
+Building a release DMG
+----------------------
+From the project root:
+
+    cmake -S . -B build -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_PREFIX_PATH="$(brew --prefix qt@6)"
+    cmake --build build --parallel
+    cmake --build build --target package
+
+This produces `build/DISSCO-<version>-Darwin.dmg`. The DMG contains `LASSIE.app` with the CMOD binary embedded at `Contents/MacOS/CMOD` and Qt frameworks bundled in via `macdeployqt`.
+
+The build's icon (`packaging/macos/LASSIE.icns`) is a placeholder; regenerate it from updated artwork via `packaging/macos/make-icns.sh`.
+
+**Note on Gatekeeper**: without an Apple Developer ID signature + notarization, users opening the DMG will see a "cannot be verified" dialog and must right-click → Open. Code-signing and notarization can be added to the GitHub Actions release workflow once Apple Developer credentials are available.
