@@ -37,6 +37,7 @@
 #include <QMenu>
 #include <QAction>
 #include <QKeyEvent>
+#include <QStandardPaths>
 
 MainWindow *MainWindow::instance_ = nullptr;
 
@@ -44,6 +45,20 @@ namespace {
     constexpr int kMaxRecentProjects = 12;
     constexpr const char *kRecentProjectsKey = "recentProjects";
     constexpr const char *kRecentViewModeIconKey = "recentViewModeIcon";
+}
+
+static QString resolveCmodBinary()
+{
+    // Prefer a CMOD sitting next to the LASSIE binary (packaged builds:
+    // LASSIE.app/Contents/MacOS/CMOD on macOS, the AppDir's usr/bin/CMOD on
+    // Linux). Fall back to the compile-time CMOD_BINARY path for dev builds.
+    const QString appDir = QCoreApplication::applicationDirPath();
+    for (const QString &candidate : { appDir + "/CMOD", appDir + "/../Resources/CMOD" }) {
+        if (QFileInfo(candidate).isExecutable()) {
+            return QDir::cleanPath(candidate);
+        }
+    }
+    return QStringLiteral(CMOD_BINARY);
 }
 
 MainWindow::MainWindow(Inst* m)
@@ -329,13 +344,14 @@ void MainWindow::runProject()
                 statusBar()->showMessage(tr("CMOD exited with code %1").arg(exit_code)); 
             }
         );
-    qDebug() << "Project run with string:" << QString(CMOD_BINARY) + " " + pm->fileinfo().canonicalFilePath();
+    const QString cmodBinary = resolveCmodBinary();
+    qDebug() << "Project run with string:" << cmodBinary + " " + pm->fileinfo().canonicalFilePath();
 
     const auto pw = new PostWindow(cmod, this);
     pw->resize(600,400);
     pw->show();
 
-    cmod->start(QString(CMOD_BINARY), QStringList() << pm->fileinfo().canonicalFilePath());
+    cmod->start(cmodBinary, QStringList() << pm->fileinfo().canonicalFilePath());
 }
 
 void MainWindow::readSettings()
