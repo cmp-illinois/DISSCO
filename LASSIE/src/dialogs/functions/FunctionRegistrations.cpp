@@ -3,6 +3,7 @@
 // one-line change in this file (plus the new subclass itself).
 
 #include "FunctionRegistry.hpp"
+#include "FibonacciFunction.hpp"
 #include "InverseFunction.hpp"
 #include "LNFunction.hpp"
 
@@ -10,4 +11,5 @@ void registerAllFunctions() {
     auto& r = FunctionRegistry::instance();
     r.registerType<InverseFunction>();
     r.registerType<LNFunction>();
+    r.registerType<FibonacciFunction>();
 }
