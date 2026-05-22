@@ -33,11 +33,11 @@ InverseFunction::InverseFunction(QWidget* parent)
 }
 
 QList<FunctionReturnType> InverseFunction::supportedReturnTypes() const {
-    // Matches the legacy combo box population: Inverse appears in both
-    // the Int and Float pickers.
+    // Matches the legacy combo box population.
     return {
         FunctionReturnType::functionReturnInt,
         FunctionReturnType::functionReturnFloat,
+        FunctionReturnType::functionReturnMakeListFun,
     };
 }
 
