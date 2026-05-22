@@ -41,6 +41,10 @@ qt_add_executable(LASSIE
     src/dialogs/functions/impl/GetPatternFunction.cpp src/dialogs/functions/impl/GetPatternFunction.hpp
     src/dialogs/functions/impl/ExpandPatternFunction.cpp src/dialogs/functions/impl/ExpandPatternFunction.hpp
     src/dialogs/functions/impl/MakeFilterFunction.cpp src/dialogs/functions/impl/MakeFilterFunction.hpp
+    src/dialogs/functions/impl/MakePatternFunction.hpp
+    src/dialogs/functions/impl/MakeEnvelopeFunction.cpp src/dialogs/functions/impl/MakeEnvelopeFunction.hpp
+    src/dialogs/functions/impl/MakeSieveFunction.cpp src/dialogs/functions/impl/MakeSieveFunction.hpp
+    src/dialogs/functions/impl/ValuePickFunction.cpp src/dialogs/functions/impl/ValuePickFunction.hpp
     src/dialogs/functions/FunctionRegistrations.cpp
     src/widgets/REVChannel.cpp src/widgets/REVChannel.hpp
     src/widgets/SPAChannel.cpp src/widgets/SPAChannel.hpp
@@ -56,6 +60,7 @@ qt_add_executable(LASSIE
     src/widgets/Modifiers.cpp src/widgets/Modifiers.hpp src/ui/Modifiers.ui
     src/widgets/Stochos.cpp src/widgets/Stochos.hpp
     src/widgets/Select.cpp src/widgets/Select.hpp
+    src/widgets/MakeEnvelopeRow.cpp src/widgets/MakeEnvelopeRow.hpp
     src/widgets/generic/FunctionEntryRow.cpp src/widgets/generic/FunctionEntryRow.hpp
 )
 

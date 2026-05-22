@@ -12,8 +12,11 @@
 #include "impl/GetPatternFunction.hpp"
 #include "impl/InverseFunction.hpp"
 #include "impl/LNFunction.hpp"
+#include "impl/MakeEnvelopeFunction.hpp"
 #include "impl/MakeFilterFunction.hpp"
 #include "impl/MakeListFunction.hpp"
+#include "impl/MakePatternFunction.hpp"
+#include "impl/MakeSieveFunction.hpp"
 #include "impl/MarkovFunction.hpp"
 #include "impl/RandomDensityFunction.hpp"
 #include "impl/RandomFunction.hpp"
@@ -23,6 +26,7 @@
 #include "impl/ReadFileFunctions.hpp"
 #include "impl/SpectrumGenFunction.hpp"
 #include "impl/StaticConstantFunctions.hpp"
+#include "impl/ValuePickFunction.hpp"
 
 void registerAllFunctions() {
     auto& r = FunctionRegistry::instance();
@@ -56,4 +60,8 @@ void registerAllFunctions() {
     r.registerType<GetPatternFunction>();
     r.registerType<ExpandPatternFunction>();
     r.registerType<MakeFilterFunction>();
+    r.registerType<MakePatternFunction>();
+    r.registerType<MakeEnvelopeFunction>();
+    r.registerType<MakeSieveFunction>();
+    r.registerType<ValuePickFunction>();
 }

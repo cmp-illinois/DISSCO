@@ -1118,48 +1118,6 @@
         </widget>
         </item>
         <item>
-        <layout class="QHBoxLayout" name="makeEnvelopeXLayout">
-            <item>
-                <widget class="QLabel" name="makeEnvelopeXLabel">
-                <property name="text">
-                <string>X Value:</string>
-                </property>
-                </widget>
-            </item>
-            <item>
-                <widget class="QLineEdit" name="makeEnvelopeXEdit"/>
-            </item>
-            <item>
-                <widget class="QPushButton" name="makeEnvelopeXInsertFn">
-                <property name="text">
-                    <string>Insert Function</string>
-                </property>
-                </widget>
-            </item>
-        </layout>
-        </item>
-        <item>
-        <layout class="QHBoxLayout" name="makeEnvelopeYLayout">
-            <item>
-                <widget class="QLabel" name="makeEnvelopeYLabel">
-                <property name="text">
-                <string>Y Value:</string>
-                </property>
-                </widget>
-            </item>
-            <item>
-                <widget class="QLineEdit" name="makeEnvelopeYEdit"/>
-            </item>
-            <item>
-                <widget class="QPushButton" name="makeEnvelopeYInsertFn">
-                <property name="text">
-                    <string>Insert Function</string>
-                </property>
-                </widget>
-            </item>
-        </layout>
-        </item>
-        <item>
         <layout class="QHBoxLayout" name="makeEnvelopeScalingLayout">
             <item>
                 <widget class="QLabel" name="makeEnvelopeScalingLabel">

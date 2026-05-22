@@ -22,6 +22,7 @@
 
 #include "../widgets/Stochos.hpp"
 #include "../widgets/Select.hpp"
+#include "../widgets/MakeEnvelopeRow.hpp"
 
 #include "functions/FunctionRegistry.hpp"
 #include "functions/FunctionWidget.hpp"
@@ -407,11 +408,7 @@ void FunctionGenerator::setupUi()
 
     // MakeEnvelope Signals
     connect(ui->makeEnvelopeScalingInsertFn, &QPushButton::clicked, this, &FunctionGenerator::makeEnvelopeScalingFactorFunButtonClicked);
-    connect(ui->makeEnvelopeXInsertFn, &QPushButton::clicked, this, &FunctionGenerator::makeEnvelopeXValueFunButtonClicked);
-    connect(ui->makeEnvelopeYInsertFn, &QPushButton::clicked, this, &FunctionGenerator::makeEnvelopeYValueFunButtonClicked);
     connect(ui->makeEnvelopeScalingEdit, &QLineEdit::textChanged, this, &FunctionGenerator::makeEnvelopeTextChanged);
-    connect(ui->makeEnvelopeXEdit, &QLineEdit::textChanged, this, &FunctionGenerator::makeEnvelopeTextChanged);
-    connect(ui->makeEnvelopeYEdit, &QLineEdit::textChanged, this, &FunctionGenerator::makeEnvelopeTextChanged);
 
     // MakePattern Signals
     connect(ui->makePatternIntervalsInsertFn, &QPushButton::clicked, this, &FunctionGenerator::makePatternIntervalsFunButtonClicked);
@@ -890,7 +887,7 @@ void FunctionGenerator::setupUi()
         selectComboItem(functionName);
         ui->fibEdit->setText(nextChildInner(r));
     }
-    //not work: Decay
+    // MakeEnvelope is handled by the registered FunctionWidget.
 }
 
 void FunctionGenerator::handleFunctionChanged(int index)
@@ -1052,6 +1049,13 @@ void FunctionGenerator::handleFunctionChanged(int index)
             break;
         case functionMakeEnvelope:
             currPageIndex = 17;
+            ui->makeEnvelopeScrollWindowLayout->setSpacing(5);
+            ui->makeEnvelopeScrollWindowLayout->setContentsMargins(5, 5, 5, 5);
+            if (m_envRows.isEmpty()) {
+                ui->makeEnvelopeScalingEdit->setText("1.0");
+                envInsertRow(nullptr);
+                envInsertRow(m_envRows.last());
+            }
             makeEnvelopeTextChanged();
             break;
         case functionReadENVFile:
@@ -1765,37 +1769,62 @@ void FunctionGenerator::makeEnvelopeScalingFactorFunButtonClicked(){
   }
   delete generator;
 }
-void FunctionGenerator::makeEnvelopeXValueFunButtonClicked(){
-  QString initialText = ui->makeEnvelopeXEdit->text();
-  FunctionGenerator* generator = new FunctionGenerator(this, functionReturnFloat, initialText);
-  if (generator->exec() == QDialog::Accepted) {
-    QString result = generator->getResultString();
-    if (!result.isEmpty()) {
-        ui->makeEnvelopeXEdit->setText(result);
-    }
-  }
-  delete generator;
+
+MakeEnvelopeRow* FunctionGenerator::envInsertRow(MakeEnvelopeRow* prevRow) {
+    int index = prevRow ? m_envRows.indexOf(prevRow) + 1 : 0;
+    auto* row = new MakeEnvelopeRow(index, ui->makeEnvelopeScrollWindowContents);
+    m_envRows.insert(index, row);
+    ui->makeEnvelopeScrollWindowLayout->insertWidget(index, row);
+    updateEnvRowLabels();
+    connect(row, &MakeEnvelopeRow::textChanged,    this, [this](MakeEnvelopeRow*){ makeEnvelopeTextChanged(); });
+    connect(row, &MakeEnvelopeRow::deleteRequested, this, [this](MakeEnvelopeRow* r){ envRemoveRow(r); });
+    connect(row, &MakeEnvelopeRow::insertRequested, this, [this](MakeEnvelopeRow* r){ envInsertRow(r); });
+    makeEnvelopeTextChanged();
+    return row;
 }
-void FunctionGenerator::makeEnvelopeYValueFunButtonClicked(){
-  QString initialText = ui->makeEnvelopeYEdit->text();
-  FunctionGenerator* generator = new FunctionGenerator(this, functionReturnFloat, initialText);
-  if (generator->exec() == QDialog::Accepted) {
-    QString result = generator->getResultString();
-    if (!result.isEmpty()) {
-        ui->makeEnvelopeYEdit->setText(result);
-    }
-  }
-  delete generator;
+
+void FunctionGenerator::envRemoveRow(MakeEnvelopeRow* currRow) {
+    if (m_envRows.size() <= 2) return;
+    int index = m_envRows.indexOf(currRow);
+    if (index < 0) return;
+    m_envRows.removeAt(index);
+    ui->makeEnvelopeScrollWindowLayout->removeWidget(currRow);
+    currRow->deleteLater();
+    updateEnvRowLabels();
+    makeEnvelopeTextChanged();
 }
+
+void FunctionGenerator::clearEnvRows() {
+    for (auto* row : m_envRows) {
+        ui->makeEnvelopeScrollWindowLayout->removeWidget(row);
+        delete row;
+    }
+    m_envRows.clear();
+}
+
+void FunctionGenerator::updateEnvRowLabels() {
+    for (int i = 0; i < m_envRows.size(); ++i)
+        m_envRows[i]->setLabel(QString("Point %1:").arg(i + 1));
+}
+
 void FunctionGenerator::makeEnvelopeTextChanged(){
-    QString stringbuffer;
-    stringbuffer = "<Fun><Name>MakeEnvelope</Name><Xs>";
-    // TO DO: MakeEnvelopeSubAlignment
-    stringbuffer = stringbuffer + "<X>" + ui->makeEnvelopeXEdit->text() + "</X></Xs><Ys>";
-    stringbuffer = stringbuffer + "<Y>" + ui->makeEnvelopeYEdit->text() + "</Y></Ys><Types>";
-    stringbuffer = stringbuffer + "</Types><Pros>";
-    stringbuffer = stringbuffer+ "</Pros><Scale>" + ui->makeEnvelopeScalingEdit->text() + "</Scale></Fun>";
-    ui->resultTextEdit->setText(stringbuffer);
+    if (m_envRows.isEmpty()) return;
+    QString xs, ys, types, pros;
+    for (int i = 0; i < m_envRows.size(); ++i) {
+        xs    += "<X>" + m_envRows[i]->getX() + "</X>";
+        ys    += "<Y>" + m_envRows[i]->getY() + "</Y>";
+        if (i < m_envRows.size() - 1) {
+            types += "<T>" + m_envRows[i]->getType() + "</T>";
+            pros  += "<P>" + m_envRows[i]->getPro()  + "</P>";
+        }
+    }
+    QString result = "<Fun><Name>MakeEnvelope</Name>"
+                     "<Xs>" + xs + "</Xs>"
+                     "<Ys>" + ys + "</Ys>"
+                     "<Types>" + types + "</Types>"
+                     "<Pros>" + pros + "</Pros>"
+                     "<Scale>" + ui->makeEnvelopeScalingEdit->text() + "</Scale></Fun>";
+    ui->resultTextEdit->setText(result);
 }
 
 /* MakePattern Signal Functions */

@@ -15,6 +15,7 @@ class SPAChannel;
 class REVChannel;
 class Stochos;
 class Select;
+class MakeEnvelopeRow;
 
 namespace Ui {
 class FunctionGenerator;
@@ -131,10 +132,13 @@ public:
     void envLibScalingFactorFunButtonClicked();
     void envLibTextChanged();
 
-    // MakeEnvelopes
+    // MakeEnvelope
+    QList<MakeEnvelopeRow*> m_envRows;
+    MakeEnvelopeRow* envInsertRow(MakeEnvelopeRow* prevRow);
+    void envRemoveRow(MakeEnvelopeRow* currRow);
+    void clearEnvRows();
+    void updateEnvRowLabels();
     void makeEnvelopeScalingFactorFunButtonClicked();
-    void makeEnvelopeXValueFunButtonClicked();
-    void makeEnvelopeYValueFunButtonClicked();
     void makeEnvelopeTextChanged();
 
     // MakePattern
