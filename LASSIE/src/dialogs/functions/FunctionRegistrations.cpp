@@ -25,6 +25,7 @@
 #include "impl/RandomizerFunction.hpp"
 #include "impl/ReadFileFunctions.hpp"
 #include "impl/SelectFunction.hpp"
+#include "impl/StochosFunction.hpp"
 #include "impl/SpectrumGenFunction.hpp"
 #include "impl/StaticConstantFunctions.hpp"
 #include "impl/ValuePickFunction.hpp"
@@ -66,4 +67,5 @@ void registerAllFunctions() {
     r.registerType<MakeSieveFunction>();
     r.registerType<ValuePickFunction>();
     r.registerType<SelectFunction>();
+    r.registerType<StochosFunction>();
 }
