@@ -25,6 +25,8 @@ qt_add_executable(LASSIE
     src/dialogs/functions/InverseFunction.hpp
     src/dialogs/functions/LNFunction.hpp
     src/dialogs/functions/FibonacciFunction.hpp
+    src/dialogs/functions/ChooseLFunction.hpp
+    src/dialogs/functions/MarkovFunction.cpp src/dialogs/functions/MarkovFunction.hpp
     src/dialogs/functions/RandomFunction.cpp src/dialogs/functions/RandomFunction.hpp
     src/dialogs/functions/FunctionRegistrations.cpp
     src/widgets/REVChannel.cpp src/widgets/REVChannel.hpp

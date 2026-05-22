@@ -3,9 +3,11 @@
 // one-line change in this file (plus the new subclass itself).
 
 #include "FunctionRegistry.hpp"
+#include "ChooseLFunction.hpp"
 #include "FibonacciFunction.hpp"
 #include "InverseFunction.hpp"
 #include "LNFunction.hpp"
+#include "MarkovFunction.hpp"
 #include "RandomFunction.hpp"
 
 void registerAllFunctions() {
@@ -13,5 +15,7 @@ void registerAllFunctions() {
     r.registerType<InverseFunction>();
     r.registerType<LNFunction>();
     r.registerType<FibonacciFunction>();
+    r.registerType<ChooseLFunction>();
+    r.registerType<MarkovFunction>();
     r.registerType<RandomFunction>();
 }
