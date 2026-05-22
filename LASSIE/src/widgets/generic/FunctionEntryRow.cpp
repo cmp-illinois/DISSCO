@@ -6,7 +6,8 @@ FunctionEntryRow::FunctionEntryRow(const QString& labelText,
                                    FunctionReturnType fnReturnType,
                                    bool rmVisible,
                                    bool insVisible,
-                                   QWidget* parent)
+                                   QWidget* parent,
+                                   bool fnVisible)
     : QFrame(parent),
       m_index(index),
       m_fnReturnType(fnReturnType)
@@ -16,17 +17,17 @@ FunctionEntryRow::FunctionEntryRow(const QString& labelText,
     m_hBox    = new QHBoxLayout(this);
     m_label   = new QLabel(labelText);
     m_entry   = new QLineEdit;
-    m_fnButton = new QPushButton("fn");
+    if(fnVisible) { m_fnButton = new QPushButton("fn"); }
     if(rmVisible) { m_rmButton = new QPushButton("rm"); }
     if(insVisible) { m_insButton = new QPushButton("ins"); }
 
     m_hBox->addWidget(m_label);
     m_hBox->addWidget(m_entry);
-    m_hBox->addWidget(m_fnButton);
+    if(fnVisible) { m_hBox->addWidget(m_fnButton); }
     if(rmVisible) { m_hBox->addWidget(m_rmButton); }
     if(insVisible) { m_hBox->addWidget(m_insButton); }
 
-    connect(m_fnButton, &QPushButton::clicked, this, &FunctionEntryRow::onFnClicked);
+    if(fnVisible) { connect(m_fnButton, &QPushButton::clicked, this, &FunctionEntryRow::onFnClicked); }
     if(rmVisible) { connect(m_rmButton, &QPushButton::clicked, this, &FunctionEntryRow::onRmClicked); }
     if(insVisible) { connect(m_insButton, &QPushButton::clicked, this, &FunctionEntryRow::onInsClicked); }
     connect(m_entry,    &QLineEdit::textChanged,         this, &FunctionEntryRow::onTextChanged);
