@@ -1,7 +1,7 @@
 #ifndef ENVLIBFUNCTION_HPP
 #define ENVLIBFUNCTION_HPP
 
-#include "MultiEntryFunction.hpp"
+#include "../MultiEntryFunction.hpp"
 
 class EnvLibFunction : public MultiEntryFunction {
     Q_OBJECT

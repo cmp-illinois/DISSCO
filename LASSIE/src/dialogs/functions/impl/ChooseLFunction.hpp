@@ -1,7 +1,7 @@
 #ifndef CHOOSELFUNCTION_HPP
 #define CHOOSELFUNCTION_HPP
 
-#include "MultiEntryFunction.hpp"
+#include "../MultiEntryFunction.hpp"
 
 class ChooseLFunction : public MultiEntryFunction {
     Q_OBJECT

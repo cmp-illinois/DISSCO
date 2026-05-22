@@ -1,13 +1,13 @@
-#ifndef RANDOMORDERINTFUNCTION_HPP
-#define RANDOMORDERINTFUNCTION_HPP
+#ifndef RANDOMINTFUNCTION_HPP
+#define RANDOMINTFUNCTION_HPP
 
-#include "MultiEntryFunction.hpp"
+#include "../MultiEntryFunction.hpp"
 
-class RandomOrderIntFunction : public MultiEntryFunction {
+class RandomIntFunction : public MultiEntryFunction {
     Q_OBJECT
 
 public:
-    explicit RandomOrderIntFunction(QWidget* parent = nullptr)
+    explicit RandomIntFunction(QWidget* parent = nullptr)
         : MultiEntryFunction({
               { tr("Lower Bound:"), "Low",
                 FunctionReturnType::functionReturnInt, QStringLiteral("0") },
@@ -15,9 +15,9 @@ public:
                 FunctionReturnType::functionReturnInt, QStringLiteral("1") },
           }, parent) {}
 
-    CMODFunction id() const override { return CMODFunction::functionRandomOrderInt; }
-    QString xmlName() const override { return QStringLiteral("RandomOrderInt"); }
-    QString displayName() const override { return QStringLiteral("RandomOrderInt"); }
+    CMODFunction id() const override { return CMODFunction::functionRandomInt; }
+    QString xmlName() const override { return QStringLiteral("RandomInt"); }
+    QString displayName() const override { return QStringLiteral("RandomInt"); }
     QList<FunctionReturnType> supportedReturnTypes() const override {
         return {
             FunctionReturnType::functionReturnInt,
@@ -27,4 +27,4 @@ public:
     }
 };
 
-#endif // RANDOMORDERINTFUNCTION_HPP
+#endif // RANDOMINTFUNCTION_HPP

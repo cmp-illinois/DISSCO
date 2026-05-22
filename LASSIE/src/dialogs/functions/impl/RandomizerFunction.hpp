@@ -1,7 +1,7 @@
 #ifndef RANDOMIZERFUNCTION_HPP
 #define RANDOMIZERFUNCTION_HPP
 
-#include "MultiEntryFunction.hpp"
+#include "../MultiEntryFunction.hpp"
 
 class RandomizerFunction : public MultiEntryFunction {
     Q_OBJECT

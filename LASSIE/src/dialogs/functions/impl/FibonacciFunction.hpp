@@ -1,7 +1,7 @@
 #ifndef FIBONACCIFUNCTION_HPP
 #define FIBONACCIFUNCTION_HPP
 
-#include "MultiEntryFunction.hpp"
+#include "../MultiEntryFunction.hpp"
 
 class FibonacciFunction : public MultiEntryFunction {
     Q_OBJECT

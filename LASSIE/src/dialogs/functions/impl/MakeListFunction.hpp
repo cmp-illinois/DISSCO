@@ -1,7 +1,7 @@
 #ifndef MAKELISTFUNCTION_HPP
 #define MAKELISTFUNCTION_HPP
 
-#include "MultiEntryFunction.hpp"
+#include "../MultiEntryFunction.hpp"
 
 class MakeListFunction : public MultiEntryFunction {
     Q_OBJECT

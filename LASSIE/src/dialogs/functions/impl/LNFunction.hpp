@@ -1,7 +1,7 @@
 #ifndef LNFUNCTION_HPP
 #define LNFUNCTION_HPP
 
-#include "MultiEntryFunction.hpp"
+#include "../MultiEntryFunction.hpp"
 
 class LNFunction : public MultiEntryFunction {
     Q_OBJECT

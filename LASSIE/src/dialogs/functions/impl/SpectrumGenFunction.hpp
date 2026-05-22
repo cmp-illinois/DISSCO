@@ -1,7 +1,7 @@
 #ifndef SPECTRUMGENFUNCTION_HPP
 #define SPECTRUMGENFUNCTION_HPP
 
-#include "MultiEntryFunction.hpp"
+#include "../MultiEntryFunction.hpp"
 
 class SpectrumGenFunction : public MultiEntryFunction {
     Q_OBJECT

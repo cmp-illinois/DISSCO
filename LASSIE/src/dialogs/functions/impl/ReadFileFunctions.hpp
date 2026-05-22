@@ -6,7 +6,7 @@
 // Defined together because the six classes are byte-for-byte the same
 // shape; only the enum id, xml/display name, label, and return type differ.
 
-#include "MultiEntryFunction.hpp"
+#include "../MultiEntryFunction.hpp"
 
 class ReadENVFileFunction : public MultiEntryFunction {
     Q_OBJECT

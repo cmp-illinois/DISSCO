@@ -1,7 +1,7 @@
 #ifndef RANDOMDENSITYFUNCTION_HPP
 #define RANDOMDENSITYFUNCTION_HPP
 
-#include "MultiEntryFunction.hpp"
+#include "../MultiEntryFunction.hpp"
 
 class RandomDensityFunction : public MultiEntryFunction {
     Q_OBJECT

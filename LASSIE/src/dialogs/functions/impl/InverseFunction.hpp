@@ -1,7 +1,7 @@
 #ifndef INVERSEFUNCTION_HPP
 #define INVERSEFUNCTION_HPP
 
-#include "MultiEntryFunction.hpp"
+#include "../MultiEntryFunction.hpp"
 
 class InverseFunction : public MultiEntryFunction {
     Q_OBJECT
