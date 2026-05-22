@@ -1,7 +1,7 @@
 #ifndef LASSIE_HPP
 #define LASSIE_HPP
 
-typedef enum {
+enum class FunctionReturnType {
   functionReturnInt,
   functionReturnFloat,
   functionReturnSPA,
@@ -19,9 +19,9 @@ typedef enum {
   functionReturnString, //used to parse FileValue
   functionReturnList,
   functionReturnMakeListFun
-} FunctionReturnType;
+};
 
-typedef enum {
+enum class ModifierType {
   modifierTremolo = 0,
   modifierVibrato = 1,
   modifierGlissando = 2,
@@ -29,9 +29,9 @@ typedef enum {
   modifierAmptrans = 4,
   modifierFreqtrans = 5,
   modifierWave_type = 6
-} ModifierType;
+};
 
-typedef enum {
+enum class CMODFunction {
   functionRandom,
   functionRandomInt,
   functionRandomOrderInt,
@@ -86,6 +86,6 @@ typedef enum {
   functionSpectrum_Gen,
 
   NOT_A_FUNCTION
-} CMODFunction;
+};
 
 #endif

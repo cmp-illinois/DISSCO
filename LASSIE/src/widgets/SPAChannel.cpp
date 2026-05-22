@@ -1,5 +1,7 @@
 #include "SPAChannel.hpp"
 
+using enum FunctionReturnType;
+
 SPAChannel::SPAChannel(int id, bool isPartialMode, QWidget* parent) 
     : QFrame(parent), m_isPartialMode(isPartialMode) {
         

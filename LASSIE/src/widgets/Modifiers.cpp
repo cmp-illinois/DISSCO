@@ -17,6 +17,8 @@
 #include "../inst.hpp"
 #include "../dialogs/FunctionGenerator.hpp"
 
+using enum FunctionReturnType;
+
 Modifiers::Modifiers(Eventtype eventType, unsigned eventIndex, int modifierIndex, QWidget *parent)
     : QFrame(parent),
       ui(new Ui::Modifiers),

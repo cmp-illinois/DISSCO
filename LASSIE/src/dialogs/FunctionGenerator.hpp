@@ -24,7 +24,7 @@ class FunctionGenerator : public QDialog
 
 public:
     /*Constructor to create the Function Generator Pop Up*/
-    explicit FunctionGenerator(QWidget *parent = nullptr, FunctionReturnType _returnType = functionReturnFloat, QString _originalString = "");
+    explicit FunctionGenerator(QWidget *parent = nullptr, FunctionReturnType _returnType = FunctionReturnType::functionReturnFloat, QString _originalString = "");
     /*Destructor to delete the UI*/
     ~FunctionGenerator();
     

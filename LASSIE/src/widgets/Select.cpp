@@ -1,6 +1,8 @@
 #include "Select.hpp"
 #include "../inst.hpp"
 
+using enum FunctionReturnType;
+
 Select::Select(int selectIndex, QWidget *parent)
     : QFrame(parent),
       m_selectIndex(selectIndex)

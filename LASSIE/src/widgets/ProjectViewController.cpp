@@ -44,6 +44,8 @@
 
 #include "../utilities.hpp"
 
+using enum FunctionReturnType;
+
 namespace PVCHelper {
     QList<QStandardItem*> make_child_palette_tuple(const QString& type, const QString& name) {
         auto* typeItem = new QStandardItem(type);
