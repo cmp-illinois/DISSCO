@@ -64,4 +64,15 @@ else()
     )
 endif()
 
+# Ship libsndfile's runtime DLL alongside the executables on Windows when
+# FindSndFile resolved to the FetchContent prebuilt (vcpkg / brew / apt
+# installs put it in a system-discoverable place and don't need this).
+# windeployqt only knows about Qt DLLs, so this is on us.
+if(WIN32 AND SNDFILE_DLL)
+    install(FILES "${SNDFILE_DLL}"
+        DESTINATION ${CMAKE_INSTALL_BINDIR}
+        COMPONENT Runtime
+    )
+endif()
+
 message(STATUS "DONE!")
