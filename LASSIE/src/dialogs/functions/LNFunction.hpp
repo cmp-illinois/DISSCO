@@ -1,28 +1,27 @@
 #ifndef LNFUNCTION_HPP
 #define LNFUNCTION_HPP
 
-#include "FunctionWidget.hpp"
+#include "SingleEntryFunction.hpp"
 
-class FunctionEntryRow;
-
-/** Natural log. Serializes as <Fun><Name>LN</Name><Entry>X</Entry></Fun>. */
-class LNFunction : public FunctionWidget {
+/** Natural log. <Fun><Name>LN</Name><Entry>X</Entry></Fun>. */
+class LNFunction : public SingleEntryFunction {
     Q_OBJECT
 
 public:
-    explicit LNFunction(QWidget* parent = nullptr);
+    explicit LNFunction(QWidget* parent = nullptr)
+        : SingleEntryFunction(tr("LN:"),
+                              FunctionReturnType::functionReturnFloat,
+                              parent) {}
 
     CMODFunction id() const override { return CMODFunction::functionLN; }
     QString xmlName() const override { return QStringLiteral("LN"); }
     QString displayName() const override { return QStringLiteral("LN"); }
-    QList<FunctionReturnType> supportedReturnTypes() const override;
-
-    QString buildXMLString() const override;
-    void populateFromXML(QXmlStreamReader& reader) override;
-    void reset() override;
-
-private:
-    FunctionEntryRow* m_row;
+    QList<FunctionReturnType> supportedReturnTypes() const override {
+        return {
+            FunctionReturnType::functionReturnFloat,
+            FunctionReturnType::functionReturnMakeListFun,
+        };
+    }
 };
 
 #endif // LNFUNCTION_HPP
