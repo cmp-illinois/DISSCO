@@ -1,17 +1,17 @@
 #ifndef LNFUNCTION_HPP
 #define LNFUNCTION_HPP
 
-#include "SingleEntryFunction.hpp"
+#include "MultiEntryFunction.hpp"
 
-/** Natural log. <Fun><Name>LN</Name><Entry>X</Entry></Fun>. */
-class LNFunction : public SingleEntryFunction {
+class LNFunction : public MultiEntryFunction {
     Q_OBJECT
 
 public:
     explicit LNFunction(QWidget* parent = nullptr)
-        : SingleEntryFunction(tr("LN:"),
-                              FunctionReturnType::functionReturnFloat,
-                              parent) {}
+        : MultiEntryFunction({
+              { tr("LN:"), "Entry",
+                FunctionReturnType::functionReturnFloat, {} },
+          }, parent) {}
 
     CMODFunction id() const override { return CMODFunction::functionLN; }
     QString xmlName() const override { return QStringLiteral("LN"); }

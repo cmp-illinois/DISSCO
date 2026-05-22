@@ -1,17 +1,17 @@
 #ifndef FIBONACCIFUNCTION_HPP
 #define FIBONACCIFUNCTION_HPP
 
-#include "SingleEntryFunction.hpp"
+#include "MultiEntryFunction.hpp"
 
-/** Fibonacci. <Fun><Name>Fibonacci</Name><Entry>X</Entry></Fun>. */
-class FibonacciFunction : public SingleEntryFunction {
+class FibonacciFunction : public MultiEntryFunction {
     Q_OBJECT
 
 public:
     explicit FibonacciFunction(QWidget* parent = nullptr)
-        : SingleEntryFunction(tr("Fibonacci:"),
-                              FunctionReturnType::functionReturnFloat,
-                              parent) {}
+        : MultiEntryFunction({
+              { tr("Fibonacci:"), "Entry",
+                FunctionReturnType::functionReturnFloat, {} },
+          }, parent) {}
 
     CMODFunction id() const override { return CMODFunction::functionFibonacci; }
     QString xmlName() const override { return QStringLiteral("Fibonacci"); }

@@ -1,18 +1,17 @@
 #ifndef CHOOSELFUNCTION_HPP
 #define CHOOSELFUNCTION_HPP
 
-#include "SingleEntryFunction.hpp"
+#include "MultiEntryFunction.hpp"
 
-/** ChooseL. <Fun><Name>ChooseL</Name><Entry>X</Entry></Fun>.
- *  Entry is a sieve, so the fn button opens a SIV-returning dialog. */
-class ChooseLFunction : public SingleEntryFunction {
+class ChooseLFunction : public MultiEntryFunction {
     Q_OBJECT
 
 public:
     explicit ChooseLFunction(QWidget* parent = nullptr)
-        : SingleEntryFunction(tr("ChooseL:"),
-                              FunctionReturnType::functionReturnSIV,
-                              parent) {}
+        : MultiEntryFunction({
+              { tr("ChooseL:"), "Entry",
+                FunctionReturnType::functionReturnSIV, {} },
+          }, parent) {}
 
     CMODFunction id() const override { return CMODFunction::functionChooseL; }
     QString xmlName() const override { return QStringLiteral("ChooseL"); }

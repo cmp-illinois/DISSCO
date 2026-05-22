@@ -3,14 +3,20 @@
 // one-line change in this file (plus the new subclass itself).
 
 #include "FunctionRegistry.hpp"
+
 #include "ChooseLFunction.hpp"
+#include "EnvLibFunction.hpp"
 #include "FibonacciFunction.hpp"
 #include "InverseFunction.hpp"
 #include "LNFunction.hpp"
+#include "MakeListFunction.hpp"
 #include "MarkovFunction.hpp"
+#include "RandomDensityFunction.hpp"
 #include "RandomFunction.hpp"
 #include "RandomIntFunction.hpp"
 #include "RandomOrderIntFunction.hpp"
+#include "RandomizerFunction.hpp"
+#include "SpectrumGenFunction.hpp"
 
 void registerAllFunctions() {
     auto& r = FunctionRegistry::instance();
@@ -22,4 +28,9 @@ void registerAllFunctions() {
     r.registerType<RandomFunction>();
     r.registerType<RandomIntFunction>();
     r.registerType<RandomOrderIntFunction>();
+    r.registerType<RandomizerFunction>();
+    r.registerType<RandomDensityFunction>();
+    r.registerType<EnvLibFunction>();
+    r.registerType<MakeListFunction>();
+    r.registerType<SpectrumGenFunction>();
 }

@@ -21,16 +21,20 @@ qt_add_executable(LASSIE
     src/dialogs/FunctionGenerator.cpp src/dialogs/FunctionGenerator.hpp src/ui/FunctionGenerator.ui
     src/dialogs/functions/FunctionWidget.cpp src/dialogs/functions/FunctionWidget.hpp
     src/dialogs/functions/FunctionRegistry.cpp src/dialogs/functions/FunctionRegistry.hpp
-    src/dialogs/functions/SingleEntryFunction.cpp src/dialogs/functions/SingleEntryFunction.hpp
+    src/dialogs/functions/MultiEntryFunction.cpp src/dialogs/functions/MultiEntryFunction.hpp
     src/dialogs/functions/InverseFunction.hpp
     src/dialogs/functions/LNFunction.hpp
     src/dialogs/functions/FibonacciFunction.hpp
     src/dialogs/functions/ChooseLFunction.hpp
-    src/dialogs/functions/MarkovFunction.cpp src/dialogs/functions/MarkovFunction.hpp
-    src/dialogs/functions/RangeFunction.cpp src/dialogs/functions/RangeFunction.hpp
+    src/dialogs/functions/MarkovFunction.hpp
     src/dialogs/functions/RandomFunction.hpp
     src/dialogs/functions/RandomIntFunction.hpp
     src/dialogs/functions/RandomOrderIntFunction.hpp
+    src/dialogs/functions/RandomizerFunction.hpp
+    src/dialogs/functions/RandomDensityFunction.hpp
+    src/dialogs/functions/EnvLibFunction.hpp
+    src/dialogs/functions/MakeListFunction.hpp
+    src/dialogs/functions/SpectrumGenFunction.hpp
     src/dialogs/functions/FunctionRegistrations.cpp
     src/widgets/REVChannel.cpp src/widgets/REVChannel.hpp
     src/widgets/SPAChannel.cpp src/widgets/SPAChannel.hpp

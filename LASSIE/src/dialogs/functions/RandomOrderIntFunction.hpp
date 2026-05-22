@@ -1,16 +1,19 @@
 #ifndef RANDOMORDERINTFUNCTION_HPP
 #define RANDOMORDERINTFUNCTION_HPP
 
-#include "RangeFunction.hpp"
+#include "MultiEntryFunction.hpp"
 
-/** Random ordering of ints in [Low, High].
- *  <Fun><Name>RandomOrderInt</Name><Low>X</Low><High>Y</High></Fun>. */
-class RandomOrderIntFunction : public RangeFunction {
+class RandomOrderIntFunction : public MultiEntryFunction {
     Q_OBJECT
 
 public:
     explicit RandomOrderIntFunction(QWidget* parent = nullptr)
-        : RangeFunction(FunctionReturnType::functionReturnInt, parent) {}
+        : MultiEntryFunction({
+              { tr("Lower Bound:"), "Low",
+                FunctionReturnType::functionReturnInt, QStringLiteral("0") },
+              { tr("Upper Bound:"), "High",
+                FunctionReturnType::functionReturnInt, QStringLiteral("1") },
+          }, parent) {}
 
     CMODFunction id() const override { return CMODFunction::functionRandomOrderInt; }
     QString xmlName() const override { return QStringLiteral("RandomOrderInt"); }
