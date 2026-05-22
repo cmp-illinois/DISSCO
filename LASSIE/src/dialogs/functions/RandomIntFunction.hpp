@@ -1,15 +1,19 @@
 #ifndef RANDOMINTFUNCTION_HPP
 #define RANDOMINTFUNCTION_HPP
 
-#include "RangeFunction.hpp"
+#include "MultiEntryFunction.hpp"
 
-/** Uniform int random. <Fun><Name>RandomInt</Name><Low>X</Low><High>Y</High></Fun>. */
-class RandomIntFunction : public RangeFunction {
+class RandomIntFunction : public MultiEntryFunction {
     Q_OBJECT
 
 public:
     explicit RandomIntFunction(QWidget* parent = nullptr)
-        : RangeFunction(FunctionReturnType::functionReturnInt, parent) {}
+        : MultiEntryFunction({
+              { tr("Lower Bound:"), "Low",
+                FunctionReturnType::functionReturnInt, QStringLiteral("0") },
+              { tr("Upper Bound:"), "High",
+                FunctionReturnType::functionReturnInt, QStringLiteral("1") },
+          }, parent) {}
 
     CMODFunction id() const override { return CMODFunction::functionRandomInt; }
     QString xmlName() const override { return QStringLiteral("RandomInt"); }

@@ -1,17 +1,17 @@
 #ifndef INVERSEFUNCTION_HPP
 #define INVERSEFUNCTION_HPP
 
-#include "SingleEntryFunction.hpp"
+#include "MultiEntryFunction.hpp"
 
-/** Inverse. <Fun><Name>Inverse</Name><Entry>X</Entry></Fun>. */
-class InverseFunction : public SingleEntryFunction {
+class InverseFunction : public MultiEntryFunction {
     Q_OBJECT
 
 public:
     explicit InverseFunction(QWidget* parent = nullptr)
-        : SingleEntryFunction(tr("Number To Inverse:"),
-                              FunctionReturnType::functionReturnFloat,
-                              parent) {}
+        : MultiEntryFunction({
+              { tr("Number To Inverse:"), "Entry",
+                FunctionReturnType::functionReturnFloat, {} },
+          }, parent) {}
 
     CMODFunction id() const override { return CMODFunction::functionInverse; }
     QString xmlName() const override { return QStringLiteral("Inverse"); }
