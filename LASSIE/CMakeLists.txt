@@ -47,7 +47,6 @@ target_link_libraries(LASSIE PRIVATE
 
 include(GNUInstallDirs)
 target_include_directories(LASSIE PRIVATE
-    ${XercesC_INCLUDE_DIR}
     ${CMAKE_SOURCE_DIR}/LASS/src
     ${CMAKE_SOURCE_DIR}/CMOD/src
 )

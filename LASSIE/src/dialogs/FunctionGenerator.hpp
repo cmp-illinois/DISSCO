@@ -3,7 +3,6 @@
 
 #include "../../../LASS/src/LASS.h"
 #include "../lassie.hpp"
-#include "../../../CMOD/src/Utilities.h"
 
 #include <QDialog>
 #include <QWidget>
