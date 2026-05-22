@@ -16,6 +16,7 @@
 #include "RandomIntFunction.hpp"
 #include "RandomOrderIntFunction.hpp"
 #include "RandomizerFunction.hpp"
+#include "ReadFileFunctions.hpp"
 #include "SpectrumGenFunction.hpp"
 
 void registerAllFunctions() {
@@ -33,4 +34,10 @@ void registerAllFunctions() {
     r.registerType<EnvLibFunction>();
     r.registerType<MakeListFunction>();
     r.registerType<SpectrumGenFunction>();
+    r.registerType<ReadENVFileFunction>();
+    r.registerType<ReadSIVFileFunction>();
+    r.registerType<ReadPATFileFunction>();
+    r.registerType<ReadSPAFileFunction>();
+    r.registerType<ReadREVFileFunction>();
+    r.registerType<ReadFILFileFunction>();
 }
