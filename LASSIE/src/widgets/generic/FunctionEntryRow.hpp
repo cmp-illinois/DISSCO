@@ -22,7 +22,8 @@ public:
                      FunctionReturnType fnReturnType,
                      bool rmVisible,
                      bool insVisible,
-                     QWidget* parent = nullptr);
+                     QWidget* parent = nullptr,
+                     bool fnVisible = true);
     ~FunctionEntryRow() override;
 
     int     getIndex() const { return m_index; }
