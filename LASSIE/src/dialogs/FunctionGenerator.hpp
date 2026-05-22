@@ -5,10 +5,12 @@
 #include "../lassie.hpp"
 
 #include <QDialog>
+#include <QMap>
 #include <QWidget>
 #include <QString>
 #include <QLineEdit>
 
+class FunctionWidget;
 class SPAChannel;
 class REVChannel;
 class Stochos;
@@ -193,8 +195,15 @@ public:
     void readFILFileTextChanged();
 
 private:
-    void setupUi();    
-    
+    void setupUi();
+
+    // Widgets registered via FunctionRegistry, instantiated per dialog and
+    // appended to the existing functionStackedWidget. Drive both the
+    // combo-change path (handleFunctionChanged) and the input-parse path
+    // (the if/else chain in setupUi). Map values for ids without a
+    // registered widget stay empty, so legacy switch branches still fire.
+    QMap<CMODFunction, FunctionWidget*> m_registeredWidgets;
+    QMap<CMODFunction, int> m_registeredPageIndex;
 };
 
 #endif // FUNCTIONGENERATOR_HPP

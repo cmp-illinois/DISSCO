@@ -23,6 +23,9 @@
 #include "../widgets/Stochos.hpp"
 #include "../widgets/Select.hpp"
 
+#include "functions/FunctionRegistry.hpp"
+#include "functions/FunctionWidget.hpp"
+
 using enum FunctionReturnType;
 using enum CMODFunction;
 
@@ -458,6 +461,27 @@ void FunctionGenerator::setupUi()
     connect(ui->spectrumGenEnvelopeEdit, &QLineEdit::textChanged, this, &FunctionGenerator::Spectrum_GenTextChanged);
     connect(ui->spectrumGenDistanceEdit, &QLineEdit::textChanged, this, &FunctionGenerator::Spectrum_GenTextChanged);
 
+    // Hybrid-mode wiring: any function whose subclass has been registered
+    // with FunctionRegistry gets a fresh stacked-widget page here. The
+    // existing per-function .ui pages are still present but unused for
+    // ported ids -- handleFunctionChanged and the parser below route
+    // around them.
+    for (CMODFunction id : FunctionRegistry::instance().functionsFor(returnType)) {
+        FunctionWidget* w = FunctionRegistry::instance().create(id);
+        if (!w) continue;
+        const int pageIndex = ui->functionStackedWidget->addWidget(w);
+        m_registeredWidgets.insert(id, w);
+        m_registeredPageIndex.insert(id, pageIndex);
+        connect(w, &FunctionWidget::xmlChanged, this, [this, w]() {
+            ui->resultTextEdit->setText(w->buildXMLString());
+        });
+        connect(w, &FunctionWidget::nestedFunctionRequested, this,
+            [this](FunctionReturnType rt, FunctionWidget::NestedAcceptCallback onAccept) {
+                FunctionGenerator nested(this, rt, QString());
+                if (nested.exec() == QDialog::Accepted) onAccept(nested.getResultString());
+            });
+    }
+
     // Helper: find and select the combo box item matching the function name
     auto selectComboItem = [&](const QString& name) {
         for (int i = 0; i < ui->functionOptions->count(); ++i) {
@@ -474,6 +498,15 @@ void FunctionGenerator::setupUi()
     if (!r.readNextStartElement()) return;       // <Fun> root
     if (!r.readNextStartElement()) return;       // <Name>
     const QString functionName = readInner(r);   // cursor now at </Name>
+
+    // Hybrid-mode dispatch: registered widgets handle their own parsing.
+    const CMODFunction registeredId =
+        FunctionRegistry::instance().idFromXmlName(functionName);
+    if (registeredId != NOT_A_FUNCTION && m_registeredWidgets.contains(registeredId)) {
+        selectComboItem(functionName);
+        m_registeredWidgets[registeredId]->populateFromXML(r);
+        return;
+    }
 
     if (functionName == "RandomInt") {
         selectComboItem(functionName);
@@ -847,6 +880,15 @@ void FunctionGenerator::handleFunctionChanged(int index)
     if (!data.isValid()) return;
     // Converts the function id name into an integer
     CMODFunction functionId = static_cast<CMODFunction>(data.toInt());
+
+    // Hybrid-mode dispatch: a registered FunctionWidget owns its own page.
+    if (m_registeredWidgets.contains(functionId)) {
+        FunctionWidget* w = m_registeredWidgets.value(functionId);
+        ui->functionStackedWidget->setCurrentIndex(m_registeredPageIndex.value(functionId));
+        ui->resultTextEdit->setText(w->buildXMLString());
+        return;
+    }
+
     /* Case statements used to set the stacked widget current index (new form widget added)
      based on the function id */
     int currPageIndex = 0;
