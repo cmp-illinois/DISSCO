@@ -98,6 +98,28 @@ FunctionGenerator::~FunctionGenerator()
     delete ui;
 }
 
+// Lazily build a registered FunctionWidget on first reference and cache
+// it. Up-front instantiation made every dialog open pay the cost of
+// every registered subclass (13+ widgets, mostly unused per session) and
+// perturbed the stacked widget's layout, both visibly.
+FunctionWidget* FunctionGenerator::ensureRegisteredWidget(CMODFunction id)
+{
+    if (auto it = m_registeredWidgets.find(id); it != m_registeredWidgets.end())
+        return *it;
+    FunctionWidget* w = FunctionRegistry::instance().create(id);
+    if (!w) return nullptr;
+    // Match the size policy applied to the .ui-defined pages so the
+    // stacked widget keeps sizing itself to the current page only.
+    w->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    const int pageIndex = ui->functionStackedWidget->addWidget(w);
+    m_registeredWidgets.insert(id, w);
+    m_registeredPageIndex.insert(id, pageIndex);
+    connect(w, &FunctionWidget::xmlChanged, this, [this, w]() {
+        ui->resultTextEdit->setText(w->buildXMLString());
+    });
+    return w;
+}
+
 void FunctionGenerator::setupUi()
 {
     ui->functionOptions->clear();
@@ -461,22 +483,6 @@ void FunctionGenerator::setupUi()
     connect(ui->spectrumGenEnvelopeEdit, &QLineEdit::textChanged, this, &FunctionGenerator::Spectrum_GenTextChanged);
     connect(ui->spectrumGenDistanceEdit, &QLineEdit::textChanged, this, &FunctionGenerator::Spectrum_GenTextChanged);
 
-    // Hybrid-mode wiring: any function whose subclass has been registered
-    // with FunctionRegistry gets a fresh stacked-widget page here. The
-    // existing per-function .ui pages are still present but unused for
-    // ported ids -- handleFunctionChanged and the parser below route
-    // around them.
-    for (CMODFunction id : FunctionRegistry::instance().functionsFor(returnType)) {
-        FunctionWidget* w = FunctionRegistry::instance().create(id);
-        if (!w) continue;
-        const int pageIndex = ui->functionStackedWidget->addWidget(w);
-        m_registeredWidgets.insert(id, w);
-        m_registeredPageIndex.insert(id, pageIndex);
-        connect(w, &FunctionWidget::xmlChanged, this, [this, w]() {
-            ui->resultTextEdit->setText(w->buildXMLString());
-        });
-    }
-
     // Helper: find and select the combo box item matching the function name
     auto selectComboItem = [&](const QString& name) {
         for (int i = 0; i < ui->functionOptions->count(); ++i) {
@@ -497,10 +503,12 @@ void FunctionGenerator::setupUi()
     // Hybrid-mode dispatch: registered widgets handle their own parsing.
     const CMODFunction registeredId =
         FunctionRegistry::instance().idFromXmlName(functionName);
-    if (registeredId != NOT_A_FUNCTION && m_registeredWidgets.contains(registeredId)) {
-        selectComboItem(functionName);
-        m_registeredWidgets[registeredId]->populateFromXML(r);
-        return;
+    if (registeredId != NOT_A_FUNCTION) {
+        if (FunctionWidget* w = ensureRegisteredWidget(registeredId)) {
+            selectComboItem(functionName);
+            w->populateFromXML(r);
+            return;
+        }
     }
 
     if (functionName == "RandomInt") {
@@ -877,11 +885,12 @@ void FunctionGenerator::handleFunctionChanged(int index)
     CMODFunction functionId = static_cast<CMODFunction>(data.toInt());
 
     // Hybrid-mode dispatch: a registered FunctionWidget owns its own page.
-    if (m_registeredWidgets.contains(functionId)) {
-        FunctionWidget* w = m_registeredWidgets.value(functionId);
-        ui->functionStackedWidget->setCurrentIndex(m_registeredPageIndex.value(functionId));
-        ui->resultTextEdit->setText(w->buildXMLString());
-        return;
+    if (FunctionRegistry::instance().isRegistered(functionId)) {
+        if (FunctionWidget* w = ensureRegisteredWidget(functionId)) {
+            ui->functionStackedWidget->setCurrentIndex(m_registeredPageIndex.value(functionId));
+            ui->resultTextEdit->setText(w->buildXMLString());
+            return;
+        }
     }
 
     /* Case statements used to set the stacked widget current index (new form widget added)
