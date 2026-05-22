@@ -108,9 +108,8 @@ FunctionWidget* FunctionGenerator::ensureRegisteredWidget(CMODFunction id)
         return *it;
     FunctionWidget* w = FunctionRegistry::instance().create(id);
     if (!w) return nullptr;
-    // Match the size policy applied to the .ui-defined pages so the
-    // stacked widget keeps sizing itself to the current page only.
-    w->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    // Sizing policy is managed per-selection by resizeToFitCurrentPage(),
+    // which sets the current page to Expanding and the rest to Ignored.
     const int pageIndex = ui->functionStackedWidget->addWidget(w);
     m_registeredWidgets.insert(id, w);
     m_registeredPageIndex.insert(id, pageIndex);
@@ -118,6 +117,24 @@ FunctionWidget* FunctionGenerator::ensureRegisteredWidget(CMODFunction id)
         ui->resultTextEdit->setText(w->buildXMLString());
     });
     return w;
+}
+
+// Mirrors the inline resize dance at the tail of handleFunctionChanged:
+// expand the active page, ignore the rest, then shrink the dialog to fit.
+void FunctionGenerator::resizeToFitCurrentPage()
+{
+    const int current = ui->functionStackedWidget->currentIndex();
+    setMinimumSize(0, 0);
+    for (int i = 0; i < ui->functionStackedWidget->count(); ++i) {
+        ui->functionStackedWidget->widget(i)->setSizePolicy(
+            i == current ? QSizePolicy::Expanding : QSizePolicy::Ignored,
+            i == current ? QSizePolicy::Expanding : QSizePolicy::Ignored);
+    }
+    ui->functionStackedWidget->layout()->activate();
+    layout()->activate();
+    const QSize ideal = sizeHint();
+    resize(ideal);
+    setMinimumSize(ideal);
 }
 
 void FunctionGenerator::setupUi()
@@ -889,6 +906,7 @@ void FunctionGenerator::handleFunctionChanged(int index)
         if (FunctionWidget* w = ensureRegisteredWidget(functionId)) {
             ui->functionStackedWidget->setCurrentIndex(m_registeredPageIndex.value(functionId));
             ui->resultTextEdit->setText(w->buildXMLString());
+            resizeToFitCurrentPage();
             return;
         }
     }
@@ -1150,25 +1168,8 @@ void FunctionGenerator::handleFunctionChanged(int index)
             break;
         default: currPageIndex = 0; break;
     }
-    // Udate stacked widget page added
     ui->functionStackedWidget->setCurrentIndex(currPageIndex);
-    // Resizes to fit new page
-    this->setMinimumSize(0, 0);
-
-    for (int i = 0; i < ui->functionStackedWidget->count(); ++i) {
-        QWidget* page = ui->functionStackedWidget->widget(i);
-        if (i == currPageIndex) {
-            page->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        } else {
-            page->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
-        }
-    }
-    ui->functionStackedWidget->layout()->activate();
-    this->layout()->activate();
-
-    QSize idealSize = this->sizeHint();
-    this->resize(idealSize);
-    this->setMinimumSize(idealSize);
+    resizeToFitCurrentPage();
 }
 
 QString FunctionGenerator::getResultString(){

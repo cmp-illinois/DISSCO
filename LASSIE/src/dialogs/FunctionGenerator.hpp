@@ -202,6 +202,10 @@ private:
     // if no subclass is registered for that id.
     FunctionWidget* ensureRegisteredWidget(CMODFunction id);
 
+    // Set the current stacked-widget page to Expanding, the rest to
+    // Ignored, then resize the dialog to fit the new page's sizeHint.
+    void resizeToFitCurrentPage();
+
     QMap<CMODFunction, FunctionWidget*> m_registeredWidgets;
     QMap<CMODFunction, int> m_registeredPageIndex;
 };
