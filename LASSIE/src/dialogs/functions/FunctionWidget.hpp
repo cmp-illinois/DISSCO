@@ -62,6 +62,25 @@ public:
     /** Clear all fields back to their default state. */
     virtual void reset() = 0;
 
+    // -----------------------------------------------------------------
+    // Shared XML helpers used by populateFromXML implementations.
+    //
+    // The on-disk format mixes two child shapes under <Fun>: leaf text
+    // (e.g. "<Low>0</Low>") and nested elements (e.g. "<Low><Fun>...</Fun></Low>"
+    // for a nested function). These helpers handle both: readInner
+    // captures whatever lives between the current StartElement and its
+    // matching EndElement, returning either the text or a serialized
+    // inner-XML string.
+    // -----------------------------------------------------------------
+
+    /** Read the body of the current element. The reader must be at a
+     *  StartElement; on return it is at the matching EndElement. */
+    static QString readInner(QXmlStreamReader& reader);
+
+    /** Advance to the next child StartElement and return its body via
+     *  readInner. Returns an empty string if no more children remain. */
+    static QString nextChildInner(QXmlStreamReader& reader);
+
 signals:
     /** Emitted whenever a user edit may have changed the output XML.
      *  FunctionGenerator listens to refresh its preview text edit. */

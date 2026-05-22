@@ -19,8 +19,9 @@ qt_add_executable(LASSIE
     src/widgets/EnvLibDrawingArea.cpp src/widgets/EnvLibDrawingArea.hpp 
     src/core/EnvelopeLibraryEntry.cpp src/core/EnvelopeLibraryEntry.hpp
     src/dialogs/FunctionGenerator.cpp src/dialogs/FunctionGenerator.hpp src/ui/FunctionGenerator.ui
-    src/dialogs/functions/FunctionWidget.hpp
+    src/dialogs/functions/FunctionWidget.cpp src/dialogs/functions/FunctionWidget.hpp
     src/dialogs/functions/FunctionRegistry.cpp src/dialogs/functions/FunctionRegistry.hpp
+    src/dialogs/functions/InverseFunction.cpp src/dialogs/functions/InverseFunction.hpp
     src/widgets/REVChannel.cpp src/widgets/REVChannel.hpp
     src/widgets/SPAChannel.cpp src/widgets/SPAChannel.hpp
     src/dialogs/ProjectPropertiesDialog.cpp src/dialogs/ProjectPropertiesDialog.hpp src/ui/ProjectPropertiesDialog.ui
