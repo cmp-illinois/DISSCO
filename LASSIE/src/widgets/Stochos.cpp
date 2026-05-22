@@ -1,6 +1,8 @@
 #include "Stochos.hpp"
 #include "../inst.hpp"
 
+using enum FunctionReturnType;
+
 Stochos::Stochos(int methodType, int stochosIndex, QWidget *parent)
     : QFrame(parent),
       m_stochosIndex(stochosIndex),

@@ -19,6 +19,8 @@
 
 #include <functional>
 
+using enum FunctionReturnType;
+
 // EventAttributesViewController::EventAttributesViewController(SharedPointers* sharedPointers,
 //                                                              QWidget* parent)
 EventAttributesViewController::EventAttributesViewController(ProjectView* projectView)

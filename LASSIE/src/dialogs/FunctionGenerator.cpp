@@ -23,6 +23,9 @@
 #include "../widgets/Stochos.hpp"
 #include "../widgets/Select.hpp"
 
+using enum FunctionReturnType;
+using enum CMODFunction;
+
 namespace {
     // Capture inner content of element at StartElement; leave cursor at EndElement.
     // For text-only elements returns the text; for elements with nested children
@@ -97,125 +100,125 @@ void FunctionGenerator::setupUi()
     ui->functionOptions->clear();
     // Add combo box function options
     if (returnType == functionReturnInt){
-        ui->functionOptions->addItem("", NOT_A_FUNCTION); // index 0
-        ui->functionOptions->addItem("RandomInt", functionRandomInt); // index 2
-        ui->functionOptions->addItem("RandomOrderInt", functionRandomOrderInt); // index 3
-        ui->functionOptions->addItem("Stochos", functionStochos); // index 11
-        ui->functionOptions->addItem("Select", functionSelect); // index 12
-        ui->functionOptions->addItem("ValuePick", functionValuePick); // index 13
-        ui->functionOptions->addItem("ChooseL", functionChooseL); // index 14
-        ui->functionOptions->addItem("GetPattern", functionGetPattern); // index 15
-        ui->functionOptions->addItem("GetFromMarkovChain", functionMarkov); // index 10
-        ui->functionOptions->addItem("Fibonacci", functionFibonacci); // index 8
-        ui->functionOptions->addItem("-------", NOT_A_FUNCTION); // index 0
-        ui->functionOptions->addItem("CURRENT_TYPE", function_staticCURRENT_TYPE); // index 0
-        ui->functionOptions->addItem("CURRENT_CHILD_NUM", function_staticCURRENT_CHILD_NUM); // index 0
-        ui->functionOptions->addItem("CURRENT_PARTIAL_NUM", function_staticCURRENT_PARTIAL_NUM); // index 0
-        ui->functionOptions->addItem("CURRENT_SEGMENT", function_staticCURRENT_SEGMENT); // index 0
-        ui->functionOptions->addItem("AVAILABLE_EDU", function_staticAVAILABLE_EDU); // index 0
-        ui->functionOptions->addItem("PREVIOUS_CHILD_DURATION", function_staticPREVIOUS_CHILD_DURATION); // index 0
-        ui->functionOptions->addItem("CURRENT_LAYER", function_staticCURRENT_LAYER); // index 0
+        ui->functionOptions->addItem("", static_cast<int>(NOT_A_FUNCTION)); // index 0
+        ui->functionOptions->addItem("RandomInt", static_cast<int>(functionRandomInt)); // index 2
+        ui->functionOptions->addItem("RandomOrderInt", static_cast<int>(functionRandomOrderInt)); // index 3
+        ui->functionOptions->addItem("Stochos", static_cast<int>(functionStochos)); // index 11
+        ui->functionOptions->addItem("Select", static_cast<int>(functionSelect)); // index 12
+        ui->functionOptions->addItem("ValuePick", static_cast<int>(functionValuePick)); // index 13
+        ui->functionOptions->addItem("ChooseL", static_cast<int>(functionChooseL)); // index 14
+        ui->functionOptions->addItem("GetPattern", static_cast<int>(functionGetPattern)); // index 15
+        ui->functionOptions->addItem("GetFromMarkovChain", static_cast<int>(functionMarkov)); // index 10
+        ui->functionOptions->addItem("Fibonacci", static_cast<int>(functionFibonacci)); // index 8
+        ui->functionOptions->addItem("-------", static_cast<int>(NOT_A_FUNCTION)); // index 0
+        ui->functionOptions->addItem("CURRENT_TYPE", static_cast<int>(function_staticCURRENT_TYPE)); // index 0
+        ui->functionOptions->addItem("CURRENT_CHILD_NUM", static_cast<int>(function_staticCURRENT_CHILD_NUM)); // index 0
+        ui->functionOptions->addItem("CURRENT_PARTIAL_NUM", static_cast<int>(function_staticCURRENT_PARTIAL_NUM)); // index 0
+        ui->functionOptions->addItem("CURRENT_SEGMENT", static_cast<int>(function_staticCURRENT_SEGMENT)); // index 0
+        ui->functionOptions->addItem("AVAILABLE_EDU", static_cast<int>(function_staticAVAILABLE_EDU)); // index 0
+        ui->functionOptions->addItem("PREVIOUS_CHILD_DURATION", static_cast<int>(function_staticPREVIOUS_CHILD_DURATION)); // index 0
+        ui->functionOptions->addItem("CURRENT_LAYER", static_cast<int>(function_staticCURRENT_LAYER)); // index 0
     }
     else if (returnType == functionReturnFloat){
-        ui->functionOptions->addItem("", NOT_A_FUNCTION); // index 0
-        ui->functionOptions->addItem("Random", functionRandom); // index 1
-        ui->functionOptions->addItem("RandomInt", functionRandomInt); // index 2
-        ui->functionOptions->addItem("RandomOrderInt", functionRandomOrderInt); // index 3
-        ui->functionOptions->addItem("Randomizer", functionRandomizer); // index 4
-        ui->functionOptions->addItem("RandomDensity", functionRandomDensity); // index 5
-        ui->functionOptions->addItem("Inverse", functionInverse); // index 6
-        ui->functionOptions->addItem("LN", functionLN); // index 7
-        ui->functionOptions->addItem("Fibonacci", functionFibonacci); // index 8
-        ui->functionOptions->addItem("Decay", functionDecay); // index 9
-        ui->functionOptions->addItem("GetFromMarkovChain", functionMarkov); // index 10
-        ui->functionOptions->addItem("-------", NOT_A_FUNCTION); // index 0
-        ui->functionOptions->addItem("Stochos", functionStochos); // index 11
-        ui->functionOptions->addItem("Select", functionSelect); // index 12
-        ui->functionOptions->addItem("ValuePick", functionValuePick); // index 13
-        ui->functionOptions->addItem("ChooseL", functionChooseL); // index 14
-        ui->functionOptions->addItem("GetPattern", functionGetPattern); // index 15
-        ui->functionOptions->addItem("-------", NOT_A_FUNCTION);  // index 0
-        ui->functionOptions->addItem("CURRENT_TYPE", function_staticCURRENT_TYPE); // index 0
-        ui->functionOptions->addItem("CURRENT_CHILD_NUM", function_staticCURRENT_CHILD_NUM); // index 0
-        ui->functionOptions->addItem("CURRENT_PARTIAL_NUM", function_staticCURRENT_PARTIAL_NUM); // index 0
-        ui->functionOptions->addItem("CURRENT_SEGMENT", function_staticCURRENT_SEGMENT); // index 0
-        ui->functionOptions->addItem("AVAILABLE_EDU", function_staticAVAILABLE_EDU); // index 0
-        ui->functionOptions->addItem("PREVIOUS_CHILD_DURATION", function_staticPREVIOUS_CHILD_DURATION); // index 0
-        ui->functionOptions->addItem("CURRENT_LAYER", function_staticCURRENT_LAYER); // index 0
+        ui->functionOptions->addItem("", static_cast<int>(NOT_A_FUNCTION)); // index 0
+        ui->functionOptions->addItem("Random", static_cast<int>(functionRandom)); // index 1
+        ui->functionOptions->addItem("RandomInt", static_cast<int>(functionRandomInt)); // index 2
+        ui->functionOptions->addItem("RandomOrderInt", static_cast<int>(functionRandomOrderInt)); // index 3
+        ui->functionOptions->addItem("Randomizer", static_cast<int>(functionRandomizer)); // index 4
+        ui->functionOptions->addItem("RandomDensity", static_cast<int>(functionRandomDensity)); // index 5
+        ui->functionOptions->addItem("Inverse", static_cast<int>(functionInverse)); // index 6
+        ui->functionOptions->addItem("LN", static_cast<int>(functionLN)); // index 7
+        ui->functionOptions->addItem("Fibonacci", static_cast<int>(functionFibonacci)); // index 8
+        ui->functionOptions->addItem("Decay", static_cast<int>(functionDecay)); // index 9
+        ui->functionOptions->addItem("GetFromMarkovChain", static_cast<int>(functionMarkov)); // index 10
+        ui->functionOptions->addItem("-------", static_cast<int>(NOT_A_FUNCTION)); // index 0
+        ui->functionOptions->addItem("Stochos", static_cast<int>(functionStochos)); // index 11
+        ui->functionOptions->addItem("Select", static_cast<int>(functionSelect)); // index 12
+        ui->functionOptions->addItem("ValuePick", static_cast<int>(functionValuePick)); // index 13
+        ui->functionOptions->addItem("ChooseL", static_cast<int>(functionChooseL)); // index 14
+        ui->functionOptions->addItem("GetPattern", static_cast<int>(functionGetPattern)); // index 15
+        ui->functionOptions->addItem("-------", static_cast<int>(NOT_A_FUNCTION));  // index 0
+        ui->functionOptions->addItem("CURRENT_TYPE", static_cast<int>(function_staticCURRENT_TYPE)); // index 0
+        ui->functionOptions->addItem("CURRENT_CHILD_NUM", static_cast<int>(function_staticCURRENT_CHILD_NUM)); // index 0
+        ui->functionOptions->addItem("CURRENT_PARTIAL_NUM", static_cast<int>(function_staticCURRENT_PARTIAL_NUM)); // index 0
+        ui->functionOptions->addItem("CURRENT_SEGMENT", static_cast<int>(function_staticCURRENT_SEGMENT)); // index 0
+        ui->functionOptions->addItem("AVAILABLE_EDU", static_cast<int>(function_staticAVAILABLE_EDU)); // index 0
+        ui->functionOptions->addItem("PREVIOUS_CHILD_DURATION", static_cast<int>(function_staticPREVIOUS_CHILD_DURATION)); // index 0
+        ui->functionOptions->addItem("CURRENT_LAYER", static_cast<int>(function_staticCURRENT_LAYER)); // index 0
     } else if (returnType == functionReturnMakeListFun) {
-        ui->functionOptions->addItem("", NOT_A_FUNCTION); // index 0
-        ui->functionOptions->addItem("Random", functionRandom); // index 1
-        ui->functionOptions->addItem("RandomInt", functionRandomInt); // index 2
-        ui->functionOptions->addItem("RandomOrderInt", functionRandomOrderInt); // index 3
-        ui->functionOptions->addItem("Randomizer", functionRandomizer); // index 4
-        ui->functionOptions->addItem("RandomDensity", functionRandomDensity); // index 5
-        ui->functionOptions->addItem("Inverse", functionInverse); // index 6
-        ui->functionOptions->addItem("LN", functionLN); // index 7
-        ui->functionOptions->addItem("Fibonacci", functionFibonacci); // index 8
-        ui->functionOptions->addItem("Decay", functionDecay); // index 9
-        ui->functionOptions->addItem("-------", NOT_A_FUNCTION); // index 0
-        ui->functionOptions->addItem("Stochos", functionStochos); // index 11
-        ui->functionOptions->addItem("Select", functionSelect); // index 12
-        ui->functionOptions->addItem("ValuePick", functionValuePick); // index 13
-        ui->functionOptions->addItem("ChooseL", functionChooseL); // index 14
-        ui->functionOptions->addItem("GetPattern", functionGetPattern); // index 15
-        ui->functionOptions->addItem("EnvLib", functionEnvLib); // index 16
-        ui->functionOptions->addItem("MakeEnvelope", functionMakeEnvelope); // index 17
-        ui->functionOptions->addItem("ReadENVFile", functionReadENVFile); // index 18
-        ui->functionOptions->addItem("-------", NOT_A_FUNCTION);  // index 0
-        ui->functionOptions->addItem("CURRENT_TYPE", function_staticCURRENT_TYPE); // index 0
-        ui->functionOptions->addItem("CURRENT_CHILD_NUM", function_staticCURRENT_CHILD_NUM); // index 0
-        ui->functionOptions->addItem("CURRENT_PARTIAL_NUM", function_staticCURRENT_PARTIAL_NUM); // index 0
-        ui->functionOptions->addItem("CURRENT_SEGMENT", function_staticCURRENT_SEGMENT); // index 0
-        ui->functionOptions->addItem("AVAILABLE_EDU", function_staticAVAILABLE_EDU); // index 0
-        ui->functionOptions->addItem("PREVIOUS_CHILD_DURATION", function_staticPREVIOUS_CHILD_DURATION); // index 0
-        ui->functionOptions->addItem("CURRENT_LAYER", function_staticCURRENT_LAYER); // index 0
+        ui->functionOptions->addItem("", static_cast<int>(NOT_A_FUNCTION)); // index 0
+        ui->functionOptions->addItem("Random", static_cast<int>(functionRandom)); // index 1
+        ui->functionOptions->addItem("RandomInt", static_cast<int>(functionRandomInt)); // index 2
+        ui->functionOptions->addItem("RandomOrderInt", static_cast<int>(functionRandomOrderInt)); // index 3
+        ui->functionOptions->addItem("Randomizer", static_cast<int>(functionRandomizer)); // index 4
+        ui->functionOptions->addItem("RandomDensity", static_cast<int>(functionRandomDensity)); // index 5
+        ui->functionOptions->addItem("Inverse", static_cast<int>(functionInverse)); // index 6
+        ui->functionOptions->addItem("LN", static_cast<int>(functionLN)); // index 7
+        ui->functionOptions->addItem("Fibonacci", static_cast<int>(functionFibonacci)); // index 8
+        ui->functionOptions->addItem("Decay", static_cast<int>(functionDecay)); // index 9
+        ui->functionOptions->addItem("-------", static_cast<int>(NOT_A_FUNCTION)); // index 0
+        ui->functionOptions->addItem("Stochos", static_cast<int>(functionStochos)); // index 11
+        ui->functionOptions->addItem("Select", static_cast<int>(functionSelect)); // index 12
+        ui->functionOptions->addItem("ValuePick", static_cast<int>(functionValuePick)); // index 13
+        ui->functionOptions->addItem("ChooseL", static_cast<int>(functionChooseL)); // index 14
+        ui->functionOptions->addItem("GetPattern", static_cast<int>(functionGetPattern)); // index 15
+        ui->functionOptions->addItem("EnvLib", static_cast<int>(functionEnvLib)); // index 16
+        ui->functionOptions->addItem("MakeEnvelope", static_cast<int>(functionMakeEnvelope)); // index 17
+        ui->functionOptions->addItem("ReadENVFile", static_cast<int>(functionReadENVFile)); // index 18
+        ui->functionOptions->addItem("-------", static_cast<int>(NOT_A_FUNCTION));  // index 0
+        ui->functionOptions->addItem("CURRENT_TYPE", static_cast<int>(function_staticCURRENT_TYPE)); // index 0
+        ui->functionOptions->addItem("CURRENT_CHILD_NUM", static_cast<int>(function_staticCURRENT_CHILD_NUM)); // index 0
+        ui->functionOptions->addItem("CURRENT_PARTIAL_NUM", static_cast<int>(function_staticCURRENT_PARTIAL_NUM)); // index 0
+        ui->functionOptions->addItem("CURRENT_SEGMENT", static_cast<int>(function_staticCURRENT_SEGMENT)); // index 0
+        ui->functionOptions->addItem("AVAILABLE_EDU", static_cast<int>(function_staticAVAILABLE_EDU)); // index 0
+        ui->functionOptions->addItem("PREVIOUS_CHILD_DURATION", static_cast<int>(function_staticPREVIOUS_CHILD_DURATION)); // index 0
+        ui->functionOptions->addItem("CURRENT_LAYER", static_cast<int>(function_staticCURRENT_LAYER)); // index 0
     } else if (returnType == functionReturnList) {
-        ui->functionOptions->addItem("", NOT_A_FUNCTION);
-        ui->functionOptions->addItem("MakeList", functionMakeList); // index 19
-        ui->functionOptions->addItem("RawList", functionRawList); // index 0
+        ui->functionOptions->addItem("", static_cast<int>(NOT_A_FUNCTION));
+        ui->functionOptions->addItem("MakeList", static_cast<int>(functionMakeList)); // index 19
+        ui->functionOptions->addItem("RawList", static_cast<int>(functionRawList)); // index 0
     } else if (returnType == functionReturnENV) {
-        ui->functionOptions->addItem("", NOT_A_FUNCTION); // index 0
-        ui->functionOptions->addItem("MakeEnvelope", functionMakeEnvelope); // index 17
-        ui->functionOptions->addItem("ReadENVFile", functionReadENVFile); // index 18
-        ui->functionOptions->addItem("EnvLib", functionEnvLib); // index 16
-        ui->functionOptions->addItem("Select", functionSelect); // index 12
-        ui->functionOptions->addItem("Stochos", functionStochos); // index 11
+        ui->functionOptions->addItem("", static_cast<int>(NOT_A_FUNCTION)); // index 0
+        ui->functionOptions->addItem("MakeEnvelope", static_cast<int>(functionMakeEnvelope)); // index 17
+        ui->functionOptions->addItem("ReadENVFile", static_cast<int>(functionReadENVFile)); // index 18
+        ui->functionOptions->addItem("EnvLib", static_cast<int>(functionEnvLib)); // index 16
+        ui->functionOptions->addItem("Select", static_cast<int>(functionSelect)); // index 12
+        ui->functionOptions->addItem("Stochos", static_cast<int>(functionStochos)); // index 11
     } else if (returnType == functionReturnSPA){
-        ui->functionOptions->addItem("", NOT_A_FUNCTION); // index 0
-        ui->functionOptions->addItem("SPA", functionSPA); // index 20
-        ui->functionOptions->addItem("ReadSPAFile", functionReadSPAFile); // index 21
-        ui->functionOptions->addItem("Select", functionSelect); // index 12
+        ui->functionOptions->addItem("", static_cast<int>(NOT_A_FUNCTION)); // index 0
+        ui->functionOptions->addItem("SPA", static_cast<int>(functionSPA)); // index 20
+        ui->functionOptions->addItem("ReadSPAFile", static_cast<int>(functionReadSPAFile)); // index 21
+        ui->functionOptions->addItem("Select", static_cast<int>(functionSelect)); // index 12
     } else if (returnType == functionReturnFIL){
-        ui->functionOptions->addItem("", NOT_A_FUNCTION); // index 0
-        ui->functionOptions->addItem("MakeFilter", functionMakeFilter); // index 22
-        ui->functionOptions->addItem("ReadFILFile", functionReadFILFile); // index 23
-        ui->functionOptions->addItem("Select", functionSelect); // index 12
+        ui->functionOptions->addItem("", static_cast<int>(NOT_A_FUNCTION)); // index 0
+        ui->functionOptions->addItem("MakeFilter", static_cast<int>(functionMakeFilter)); // index 22
+        ui->functionOptions->addItem("ReadFILFile", static_cast<int>(functionReadFILFile)); // index 23
+        ui->functionOptions->addItem("Select", static_cast<int>(functionSelect)); // index 12
     } else if (returnType == functionReturnMGP){
-        ui->functionOptions->addItem("", NOT_A_FUNCTION); // index 0
-        ui->functionOptions->addItem("Select", functionSelect); // index 12
+        ui->functionOptions->addItem("", static_cast<int>(NOT_A_FUNCTION)); // index 0
+        ui->functionOptions->addItem("Select", static_cast<int>(functionSelect)); // index 12
     } else if (returnType == functionReturnPAT){
-        ui->functionOptions->addItem("", NOT_A_FUNCTION); // index 0
-        ui->functionOptions->addItem("MakePattern", functionMakePattern); // index 24
-        ui->functionOptions->addItem("ExpandPattern", functionExpandPattern); // index 25
-        ui->functionOptions->addItem("ReadPATFile", functionReadPATFile); // index 26
-        ui->functionOptions->addItem("Select", functionSelect); // index 12
+        ui->functionOptions->addItem("", static_cast<int>(NOT_A_FUNCTION)); // index 0
+        ui->functionOptions->addItem("MakePattern", static_cast<int>(functionMakePattern)); // index 24
+        ui->functionOptions->addItem("ExpandPattern", static_cast<int>(functionExpandPattern)); // index 25
+        ui->functionOptions->addItem("ReadPATFile", static_cast<int>(functionReadPATFile)); // index 26
+        ui->functionOptions->addItem("Select", static_cast<int>(functionSelect)); // index 12
     } else if (returnType == functionReturnREV){
-        ui->functionOptions->addItem("", NOT_A_FUNCTION); // index 0
-        ui->functionOptions->addItem("REV_Simple", functionREV_Simple); // index 27
-        ui->functionOptions->addItem("REV_Medium", functionREV_Medium); // index 27
-        ui->functionOptions->addItem("REV_Advanced", functionREV_Advanced); // index 27
-        ui->functionOptions->addItem("ReadREVFile", functionReadREVFile); // index 28
-        ui->functionOptions->addItem("Select", functionSelect); // index 12
+        ui->functionOptions->addItem("", static_cast<int>(NOT_A_FUNCTION)); // index 0
+        ui->functionOptions->addItem("REV_Simple", static_cast<int>(functionREV_Simple)); // index 27
+        ui->functionOptions->addItem("REV_Medium", static_cast<int>(functionREV_Medium)); // index 27
+        ui->functionOptions->addItem("REV_Advanced", static_cast<int>(functionREV_Advanced)); // index 27
+        ui->functionOptions->addItem("ReadREVFile", static_cast<int>(functionReadREVFile)); // index 28
+        ui->functionOptions->addItem("Select", static_cast<int>(functionSelect)); // index 12
     } else if (returnType == functionReturnSPE){
-        ui->functionOptions->addItem("", NOT_A_FUNCTION); // index 0
-        ui->functionOptions->addItem("Generate_Spectrum", functionSpectrum_Gen); // index 29
-        ui->functionOptions->addItem("Select", functionSelect); // index 12
+        ui->functionOptions->addItem("", static_cast<int>(NOT_A_FUNCTION)); // index 0
+        ui->functionOptions->addItem("Generate_Spectrum", static_cast<int>(functionSpectrum_Gen)); // index 29
+        ui->functionOptions->addItem("Select", static_cast<int>(functionSelect)); // index 12
     } else if (returnType == functionReturnSIV){
-        ui->functionOptions->addItem("", NOT_A_FUNCTION); // index 0
-        ui->functionOptions->addItem("MakeSieve", functionMakeSieve); // index 30
-        ui->functionOptions->addItem("ReadSIVFile", functionReadSIVFile); // index 31
-        ui->functionOptions->addItem("Select", functionSelect); // index 12
+        ui->functionOptions->addItem("", static_cast<int>(NOT_A_FUNCTION)); // index 0
+        ui->functionOptions->addItem("MakeSieve", static_cast<int>(functionMakeSieve)); // index 30
+        ui->functionOptions->addItem("ReadSIVFile", static_cast<int>(functionReadSIVFile)); // index 31
+        ui->functionOptions->addItem("Select", static_cast<int>(functionSelect)); // index 12
     }
 
     // Handles combo box option selected by calling handleFunctionChanged
@@ -843,7 +846,7 @@ void FunctionGenerator::handleFunctionChanged(int index)
     QVariant data = ui->functionOptions->itemData(index);
     if (!data.isValid()) return;
     // Converts the function id name into an integer
-    int functionId = data.toInt();
+    CMODFunction functionId = static_cast<CMODFunction>(data.toInt());
     /* Case statements used to set the stacked widget current index (new form widget added)
      based on the function id */
     int currPageIndex = 0;
