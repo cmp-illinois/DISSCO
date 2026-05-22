@@ -4,8 +4,10 @@
 
 #include "FunctionRegistry.hpp"
 #include "InverseFunction.hpp"
+#include "LNFunction.hpp"
 
 void registerAllFunctions() {
     auto& r = FunctionRegistry::instance();
     r.registerType<InverseFunction>();
+    r.registerType<LNFunction>();
 }

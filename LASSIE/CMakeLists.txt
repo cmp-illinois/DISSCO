@@ -22,6 +22,7 @@ qt_add_executable(LASSIE
     src/dialogs/functions/FunctionWidget.cpp src/dialogs/functions/FunctionWidget.hpp
     src/dialogs/functions/FunctionRegistry.cpp src/dialogs/functions/FunctionRegistry.hpp
     src/dialogs/functions/InverseFunction.cpp src/dialogs/functions/InverseFunction.hpp
+    src/dialogs/functions/LNFunction.cpp src/dialogs/functions/LNFunction.hpp
     src/dialogs/functions/FunctionRegistrations.cpp
     src/widgets/REVChannel.cpp src/widgets/REVChannel.hpp
     src/widgets/SPAChannel.cpp src/widgets/SPAChannel.hpp
