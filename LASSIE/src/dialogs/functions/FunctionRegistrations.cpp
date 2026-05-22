@@ -7,10 +7,12 @@
 #include "impl/ChooseLFunction.hpp"
 #include "impl/DecayFunction.hpp"
 #include "impl/EnvLibFunction.hpp"
+#include "impl/ExpandPatternFunction.hpp"
 #include "impl/FibonacciFunction.hpp"
 #include "impl/GetPatternFunction.hpp"
 #include "impl/InverseFunction.hpp"
 #include "impl/LNFunction.hpp"
+#include "impl/MakeFilterFunction.hpp"
 #include "impl/MakeListFunction.hpp"
 #include "impl/MarkovFunction.hpp"
 #include "impl/RandomDensityFunction.hpp"
@@ -52,4 +54,6 @@ void registerAllFunctions() {
     r.registerType<CurrentLayerFunction>();
     r.registerType<DecayFunction>();
     r.registerType<GetPatternFunction>();
+    r.registerType<ExpandPatternFunction>();
+    r.registerType<MakeFilterFunction>();
 }

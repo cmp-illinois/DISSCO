@@ -39,6 +39,8 @@ qt_add_executable(LASSIE
     src/dialogs/functions/impl/StaticConstantFunctions.hpp
     src/dialogs/functions/impl/DecayFunction.cpp src/dialogs/functions/impl/DecayFunction.hpp
     src/dialogs/functions/impl/GetPatternFunction.cpp src/dialogs/functions/impl/GetPatternFunction.hpp
+    src/dialogs/functions/impl/ExpandPatternFunction.cpp src/dialogs/functions/impl/ExpandPatternFunction.hpp
+    src/dialogs/functions/impl/MakeFilterFunction.cpp src/dialogs/functions/impl/MakeFilterFunction.hpp
     src/dialogs/functions/FunctionRegistrations.cpp
     src/widgets/REVChannel.cpp src/widgets/REVChannel.hpp
     src/widgets/SPAChannel.cpp src/widgets/SPAChannel.hpp
