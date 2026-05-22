@@ -1,30 +1,25 @@
 #ifndef RANDOMFUNCTION_HPP
 #define RANDOMFUNCTION_HPP
 
-#include "FunctionWidget.hpp"
+#include "RangeFunction.hpp"
 
-class FunctionEntryRow;
-
-/** Uniform float random. Serializes as
- *  <Fun><Name>Random</Name><Low>X</Low><High>Y</High></Fun>. */
-class RandomFunction : public FunctionWidget {
+/** Uniform float random. <Fun><Name>Random</Name><Low>X</Low><High>Y</High></Fun>. */
+class RandomFunction : public RangeFunction {
     Q_OBJECT
 
 public:
-    explicit RandomFunction(QWidget* parent = nullptr);
+    explicit RandomFunction(QWidget* parent = nullptr)
+        : RangeFunction(FunctionReturnType::functionReturnFloat, parent) {}
 
     CMODFunction id() const override { return CMODFunction::functionRandom; }
     QString xmlName() const override { return QStringLiteral("Random"); }
     QString displayName() const override { return QStringLiteral("Random"); }
-    QList<FunctionReturnType> supportedReturnTypes() const override;
-
-    QString buildXMLString() const override;
-    void populateFromXML(QXmlStreamReader& reader) override;
-    void reset() override;
-
-private:
-    FunctionEntryRow* m_lowRow;
-    FunctionEntryRow* m_highRow;
+    QList<FunctionReturnType> supportedReturnTypes() const override {
+        return {
+            FunctionReturnType::functionReturnFloat,
+            FunctionReturnType::functionReturnMakeListFun,
+        };
+    }
 };
 
 #endif // RANDOMFUNCTION_HPP

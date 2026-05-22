@@ -27,7 +27,10 @@ qt_add_executable(LASSIE
     src/dialogs/functions/FibonacciFunction.hpp
     src/dialogs/functions/ChooseLFunction.hpp
     src/dialogs/functions/MarkovFunction.cpp src/dialogs/functions/MarkovFunction.hpp
-    src/dialogs/functions/RandomFunction.cpp src/dialogs/functions/RandomFunction.hpp
+    src/dialogs/functions/RangeFunction.cpp src/dialogs/functions/RangeFunction.hpp
+    src/dialogs/functions/RandomFunction.hpp
+    src/dialogs/functions/RandomIntFunction.hpp
+    src/dialogs/functions/RandomOrderIntFunction.hpp
     src/dialogs/functions/FunctionRegistrations.cpp
     src/widgets/REVChannel.cpp src/widgets/REVChannel.hpp
     src/widgets/SPAChannel.cpp src/widgets/SPAChannel.hpp

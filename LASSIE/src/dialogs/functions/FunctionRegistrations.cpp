@@ -9,6 +9,8 @@
 #include "LNFunction.hpp"
 #include "MarkovFunction.hpp"
 #include "RandomFunction.hpp"
+#include "RandomIntFunction.hpp"
+#include "RandomOrderIntFunction.hpp"
 
 void registerAllFunctions() {
     auto& r = FunctionRegistry::instance();
@@ -18,4 +20,6 @@ void registerAllFunctions() {
     r.registerType<ChooseLFunction>();
     r.registerType<MarkovFunction>();
     r.registerType<RandomFunction>();
+    r.registerType<RandomIntFunction>();
+    r.registerType<RandomOrderIntFunction>();
 }

@@ -1,18 +1,16 @@
-#include "RandomFunction.hpp"
+#include "RangeFunction.hpp"
 
 #include "../../widgets/generic/FunctionEntryRow.hpp"
 
 #include <QVBoxLayout>
 
-RandomFunction::RandomFunction(QWidget* parent)
+RangeFunction::RangeFunction(FunctionReturnType rowReturnType, QWidget* parent)
     : FunctionWidget(parent)
 {
-    m_lowRow  = new FunctionEntryRow(tr("Lower Bound:"), /*index=*/0,
-                                     FunctionReturnType::functionReturnFloat,
+    m_lowRow  = new FunctionEntryRow(tr("Lower Bound:"), /*index=*/0, rowReturnType,
                                      /*rmVisible=*/false, /*insVisible=*/false,
                                      this);
-    m_highRow = new FunctionEntryRow(tr("Upper Bound:"), /*index=*/1,
-                                     FunctionReturnType::functionReturnFloat,
+    m_highRow = new FunctionEntryRow(tr("Upper Bound:"), /*index=*/1, rowReturnType,
                                      /*rmVisible=*/false, /*insVisible=*/false,
                                      this);
 
@@ -20,8 +18,6 @@ RandomFunction::RandomFunction(QWidget* parent)
     layout->addWidget(m_lowRow);
     layout->addWidget(m_highRow);
 
-    // Legacy seeded these on every combo-box selection; this is more like
-    // a sensible initial default.
     m_lowRow->setText(QStringLiteral("0"));
     m_highRow->setText(QStringLiteral("1"));
 
@@ -30,27 +26,21 @@ RandomFunction::RandomFunction(QWidget* parent)
     connect(m_highRow, &FunctionEntryRow::textChanged, this, forward);
 }
 
-QList<FunctionReturnType> RandomFunction::supportedReturnTypes() const {
-    return {
-        FunctionReturnType::functionReturnFloat,
-        FunctionReturnType::functionReturnMakeListFun,
-    };
-}
-
-QString RandomFunction::buildXMLString() const {
-    return QStringLiteral("<Fun><Name>Random</Name><Low>")
+QString RangeFunction::buildXMLString() const {
+    return QStringLiteral("<Fun><Name>") + xmlName()
+         + QStringLiteral("</Name><Low>")
          + m_lowRow->getText()
          + QStringLiteral("</Low><High>")
          + m_highRow->getText()
          + QStringLiteral("</High></Fun>");
 }
 
-void RandomFunction::populateFromXML(QXmlStreamReader& reader) {
+void RangeFunction::populateFromXML(QXmlStreamReader& reader) {
     m_lowRow->setText(nextChildInner(reader));
     m_highRow->setText(nextChildInner(reader));
 }
 
-void RandomFunction::reset() {
+void RangeFunction::reset() {
     m_lowRow->setText(QStringLiteral("0"));
     m_highRow->setText(QStringLiteral("1"));
 }
