@@ -110,9 +110,84 @@ jobs:
           name: ${{ steps.artifact.outputs.name }}
           path: ${{ steps.artifact.outputs.path }}
 
+  windows:
+    name: Windows installer
+    runs-on: windows-2022
+    defaults:
+      run:
+        shell: pwsh
+    env:
+      # Pinned vcpkg commit — matches what `vcpkg new --application` would
+      # have resolved against at this date. Bumping is fine but should be a
+      # deliberate review (vcpkg occasionally breaks ABI).
+      VCPKG_BINARY_SOURCES: "clear;x-gha,readwrite"
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Configure MSVC environment
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      - name: Install Qt 6.8
+        uses: jurplel/install-qt-action@v5
+        with:
+          version: "6.8.0"
+          host: windows
+          target: desktop
+          arch: win64_msvc2022_64
+          modules: ""
+          cache: true
+
+      - name: Bootstrap vcpkg for sndfile + xerces-c
+        # The repo's BUILDING_WINDOWS.md uses vcpkg for the C++ deps. We
+        # check out a sibling vcpkg checkout instead of relying on the
+        # runner's preinstalled one so the commit is pinned via the
+        # manifest. binary caching speeds reruns dramatically.
+        run: |
+          git clone https://github.com/microsoft/vcpkg.git "$env:RUNNER_TEMP/vcpkg"
+          & "$env:RUNNER_TEMP/vcpkg/bootstrap-vcpkg.bat" -disableMetrics
+          "VCPKG_ROOT=$env:RUNNER_TEMP/vcpkg" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+
+      - name: Enable GitHub Actions cache for vcpkg
+        uses: actions/github-script@v7
+        with:
+          script: |
+            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+
+      - name: Configure
+        # CMake picks vcpkg up via CMAKE_TOOLCHAIN_FILE; Qt comes from
+        # install-qt-action's exported Qt6_DIR.
+        run: |
+          cmake -S . -B build -G Ninja `
+            -DCMAKE_BUILD_TYPE=Release `
+            -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" `
+            -DVCPKG_TARGET_TRIPLET=x64-windows `
+            -DCMAKE_PREFIX_PATH="$env:Qt6_DIR"
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Package (NSIS installer)
+        run: cmake --build build --target package
+
+      - name: Locate artifact
+        id: artifact
+        run: |
+          $exe = Get-ChildItem build/DISSCO-*-Windows.exe | Select-Object -First 1
+          "path=$($exe.FullName)" | Out-File -Append -Encoding utf8 $env:GITHUB_OUTPUT
+          "name=$($exe.Name)"     | Out-File -Append -Encoding utf8 $env:GITHUB_OUTPUT
+
+      - uses: actions/upload-artifact@v5
+        with:
+          name: ${{ steps.artifact.outputs.name }}
+          path: ${{ steps.artifact.outputs.path }}
+
   release:
     name: Publish GitHub release
-    needs: [macos, linux]
+    needs: [macos, linux, windows]
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-22.04
     steps:
