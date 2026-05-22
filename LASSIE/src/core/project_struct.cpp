@@ -166,12 +166,12 @@ namespace QtParser {
     }
 
     /// @brief Parse the shared "HEvent core" children of <Event>: from <EventName>
-    ///   through <Modifiers>. The <EventType> child must already have been
-    ///   consumed by the caller. Does NOT consume the rest of <Event>; callers
-    ///   handle any trailing siblings (e.g. <ExtraInfo> on BottomEvents).
+    ///   through <Filter>. The <EventType> child must already have been consumed
+    ///   by the caller. Stops at <Filter> so callers can read the differing
+    ///   trailing siblings (HEvent: <Modifiers>; BottomEvent: <ExtraInfo>).
     inline void parseHEventCore(QXmlStreamReader& r, HEvent& event) {
-        event.name              = nextChildInner(r);   // <EventName>
-        event.max_child_duration = nextChildInner(r);  // <MaxChildDur>
+        event.name              = nextChildInner(r);   // <Name>
+        event.max_child_duration = nextChildInner(r);  // <MaxChildDuration>
         event.edu_perbeat       = nextChildInner(r);   // <EDUPerBeat>
 
         if (r.readNextStartElement()) parseTimeSig(r, event.timesig);
@@ -184,16 +184,15 @@ namespace QtParser {
                 event.event_layers.append(parseLayer(r));
         }
 
-        event.spa    = nextChildInner(r); // <SPA>
+        event.spa    = nextChildInner(r); // <Spatialization>
         event.reverb = nextChildInner(r); // <Reverb>
         event.filter = nextChildInner(r); // <Filter>
-
-        if (r.readNextStartElement()) // <Modifiers>
-            parseModifiers(r, event.modifiers);
     }
 
     inline void parseHEventChildren(QXmlStreamReader& r, HEvent& event) {
         parseHEventCore(r, event);
+        if (r.readNextStartElement()) // <Modifiers>
+            parseModifiers(r, event.modifiers);
         consumeRest(r);
     }
 
