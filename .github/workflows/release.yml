@@ -70,7 +70,7 @@ jobs:
             libglu1-mesa-dev libxrender-dev libxi-dev libxkbfile-dev
 
       - name: Install Qt 6.8
-        uses: jurplel/install-qt-action@v5
+        uses: jurplel/install-qt-action@v4
         with:
           # DISSCO's source uses Qt::StringLiterals (6.4+) and project docs
           # require >= 6.8. Ubuntu 22.04's apt qt6-base-dev is 6.2 — too old.
@@ -131,7 +131,7 @@ jobs:
           arch: x64
 
       - name: Install Qt 6.8
-        uses: jurplel/install-qt-action@v5
+        uses: jurplel/install-qt-action@v4
         with:
           version: "6.8.0"
           host: windows
