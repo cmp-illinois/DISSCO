@@ -8,8 +8,7 @@
 #include <QObject>
 #include <QFile>
 #include <QFileInfo>
-
-#include <xercesc/dom/DOMElement.hpp>
+#include <QXmlStreamReader>
 
 #include "event_struct.hpp"
 
@@ -42,7 +41,7 @@ class Project : public QObject {
          *  \returns 
         **/
         Project(const QString& _title = QString(), const QByteArray& _id = QByteArray());
-        void parseEvent(xercesc::DOMElement *event_start);
+        void parseEvent(QXmlStreamReader& reader);
         /* the *.dissco file */
         QFileInfo fileinfo;
         QByteArray id;
@@ -88,8 +87,6 @@ class Project : public QObject {
 
         EnvelopeLibraryEntry *elentry = nullptr;
         QList<MarkovModel<float>> markov_models;
-
-        xercesc::DOMElement *config_el = nullptr;
 
         /* list of custom note modifiers, per user */
         QList<QString> custom_note_modifiers;
