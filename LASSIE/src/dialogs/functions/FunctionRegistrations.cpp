@@ -8,6 +8,7 @@
 #include "impl/DecayFunction.hpp"
 #include "impl/EnvLibFunction.hpp"
 #include "impl/FibonacciFunction.hpp"
+#include "impl/GetPatternFunction.hpp"
 #include "impl/InverseFunction.hpp"
 #include "impl/LNFunction.hpp"
 #include "impl/MakeListFunction.hpp"
@@ -50,4 +51,5 @@ void registerAllFunctions() {
     r.registerType<PreviousChildDurationFunction>();
     r.registerType<CurrentLayerFunction>();
     r.registerType<DecayFunction>();
+    r.registerType<GetPatternFunction>();
 }
