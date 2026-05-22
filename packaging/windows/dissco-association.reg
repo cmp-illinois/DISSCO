@@ -1,0 +1,27 @@
+Windows Registry Editor Version 5.00
+
+; .dissco file-association — manual install fallback.
+;
+; LASSIE.exe normally registers itself on first launch (see
+; LASSIE/src/win/file_association.cpp), so this file isn't needed in the
+; common case. It exists as:
+;   1. on-disk documentation of the exact registry layout the
+;      self-registration writes, and
+;   2. a manual fallback for offline / scripted setups where you don't want
+;      to launch LASSIE first.
+;
+; To use: replace REPLACE_WITH_FULL_PATH_TO_LASSIE.EXE below with the actual
+; path to LASSIE.exe (backslashes must be escaped, e.g.
+; C:\\Program Files\\LASSIE\\LASSIE.exe), save, and double-click to import.
+;
+; Per-user (HKCU) — no admin required.
+
+[HKEY_CURRENT_USER\Software\Classes\.dissco]
+@="DISSCO.Project"
+
+[HKEY_CURRENT_USER\Software\Classes\DISSCO.Project]
+@="DISSCO Project"
+"FriendlyTypeName"="DISSCO Project"
+
+[HKEY_CURRENT_USER\Software\Classes\DISSCO.Project\shell\open\command]
+@="\"REPLACE_WITH_FULL_PATH_TO_LASSIE.EXE\" \"%1\""
