@@ -1,28 +1,28 @@
 #ifndef FIBONACCIFUNCTION_HPP
 #define FIBONACCIFUNCTION_HPP
 
-#include "FunctionWidget.hpp"
+#include "SingleEntryFunction.hpp"
 
-class FunctionEntryRow;
-
-/** Fibonacci. Serializes as <Fun><Name>Fibonacci</Name><Entry>X</Entry></Fun>. */
-class FibonacciFunction : public FunctionWidget {
+/** Fibonacci. <Fun><Name>Fibonacci</Name><Entry>X</Entry></Fun>. */
+class FibonacciFunction : public SingleEntryFunction {
     Q_OBJECT
 
 public:
-    explicit FibonacciFunction(QWidget* parent = nullptr);
+    explicit FibonacciFunction(QWidget* parent = nullptr)
+        : SingleEntryFunction(tr("Fibonacci:"),
+                              FunctionReturnType::functionReturnFloat,
+                              parent) {}
 
     CMODFunction id() const override { return CMODFunction::functionFibonacci; }
     QString xmlName() const override { return QStringLiteral("Fibonacci"); }
     QString displayName() const override { return QStringLiteral("Fibonacci"); }
-    QList<FunctionReturnType> supportedReturnTypes() const override;
-
-    QString buildXMLString() const override;
-    void populateFromXML(QXmlStreamReader& reader) override;
-    void reset() override;
-
-private:
-    FunctionEntryRow* m_row;
+    QList<FunctionReturnType> supportedReturnTypes() const override {
+        return {
+            FunctionReturnType::functionReturnInt,
+            FunctionReturnType::functionReturnFloat,
+            FunctionReturnType::functionReturnMakeListFun,
+        };
+    }
 };
 
 #endif // FIBONACCIFUNCTION_HPP
