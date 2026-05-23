@@ -379,7 +379,14 @@ Piece::Piece(string _workingPath, string _projectTitle){
       suffix_rank++;
     }
 
-    system(("mv " + projectName + ".pdf " + "ScoreFiles/" + projectName + suffix + ".pdf").c_str());
+    std::error_code mvEc;
+    std::filesystem::rename(projectName + ".pdf",
+                            "ScoreFiles/" + projectName + suffix + ".pdf",
+                            mvEc);
+    if (mvEc) {
+      cout << "Error moving " << projectName << ".pdf into ScoreFiles/: "
+           << mvEc.message() << endl;
+    }
 
   }
 
