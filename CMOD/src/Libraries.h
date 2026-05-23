@@ -27,6 +27,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <cstdarg>
 #include <ctime>
 #include <deque>
+#include <filesystem>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
@@ -35,11 +36,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <sstream>
 #include <string>
 #include <set>
+#include <system_error>
 #include <vector>
 #include <thread>
-
-//Pseudo-standard, but widely used headers
-#include <dirent.h>
 
 //The LASS library for additive sound synthesis
 #include "LASS.h"
