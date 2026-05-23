@@ -178,7 +178,7 @@ class XmlReader
 		**/
 		void dewhitespace(char *c);
 
-		FILE *fp;
+		std::ifstream fp;
 		char *inputbuffer;
 		char *tagbuffer;
 		int nibuf;

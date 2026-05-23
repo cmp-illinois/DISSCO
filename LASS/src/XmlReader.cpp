@@ -233,9 +233,31 @@ XmlReader::xmltag* XmlReader::xmltagset::auxfind(xmltagset *set, const char *nam
 
 
 //----------------------------------------------------------------------------//
+namespace {
+// Compatibility shim for the C fgets() this class used to depend on. Reads up
+// to maxBytes-1 chars or until '\n' (inclusive) into dst, null-terminates, and
+// returns false on EOF with no chars read (the same signal fgets uses).
+bool readLineInto(char* dst, int maxBytes, std::ifstream& fs)
+{
+	if(maxBytes <= 1) { if(maxBytes == 1) dst[0] = '\0'; return false; }
+	int i = 0;
+	while(i < maxBytes - 1)
+	{
+		int c = fs.get();
+		if(c == std::ifstream::traits_type::eof())
+			break;
+		dst[i++] = static_cast<char>(c);
+		if(c == '\n')
+			break;
+	}
+	dst[i] = '\0';
+	return i > 0;
+}
+}
+
+//----------------------------------------------------------------------------//
 XmlReader::XmlReader()
 {
-	fp=NULL;
 	inputbuffer=new char[XML_BUFFER_SIZE];
 	tagbuffer=new char[XML_BUFFER_SIZE];
 	nibuf=0;
@@ -255,11 +277,11 @@ XmlReader::~XmlReader()
 //----------------------------------------------------------------------------//
 bool XmlReader::openFile(char *file)
 {
-	if(fp)
+	if(fp.is_open())
 		return false;
-	
-	fp=fopen(file,"r");
-	if(!fp)
+
+	fp.open(file);
+	if(!fp.is_open())
 		return false;
 
 	return true;
@@ -268,10 +290,9 @@ bool XmlReader::openFile(char *file)
 //----------------------------------------------------------------------------//
 bool XmlReader::closeFile()
 {
-	if(fp)
+	if(fp.is_open())
 	{
-		fclose(fp);
-		fp=NULL;
+		fp.close();
 		return true;
 	}
 
@@ -326,7 +347,7 @@ bool XmlReader::fillTagBuffer()
 			#endif
 
 			// Effectively dump the buffer, grab new data
-			if(!fgets(inputbuffer,XML_BUFFER_SIZE-nibuf,fp))
+			if(!readLineInto(inputbuffer,XML_BUFFER_SIZE-nibuf,fp))
 				return false;
 		
 			start=index(inputbuffer,'<');
@@ -343,7 +364,7 @@ bool XmlReader::fillTagBuffer()
 		#endif
 
 		// What if nibuf>XML_BUFFER_SIZE?
-		if(!fgets(inputbuffer+nibuf,XML_BUFFER_SIZE-nibuf,fp))
+		if(!readLineInto(inputbuffer+nibuf,XML_BUFFER_SIZE-nibuf,fp))
 			return false;
 		
 		nibuf=strlen(inputbuffer);
