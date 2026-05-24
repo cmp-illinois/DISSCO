@@ -54,21 +54,9 @@ using namespace std;
 
 
 
-// This part is for Xerces
-
-#include <xercesc/dom/DOM.hpp>
-#include <xercesc/util/PlatformUtils.hpp>
-#include <xercesc/util/XMLUni.hpp>
-#include <xercesc/dom/DOMDocument.hpp>
-#include <xercesc/dom/DOMDocumentType.hpp>
-#include <xercesc/dom/DOMElement.hpp>
-#include <xercesc/dom/DOMImplementation.hpp>
-#include <xercesc/dom/DOMImplementationLS.hpp>
-#include <xercesc/dom/DOMNodeIterator.hpp>
-#include <xercesc/dom/DOMNodeList.hpp>
-#include <xercesc/dom/DOMText.hpp>
-#include <xercesc/parsers/XercesDOMParser.hpp>
-#include <xercesc/framework/MemBufInputSource.hpp>
+// XML parsing via pugixml
+#include <pugixml.hpp>
+#include <cstring>
 #include <stdexcept>
 
 // this is the math expression parser : muparser
@@ -115,8 +103,31 @@ typedef enum {
 } TempoNoteValue;
 
 
-#define GFEC getFirstElementChild  //for easy coding
-#define GNES getNextElementSibling
+// Element-only navigation helpers for pugi::xml_node. pugixml's first_child()
+// and next_sibling() return any node type (including whitespace), so wrap them
+// to skip non-element nodes, matching Xerces' getFirstElementChild semantics.
+inline pugi::xml_node GFEC(pugi::xml_node n) {
+  auto c = n.first_child();
+  while (c && c.type() != pugi::node_element) c = c.next_sibling();
+  return c;
+}
+inline pugi::xml_node GNES(pugi::xml_node n) {
+  auto c = n.next_sibling();
+  while (c && c.type() != pugi::node_element) c = c.next_sibling();
+  return c;
+}
+
+// Recursive descendant lookup by tag name (Xerces getElementsByTagName first hit).
+inline pugi::xml_node descendantByName(pugi::xml_node root, const char* tag) {
+  if (!root) return pugi::xml_node();
+  for (auto c = root.first_child(); c; c = c.next_sibling()) {
+    if (c.type() == pugi::node_element && std::strcmp(c.name(), tag) == 0) return c;
+    auto found = descendantByName(c, tag);
+    if (found) return found;
+  }
+  return pugi::xml_node();
+}
+
 #define XMLTC Utilities::XMLTranscode
 
 #endif

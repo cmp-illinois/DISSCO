@@ -35,9 +35,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Piece.h"
 #include "Patter.h"
 #include "ProbabilityEnvelope.h" // consider moving this into LASS.h
+#include <memory>
+#include <sstream>
 #include <string>
 
-Utilities::Utilities(DOMElement* root,
+Utilities::Utilities(pugi::xml_node root,
                      string _workingPath,
                      bool _soundSynthesis,
                      bool _outputParticel,
@@ -63,7 +65,7 @@ Utilities::Utilities(DOMElement* root,
 
 
   // Construct Envelope library
-  DOMElement* envelopeLibraryElement = root->GFEC()->GNES()->GNES();
+  pugi::xml_node envelopeLibraryElement = GNES(GNES(GFEC(root)));
   string envLibContent = XMLTranscode(envelopeLibraryElement);
   string fileString = "lib.temp";
   FILE* file  = fopen(fileString.c_str(), "w");
@@ -76,10 +78,8 @@ Utilities::Utilities(DOMElement* root,
   system(deleteCommand.c_str());
 
   // Construct Markov Model Library
-  DOMElement* markovModelLibraryElement = envelopeLibraryElement->GNES();
-  char* text = XMLString::transcode(markovModelLibraryElement->getTagName());
-  string tagName = text;
-  XMLString::release(&text);
+  pugi::xml_node markovModelLibraryElement = GNES(envelopeLibraryElement);
+  string tagName = markovModelLibraryElement.name();
   if (tagName != "MarkovModelLibrary") {
     cout << "Project is outdated, please save the project in the latest version of DISSCO" << endl;
     exit(1);
@@ -107,8 +107,8 @@ Utilities::Utilities(DOMElement* root,
 
   //events and other objects
 
-  DOMElement* eventElements = markovModelLibraryElement->GNES();
-  DOMElement* thisEventElement = eventElements->GFEC();
+  pugi::xml_node eventElements = GNES(markovModelLibraryElement);
+  pugi::xml_node thisEventElement = GFEC(eventElements);
   //Counters to assign numbers to the events. Experimental
 
    int topCounter = 0;
@@ -127,13 +127,13 @@ Utilities::Utilities(DOMElement* root,
 
    //put the pointer of events and objects into the proper map
    while(thisEventElement){
-     int type = atoi(XMLTranscode(thisEventElement->GFEC()).c_str());
-     string eventName=  XMLTranscode(thisEventElement->GFEC()->GNES());
+     int type = atoi(XMLTranscode(GFEC(thisEventElement)).c_str());
+     string eventName=  XMLTranscode(GNES(GFEC(thisEventElement)));
 
      switch (type){
        case 0:
          topEventElements.insert(
-               pair<string, DOMElement*>(eventName, thisEventElement));
+               pair<string, pugi::xml_node>(eventName, thisEventElement));
 
          topEventnames.insert(
                pair<int, string>(topCounter, eventName));
@@ -144,7 +144,7 @@ Utilities::Utilities(DOMElement* root,
          break;
        case 1:
          highEventElements.insert(
-               pair<string, DOMElement*>(eventName, thisEventElement));
+               pair<string, pugi::xml_node>(eventName, thisEventElement));
 
          highEventnames.insert(
                pair<int, string>(highCounter, eventName));
@@ -155,7 +155,7 @@ Utilities::Utilities(DOMElement* root,
          break;
        case 2:
          midEventElements.insert(
-               pair<string, DOMElement*>(eventName, thisEventElement));
+               pair<string, pugi::xml_node>(eventName, thisEventElement));
 
                midEventnames.insert(
                      pair<int, string>(midCounter, eventName));
@@ -166,7 +166,7 @@ Utilities::Utilities(DOMElement* root,
          break;
        case 3:
          lowEventElements.insert(
-               pair<string, DOMElement*>(eventName, thisEventElement));
+               pair<string, pugi::xml_node>(eventName, thisEventElement));
 
                lowEventnames.insert(
                      pair<int, string>(lowCounter, eventName));
@@ -177,7 +177,7 @@ Utilities::Utilities(DOMElement* root,
          break;
        case 4:
          bottomEventElements.insert(
-               pair<string, DOMElement*>(eventName, thisEventElement));
+               pair<string, pugi::xml_node>(eventName, thisEventElement));
 
                bottomEventnames.insert(
                      pair<int, string>(bottomCounter, eventName));
@@ -188,7 +188,7 @@ Utilities::Utilities(DOMElement* root,
          break;
        case 5:
          spectrumElements.insert(
-               pair<string, DOMElement*>(eventName, thisEventElement));
+               pair<string, pugi::xml_node>(eventName, thisEventElement));
 
                spectrumEventnames.insert(
                      pair<int, string>(spectrumCounter, eventName));
@@ -199,55 +199,55 @@ Utilities::Utilities(DOMElement* root,
          break;
        case 6:
          envelopeElements.insert(
-               pair<string, DOMElement*>(eventName, thisEventElement));
+               pair<string, pugi::xml_node>(eventName, thisEventElement));
 
                envelopeEventnames.insert(
                      pair<int, string>(envelopeCounter, eventName));
          break;
        case 7:
          sieveElements.insert(
-               pair<string, DOMElement*>(eventName, thisEventElement));
+               pair<string, pugi::xml_node>(eventName, thisEventElement));
 
                sieveEventnames.insert(
                      pair<int, string>(sieveCounter, eventName));
          break;
        case 8:
          spatializationElements.insert(
-               pair<string, DOMElement*>(eventName, thisEventElement));
+               pair<string, pugi::xml_node>(eventName, thisEventElement));
 
                spatializationEventnames.insert(
                      pair<int, string>(spatializationCounter, eventName));
          break;
        case 9:
          patternElements.insert(
-               pair<string, DOMElement*>(eventName, thisEventElement));
+               pair<string, pugi::xml_node>(eventName, thisEventElement));
 
                patternEventnames.insert(
                      pair<int, string>(patternCounter, eventName));
          break;
        case 10:
          reverbElements.insert(
-               pair<string, DOMElement*>(eventName, thisEventElement));
+               pair<string, pugi::xml_node>(eventName, thisEventElement));
 
                reverbEventnames.insert(
                      pair<int, string>(reverbCounter, eventName));
          break;
        case 12:
          notesElements.insert(
-               pair<string, DOMElement*>(eventName, thisEventElement));
+               pair<string, pugi::xml_node>(eventName, thisEventElement));
 
                notesEventnames.insert(
                      pair<int, string>(notesCounter, eventName));
          break;
        case 13:
          filterElements.insert(
-               pair<string, DOMElement*>(eventName, thisEventElement));
+               pair<string, pugi::xml_node>(eventName, thisEventElement));
 
                filterEventnames.insert(
                      pair<int, string>(filterCounter, eventName));
          break;
      }
-     thisEventElement = thisEventElement->GNES();
+     thisEventElement = GNES(thisEventElement);
    }
  }
 
@@ -265,8 +265,8 @@ Utilities::~Utilities(){
 
 //----------------------------------------------------------------------------//
 
-DOMElement* Utilities::getEventElement(EventType _type, string _eventName){
-  map<string, DOMElement*>::iterator it;
+pugi::xml_node Utilities::getEventElement(EventType _type, string _eventName){
+  map<string, pugi::xml_node>::iterator it;
 
   switch((int)_type){
     case 0:
@@ -315,30 +315,28 @@ DOMElement* Utilities::getEventElement(EventType _type, string _eventName){
 
 //----------------------------------------------------------------------------//
 
-string Utilities::XMLTranscode(DOMElement* _thisFunctionElement){
+string Utilities::XMLTranscode(pugi::xml_node _thisFunctionElement){
 
   // handle empty function element and empty string
-  if (_thisFunctionElement == NULL || 
-      _thisFunctionElement->getFirstChild() == NULL) {
+  if (!_thisFunctionElement || !_thisFunctionElement.first_child()) {
     return "";
   }
 
-  //flatten the element to a string
-  XMLCh tempStr[3] = {chLatin_L, chLatin_S, chNull};
-  DOMImplementation *impl = DOMImplementationRegistry::getDOMImplementation(tempStr);
-  DOMLSSerializer   *theSerializer = ((DOMImplementationLS*)impl)->createLSSerializer();
-  XMLCh* bla = theSerializer->writeToString (_thisFunctionElement);
-  char* toTranscode = XMLString::transcode(bla);
-  string returnString = string (toTranscode);
-  XMLString::release(&toTranscode);
-  XMLString::release(&bla);
-  delete theSerializer;
+  // If the element has only text children, return that text directly.
+  bool hasElementChild = false;
+  for (auto c = _thisFunctionElement.first_child(); c; c = c.next_sibling()) {
+    if (c.type() == pugi::node_element) { hasElementChild = true; break; }
+  }
+  if (!hasElementChild) {
+    return std::string(_thisFunctionElement.child_value());
+  }
 
-  //remove the tag
-  int tagLength = (int) XMLString::stringLen(_thisFunctionElement->getTagName());
-  returnString = returnString.substr(tagLength+2, returnString.size() - tagLength * 2 - 5);
-
-  return returnString;
+  // Otherwise serialize each child node (XML for elements, raw text for text nodes).
+  std::ostringstream oss;
+  for (auto c = _thisFunctionElement.first_child(); c; c = c.next_sibling()) {
+    c.print(oss, "", pugi::format_raw | pugi::format_no_declaration);
+  }
+  return oss.str();
 }
 
 
@@ -394,10 +392,10 @@ double Utilities::evaluate(std::string _input, void* _object){
 
 //----------------------------------------------------------------------------//
 
-bool Utilities::isSieveFunction(DOMElement* input)
+bool Utilities::isSieveFunction(pugi::xml_node input)
 {
-  return (   (input = input->GFEC())
-          && (input = input->GFEC())
+  return (   (input = GFEC(input))
+          && (input = GFEC(input))
           && (XMLTC(input) == "ChooseL" || XMLTC(input) == "ValuePick"));
 }
 
@@ -414,32 +412,40 @@ void* Utilities::evaluateObject(string _input,
   if (_returnType == eventEnv){
     return getEnvelope(input, _object);
   }
-  else if (_returnType == eventSpa){
-    return (void*) getSPAFunctionElement( _object);
-  }
-  else if (_returnType == eventRev){
-    return (void*) getREVFunctionElement( _object);
-  }
   else if (_returnType ==eventPat){
     return (void*) getPattern( input, _object);
   }
   else if (_returnType ==eventSiv){
     return (void*) getSieve( input, _object);
   }
-  else if (_returnType ==eventFil){
-    return (void*) getFILFunctionElement( _object);
-  }
-  else if (_returnType == eventSpec){
-    return (void*) getSpectrum(input, _object);
-  }
+  // eventSpa / eventRev / eventFil / eventSpec return pugi::xml_node values;
+  // callers should use evaluateSpa/evaluateRev/evaluateFil/evaluateSpectrumElement.
   return (void*)  NULL;
+}
+
+//----------------------------------------------------------------------------//
+
+pugi::xml_node Utilities::evaluateSpa(void* _object){
+  return getSPAFunctionElement(_object);
+}
+
+pugi::xml_node Utilities::evaluateRev(void* _object){
+  return getREVFunctionElement(_object);
+}
+
+pugi::xml_node Utilities::evaluateFil(void* _object){
+  return getFILFunctionElement(_object);
+}
+
+pugi::xml_node Utilities::evaluateSpectrumElement(string _input, void* _object){
+  return getSpectrum(removeSpaces(_input), _object);
 }
 
 
 //----------------------------------------------------------------------------//
 
 std::vector<std::string> Utilities::listElementToStringVector(
-            DOMElement* _listElement){
+            pugi::xml_node _listElement){
   std::vector<std::string> list;
   string listString = XMLTranscode(_listElement);
   bool doneProcessingListString = false;
@@ -552,32 +558,15 @@ string Utilities::removeSpaces(string _originalString){
 //----------------------------------------------------------------------------//
 
 string Utilities::evaluateFunction(string _functionString,void* _object){
-  // convert the function string to a DOMElement
-  XercesDOMParser* parser = new XercesDOMParser();
-  xercesc::MemBufInputSource myxml_buf  (
-            (const XMLByte*)_functionString.c_str(),
-            _functionString.size(),
-            "function (in memory)");
+  // convert the function string to a pugi::xml_node
+  pugi::xml_document parsedDoc;
+  parsedDoc.load_string(_functionString.c_str());
+  pugi::xml_node root = parsedDoc.document_element();
 
-  parser->parse(myxml_buf);
-  DOMDocument* xmlDocument = parser->getDocument();
-  DOMElement* root = xmlDocument->getDocumentElement();
-
-  char* functionNameChars;
-  char* charBuffer;
-  DOMCharacterData* textData;
-  string functionName;
-  DOMElement* thisElement;
   string resultString = "";
 
-  DOMElement* functionNameElement = root->GFEC();
-  textData = ( DOMCharacterData*) functionNameElement->getFirstChild();
-
-  if (textData){
-    functionNameChars = XMLString::transcode(textData->getData());
-    functionName = string(functionNameChars);
-    XMLString::release(&functionNameChars);
-  }
+  pugi::xml_node functionNameElement = GFEC(root);
+  string functionName = functionNameElement.child_value();
 
   // check the function name and call the proper method for evaluation
   if(functionName.compare("RandomInt")==0){
@@ -663,50 +652,29 @@ string Utilities::evaluateFunction(string _functionString,void* _object){
     resultString = static_function_PREVIOUS_CHILD_DURATION( _object);
   }
 
-  delete parser;
   return resultString;
 }
 
 
 //---------------------------------------------------------------------------//
 Sieve* Utilities::evaluateSieveFunction(string _functionString,void* _object){
-  // convert the function string to a DOMElement
-  XercesDOMParser* parser = new XercesDOMParser();
-  xercesc::MemBufInputSource myxml_buf  (
-            (const XMLByte*)_functionString.c_str(),
-            _functionString.size(),
-            "function (in memory)");
+  // convert the function string to a pugi::xml_node
+  pugi::xml_document parsedDoc;
+  parsedDoc.load_string(_functionString.c_str());
+  pugi::xml_node root = parsedDoc.document_element();
 
-  parser->parse(myxml_buf);
-  DOMDocument* xmlDocument = parser->getDocument();
-  DOMElement* root = xmlDocument->getDocumentElement();
-
-  char* functionNameChars;
-  char* charBuffer;
-  DOMCharacterData* textData;
-  string functionName;
-  DOMElement* thisElement;
   Sieve* resultSieve = nullptr;
 
-  DOMElement* functionNameElement = root->GFEC();
-  textData = ( DOMCharacterData*) functionNameElement->getFirstChild();
-
-  if (textData){
-    functionNameChars = XMLString::transcode(textData->getData());
-    functionName = string(functionNameChars);
-    XMLString::release(&functionNameChars);
-  }
+  pugi::xml_node functionNameElement = GFEC(root);
+  string functionName = functionNameElement.child_value();
 
   if (functionName.compare("ChooseL")==0){
     resultSieve = sieve_ChooseL(root, _object);
-//  cout << "Sieve* Utilities::evaluateSieveFunction - sieve_ChooseL" << endl;
   }
   else if (functionName.compare("ValuePick")==0){
-//  cout << "Sieve* Utilities::evaluateSieveFunction - ValuePick" << endl;
     resultSieve = sieve_ValuePick(root, _object);
   }
 
-  delete parser;
   return resultSieve;
 }
 
@@ -821,9 +789,9 @@ if (_object !=NULL){
 
 //----------------------------------------------------------------------------//
 
-string Utilities::function_Inverse(DOMElement* _functionElement, void* _object){
+string Utilities::function_Inverse(pugi::xml_node _functionElement, void* _object){
 
-  DOMElement* elementIter = _functionElement->GFEC()->GNES();
+  pugi::xml_node elementIter = GNES(GFEC(_functionElement));
   double entry = evaluate(XMLTranscode(elementIter ),_object);
 
   double resultNum = ( 1. / entry );
@@ -835,8 +803,8 @@ string Utilities::function_Inverse(DOMElement* _functionElement, void* _object){
 
 //---------------------------------------------------------------------------//
 
-string Utilities::function_Markov(DOMElement* _functionElement, void* _object) {
-  DOMElement* elementIter = _functionElement->GFEC()->GNES();
+string Utilities::function_Markov(pugi::xml_node _functionElement, void* _object) {
+  pugi::xml_node elementIter = GNES(GFEC(_functionElement));
   int entry = (int)evaluate(XMLTranscode(elementIter), _object);
 
   float resultNum = markovModelLibrary[entry].nextSample(Random::Rand());
@@ -847,9 +815,9 @@ string Utilities::function_Markov(DOMElement* _functionElement, void* _object) {
 
 //----------------------------------------------------------------------------//
 
-string Utilities::function_LN(DOMElement* _functionElement, void* _object){
+string Utilities::function_LN(pugi::xml_node _functionElement, void* _object){
 
-  DOMElement* elementIter = _functionElement->GFEC()->GNES();
+  pugi::xml_node elementIter = GNES(GFEC(_functionElement));
   double entry = evaluate(XMLTranscode(elementIter ),_object);
 
   double resultNum = ( 1. / pow(2.71828, entry) );
@@ -860,8 +828,8 @@ string Utilities::function_LN(DOMElement* _functionElement, void* _object){
 
 //----------------------------------------------------------------------------//
 
-string Utilities::function_Fibonacci(DOMElement* _functionElement, void* _object){
-  DOMElement* elementIter = _functionElement->GFEC()->GNES();
+string Utilities::function_Fibonacci(pugi::xml_node _functionElement, void* _object){
+  pugi::xml_node elementIter = GNES(GFEC(_functionElement));
   int entry = evaluate(XMLTranscode(elementIter ),_object);
 
   int numA = 1;
@@ -879,7 +847,7 @@ string Utilities::function_Fibonacci(DOMElement* _functionElement, void* _object
 
 //----------------------------------------------------------------------------//
 
-string Utilities::function_Decay(DOMElement* _functionElement, void* _object){
+string Utilities::function_Decay(pugi::xml_node _functionElement, void* _object){
 //  <Fun>
 //    <Name>Decay</Name>
 //    <Base>base</Base>
@@ -888,16 +856,16 @@ string Utilities::function_Decay(DOMElement* _functionElement, void* _object){
 //    <Index>CURRENT_PARTIAL_NUM</Index>
 //  </Fun>
 
-  DOMElement* elementIter = _functionElement->GFEC()->GNES();
+  pugi::xml_node elementIter = GNES(GFEC(_functionElement));
   double base = evaluate(XMLTranscode(elementIter ),_object);
 
-  elementIter = elementIter->GNES();
+  elementIter = GNES(elementIter);
   string type = XMLTranscode(elementIter);
 
-  elementIter = elementIter->GNES();
+  elementIter = GNES(elementIter);
   double rate = evaluate(XMLTranscode(elementIter ),_object);
 
-  elementIter = elementIter->GNES();
+  elementIter = GNES(elementIter);
   double index = evaluate(XMLTranscode(elementIter ),_object);
 
 
@@ -916,7 +884,7 @@ string Utilities::function_Decay(DOMElement* _functionElement, void* _object){
 
 //----------------------------------------------------------------------------//
 
-string Utilities::function_Stochos(DOMElement* _functionElement, void* _object){
+string Utilities::function_Stochos(pugi::xml_node _functionElement, void* _object){
 //  <Fun>
 //    <Name>Stochos</Name>
 //    <Method>RANGE_DISTRIB</Method>
@@ -941,20 +909,20 @@ string Utilities::function_Stochos(DOMElement* _functionElement, void* _object){
     }
   }
 
-  DOMElement* elementIter = _functionElement->GFEC()->GNES();
+  pugi::xml_node elementIter = GNES(GFEC(_functionElement));
   string method = XMLTC(elementIter);
 
-  elementIter = elementIter->GNES();
-  DOMElement* envElementIter = elementIter->GFEC();
+  elementIter = GNES(elementIter);
+  pugi::xml_node envElementIter = GFEC(elementIter);
   vector<Envelope*> envVect;
   while (envElementIter!=NULL) {
     //cou << MLTC(envElementIter)<<endl;
     envVect.push_back((Envelope*)evaluateObject(XMLTC(envElementIter), _object, eventEnv));
-    envElementIter = envElementIter->GNES();
+    envElementIter = GNES(envElementIter);
   }
 
 
-  elementIter = elementIter->GNES();
+  elementIter = GNES(elementIter);
   int offset = (int) evaluate ( XMLTC(elementIter), _object);
   float returnVal = 0.0;
 
@@ -1019,7 +987,7 @@ string Utilities::function_Stochos(DOMElement* _functionElement, void* _object){
 
 //----------------------------------------------------------------------------//
 
-string Utilities::function_ValuePick(DOMElement* _functionElement, void* _object){
+string Utilities::function_ValuePick(pugi::xml_node _functionElement, void* _object){
   Sieve* si = sieve_ValuePick(_functionElement, _object);
   int resultNum = si->ChooseL();
   delete si;
@@ -1030,7 +998,7 @@ string Utilities::function_ValuePick(DOMElement* _functionElement, void* _object
 
 //----------------------------------------------------------------------------//
 
-Sieve* Utilities::sieve_ValuePick(DOMElement* _functionElement, void* _object){
+Sieve* Utilities::sieve_ValuePick(pugi::xml_node _functionElement, void* _object){
 
 //<Fun>
 //  <Name>ValuePick</Name>
@@ -1054,24 +1022,24 @@ Sieve* Utilities::sieve_ValuePick(DOMElement* _functionElement, void* _object){
     checkpoint = ((Event*)_object)->getCheckPoint();
   }
 
-  DOMElement* elementIter = _functionElement->GFEC()->GNES();
+  pugi::xml_node elementIter = GNES(GFEC(_functionElement));
 
   //Range, low, high and distribution  envelopes
   double absRange =  evaluate (XMLTC(elementIter), _object);
 
-  elementIter = elementIter->GNES();
+  elementIter = GNES(elementIter);
   Envelope *envLow = (Envelope*)evaluateObject(XMLTC(elementIter), _object, eventEnv);
 
-  elementIter = elementIter->GNES();
+  elementIter = GNES(elementIter);
   Envelope *envHigh = (Envelope*)evaluateObject(XMLTC(elementIter), _object, eventEnv);
 
-  elementIter = elementIter->GNES();
+  elementIter = GNES(elementIter);
   Envelope *envDist = (Envelope*)evaluateObject(XMLTC(elementIter), _object, eventEnv);
 
-  elementIter = elementIter->GNES();
+  elementIter = GNES(elementIter);
   string eMethod = XMLTC(elementIter);
 
-  elementIter = elementIter->GNES();
+  elementIter = GNES(elementIter);
   vector<string> eArgs = listElementToStringVector( elementIter);
   vector<int> eArgVect;
 
@@ -1080,20 +1048,20 @@ Sieve* Utilities::sieve_ValuePick(DOMElement* _functionElement, void* _object){
       eArgVect.push_back((int)evaluate(eArgs[i], _object));
     }
   }
-  elementIter = elementIter->GNES();
+  elementIter = GNES(elementIter);
   string wMethod = XMLTC(elementIter);
 
-  elementIter = elementIter->GNES();
+  elementIter = GNES(elementIter);
   vector<string> wArgs = listElementToStringVector( elementIter);
   vector<int> wArgVect;
   for (unsigned i = 0; i < wArgs.size(); i ++){
     wArgVect.push_back((int)evaluate(wArgs[i], _object));
   }
 
-  elementIter = elementIter->GNES();
+  elementIter = GNES(elementIter);
   string modifyMethod = XMLTC(elementIter);
 
-  elementIter = elementIter->GNES();
+  elementIter = GNES(elementIter);
   vector<std::string> offsetString = listElementToStringVector( elementIter);
   vector<int> offsetVect;
   for (unsigned i = 0; i < offsetString.size(); i ++){
@@ -1149,16 +1117,16 @@ cout << "      beatEDUs=" << beatEDUs << endl;
 
 //----------------------------------------------------------------------------//
 
-Sieve* Utilities::sieve_ChooseL(DOMElement* _functionElement, void* _object) {
-  string sivFunctionString =  XMLTC(_functionElement->GFEC()->GNES()) ;
+Sieve* Utilities::sieve_ChooseL(pugi::xml_node _functionElement, void* _object) {
+  string sivFunctionString =  XMLTC(GNES(GFEC(_functionElement))) ;
   return (Sieve*)evaluateObject(sivFunctionString, _object, eventSiv);
 }
 
 //----------------------------------------------------------------------------//
 
-string Utilities::function_ChooseL(DOMElement* _functionElement, void* _object){
+string Utilities::function_ChooseL(pugi::xml_node _functionElement, void* _object){
   //<Fun><Name>ChooseL</Name><Entry>SIV</Entry></Fun>
-  string sivFunctionString =  XMLTC(_functionElement->GFEC()->GNES()) ;
+  string sivFunctionString =  XMLTC(GNES(GFEC(_functionElement))) ;
   Sieve* svPtr = (Sieve*)evaluateObject(sivFunctionString, _object, eventSiv);
   double resultNum = svPtr->ChooseL();
   delete svPtr;
@@ -1169,14 +1137,14 @@ string Utilities::function_ChooseL(DOMElement* _functionElement, void* _object){
 
 //----------------------------------------------------------------------------//
 
-string Utilities::function_MakeList(DOMElement* _functionElement, void* _object){
+string Utilities::function_MakeList(pugi::xml_node _functionElement, void* _object){
   cout<<"Utilites: Make_List is not implemented yet."<<endl;
 //<Fun><Name>MakeList</Name><Func></Func><Size></Size></Fun>
 
-  DOMElement* listElement = _functionElement->getFirstElementChild()->getNextElementSibling();
+  pugi::xml_node listElement = GNES(GFEC(_functionElement));
 
   std::vector<std::string> stringList = listElementToStringVector(listElement);
-  DOMElement* boundElement = listElement->getNextElementSibling();
+  pugi::xml_node boundElement = GNES(listElement);
 
   int bound = (int)evaluate(XMLTranscode(boundElement), _object);
 /*
@@ -1200,10 +1168,10 @@ string Utilities::function_MakeList(DOMElement* _functionElement, void* _object)
 
 //----------------------------------------------------------------------------//
 
-string Utilities::function_Randomizer(DOMElement* _functionElement, void* _object){
+string Utilities::function_Randomizer(pugi::xml_node _functionElement, void* _object){
 
-  DOMElement* baseValElement = _functionElement->getFirstElementChild()->getNextElementSibling();
-  DOMElement* percDevElement = baseValElement->getNextElementSibling();
+  pugi::xml_node baseValElement = GNES(GFEC(_functionElement));
+  pugi::xml_node percDevElement = GNES(baseValElement);
 
   double baseVal = evaluate(XMLTranscode(baseValElement ),_object);
   double percDev = evaluate(XMLTranscode(percDevElement), _object);
@@ -1219,10 +1187,10 @@ string Utilities::function_Randomizer(DOMElement* _functionElement, void* _objec
 
 //----------------------------------------------------------------------------//
 
-string Utilities::function_Random(DOMElement* _functionElement, void* _object){
+string Utilities::function_Random(pugi::xml_node _functionElement, void* _object){
 
-  DOMElement* lowBoundElement = _functionElement->getFirstElementChild()->getNextElementSibling();
-  DOMElement* highBoundElement = lowBoundElement->getNextElementSibling();
+  pugi::xml_node lowBoundElement = GNES(GFEC(_functionElement));
+  pugi::xml_node highBoundElement = GNES(lowBoundElement);
 
   double lowBound = evaluate(XMLTranscode(lowBoundElement ),_object);
   double highBound = evaluate(XMLTranscode(highBoundElement), _object);
@@ -1235,10 +1203,10 @@ string Utilities::function_Random(DOMElement* _functionElement, void* _object){
 
 //----------------------------------------------------------------------------//
 
-string Utilities::function_Select(DOMElement* _functionElement, void* _object){
+string Utilities::function_Select(pugi::xml_node _functionElement, void* _object){
 
-  DOMElement* listElement = _functionElement->getFirstElementChild()->getNextElementSibling();
-  DOMElement* indexElement = listElement->getNextElementSibling();
+  pugi::xml_node listElement = GNES(GFEC(_functionElement));
+  pugi::xml_node indexElement = GNES(listElement);
 
   std::vector<std::string> list = listElementToStringVector(listElement);
 
@@ -1262,10 +1230,10 @@ cout << endl;
 
 //----------------------------------------------------------------------------//
 
-string Utilities::function_SelectObject(DOMElement* _functionElement, void* _object){
+string Utilities::function_SelectObject(pugi::xml_node _functionElement, void* _object){
 
-  DOMElement* listElement = _functionElement->getFirstElementChild()->getNextElementSibling();
-  DOMElement* indexElement = listElement->getNextElementSibling();
+  pugi::xml_node listElement = GNES(GFEC(_functionElement));
+  pugi::xml_node indexElement = GNES(listElement);
   std::vector<std::string> list = listElementToStringVector(listElement);
   int index = (int)evaluate(XMLTranscode(indexElement), _object);
   return list[index];
@@ -1273,12 +1241,12 @@ string Utilities::function_SelectObject(DOMElement* _functionElement, void* _obj
 
 //----------------------------------------------------------------------------//
 
-string Utilities::function_GetPattern(DOMElement* _functionElement, void* _object){
+string Utilities::function_GetPattern(pugi::xml_node _functionElement, void* _object){
 
-  DOMElement* elementIter = _functionElement->GFEC()->GNES();//method
+  pugi::xml_node elementIter = GNES(GFEC(_functionElement));//method
 
   string method = XMLTranscode(elementIter);
-  elementIter = elementIter->GNES();//origin
+  elementIter = GNES(elementIter);//origin
   int origin = (int)evaluate(XMLTranscode(elementIter), _object);
 
   string patternString = XMLTranscode(_functionElement);
@@ -1296,7 +1264,7 @@ string Utilities::function_GetPattern(DOMElement* _functionElement, void* _objec
                        //it in the _object's patternStorage. the _object is
                        //responsible for cleaning up the memory when it's done.
 
-    pattern = (Patter*) (evaluateObject(XMLTranscode(elementIter->GNES()) , _object, eventPat));
+    pattern = (Patter*) (evaluateObject(XMLTranscode(GNES(elementIter)) , _object, eventPat));
     ((Event*) _object)->addPattern(patternString, pattern);
 
   }
@@ -1310,9 +1278,9 @@ string Utilities::function_GetPattern(DOMElement* _functionElement, void* _objec
 
 
 //----------------------------------------------------------------------------/
-string Utilities::function_RandomInt(DOMElement* _functionElement, void* _object){
-  DOMElement* lowBoundElement = _functionElement->getFirstElementChild()->getNextElementSibling();
-  DOMElement* highBoundElement = lowBoundElement->getNextElementSibling();
+string Utilities::function_RandomInt(pugi::xml_node _functionElement, void* _object){
+  pugi::xml_node lowBoundElement = GNES(GFEC(_functionElement));
+  pugi::xml_node highBoundElement = GNES(lowBoundElement);
 
   int lowBound = (int)evaluate(XMLTranscode(lowBoundElement), _object);
   int highBound = (int)evaluate(XMLTranscode(highBoundElement), _object);
@@ -1323,10 +1291,10 @@ string Utilities::function_RandomInt(DOMElement* _functionElement, void* _object
 
 //---------------------------------------------------------------------------//
 
-string Utilities::function_RandomOrderInt(DOMElement* _functionElement, void* _object) {
-  DOMElement* lowBoundElement = _functionElement->getFirstElementChild()->getNextElementSibling();
-  DOMElement* highBoundElement = lowBoundElement->getNextElementSibling();
-  DOMElement* idElement = highBoundElement->getNextElementSibling();
+string Utilities::function_RandomOrderInt(pugi::xml_node _functionElement, void* _object) {
+  pugi::xml_node lowBoundElement = GNES(GFEC(_functionElement));
+  pugi::xml_node highBoundElement = GNES(lowBoundElement);
+  pugi::xml_node idElement = GNES(highBoundElement);
 
   int lowBound = (int)evaluate(XMLTranscode(lowBoundElement), _object);
   int highBound = (int)evaluate(XMLTranscode(highBoundElement), _object);
@@ -1352,10 +1320,10 @@ string Utilities::function_RandomOrderInt(DOMElement* _functionElement, void* _o
 
 //---------------------------------------------------------------------------//
 
-string Utilities::function_RandomDensity(DOMElement* _functionElement, void* _object) {
-  DOMElement* envelopeNumberElement = _functionElement->getFirstElementChild()->getNextElementSibling();
-  DOMElement* lowBoundElement = envelopeNumberElement->getNextElementSibling();
-  DOMElement* highBoundElement = lowBoundElement->getNextElementSibling();
+string Utilities::function_RandomDensity(pugi::xml_node _functionElement, void* _object) {
+  pugi::xml_node envelopeNumberElement = GNES(GFEC(_functionElement));
+  pugi::xml_node lowBoundElement = GNES(envelopeNumberElement);
+  pugi::xml_node highBoundElement = GNES(lowBoundElement);
 
   int envelopeNumber = (int)evaluate(XMLTranscode(envelopeNumberElement), _object);
   double lowBound = evaluate(XMLTranscode(lowBoundElement), _object);
@@ -1379,27 +1347,16 @@ string Utilities::function_RandomDensity(DOMElement* _functionElement, void* _ob
 
 
 Sieve* Utilities::getSieve(string _functionString, void* _object){
-  XercesDOMParser* parser = new XercesDOMParser();
-
   string toParse = "<root>" + _functionString + "</root>";
-  xercesc::MemBufInputSource myxml_buf (
-     (const XMLByte*)toParse.c_str(),
-     toParse.size(),
-     "function (in memory)");
-
-  parser->parse(myxml_buf);
-  DOMDocument* xmlDocument = parser->getDocument();
-  DOMElement* root = xmlDocument->getDocumentElement();
-  //cout << "Utilities::getSieve. before helper" << endl;
-  Sieve* sieve = getSieveHelper (_object, root);
-    //cout << "Utilities::getSieve. after helper" << endl;
-  delete parser;
-  return sieve;
+  pugi::xml_document doc;
+  doc.load_string(toParse.c_str());
+  pugi::xml_node root = doc.document_element();
+  return getSieveHelper(_object, root);
 }
 
 //----------------------------------------------------------------------------//
 
-Sieve* Utilities::getSieveHelper(void* _object, DOMElement* _SIVFunction){
+Sieve* Utilities::getSieveHelper(void* _object, pugi::xml_node _SIVFunction){
 
   double checkpoint = 0;
 
@@ -1408,15 +1365,15 @@ Sieve* Utilities::getSieveHelper(void* _object, DOMElement* _SIVFunction){
   }
   //cout << "Utilities::getSieve. checkpoint: " << checkpoint << endl;
   // Get the function name
-  DOMElement* functionNameElement = _SIVFunction->GFEC()->GFEC();
+  pugi::xml_node functionNameElement = GFEC(GFEC(_SIVFunction));
 
   // If the function is ReadSIVFile:
   // Get the _SIVFunction from the filename, and recursively call itself
   // on that function.
   if (XMLTranscode(functionNameElement).compare("ReadSIVFile")==0){
-    string fileName = XMLTranscode(functionNameElement->GNES());
-    DOMElement* k = getEventElement(eventSiv, fileName);
-    return getSieveHelper(_object, k->GFEC()->GNES()->GNES());
+    string fileName = XMLTranscode(GNES(functionNameElement));
+    pugi::xml_node k = getEventElement(eventSiv, fileName);
+    return getSieveHelper(_object, GNES(GNES(GFEC(k))));
   }
 
   // If the function is MakeSieve:
@@ -1425,31 +1382,31 @@ Sieve* Utilities::getSieveHelper(void* _object, DOMElement* _SIVFunction){
   else if (XMLTranscode(functionNameElement).compare("MakeSieve")==0){
   /*
     // Get minVal
-    DOMElement* elementIter = _SIVFunction->GFEC()->GFEC()->GNES();
+    pugi::xml_node elementIter = GNES(GFEC(GFEC(_SIVFunction)));
     int minVal = evaluate(XMLTC(elementIter), _object);
 
 
     // Get maxVal
-    elementIter = elementIter->GNES();
+    elementIter = GNES(elementIter);
     int maxVal = evaluate(XMLTC(elementIter), _object);
   */
     // Get minVal
-    DOMElement* elementIter = _SIVFunction->GFEC()->GFEC()->GNES();
+    pugi::xml_node elementIter = GNES(GFEC(GFEC(_SIVFunction)));
 
     Envelope *envLow = (Envelope*)evaluateObject(XMLTC(elementIter), _object, eventEnv);
     int minVal = (int)floor( envLow->getScaledValueNew(checkpoint, 1) + 0.5);
 
     // Get maxVal
-    elementIter = elementIter->GNES();
+    elementIter = GNES(elementIter);
     Envelope *envHigh = (Envelope*)evaluateObject(XMLTC(elementIter), _object, eventEnv);
     int maxVal = (int)floor( envHigh->getScaledValueNew(checkpoint, 1) + 0.5);
     //cout << "Utilities::getSieve. min: " << minVal << " max: " << maxVal << endl;
     // Get eMethod
-    elementIter = elementIter->GNES();
+    elementIter = GNES(elementIter);
     string eMethod = XMLTC(elementIter);
 
     // Get eArgInts
-    elementIter = elementIter->GNES();
+    elementIter = GNES(elementIter);
     vector<string> eArgs = listElementToStringVector( elementIter);
     vector<int> eArgInts;
     if (eMethod != "MODS") {
@@ -1459,11 +1416,11 @@ Sieve* Utilities::getSieveHelper(void* _object, DOMElement* _SIVFunction){
     }
 
     // Get wMethod
-    elementIter = elementIter->GNES();
+    elementIter = GNES(elementIter);
     string wMethod = XMLTC(elementIter);
 
     // Get wArgInts
-    elementIter = elementIter->GNES();
+    elementIter = GNES(elementIter);
     vector<string> wArgs = listElementToStringVector( elementIter);
     vector<int> wArgInts;
     for (unsigned i = 0; i < wArgs.size(); i ++){
@@ -1471,7 +1428,7 @@ Sieve* Utilities::getSieveHelper(void* _object, DOMElement* _SIVFunction){
     }
 
     // Get offsetVect
-    elementIter = elementIter->GNES();
+    elementIter = GNES(elementIter);
     vector<string> offsetString = listElementToStringVector( elementIter);
     vector<int> offsetVect;
 
@@ -1505,24 +1462,11 @@ Sieve* Utilities::getSieveHelper(void* _object, DOMElement* _SIVFunction){
   // Parse the Select function from _SIVFunction and recursively call itself
   // on the new function.
   else if (XMLTranscode(functionNameElement).compare("Select")==0){
-    string selectedListElementString = "<root>" + function_SelectObject(_SIVFunction->GFEC(), _object) + "</root>";
-
-    XercesDOMParser* parser = new XercesDOMParser();
-
-    xercesc::MemBufInputSource myxml_buf  (
-      (const XMLByte*)selectedListElementString.c_str(),
-       selectedListElementString.size(),
-       "function (in memory)");
-
-    parser->parse(myxml_buf);
-
-    DOMDocument* xmlDocument = parser->getDocument();
-    DOMElement* root = xmlDocument->getDocumentElement();
-
-    Sieve* sieve =  getSieveHelper(_object, root);
-    delete parser;
-    return sieve;
-
+    string selectedListElementString = "<root>" + function_SelectObject(GFEC(_SIVFunction), _object) + "</root>";
+    pugi::xml_document doc;
+    doc.load_string(selectedListElementString.c_str());
+    pugi::xml_node root = doc.document_element();
+    return getSieveHelper(_object, root);
   }
 
   // Otherwise, the function fails.
@@ -1535,40 +1479,28 @@ Sieve* Utilities::getSieveHelper(void* _object, DOMElement* _SIVFunction){
 //----------------------------------------------------------------------------//
 
 Patter* Utilities::getPattern(string _functionString, void* _object){
-
-  XercesDOMParser* parser = new XercesDOMParser();
-
   string toParse = "<root>" + _functionString + "</root>";
-    xercesc::MemBufInputSource myxml_buf  (
-      (const XMLByte*)toParse.c_str(),
-       toParse.size(),
-       "function (in memory)");
-
-  parser->parse(myxml_buf);
-
-  DOMDocument* xmlDocument = parser->getDocument();
-  DOMElement* root = xmlDocument->getDocumentElement();
-
-  Patter* pattern = getPatternHelper (_object, root);
-  delete parser;
-  return pattern;
+  pugi::xml_document doc;
+  doc.load_string(toParse.c_str());
+  pugi::xml_node root = doc.document_element();
+  return getPatternHelper(_object, root);
 }
 
 //----------------------------------------------------------------------------/e {
 
 
-Patter* Utilities::getPatternHelper(void* _object, DOMElement* _PATFunction){
+Patter* Utilities::getPatternHelper(void* _object, pugi::xml_node _PATFunction){
   // Get the function name
-  DOMElement* functionNameElement = _PATFunction->getFirstElementChild()->getFirstElementChild();
+  pugi::xml_node functionNameElement = GFEC(GFEC(_PATFunction));
 
   // If the function is ReadPATFile:
   // Get the _PATFunction from the filename, and recursively call itself
   // on that function.
   if (XMLTranscode(functionNameElement).compare("ReadPATFile")==0){
-    string fileName = XMLTranscode(functionNameElement->GNES());
-    DOMElement* k = getEventElement(eventPat, fileName);
+    string fileName = XMLTranscode(GNES(functionNameElement));
+    pugi::xml_node k = getEventElement(eventPat, fileName);
 
-    return getPatternHelper(_object, k->GFEC()->GNES()->GNES());
+    return getPatternHelper(_object, GNES(GNES(GFEC(k))));
 
   }
 
@@ -1578,7 +1510,7 @@ Patter* Utilities::getPatternHelper(void* _object, DOMElement* _PATFunction){
   else if (XMLTranscode(functionNameElement).compare("MakePattern")==0){
 
 cout << "Patter* Utilities::getPatternHelper - MakePattern option" << endl;
-    DOMElement* listElement = _PATFunction->GFEC()->GFEC()->GNES();
+    pugi::xml_node listElement = GNES(GFEC(GFEC(_PATFunction)));
 cout << "	after listElement" << endl;
     vector<string> stringList =listElementToStringVector (listElement);
 cout <<	"after ElementToString" << "  " << endl;
@@ -1604,22 +1536,22 @@ cout << "intList size: " << stringList.size() << "    " << endl;
   // TODO: Figure out if this is true.
   else if (XMLTranscode(functionNameElement).compare("ExpandPattern")==0){
     cout<<"see Expand pattern:"<<endl;
-    cout<<XMLTranscode(_PATFunction->GFEC())<<endl;
-    DOMElement* elementIter = _PATFunction->GFEC()->GFEC()->GNES();
+    cout<<XMLTranscode(GFEC(_PATFunction))<<endl;
+    pugi::xml_node elementIter = GNES(GFEC(GFEC(_PATFunction)));
     string method = XMLTranscode(elementIter);
 
     // Find Expand parameters
-    elementIter = elementIter->GNES();
+    elementIter = GNES(elementIter);
     int mod = evaluate ( XMLTranscode( elementIter), _object);
 
-    elementIter = elementIter->GNES();
+    elementIter = GNES(elementIter);
     int low = evaluate ( XMLTranscode( elementIter), _object);
 
-    elementIter = elementIter->GNES();
+    elementIter = GNES(elementIter);
     int high = evaluate ( XMLTranscode( elementIter), _object);
 
     // Recurse on the pattern to expand
-    elementIter = elementIter->GNES();
+    elementIter = GNES(elementIter);
     Patter* pattern = getPatternHelper(_object, elementIter);
     pattern->Expand( method, mod, low, high );
     return pattern;
@@ -1630,27 +1562,18 @@ cout << "intList size: " << stringList.size() << "    " << endl;
   // Parse the Select function from _PATFunction and recursively call itself
   // on the new function.
   else if (XMLTranscode(functionNameElement).compare("Select")==0){
-    string selectedListElementString = "<root>" + function_SelectObject(_PATFunction->GFEC(), _object) + "</root>";
+    string selectedListElementString = "<root>" + function_SelectObject(GFEC(_PATFunction), _object) + "</root>";
 
     // Here we need to push a temporary parser in the _object to stored the
     // parsed selectedListElementString...
-    XercesDOMParser* parser = new XercesDOMParser();
-
-    xercesc::MemBufInputSource myxml_buf  (
-      (const XMLByte*)selectedListElementString.c_str(),
-       selectedListElementString.size(),
-       "function (in memory)");
-
-    parser->parse(myxml_buf);
-
-    DOMDocument* xmlDocument = parser->getDocument();
-    DOMElement* root = xmlDocument->getDocumentElement();
+    auto _docPtr = std::make_unique<pugi::xml_document>();
+      _docPtr->load_string(selectedListElementString.c_str());
+      pugi::xml_node root = _docPtr->document_element();
 
 
 
     Patter* pat =  getPatternHelper(_object, root);
-    delete parser;
-    return pat;
+return pat;
 
   }
   cerr<<"Utilities::Warning! Pattern Construction Failed"<<endl;
@@ -1659,14 +1582,14 @@ cout << "intList size: " << stringList.size() << "    " << endl;
 
 //----------------------------------------------------------------------------//
 
-DOMElement* Utilities::getSPAFunctionElement(void* _object){
-  return getSPAFunctionElementHelper(_object, NULL, true);
+pugi::xml_node Utilities::getSPAFunctionElement(void* _object){
+  return getSPAFunctionElementHelper(_object, pugi::xml_node(), true);
 }
 
 //----------------------------------------------------------------------------//
 
-DOMElement* Utilities::getSPAFunctionElementHelper(void* _object, DOMElement* _SPAFunction, bool _initialCall){
-  DOMElement* SPAElement;
+pugi::xml_node Utilities::getSPAFunctionElementHelper(void* _object, pugi::xml_node _SPAFunction, bool _initialCall){
+  pugi::xml_node SPAElement;
 
   if (_initialCall ==true){
     Bottom* thisBottom = (Bottom*)_object;
@@ -1675,7 +1598,7 @@ DOMElement* Utilities::getSPAFunctionElementHelper(void* _object, DOMElement* _S
   else {
     SPAElement = _SPAFunction;
   }
-  DOMElement* functionNameElement = SPAElement->getFirstElementChild()->getFirstElementChild();
+  pugi::xml_node functionNameElement = GFEC(GFEC(SPAElement));
 
   if (XMLTranscode(functionNameElement).compare("ReadSPAFile")==0){
     string functionString = XMLTC(SPAElement);
@@ -1683,29 +1606,21 @@ DOMElement* Utilities::getSPAFunctionElementHelper(void* _object, DOMElement* _S
 
     size_t select = functionString.find("Select", 0);
     if (select == string::npos){
-      fileName = XMLTranscode(functionNameElement->GNES());
+      fileName = XMLTranscode(GNES(functionNameElement));
     }
     else{ //see select inside readSPA
       //cout<<functionString<<endl;
-      string selectedListElementString = "<root><Fun><Name>ReadSPAFile</Name><File>" + function_SelectObject(SPAElement->GFEC()->GFEC()->GNES()->GFEC(), _object) + "</File></Fun></root>";
+      string selectedListElementString = "<root><Fun><Name>ReadSPAFile</Name><File>" + function_SelectObject(GFEC(GNES(GFEC(GFEC(SPAElement)))), _object) + "</File></Fun></root>";
       // Here we need to push a temporary parser in the _object to stored the
       // parsed selectedListElementString...
 
       selectedListElementString = removeSpaces (selectedListElementString);
 
 
-      XercesDOMParser* parser = new XercesDOMParser();
-
-      xercesc::MemBufInputSource myxml_buf  (
-        (const XMLByte*)selectedListElementString.c_str(),
-        selectedListElementString.size(),
-        "function (in memory)");
-
-      parser->parse(myxml_buf);
-
-      DOMDocument* xmlDocument = parser->getDocument();
-      DOMElement* root = xmlDocument->getDocumentElement();
-      ((Event*)_object)->addTemporaryXMLParser(parser);
+      auto _docPtr = std::make_unique<pugi::xml_document>();
+      _docPtr->load_string(selectedListElementString.c_str());
+      pugi::xml_node root = _docPtr->document_element();
+      ((Event*)_object)->addTemporaryXMLDocument(std::move(_docPtr));
       //after the statement above, the ownership of the parser is transfered to
       // the _object. the _object is responsible to clean up the memory of the
       // parser, which is done by the std::vector automatically.
@@ -1717,29 +1632,21 @@ DOMElement* Utilities::getSPAFunctionElementHelper(void* _object, DOMElement* _S
     fileName = removeSpaces (fileName);
 
 
-    DOMElement* k = getEventElement(eventSpa, fileName);
+    pugi::xml_node k = getEventElement(eventSpa, fileName);
 
-    return getSPAFunctionElementHelper(_object, k->GFEC()->GNES()->GNES(), false);
+    return getSPAFunctionElementHelper(_object, GNES(GNES(GFEC(k))), false);
 
   }
   else if (XMLTranscode(functionNameElement).compare("Select")==0){
-    string selectedListElementString = "<root>" + function_SelectObject(SPAElement->GFEC(), _object) + "</root>";
+    string selectedListElementString = "<root>" + function_SelectObject(GFEC(SPAElement), _object) + "</root>";
 
     // Here we need to push a temporary parser in the _object to stored the
     // parsed selectedListElementString...
-    XercesDOMParser* parser = new XercesDOMParser();
+    auto _docPtr = std::make_unique<pugi::xml_document>();
+      _docPtr->load_string(selectedListElementString.c_str());
+      pugi::xml_node root = _docPtr->document_element();
 
-    xercesc::MemBufInputSource myxml_buf  (
-      (const XMLByte*)selectedListElementString.c_str(),
-       selectedListElementString.size(),
-       "function (in memory)");
-
-    parser->parse(myxml_buf);
-
-    DOMDocument* xmlDocument = parser->getDocument();
-    DOMElement* root = xmlDocument->getDocumentElement();
-
-    ((Event*)_object)->addTemporaryXMLParser(parser);
+    ((Event*)_object)->addTemporaryXMLDocument(std::move(_docPtr));
     //after the statement above, the ownership of the parser is transfered to
     // the _object. the _object is responsible to clean up the memory of the
     // parser, which is done by the std::vector automatically.
@@ -1747,22 +1654,22 @@ DOMElement* Utilities::getSPAFunctionElementHelper(void* _object, DOMElement* _S
 
   }
   else { //function name = SPA
-    return SPAElement->getFirstElementChild();
+    return GFEC(SPAElement);
   }
-  return NULL;
+  return pugi::xml_node();
 }
 
 //----------------------------------------------------------------------------//
 
-DOMElement* Utilities::getREVFunctionElement(void* _object){
-  return getREVFunctionElementHelper(_object,NULL,true);
+pugi::xml_node Utilities::getREVFunctionElement(void* _object){
+  return getREVFunctionElementHelper(_object, pugi::xml_node(), true);
 }
 
 //----------------------------------------------------------------------------//
 
-DOMElement* Utilities::getREVFunctionElementHelper(void* _object, DOMElement* _REVFunction, bool _initialCall){
+pugi::xml_node Utilities::getREVFunctionElementHelper(void* _object, pugi::xml_node _REVFunction, bool _initialCall){
 
-  DOMElement* REVElement;
+  pugi::xml_node REVElement;
 
   if (_initialCall ==true){
     Bottom* thisBottom = (Bottom*)_object;
@@ -1772,7 +1679,7 @@ DOMElement* Utilities::getREVFunctionElementHelper(void* _object, DOMElement* _R
     REVElement = _REVFunction;
   }
 
-  DOMElement* functionNameElement = REVElement->getFirstElementChild()->getFirstElementChild();
+  pugi::xml_node functionNameElement = GFEC(GFEC(REVElement));
 
   if (XMLTranscode(functionNameElement).compare("ReadREVFile")==0){
     string functionString = XMLTC(REVElement);
@@ -1780,29 +1687,21 @@ DOMElement* Utilities::getREVFunctionElementHelper(void* _object, DOMElement* _R
 
     size_t select = functionString.find("Select", 0);
     if (select == string::npos){
-      fileName = XMLTranscode(functionNameElement->GNES());
+      fileName = XMLTranscode(GNES(functionNameElement));
     }
     else{ //see select inside readREV
       //cout<<functionString<<endl;
-      string selectedListElementString = "<root><Fun><Name>ReadREVFile</Name><File>" + function_SelectObject(REVElement->GFEC()->GFEC()->GNES()->GFEC(), _object) + "</File></Fun></root>";
+      string selectedListElementString = "<root><Fun><Name>ReadREVFile</Name><File>" + function_SelectObject(GFEC(GNES(GFEC(GFEC(REVElement)))), _object) + "</File></Fun></root>";
     // Here we need to push a temporary parser in the _object to stored the
     // parsed selectedListElementString...
 
       selectedListElementString = removeSpaces (selectedListElementString);
 
 
-      XercesDOMParser* parser = new XercesDOMParser();
-
-      xercesc::MemBufInputSource myxml_buf  (
-        (const XMLByte*)selectedListElementString.c_str(),
-        selectedListElementString.size(),
-        "function (in memory)");
-
-      parser->parse(myxml_buf);
-
-      DOMDocument* xmlDocument = parser->getDocument();
-      DOMElement* root = xmlDocument->getDocumentElement();
-      ((Event*)_object)->addTemporaryXMLParser(parser);
+      auto _docPtr = std::make_unique<pugi::xml_document>();
+      _docPtr->load_string(selectedListElementString.c_str());
+      pugi::xml_node root = _docPtr->document_element();
+      ((Event*)_object)->addTemporaryXMLDocument(std::move(_docPtr));
       //after the statement above, the ownership of the parser is transfered to
       // the _object. the _object is responsible to clean up the memory of the
       // parser, which is done by the std::vector automatically.
@@ -1814,29 +1713,21 @@ DOMElement* Utilities::getREVFunctionElementHelper(void* _object, DOMElement* _R
     fileName = removeSpaces (fileName);
 
 
-    DOMElement* k = getEventElement(eventRev, fileName);
+    pugi::xml_node k = getEventElement(eventRev, fileName);
 
-    return getREVFunctionElementHelper(_object, k->GFEC()->GNES()->GNES(), false); ;
+    return getREVFunctionElementHelper(_object, GNES(GNES(GFEC(k))), false); ;
 
   }
   else if (XMLTranscode(functionNameElement).compare("Select")==0){
-    string selectedListElementString = "<root>" + function_SelectObject(REVElement->GFEC(), _object) + "</root>";
+    string selectedListElementString = "<root>" + function_SelectObject(GFEC(REVElement), _object) + "</root>";
 
     // Here we need to push a temporary parser in the _object to stored the
     // parsed selectedListElementString...
-    XercesDOMParser* parser = new XercesDOMParser();
+    auto _docPtr = std::make_unique<pugi::xml_document>();
+      _docPtr->load_string(selectedListElementString.c_str());
+      pugi::xml_node root = _docPtr->document_element();
 
-    xercesc::MemBufInputSource myxml_buf  (
-      (const XMLByte*)selectedListElementString.c_str(),
-       selectedListElementString.size(),
-       "function (in memory)");
-
-    parser->parse(myxml_buf);
-
-    DOMDocument* xmlDocument = parser->getDocument();
-    DOMElement* root = xmlDocument->getDocumentElement();
-
-    ((Event*)_object)->addTemporaryXMLParser(parser);
+    ((Event*)_object)->addTemporaryXMLDocument(std::move(_docPtr));
     //after the statement above, the ownership of the parser is transfered to
     // the _object. the _object is responsible to clean up the memory of the
     // parser, which is done by the std::vector automatically.
@@ -1845,23 +1736,23 @@ DOMElement* Utilities::getREVFunctionElementHelper(void* _object, DOMElement* _R
   }
 
   else { // simple or medium or advanced
-    return REVElement->getFirstElementChild();
+    return GFEC(REVElement);
   }
-  return NULL;
+  return pugi::xml_node();
 }
 
 
 //----------------------------------------------------------------------------//
 
-DOMElement* Utilities::getFILFunctionElement(void* _object){
-  return getFILFunctionElementHelper(_object,NULL,true);
+pugi::xml_node Utilities::getFILFunctionElement(void* _object){
+  return getFILFunctionElementHelper(_object, pugi::xml_node(), true);
 }
 
 //----------------------------------------------------------------------------//
 
-DOMElement* Utilities::getFILFunctionElementHelper(void* _object, DOMElement* _FILFunction, bool _initialCall){
+pugi::xml_node Utilities::getFILFunctionElementHelper(void* _object, pugi::xml_node _FILFunction, bool _initialCall){
 
-  DOMElement* FILElement;
+  pugi::xml_node FILElement;
 
   if (_initialCall ==true){
     Bottom* thisBottom = (Bottom*)_object;
@@ -1873,12 +1764,12 @@ DOMElement* Utilities::getFILFunctionElementHelper(void* _object, DOMElement* _F
 
 
 
-  if (FILElement->GFEC()==NULL || FILElement->GFEC()->GFEC()==NULL) return NULL;
-   DOMElement* functionNameElement = FILElement->getFirstElementChild()->getFirstElementChild();
+  if (GFEC(FILElement)== pugi::xml_node() || GFEC(GFEC(FILElement))== pugi::xml_node()) return pugi::xml_node();
+   pugi::xml_node functionNameElement = GFEC(GFEC(FILElement));
 
   if ( XMLTC(FILElement) ==""){
     cout<<"no filter"<<endl;
-    return NULL;
+    return pugi::xml_node();
   }
 
 
@@ -1888,29 +1779,21 @@ DOMElement* Utilities::getFILFunctionElementHelper(void* _object, DOMElement* _F
 
     size_t select = functionString.find("Select", 0);
     if (select == string::npos){
-      fileName = XMLTranscode(functionNameElement->GNES());
+      fileName = XMLTranscode(GNES(functionNameElement));
     }
     else{ //see select inside readFIL
       //cout<<functionString<<endl;
-      string selectedListElementString = "<root><Fun><Name>ReadFILFile</Name><File>" + function_SelectObject(FILElement->GFEC()->GFEC()->GNES()->GFEC(), _object) + "</File></Fun></root>";
+      string selectedListElementString = "<root><Fun><Name>ReadFILFile</Name><File>" + function_SelectObject(GFEC(GNES(GFEC(GFEC(FILElement)))), _object) + "</File></Fun></root>";
     // Here we need to push a temporary parser in the _object to stored the
     // parsed selectedListElementString...
 
       selectedListElementString = removeSpaces (selectedListElementString);
 
 
-      XercesDOMParser* parser = new XercesDOMParser();
-
-      xercesc::MemBufInputSource myxml_buf  (
-        (const XMLByte*)selectedListElementString.c_str(),
-        selectedListElementString.size(),
-        "function (in memory)");
-
-      parser->parse(myxml_buf);
-
-      DOMDocument* xmlDocument = parser->getDocument();
-      DOMElement* root = xmlDocument->getDocumentElement();
-      ((Event*)_object)->addTemporaryXMLParser(parser);
+      auto _docPtr = std::make_unique<pugi::xml_document>();
+      _docPtr->load_string(selectedListElementString.c_str());
+      pugi::xml_node root = _docPtr->document_element();
+      ((Event*)_object)->addTemporaryXMLDocument(std::move(_docPtr));
       //after the statement above, the ownership of the parser is transfered to
       // the _object. the _object is responsible to clean up the memory of the
       // parser, which is done by the std::vector automatically.
@@ -1922,29 +1805,21 @@ DOMElement* Utilities::getFILFunctionElementHelper(void* _object, DOMElement* _F
     fileName = removeSpaces (fileName);
 
 
-    DOMElement* k = getEventElement(eventFil, fileName);
+    pugi::xml_node k = getEventElement(eventFil, fileName);
 
-    return getFILFunctionElementHelper(_object, k->GFEC()->GNES()->GNES(), false); ;
+    return getFILFunctionElementHelper(_object, GNES(GNES(GFEC(k))), false); ;
 
   }
   else if (XMLTranscode(functionNameElement).compare("Select")==0){
-    string selectedListElementString = "<root>" + function_SelectObject(FILElement->GFEC(), _object) + "</root>";
+    string selectedListElementString = "<root>" + function_SelectObject(GFEC(FILElement), _object) + "</root>";
 
     // Here we need to push a temporary parser in the _object to stored the
     // parsed selectedListElementString...
-    XercesDOMParser* parser = new XercesDOMParser();
+    auto _docPtr = std::make_unique<pugi::xml_document>();
+      _docPtr->load_string(selectedListElementString.c_str());
+      pugi::xml_node root = _docPtr->document_element();
 
-    xercesc::MemBufInputSource myxml_buf  (
-      (const XMLByte*)selectedListElementString.c_str(),
-       selectedListElementString.size(),
-       "function (in memory)");
-
-    parser->parse(myxml_buf);
-
-    DOMDocument* xmlDocument = parser->getDocument();
-    DOMElement* root = xmlDocument->getDocumentElement();
-
-    ((Event*)_object)->addTemporaryXMLParser(parser);
+    ((Event*)_object)->addTemporaryXMLDocument(std::move(_docPtr));
     //after the statement above, the ownership of the parser is transfered to
     // the _object. the _object is responsible to clean up the memory of the
     // parser, which is done by the std::vector automatically.
@@ -1953,88 +1828,63 @@ DOMElement* Utilities::getFILFunctionElementHelper(void* _object, DOMElement* _F
   }
 
   else {
-    return FILElement->getFirstElementChild();
+    return GFEC(FILElement);
   }
-  return NULL;
+  return pugi::xml_node();
 }
 
 
 //----------------------------------------------------------------------------//
-DOMElement* Utilities::getSpectrum(string _functionString, void* _object){;
-  XercesDOMParser* parser = new XercesDOMParser();
-  xercesc::MemBufInputSource myxml_buf  (
-            (const XMLByte*)_functionString.c_str(),
-            _functionString.size(),
-            "function (in memory)");
+pugi::xml_node Utilities::getSpectrum(string _functionString, void* _object){;
+  auto _docPtr = std::make_unique<pugi::xml_document>();
+      _docPtr->load_string(_functionString.c_str());
+      pugi::xml_node _functionElement = _docPtr->document_element();
 
-  parser->parse(myxml_buf);
-  DOMDocument* xmlDocument = parser->getDocument();
-  DOMElement* _functionElement = xmlDocument->getDocumentElement();
-
-  return _functionElement->getFirstElementChild()->getNextElementSibling();
+  return GNES(GFEC(_functionElement));
   }
 
 //----------------------------------------------------------------------------//
 
 Envelope* Utilities::getEnvelope(string _input, void* _object){
 
-  XercesDOMParser* parser = new XercesDOMParser();
-  xercesc::MemBufInputSource myxml_buf  ((const XMLByte*)_input.c_str(), _input.size(), "function (in memory)");
+  auto _docPtr = std::make_unique<pugi::xml_document>();
+      _docPtr->load_string(_input.c_str());
+      pugi::xml_node root = _docPtr->document_element();
 
-  parser->parse(myxml_buf);
-  DOMDocument* xmlDocument = parser->getDocument();
-  DOMElement* root = xmlDocument->getDocumentElement();
-
-  char* functionNameChars;
-  char* charBuffer;
-  DOMCharacterData* textData;
-  string functionName;
-  DOMElement* thisElement;
-
-
-  DOMElement* functionNameElement = root->getFirstElementChild();
-  textData = ( DOMCharacterData*) functionNameElement->getFirstChild();
-
-  if (textData){
-    functionNameChars = XMLString::transcode(textData->getData());
-    functionName = string(functionNameChars);
-    XMLString::release(&functionNameChars);
-  }
+  pugi::xml_node functionNameElement = GFEC(root);
+  string functionName = functionNameElement.child_value();
 
   Envelope* returnEnvelope;
   if(functionName.compare("EnvLib")==0){
-      returnEnvelope = envLib(functionNameElement->getNextElementSibling(), _object);
+      returnEnvelope = envLib(GNES(functionNameElement), _object);
   }
   else if (functionName.compare("MakeEnvelope")==0){
-    returnEnvelope = makeEnvelope(functionNameElement->getNextElementSibling(), _object);
+    returnEnvelope = makeEnvelope(GNES(functionNameElement), _object);
   }
   else if (functionName.compare("ReadENVFile")==0){
-    returnEnvelope = readEnvFile(functionNameElement->getNextElementSibling(), _object);
+    returnEnvelope = readEnvFile(GNES(functionNameElement), _object);
   }
   else if (functionName.compare("Select")==0){
     string selectedListElementString = function_SelectObject(root, _object);
-    delete parser;
-    return getEnvelope(selectedListElementString,  _object);
+return getEnvelope(selectedListElementString,  _object);
   }
   else {
-    delete parser;
-      cout<<functionName<<endl;
+cout<<functionName<<endl;
     cout<<"warning: evaluating envelope failed."<<endl;
     return NULL;
   }
-  delete parser;
-  return returnEnvelope;
+return returnEnvelope;
 }
 
 //----------------------------------------------------------------------------//
 
-Envelope* Utilities::envLib(DOMElement* _functionElement, void* _object){
+Envelope* Utilities::envLib(pugi::xml_node _functionElement, void* _object){
 //  <Env>3</Env>
 //  <Scale>1.0</Scale>
   int envelopeNumber = evaluate(XMLTranscode(_functionElement), _object);
   Envelope* env = envelopeLibrary->getEnvelope(envelopeNumber);
   //cout <<"EnvLib: #"<<envelopeNumber<<endl;
-  double scale = evaluate(XMLTranscode(_functionElement->getNextElementSibling()), _object);
+  double scale = evaluate(XMLTranscode(GNES(_functionElement)), _object);
   env->scale(scale);
   return env;
 
@@ -2042,10 +1892,10 @@ Envelope* Utilities::envLib(DOMElement* _functionElement, void* _object){
 
 //----------------------------------------------------------------------------//
 
-Envelope* Utilities::readEnvFile(DOMElement* _functionElement, void* _object){
+Envelope* Utilities::readEnvFile(pugi::xml_node _functionElement, void* _object){
   //<File>object name</File>
 
-  DOMElement* file = getEventElement(eventEnv, XMLTranscode(_functionElement));
+  pugi::xml_node file = getEventElement(eventEnv, XMLTranscode(_functionElement));
 
 //  <Event orderInPalette=' 0'>
 //      <EventType>6</EventType>
@@ -2054,9 +1904,7 @@ Envelope* Utilities::readEnvFile(DOMElement* _functionElement, void* _object){
 //    </Event>
 //
 
-  DOMElement* builder = file->getFirstElementChild()->
-    getNextElementSibling()->
-    getNextElementSibling();
+  pugi::xml_node builder = GNES(GNES(GFEC(file)));
 
   return (Envelope*) evaluateObject(XMLTranscode(builder), _object, eventEnv);
 
@@ -2064,7 +1912,7 @@ Envelope* Utilities::readEnvFile(DOMElement* _functionElement, void* _object){
 
 //----------------------------------------------------------------------------//
 
-Envelope* Utilities::makeEnvelope(DOMElement* _functionElement, void* _object){
+Envelope* Utilities::makeEnvelope(pugi::xml_node _functionElement, void* _object){
 
 //<Xs>
 //  <X>0</X>
@@ -2086,15 +1934,15 @@ Envelope* Utilities::makeEnvelope(DOMElement* _functionElement, void* _object){
 //</Pros>
 //<Scale>1</Scale>
 
-  DOMElement* x = _functionElement->GFEC();
-  _functionElement = _functionElement->GNES();
-  DOMElement* y = _functionElement->GFEC();
-  _functionElement = _functionElement->GNES();
-  DOMElement* t = _functionElement->GFEC();
-  _functionElement = _functionElement->GNES();
-  DOMElement* p = _functionElement->GFEC();
+  pugi::xml_node x = GFEC(_functionElement);
+  _functionElement = GNES(_functionElement);
+  pugi::xml_node y = GFEC(_functionElement);
+  _functionElement = GNES(_functionElement);
+  pugi::xml_node t = GFEC(_functionElement);
+  _functionElement = GNES(_functionElement);
+  pugi::xml_node p = GFEC(_functionElement);
 
-  double scale = evaluate(XMLTranscode(_functionElement->getNextElementSibling()), _object);
+  double scale = evaluate(XMLTranscode(GNES(_functionElement)), _object);
 
   // create the collection of points
   Collection<xy_point> points;
@@ -2117,8 +1965,8 @@ Envelope* Utilities::makeEnvelope(DOMElement* _functionElement, void* _object){
     prevYVal = xy.y;
 
     points.add(xy);
-    x = x->getNextElementSibling();
-    y = y->getNextElementSibling();
+    x = GNES(x);
+    y = GNES(y);
 
   }
 
@@ -2154,8 +2002,8 @@ Envelope* Utilities::makeEnvelope(DOMElement* _functionElement, void* _object){
 
     segments.add(seg);
 
-    t = t->getNextElementSibling();
-    p = p->getNextElementSibling();
+    t = GNES(t);
+    p = GNES(p);
   }
 
   // Create a new envelope given the points and segments defined
