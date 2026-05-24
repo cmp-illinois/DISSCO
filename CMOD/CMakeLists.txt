@@ -4,6 +4,7 @@ project(CMOD)
 message(STATUS "== CMOD ==")
 
 find_package(XercesC REQUIRED)
+find_package(pugixml REQUIRED)
 find_package(SndFile REQUIRED)
 
 file(GLOB_RECURSE CMOD_SRC
@@ -17,6 +18,7 @@ set_property(TARGET CMOD PROPERTY ENABLE_EXPORTS TRUE)
 ### libsndfile must be linked in just the same way as it is in LASS ###
 target_link_libraries(CMOD PUBLIC ${SNDFILE_LIBRARY})
 target_link_libraries(CMOD PUBLIC ${XercesC_LIBRARY})
+target_link_libraries(CMOD PUBLIC pugixml::pugixml)
 # add_subdirectory(${CMAKE_SOURCE_DIR}/external-libs/muParser)
 target_link_libraries(CMOD PUBLIC MUPARSER)
 target_link_libraries(CMOD PUBLIC LASS)
