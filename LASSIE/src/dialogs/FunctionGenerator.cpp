@@ -69,12 +69,17 @@ void FunctionGenerator::setupUi()
     // Parse the incoming function string: <Fun><Name>X</Name>...</Fun>.
     // The matching FunctionWidget consumes the remaining children.
     QXmlStreamReader r(m_originalString);
-    if (!r.readNextStartElement()) return;       // <Fun>
-    if (!r.readNextStartElement()) return;       // <Name>
+    if (!r.readNextStartElement() || !r.readNextStartElement()) { // <Fun>, <Name>
+        ui->resultTextEdit->setText(m_originalString);
+        return;
+    }
     const QString functionName = FunctionWidget::readInner(r);
 
     const CMODFunction id = reg.idFromXmlName(functionName);
-    if (id == NOT_A_FUNCTION) return;
+    if (id == NOT_A_FUNCTION) {
+        ui->resultTextEdit->setText(m_originalString);
+        return;
+    }
     FunctionWidget* w = ensureRegisteredWidget(id);
     if (!w) return;
 
