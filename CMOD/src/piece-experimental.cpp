@@ -34,6 +34,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Utilities.h"
 #include <fstream>
 
+#ifdef _WIN32
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#include <vector>
+#else
+#include <cstdlib>
+#endif
+
 //----------------------------------------------------------------------------//
 
 int PieceHelper::getDirectoryList(string dir, vector<string> &files) {
@@ -365,7 +373,49 @@ Piece::Piece(string _workingPath, string _projectTitle){
     score_file.close();
 
     // execute lilypond to create pdf file
-    system(("lilypond " + projectName + ".ly").c_str());
+    {
+      std::string lilypondCmd = "lilypond " + projectName + ".ly";
+#ifdef _WIN32
+      // Use the native CreateProcess API instead of system() so we avoid
+      // launching cmd.exe just to parse the command line.
+      //
+      // We resolve lilypond.exe via PATH ourselves rather than letting
+      // CreateProcess do it from a NULL lpApplicationName. With NULL,
+      // CreateProcess's search order includes the parent's current
+      // directory (which we just chdir'd to a user-controlled project
+      // path), so an attacker could drop a lilypond.exe next to the
+      // .dissco file and have it execute. SearchPath under safe-search
+      // mode moves CWD to the end of the lookup list, and passing the
+      // resolved absolute path as lpApplicationName removes the parsing
+      // ambiguity entirely. If the binary can't be found we fail closed.
+      SetSearchPathMode(BASE_SEARCH_PATH_ENABLE_SAFE_SEARCHMODE |
+                        BASE_SEARCH_PATH_PERMANENT);
+      char resolvedPath[MAX_PATH];
+      DWORD resolvedLen = SearchPathA(nullptr, "lilypond", ".exe",
+                                      MAX_PATH, resolvedPath, nullptr);
+      if (resolvedLen == 0 || resolvedLen >= MAX_PATH) {
+        cout << "Could not locate lilypond.exe on PATH (Win32 error "
+             << GetLastError() << ")" << endl;
+      } else {
+        STARTUPINFOA si{};
+        PROCESS_INFORMATION pi{};
+        si.cb = sizeof(si);
+        std::vector<char> mutableCmd(lilypondCmd.begin(), lilypondCmd.end());
+        mutableCmd.push_back('\0');
+        if (CreateProcessA(resolvedPath, mutableCmd.data(), nullptr, nullptr,
+                           FALSE, 0, nullptr, nullptr, &si, &pi)) {
+          WaitForSingleObject(pi.hProcess, INFINITE);
+          CloseHandle(pi.hProcess);
+          CloseHandle(pi.hThread);
+        } else {
+          cout << "Failed to launch " << resolvedPath << " (Win32 error "
+               << GetLastError() << ")" << endl;
+        }
+      }
+#else
+      std::system(lilypondCmd.c_str());
+#endif
+    }
 
     // generating score files with different suffixes instead of replacing the older files.
     int suffix_rank = 0;
