@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.25)
 project(CMOD)
 message(STATUS "== CMOD ==")
 
-find_package(pugixml REQUIRED)
 find_package(SndFile REQUIRED)
 
 file(GLOB_RECURSE CMOD_SRC
@@ -16,7 +15,7 @@ set_property(TARGET CMOD PROPERTY ENABLE_EXPORTS TRUE)
 
 ### libsndfile must be linked in just the same way as it is in LASS ###
 target_link_libraries(CMOD PUBLIC ${SNDFILE_LIBRARY})
-target_link_libraries(CMOD PUBLIC pugixml::pugixml)
+target_link_libraries(CMOD PUBLIC PUGIXML)
 # add_subdirectory(${CMAKE_SOURCE_DIR}/external-libs/muParser)
 target_link_libraries(CMOD PUBLIC MUPARSER)
 target_link_libraries(CMOD PUBLIC LASS)
@@ -40,12 +39,6 @@ if(NOT SNDFILE_FOUND)
     message(SEND_ERROR "Couldn't find libsndfile, won't go well; check BUILDING docs")
 else()
     message(STATUS "Found libsndfile install!")
-endif()
-
-if(NOT pugixml_FOUND)
-    message(SEND_ERROR "Couldn't find pugixml, won't go well; check BUILDING docs")
-else()
-    message(STATUS "Found pugixml install!")
 endif()
 
 # set "default" location of the CMOD binary (directory) for use in LASSIE
