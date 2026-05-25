@@ -35,7 +35,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <fstream>
 
 #ifdef _WIN32
+#undef SIZE
 #define WIN32_LEAN_AND_MEAN
+#define NOGDI
+#define NOMINMAX
 #include <windows.h>
 #include <vector>
 #else
