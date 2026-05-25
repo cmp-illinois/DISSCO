@@ -64,6 +64,41 @@ jobs:
           run_doxygen CMOD/src   CMOD   "DISSCO :: CMOD"   "Composition module — stochastic event generator"
           run_doxygen LASS/src   LASS   "DISSCO :: LASS"   "Library of Audio Sound Synthesis"
 
+          # Per-version landing page so /<target>/ itself doesn't 404 — it
+          # just lists the three subproject doc trees.
+          cat > "$OUT/index.html" <<HTML
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <title>DISSCO $LABEL</title>
+            <style>
+              body { font-family: system-ui, sans-serif; max-width: 40rem;
+                     margin: 4rem auto; padding: 0 1rem; line-height: 1.5; }
+              h1 { margin-bottom: 0.25rem; }
+              p.tag { color: #555; margin-top: 0; }
+              ul { list-style: none; padding: 0; }
+              li { margin: 0.6rem 0; }
+              a { font-weight: 600; }
+              .up { font-size: 0.9rem; }
+            </style>
+          </head>
+          <body>
+            <p class="up"><a href="../">&larr; all versions</a></p>
+            <h1>DISSCO <span style="color:#666;font-weight:400">$LABEL</span></h1>
+            <p class="tag">API documentation, generated from source with Doxygen.</p>
+            <ul>
+              <li><a href="LASSIE/html/index.html">LASSIE</a> &mdash;
+                  composition environment GUI</li>
+              <li><a href="CMOD/html/index.html">CMOD</a> &mdash;
+                  composition module (stochastic event generator)</li>
+              <li><a href="LASS/html/index.html">LASS</a> &mdash;
+                  library of audio sound synthesis</li>
+            </ul>
+          </body>
+          </html>
+          HTML
+
       - name: Assemble publish tree
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -85,14 +120,26 @@ jobs:
           rm -rf "publish/$TARGET"
           mv "staging/$TARGET" "publish/$TARGET"
 
-          # Enumerate published versions: "latest" (if present) plus every v*
-          # directory, tag versions sorted newest-first by sort -V.
-          versions=()
-          [ -d publish/latest ] && versions+=("latest")
-          tags=$(find publish -maxdepth 1 -type d -name 'v*' -printf '%f\n' | sort -rV)
-          for t in $tags; do versions+=("$t"); done
+          # Discover what's published: a separate "latest" tracker built from
+          # main, and the v* tag releases sorted newest-first.
+          has_latest=0
+          [ -d publish/latest ] && has_latest=1
+          releases=$(find publish -maxdepth 1 -type d -name 'v*' -printf '%f\n' | sort -rV)
 
-          # Rewrite the top-level landing page from the discovered list.
+          emit_row () {
+            local v=$1
+            echo "      <li>"
+            echo "        <a href=\"$v/\">$v</a>"
+            echo "        <span class=\"sub\">"
+            echo "          (<a href=\"$v/LASSIE/html/index.html\">LASSIE</a>,"
+            echo "           <a href=\"$v/CMOD/html/index.html\">CMOD</a>,"
+            echo "           <a href=\"$v/LASS/html/index.html\">LASS</a>)"
+            echo "        </span>"
+            echo "      </li>"
+          }
+
+          # Rewrite the top-level landing page with a Latest section above a
+          # Releases section.
           {
             cat <<'HEAD'
           <!doctype html>
@@ -105,34 +152,53 @@ jobs:
                      margin: 4rem auto; padding: 0 1rem; line-height: 1.5; }
               h1 { margin-bottom: 0.25rem; }
               p.tag { color: #555; margin-top: 0; }
-              h2 { margin-top: 2.5rem; font-size: 1.1rem; }
+              section { margin-top: 2.5rem; padding-top: 1rem;
+                        border-top: 1px solid #e0e0e0; }
+              section h2 { margin: 0 0 0.5rem 0; font-size: 1.1rem; }
+              section p.hint { color: #666; margin-top: 0; font-size: 0.9rem; }
               ul { list-style: none; padding: 0; }
               li { margin: 0.35rem 0; }
               a { font-weight: 600; }
               .sub { font-weight: 400; color: #555; margin-left: 0.5em; }
+              .empty { color: #888; font-style: italic; }
             </style>
           </head>
           <body>
             <h1>DISSCO</h1>
             <p class="tag">Digital Instrument for Sound Synthesis and Composition</p>
             <p>API documentation, generated from source with Doxygen.</p>
-            <h2>Versions</h2>
-            <ul>
+
+            <section>
+              <h2>Latest</h2>
+              <p class="hint">Rebuilt on every push to <code>main</code>; overwrites itself.</p>
+              <ul>
           HEAD
 
-            for v in "${versions[@]}"; do
-              echo "      <li>"
-              echo "        <a href=\"$v/\">$v</a>"
-              echo "        <span class=\"sub\">"
-              echo "          (<a href=\"$v/LASSIE/html/index.html\">LASSIE</a>,"
-              echo "           <a href=\"$v/CMOD/html/index.html\">CMOD</a>,"
-              echo "           <a href=\"$v/LASS/html/index.html\">LASS</a>)"
-              echo "        </span>"
-              echo "      </li>"
-            done
+            if [ "$has_latest" -eq 1 ]; then
+              emit_row latest
+            else
+              echo "      <li class=\"empty\">No build yet &mdash; push to main to populate.</li>"
+            fi
+
+            cat <<'MID'
+              </ul>
+            </section>
+
+            <section>
+              <h2>Releases</h2>
+              <p class="hint">Snapshots from <code>v*</code> tag pushes.</p>
+              <ul>
+          MID
+
+            if [ -n "$releases" ]; then
+              for v in $releases; do emit_row "$v"; done
+            else
+              echo "      <li class=\"empty\">No releases published yet.</li>"
+            fi
 
             cat <<'TAIL'
-            </ul>
+              </ul>
+            </section>
           </body>
           </html>
           TAIL
