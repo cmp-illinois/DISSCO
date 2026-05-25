@@ -7,7 +7,6 @@
 #include "../core/project_struct.hpp"
 #include "../../LASS/src/LASS.h"
 #include "../core/EnvelopeLibraryEntry.hpp"
-#include "../../CMOD/src/Markov.h"
 
 #include <QXmlStreamWriter>
 

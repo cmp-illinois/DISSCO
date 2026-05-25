@@ -12,7 +12,6 @@ file(GLOB_RECURSE CMOD_SRC
 )
 
 add_executable(CMOD ${CMOD_SRC})
-set_property(TARGET CMOD PROPERTY ENABLE_EXPORTS TRUE)
 
 ### libsndfile must be linked in just the same way as it is in LASS ###
 target_link_libraries(CMOD PUBLIC ${SNDFILE_LIBRARY})

@@ -75,13 +75,12 @@ target_link_libraries(LASSIE PRIVATE
     Qt6::Widgets
     Qt6::Core
     Qt6::Xml
-    CMOD
+    LASS
 )
 
 include(GNUInstallDirs)
 target_include_directories(LASSIE PRIVATE
     ${CMAKE_SOURCE_DIR}/LASS/src
-    ${CMAKE_SOURCE_DIR}/CMOD/src
 )
 
 set_target_properties(LASSIE PROPERTIES
