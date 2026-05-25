@@ -52,7 +52,25 @@
 //For now disable strings until this part is converted to std::string
 #define RATIONAL_USES_STRINGS
 
-///A templated class for expressing rational numbers.
+/**
+ * @file Rational.h
+ * @brief Templated exact-rational arithmetic, adapted from Belle, Bonne,
+ *        Sage (William Andrew Burnson, 2007–2010).
+ *
+ * CMOD's @ref Tempo and EDU bookkeeping are expressed as rationals to
+ * avoid floating-point drift across long pieces. The whole class is
+ * header-only because it is templated on the underlying integer type;
+ * `Ratio` (an int specialization) is the alias the rest of CMOD uses.
+ */
+
+/**
+ * @brief Exact rational number over any integer type.
+ *
+ * Always stored in lowest terms; arithmetic reduces eagerly. Specialized
+ * elsewhere as `Ratio` for the int case.
+ *
+ * @tparam T integer type used for numerator and denominator
+ */
 template <class T>
 class Rational
 {

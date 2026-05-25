@@ -43,14 +43,37 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Sieve.h"
 #include "Tempo.h"
 
+/**
+ * @file Matrix.h
+ * @brief 3-D event-selection probability matrix.
+ *
+ * Builds an (event type × start time × duration) matrix of occurrence
+ * probabilities, normalizes it, samples one event from it, and re-balances
+ * the matrix after each choice so subsequent picks reflect what has
+ * already been used. Originally written by Ryan Cavis.
+ */
+
+/**
+ * @brief Single cell in the @ref Matrix probability grid.
+ *
+ * `attdurprob` is the raw joint probability of (start time, duration);
+ * `normprob` is the same number with the event-type weighting applied.
+ */
 struct MatPoint {
-  double attdurprob; // probability of attack and duration
-  double normprob; // normalized prob (with type taken into account)
-  int type;
-  int stime;
-  int dur;
+  double attdurprob; ///< Joint P(attack, duration) before type weighting.
+  double normprob;   ///< Normalized probability including the type factor.
+  int type;          ///< Candidate event type.
+  int stime;         ///< Start time bucket.
+  int dur;           ///< Duration bucket.
 };
 
+/**
+ * @brief 3-D occurrence-probability table for choosing CMOD events.
+ *
+ * After construction the matrix is normalized into a discrete
+ * distribution; sampling returns one cell and then mutates the table so
+ * later samples see an updated distribution.
+ */
 class Matrix {
 
   private:

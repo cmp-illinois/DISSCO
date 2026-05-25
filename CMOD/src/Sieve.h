@@ -38,7 +38,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 //---------------------------------------------------------------------------//
 
+/**
+ * @file Sieve.h
+ * @brief Xenakian sieve — a periodic logical filter over the integers.
+ *
+ * A sieve picks a subset of the integers via a union of modular residue
+ * classes (Xenakis, "Formalized Music"; Tipei, ICMC 1981; Ariza, AthenaCL).
+ * In CMOD it is the standard way to construct attack-time grids and pitch
+ * sets that have rhythmic / harmonic structure without being either
+ * uniform or fully random.
+ */
 
+/**
+ * @brief Ordered set of allowed integers with optional per-element weights.
+ *
+ * `eList` stores the in-range integers the sieve admits; `wList` stores
+ * parallel selection probabilities used when the sieve is sampled rather
+ * than enumerated. `skip` counts elements below the declared minimum that
+ * were dropped during construction.
+ */
 class Sieve {
   private:
     string fileName;

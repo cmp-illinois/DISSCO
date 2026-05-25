@@ -1,12 +1,16 @@
 
-//----------------------------------------------------------------------------//
-//
-//   SignalHandlers.h
-//
-//   This file contains the declarations for signal handlers that can 
-//   be installed for custom behaviors when a signal is raised.
-//
-//----------------------------------------------------------------------------//
+/**
+ * @file SignalHandlers.h
+ * @brief Custom POSIX signal handlers for CMOD (Rubin Du, 2024).
+ *
+ * Right now only @ref segfaultHandler is wired up — it prints a symbolized
+ * stack trace before exiting, so a crash mid-render produces something
+ * actionable in the terminal log. The interrupt / terminate / abort hooks
+ * are declared but intentionally left empty; they exist as anchor points
+ * for cleanup logic once a graceful-shutdown story is needed.
+ *
+ * @ref BACKTRACE_NUM bounds the number of frames captured.
+ */
 
 #ifndef SIGNALHANDLERS_H
 #define SIGNALHANDLERS_H

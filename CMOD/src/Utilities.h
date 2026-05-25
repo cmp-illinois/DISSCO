@@ -47,6 +47,28 @@ class Patter;
 class Sieve;
 class Score;
 
+/**
+ * @file Utilities.h
+ * @brief XML evaluator and bridge between CMOD Events and the LASS Score.
+ *
+ * Authored by Ming-ching Chiu (2012–2013). Utilities is the single class
+ * that knows how to turn an XML attribute string into the runtime object
+ * the rest of CMOD wants — a number, an envelope, a pattern, a sieve, or
+ * an Event reference. It is also where every Sound produced by a Bottom
+ * event is handed off to the LASS @ref Score for synthesis.
+ *
+ * The `EQUAL_TEMP` / `FUNDAMENTAL` / `CONTINUUM` / `HZ` / `POW2` constants
+ * are method-flag selectors that the XML uses to choose how a frequency
+ * specification should be interpreted.
+ */
+
+/**
+ * @brief Project-wide evaluator + CMOD-to-LASS adapter.
+ *
+ * One Utilities instance is created per Piece and carries the rendering
+ * parameters (thread count, channel count, sampling rate, sound-synthesis
+ * vs. particel-only mode) every event needs while it expands.
+ */
 class Utilities{
 
 public:

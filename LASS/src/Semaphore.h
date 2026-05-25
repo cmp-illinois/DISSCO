@@ -13,16 +13,16 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-//----------------------------------------------------------------------------//
-//
-//  Semaphore.h
-//
-//  Counting semaphore shim implemented on top of std::mutex /
-//  std::condition_variable. C++11 has no std::counting_semaphore (that
-//  arrived in C++20), so this provides the POSIX sem_init/wait/post
-//  semantics we rely on without requiring pthreads.
-//
-//----------------------------------------------------------------------------//
+/**
+ * @file Semaphore.h
+ * @brief Counting semaphore shim over std::mutex / std::condition_variable.
+ *
+ * C++11 has no std::counting_semaphore (that arrived in C++20), so this
+ * supplies the POSIX sem_init / wait / post semantics LASS uses to throttle
+ * the per-sound rendering workers in @ref Score, without pulling in
+ * pthreads. Non-copyable to prevent the implicit move that would invalidate
+ * the embedded mutex.
+ */
 
 #ifndef __SEMAPHORE_SHIM_H
 #define __SEMAPHORE_SHIM_H
@@ -30,6 +30,14 @@ GNU General Public License for more details.
 #include <condition_variable>
 #include <mutex>
 
+/**
+ * @brief Minimal counting semaphore with POSIX-style wait/post.
+ *
+ * The internal count is incremented by post() and decremented by wait();
+ * wait() blocks on the condition variable until the count is positive.
+ * Used by @ref Score to cap the number of Sounds that are being rendered
+ * concurrently.
+ */
 class Semaphore {
 public:
     explicit Semaphore(unsigned int initial = 0) : count_(initial) {}

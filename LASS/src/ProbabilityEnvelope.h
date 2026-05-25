@@ -28,6 +28,24 @@
 
 #include "Envelope.h"
 
+/**
+ * @file ProbabilityEnvelope.h
+ * @brief Envelope reinterpreted as a probability density / cumulative
+ *        distribution.
+ *
+ * Authored by Fanbo Xiang. Reused by CMOD bottom events that need to
+ * sample a value whose distribution is itself an envelope shape — the
+ * area under the curve becomes the total mass, and inverse-CDF sampling
+ * picks an x-coordinate.
+ */
+
+/**
+ * @brief @ref Envelope subclass with probability-distribution semantics.
+ *
+ * Adds quadrature (area-under-curve) and inverse-CDF sampling on top of
+ * an existing envelope shape. Construction either builds a fresh
+ * probability envelope or upgrades an existing Envelope by copy.
+ */
 class ProbabilityEnvelope : public Envelope {
 
 public:

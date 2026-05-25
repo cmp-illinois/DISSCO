@@ -43,6 +43,26 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 //---------------------------------------------------------------------------//
 
+/**
+ * @file Patter.h
+ * @brief Pattern generator that emits one value per call.
+ *
+ * Authored by Sever Tipei (July 2005, revised July 2007). Builds a pattern
+ * from a user-supplied origin plus a sequence of intervals, then yields
+ * values one at a time. The same input can be transformed into related
+ * patterns via mod-m equivalences, symmetrical set forms (R, I, RI), or
+ * intentional distortions. PAT files on disk describe both the object and
+ * the pattern that drives it.
+ */
+
+/**
+ * @brief Stateful pattern iterator.
+ *
+ * Holds the pre-computed pattern values in @c patty, the original
+ * interval list in @c intervals, and bookkeeping for the expansion method
+ * (`expMethod`, `expModulo`, `expLow`, `expHigh`). @c nextIndex advances
+ * each time a value is delivered.
+ */
 class Patter {
   private:
     std::vector<int> intervals;
