@@ -42,8 +42,24 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
 /**
-* This class is to store the created patterns and its XML representation as key
-**/
+ * @file Event.h
+ * @brief Core Event class — the common base for every layer in a DISSCO
+ *        composition tree (top, high, mid, low, bottom).
+ *
+ * Each Event holds the metadata that is shared regardless of layer:
+ * timespan, tempo, pattern cache, the XML nodes for the sieve / spa /
+ * reverb / filter / modifier attribute blocks, and the bookkeeping needed
+ * to merge ancestor modifiers when expanding children. Layer-specific
+ * behaviour lives in subclasses (e.g. @ref Bottom).
+ */
+
+/**
+ * @brief A (key, pattern) cache entry kept on an Event.
+ *
+ * Patterns are looked up by the literal XML text that defined them; this
+ * lets the Event reuse the same Patter instance when the same pattern is
+ * referenced multiple times within a single event expansion.
+ */
 class PatternPair{
 
 protected:
@@ -59,8 +75,13 @@ public:
 
 
 /**
-* this class is used for bottom to construct its children
-**/
+ * @brief Per-child snapshot used while a Bottom event is building its notes.
+ *
+ * Bundles the XML element describing the child (either a spectrum entry, if
+ * the bottom is a Sound, or a note entry), the resolved timespan, the
+ * resolved tempo, and the child's display name / numeric type so the
+ * Bottom's expansion routines can iterate without going back to the parser.
+ */
 class SoundAndNoteWrapper{
 public:
   // this is the element of the spectrum if the bottom event is a sound
@@ -81,8 +102,24 @@ public:
 
 
 /**
-*
-**/
+ * @brief Generic event in a DISSCO composition tree.
+ *
+ * Event is the shared base for every hierarchical layer in a piece:
+ * top, high, mid, low, and bottom. It carries the data common to all
+ * layers (name, integer type, timespan, tempo, pattern cache) along with
+ * the unresolved XML element handles for the attribute sub-blocks (attack
+ * sieve, duration sieve, spatialization, reverberation, filter, modifiers).
+ *
+ * Modifier inheritance is handled here too: the
+ * `modifiersIncludingAncestorsElement` is computed when an event is
+ * expanded and is then passed to each child, so a Bottom event sees the
+ * full chain of modifiers applied above it. The underlying XML document
+ * that backs the merged tree is owned by `modifiersDoc` for the Event's
+ * lifetime.
+ *
+ * Subclasses extend Event with layer-specific behaviour — most notably
+ * @ref Bottom, which produces the actual Notes and Sounds.
+ */
 class Event {
 public:
     //---------------------------- Information -------------------------------//

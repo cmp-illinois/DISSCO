@@ -36,6 +36,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 //----------------------------------------------------------------------------//
 
+/**
+ * @file Piece.h
+ * @brief Top-level composition object and supporting filesystem helpers.
+ *
+ * A Piece is the result of parsing a complete `.dissco` project on disk. It
+ * owns the global synthesis parameters (sample rate / size, channel count,
+ * staff layout, score and synthesis toggles) and is the root from which
+ * Event-tree expansion eventually produces output sound files and score
+ * pages. PieceHelper exposes the side-band filesystem utilities the project
+ * needs while a piece is being rendered (locating the project root,
+ * provisioning sound/score directories, picking unique output filenames).
+ */
+
+/**
+ * @brief Stateless filesystem helpers used while rendering a Piece.
+ *
+ * Each member is a static convenience that wraps a small bit of path or
+ * directory bookkeeping — no shared state is held between calls.
+ */
 struct PieceHelper {
 
   ///Lists contents of directory.
@@ -67,6 +86,20 @@ struct PieceHelper {
 class FileValue;
 class Utilities;
 
+/**
+ * @brief Root model of a DISSCO composition.
+ *
+ * A Piece is constructed from a working directory plus a project title and
+ * pulls all global settings out of the project file: sample rate, sample
+ * size, channel count, sound-synthesis vs. score-only mode, grand-staff and
+ * multi-staff layout, thread count, etc. From there the Event tree is
+ * expanded into Notes and Sounds; sound files are emitted into the
+ * directory hierarchy that PieceHelper provisions.
+ *
+ * The experimental aesthetic / entropy / genetic methods below are
+ * research-grade and operate directly on the XML DOM rather than on the
+ * fully-parsed event tree.
+ */
 class Piece {
 
   public:

@@ -34,6 +34,27 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 class Event; // Forward declaration for root exact ancestor
 
 //----------------------------------------------------------------------------//
+
+/**
+ * @file Tempo.h
+ * @brief Tempo + time-signature representation for CMOD events.
+ *
+ * A Tempo bundles beats-per-minute, the beat note value, and the surrounding
+ * time signature with its EDU-per-beat resolution. EDUs are CMOD's
+ * elementary displacement units — the integer pulse grid each event is
+ * quantized against — and most of Tempo's arithmetic converts between
+ * seconds, EDUs, and notated rhythmic values. Each event stores a Tempo
+ * pointer back to the ancestor where it was declared
+ * (@c rootExactAncestor), so children can resolve their tempo-relative
+ * timing without re-walking the tree.
+ */
+
+/**
+ * @brief Combined tempo and time-signature descriptor used by every Event.
+ *
+ * Default-constructs to the backwards-compatible 5/4 quarter=60 tempo that
+ * DISSCO implicitly assumed before `unitsPerSecond` was replaced.
+ */
 class Tempo {
   Ratio tempoBeatsPerMinute;
   Ratio tempoBeat;

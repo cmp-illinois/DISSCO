@@ -32,3 +32,6 @@ vcpkg.json
 
 # macOS related
 .DS_Store
+
+# Doxygen output (built locally or in CI)
+/docs/

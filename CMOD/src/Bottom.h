@@ -48,6 +48,31 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <stdlib.h>
 
 //----------------------------------------------------------------------------//
+
+/**
+ * @file Bottom.h
+ * @brief Leaf event in a DISSCO composition.
+ *
+ * Unlike higher layers, a Bottom event does not spawn further sub-events:
+ * it is the point where the composition tree turns into renderable output.
+ * Each Bottom emits a sequence of Sounds (for synthesis) and/or Notes
+ * (for traditional notation), driven by frequency / loudness / modifier
+ * elements that are re-evaluated per child to allow stochastic variation.
+ */
+
+/**
+ * @brief Concrete leaf @ref Event that produces Sounds and Notes.
+ *
+ * Bottom keeps the XML element handles for the per-event attribute blocks
+ * (frequency, loudness, modifiers, modifier group, ancestor modifiers) and
+ * recomputes them for every child it emits — the same Bottom can produce
+ * different frequencies / loudnesses on successive children when the
+ * driving expressions contain randomness.
+ *
+ * Bottom also tracks the bookkeeping needed for notated output (current
+ * partial, well-tempered pitch number, absolute pitch number, modifier
+ * usage map) and owns the list of child Sounds.
+ */
 class Bottom : public Event {
 
   private:

@@ -18,14 +18,34 @@ class EnvelopeLibraryWindow;
 class MarkovModelLibraryWindow; //nhi: more descriptive than MarkovWindow
 class ProjectView;
 
+/**
+ * @brief Top-level Qt main window for LASSIE.
+ *
+ * MainWindow is the application's root widget. It owns the menus, toolbars,
+ * status bar, recent-projects landing page, and the embedded ProjectView
+ * shown once a project is loaded. The two satellite library windows for
+ * envelope and Markov-model editing are owned here as unique_ptrs so they
+ * close cleanly when the app exits.
+ *
+ * Construction takes the global @ref Inst singleton; MainWindow registers
+ * itself as a static instance() so dialogs that need to post status messages
+ * can find it without a parent pointer.
+ *
+ * @note Project lifecycle (new / open / save / close) is mediated through
+ *       maybeSaveBeforeClose() and closeCurrentProject() to keep the
+ *       project model and the visible UI in sync.
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
     public:
         //MainWindow(QWidget *parent = nullptr);
+        /// Build the main window and bind it to the application singleton.
         explicit MainWindow(Inst*);
+        /// Access the most recently constructed MainWindow.
         static MainWindow* instance() { return instance_; }
         ~MainWindow() override;
+        /// Update the window title to reflect @p file (with a [modified] tag if requested).
         void setCurrentFile(const QString &file, bool modified = false);
 
         std::unique_ptr<Ui::MainWindow> ui;

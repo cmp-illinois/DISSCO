@@ -35,6 +35,28 @@
 
 using std::vector;
 
+/**
+ * @file MarkovModel.h
+ * @brief Discrete-time Markov chain with arbitrary state-value payload.
+ *
+ * Authored by Fanbo Xiang and Sever Tipei (UIUC, March 2018). Used by
+ * LASSIE's Markov-library editor and by CMOD when expanding events whose
+ * children are sampled from a Markov chain rather than a flat distribution.
+ */
+
+/**
+ * @brief Generic discrete-time Markov chain.
+ *
+ * @tparam T  type of value attached to each state (typically @c float for
+ *            DISSCO's parameter-driving chains).
+ *
+ * A MarkovModel owns three parallel structures: a fixed set of states with
+ * caller-supplied payload values, an initial-state probability
+ * distribution, and a square row-stochastic transition matrix. Sampling
+ * walks the chain one step at a time and returns the payload of the
+ * current state, so the same machinery can drive pitch, dynamic, density,
+ * or any other per-event value the composer wants to randomize.
+ */
 template<typename T>
 class MarkovModel {
 public:

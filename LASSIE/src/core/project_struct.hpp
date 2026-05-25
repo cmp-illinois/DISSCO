@@ -12,18 +12,39 @@
 
 #include "event_struct.hpp"
 
-/*
-the model: all transactions dealing with Projects must go through the ProjectManager to do so.
-              the PM will simply handle all the project requests and will not expose just anything
-              unnecessary to the caller. 
-*/
+/**
+ * @file project_struct.hpp
+ * @brief In-memory model of a DISSCO project and its top-level manager.
+ *
+ * Two classes live here:
+ *  - Project: a value-like aggregate of everything a `.dissco` file holds —
+ *    global synthesis settings, the event hierarchy (top/high/mid/low/bottom
+ *    plus spectrum, envelope, sieve, spatialization, pattern, reverb,
+ *    filter, note events), the envelope library, and any Markov models.
+ *  - ProjectManager: the single entry point that creates, opens, saves, and
+ *    closes Project instances. UI code never touches Project members
+ *    directly; it goes through ProjectManager's typed accessors.
+ *
+ * Project's data members are private and all UI access flows through
+ * ProjectManager. Adding a new field to a DISSCO project therefore means
+ * extending: this struct, ProjectManager's accessor list, the XML parser in
+ * project_struct.cpp, and the save routine.
+ */
 
 
 class ProjectManager;
 class EnvelopeLibraryEntry;
-template<typename T> 
-class MarkovModel; 
+template<typename T>
+class MarkovModel;
 
+/**
+ * @brief Aggregate state for a single open DISSCO project.
+ *
+ * All members are private; ProjectManager is the only friend and is the
+ * intended access path for the rest of LASSIE. Construction is restricted —
+ * client code goes through `ProjectManager::create()` /
+ * `ProjectManager::open()` rather than instantiating Project directly.
+ */
 class Project : public QObject {
     friend class ProjectManager;
 
@@ -115,6 +136,22 @@ class Project : public QObject {
             {"varcoda", true},       {"verylongfermata", true}};
 };
 
+/**
+ * @brief Owner and broker for all open Project instances.
+ *
+ * ProjectManager presents a thin façade over the currently-open Project.
+ * Most accessors return a reference into `curr_project_` so the UI can bind
+ * widgets directly to model state; `markModified()` then emits
+ * `dataModified()` so dependent windows refresh.
+ *
+ * Lifecycle methods (create / open / build / save / saveAs / close) are the
+ * only ones that allocate or destroy a Project — UI code must never `new`
+ * or `delete` Project itself.
+ *
+ * @warning Every accessor that returns a Project member dereferences
+ *          `curr_project_` without a null check. Callers must ensure
+ *          `get_curr_project() != nullptr` before using them.
+ */
 class ProjectManager : public QObject {
     Q_OBJECT
 
@@ -122,14 +159,20 @@ class ProjectManager : public QObject {
         ProjectManager(){
             curr_project_ = nullptr;
         }
-        
+
+        /// Create a fresh in-memory Project; not yet bound to a file on disk.
         Project* create(const QString& title = QString(), const QByteArray& id = QByteArray());
-        /* validates and, if successful, opens the file and creates a Project from that file */
+        /// Validate and open a `.dissco` file from disk, returning a new Project.
         Project* open(const QString& filepath, const QByteArray& id = QByteArray());
+        /// Build a Project from an arbitrary file path (e.g. import path).
         Project* build(const QString& filepath, const QByteArray& id = QByteArray());
+        /// Populate @p p from the XML found in the file at @p filepath.
         void parse(Project*, const QString&);
+        /// Tear down @p p and free its resources.
         void close(Project*);
+        /// Serialize @p p to its existing on-disk path. Returns 0 on success.
         int save(Project*);
+        /// Prompt for a new path and serialize @p p there. Returns 0 on success.
         int saveAs(Project*);
         
         void set_curr_project(class Project* p) { curr_project_ = p; }
@@ -175,15 +218,21 @@ class ProjectManager : public QObject {
         
         QList<QString>& customnotemodifiers() { return curr_project_->custom_note_modifiers; }
 
-        // Adds default event of eventtype to its corresponding QList
+        /**
+         * @brief Append a default-constructed event of the given type to the project.
+         * @param newEvent  which event family the new entry belongs to
+         * @param eventName  user-visible name for the new event
+         */
         void addEvent(Eventtype newEvent, QString eventName);
 #ifdef TABEDITOR
         QList<Project*> get_projects() { return project_hash_.values(); }
         QList<QByteArray> get_project_IDs() { return project_hash_.keys(); }
 #endif
 
+        /// Mark the current project as having unsaved changes and emit dataModified().
         void markModified();
 
+        /// Persist the user-supplied PRNG seed for the active project to disk.
         void writeSeedEntry(const QString& seed) const;
 
     signals:

@@ -29,9 +29,18 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //---------------------------------------------------------------------------//
 
 /**
-*  1/29/07: Justin King added doxygen commenting
-*  10/29/12: Ming-ching Chiu revised the code to remove filevalue
-**/
+ * @file Main.cpp
+ * @brief CMOD command-line entry point.
+ *
+ * Parses arguments, installs signal handlers, instantiates the @ref Piece
+ * model from the supplied `.dissco` project file, and drives it through
+ * parse, expand, and emit-output. All long-lived state is owned by the
+ * Piece — Main.cpp is a thin orchestrator.
+ *
+ * Historical change log preserved from the original sources:
+ *  - 1/29/07: Justin King added doxygen commenting
+ *  - 10/29/12: Ming-ching Chiu revised the code to remove filevalue
+ */
 
 #include "Piece.h"
 #include <time.h>

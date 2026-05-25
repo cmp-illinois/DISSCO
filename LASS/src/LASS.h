@@ -17,6 +17,23 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
+/**
+ * @file LASS.h
+ * @brief Umbrella header for the LASS additive sound synthesis library.
+ *
+ * LASS is the DSP half of DISSCO. CMOD calls into it to turn an expanded
+ * Event tree into rendered audio: a @ref Score holds @ref Sound objects,
+ * each of which decomposes into @ref Partial objects, which are summed and
+ * shaped by @ref Filter / @ref Reverb / @ref Spatializer to produce one
+ * or more @ref Track samples inside a @ref MultiTrack. @ref Envelope and
+ * its iterators drive time-varying parameters, and @ref AuWriter writes
+ * the final mix to disk.
+ *
+ * Including this single header pulls in everything a downstream
+ * translation unit needs from the library; it is also the canonical entry
+ * point referenced from CMOD.
+ */
+
 #include "StandardHeaders.h"
 
 #include "AbstractIterator.h"

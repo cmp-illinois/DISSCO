@@ -24,6 +24,24 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Tempo.h"
 #include "NotationScore.h"
 
+/**
+ * @file Output.h
+ * @brief Side-band result tree CMOD builds while expanding a Piece.
+ *
+ * As events resolve into sounds and notes, the @ref Output static class
+ * accumulates an @ref OutputNode tree that mirrors the event hierarchy.
+ * Each node carries (name, value, unit) properties and a list of child
+ * nodes; the tree is serialized to the project's `.particel` XML report
+ * when synthesis finishes.
+ */
+
+/**
+ * @brief One node in the build-time output tree.
+ *
+ * Owns its child OutputNode pointers and frees them on destruction.
+ * Property lookup is linear in the property count — callers add a small,
+ * fixed set per node so this is acceptable.
+ */
 struct OutputNode
 {
   string nodeName;
@@ -52,7 +70,15 @@ struct OutputNode
   static string sanitize(string name);
 };
 
-// The static output class.
+/**
+ * @brief Process-global facade for accumulating and emitting CMOD output.
+ *
+ * Output is purely static — there is one tree per CMOD run, rooted at
+ * @c top. Event-expansion code pushes nodes as it descends and pops as it
+ * ascends, building the same shape as the event tree itself. When the
+ * piece finishes, the tree is written to the project's `.particel` XML
+ * report so the user can audit every choice CMOD made.
+ */
 class Output
 {
   static OutputNode* top;

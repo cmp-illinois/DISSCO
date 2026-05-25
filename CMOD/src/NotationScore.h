@@ -29,6 +29,17 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Tempo.h"
 #include "TimeSpan.h"
 
+/**
+ * @file NotationScore.h
+ * @brief Notated-score model rendered out as LilyPond.
+ *
+ * Original notation module written by Haorong Sun; multistaff extensions
+ * tagged "multistaffs" in the source were added by Xiaoyi Han. A
+ * NotationScore owns the per-staff stream of @ref Section objects, the
+ * tempo / time-signature spine, and the metadata (title, staff count,
+ * grand-staff layout) that LilyPond needs to typeset the result.
+ */
+
 class Section;
 
 /**

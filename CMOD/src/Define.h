@@ -30,6 +30,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #ifndef DEFINE_H
 #define DEFINE_H
 
+/**
+ * @file Define.h
+ * @brief Project-wide tuning constants and audible-range limits for CMOD.
+ *
+ * Holds the small set of physical and musical constants the engine
+ * references when interpreting a piece: amplitude ceiling, minimum
+ * audible frequency, the equal-temperament step ratio, C0 in hertz, and
+ * similar tuning bases. Pure constants — no functions, no state.
+ */
+
 #include "Libraries.h"
 
 //#define ENVLIB_DEFAULT "library000"

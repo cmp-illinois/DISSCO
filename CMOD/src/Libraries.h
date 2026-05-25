@@ -20,6 +20,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #ifndef __CMOD_LIBRARIES_H
 #define __CMOD_LIBRARIES_H
 
+/**
+ * @file Libraries.h
+ * @brief Central include hub for CMOD.
+ *
+ * Pulls in the C++ standard library headers CMOD touches, the LASS audio
+ * library (@ref LASS.h), the templated rational arithmetic
+ * (@ref Rational.h), pugixml for project parsing, and muParser for
+ * arithmetic-expression evaluation. Also declares the @ref EventType,
+ * @ref TempoPrefix, and @ref TempoNoteValue enums plus the small pugixml
+ * helpers (@ref GFEC, @ref GNES, @ref descendantByName) that emulate the
+ * Xerces "element-only" traversal CMOD originally targeted, and applies
+ * the project-wide `using namespace std`.
+ */
+
 //Several C++ standard library includes needed by CMOD
 #include <algorithm>
 #include <cerrno>
