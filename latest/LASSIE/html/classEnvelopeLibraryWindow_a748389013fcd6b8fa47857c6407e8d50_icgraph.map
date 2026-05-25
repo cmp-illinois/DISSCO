@@ -1,0 +1,16 @@
+<map id="EnvelopeLibraryWindow::getActiveEnvelope" name="EnvelopeLibraryWindow::getActiveEnvelope">
+<area shape="rect" id="Node000001" title="Return the currently active envelope." alt="" coords="908,45,1087,85"/>
+<area shape="rect" id="Node000002" href="$classEnvLibDrawingArea.html#aca692664dc8aa19535b80bab00102141" title="Handle presses (select node, start drag, show popup)" alt="" coords="5,49,163,89"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="911,45,860,36,678,16,535,8,393,14,211,36,143,52,142,47,210,31,392,9,535,3,678,11,860,31,912,40"/>
+<area shape="rect" id="Node000003" href="$classEnvLibDrawingArea.html#ab4cfea94d2e24cdec337e0549a3f0531" title="Paint the envelope graph." alt="" coords="687,45,845,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="894,68,845,68,845,63,894,63"/>
+<area shape="rect" id="Node000004" href="$classEnvLibDrawingArea.html#a41f39121793a68415000a76edf0f9b33" title="Update the active node&#39;s coords from external input." alt="" coords="672,109,860,149"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="912,92,840,112,838,107,911,86"/>
+<area shape="rect" id="Node000005" href="$classEnvelopeLibraryWindow.html#ad1b4a1ec9a80b782cc8666d04f5a05a2" title="Called when either X or Y QLineEdit text changes." alt="" coords="445,109,624,149"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="658,132,624,132,624,127,658,127"/>
+<area shape="rect" id="Node000006" href="$classEnvelopeLibraryWindow.html#a0fc6921f519c11a1692c3a45a79fc900" title="Constructor: builds the UI." alt="" coords="211,45,397,85"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="448,108,376,88,377,83,450,103"/>
+<area shape="rect" id="Node000007" href="$classEnvelopeLibraryWindow.html#a5569ae9d30f88f6080575130f28c64cf" title="Programmatically update the X/Y entries." alt="" coords="215,109,393,149"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="432,132,394,132,394,127,432,127"/>
+<area shape="poly" id="edge7_Node000007_Node000002" title=" " alt="" coords="216,108,157,92,159,87,217,103"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="Envelope::Envelope" name="Envelope::Envelope">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,81,156,107"/>
+<area shape="rect" id="Node000002" href="$classCollection.html#a000bfa55f8abee5917f8c917e33b1d23" title=" " alt="" coords="230,5,349,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,79,240,33,242,38,117,84"/>
+<area shape="rect" id="Node000003" href="$classEnvelope.html#abaddf39e300db75e79479bdc773f6a5b" title=" " alt="" coords="204,107,375,132"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="157,100,191,105,190,110,156,106"/>
+<area shape="rect" id="Node000004" href="$classCollection.html#aa6068a2d3ec4ad18882ebe7f9c181404" title=" " alt="" coords="425,57,541,83"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="156,87,411,72,412,77,156,92"/>
+<area shape="rect" id="Node000006" href="$classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="423,156,544,181"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="108,104,152,125,205,142,257,153,311,160,409,166,409,171,311,165,256,158,203,147,150,129,105,109"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="339,104,418,84,420,89,341,109"/>
+<area shape="rect" id="Node000005" href="$classCollection.html#a551e3277afbc2701ab47132041bdc2f7" title=" " alt="" coords="426,107,541,132"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="375,117,413,117,413,122,375,122"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="341,129,420,150,418,155,339,135"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="QtParser::parseLayer" name="QtParser::parseLayer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="523,42,680,67"/>
+<area shape="rect" id="Node000002" href="$namespaceQtParser.html#a5b9c410d2a1c71aacb32d9fcfd27b087" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="509,57,475,57,475,52,509,52"/>
+<area shape="rect" id="Node000003" href="$namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,5,220,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="262,45,220,40,221,34,263,39"/>
+<area shape="rect" id="Node000004" href="$namespaceQtParser.html#a424656e1d022f7799c5edc1e51e8e8b9" title=" " alt="" coords="5,70,228,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="262,70,229,73,228,68,262,64"/>
+</map>

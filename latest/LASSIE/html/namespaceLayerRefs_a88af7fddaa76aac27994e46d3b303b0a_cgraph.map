@@ -1,0 +1,17 @@
+<map id="LayerRefs::resolveOwner" name="LayerRefs::resolveOwner">
+<area shape="rect" id="Node000001" title="Dereference an OwnerKey to the actual HEvent in the project." alt="" coords="5,129,191,155"/>
+<area shape="rect" id="Node000002" href="$classProjectManager.html#a48bad9d94ff6de5ff8bc8c473db36639" title=" " alt="" coords="239,5,461,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,127,164,84,200,60,238,40,257,32,259,37,240,44,202,64,167,88,115,131"/>
+<area shape="rect" id="Node000003" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="254,55,446,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="130,127,238,89,269,81,271,86,239,94,131,132"/>
+<area shape="rect" id="Node000005" href="$classProjectManager.html#a490f88c635ce3806608462afd13fd163" title=" " alt="" coords="248,104,452,129"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="190,130,234,126,235,131,191,135"/>
+<area shape="rect" id="Node000006" href="$classProjectManager.html#ae3c228c1a19a399bf505a49e77e374d2" title=" " alt="" coords="251,153,449,179"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="191,148,237,153,237,158,191,153"/>
+<area shape="rect" id="Node000007" href="$classProjectManager.html#ab368d43e6d98ea7a117b09dccdf973cb" title=" " alt="" coords="249,203,451,228"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="134,152,239,187,276,197,275,202,238,193,133,157"/>
+<area shape="rect" id="Node000008" href="$classProjectManager.html#aa0f7ca3b2943123ef1e497434ece1363" title=" " alt="" coords="255,252,445,277"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="115,153,168,194,203,217,240,237,263,246,261,251,238,242,200,222,165,199,112,157"/>
+<area shape="rect" id="Node000004" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="509,55,619,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="446,65,496,65,496,70,446,70"/>
+</map>

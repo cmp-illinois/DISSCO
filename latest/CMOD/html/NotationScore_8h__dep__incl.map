@@ -1,0 +1,17 @@
+<map id="CMOD/src/NotationScore.h" name="CMOD/src/NotationScore.h">
+<area shape="rect" id="Node000001" title="Notated&#45;score model rendered out as LilyPond." alt="" coords="249,5,444,31"/>
+<area shape="rect" id="Node000002" href="$NotationScore_8cpp.html" title=" " alt="" coords="141,79,350,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="321,41,263,81,260,76,318,36"/>
+<area shape="rect" id="Node000003" href="$Output_8h.html" title="Side&#45;band result tree CMOD builds while expanding a Piece." alt="" coords="375,79,521,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="376,36,433,76,430,81,373,41"/>
+<area shape="rect" id="Node000004" href="$Bottom_8cpp.html" title=" " alt="" coords="5,152,171,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="377,109,147,155,146,149,376,104"/>
+<area shape="rect" id="Node000005" href="$Event_8cpp.html" title=" " alt="" coords="195,152,349,177"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="408,112,302,154,300,149,406,107"/>
+<area shape="rect" id="Node000006" href="$Note_8cpp.html" title=" " alt="" coords="374,152,522,177"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="451,118,451,152,445,152,445,118"/>
+<area shape="rect" id="Node000007" href="$Output_8cpp.html" title=" " alt="" coords="546,152,707,177"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="490,106,598,149,596,154,488,111"/>
+<area shape="rect" id="Node000008" href="$piece-experimental_8cpp.html" title=" " alt="" coords="731,152,975,177"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="527,104,788,149,788,155,526,109"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="MultiTrack::~MultiTrack" name="MultiTrack::~MultiTrack">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,99,180,125"/>
+<area shape="rect" id="Node000002" href="$classCollection.html#a9ccb9847a5815d86a76b3bad7551733d" title=" " alt="" coords="228,5,375,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,97,239,48,241,53,125,102"/>
+<area shape="rect" id="Node000003" href="$classIterator.html#a69b4bebf4a915a4ee591e6c8bd9b9b9a" title=" " alt="" coords="235,70,367,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,97,221,91,222,96,181,102"/>
+<area shape="rect" id="Node000005" href="$classCollection.html#acd5dfa486c735fe26700dd94e2b0d0c4" title=" " alt="" coords="228,120,375,160"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="181,121,215,126,214,131,180,126"/>
+<area shape="rect" id="Node000006" href="$classIterator.html#a12aa5b9d3dd7370cd40943427834adc6" title=" " alt="" coords="248,185,355,210"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="122,122,229,170,250,178,248,183,227,174,120,127"/>
+<area shape="rect" id="Node000004" href="$classAbstractIterator.html#aabada3692730edd3a71070e9fc0fd3c0" title=" " alt="" coords="423,70,609,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="367,80,409,80,409,85,367,85"/>
+<area shape="rect" id="Node000007" href="$classAbstractIterator.html#a131acaa938ffedf104e5e3b55dffc5c2" title=" " alt="" coords="435,185,597,210"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="355,195,422,195,422,200,355,200"/>
+</map>

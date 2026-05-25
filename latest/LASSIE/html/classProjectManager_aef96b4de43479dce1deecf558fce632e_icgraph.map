@@ -1,0 +1,16 @@
+<map id="ProjectManager::envlibentries" name="ProjectManager::envlibentries">
+<area shape="rect" id="Node000001" title=" " alt="" coords="693,74,911,99"/>
+<area shape="rect" id="Node000002" href="$classEnvelopeLibraryWindow.html#a1fc39bcfac7742b40037b5e5d971217f" title="Create a brand‐new envelope." alt="" coords="240,5,419,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="708,75,645,65,419,38,419,32,646,60,709,69"/>
+<area shape="rect" id="Node000004" href="$classProjectView.html#afaf5d493238b46179b5f700819c63a11" title=" " alt="" coords="487,74,625,99"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="680,89,625,89,625,84,680,84"/>
+<area shape="rect" id="Node000007" href="$classEnvelopeLibraryWindow.html#acca0567a012063a94d03dc9d9a94c22e" title="Set the active project." alt="" coords="467,124,645,164"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="734,105,643,127,642,121,733,100"/>
+<area shape="rect" id="Node000003" href="$classEnvelopeLibraryWindow.html#a0fc6921f519c11a1692c3a45a79fc900" title="Constructor: builds the UI." alt="" coords="5,5,192,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="226,28,192,28,192,23,226,23"/>
+<area shape="rect" id="Node000005" href="$classEnvelopeLibraryWindow.html#af515ba1cc128d9d9c20c6fff1fcb62b7" title="Save via project controller (e.g. Ctrl+S)" alt="" coords="240,69,419,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="473,90,419,91,419,86,473,85"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="243,68,171,48,172,43,244,63"/>
+<area shape="rect" id="Node000006" href="$classEnvelopeLibraryWindow.html#ac20c29339b2be2716f1267447a020d96" title="Catch key presses for shortcuts." alt="" coords="9,69,188,109"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="226,92,188,92,188,87,226,87"/>
+</map>

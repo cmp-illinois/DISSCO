@@ -8,19 +8,41 @@
            margin: 4rem auto; padding: 0 1rem; line-height: 1.5; }
     h1 { margin-bottom: 0.25rem; }
     p.tag { color: #555; margin-top: 0; }
-    h2 { margin-top: 2.5rem; font-size: 1.1rem; }
+    section { margin-top: 2.5rem; padding-top: 1rem;
+              border-top: 1px solid #e0e0e0; }
+    section h2 { margin: 0 0 0.5rem 0; font-size: 1.1rem; }
+    section p.hint { color: #666; margin-top: 0; font-size: 0.9rem; }
     ul { list-style: none; padding: 0; }
     li { margin: 0.35rem 0; }
     a { font-weight: 600; }
     .sub { font-weight: 400; color: #555; margin-left: 0.5em; }
+    .empty { color: #888; font-style: italic; }
   </style>
 </head>
 <body>
   <h1>DISSCO</h1>
   <p class="tag">Digital Instrument for Sound Synthesis and Composition</p>
   <p>API documentation, generated from source with Doxygen.</p>
-  <h2>Versions</h2>
-  <ul>
+
+  <section>
+    <h2>Latest</h2>
+    <p class="hint">Rebuilt on every push to <code>main</code>; overwrites itself.</p>
+    <ul>
+      <li>
+        <a href="latest/">latest</a>
+        <span class="sub">
+          (<a href="latest/LASSIE/html/index.html">LASSIE</a>,
+           <a href="latest/CMOD/html/index.html">CMOD</a>,
+           <a href="latest/LASS/html/index.html">LASS</a>)
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Releases</h2>
+    <p class="hint">Snapshots from <code>v*</code> tag pushes.</p>
+    <ul>
       <li>
         <a href="v0.0.0-docstest/">v0.0.0-docstest</a>
         <span class="sub">
@@ -29,6 +51,7 @@
            <a href="v0.0.0-docstest/LASS/html/index.html">LASS</a>)
         </span>
       </li>
-  </ul>
+    </ul>
+  </section>
 </body>
 </html>

@@ -1,0 +1,7 @@
+<map id="PieceHelper::doesFileExist" name="PieceHelper::doesFileExist">
+<area shape="rect" id="Node000001" title="Checks to see if a file exists." alt="" coords="381,5,576,31"/>
+<area shape="rect" id="Node000002" href="$classPiece.html#a246df0480298dd8da7a13bf184d0dd6a" title="Gets the next available sound file." alt="" coords="153,5,333,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="368,21,333,21,333,15,368,15"/>
+<area shape="rect" id="Node000003" href="$classPiece.html#a4dc9d0d3627fc2208b7da6a36a2ca9c2" title=" " alt="" coords="5,5,105,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="140,21,106,21,106,15,140,15"/>
+</map>

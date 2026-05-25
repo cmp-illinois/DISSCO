@@ -1,0 +1,19 @@
+<map id="CMOD/src/Piece.h" name="CMOD/src/Piece.h">
+<area shape="rect" id="Node000001" title="Top&#45;level composition object and supporting filesystem helpers." alt="" coords="438,5,575,31"/>
+<area shape="rect" id="Node000002" href="$Bottom_8h.html" title="Leaf event in a DISSCO composition." alt="" coords="221,79,371,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="461,37,331,81,329,76,459,32"/>
+<area shape="rect" id="Node000004" href="$CMOD_8h.html" title="Umbrella header for the Composition Module (CMOD)." alt="" coords="374,152,517,177"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="492,44,466,101,448,153,443,151,461,99,487,42"/>
+<area shape="rect" id="Node000006" href="$Main_8cpp.html" title="CMOD command&#45;line entry point." alt="" coords="495,79,644,104"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="528,39,561,77,557,80,524,43"/>
+<area shape="rect" id="Node000007" href="$Utilities_8cpp.html" title=" " alt="" coords="668,79,836,104"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="560,32,713,76,712,81,558,37"/>
+<area shape="rect" id="Node000008" href="$piece-experimental_8cpp.html" title=" " alt="" coords="861,79,1105,104"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="589,29,906,76,906,81,588,34"/>
+<area shape="rect" id="Node000003" href="$Bottom_8cpp.html" title=" " alt="" coords="5,152,171,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="250,111,123,154,121,149,249,106"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="333,107,422,149,420,154,331,112"/>
+<area shape="rect" id="Node000005" href="$Event_8cpp.html" title=" " alt="" coords="195,152,349,177"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="290,118,278,153,273,151,285,116"/>
+<area shape="poly" id="edge4_Node000004_Node000001" title=" " alt="" coords="460,139,486,82,504,30,509,32,491,84,465,141"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="ProjectManager::fileinfo" name="ProjectManager::fileinfo">
+<area shape="rect" id="Node000001" title=" " alt="" coords="707,80,884,105"/>
+<area shape="rect" id="Node000002" href="$classProjectManager.html#a4ba00e49d5de11660bcf0811d7e7ad88" title="Build a Project from an arbitrary file path (e.g. import path)." alt="" coords="481,5,645,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="749,77,658,45,618,33,619,28,659,39,751,72"/>
+<area shape="rect" id="Node000003" href="$classProjectManager.html#a32b50ef108bb47f186339acbea876054" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="481,55,645,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="693,84,645,79,645,74,693,79"/>
+<area shape="rect" id="Node000004" href="$classProjectView.html#afaf5d493238b46179b5f700819c63a11" title=" " alt="" coords="494,104,631,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="693,106,632,112,631,107,693,101"/>
+<area shape="rect" id="Node000008" href="$classProjectView.html#a9f4f43c4b6e1b2a95577c6c1ee52c5e9" title=" " alt="" coords="467,153,659,179"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="749,113,659,143,615,156,614,151,658,138,747,108"/>
+<area shape="rect" id="Node000005" href="$classEnvelopeLibraryWindow.html#af515ba1cc128d9d9c20c6fff1fcb62b7" title="Save via project controller (e.g. Ctrl+S)" alt="" coords="240,97,419,137"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="480,119,419,119,419,114,480,114"/>
+<area shape="rect" id="Node000006" href="$classEnvelopeLibraryWindow.html#a0fc6921f519c11a1692c3a45a79fc900" title="Constructor: builds the UI." alt="" coords="5,65,192,105"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="226,105,192,100,192,95,227,100"/>
+<area shape="rect" id="Node000007" href="$classEnvelopeLibraryWindow.html#ac20c29339b2be2716f1267447a020d96" title="Catch key presses for shortcuts." alt="" coords="9,129,188,169"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="227,134,189,139,188,134,226,128"/>
+</map>

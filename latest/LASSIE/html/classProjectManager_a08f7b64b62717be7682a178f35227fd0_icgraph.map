@@ -1,0 +1,7 @@
+<map id="ProjectManager::create" name="ProjectManager::create">
+<area shape="rect" id="Node000001" title="Create a fresh in&#45;memory Project; not yet bound to a file on disk." alt="" coords="217,31,391,56"/>
+<area shape="rect" id="Node000002" href="$classProjectManager.html#a4ba00e49d5de11660bcf0811d7e7ad88" title="Build a Project from an arbitrary file path (e.g. import path)." alt="" coords="5,5,169,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,34,169,30,170,25,204,29"/>
+<area shape="rect" id="Node000003" href="$classProjectManager.html#a32b50ef108bb47f186339acbea876054" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="5,55,169,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,57,170,61,169,56,203,52"/>
+</map>

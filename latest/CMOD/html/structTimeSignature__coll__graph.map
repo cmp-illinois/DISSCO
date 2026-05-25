@@ -1,0 +1,5 @@
+<map id="TimeSignature" name="TimeSignature">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,93,123,119"/>
+<area shape="rect" id="Node000002" href="$classTempo.html" title="Combined tempo and time&#45;signature descriptor used by every Event." alt="" coords="31,5,97,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,45,67,93,61,93,61,45"/>
+</map>

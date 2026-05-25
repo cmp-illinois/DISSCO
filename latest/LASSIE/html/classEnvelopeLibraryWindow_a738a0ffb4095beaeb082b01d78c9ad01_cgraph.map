@@ -1,0 +1,20 @@
+<map id="EnvelopeLibraryWindow::deleteEnvelope" name="EnvelopeLibraryWindow::deleteEnvelope">
+<area shape="rect" id="Node000001" title="Delete the selected envelope." alt="" coords="5,127,184,167"/>
+<area shape="rect" id="Node000002" href="$classEnvLibDrawingArea.html#aedec28399cefe14dd44aa9ed76613db6" title="Clear the drawing area (background will repaint white)" alt="" coords="232,5,389,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,124,171,90,231,55,244,49,246,53,233,60,174,95,125,129"/>
+<area shape="rect" id="Node000003" href="$namespaceEnvelopeUtilities.html#a57c5fdd65566dbfafbbf1d6d00414972" title=" " alt="" coords="240,69,381,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="170,124,226,109,227,114,171,129"/>
+<area shape="rect" id="Node000004" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="453,135,645,161"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="184,144,439,145,439,150,184,150"/>
+<area shape="rect" id="Node000006" href="$namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160" title=" " alt="" coords="235,185,386,210"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="181,164,243,179,242,184,180,169"/>
+<area shape="rect" id="Node000009" href="$classEnvLibDrawingArea.html#a0380a5ec1208dc2fff6da2659706a81a" title="Reset all internal fields to their defaults." alt="" coords="232,235,389,275"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="131,165,233,220,247,227,245,231,231,225,128,169"/>
+<area shape="rect" id="Node000005" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="762,135,871,161"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="645,145,748,145,748,151,645,151"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="372,182,473,161,474,166,373,187"/>
+<area shape="rect" id="Node000007" href="$classProjectManager.html#a02c96a91da7bebdb54dfcd2ea6688d4b" title="Mark the current project as having unsaved changes and emit dataModified()." alt="" coords="437,185,660,210"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="386,195,424,195,424,200,386,200"/>
+<area shape="rect" id="Node000008" href="$classProjectManager.html#ac3696b7040a19b457dc4e4d2dcbe3c11" title=" " alt="" coords="708,185,925,210"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="660,195,694,195,694,200,660,200"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Piece::getNextSoundFile" name="Piece::getNextSoundFile">
+<area shape="rect" id="Node000001" title="Gets the next available sound file." alt="" coords="5,5,185,31"/>
+<area shape="rect" id="Node000002" href="$structPieceHelper.html#ac1627097c7b14e54837fde3adf6f9d92" title="Checks to see if a file exists." alt="" coords="233,5,428,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,15,220,15,220,21,186,21"/>
+<area shape="rect" id="Node000003" href="$structPieceHelper.html#a28358171bf3acd8d2dbee00838a6b5ae" title="Lists contents of directory." alt="" coords="476,5,688,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="428,15,462,15,462,21,428,21"/>
+</map>

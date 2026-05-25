@@ -1,0 +1,14 @@
+<map id="LASSIE/src/widgets/Modifiers.hpp" name="LASSIE/src/widgets/Modifiers.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="87,5,232,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,84,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,48,74,88,71,83,130,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="155,167,225,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="155,46,147,80,147,99,150,118,159,137,172,155,167,158,155,140,145,119,141,100,142,80,150,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="160,93,233,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="171,44,188,80,183,82,166,47"/>
+<area shape="rect" id="Node000005" href="$event__struct_8hpp.html" title=" " alt="" coords="257,93,432,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="205,43,306,85,304,90,203,48"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="321,121,229,163,227,158,319,116"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="317,167,372,192"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="347,119,347,153,342,153,342,119"/>
+</map>

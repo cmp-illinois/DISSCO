@@ -1,0 +1,47 @@
+<map id="ProjectManager::lowevents" name="ProjectManager::lowevents">
+<area shape="rect" id="Node000001" title=" " alt="" coords="993,307,1192,332"/>
+<area shape="rect" id="Node000002" href="$classProjectManager.html#a670de1f78faa4ada459f406e7ab05499" title="Append a default&#45;constructed event of the given type to the project." alt="" coords="735,5,928,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1082,294,1065,243,1038,177,997,110,972,79,944,52,908,33,911,28,947,48,976,75,1002,107,1042,175,1070,241,1087,293"/>
+<area shape="rect" id="Node000003" href="$classPaletteViewController.html#a2aa7de728bc16b126b7d29d3e62e9f8c" title=" " alt="" coords="495,42,658,82"/>
+<area shape="poly" id="edge14_Node000001_Node000003" title=" " alt="" coords="1080,295,1062,251,1033,198,994,145,970,122,944,103,910,86,874,72,798,57,724,52,658,54,658,49,724,47,799,52,875,67,912,81,947,98,974,118,998,142,1038,195,1067,249,1085,293"/>
+<area shape="rect" id="Node000005" href="$namespaceLayerRefs.html#a9f3b25fa0435f2a6479bfa02222e231a" title="Find every Package across the current project that points at an event identified by (type,..." alt="" coords="507,256,646,281"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="982,308,945,303,646,276,646,271,946,298,983,302"/>
+<area shape="rect" id="Node000006" href="$classProjectView.html#ad43e2995a5dfd91bd480246c965230ad" title=" " alt="" coords="238,256,422,281"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="980,321,751,314,617,306,484,295,401,284,402,279,484,290,617,301,751,308,980,316"/>
+<area shape="rect" id="Node000007" href="$classPaletteViewController.html#ad66417b58a503aac9762071d732eee92" title=" " alt="" coords="249,171,411,211"/>
+<area shape="poly" id="edge11_Node000001_Node000007" title=" " alt="" coords="1070,298,1017,245,982,217,944,195,879,166,823,146,771,133,721,127,671,126,616,130,485,147,398,174,396,169,483,142,616,124,670,120,721,121,772,128,824,141,881,161,947,190,985,213,1020,241,1074,294"/>
+<area shape="rect" id="Node000008" href="$classProjectView.html#ab075481cd5c8a0f9a48a58dc5dc08e68" title=" " alt="" coords="730,408,933,433"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="1057,341,1005,366,946,391,885,410,883,405,944,386,1003,361,1054,336"/>
+<area shape="rect" id="Node000009" href="$classProjectView.html#a94f2ef2c8a44bbdd40f53417d740652e" title=" " alt="" coords="739,457,924,483"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="1073,344,1019,397,985,424,947,447,914,460,912,455,944,442,981,420,1016,393,1069,341"/>
+<area shape="rect" id="Node000010" href="$classPaletteViewController.html#a844435fd7993a4f35e7b3d2d7997c0c8" title=" " alt="" coords="224,327,436,367"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="992,336,946,341,808,348,670,352,436,352,436,347,670,346,808,343,945,335,991,331"/>
+<area shape="rect" id="Node000011" href="$namespaceLayerRefs.html#a88af7fddaa76aac27994e46d3b303b0a" title="Dereference an OwnerKey to the actual HEvent in the project." alt="" coords="739,205,924,231"/>
+<area shape="poly" id="edge15_Node000001_Node000011" title=" " alt="" coords="1054,303,1003,277,944,253,883,233,885,228,946,247,1005,273,1057,298"/>
+<area shape="rect" id="Node000014" href="$classProjectView.html#afaf5d493238b46179b5f700819c63a11" title=" " alt="" coords="763,507,900,532"/>
+<area shape="poly" id="edge21_Node000001_Node000014" title=" " alt="" coords="1080,346,1058,380,1028,421,991,462,947,496,925,507,901,514,900,509,923,502,944,492,987,458,1024,418,1054,377,1075,343"/>
+<area shape="rect" id="Node000018" href="$classProjectView.html#a7ffd2be2dbfeb057b3b8062cf5fa54d3" title=" " alt="" coords="717,557,945,583"/>
+<area shape="poly" id="edge25_Node000001_Node000018" title=" " alt="" coords="1084,346,1065,390,1036,444,997,499,973,524,947,546,919,560,917,555,944,541,969,520,993,496,1032,441,1061,388,1080,344"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="745,36,659,51,658,45,744,30"/>
+<area shape="rect" id="Node000004" href="$classPaletteViewController.html#adac8c4d6d12b2aa01a7e8a8113b09fb5" title=" " alt="" coords="5,171,176,211"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="488,88,167,174,166,169,486,83"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="493,271,422,271,422,266,493,266"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="513,255,483,246,387,214,388,209,485,241,515,250"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="235,194,176,194,176,189,235,189"/>
+<area shape="poly" id="edge13_Node000010_Node000004" title=" " alt="" coords="272,323,223,295,163,253,114,214,118,210,166,249,225,290,275,319"/>
+<area shape="rect" id="Node000012" href="$namespaceLayerRefs.html#a410d03c150173c0657c0336438235edd" title="Remove every package collected in refs from its owning layer." alt="" coords="489,207,664,232"/>
+<area shape="poly" id="edge16_Node000011_Node000012" title=" " alt="" coords="725,221,664,222,664,216,725,216"/>
+<area shape="rect" id="Node000013" href="$namespaceLayerRefs.html#aa403055b505274bee957a47ea9e9c6b5" title="Rewrite the event_name field of every package collected in refs." alt="" coords="484,157,669,183"/>
+<area shape="poly" id="edge19_Node000011_Node000013" title=" " alt="" coords="749,205,644,185,645,180,750,200"/>
+<area shape="poly" id="edge17_Node000012_Node000006" title=" " alt="" coords="500,237,395,259,394,253,499,232"/>
+<area shape="poly" id="edge18_Node000012_Node000007" title=" " alt="" coords="475,211,411,203,412,198,476,205"/>
+<area shape="poly" id="edge20_Node000013_Node000007" title=" " alt="" coords="470,182,412,187,411,182,470,177"/>
+<area shape="rect" id="Node000015" href="$classEnvelopeLibraryWindow.html#af515ba1cc128d9d9c20c6fff1fcb62b7" title="Save via project controller (e.g. Ctrl+S)" alt="" coords="487,497,666,537"/>
+<area shape="poly" id="edge22_Node000014_Node000015" title=" " alt="" coords="749,521,666,520,666,515,749,516"/>
+<area shape="rect" id="Node000016" href="$classEnvelopeLibraryWindow.html#a0fc6921f519c11a1692c3a45a79fc900" title="Constructor: builds the UI." alt="" coords="237,465,423,505"/>
+<area shape="poly" id="edge23_Node000015_Node000016" title=" " alt="" coords="474,506,423,499,424,494,474,501"/>
+<area shape="rect" id="Node000017" href="$classEnvelopeLibraryWindow.html#ac20c29339b2be2716f1267447a020d96" title="Catch key presses for shortcuts." alt="" coords="241,529,419,569"/>
+<area shape="poly" id="edge24_Node000015_Node000017" title=" " alt="" coords="474,533,420,540,419,534,473,527"/>
+<area shape="rect" id="Node000019" href="$classProjectView.html#ab1e02e041f7adbfeb8110a1c3e9f1836" title=" " alt="" coords="485,561,668,587"/>
+<area shape="poly" id="edge26_Node000018_Node000019" title=" " alt="" coords="704,575,668,575,668,570,704,569"/>
+</map>

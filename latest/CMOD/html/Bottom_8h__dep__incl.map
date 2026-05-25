@@ -1,0 +1,19 @@
+<map id="CMOD/src/Bottom.h" name="CMOD/src/Bottom.h">
+<area shape="rect" id="Node000001" title="Leaf event in a DISSCO composition." alt="" coords="278,5,429,31"/>
+<area shape="rect" id="Node000002" href="$Bottom_8cpp.html" title=" " alt="" coords="5,79,171,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="298,37,132,81,130,76,297,32"/>
+<area shape="rect" id="Node000003" href="$CMOD_8h.html" title="Umbrella header for the Composition Module (CMOD)." alt="" coords="195,79,338,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="331,41,283,81,279,76,327,37"/>
+<area shape="rect" id="Node000008" href="$Event_8cpp.html" title=" " alt="" coords="363,79,517,104"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="379,37,428,76,424,81,376,41"/>
+<area shape="rect" id="Node000004" href="$Piece_8h.html" title="Top&#45;level composition object and supporting filesystem helpers." alt="" coords="198,152,335,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="261,118,262,152,257,152,255,118"/>
+<area shape="poly" id="edge4_Node000004_Node000001" title=" " alt="" coords="348,153,456,135,500,120,516,112,527,102,534,89,534,77,526,67,513,58,475,42,429,32,430,27,476,37,516,53,530,63,539,76,540,90,531,106,519,116,502,125,457,140,349,158"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="273,139,271,104,276,104,278,138"/>
+<area shape="rect" id="Node000005" href="$Main_8cpp.html" title="CMOD command&#45;line entry point." alt="" coords="9,225,159,251"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="226,185,115,228,113,223,224,180"/>
+<area shape="rect" id="Node000006" href="$Utilities_8cpp.html" title=" " alt="" coords="183,225,351,251"/>
+<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="269,191,269,225,264,225,264,191"/>
+<area shape="rect" id="Node000007" href="$piece-experimental_8cpp.html" title=" " alt="" coords="375,225,619,251"/>
+<area shape="poly" id="edge8_Node000004_Node000007" title=" " alt="" coords="318,179,461,223,459,228,316,184"/>
+</map>

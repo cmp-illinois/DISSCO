@@ -1,0 +1,34 @@
+<map id="ProjectManager::spectrumevents" name="ProjectManager::spectrumevents">
+<area shape="rect" id="Node000001" title=" " alt="" coords="776,205,1013,231"/>
+<area shape="rect" id="Node000002" href="$classProjectManager.html#a670de1f78faa4ada459f406e7ab05499" title="Append a default&#45;constructed event of the given type to the project." alt="" coords="517,5,711,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="874,196,814,125,773,86,727,52,681,33,683,28,729,48,776,81,818,121,879,193"/>
+<area shape="rect" id="Node000003" href="$classPaletteViewController.html#a2aa7de728bc16b126b7d29d3e62e9f8c" title=" " alt="" coords="265,49,427,89"/>
+<area shape="poly" id="edge11_Node000001_Node000003" title=" " alt="" coords="870,197,810,144,770,117,727,96,650,75,570,65,494,62,427,64,427,58,494,56,570,59,651,70,729,92,773,113,813,140,874,193"/>
+<area shape="rect" id="Node000005" href="$classProjectView.html#ad43e2995a5dfd91bd480246c965230ad" title=" " alt="" coords="522,107,706,132"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="856,201,796,173,727,146,686,135,687,129,729,141,799,168,858,197"/>
+<area shape="rect" id="Node000006" href="$classProjectView.html#ab075481cd5c8a0f9a48a58dc5dc08e68" title=" " alt="" coords="513,156,715,181"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="808,206,687,184,688,179,809,200"/>
+<area shape="rect" id="Node000007" href="$classProjectView.html#a94f2ef2c8a44bbdd40f53417d740652e" title=" " alt="" coords="521,205,707,231"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="762,221,707,221,707,215,762,215"/>
+<area shape="rect" id="Node000008" href="$classPaletteViewController.html#ad66417b58a503aac9762071d732eee92" title=" " alt="" coords="265,222,427,262"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="809,235,728,245,568,250,428,248,428,243,568,245,728,239,808,230"/>
+<area shape="rect" id="Node000009" href="$classPaletteViewController.html#a844435fd7993a4f35e7b3d2d7997c0c8" title=" " alt="" coords="240,286,452,326"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="827,236,728,257,584,279,453,297,452,291,584,274,728,251,826,231"/>
+<area shape="rect" id="Node000010" href="$classProjectView.html#afaf5d493238b46179b5f700819c63a11" title=" " alt="" coords="545,357,683,383"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="871,242,809,291,770,317,729,340,676,360,674,355,727,336,767,313,806,287,868,238"/>
+<area shape="rect" id="Node000014" href="$classProjectView.html#a7ffd2be2dbfeb057b3b8062cf5fa54d3" title=" " alt="" coords="500,411,728,436"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="879,244,854,278,820,320,777,361,729,396,690,413,688,408,727,392,774,357,816,316,850,275,875,241"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="533,36,428,56,427,51,532,31"/>
+<area shape="rect" id="Node000004" href="$classPaletteViewController.html#adac8c4d6d12b2aa01a7e8a8113b09fb5" title=" " alt="" coords="13,222,184,262"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="306,99,130,224,127,220,303,95"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="251,245,184,245,184,239,251,239"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="254,285,176,265,177,259,255,280"/>
+<area shape="rect" id="Node000011" href="$classEnvelopeLibraryWindow.html#af515ba1cc128d9d9c20c6fff1fcb62b7" title="Save via project controller (e.g. Ctrl+S)" alt="" coords="257,350,435,390"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="531,373,435,373,435,367,531,367"/>
+<area shape="rect" id="Node000012" href="$classEnvelopeLibraryWindow.html#a0fc6921f519c11a1692c3a45a79fc900" title="Constructor: builds the UI." alt="" coords="5,318,192,358"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="243,359,192,353,193,347,243,354"/>
+<area shape="rect" id="Node000013" href="$classEnvelopeLibraryWindow.html#ac20c29339b2be2716f1267447a020d96" title="Catch key presses for shortcuts." alt="" coords="9,382,188,422"/>
+<area shape="poly" id="edge15_Node000011_Node000013" title=" " alt="" coords="243,386,189,393,188,388,242,381"/>
+<area shape="rect" id="Node000015" href="$classProjectView.html#ab1e02e041f7adbfeb8110a1c3e9f1836" title=" " alt="" coords="255,415,437,440"/>
+<area shape="poly" id="edge17_Node000014_Node000015" title=" " alt="" coords="486,428,438,429,438,423,486,423"/>
+</map>

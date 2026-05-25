@@ -1,0 +1,13 @@
+<map id="Sound::setPartialParam" name="Sound::setPartialParam">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,63,177,88"/>
+<area shape="rect" id="Node000002" href="$classIterator.html#a69b4bebf4a915a4ee591e6c8bd9b9b9a" title=" " alt="" coords="231,5,363,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,60,237,32,238,37,138,65"/>
+<area shape="rect" id="Node000004" href="$classCollection.html#acd5dfa486c735fe26700dd94e2b0d0c4" title=" " alt="" coords="225,55,368,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="177,73,211,73,211,78,177,78"/>
+<area shape="rect" id="Node000005" href="$classIterator.html#a12aa5b9d3dd7370cd40943427834adc6" title=" " alt="" coords="243,120,350,145"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="138,85,238,114,237,119,137,91"/>
+<area shape="rect" id="Node000003" href="$classAbstractIterator.html#aabada3692730edd3a71070e9fc0fd3c0" title=" " alt="" coords="416,5,603,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="363,15,402,15,402,21,363,21"/>
+<area shape="rect" id="Node000006" href="$classAbstractIterator.html#a131acaa938ffedf104e5e3b55dffc5c2" title=" " alt="" coords="429,120,590,145"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="350,130,415,130,415,135,350,135"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="Envelope::defineShape" name="Envelope::defineShape">
+<area shape="rect" id="Node000001" title=" " alt="" coords="435,55,605,80"/>
+<area shape="rect" id="Node000002" href="$classEnvelope.html#afc7278b22bb54fb28b6d99bc1b7d74c8" title=" " alt="" coords="236,5,387,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="452,54,365,33,367,28,453,49"/>
+<area shape="rect" id="Node000003" href="$classEnvelope.html#a6e2d005f87b4474df1151c55bf3d3980" title=" " alt="" coords="236,55,387,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="421,70,387,70,387,65,421,65"/>
+<area shape="rect" id="Node000004" href="$classEnvelope.html#a147185ea88b0784464dd96a6030db1fa" title=" " alt="" coords="236,104,387,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="453,86,367,107,365,101,452,81"/>
+<area shape="rect" id="Node000005" href="$classDynamicVariable.html#afcd9e37f0d36f06d24293476606ca6ce" title=" " alt="" coords="5,97,188,137"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="222,119,188,119,188,114,222,114"/>
+</map>

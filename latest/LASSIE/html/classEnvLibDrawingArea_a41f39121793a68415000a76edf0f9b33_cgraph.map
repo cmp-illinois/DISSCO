@@ -1,0 +1,19 @@
+<map id="EnvLibDrawingArea::setActiveNodeCoordinate" name="EnvLibDrawingArea::setActiveNodeCoordinate">
+<area shape="rect" id="Node000001" title="Update the active node&#39;s coords from external input." alt="" coords="5,99,193,139"/>
+<area shape="rect" id="Node000002" href="$classEnvLibDrawingArea.html#a049ecb2a281b1b7801303d5cc354f890" title="Recompute upperY/lowerY based on envelope data." alt="" coords="252,5,409,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,96,240,55,259,48,261,53,242,60,146,101"/>
+<area shape="rect" id="Node000003" href="$classEnvelopeLibraryWindow.html#a748389013fcd6b8fa47857c6407e8d50" title="Return the currently active envelope." alt="" coords="241,69,420,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="193,104,228,100,228,105,194,109"/>
+<area shape="rect" id="Node000004" href="$namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160" title=" " alt="" coords="255,134,406,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="194,127,242,133,241,139,193,133"/>
+<area shape="rect" id="Node000009" href="$classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b" title="Trigger a redraw of the given envelope." alt="" coords="252,184,409,224"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="154,136,242,170,262,177,260,182,240,174,152,141"/>
+<area shape="rect" id="Node000005" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="483,110,675,135"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="406,137,470,131,470,136,406,142"/>
+<area shape="rect" id="Node000007" href="$classProjectManager.html#a02c96a91da7bebdb54dfcd2ea6688d4b" title="Mark the current project as having unsaved changes and emit dataModified()." alt="" coords="468,159,691,185"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="406,152,454,157,454,162,406,157"/>
+<area shape="rect" id="Node000006" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="793,110,902,135"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="675,120,779,120,779,125,675,125"/>
+<area shape="rect" id="Node000008" href="$classProjectManager.html#ac3696b7040a19b457dc4e4d2dcbe3c11" title=" " alt="" coords="739,159,956,185"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="691,169,725,169,725,175,691,175"/>
+</map>

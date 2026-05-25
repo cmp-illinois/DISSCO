@@ -1,0 +1,24 @@
+<map id="LASSIE/src/dialogs/FileNewObject.cpp" name="LASSIE/src/dialogs/FileNewObject.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="488,5,635,45"/>
+<area shape="rect" id="Node000002" href="$FileNewObject_8hpp.html" title=" " alt="" coords="72,93,216,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="488,43,218,93,217,88,487,38"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,80,192"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="488,29,377,32,250,42,190,50,136,62,92,77,62,95,53,107,47,122,43,153,38,152,42,121,48,105,58,91,90,72,134,57,189,45,250,36,377,27,488,24"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="241,93,415,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="506,48,376,91,374,86,505,43"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="439,93,550,119"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="547,47,515,84,511,81,543,44"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="574,93,685,119"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="580,44,612,81,608,84,576,47"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="709,93,821,119"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="611,43,723,86,721,91,609,48"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="845,93,960,119"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="636,41,840,88,839,93,634,46"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="984,93,1091,119"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="635,36,971,90,970,96,634,41"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="129,121,72,161,69,156,126,116"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="109,167,169,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="146,119,143,153,138,153,140,119"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="193,167,287,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="161,117,215,156,212,160,158,121"/>
+</map>
