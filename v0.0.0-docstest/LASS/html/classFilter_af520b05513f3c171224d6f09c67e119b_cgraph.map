@@ -1,0 +1,9 @@
+<map id="Filter::do_filter_SoundSample" name="Filter::do_filter_SoundSample">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,217,80"/>
+<area shape="rect" id="Node000002" href="$classFilter.html#ade350a8c8d3687cde005bab02477216a" title=" " alt="" coords="323,5,439,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,52,309,28,310,34,182,57"/>
+<area shape="rect" id="Node000003" href="$classSoundSample.html#a8fe1248c64570253ba40d68a75114057" title=" " alt="" coords="267,55,494,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="218,65,253,65,253,70,218,70"/>
+<area shape="rect" id="Node000004" href="$classSoundSample.html#a08fd608ef3ada608ca32828c427c9741" title=" " alt="" coords="265,104,496,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="182,77,298,99,297,104,181,83"/>
+</map>

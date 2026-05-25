@@ -1,0 +1,28 @@
+<map id="LASSIE/src/widgets/Partials.hpp" name="LASSIE/src/widgets/Partials.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="196,5,341,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="232,167,305,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="271,46,271,153,266,153,266,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="549,93,660,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="342,41,543,88,542,93,341,46"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="137,167,208,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="259,47,189,156,185,154,254,44"/>
+<area shape="rect" id="Node000005" href="$event__struct_8hpp.html" title=" " alt="" coords="5,93,180,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="228,48,132,90,130,85,225,43"/>
+<area shape="rect" id="Node000007" href="$FunctionEntryRow_8hpp.html" title=" " alt="" coords="306,93,525,119"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="305,43,383,84,380,89,303,48"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="107,117,151,156,148,160,104,121"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="59,167,113,192"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="94,119,91,153,86,153,89,119"/>
+<area shape="poly" id="edge8_Node000007_Node000002" title=" " alt="" coords="393,121,306,163,304,158,391,116"/>
+<area shape="poly" id="edge13_Node000007_Node000004" title=" " alt="" coords="377,121,222,167,220,161,376,116"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="705,167,816,192"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="471,116,693,161,691,167,470,121"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="841,167,907,192"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="515,116,659,135,828,164,827,169,658,141,514,121"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="329,167,413,192"/>
+<area shape="poly" id="edge11_Node000007_Node000010" title=" " alt="" coords="410,120,388,156,383,154,406,118"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="438,167,545,192"/>
+<area shape="poly" id="edge12_Node000007_Node000011" title=" " alt="" coords="429,117,471,155,467,159,426,121"/>
+<area shape="rect" id="Node000012" href="$lassie_8hpp.html" title="Project&#45;wide enum definitions for LASSIE." alt="" coords="569,167,681,192"/>
+<area shape="poly" id="edge14_Node000007_Node000012" title=" " alt="" coords="450,116,578,160,577,165,448,121"/>
+</map>

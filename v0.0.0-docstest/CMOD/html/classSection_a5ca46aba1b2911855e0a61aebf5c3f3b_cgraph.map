@@ -1,0 +1,8 @@
+<map id="Section::CalculateEDUsFromSecondsInTempo" name="Section::CalculateEDUsFromSecondsInTempo">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,22,212,62"/>
+<area shape="rect" id="Node000002" href="$classTempo.html#a3122d6fb16d6e52a94564b27c96d505e" title=" " alt="" coords="260,29,485,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,39,246,39,246,45,212,45"/>
+<area shape="rect" id="Node000003" href="$classRational.html#a977d0a0644375119c82afce254679882" title=" " alt="" coords="533,29,632,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="486,39,519,39,519,45,486,45"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="549,31,541,21,545,11,559,5,583,3,612,6,623,15,620,20,610,11,583,8,561,10,549,15,546,20,553,28"/>
+</map>

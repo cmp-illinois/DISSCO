@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,80,80,105"/>
+<area shape="rect" id="Node000001" href="$classInst.html" title="Process&#45;wide singleton that owns LASSIE&#39;s top&#45;level services." alt="" coords="167,5,213,31"/>
+<area shape="poly" id="edge17_Node000000_Node000001" title=" " alt="" coords="73,70,127,40,165,23,167,28,129,44,76,75"/>
+<area shape="rect" id="Node000002" href="$classProject.html" title="Aggregate state for a single open DISSCO project." alt="" coords="157,55,223,80"/>
+<area shape="poly" id="edge18_Node000000_Node000002" title=" " alt="" coords="93,81,156,70,157,76,94,87"/>
+<area shape="rect" id="Node000003" href="$classProjectManager.html" title="Owner and broker for all open Project instances." alt="" coords="128,104,252,129"/>
+<area shape="poly" id="edge19_Node000000_Node000003" title=" " alt="" coords="94,98,128,104,127,109,93,104"/>
+<area shape="rect" id="Node000004" href="$classProjectView.html" title=" " alt="" coords="141,153,239,179"/>
+<area shape="poly" id="edge20_Node000000_Node000004" title=" " alt="" coords="77,110,129,138,157,151,155,156,127,143,75,115"/>
+</map>

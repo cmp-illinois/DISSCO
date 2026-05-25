@@ -1,0 +1,11 @@
+<map id="QtParser::parseModifiers" name="QtParser::parseModifiers">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,187,56"/>
+<area shape="rect" id="Node000002" href="$namespaceQtParser.html#a573d00e495962e6d43cb0136e1fbcaa0" title=" " alt="" coords="235,31,409,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,41,221,41,221,46,187,46"/>
+<area shape="rect" id="Node000003" href="$namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="461,5,634,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="409,31,447,27,447,32,410,36"/>
+<area shape="rect" id="Node000004" href="$namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="457,55,637,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="410,50,444,54,444,59,409,55"/>
+<area shape="rect" id="Node000005" href="$namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="685,55,832,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="638,65,672,65,672,70,638,70"/>
+</map>

@@ -1,0 +1,24 @@
+<map id="CMOD/src/TimeSignature.h" name="CMOD/src/TimeSignature.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="304,5,501,31"/>
+<area shape="rect" id="Node000002" href="$NotationScore_8h.html" title="Notated&#45;score model rendered out as LilyPond." alt="" coords="249,152,444,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="392,44,376,80,352,152,347,151,371,78,387,42"/>
+<area shape="rect" id="Node000010" href="$Section_8h.html" title=" " alt="" coords="385,79,535,104"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="423,40,453,77,449,80,418,43"/>
+<area shape="rect" id="Node000003" href="$NotationScore_8cpp.html" title=" " alt="" coords="141,225,350,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="321,187,263,227,260,223,318,183"/>
+<area shape="rect" id="Node000004" href="$Output_8h.html" title="Side&#45;band result tree CMOD builds while expanding a Piece." alt="" coords="375,225,521,251"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="376,183,433,223,430,227,373,187"/>
+<area shape="rect" id="Node000005" href="$Bottom_8cpp.html" title=" " alt="" coords="5,299,171,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="377,256,147,301,146,296,376,251"/>
+<area shape="rect" id="Node000006" href="$Event_8cpp.html" title=" " alt="" coords="195,299,349,324"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="408,258,302,301,300,296,406,253"/>
+<area shape="rect" id="Node000007" href="$Note_8cpp.html" title=" " alt="" coords="374,299,522,324"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="451,264,451,299,445,299,445,264"/>
+<area shape="rect" id="Node000008" href="$Output_8cpp.html" title=" " alt="" coords="546,299,707,324"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="490,253,598,296,596,301,488,258"/>
+<area shape="rect" id="Node000009" href="$piece-experimental_8cpp.html" title=" " alt="" coords="731,299,975,324"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="527,250,788,296,788,301,526,256"/>
+<area shape="poly" id="edge10_Node000010_Node000002" title=" " alt="" coords="431,114,367,154,364,150,428,109"/>
+<area shape="rect" id="Node000011" href="$Section_8cpp.html" title=" " alt="" coords="468,152,633,177"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="487,110,537,150,534,154,484,115"/>
+</map>

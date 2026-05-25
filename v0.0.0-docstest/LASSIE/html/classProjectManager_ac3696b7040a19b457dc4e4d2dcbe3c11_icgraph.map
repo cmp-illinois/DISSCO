@@ -1,0 +1,38 @@
+<map id="ProjectManager::dataModified" name="ProjectManager::dataModified">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1396,221,1613,246"/>
+<area shape="rect" id="Node000002" href="$classMainWindow.html#a3c01f12b25b07bb6c146b8ca1cc89b77" title="Build the main window and bind it to the application singleton." alt="" coords="1138,195,1335,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1382,224,1335,220,1336,215,1382,219"/>
+<area shape="rect" id="Node000003" href="$classProjectManager.html#a02c96a91da7bebdb54dfcd2ea6688d4b" title="Mark the current project as having unsaved changes and emit dataModified()." alt="" coords="1125,245,1348,270"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1383,247,1349,250,1348,245,1382,242"/>
+<area shape="rect" id="Node000004" href="$namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160" title=" " alt="" coords="927,245,1077,270"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1111,260,1078,260,1078,255,1111,255"/>
+<area shape="rect" id="Node000005" href="$classEnvelopeLibraryWindow.html#a1fc39bcfac7742b40037b5e5d971217f" title="Create a brand‐new envelope." alt="" coords="445,5,624,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="987,233,970,200,946,161,915,123,877,92,816,62,750,42,684,31,624,27,624,22,684,26,751,37,818,57,880,87,919,119,951,158,975,197,992,231"/>
+<area shape="rect" id="Node000007" href="$classEnvelopeLibraryWindow.html#a738a0ffb4095beaeb082b01d78c9ad01" title="Delete the selected envelope." alt="" coords="445,69,624,109"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="983,235,940,181,911,155,877,133,815,109,748,95,683,88,624,87,624,81,683,83,749,90,816,104,880,128,914,150,944,178,987,231"/>
+<area shape="rect" id="Node000008" href="$classEnvelopeLibraryWindow.html#aa5ccfd6bcfce9d10dbd3706bb2645b60" title="Duplicate the selected envelope." alt="" coords="445,133,624,173"/>
+<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="978,236,935,197,907,178,878,164,814,147,747,140,682,139,625,143,624,138,682,134,747,135,815,142,880,159,910,173,938,192,982,232"/>
+<area shape="rect" id="Node000009" href="$classMarkovModelLibraryWindow.html#a30aea9cdddc52826fa7a36b43ac2a7e6" title=" " alt="" coords="672,173,879,213"/>
+<area shape="poly" id="edge10_Node000004_Node000009" title=" " alt="" coords="942,243,846,216,848,211,944,238"/>
+<area shape="rect" id="Node000010" href="$classMarkovModelLibraryWindow.html#abb34dbc1f7195a71b77aa42eb5258563" title=" " alt="" coords="672,237,879,277"/>
+<area shape="poly" id="edge11_Node000004_Node000010" title=" " alt="" coords="913,260,879,260,879,255,913,255"/>
+<area shape="rect" id="Node000011" href="$classProjectView.html#a94f2ef2c8a44bbdd40f53417d740652e" title=" " alt="" coords="683,302,868,327"/>
+<area shape="poly" id="edge12_Node000004_Node000011" title=" " alt="" coords="940,276,879,292,829,304,828,299,878,287,939,271"/>
+<area shape="rect" id="Node000012" href="$classMarkovModelLibraryWindow.html#aa6aac28805c9e8bf4f7f72e4d842d0f5" title=" " alt="" coords="672,352,879,392"/>
+<area shape="poly" id="edge13_Node000004_Node000012" title=" " alt="" coords="975,280,932,311,880,341,848,354,846,349,877,336,929,307,972,276"/>
+<area shape="rect" id="Node000013" href="$classEnvLibDrawingArea.html#a41f39121793a68415000a76edf0f9b33" title="Update the active node&#39;s coords from external input." alt="" coords="681,416,869,456"/>
+<area shape="poly" id="edge14_Node000004_Node000013" title=" " alt="" coords="989,283,946,344,915,378,880,406,858,418,855,414,877,402,911,374,941,341,985,280"/>
+<area shape="rect" id="Node000017" href="$classProjectView.html#a9f4f43c4b6e1b2a95577c6c1ee52c5e9" title=" " alt="" coords="679,481,871,506"/>
+<area shape="poly" id="edge19_Node000004_Node000017" title=" " alt="" coords="996,284,980,326,957,376,924,427,903,450,880,470,857,483,855,478,877,466,899,446,919,424,952,373,976,323,991,283"/>
+<area shape="rect" id="Node000006" href="$classEnvelopeLibraryWindow.html#a0fc6921f519c11a1692c3a45a79fc900" title="Constructor: builds the UI." alt="" coords="211,117,397,157"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="462,53,446,60,388,90,338,120,335,115,386,85,444,55,460,48"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="432,113,398,121,397,115,431,108"/>
+<area shape="poly" id="edge9_Node000008_Node000006" title=" " alt="" coords="432,149,397,146,398,141,432,144"/>
+<area shape="rect" id="Node000014" href="$classEnvelopeLibraryWindow.html#ad1b4a1ec9a80b782cc8666d04f5a05a2" title="Called when either X or Y QLineEdit text changes." alt="" coords="445,213,624,253"/>
+<area shape="poly" id="edge15_Node000013_Node000014" title=" " alt="" coords="680,412,670,406,628,370,592,328,544,255,549,252,597,325,632,366,674,402,682,407"/>
+<area shape="poly" id="edge16_Node000014_Node000006" title=" " alt="" coords="472,210,352,160,354,155,474,206"/>
+<area shape="rect" id="Node000015" href="$classEnvelopeLibraryWindow.html#a5569ae9d30f88f6080575130f28c64cf" title="Programmatically update the X/Y entries." alt="" coords="215,213,393,253"/>
+<area shape="poly" id="edge17_Node000014_Node000015" title=" " alt="" coords="432,236,394,236,394,231,432,231"/>
+<area shape="rect" id="Node000016" href="$classEnvLibDrawingArea.html#aca692664dc8aa19535b80bab00102141" title="Handle presses (select node, start drag, show popup)" alt="" coords="5,213,163,253"/>
+<area shape="poly" id="edge18_Node000015_Node000016" title=" " alt="" coords="201,236,163,236,163,231,201,231"/>
+</map>

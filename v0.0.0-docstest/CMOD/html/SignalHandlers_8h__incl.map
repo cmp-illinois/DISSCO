@@ -1,0 +1,19 @@
+<map id="CMOD/src/SignalHandlers.h" name="CMOD/src/SignalHandlers.h">
+<area shape="rect" id="Node000001" title="Custom POSIX signal handlers for CMOD (Rubin Du, 2024)." alt="" coords="295,5,495,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,85,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="336,33,99,81,98,76,335,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="110,79,178,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="355,33,192,79,191,74,354,28"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="202,79,291,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="372,33,284,75,282,70,370,28"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="315,79,381,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="389,32,365,69,361,66,385,30"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="405,79,480,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="405,30,430,66,425,69,400,33"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="504,79,581,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="420,28,507,70,505,75,417,33"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="605,79,691,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="436,28,594,72,593,77,435,33"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="715,79,781,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="460,28,701,76,700,81,459,33"/>
+</map>

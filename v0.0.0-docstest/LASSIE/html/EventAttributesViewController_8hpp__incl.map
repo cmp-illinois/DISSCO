@@ -1,0 +1,17 @@
+<map id="LASSIE/src/widgets/EventAttributesViewController.hpp" name="LASSIE/src/widgets/EventAttributesViewController.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="178,5,429,45"/>
+<area shape="rect" id="Node000002" href="$lassie_8hpp.html" title="Project&#45;wide enum definitions for LASSIE." alt="" coords="5,93,105,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="245,48,105,92,104,87,243,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="129,93,203,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="272,48,200,89,197,84,269,43"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="285,167,340,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="290,47,271,80,266,99,269,118,279,138,292,155,288,158,274,140,263,119,261,99,266,78,285,44"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="383,167,453,192"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="429,42,508,63,539,76,559,92,566,106,564,120,556,132,543,142,507,159,467,171,466,166,505,154,540,138,552,128,559,118,561,107,555,95,536,81,506,68,428,48"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="478,93,545,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="354,43,469,86,467,91,352,48"/>
+<area shape="rect" id="Node000007" href="$event__struct_8hpp.html" title=" " alt="" coords="279,93,453,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="321,44,350,81,346,84,316,47"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="359,121,332,157,327,154,355,117"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="377,117,404,154,399,157,372,121"/>
+</map>

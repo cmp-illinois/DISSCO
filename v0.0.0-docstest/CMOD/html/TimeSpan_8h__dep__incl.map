@@ -1,0 +1,61 @@
+<map id="CMOD/src/TimeSpan.h" name="CMOD/src/TimeSpan.h">
+<area shape="rect" id="Node000001" title="Dual&#45;representation [start, end] interval used by every Event." alt="" coords="527,5,694,31"/>
+<area shape="rect" id="Node000002" href="$Bottom_8h.html" title="Leaf event in a DISSCO composition." alt="" coords="371,225,522,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="594,43,505,154,456,226,452,223,501,150,590,39"/>
+<area shape="rect" id="Node000010" href="$Event_8h.html" title="Core Event class — the common base for every layer in a DISSCO composition tree (top,..." alt="" coords="283,152,421,177"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="548,37,495,55,441,81,395,118,363,154,359,150,392,114,439,76,493,50,547,32"/>
+<area shape="rect" id="Node000012" href="$NotationScore_8h.html" title="Notated&#45;score model rendered out as LilyPond." alt="" coords="804,299,999,324"/>
+<area shape="poly" id="edge17_Node000001_Node000012" title=" " alt="" coords="708,23,795,35,893,58,944,75,993,95,1041,120,1084,150,1111,173,1131,197,1137,210,1139,223,1136,238,1127,252,1105,269,1070,282,985,301,984,296,1069,277,1103,264,1123,249,1131,236,1134,223,1132,211,1127,200,1107,176,1081,154,1038,125,991,100,942,80,892,63,794,40,707,28"/>
+<area shape="rect" id="Node000016" href="$Note_8h.html" title="Notated&#45;score representation of a single musical event." alt="" coords="671,79,804,104"/>
+<area shape="poly" id="edge25_Node000001_Node000016" title=" " alt="" coords="644,35,718,76,715,81,642,40"/>
+<area shape="rect" id="Node000003" href="$Bottom_8cpp.html" title=" " alt="" coords="819,445,984,471"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="478,255,593,322,668,360,745,395,869,443,867,448,743,400,666,365,591,326,475,260"/>
+<area shape="rect" id="Node000004" href="$CMOD_8h.html" title="Umbrella header for the Composition Module (CMOD)." alt="" coords="379,299,522,324"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="451,264,453,298,447,299,445,265"/>
+<area shape="rect" id="Node000009" href="$Event_8cpp.html" title=" " alt="" coords="197,445,352,471"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="413,260,386,278,361,300,332,339,309,380,281,446,276,444,304,378,327,336,357,297,382,274,410,255"/>
+<area shape="rect" id="Node000005" href="$Piece_8h.html" title="Top&#45;level composition object and supporting filesystem helpers." alt="" coords="382,372,519,397"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="445,338,446,372,441,372,439,338"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="409,368,384,350,364,325,361,313,362,301,375,280,397,262,420,248,423,253,400,266,379,283,367,302,366,312,369,323,388,346,412,363"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="457,359,455,324,460,324,462,358"/>
+<area shape="rect" id="Node000006" href="$Main_8cpp.html" title="CMOD command&#45;line entry point." alt="" coords="376,445,525,471"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="453,411,453,445,448,445,448,411"/>
+<area shape="rect" id="Node000007" href="$Utilities_8cpp.html" title=" " alt="" coords="5,445,173,471"/>
+<area shape="poly" id="edge8_Node000005_Node000007" title=" " alt="" coords="380,403,148,448,147,443,379,397"/>
+<area shape="rect" id="Node000008" href="$piece-experimental_8cpp.html" title=" " alt="" coords="550,445,794,471"/>
+<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="500,399,637,443,635,448,498,404"/>
+<area shape="poly" id="edge12_Node000010_Node000002" title=" " alt="" coords="380,183,433,223,430,227,377,188"/>
+<area shape="poly" id="edge13_Node000010_Node000004" title=" " alt="" coords="351,191,352,220,361,249,373,265,388,277,421,296,418,301,385,282,369,268,356,252,346,221,346,191"/>
+<area shape="poly" id="edge16_Node000010_Node000007" title=" " alt="" coords="335,189,102,447,98,443,331,186"/>
+<area shape="poly" id="edge14_Node000010_Node000009" title=" " alt="" coords="347,191,296,373,280,446,274,445,291,371,342,190"/>
+<area shape="rect" id="Node000011" href="$Note_8cpp.html" title=" " alt="" coords="1009,445,1157,471"/>
+<area shape="poly" id="edge15_Node000010_Node000011" title=" " alt="" coords="402,179,534,223,916,370,1061,443,1059,448,914,374,532,228,401,184"/>
+<area shape="rect" id="Node000013" href="$NotationScore_8cpp.html" title=" " alt="" coords="978,372,1187,397"/>
+<area shape="poly" id="edge18_Node000012_Node000013" title=" " alt="" coords="944,326,1054,369,1052,374,942,331"/>
+<area shape="rect" id="Node000014" href="$Output_8h.html" title="Side&#45;band result tree CMOD builds while expanding a Piece." alt="" coords="756,372,903,397"/>
+<area shape="poly" id="edge19_Node000012_Node000014" title=" " alt="" coords="881,336,843,374,839,370,878,332"/>
+<area shape="poly" id="edge20_Node000014_Node000003" title=" " alt="" coords="853,405,892,443,888,447,849,409"/>
+<area shape="poly" id="edge24_Node000014_Node000008" title=" " alt="" coords="793,405,699,448,697,443,790,401"/>
+<area shape="poly" id="edge21_Node000014_Node000009" title=" " alt="" coords="743,400,353,449,352,444,742,394"/>
+<area shape="poly" id="edge22_Node000014_Node000011" title=" " alt="" coords="884,399,1042,443,1041,448,883,404"/>
+<area shape="rect" id="Node000015" href="$Output_8cpp.html" title=" " alt="" coords="1186,445,1347,471"/>
+<area shape="poly" id="edge23_Node000014_Node000015" title=" " alt="" coords="913,397,1197,443,1196,448,912,402"/>
+<area shape="poly" id="edge26_Node000016_Node000002" title=" " alt="" coords="664,110,603,128,543,154,493,191,458,227,455,223,490,187,540,150,601,123,662,105"/>
+<area shape="poly" id="edge27_Node000016_Node000004" title=" " alt="" coords="706,113,644,154,589,203,535,253,470,300,467,296,532,249,586,199,641,150,703,109"/>
+<area shape="poly" id="edge33_Node000016_Node000005" title=" " alt="" coords="723,116,645,211,592,270,535,326,471,374,468,370,532,322,588,266,641,208,719,113"/>
+<area shape="poly" id="edge29_Node000016_Node000006" title=" " alt="" coords="728,118,696,179,622,295,585,343,533,399,501,426,471,448,468,443,497,422,529,395,581,339,618,292,691,176,724,116"/>
+<area shape="poly" id="edge40_Node000016_Node000008" title=" " alt="" coords="742,118,745,210,742,267,733,325,722,361,708,395,681,446,677,444,703,393,717,359,728,323,737,267,740,210,737,118"/>
+<area shape="poly" id="edge28_Node000016_Node000010" title=" " alt="" coords="662,109,415,155,414,149,661,104"/>
+<area shape="poly" id="edge31_Node000016_Node000011" title=" " alt="" coords="818,97,967,117,1036,132,1084,150,1122,174,1156,200,1184,228,1206,258,1221,290,1226,324,1220,361,1202,399,1188,416,1171,430,1132,448,1130,443,1168,425,1185,412,1198,396,1215,359,1220,324,1216,291,1202,260,1180,231,1152,204,1119,178,1081,154,1034,137,966,122,818,103"/>
+<area shape="poly" id="edge30_Node000016_Node000012" title=" " alt="" coords="756,114,895,297,890,300,752,117"/>
+<area shape="poly" id="edge32_Node000016_Node000015" title=" " alt="" coords="818,95,953,108,1029,119,1104,134,1172,152,1227,175,1248,188,1265,203,1275,219,1279,236,1279,313,1276,388,1271,445,1265,445,1270,388,1273,313,1273,237,1270,221,1260,206,1245,192,1224,179,1170,157,1103,139,1029,124,953,113,818,100"/>
+<area shape="rect" id="Node000017" href="$Section_8h.html" title=" " alt="" coords="963,225,1114,251"/>
+<area shape="poly" id="edge34_Node000016_Node000017" title=" " alt="" coords="818,93,887,99,960,110,1022,126,1046,137,1062,150,1070,169,1067,190,1050,226,1045,224,1062,189,1065,170,1058,154,1043,142,1020,131,959,115,887,105,817,99"/>
+<area shape="rect" id="Node000019" href="$TimeSignature_8h.html" title=" " alt="" coords="851,152,1048,177"/>
+<area shape="poly" id="edge37_Node000016_Node000019" title=" " alt="" coords="785,106,916,149,914,154,783,111"/>
+<area shape="poly" id="edge35_Node000017_Node000012" title=" " alt="" coords="1006,259,925,301,923,296,1003,254"/>
+<area shape="rect" id="Node000018" href="$Section_8cpp.html" title=" " alt="" coords="1023,299,1188,324"/>
+<area shape="poly" id="edge36_Node000017_Node000018" title=" " alt="" coords="1061,259,1096,297,1093,300,1057,263"/>
+<area shape="poly" id="edge38_Node000019_Node000012" title=" " alt="" coords="944,191,908,299,903,298,939,190"/>
+<area shape="poly" id="edge39_Node000019_Node000017" title=" " alt="" coords="976,184,1026,223,1022,227,973,188"/>
+</map>

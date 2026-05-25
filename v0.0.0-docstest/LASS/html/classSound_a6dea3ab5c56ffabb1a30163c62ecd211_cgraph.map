@@ -1,0 +1,17 @@
+<map id="Sound::getTotalDuration" name="Sound::getTotalDuration">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,133,184,159"/>
+<area shape="rect" id="Node000002" href="$classReverb.html#aa6f4b3abeb52759de5b8f84de09c6be7" title=" " alt="" coords="268,5,407,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,131,158,86,193,61,231,40,253,31,255,36,233,44,196,65,161,90,110,135"/>
+<area shape="rect" id="Node000003" href="$classParameterLib.html#ab7c9e5e33bc46baaa3e75514c53cd2b0" title=" " alt="" coords="232,55,443,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="143,131,219,110,221,116,145,136"/>
+<area shape="rect" id="Node000004" href="$classIterator.html#a69b4bebf4a915a4ee591e6c8bd9b9b9a" title=" " alt="" coords="271,133,403,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="184,143,258,143,258,149,184,149"/>
+<area shape="rect" id="Node000006" href="$classCollection.html#acd5dfa486c735fe26700dd94e2b0d0c4" title=" " alt="" coords="266,183,409,223"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="150,156,253,181,252,186,149,161"/>
+<area shape="rect" id="Node000007" href="$classIterator.html#a12aa5b9d3dd7370cd40943427834adc6" title=" " alt="" coords="284,248,391,273"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="113,157,165,194,233,233,271,246,269,251,231,238,162,199,110,161"/>
+<area shape="rect" id="Node000005" href="$classAbstractIterator.html#aabada3692730edd3a71070e9fc0fd3c0" title=" " alt="" coords="491,133,677,159"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="403,143,477,143,477,149,403,149"/>
+<area shape="rect" id="Node000008" href="$classAbstractIterator.html#a131acaa938ffedf104e5e3b55dffc5c2" title=" " alt="" coords="503,248,665,273"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="391,258,489,258,489,263,391,263"/>
+</map>

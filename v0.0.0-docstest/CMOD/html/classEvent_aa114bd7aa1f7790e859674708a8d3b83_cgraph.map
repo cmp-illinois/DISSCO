@@ -1,0 +1,14 @@
+<map id="Event::getAvailableEDU" name="Event::getAvailableEDU">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,181,105"/>
+<area shape="rect" id="Node000002" href="$classRational.html#ac7165b7a9ccd136b5161a79e8da9fe97" title=" " alt="" coords="269,5,380,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,77,229,39,255,32,257,37,230,45,127,82"/>
+<area shape="rect" id="Node000003" href="$classTempo.html#a38d180ff752c1ea099184c5cc8eb7085" title=" " alt="" coords="229,55,420,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="181,80,216,77,216,82,182,86"/>
+<area shape="rect" id="Node000005" href="$classRational.html#aaae029be1a728da35eff772ba346facd" title=" " alt="" coords="236,104,413,129"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="182,99,223,103,222,109,181,104"/>
+<area shape="rect" id="Node000006" href="$classRational.html#a977d0a0644375119c82afce254679882" title=" " alt="" coords="275,177,374,203"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="126,103,282,169,280,174,124,108"/>
+<area shape="rect" id="Node000004" href="$classTempo.html#ac7bd9f9822b8ffe5c2d0386883cae6b3" title=" " alt="" coords="468,47,695,87"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="420,65,454,65,454,70,420,70"/>
+<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="287,179,279,169,283,159,299,153,325,151,357,155,369,164,366,168,355,159,325,156,300,158,287,163,284,168,291,175"/>
+</map>

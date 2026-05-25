@@ -1,0 +1,9 @@
+<map id="QtParser::parseChildEventDef" name="QtParser::parseChildEventDef">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,220,56"/>
+<area shape="rect" id="Node000002" href="$namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="271,5,445,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,30,258,26,258,31,220,35"/>
+<area shape="rect" id="Node000003" href="$namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="268,55,448,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="220,51,254,55,254,60,220,56"/>
+<area shape="rect" id="Node000004" href="$namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="496,55,643,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="448,65,482,65,482,70,448,70"/>
+</map>

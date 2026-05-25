@@ -1,0 +1,9 @@
+<map id="LASS/src/Loudness.h" name="LASS/src/Loudness.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="165,5,319,31"/>
+<area shape="rect" id="Node000002" href="$LASS_8h.html" title="Umbrella header for the LASS additive sound synthesis library." alt="" coords="5,79,132,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,38,98,81,96,76,201,33"/>
+<area shape="rect" id="Node000003" href="$Loudness_8cpp.html" title=" " alt="" coords="157,79,327,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="245,44,245,79,239,79,239,44"/>
+<area shape="rect" id="Node000004" href="$Sound_8cpp.html" title=" " alt="" coords="351,79,501,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="285,33,397,76,395,81,283,38"/>
+</map>

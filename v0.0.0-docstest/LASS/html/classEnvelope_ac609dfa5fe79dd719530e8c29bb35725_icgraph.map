@@ -1,0 +1,9 @@
+<map id="Envelope::Envelope" name="Envelope::Envelope">
+<area shape="rect" id="Node000001" title=" " alt="" coords="440,38,591,63"/>
+<area shape="rect" id="Node000002" href="$classEnvelope.html#ac7c7204c8737a39a3f6d9d22f74e9a4c" title=" " alt="" coords="257,13,383,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="426,42,383,36,383,31,427,36"/>
+<area shape="rect" id="Node000004" href="$classEnvelope.html#ad3a5b6b946a217e74060de794cca6f30" title=" " alt="" coords="248,62,392,87"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="426,64,393,68,392,63,426,59"/>
+<area shape="rect" id="Node000003" href="$classEnvelopeLibrary.html#a39cf6da57787eeaee8810d6b3efaf71c" title=" " alt="" coords="5,5,200,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="244,28,200,28,200,23,244,23"/>
+</map>

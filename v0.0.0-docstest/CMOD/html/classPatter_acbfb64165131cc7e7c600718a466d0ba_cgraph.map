@@ -1,0 +1,9 @@
+<map id="Patter::GetNextValue" name="Patter::GetNextValue">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,164,56"/>
+<area shape="rect" id="Node000002" href="$classPatter.html#ab69f7d6d14b8acb6db829667c31039a3" title=" " alt="" coords="212,31,356,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,41,198,41,198,46,164,46"/>
+<area shape="rect" id="Node000003" href="$classPatter.html#a38408914faaf6cf0d807d22f0ef3475b" title=" " alt="" coords="413,5,529,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="356,31,399,25,400,30,357,36"/>
+<area shape="rect" id="Node000004" href="$classPatter.html#a1e2589db4714a775b9e9ce4c2447a264" title=" " alt="" coords="404,55,537,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="357,50,391,54,390,60,356,55"/>
+</map>

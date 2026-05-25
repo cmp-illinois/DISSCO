@@ -1,0 +1,18 @@
+<map id="MarkovModelLibraryWindow::insertDefaultModelAt" name="MarkovModelLibraryWindow::insertDefaultModelAt">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,88,212,128"/>
+<area shape="rect" id="Node000002" href="$classProjectManager.html#a20ac2050f271b7d7945136e51f1cdd75" title=" " alt="" coords="298,5,451,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,85,296,47,297,52,175,91"/>
+<area shape="rect" id="Node000003" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="553,95,745,121"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="212,105,539,105,539,111,212,111"/>
+<area shape="rect" id="Node000005" href="$classProjectManager.html#a524f7bca146485d66b6b4809ec26b817" title=" " alt="" coords="260,121,489,146"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="212,115,247,118,246,124,212,120"/>
+<area shape="rect" id="Node000006" href="$namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160" title=" " alt="" coords="299,170,450,195"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="165,126,261,156,294,164,293,170,259,161,164,131"/>
+<area shape="rect" id="Node000004" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="862,95,971,121"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="745,105,848,105,848,111,745,111"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="441,167,489,156,598,122,599,128,490,161,442,173"/>
+<area shape="rect" id="Node000007" href="$classProjectManager.html#a02c96a91da7bebdb54dfcd2ea6688d4b" title="Mark the current project as having unsaved changes and emit dataModified()." alt="" coords="537,170,760,195"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="450,180,524,180,524,185,450,185"/>
+<area shape="rect" id="Node000008" href="$classProjectManager.html#ac3696b7040a19b457dc4e4d2dcbe3c11" title=" " alt="" coords="808,170,1025,195"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="760,180,794,180,794,185,760,185"/>
+</map>

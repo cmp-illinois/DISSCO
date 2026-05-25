@@ -1,0 +1,23 @@
+<map id="EnvelopeLibraryWindow::setEntries" name="EnvelopeLibraryWindow::setEntries">
+<area shape="rect" id="Node000001" title="Programmatically update the X/Y entries." alt="" coords="5,99,184,139"/>
+<area shape="rect" id="Node000002" href="$classEnvelopeLibraryWindow.html#ad1b4a1ec9a80b782cc8666d04f5a05a2" title="Called when either X or Y QLineEdit text changes." alt="" coords="232,99,411,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,116,218,116,218,121,185,121"/>
+<area shape="rect" id="Node000003" href="$classEnvLibDrawingArea.html#a41f39121793a68415000a76edf0f9b33" title="Update the active node&#39;s coords from external input." alt="" coords="459,99,647,139"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="411,116,445,116,445,121,411,121"/>
+<area shape="rect" id="Node000004" href="$classEnvLibDrawingArea.html#a049ecb2a281b1b7801303d5cc354f890" title="Recompute upperY/lowerY based on envelope data." alt="" coords="705,5,863,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="597,96,694,55,712,48,714,53,696,60,599,101"/>
+<area shape="rect" id="Node000005" href="$classEnvelopeLibraryWindow.html#a748389013fcd6b8fa47857c6407e8d50" title="Return the currently active envelope." alt="" coords="695,69,873,109"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="647,104,681,100,682,105,647,109"/>
+<area shape="rect" id="Node000006" href="$namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160" title=" " alt="" coords="709,134,859,159"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="647,127,695,133,695,139,647,133"/>
+<area shape="rect" id="Node000011" href="$classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b" title="Trigger a redraw of the given envelope." alt="" coords="705,184,863,224"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="608,136,696,170,715,177,714,182,694,174,606,141"/>
+<area shape="rect" id="Node000007" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="937,110,1129,135"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="859,137,923,131,923,136,860,142"/>
+<area shape="rect" id="Node000009" href="$classProjectManager.html#a02c96a91da7bebdb54dfcd2ea6688d4b" title="Mark the current project as having unsaved changes and emit dataModified()." alt="" coords="921,159,1144,185"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="860,152,908,157,907,162,859,157"/>
+<area shape="rect" id="Node000008" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="1246,110,1355,135"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1129,120,1232,120,1232,125,1129,125"/>
+<area shape="rect" id="Node000010" href="$classProjectManager.html#ac3696b7040a19b457dc4e4d2dcbe3c11" title=" " alt="" coords="1192,159,1409,185"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="1144,169,1178,169,1178,175,1144,175"/>
+</map>

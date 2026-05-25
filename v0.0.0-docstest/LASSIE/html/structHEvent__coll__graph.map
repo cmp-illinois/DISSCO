@@ -1,0 +1,11 @@
+<map id="HEvent" name="HEvent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="199,93,268,119"/>
+<area shape="rect" id="Node000002" href="$structTimeSignature.html" title=" " alt="" coords="5,5,123,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,36,145,67,201,91,199,96,143,72,90,41"/>
+<area shape="rect" id="Node000003" href="$structTempo.html" title=" " alt="" coords="146,5,211,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="196,41,228,91,223,94,191,44"/>
+<area shape="rect" id="Node000004" href="$structNumChildren.html" title=" " alt="" coords="236,5,343,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="279,44,262,71,245,95,240,92,258,68,274,41"/>
+<area shape="rect" id="Node000005" href="$structChildDef.html" title=" " alt="" coords="367,5,446,31"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="392,44,360,72,314,92,269,103,268,97,312,87,357,67,388,40"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="ProjectManager::parse" name="ProjectManager::parse">
+<area shape="rect" id="Node000001" title="Populate p from the XML found in the file at filepath." alt="" coords="5,55,173,80"/>
+<area shape="rect" id="Node000002" href="$namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="225,5,398,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,52,239,31,241,36,148,57"/>
+<area shape="rect" id="Node000003" href="$namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="221,55,401,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="174,65,208,65,208,70,174,70"/>
+<area shape="rect" id="Node000004" href="$namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="449,80,596,105"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="148,77,222,89,333,94,435,94,435,99,333,100,221,94,147,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="402,76,436,80,435,85,401,81"/>
+</map>

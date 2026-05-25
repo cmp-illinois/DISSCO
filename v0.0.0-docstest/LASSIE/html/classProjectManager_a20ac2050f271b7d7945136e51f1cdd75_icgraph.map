@@ -1,0 +1,13 @@
+<map id="ProjectManager::get_curr_project" name="ProjectManager::get_curr_project">
+<area shape="rect" id="Node000001" title=" " alt="" coords="260,127,413,167"/>
+<area shape="rect" id="Node000002" href="$classMarkovModelLibraryWindow.html#a30aea9cdddc52826fa7a36b43ac2a7e6" title=" " alt="" coords="5,5,212,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="300,120,258,89,211,60,183,48,185,43,213,55,261,84,303,115"/>
+<area shape="rect" id="Node000003" href="$classMarkovModelLibraryWindow.html#abb34dbc1f7195a71b77aa42eb5258563" title=" " alt="" coords="5,69,212,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,127,188,112,190,107,247,122"/>
+<area shape="rect" id="Node000004" href="$classProjectView.html#ab1e02e041f7adbfeb8110a1c3e9f1836" title=" " alt="" coords="17,134,200,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="246,149,200,149,200,144,246,144"/>
+<area shape="rect" id="Node000005" href="$classMarkovModelLibraryWindow.html#aa6aac28805c9e8bf4f7f72e4d842d0f5" title=" " alt="" coords="5,184,212,224"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="247,172,190,187,188,181,246,167"/>
+<area shape="rect" id="Node000006" href="$classMarkovModelLibraryWindow.html#a96a9b0267a2d48bb1998a2c3f0bec876" title=" " alt="" coords="5,248,212,288"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="303,178,261,209,213,238,185,250,183,245,211,234,258,205,300,174"/>
+</map>

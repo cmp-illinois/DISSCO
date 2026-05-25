@@ -1,0 +1,6 @@
+<map id="EnvLibEntryNode" name="EnvLibEntryNode">
+<area shape="rect" id="Node000001" title="Represents a node (control point) in an envelope." alt="" coords="5,5,139,31"/>
+<area shape="rect" id="Node000002" href="$classEnvLibEntrySeg.html" title="Represents a segment between two nodes in an envelope." alt="" coords="11,108,133,133"/>
+<area shape="poly" id="edge2_Node000002_Node000001" title=" " alt="" coords="36,40,22,56,18,69,22,83,33,96,46,106,43,110,29,99,18,85,13,69,18,53,32,37"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,95,88,83,90,69,88,55,78,32,83,30,93,54,96,69,93,85,89,97"/>
+</map>

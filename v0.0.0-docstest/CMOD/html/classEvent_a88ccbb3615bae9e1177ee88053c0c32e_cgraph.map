@@ -1,0 +1,20 @@
+<map id="Event::getEDUDurationExactness" name="Event::getEDUDurationExactness">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,169,244,195"/>
+<area shape="rect" id="Node000002" href="$classEvent.html#aa114bd7aa1f7790e859674708a8d3b83" title=" " alt="" coords="326,104,502,129"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,167,343,130,344,135,182,172"/>
+<area shape="rect" id="Node000008" href="$classTempo.html#a6a0807777376060e9c4d2e8f4e96ee7f" title=" " alt="" coords="292,193,536,219"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="244,189,279,192,278,197,244,195"/>
+<area shape="rect" id="Node000003" href="$classRational.html#ac7165b7a9ccd136b5161a79e8da9fe97" title=" " alt="" coords="638,5,749,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="439,102,503,71,583,39,624,28,625,33,585,45,505,76,441,106"/>
+<area shape="rect" id="Node000004" href="$classTempo.html#a38d180ff752c1ea099184c5cc8eb7085" title=" " alt="" coords="598,55,789,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="486,101,607,80,608,85,487,107"/>
+<area shape="rect" id="Node000006" href="$classRational.html#aaae029be1a728da35eff772ba346facd" title=" " alt="" coords="605,104,782,129"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="502,114,591,114,591,119,502,119"/>
+<area shape="rect" id="Node000007" href="$classRational.html#a977d0a0644375119c82afce254679882" title=" " alt="" coords="644,177,743,203"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="464,127,632,171,630,176,463,132"/>
+<area shape="rect" id="Node000005" href="$classTempo.html#ac7bd9f9822b8ffe5c2d0386883cae6b3" title=" " alt="" coords="851,47,1077,87"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="789,65,837,65,837,70,789,70"/>
+<area shape="poly" id="edge7_Node000007_Node000007" title=" " alt="" coords="650,179,640,169,645,159,663,153,693,151,732,155,742,160,746,166,742,168,739,164,730,160,693,156,664,158,649,163,646,168,654,175"/>
+<area shape="rect" id="Node000009" href="$classTempo.html#ade906f53101b477bb1187014e9fa6710" title=" " alt="" coords="584,227,803,267"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="501,216,570,226,570,232,500,221"/>
+</map>

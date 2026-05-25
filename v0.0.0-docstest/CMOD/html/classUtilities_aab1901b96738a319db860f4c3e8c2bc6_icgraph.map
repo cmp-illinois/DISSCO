@@ -1,0 +1,16 @@
+<map id="Utilities::isSieveFunction" name="Utilities::isSieveFunction">
+<area shape="rect" id="Node000001" title=" " alt="" coords="584,43,767,68"/>
+<area shape="rect" id="Node000002" href="$classEvent.html#ada22a83088a037dcf7d1b41cece0dbbb" title=" " alt="" coords="365,17,536,43"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="570,46,536,42,536,37,571,41"/>
+<area shape="rect" id="Node000006" href="$classEvent.html#afac83bb8750e444d149246f32400a973" title=" " alt="" coords="379,67,522,92"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="570,69,522,74,522,69,570,64"/>
+<area shape="rect" id="Node000003" href="$classBottom.html#a32e301cf566271d4072951c1a851e88c" title=" " alt="" coords="153,5,317,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="352,27,318,25,318,20,352,22"/>
+<area shape="rect" id="Node000004" href="$classEvent.html#af43248915d08da44962951c1a4d0b4c8" title=" " alt="" coords="159,79,312,104"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="393,49,366,57,281,81,280,76,365,51,391,44"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="267,68,258,60,235,57,216,59,207,64,205,70,210,77,206,80,199,70,203,61,215,54,235,52,260,56,270,64"/>
+<area shape="rect" id="Node000005" href="$classPiece.html#a4dc9d0d3627fc2208b7da6a36a2ca9c2" title=" " alt="" coords="5,79,105,104"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="145,94,105,94,105,89,145,89"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="392,65,280,33,281,28,393,60"/>
+<area shape="poly" id="edge8_Node000006_Node000004" title=" " alt="" coords="365,87,312,90,312,84,365,81"/>
+</map>

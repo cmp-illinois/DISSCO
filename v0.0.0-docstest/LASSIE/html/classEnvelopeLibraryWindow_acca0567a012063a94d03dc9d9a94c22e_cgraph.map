@@ -1,0 +1,15 @@
+<map id="EnvelopeLibraryWindow::setActiveProject" name="EnvelopeLibraryWindow::setActiveProject">
+<area shape="rect" id="Node000001" title="Set the active project." alt="" coords="5,112,184,152"/>
+<area shape="rect" id="Node000002" href="$classEnvLibDrawingArea.html#aedec28399cefe14dd44aa9ed76613db6" title="Clear the drawing area (background will repaint white)" alt="" coords="262,5,419,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,110,175,82,231,55,251,47,253,52,233,60,177,87,129,114"/>
+<area shape="rect" id="Node000003" href="$classProjectManager.html#aef96b4de43479dce1deecf558fce632e" title=" " alt="" coords="232,70,449,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,112,263,95,264,101,185,117"/>
+<area shape="rect" id="Node000004" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="245,119,437,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="184,129,231,129,231,135,184,135"/>
+<area shape="rect" id="Node000006" href="$classEnvelopeLibraryEntry.html#ac30055687c13c1a5b6f992ce449f6191" title="Get this entry&#39;s number as a QString." alt="" coords="260,169,421,209"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="182,149,247,165,246,170,180,155"/>
+<area shape="rect" id="Node000007" href="$classEnvelopeLibraryWindow.html#ad9f57cd8cf62aee2453f6f9b3406e680" title="Rebuild the entire envelope list from the project." alt="" coords="251,233,430,273"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="123,150,173,185,233,219,250,226,248,231,231,224,170,189,120,154"/>
+<area shape="rect" id="Node000005" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="497,119,607,145"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="437,129,484,129,484,135,437,135"/>
+</map>

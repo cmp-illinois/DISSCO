@@ -1,0 +1,5 @@
+<map id="PieceHelper::getProjectName" name="PieceHelper::getProjectName">
+<area shape="rect" id="Node000001" title="Determines the name of the project in the given directory." alt="" coords="5,5,219,31"/>
+<area shape="rect" id="Node000002" href="$structPieceHelper.html#a28358171bf3acd8d2dbee00838a6b5ae" title="Lists contents of directory." alt="" coords="267,5,479,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,15,253,15,253,21,219,21"/>
+</map>

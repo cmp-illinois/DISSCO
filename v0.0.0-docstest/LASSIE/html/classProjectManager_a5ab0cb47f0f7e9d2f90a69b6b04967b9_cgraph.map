@@ -1,0 +1,5 @@
+<map id="ProjectManager::writeSeedEntry" name="ProjectManager::writeSeedEntry">
+<area shape="rect" id="Node000001" title="Persist the user&#45;supplied PRNG seed for the active project to disk." alt="" coords="5,5,203,45"/>
+<area shape="rect" id="Node000002" href="$classProjectManager.html#a1024edbdc1e9964734d8a13cbe94f21d" title=" " alt="" coords="251,13,413,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,23,237,23,237,28,203,28"/>
+</map>

@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['get_5fcurr_5fproject_0',['get_curr_project',['../classProjectManager.html#a20ac2050f271b7d7945136e51f1cdd75',1,'ProjectManager']]],
+  ['get_5fproject_5fmanager_1',['get_project_manager',['../classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76',1,'Inst']]],
+  ['getactiveenvelope_2',['getActiveEnvelope',['../classEnvelopeLibraryWindow.html#a748389013fcd6b8fa47857c6407e8d50',1,'EnvelopeLibraryWindow']]],
+  ['getindex_3',['getindex',['../classFunctionEntryRow.html#a72922dbac282dfb65e4f07c8bb321b90',1,'FunctionEntryRow::getIndex()'],['../classMakeEnvelopeRow.html#a858d4f5a0fc683b66a41c221a3f08079',1,'MakeEnvelopeRow::getIndex()']]],
+  ['getnodetext_4',['getnodetext',['../classSelect.html#aaecae66936d197e170fcdb3967a58432',1,'Select::getNodeText()'],['../classStochos.html#ac8c5c0121229365a8b3181aad7a56e80',1,'Stochos::getNodeText()']]],
+  ['getnumberstring_5',['getNumberString',['../classEnvelopeLibraryEntry.html#ac30055687c13c1a5b6f992ce449f6191',1,'EnvelopeLibraryEntry']]],
+  ['getpatternfunction_6',['GetPatternFunction',['../classGetPatternFunction.html#a5ec2445f782abf74910e499af6f40280',1,'GetPatternFunction']]],
+  ['getpro_7',['getPro',['../classMakeEnvelopeRow.html#a0296de354fc15641ede4cb441ceaff7a',1,'MakeEnvelopeRow']]],
+  ['getresultstring_8',['getResultString',['../classFunctionGenerator.html#ad22cbc76afd77a12811379570d947693',1,'FunctionGenerator']]],
+  ['getselectindex_9',['getSelectIndex',['../classSelect.html#a0992167c62e98700d952166bcda6e2ae',1,'Select']]],
+  ['getstochosindex_10',['getStochosIndex',['../classStochos.html#a93892ffebba37d37874f714fd1959c2b',1,'Stochos']]],
+  ['gettext_11',['getText',['../classFunctionEntryRow.html#a40b58f2c22f517c9bdb921d458dbd3c0',1,'FunctionEntryRow']]],
+  ['gettype_12',['getType',['../classMakeEnvelopeRow.html#abd33bd715121535b51fc5a35c862830c',1,'MakeEnvelopeRow']]],
+  ['getx_13',['getX',['../classMakeEnvelopeRow.html#afb68dcf1e4d80669ca61d2a5feda0aff',1,'MakeEnvelopeRow']]],
+  ['getxml_14',['getXml',['../classSPAChannel.html#a0f43c4f462e25f7c24a5e8e7a85c0b17',1,'SPAChannel']]],
+  ['getxmlallgain_15',['getXmlAllGain',['../classREVChannel.html#a1e96216ec2095efa4af7dc97fc77c087',1,'REVChannel']]],
+  ['getxmlcombgain_16',['getXmlCombGain',['../classREVChannel.html#a58ff2a2aaff930793bb0fca225a6297e',1,'REVChannel']]],
+  ['getxmldelay_17',['getXmlDelay',['../classREVChannel.html#a1edf6f1a0ceedb3617fdeb79139eb7ed',1,'REVChannel']]],
+  ['getxmlhillow_18',['getXmlHillow',['../classREVChannel.html#a37f91e8292f9caf1f4ad9572115603db',1,'REVChannel']]],
+  ['getxmllpgain_19',['getXmlLPGain',['../classREVChannel.html#acaf2dc40908507f26fbe1d0f20f91ede',1,'REVChannel']]],
+  ['getxmlreverb_20',['getXmlReverb',['../classREVChannel.html#ae76db277bcb2c7d37760aafdf30b1ba1',1,'REVChannel']]],
+  ['getxmlroom_21',['getXmlRoom',['../classREVChannel.html#a7b74b642c47a9470c70c9bbdea5f282f',1,'REVChannel']]],
+  ['gety_22',['getY',['../classMakeEnvelopeRow.html#aa4894a8cea4a1316e34ad52a128b8c6b',1,'MakeEnvelopeRow']]],
+  ['grandstaff_23',['grandstaff',['../classProjectManager.html#acb5738bd043f7ba2884cac2e6000dde4',1,'ProjectManager']]]
+];
