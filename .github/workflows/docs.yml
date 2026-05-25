@@ -3,22 +3,22 @@ name: Docs
 on:
   push:
     branches: [main]
+    tags: ['v*']
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write   # peaceiris/actions-gh-pages pushes to the gh-pages branch.
 
-# Only one Pages deploy at a time; let in-progress runs finish so we don't
-# interrupt a deploy mid-upload.
+# Serialize runs so two pushes can't race and overwrite each other's
+# top-level index. Don't cancel in-progress runs — that would leave a
+# half-published version subdir.
 concurrency:
-  group: pages
+  group: docs-pages
   cancel-in-progress: false
 
 jobs:
   build:
-    name: Build Doxygen
+    name: Build and publish Doxygen
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -28,19 +28,34 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y doxygen graphviz
 
+      - name: Pick target subdirectory
+        id: target
+        run: |
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            echo "dir=$GITHUB_REF_NAME"     >> "$GITHUB_OUTPUT"
+            echo "label=$GITHUB_REF_NAME"   >> "$GITHUB_OUTPUT"
+          else
+            echo "dir=latest"               >> "$GITHUB_OUTPUT"
+            echo "label=latest (main)"      >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build docs
+        env:
+          OUT: staging/${{ steps.target.outputs.dir }}
+          LABEL: ${{ steps.target.outputs.label }}
         run: |
           set -euo pipefail
-          mkdir -p site/LASSIE site/CMOD site/LASS
+          mkdir -p "$OUT/LASSIE" "$OUT/CMOD" "$OUT/LASS"
 
           run_doxygen () {
             local input=$1 out=$2 name=$3 brief=$4
             ( cat Doxyfile
               echo
               echo "INPUT = $input"
-              echo "OUTPUT_DIRECTORY = ./site/$out"
+              echo "OUTPUT_DIRECTORY = ./$OUT/$out"
               echo "PROJECT_NAME = \"$name\""
               echo "PROJECT_BRIEF = \"$brief\""
+              echo "PROJECT_NUMBER = \"$LABEL\""
               echo "HAVE_DOT = YES"
             ) | doxygen -
           }
@@ -49,54 +64,87 @@ jobs:
           run_doxygen CMOD/src   CMOD   "DISSCO :: CMOD"   "Composition module — stochastic event generator"
           run_doxygen LASS/src   LASS   "DISSCO :: LASS"   "Library of Audio Sound Synthesis"
 
-      - name: Write landing page
+      - name: Assemble publish tree
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET:   ${{ steps.target.outputs.dir }}
         run: |
-          cat > site/index.html <<'HTML'
+          set -euo pipefail
+
+          # Pull the existing gh-pages branch so we can preserve other versions.
+          # If the branch doesn't exist yet (first run), start with an empty tree.
+          if git clone --depth=1 --branch gh-pages \
+               "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" publish 2>/dev/null; then
+            rm -rf publish/.git
+          else
+            mkdir publish
+          fi
+
+          # Drop in this run's version subdir, replacing any previous build of
+          # the same target.
+          rm -rf "publish/$TARGET"
+          mv "staging/$TARGET" "publish/$TARGET"
+
+          # Enumerate published versions: "latest" (if present) plus every v*
+          # directory, tag versions sorted newest-first by sort -V.
+          versions=()
+          [ -d publish/latest ] && versions+=("latest")
+          tags=$(find publish -maxdepth 1 -type d -name 'v*' -printf '%f\n' | sort -rV)
+          for t in $tags; do versions+=("$t"); done
+
+          # Rewrite the top-level landing page from the discovered list.
+          {
+            cat <<'HEAD'
           <!doctype html>
           <html lang="en">
           <head>
             <meta charset="utf-8">
             <title>DISSCO Doxygen</title>
             <style>
-              body { font-family: system-ui, sans-serif; max-width: 40rem;
+              body { font-family: system-ui, sans-serif; max-width: 44rem;
                      margin: 4rem auto; padding: 0 1rem; line-height: 1.5; }
               h1 { margin-bottom: 0.25rem; }
               p.tag { color: #555; margin-top: 0; }
+              h2 { margin-top: 2.5rem; font-size: 1.1rem; }
               ul { list-style: none; padding: 0; }
-              li { margin: 0.75rem 0; }
+              li { margin: 0.35rem 0; }
               a { font-weight: 600; }
-              code { background: #f3f3f3; padding: 0 0.25em; border-radius: 3px; }
+              .sub { font-weight: 400; color: #555; margin-left: 0.5em; }
             </style>
           </head>
           <body>
             <h1>DISSCO</h1>
             <p class="tag">Digital Instrument for Sound Synthesis and Composition</p>
             <p>API documentation, generated from source with Doxygen.</p>
+            <h2>Versions</h2>
             <ul>
-              <li><a href="LASSIE/html/index.html">LASSIE</a> —
-                  composition environment GUI</li>
-              <li><a href="CMOD/html/index.html">CMOD</a> —
-                  composition module (stochastic event generator)</li>
-              <li><a href="LASS/html/index.html">LASS</a> —
-                  library of audio sound synthesis</li>
+          HEAD
+
+            for v in "${versions[@]}"; do
+              echo "      <li>"
+              echo "        <a href=\"$v/\">$v</a>"
+              echo "        <span class=\"sub\">"
+              echo "          (<a href=\"$v/LASSIE/html/index.html\">LASSIE</a>,"
+              echo "           <a href=\"$v/CMOD/html/index.html\">CMOD</a>,"
+              echo "           <a href=\"$v/LASS/html/index.html\">LASS</a>)"
+              echo "        </span>"
+              echo "      </li>"
+            done
+
+            cat <<'TAIL'
             </ul>
           </body>
           </html>
-          HTML
+          TAIL
+          } > publish/index.html
 
-      - uses: actions/configure-pages@v5
-
-      - uses: actions/upload-pages-artifact@v3
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: site
-
-  deploy:
-    name: Deploy to Pages
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./publish
+          # The staged tree is the full intended branch contents — no need for
+          # keep_files; the assemble step already merged with existing state.
+          keep_files: false
+          commit_message: "docs: publish ${{ steps.target.outputs.dir }} (${{ github.sha }})"
