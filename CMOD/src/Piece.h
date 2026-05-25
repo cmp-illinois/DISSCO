@@ -92,14 +92,14 @@ class Piece {
 
   //Modifies the Piece by writing to the DOMDocument. Returns vector of its children.
   // Experimental
-  vector<DOMElement*> modifyPiece(DOMElement* eventElement);
+  vector<pugi::xml_node> modifyPiece(pugi::xml_node eventElement);
 
   //Identifies function and modifies their numbers. Experimental
-  void functionModifier(DOMElement* functionElement, int maxValue);
+  void functionModifier(pugi::xml_node functionElement, int maxValue);
 
   //Calculates Aesthetic value for every event. Returns vector of events children.
   //Experimental
-  vector<DOMElement*> calculateAesthetic(DOMElement* eventElement);
+  vector<pugi::xml_node> calculateAesthetic(pugi::xml_node eventElement);
 
   //Calculates Shannon Entropy ratio based on sampled values
   double calculateEntropyRatio(vector<double> sampleData, string partitionMethod,
@@ -109,11 +109,11 @@ class Piece {
   void geneticOptimization(string fitnessFunction, double optimum);
 
   // Crossover and Mutation Function
-  void crossoverMutation(DOMElement* parent1, DOMElement* parent2, DOMElement* child,
+  void crossoverMutation(pugi::xml_node parent1, pugi::xml_node parent2, pugi::xml_node child,
                          double mutationProb);
 
   // Experiment 2: Calculate M val for an event
-  vector<DOMElement *> calcEventM(DOMElement* eventElement);
+  vector<pugi::xml_node> calcEventM(pugi::xml_node eventElement);
 
   // Exp 2: List
 

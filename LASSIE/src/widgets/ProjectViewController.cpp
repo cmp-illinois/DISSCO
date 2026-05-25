@@ -131,6 +131,32 @@ void ProjectView::writeInlineXml(QXmlStreamWriter& xmlWriter, const QString& xml
     }
 }
 
+// Returns the modifier field value only if it is active for the modifier's type;
+// returns an empty string for fields disabled by the type, so CMOD ignores them.
+static QString modActiveField(const Modifier& mod, int fieldIdx) {
+    // columns: prob(0), amp(1), rate(2), width(3), spread(4), dir(5), vel(6)
+    static const bool table[7][7] = {
+        /* TREMOLO  */ { true,  true,  true,  false, false, false, false },
+        /* VIBRATO  */ { true,  true,  true,  false, false, false, false },
+        /* GLISSANDO*/ { true,  true,  false, false, false, false, false },
+        /* DETUNE   */ { true,  false, false, false, true,  true,  true  },
+        /* AMPTRANS */ { true,  true,  true,  true,  false, false, false },
+        /* FREQTRANS*/ { true,  true,  true,  true,  false, false, false },
+        /* WAVE_TYPE*/ { false, true,  false, false, false, false, false },
+    };
+    if (mod.type >= 7 || !table[mod.type][fieldIdx]) return {};
+    switch (fieldIdx) {
+        case 0: return mod.probability;
+        case 1: return mod.amplitude;
+        case 2: return mod.rate;
+        case 3: return mod.width;
+        case 4: return mod.detune_spread;
+        case 5: return mod.detune_direction;
+        case 6: return mod.detune_velocity;
+        default: return {};
+    }
+}
+
 /* Function that creates and saves the xml .dissco file */
 void ProjectView::save(){
     qDebug() << "In Project View Save Function";
@@ -462,35 +488,35 @@ void ProjectView::save(){
                                 xmlWriter.writeCharacters(itemMod.applyhow_flag ? "0" : "1");
                             xmlWriter.writeEndElement();
                             xmlWriter.writeStartElement("Probability");
-                                writeInlineXml(xmlWriter, itemMod.probability);
+                                writeInlineXml(xmlWriter, modActiveField(itemMod, 0));
                             xmlWriter.writeEndElement();
                             xmlWriter.writeStartElement("Amplitude");
-                                writeInlineXml(xmlWriter, itemMod.amplitude);
+                                writeInlineXml(xmlWriter, modActiveField(itemMod, 1));
                             xmlWriter.writeEndElement();
                             xmlWriter.writeStartElement("Rate");
-                                writeInlineXml(xmlWriter, itemMod.rate);
+                                writeInlineXml(xmlWriter, modActiveField(itemMod, 2));
                             xmlWriter.writeEndElement();
                             xmlWriter.writeStartElement("Width");
-                                writeInlineXml(xmlWriter, itemMod.width);
+                                writeInlineXml(xmlWriter, modActiveField(itemMod, 3));
                             xmlWriter.writeEndElement();
                             xmlWriter.writeStartElement("DetuneSpread");
-                                writeInlineXml(xmlWriter, itemMod.detune_spread);
+                                writeInlineXml(xmlWriter, modActiveField(itemMod, 4));
                             xmlWriter.writeEndElement();
                             xmlWriter.writeStartElement("DetuneDirection");
-                                writeInlineXml(xmlWriter, itemMod.detune_direction);
+                                writeInlineXml(xmlWriter, modActiveField(itemMod, 5));
                             xmlWriter.writeEndElement();
                             xmlWriter.writeStartElement("DetuneVelocity");
-                                writeInlineXml(xmlWriter, itemMod.detune_velocity);
+                                writeInlineXml(xmlWriter, modActiveField(itemMod, 6));
                             xmlWriter.writeEndElement();
                             xmlWriter.writeStartElement("GroupName");
                                 writeInlineXml(xmlWriter, itemMod.group_name);
                             xmlWriter.writeEndElement();
                             xmlWriter.writeStartElement("PartialResultString");
-                                writeInlineXml(xmlWriter, itemMod.partialresult_string);
+                                writeInlineXml(xmlWriter, itemMod.applyhow_flag ? itemMod.partialresult_string : QString{});
                             xmlWriter.writeEndElement();
-                        xmlWriter.writeEndElement(); 
-                    }   
-                    xmlWriter.writeEndElement(); 
+                        xmlWriter.writeEndElement();
+                    }
+                    xmlWriter.writeEndElement();
               xmlWriter.writeEndElement();
             }
 
@@ -663,35 +689,35 @@ void ProjectView::save(){
                                     xmlWriter.writeCharacters(itemMod.applyhow_flag ? "0" : "1");
                                 xmlWriter.writeEndElement();
                                 xmlWriter.writeStartElement("Probability");
-                                    writeInlineXml(xmlWriter, itemMod.probability);
+                                    writeInlineXml(xmlWriter, modActiveField(itemMod, 0));
                                 xmlWriter.writeEndElement();
                                 xmlWriter.writeStartElement("Amplitude");
-                                    writeInlineXml(xmlWriter, itemMod.amplitude);
+                                    writeInlineXml(xmlWriter, modActiveField(itemMod, 1));
                                 xmlWriter.writeEndElement();
                                 xmlWriter.writeStartElement("Rate");
-                                    writeInlineXml(xmlWriter, itemMod.rate);
+                                    writeInlineXml(xmlWriter, modActiveField(itemMod, 2));
                                 xmlWriter.writeEndElement();
                                 xmlWriter.writeStartElement("Width");
-                                    writeInlineXml(xmlWriter, itemMod.width);
+                                    writeInlineXml(xmlWriter, modActiveField(itemMod, 3));
                                 xmlWriter.writeEndElement();
                                 xmlWriter.writeStartElement("DetuneSpread");
-                                    xmlWriter.writeCharacters(itemMod.detune_spread);
+                                    writeInlineXml(xmlWriter, modActiveField(itemMod, 4));
                                 xmlWriter.writeEndElement();
                                 xmlWriter.writeStartElement("DetuneDirection");
-                                    xmlWriter.writeCharacters(itemMod.detune_direction);
+                                    writeInlineXml(xmlWriter, modActiveField(itemMod, 5));
                                 xmlWriter.writeEndElement();
                                 xmlWriter.writeStartElement("DetuneVelocity");
-                                    xmlWriter.writeCharacters(itemMod.detune_velocity);
+                                    writeInlineXml(xmlWriter, modActiveField(itemMod, 6));
                                 xmlWriter.writeEndElement();
                                 xmlWriter.writeStartElement("GroupName");
-                                    xmlWriter.writeCharacters(itemMod.group_name);
+                                    writeInlineXml(xmlWriter, itemMod.group_name);
                                 xmlWriter.writeEndElement();
                                 xmlWriter.writeStartElement("PartialResultString");
-                                    writeInlineXml(xmlWriter, itemMod.partialresult_string);
+                                    writeInlineXml(xmlWriter, itemMod.applyhow_flag ? itemMod.partialresult_string : QString{});
                                 xmlWriter.writeEndElement();
-                            xmlWriter.writeEndElement(); 
-                        }  
-                        xmlWriter.writeEndElement(); 
+                            xmlWriter.writeEndElement();
+                        }
+                        xmlWriter.writeEndElement();
                     xmlWriter.writeEndElement(); 
               xmlWriter.writeEndElement();  
             }

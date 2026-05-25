@@ -4,6 +4,7 @@ project(LASSIE)
 message(STATUS "== LASSIE ==")
 
 find_package(Qt6 REQUIRED COMPONENTS Widgets Core Xml)
+find_package(XercesC REQUIRED)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -71,27 +72,51 @@ qt_add_executable(LASSIE
 
 target_precompile_headers(LASSIE PRIVATE <QtWidgets> <QtCore> <QtXml>)
 
-target_link_libraries(LASSIE PRIVATE 
+target_link_libraries(LASSIE PRIVATE
     Qt6::Widgets
     Qt6::Core
     Qt6::Xml
     LASS
 )
+# Note: LASSIE invokes CMOD as a subprocess (see CMOD_BINARY below and the
+# QProcess::start call in MainWindow::runProject). No symbols are shared, so
+# CMOD is intentionally NOT in the link list. Linking against an executable
+# target requires an import library on Windows, which CMOD doesn't produce
+# (no dllexport / WINDOWS_EXPORT_ALL_SYMBOLS), and the dependency was never
+# load-bearing anyway. LASS and XercesC, which LASSIE was previously pulling
+# in transitively through CMOD's PUBLIC interface, are now linked directly.
 
 include(GNUInstallDirs)
+# XercesC include path comes from the XercesC::XercesC imported target's
+# INTERFACE_INCLUDE_DIRECTORIES; LASS comes from the LASS target.
 target_include_directories(LASSIE PRIVATE
     ${CMAKE_SOURCE_DIR}/LASS/src
 )
 
+set(LASSIE_ICON_MACOS "${CMAKE_SOURCE_DIR}/packaging/macos/LASSIE.icns")
+if(APPLE AND EXISTS "${LASSIE_ICON_MACOS}")
+    target_sources(LASSIE PRIVATE "${LASSIE_ICON_MACOS}")
+    set_source_files_properties("${LASSIE_ICON_MACOS}" PROPERTIES
+        MACOSX_PACKAGE_LOCATION "Resources"
+    )
+endif()
+
 set_target_properties(LASSIE PROPERTIES
     WIN32_EXECUTABLE ON
     MACOSX_BUNDLE ON
+    MACOSX_BUNDLE_BUNDLE_NAME "LASSIE"
+    MACOSX_BUNDLE_GUI_IDENTIFIER "edu.illinois.dissco.lassie"
+    MACOSX_BUNDLE_BUNDLE_VERSION "${DISSCO_VERSION}"
+    MACOSX_BUNDLE_SHORT_VERSION_STRING "${DISSCO_VERSION}"
+    MACOSX_BUNDLE_LONG_VERSION_STRING "DISSCO ${DISSCO_VERSION}"
+    MACOSX_BUNDLE_COPYRIGHT "Copyright (c) DISSCO authors. Licensed under GPL-3.0."
+    MACOSX_BUNDLE_ICON_FILE "LASSIE.icns"
 )
 
 install(TARGETS LASSIE
-    BUNDLE  DESTINATION .
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    BUNDLE  DESTINATION . COMPONENT Runtime
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Runtime
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Runtime
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)

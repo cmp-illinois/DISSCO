@@ -65,17 +65,13 @@ class SoundAndNoteWrapper{
 public:
   // this is the element of the spectrum if the bottom event is a sound
   // or of the note
-  DOMElement* element;
+  pugi::xml_node element;
   TimeSpan ts;
   string name;
   int type;
   Tempo tempo;
 
-  // multistaffs
-  // DOMElement* staffs;
-  // DOMElement* modifiers;
-
-  SoundAndNoteWrapper(DOMElement* _element, TimeSpan _ts, string _name, int _type, Tempo _tempo ):
+  SoundAndNoteWrapper(pugi::xml_node _element, TimeSpan _ts, string _name, int _type, Tempo _tempo ):
     element(_element),
     ts(_ts),
     name(_name),
@@ -107,22 +103,25 @@ public:
     vector<PatternPair*> patternStorage;
 
     //Utilities needs these
-    DOMElement* AttackSieveElement;
-    DOMElement* DurationSieveElement;
+    pugi::xml_node AttackSieveElement;
+    pugi::xml_node DurationSieveElement;
 
-    DOMElement* spatializationElement;
-    DOMElement* reverberationElement;
-    DOMElement* filterElement;
-    DOMElement* modifiersElement;
+    pugi::xml_node spatializationElement;
+    pugi::xml_node reverberationElement;
+    pugi::xml_node filterElement;
+    pugi::xml_node modifiersElement;
 
     //This Element is created by the Event, not the parser. It is passed to the
     // children and needs to be deleted once the event is done.
-    DOMElement* modifiersIncludingAncestorsElement;
+    pugi::xml_node modifiersIncludingAncestorsElement;
+    // pugi handles are non-owning; the merged <Modifiers> tree lives in this
+    // document, which the Event owns for its lifetime.
+    std::unique_ptr<pugi::xml_document> modifiersDoc;
 
     // Storage for temporary parsers. For evaluating objects, XML parsers are
     // sometimes created by the utilities object. The event has the ownership
     // of these temporary parsers and is responsible to clean up.
-    vector<XercesDOMParser*> temporaryXMLParsers;
+    vector<std::unique_ptr<pugi::xml_document>> temporaryXMLDocuments;
 
 protected:
     //------------------------------ Children --------------------------------//
@@ -138,7 +137,7 @@ protected:
     //------------------------------ Building --------------------------------//
 
     //Child Event Def
-    DOMElement* childEventDefElement;
+    pugi::xml_node childEventDefElement;
 
     //Maximum allowed duration for a child
     float maxChildDur;
@@ -162,12 +161,12 @@ protected:
 
     //Names of the layers
     vector< vector<string> > layerVect;
-    vector<DOMElement*> layerElements;
+    vector<pugi::xml_node> layerElements;
 
 
     //Names of the children by type.
     vector<string> typeVect;
-    vector<DOMElement*> childTypeElements; //discretepackage
+    vector<pugi::xml_node> childTypeElements; //discretepackage
     //Number of children to create (all layers)
     int numChildren;
 
@@ -214,12 +213,12 @@ protected:
     TimeSpan tsChild;
 
     Utilities* utilities;
-    DOMElement* childStartTimeElement ;
-    DOMElement* childTypeElement;
-    DOMElement* childDurationElement;
-    DOMElement* methodFlagElement;
-    DOMElement* childStartTypeFlag;
-    DOMElement* childDurationTypeFlag;
+    pugi::xml_node childStartTimeElement ;
+    pugi::xml_node childTypeElement;
+    pugi::xml_node childDurationElement;
+    pugi::xml_node methodFlagElement;
+    pugi::xml_node childStartTypeFlag;
+    pugi::xml_node childDurationTypeFlag;
 
     // This thing sorta works, but killing a thread waiting for cin causes
     // memory leak..   -- Ming-ching May 06, 2013
@@ -235,15 +234,15 @@ protected:
     *
     **/
 
-    Event(DOMElement* _element,
+    Event(pugi::xml_node _element,
           TimeSpan _timeSpan,
           int _type,
           Tempo _tempo,
           Utilities* _utilities,
-          DOMElement* _ancestorSpa,
-          DOMElement* _ancestorRev,
-          DOMElement* _ancestorFil,
-          DOMElement* _ancestorModifiers);
+          pugi::xml_node _ancestorSpa,
+          pugi::xml_node _ancestorRev,
+          pugi::xml_node _ancestorFil,
+          pugi::xml_node _ancestorModifiers);
 
 
 	/**
@@ -350,7 +349,7 @@ protected:
     /**
     * gives the ownership of the temporary XML parser to the event.
     **/
-    void addTemporaryXMLParser(XercesDOMParser* _parser);
+    void addTemporaryXMLDocument(std::unique_ptr<pugi::xml_document> _doc);
 
     /**
     * gives the ownership of the pattern to the event.
@@ -411,9 +410,9 @@ protected:
     /**
     *  helper functions
     **/
-    string getTempoStringFromDOMElement(DOMElement* _element);
+    string getTempoStringFromDOMElement(pugi::xml_node _element);
 
-    string getTimeSignatureStringFromDOMElement(DOMElement* _element);
+    string getTimeSignatureStringFromDOMElement(pugi::xml_node _element);
 
     void buildMatrix(bool discrete);
     

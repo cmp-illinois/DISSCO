@@ -36,15 +36,15 @@ static Sieve* sieveSweep = NULL;
 static vector<int> attackSweep;
 
 
-Event::Event(DOMElement* _element,
+Event::Event(pugi::xml_node _element,
              TimeSpan _timeSpan,
              int _type,
              Tempo _tempo,
              Utilities* _utilities,
-             DOMElement* _ancestorSpa,
-             DOMElement* _ancestorRev,
-             DOMElement* _ancestorFil,
-             DOMElement* _ancestorModifiers):
+             pugi::xml_node _ancestorSpa,
+             pugi::xml_node _ancestorRev,
+             pugi::xml_node _ancestorFil,
+             pugi::xml_node _ancestorModifiers):
   type(_type),
   modifiersIncludingAncestorsElement(NULL),
   maxChildDur(0), checkPoint(0),
@@ -58,29 +58,29 @@ Event::Event(DOMElement* _element,
    {
 
   //Initialize parameters
-  DOMElement* thisEventElement = _element->GFEC();
+  pugi::xml_node thisEventElement = GFEC(_element);
   string typeString =XMLTC(thisEventElement);
   type = atoi(typeString.c_str());
 
-  thisEventElement = thisEventElement->GNES();
+  thisEventElement = GNES(thisEventElement);
   name = XMLTC(thisEventElement);
   ts = _timeSpan;
   tempo = _tempo;
 
-  thisEventElement = thisEventElement->GNES();
+  thisEventElement = GNES(thisEventElement);
   maxChildDur = (float)utilities->evaluate(XMLTC(thisEventElement), (void*)this);
 
-  thisEventElement = thisEventElement->GNES();
+  thisEventElement = GNES(thisEventElement);
   int newEDUPerBeat = (int) utilities->evaluate(XMLTC(thisEventElement),(void*)this);
   Ratio k(newEDUPerBeat,1);
   Tempo fvTempo; // File-Value Tempo
 
   fvTempo.setEDUPerTimeSignatureBeat(k);
 
-  thisEventElement = thisEventElement->GNES();
+  thisEventElement = GNES(thisEventElement);
   fvTempo.setTimeSignature(getTimeSignatureStringFromDOMElement(thisEventElement));
 
-  thisEventElement = thisEventElement->GNES();
+  thisEventElement = GNES(thisEventElement);
   fvTempo.setTempo(getTempoStringFromDOMElement(thisEventElement));
 
   fvTempo.getTempoBeat();
@@ -114,38 +114,38 @@ Event::Event(DOMElement* _element,
 
   //This part initializes childnum and childnames
 
-  DOMElement* numChildrenElement = thisEventElement->GNES();
+  pugi::xml_node numChildrenElement = GNES(thisEventElement);
 
   //store the pointer to be used in buildChildren()
-  childEventDefElement = numChildrenElement->GNES();
-  childStartTimeElement = childEventDefElement->GFEC();
-  childTypeElement = childStartTimeElement->GNES();
-  childDurationElement = childTypeElement->GNES();
-  AttackSieveElement = childDurationElement->GNES();
-  DurationSieveElement = AttackSieveElement->GNES();
-  methodFlagElement = DurationSieveElement->GNES();
-  childStartTypeFlag = methodFlagElement->GNES();
-  childDurationTypeFlag = childStartTypeFlag->GNES();
+  childEventDefElement = GNES(numChildrenElement);
+  childStartTimeElement = GFEC(childEventDefElement);
+  childTypeElement = GNES(childStartTimeElement);
+  childDurationElement = GNES(childTypeElement);
+  AttackSieveElement = GNES(childDurationElement);
+  DurationSieveElement = GNES(AttackSieveElement);
+  methodFlagElement = GNES(DurationSieveElement);
+  childStartTypeFlag = GNES(methodFlagElement);
+  childDurationTypeFlag = GNES(childStartTypeFlag);
 
   //layers, initialize child names
-  thisEventElement = childEventDefElement->GNES();
-  DOMElement* layerElement = thisEventElement->GFEC();
+  thisEventElement = GNES(childEventDefElement);
+  pugi::xml_node layerElement = GFEC(thisEventElement);
   while (layerElement){
 
     layerElements.push_back(layerElement);
-    DOMElement* childPackage = layerElement->GFEC()->GNES()->GFEC();
+    pugi::xml_node childPackage = GFEC(GNES(GFEC(layerElement)));
 
     while(childPackage){
       childTypeElements.push_back(childPackage);
-      childPackage = childPackage->GNES();
+      childPackage = GNES(childPackage);
     }
-    layerElement = layerElement->GNES();
+    layerElement = GNES(layerElement);
   }
 
 
-  DOMElement* flagElement = numChildrenElement->GFEC();
+  pugi::xml_node flagElement = GFEC(numChildrenElement);
   if (XMLTC(flagElement) =="0"){ // Continuum
-    DOMElement* entry1Element = flagElement->GNES();
+    pugi::xml_node entry1Element = GNES(flagElement);
     if (XMLTC(entry1Element)==""){
       numChildren = childTypeElements.size();
     }
@@ -154,9 +154,9 @@ Event::Event(DOMElement* _element,
     }
   }
   else if (XMLTC(flagElement) == "1"){ // Densitiy
-    DOMElement* densityElement = numChildrenElement->GFEC()->GNES();
-    DOMElement* areaElement = densityElement->GNES();
-    DOMElement* underOneElement = areaElement->GNES();
+    pugi::xml_node densityElement = GNES(GFEC(numChildrenElement));
+    pugi::xml_node areaElement = GNES(densityElement);
+    pugi::xml_node underOneElement = GNES(areaElement);
     double density = utilities->evaluate( XMLTC(densityElement),(void*)this);
     double area = utilities->evaluate( XMLTC(areaElement),(void*)this);
 //  cout << "areaElement=" << areaElement << endl;
@@ -173,62 +173,59 @@ Event::Event(DOMElement* _element,
   else {// by layer
   numChildren = 0;
     for (unsigned i = 0; i < layerElements.size(); i ++){
-      numChildren +=utilities->evaluate(XMLTC(layerElements[i]->GFEC()),(void*)this);
+      numChildren +=utilities->evaluate(XMLTC(GFEC(layerElements[i])),(void*)this);
     }
   }
 
   if (type <=3){ //top, high, mid, low
 
-    thisEventElement = thisEventElement->GNES();
+    thisEventElement = GNES(thisEventElement);
     if (_ancestorSpa != NULL) {
       spatializationElement = _ancestorSpa;
     }
     else if (Utilities::removeSpaces(XMLTC(thisEventElement)) =="") {
-        spatializationElement = NULL;
+        spatializationElement = pugi::xml_node();
     }
     else {
       spatializationElement = thisEventElement;
     }
 
-    thisEventElement = thisEventElement->GNES();
+    thisEventElement = GNES(thisEventElement);
     if (_ancestorRev != NULL) {
       reverberationElement = _ancestorRev;
     }
     else if (Utilities::removeSpaces(XMLTC(thisEventElement)) =="") {
-        reverberationElement = NULL;
+        reverberationElement = pugi::xml_node();
     }
     else {
       reverberationElement = thisEventElement;
     }
 
-    thisEventElement = thisEventElement->GNES();
+    thisEventElement = GNES(thisEventElement);
     if (_ancestorFil != NULL) {
       filterElement = _ancestorFil;
     }
     else if (Utilities::removeSpaces(XMLTC(thisEventElement)) =="") {
-        filterElement = NULL;
+        filterElement = pugi::xml_node();
     }
     else {
       filterElement = thisEventElement;
     }
 
 
-    thisEventElement = thisEventElement->GNES();
+    thisEventElement = GNES(thisEventElement);
     modifiersElement = thisEventElement;
-    modifiersIncludingAncestorsElement = (DOMElement*) modifiersElement->cloneNode(true);
 
-    if (_ancestorModifiers != NULL){
-
-      DOMElement* ancestorModifierIter = _ancestorModifiers->GFEC();
-      while(ancestorModifierIter !=NULL){
-        DOMElement* cloneModifier = (DOMElement*) ancestorModifierIter->cloneNode(true);
-        modifiersIncludingAncestorsElement->appendChild((DOMNode*)cloneModifier);
-        ancestorModifierIter = ancestorModifierIter->GNES();
+    // Build a private document holding this event's Modifiers element with any
+    // ancestor modifier children appended onto it. The Event owns this doc;
+    // children receive the resulting node as their _ancestorModifiers handle.
+    modifiersDoc = std::make_unique<pugi::xml_document>();
+    modifiersIncludingAncestorsElement = modifiersDoc->append_copy(modifiersElement);
+    if (_ancestorModifiers) {
+      for (auto a = GFEC(_ancestorModifiers); a; a = GNES(a)) {
+        modifiersIncludingAncestorsElement.append_copy(a);
       }
-
-    }// end handling _ancestorModifiers
-
-   //cout<<"Event:"<<name<<":\nModifiers after merge:"<<XMLTC(modifiersIncludingAncestorsElement)<<endl<<endl<<"============="<<endl;
+    }
   } // end event type = 0, 1, 2, 3
 
 }
@@ -236,7 +233,7 @@ Event::Event(DOMElement* _element,
 
 //----------------------------------------------------------------------------//
 
-string Event::getTempoStringFromDOMElement(DOMElement* _element){
+string Event::getTempoStringFromDOMElement(pugi::xml_node _element){
 
   /*
   <Tempo>
@@ -248,23 +245,23 @@ string Event::getTempoStringFromDOMElement(DOMElement* _element){
         <ValueEntry>60</ValueEntry>
       </Tempo>
   */
-  DOMElement* thisElement = _element->GFEC();
+  pugi::xml_node thisElement = GFEC(_element);
   string stringbuffer = "";
   string methodFlag = XMLTC(thisElement); //it's either 0 or 1
 
-  thisElement = thisElement->GNES();
+  thisElement = GNES(thisElement);
   string prefix =  XMLTC(thisElement);
 
-  thisElement = thisElement->GNES();
+  thisElement = GNES(thisElement);
   string noteValue = XMLTC(thisElement);
 
-  thisElement = thisElement->GNES();
+  thisElement = GNES(thisElement);
   double fractionEntry1 = utilities->evaluate(XMLTC(thisElement),(void*)this);
 
-  thisElement = thisElement->GNES();
+  thisElement = GNES(thisElement);
   double fractionEntry2 = utilities->evaluate(XMLTC(thisElement),(void*)this);
 
-  thisElement = thisElement->GNES();
+  thisElement = GNES(thisElement);
   double valueEntry = utilities->evaluate(XMLTC(thisElement),(void*)this);
 
 
@@ -349,7 +346,7 @@ string Event::getTempoStringFromDOMElement(DOMElement* _element){
 
 //----------------------------------------------------------------------------//
 
-string Event::getTimeSignatureStringFromDOMElement(DOMElement* _element){
+string Event::getTimeSignatureStringFromDOMElement(pugi::xml_node _element){
 /*
 <TimeSignature>
         <Entry1>4</Entry1>
@@ -357,14 +354,14 @@ string Event::getTimeSignatureStringFromDOMElement(DOMElement* _element){
       </TimeSignature>
   */
 
-  DOMElement* thisElement = _element->GFEC();
+  pugi::xml_node thisElement = GFEC(_element);
   int entry1 = utilities->evaluate(XMLTC(thisElement),(void*)this);
 
   char charbuffer[20];
   sprintf(charbuffer, "%d", entry1);
   string stringbuffer =  string(charbuffer);
 
-  thisElement = thisElement->GNES();
+  thisElement = GNES(thisElement);
   int entry2 = utilities->evaluate(XMLTC(thisElement),(void*)this);
   sprintf(charbuffer, "%d", entry2);
   string returnString = stringbuffer + "/"+ string(charbuffer);
@@ -576,7 +573,7 @@ bool Event::buildContinuum() {
 
     // get the type
     childType = utilities->evaluate(XMLTC(childTypeElement),(void*)this);
-    childName = XMLTC(childTypeElements[childType]->GFEC());
+    childName = XMLTC(GFEC(childTypeElements[childType]));
 
     // get the duration
     rawChildDuration = utilities->evaluate(XMLTC(childDurationElement),(void*)this);
@@ -756,7 +753,7 @@ bool Event::buildSweep() {
 
   // get the type
   childType = utilities->evaluate(XMLTC(childTypeElement),(void*)this);
-  childName = XMLTC(childTypeElements[childType]->GFEC());
+  childName = XMLTC(GFEC(childTypeElements[childType]));
 
     // get the duration
     rawChildDuration = utilities->evaluate(XMLTC(childDurationElement),(void*)this);
@@ -868,8 +865,8 @@ bool Event::buildSweep() {
 
 //----------------------------------------------------------------------------//
 
-void Event::addTemporaryXMLParser(XercesDOMParser* _parser){
-  temporaryXMLParsers.push_back( _parser);
+void Event::addTemporaryXMLDocument(std::unique_ptr<pugi::xml_document> _doc){
+  temporaryXMLDocuments.push_back(std::move(_doc));
 }
 
 PatternPair::~PatternPair(){
@@ -885,20 +882,12 @@ void Event::addPattern(std::string _string, Patter* _pat){
 //---------------------------------------------------------------------------//
 
 Event::~Event() {
+  // temporaryXMLDocuments and modifiersDoc are unique_ptrs that auto-clean up.
 
-  //if ( modifiersIncludingAncestorsElement!=NULL)
-  //  			delete modifiersIncludingAncestorsElement;
-//turns out that clone dom node is not created in heap
-  for (unsigned i = 0; i < temporaryXMLParsers.size(); i++)
-    delete temporaryXMLParsers[i];
+  for (auto* p : patternStorage)
+    delete p;
 
-  vector<PatternPair*>::iterator iter = patternStorage.begin();
-
-  for (; iter != patternStorage.end(); iter ++){
-    delete *iter;
-  }
-
-  if ( matrix != NULL) delete matrix;
+  if (matrix != NULL) delete matrix;
 }
 
 
@@ -1122,11 +1111,11 @@ void Event::checkEvent(bool buildResult) {
   }
 
   //Create new event.
-  DOMElement* discretePackage = childTypeElements[childType];
-  EventType childEventType = (EventType) utilities->evaluate(XMLTC(discretePackage->GFEC()->GNES()),(void*)this);
+  pugi::xml_node discretePackage = childTypeElements[childType];
+  EventType childEventType = (EventType) utilities->evaluate(XMLTC(GNES(GFEC(discretePackage))),(void*)this);
 
-  string childEventName = XMLTC(discretePackage->GFEC());
-  DOMElement* childElement = utilities->getEventElement(childEventType, childEventName);
+  string childEventName = XMLTC(GFEC(discretePackage));
+  pugi::xml_node childElement = utilities->getEventElement(childEventType, childEventName);
 
   Event* e;
   if (childEventType == eventBottom){
@@ -1303,7 +1292,7 @@ bool Event::buildDiscrete() {
   int stimeEDU = childPt.stime;
   int durEDU = childPt.dur;
   childType = childPt.type;
-  string childName = XMLTC(childTypeElements[childType]->GFEC());
+  string childName = XMLTC(GFEC(childTypeElements[childType]));
 
   if(durEDU > (int)maxChildDur)
     durEDU = maxChildDur;
@@ -1366,7 +1355,7 @@ void Event::buildMatrix(bool discrete) {
 
   double weightSum = 0;
   for (unsigned i = 0; i < childTypeElements.size(); i ++){
-    double prob = utilities->evaluate(XMLTC(childTypeElements[i]->GFEC()->GNES()->GNES()), (void*) this);
+    double prob = utilities->evaluate(XMLTC(GNES(GNES(GFEC(childTypeElements[i])))), (void*) this);
     typeProbs.push_back(prob);
     weightSum += prob;
   }
@@ -1378,10 +1367,10 @@ void Event::buildMatrix(bool discrete) {
   if (discrete) {
     for (unsigned i = 0; i < childTypeElements.size(); i ++){
       // attack env
-      DOMElement* elementIter = childTypeElements[i]->GFEC()->GNES()->GNES()->GNES();
+      pugi::xml_node elementIter = GNES(GNES(GNES(GFEC(childTypeElements[i]))));
 
       string attackEnvString = XMLTC(elementIter);
-      elementIter = elementIter ->GNES();
+      elementIter = GNES(elementIter);
       string attackEnvScaleString = XMLTC(elementIter);
 
       string attackFunctionString =
@@ -1391,10 +1380,10 @@ void Event::buildMatrix(bool discrete) {
               attackEnvScaleString +
               "</Scale></Fun>";
 
-      elementIter = elementIter ->GNES();
+      elementIter = GNES(elementIter);
       string durationEnvString = XMLTC(elementIter);
 
-      elementIter = elementIter ->GNES();
+      elementIter = GNES(elementIter);
       string durationEnvScaleString = XMLTC(elementIter);
 
       string durationFunctionString =
@@ -1413,10 +1402,10 @@ void Event::buildMatrix(bool discrete) {
   }
   for (unsigned i = 0; i < layerElements.size(); i ++){
     int numOfDiscretePackages = 0;
-    DOMElement* elementIter = layerElements[i]->GFEC()->GNES()->GFEC();
+    pugi::xml_node elementIter = GFEC(GNES(GFEC(layerElements[i])));
     while (elementIter!= NULL){
       numOfDiscretePackages++;
-      elementIter = elementIter ->GNES();
+      elementIter = GNES(elementIter);
     }
     numTypesInLayers.push_back (numOfDiscretePackages);
   }

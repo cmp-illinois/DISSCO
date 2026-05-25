@@ -47,8 +47,6 @@ class Patter;
 class Sieve;
 class Score;
 
-using namespace xercesc; // for DOMElement
-
 class Utilities{
 
 public:
@@ -64,7 +62,7 @@ public:
    * \param _samplingRate The sampling rate
    * \param _piece
    **/
-  Utilities(DOMElement* _root,
+  Utilities(pugi::xml_node _root,
             string _workingPath,
             bool _soundSynthesis,
             bool _outputParticel,
@@ -102,7 +100,7 @@ public:
    * \param input the element to consider
    * \return whether the element is a sieve function that can be aligned
    */
-  static bool isSieveFunction(DOMElement* input);
+  static bool isSieveFunction(pugi::xml_node input);
 
   /**
    * Evaluate a function string to a CMOD object
@@ -116,20 +114,28 @@ public:
    */
   void* evaluateObject(string _input, void* _object, EventType _returnType);
 
+  // Typed evaluators for element-returning function types. evaluateObject's
+  // void* convention works for heap pointers (Envelope*, Sieve*, Patter*), but
+  // not for pugi::xml_node value types; these wrappers return them directly.
+  pugi::xml_node evaluateSpa(void* _object);
+  pugi::xml_node evaluateRev(void* _object);
+  pugi::xml_node evaluateFil(void* _object);
+  pugi::xml_node evaluateSpectrumElement(string _input, void* _object);
+
   /**
    * Evaluate a string to a DOMElement (which represents a CMOD Event)
    * \param _type The type of event this string represents
    * \param _eventName This event's name
    * \return The DOMElement the string represents
    */
-  DOMElement* getEventElement(EventType _type, string _eventName);
+  pugi::xml_node getEventElement(EventType _type, string _eventName);
 
   /**
    * Convert a DOMElement to a string
    * \param _thisFunctionElement The DOMElement to convert
    * \return A string representing the DOMElement
    */
-  static string XMLTranscode(DOMElement* _thisFunctionElement);
+  static string XMLTranscode(pugi::xml_node _thisFunctionElement);
 
   // --- Getters --- //
 
@@ -222,7 +228,7 @@ std::map<int, string> notesEventnames;
    * \param _listElement The list to convert
    * \return A vector containing the separate elements
    */
-  static std::vector<std::string> listElementToStringVector(DOMElement* _listElement);
+  static std::vector<std::string> listElementToStringVector(pugi::xml_node _listElement);
 
 
 private:
@@ -231,9 +237,9 @@ private:
 
   // Helper for getting Envelopes
   Envelope* getEnvelope(string _input, void* _object);
-  Envelope* envLib(DOMElement* _functionElement, void* _object);
-  Envelope* readEnvFile (DOMElement* _functionElement, void* _object);
-  Envelope* makeEnvelope (DOMElement* _functionElement, void* _object);
+  Envelope* envLib(pugi::xml_node _functionElement, void* _object);
+  Envelope* readEnvFile (pugi::xml_node _functionElement, void* _object);
+  Envelope* makeEnvelope (pugi::xml_node _functionElement, void* _object);
 
   EnvelopeLibrary* envelopeLibrary;
 
@@ -258,7 +264,7 @@ private:
    * \TODO: Figure out what _object is
    * \TODO: Figure out if I'm right about how Patter's Expand() works
    */
-  Patter* getPatternHelper(void* _object, DOMElement* _PATFunction);
+  Patter* getPatternHelper(void* _object, pugi::xml_node _PATFunction);
 
 
   // --- Helper for getting Sieve --- //
@@ -281,21 +287,21 @@ private:
    *
    * \TODO: Figure out what _object is
    */
-  Sieve* getSieveHelper(void* _object, DOMElement* _SIVFunction);
+  Sieve* getSieveHelper(void* _object, pugi::xml_node _SIVFunction);
 
   //Helper for getting SPA
-  DOMElement* getSPAFunctionElement(void* _object);
-  DOMElement* getSPAFunctionElementHelper(void* _object, DOMElement* _SPAFunction, bool _initialCall);
+  pugi::xml_node getSPAFunctionElement(void* _object);
+  pugi::xml_node getSPAFunctionElementHelper(void* _object, pugi::xml_node _SPAFunction, bool _initialCall);
 
   // Helpers for getting REV
-  DOMElement* getREVFunctionElement(void* _object);
-  DOMElement* getREVFunctionElementHelper(void* _object, DOMElement* _REVFunction, bool _initialCall);
+  pugi::xml_node getREVFunctionElement(void* _object);
+  pugi::xml_node getREVFunctionElementHelper(void* _object, pugi::xml_node _REVFunction, bool _initialCall);
 
   // Helpers for getting FIL
-  DOMElement* getFILFunctionElement(void* _object);
-  DOMElement* getFILFunctionElementHelper(void* _object, DOMElement* _FILFunction, bool _initialCall);
+  pugi::xml_node getFILFunctionElement(void* _object);
+  pugi::xml_node getFILFunctionElementHelper(void* _object, pugi::xml_node _FILFunction, bool _initialCall);
 
-  DOMElement* getSpectrum(string _functionString, void* _object);
+  pugi::xml_node getSpectrum(string _functionString, void* _object);
   /**
    * Helper function for Utilities::evaluate() to evaluate CMOD functions
    **/
@@ -323,31 +329,31 @@ private:
    *
    * \TODO: Figure out what _functionElement is
    */
-  string function_RandomInt(DOMElement* _functionElement, void* _object);
-  string function_RandomOrderInt(DOMElement* _functionElement, void* _object);
-  string function_Random(DOMElement* _functionElement, void* _object);
-  string function_Select(DOMElement* _functionElement, void* _object);
-  string function_SelectObject(DOMElement* _functionElement, void* _object);
-  string function_GetPattern(DOMElement* _functionElement, void* _object);
-  string function_Randomizer(DOMElement* _functionElement, void* _object);
-  string function_Inverse(DOMElement* _functionElement, void* _object);
-  string function_Markov(DOMElement* _functionElement, void* _object);
-  string function_LN(DOMElement* _functionElement, void* _object);
-  string function_RandomDensity(DOMElement* _functionElement, void* _object);
+  string function_RandomInt(pugi::xml_node _functionElement, void* _object);
+  string function_RandomOrderInt(pugi::xml_node _functionElement, void* _object);
+  string function_Random(pugi::xml_node _functionElement, void* _object);
+  string function_Select(pugi::xml_node _functionElement, void* _object);
+  string function_SelectObject(pugi::xml_node _functionElement, void* _object);
+  string function_GetPattern(pugi::xml_node _functionElement, void* _object);
+  string function_Randomizer(pugi::xml_node _functionElement, void* _object);
+  string function_Inverse(pugi::xml_node _functionElement, void* _object);
+  string function_Markov(pugi::xml_node _functionElement, void* _object);
+  string function_LN(pugi::xml_node _functionElement, void* _object);
+  string function_RandomDensity(pugi::xml_node _functionElement, void* _object);
 
   /**
    * Not yet implemented.
    */
-  string function_Fibonacci(DOMElement* _functionElement, void* _object);
-  string function_MakeList(DOMElement* _functionElement, void* _object);
+  string function_Fibonacci(pugi::xml_node _functionElement, void* _object);
+  string function_MakeList(pugi::xml_node _functionElement, void* _object);
   
 // I believe the following ARE implemented (sever)
-  string function_Decay(DOMElement* _functionElement, void* _object);
-  string function_Stochos(DOMElement* _functionElement, void* _object);
-  string function_ValuePick(DOMElement* _functionElement, void* _object);
-  string function_ChooseL(DOMElement* _functionElement, void* _object);
-  Sieve* sieve_ValuePick(DOMElement* _functionElement, void* _object);
-  Sieve* sieve_ChooseL(DOMElement* _functionElement, void* _object);
+  string function_Decay(pugi::xml_node _functionElement, void* _object);
+  string function_Stochos(pugi::xml_node _functionElement, void* _object);
+  string function_ValuePick(pugi::xml_node _functionElement, void* _object);
+  string function_ChooseL(pugi::xml_node _functionElement, void* _object);
+  Sieve* sieve_ValuePick(pugi::xml_node _functionElement, void* _object);
+  Sieve* sieve_ChooseL(pugi::xml_node _functionElement, void* _object);
   //------------------------ CMOD Static Functions ---------------------------//
 
   /**
@@ -408,19 +414,19 @@ private:
   //------------------------------- Fields -----------------------------------//
 
   //Storage of DOMElement representations of CMOD Events
-  std::map<string,DOMElement*> topEventElements;
-  std::map<string,DOMElement*> highEventElements;
-  std::map<string,DOMElement*> midEventElements;
-  std::map<string,DOMElement*> lowEventElements;
-  std::map<string,DOMElement*> bottomEventElements;
-  std::map<string,DOMElement*> spectrumElements;
-  std::map<string,DOMElement*> envelopeElements;
-  std::map<string,DOMElement*> sieveElements;
-  std::map<string,DOMElement*> spatializationElements;
-  std::map<string,DOMElement*> patternElements;
-  std::map<string,DOMElement*> reverbElements;
-  std::map<string,DOMElement*> filterElements;
-  std::map<string,DOMElement*> notesElements;
+  std::map<std::string, pugi::xml_node> topEventElements;
+  std::map<std::string, pugi::xml_node> highEventElements;
+  std::map<std::string, pugi::xml_node> midEventElements;
+  std::map<std::string, pugi::xml_node> lowEventElements;
+  std::map<std::string, pugi::xml_node> bottomEventElements;
+  std::map<std::string, pugi::xml_node> spectrumElements;
+  std::map<std::string, pugi::xml_node> envelopeElements;
+  std::map<std::string, pugi::xml_node> sieveElements;
+  std::map<std::string, pugi::xml_node> spatializationElements;
+  std::map<std::string, pugi::xml_node> patternElements;
+  std::map<std::string, pugi::xml_node> reverbElements;
+  std::map<std::string, pugi::xml_node> filterElements;
+  std::map<std::string, pugi::xml_node> notesElements;
 
   // Storage of LASS Parsed/generated Envelopes
 
