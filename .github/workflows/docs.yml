@@ -4,6 +4,14 @@ on:
   push:
     branches: [main]
     tags: ['v*']
+    # Only rebuild when something the docs actually depend on changes —
+    # source under the three subprojects, the Doxyfile, or this workflow.
+    paths:
+      - 'CMOD/**'
+      - 'LASS/**'
+      - 'LASSIE/**'
+      - 'Doxyfile'
+      - '.github/workflows/docs.yml'
   workflow_dispatch:
 
 permissions:
