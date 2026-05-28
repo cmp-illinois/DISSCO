@@ -23,5 +23,6 @@ var searchData=
   ['getxmlreverb_20',['getXmlReverb',['../classREVChannel.html#ae76db277bcb2c7d37760aafdf30b1ba1',1,'REVChannel']]],
   ['getxmlroom_21',['getXmlRoom',['../classREVChannel.html#a7b74b642c47a9470c70c9bbdea5f282f',1,'REVChannel']]],
   ['gety_22',['getY',['../classMakeEnvelopeRow.html#aa4894a8cea4a1316e34ad52a128b8c6b',1,'MakeEnvelopeRow']]],
-  ['grandstaff_23',['grandstaff',['../classProjectManager.html#acb5738bd043f7ba2884cac2e6000dde4',1,'ProjectManager']]]
+  ['githubreposlug_23',['gitHubRepoSlug',['../classUpdater.html#acc61e06800d35775ce9ca3354289cc1d',1,'Updater']]],
+  ['grandstaff_24',['grandstaff',['../classProjectManager.html#acb5738bd043f7ba2884cac2e6000dde4',1,'ProjectManager']]]
 ];

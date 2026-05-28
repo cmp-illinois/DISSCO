@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['rate_0',['rate',['../structModifier.html#a944dad8da0f0f48d3bc52dcb70d53fa3',1,'Modifier']]],
-  ['reverb_1',['reverb',['../structExtraInfo.html#a38b6732e6cf4356936b86267da77b607',1,'ExtraInfo::reverb'],['../structHEvent.html#ad2c1c91c25b1b6e128f7282339bb5b7a',1,'HEvent::reverb']]],
-  ['reverberation_2',['reverberation',['../structReverbEvent.html#a21c6df3dc286b5f6ef9fbcba4d4d30f2',1,'ReverbEvent']]],
-  ['rightnode_3',['rightNode',['../classEnvLibEntrySeg.html#a398b46370d0810ef0e732c8ebf7266cb',1,'EnvLibEntrySeg']]],
-  ['rightseg_4',['rightSeg',['../classEnvLibEntryNode.html#a1c6800bceb099bc7c27d51804f20b638',1,'EnvLibEntryNode']]]
+  ['partialresult_5fstring_0',['partialresult_string',['../structModifier.html#ab9c87e79fa62739a970f1381db57fa11',1,'Modifier']]],
+  ['partials_1',['partials',['../structSpectrum.html#a213ae845ff07f22b4511db82be225b73',1,'Spectrum']]],
+  ['pattern_5fbuilder_2',['pattern_builder',['../structPatternEvent.html#ac688a6ad737019a6908e462047e127e9',1,'PatternEvent']]],
+  ['prefix_3',['prefix',['../structTempo.html#a48e331f8f991f5308edeb250e177fedf',1,'Tempo']]],
+  ['prev_4',['prev',['../classEnvelopeLibraryEntry.html#ab6e47eb2c9d70100c273f38c48c0b985',1,'EnvelopeLibraryEntry']]],
+  ['probability_5',['probability',['../structModifier.html#a5bd705fd02e349ab87046f604fd6885b',1,'Modifier']]]
 ];

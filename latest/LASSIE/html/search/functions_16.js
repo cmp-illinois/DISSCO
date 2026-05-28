@@ -20,5 +20,6 @@ var searchData=
   ['_7eprojectpropertiesdialog_17',['~ProjectPropertiesDialog',['../classProjectPropertiesDialog.html#a6e4d17f001317c9d71e6033819df278a',1,'ProjectPropertiesDialog']]],
   ['_7eprojectview_18',['~ProjectView',['../classProjectView.html#a28457b6dd6d04be7afcf3a9dba48a386',1,'ProjectView']]],
   ['_7eselect_19',['~Select',['../classSelect.html#aa23bd8f863544e8756cfd31f8a092a05',1,'Select']]],
-  ['_7estochos_20',['~Stochos',['../classStochos.html#ab96d99f85978ea5ba01dca4e60267168',1,'Stochos']]]
+  ['_7estochos_20',['~Stochos',['../classStochos.html#ab96d99f85978ea5ba01dca4e60267168',1,'Stochos']]],
+  ['_7eupdater_21',['~Updater',['../classUpdater.html#aa1ec416a070f85ea2c487eaeb8f61971',1,'Updater']]]
 ];

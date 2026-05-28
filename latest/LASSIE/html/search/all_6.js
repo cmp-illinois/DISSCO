@@ -7,7 +7,7 @@ var searchData=
   ['getindex_4',['getindex',['../classFunctionEntryRow.html#a72922dbac282dfb65e4f07c8bb321b90',1,'FunctionEntryRow::getIndex()'],['../classMakeEnvelopeRow.html#a858d4f5a0fc683b66a41c221a3f08079',1,'MakeEnvelopeRow::getIndex()']]],
   ['getnodetext_5',['getnodetext',['../classSelect.html#aaecae66936d197e170fcdb3967a58432',1,'Select::getNodeText()'],['../classStochos.html#ac8c5c0121229365a8b3181aad7a56e80',1,'Stochos::getNodeText()']]],
   ['getnumberstring_6',['getNumberString',['../classEnvelopeLibraryEntry.html#ac30055687c13c1a5b6f992ce449f6191',1,'EnvelopeLibraryEntry']]],
-  ['getpatternfunction_7',['getpatternfunction',['../classGetPatternFunction.html#a5ec2445f782abf74910e499af6f40280',1,'GetPatternFunction::GetPatternFunction()'],['../classGetPatternFunction.html',1,'GetPatternFunction']]],
+  ['getpatternfunction_7',['getpatternfunction',['../classGetPatternFunction.html',1,'GetPatternFunction'],['../classGetPatternFunction.html#a5ec2445f782abf74910e499af6f40280',1,'GetPatternFunction::GetPatternFunction()']]],
   ['getpatternfunction_2ecpp_8',['GetPatternFunction.cpp',['../GetPatternFunction_8cpp.html',1,'']]],
   ['getpatternfunction_2ehpp_9',['GetPatternFunction.hpp',['../GetPatternFunction_8hpp.html',1,'']]],
   ['getpro_10',['getPro',['../classMakeEnvelopeRow.html#a0296de354fc15641ede4cb441ceaff7a',1,'MakeEnvelopeRow']]],
@@ -26,6 +26,7 @@ var searchData=
   ['getxmlreverb_23',['getXmlReverb',['../classREVChannel.html#ae76db277bcb2c7d37760aafdf30b1ba1',1,'REVChannel']]],
   ['getxmlroom_24',['getXmlRoom',['../classREVChannel.html#a7b74b642c47a9470c70c9bbdea5f282f',1,'REVChannel']]],
   ['gety_25',['getY',['../classMakeEnvelopeRow.html#aa4894a8cea4a1316e34ad52a128b8c6b',1,'MakeEnvelopeRow']]],
-  ['grandstaff_26',['grandstaff',['../classProjectManager.html#acb5738bd043f7ba2884cac2e6000dde4',1,'ProjectManager']]],
-  ['group_5fname_27',['group_name',['../structModifier.html#aa7e975c33f695a70b8a5caf6ec4ffe00',1,'Modifier']]]
+  ['githubreposlug_26',['gitHubRepoSlug',['../classUpdater.html#acc61e06800d35775ce9ca3354289cc1d',1,'Updater']]],
+  ['grandstaff_27',['grandstaff',['../classProjectManager.html#acb5738bd043f7ba2884cac2e6000dde4',1,'ProjectManager']]],
+  ['group_5fname_28',['group_name',['../structModifier.html#aa7e975c33f695a70b8a5caf6ec4ffe00',1,'Modifier']]]
 ];

@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['name_0',['name',['../structHEvent.html#a3e7d0d968aa79b61614fbaf61560ddf8',1,'HEvent::name'],['../structSpectrumEvent.html#a4f289d9d6ca8df45c9e7feb8b674ee2a',1,'SpectrumEvent::name'],['../structNoteEvent.html#a540f3caabfd4f20c48bbe6d7f5b73047',1,'NoteEvent::name'],['../structEnvelopeEvent.html#abd25578d92150d99faf021ec4e8473cf',1,'EnvelopeEvent::name'],['../structSieveEvent.html#ac7ea175a3f3077ce7e6eafe5a8f4095a',1,'SieveEvent::name'],['../structSpaEvent.html#a3a35cb3b47c83e2b120cf5944cd919c5',1,'SpaEvent::name'],['../structPatternEvent.html#aa1b5c5d828a037ce179f9080ec30236d',1,'PatternEvent::name'],['../structReverbEvent.html#a759e6940ee354a4ad12fbde334950b18',1,'ReverbEvent::name'],['../structFilterEvent.html#a529c34c25440b0f97f61503b0213623b',1,'FilterEvent::name']]],
-  ['next_1',['next',['../classEnvelopeLibraryEntry.html#a0a247d78db975042bcf9d1f4d7731dbd',1,'EnvelopeLibraryEntry']]],
-  ['note_5finfo_2',['note_info',['../structNoteEvent.html#a1edf725b7387ab4ac12bcc9d1f65c063',1,'NoteEvent']]],
-  ['note_5fvalue_3',['note_value',['../structTimeSignature.html#a6f77b3049ec2a5f2a7d5d35ecda7ca6d',1,'TimeSignature::note_value'],['../structTempo.html#a816c3dc062d3f6db8b9b2cad2f75f7fd',1,'Tempo::note_value']]],
-  ['num_5fpartials_4',['num_partials',['../structSpectrumEvent.html#ade26f48deedd2b3d7659bff55ef3a9d4',1,'SpectrumEvent']]],
-  ['number_5',['number',['../classEnvelopeLibraryEntry.html#aa6c04f33b5346da04eb9506865e786ab',1,'EnvelopeLibraryEntry']]],
-  ['numchildren_6',['numchildren',['../structHEvent.html#a031f054434c6119f22955b4580b5aece',1,'HEvent']]]
+  ['m_5frows_0',['m_rows',['../classMultiEntryFunction.html#ac1cb45ee1b3fd44f946c90d4beacbc1c',1,'MultiEntryFunction']]],
+  ['m_5fspecs_1',['m_specs',['../classMultiEntryFunction.html#a329a9a4842e4a36f3c4f5a2997cfb202',1,'MultiEntryFunction']]],
+  ['markovwindow_2',['markovWindow',['../classMainWindow.html#a92aa06571289e2f1781de9cd2177ca33',1,'MainWindow']]],
+  ['matrix_3',['matrix',['../structMarkovModelLibraryWindow_1_1EditorSnapshot.html#a86aab27375ff2999dfb2442c264a824a',1,'MarkovModelLibraryWindow::EditorSnapshot']]],
+  ['max_5fchild_5fduration_4',['max_child_duration',['../structHEvent.html#a63e2805ce2857f74fea902130e18cd71',1,'HEvent']]],
+  ['method_5fflag_5',['method_flag',['../structTempo.html#a808313cc52fe70b1d8040d693bc3b822',1,'Tempo::method_flag'],['../structNumChildren.html#a28fe548732e5402f7cc5b5d02e7d8f9f',1,'NumChildren::method_flag']]],
+  ['modifier_5fgroup_6',['modifier_group',['../structExtraInfo.html#a8bc515d3c7be6e42bd893a3b467c8b2a',1,'ExtraInfo']]],
+  ['modifiers_7',['modifiers',['../structExtraInfo.html#a0b709d346b57056d4dc4157cfe64dccb',1,'ExtraInfo::modifiers'],['../structHEvent.html#a2941077b07a525f8c7dac50691527bf5',1,'HEvent::modifiers'],['../structNoteInfo.html#ac3ce3725dcbbeef41f79c85f6b7e3ccc',1,'NoteInfo::modifiers']]]
 ];

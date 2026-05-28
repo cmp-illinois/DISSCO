@@ -19,5 +19,6 @@ var searchData=
   ['attributesfilfunbutton_16',['attributesFilFunButton',['../EventAttributesViewController_8hpp.html#a7368f316b8cba93e88233efe6fc580b6aa34ce6c0669a42a68fca92d7c239fd3f',1,'EventAttributesViewController.hpp']]],
   ['attributesrevfunbutton_17',['attributesRevFunButton',['../EventAttributesViewController_8hpp.html#a7368f316b8cba93e88233efe6fc580b6aeff4c9dd584f00e938cf15dc16b4e2eb',1,'EventAttributesViewController.hpp']]],
   ['attributesspafunbutton_18',['attributesSpaFunButton',['../EventAttributesViewController_8hpp.html#a7368f316b8cba93e88233efe6fc580b6ad4276aa1ff6357f7360e80ff7d7dccdb',1,'EventAttributesViewController.hpp']]],
-  ['availableedufunction_19',['availableedufunction',['../classAvailableEduFunction.html#a6a44c06733baf2e683160148913cdd7e',1,'AvailableEduFunction::AvailableEduFunction()'],['../classAvailableEduFunction.html',1,'AvailableEduFunction']]]
+  ['auto_19',['Auto',['../classUpdater.html#a07c3fd46396089dd065566f51957dad6a06b9281e396db002010bde1de57262eb',1,'Updater']]],
+  ['availableedufunction_20',['availableedufunction',['../classAvailableEduFunction.html#a6a44c06733baf2e683160148913cdd7e',1,'AvailableEduFunction::AvailableEduFunction()'],['../classAvailableEduFunction.html',1,'AvailableEduFunction']]]
 ];

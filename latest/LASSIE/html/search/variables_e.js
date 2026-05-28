@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['segmentproperty_0',['segmentProperty',['../classEnvLibEntrySeg.html#a598ad16a1d1c314547768e69a48d80de',1,'EnvLibEntrySeg']]],
-  ['segmenttype_1',['segmentType',['../classEnvLibEntrySeg.html#aefc20ea964c2ac730eb30335f9816181',1,'EnvLibEntrySeg']]],
-  ['sieve_5fbuilder_2',['sieve_builder',['../structSieveEvent.html#a92a4bcb10254384288e8119be168ffab',1,'SieveEvent']]],
-  ['size_3',['size',['../structMarkovModelLibraryWindow_1_1EditorSnapshot.html#a6501d0a702604ac4d42eacf0f7c3277e',1,'MarkovModelLibraryWindow::EditorSnapshot']]],
-  ['spa_4',['spa',['../structExtraInfo.html#a69f87c0cb29ca0aaabd5010970a1d33b',1,'ExtraInfo::spa'],['../structHEvent.html#acf14bb980eb5e6ece79bca958aa4aded',1,'HEvent::spa']]],
-  ['spatialization_5',['spatialization',['../structSpaEvent.html#a255e04fadbafa061248cb3f31d4e7177',1,'SpaEvent']]],
-  ['spectrum_6',['spectrum',['../structSpectrumEvent.html#a5689b5860255a96670a5e09dcd0d6e05',1,'SpectrumEvent']]],
-  ['staffs_7',['staffs',['../structNoteInfo.html#a340e78150bcaf2d8a65a97e414ec141a',1,'NoteInfo']]],
-  ['starttype_5fflag_8',['starttype_flag',['../structChildDef.html#a2ebf4d618eb88b090f51a6360b3be8c7',1,'ChildDef']]]
+  ['rate_0',['rate',['../structModifier.html#a944dad8da0f0f48d3bc52dcb70d53fa3',1,'Modifier']]],
+  ['reverb_1',['reverb',['../structExtraInfo.html#a38b6732e6cf4356936b86267da77b607',1,'ExtraInfo::reverb'],['../structHEvent.html#ad2c1c91c25b1b6e128f7282339bb5b7a',1,'HEvent::reverb']]],
+  ['reverberation_2',['reverberation',['../structReverbEvent.html#a21c6df3dc286b5f6ef9fbcba4d4d30f2',1,'ReverbEvent']]],
+  ['rightnode_3',['rightNode',['../classEnvLibEntrySeg.html#a398b46370d0810ef0e732c8ebf7266cb',1,'EnvLibEntrySeg']]],
+  ['rightseg_4',['rightSeg',['../classEnvLibEntryNode.html#a1c6800bceb099bc7c27d51804f20b638',1,'EnvLibEntryNode']]]
 ];

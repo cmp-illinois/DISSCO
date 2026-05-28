@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['valuepickfunction_0',['ValuePickFunction',['../classValuePickFunction.html',1,'']]]
+  ['updater_0',['Updater',['../classUpdater.html',1,'']]]
 ];

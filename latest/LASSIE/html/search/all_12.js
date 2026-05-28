@@ -12,6 +12,7 @@ var searchData=
   ['top_9',['top',['../event__struct_8hpp.html#ab79062bb6e4e9edab1293c4d05ad3b65a3961740aa293a50c701d278225f7050a',1,'event_struct.hpp']]],
   ['topevent_10',['topevent',['../classProjectManager.html#aa0f7ca3b2943123ef1e497434ece1363',1,'ProjectManager']]],
   ['totalcount_11',['totalCount',['../namespaceLayerRefs.html#acb76e7040d02887056a2af9f7bb2d814',1,'LayerRefs']]],
-  ['triple_12',['triple',['../event__struct_8hpp.html#a9d2b3ce153fe35a8b2206f4fed2e5bebaad41fdb073888482bb921e8f72c295f4',1,'event_struct.hpp']]],
-  ['type_13',['type',['../structHEvent.html#aa20163547816bf5f473476b112349324',1,'HEvent::type'],['../structModifier.html#a5beaf1109d53a2ef62dd2e627edf5ef0',1,'Modifier::type']]]
+  ['trigger_12',['Trigger',['../classUpdater.html#a07c3fd46396089dd065566f51957dad6',1,'Updater']]],
+  ['triple_13',['triple',['../event__struct_8hpp.html#a9d2b3ce153fe35a8b2206f4fed2e5bebaad41fdb073888482bb921e8f72c295f4',1,'event_struct.hpp']]],
+  ['type_14',['type',['../structHEvent.html#aa20163547816bf5f473476b112349324',1,'HEvent::type'],['../structModifier.html#a5beaf1109d53a2ef62dd2e627edf5ef0',1,'Modifier::type']]]
 ];
