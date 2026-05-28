@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.25)
 project(LASSIE)
 message(STATUS "== LASSIE ==")
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets Core Xml)
+find_package(Qt6 REQUIRED COMPONENTS Widgets Core Xml Network)
 find_package(XercesC REQUIRED)
 
 set(CMAKE_AUTOUIC ON)
@@ -68,6 +68,7 @@ qt_add_executable(LASSIE
     src/widgets/Select.cpp src/widgets/Select.hpp
     src/widgets/MakeEnvelopeRow.cpp src/widgets/MakeEnvelopeRow.hpp
     src/widgets/generic/FunctionEntryRow.cpp src/widgets/generic/FunctionEntryRow.hpp
+    src/core/Updater.cpp src/core/Updater.hpp
 )
 
 target_precompile_headers(LASSIE PRIVATE <QtWidgets> <QtCore> <QtXml>)
@@ -76,6 +77,7 @@ target_link_libraries(LASSIE PRIVATE
     Qt6::Widgets
     Qt6::Core
     Qt6::Xml
+    Qt6::Network
     LASS
     XercesC::XercesC
 )
@@ -126,6 +128,15 @@ endif()
 
 target_compile_definitions(LASSIE PUBLIC "CMOD_BINARY=\"${CMOD_BINARY}\"")
 
+# Version info — sourced from DISSCOVersions.txt via the root CMakeLists.
+# Used by the in-app updater to compare against the latest GitHub release.
+target_compile_definitions(LASSIE PRIVATE
+    "DISSCO_VER_MAJOR=${DISSCO_VER_MAJOR}"
+    "DISSCO_VER_MINOR=${DISSCO_VER_MINOR}"
+    "DISSCO_VER_PATCH=${DISSCO_VER_PATCH}"
+    "DISSCO_VERSION_STR=\"${DISSCO_VERSION}\""
+)
+
 execute_process(
     COMMAND git rev-parse --abbrev-ref HEAD
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
@@ -137,6 +148,23 @@ if(NOT GIT_BRANCH)
     set(GIT_BRANCH "unknown")
 endif()
 target_compile_definitions(LASSIE PRIVATE "GIT_BRANCH=\"${GIT_BRANCH}\"")
+
+execute_process(
+    COMMAND git rev-parse HEAD
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    OUTPUT_VARIABLE GIT_COMMIT_SHA
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+    ERROR_QUIET
+)
+if(NOT GIT_COMMIT_SHA)
+    set(GIT_COMMIT_SHA "unknown")
+endif()
+target_compile_definitions(LASSIE PRIVATE "GIT_COMMIT_SHA=\"${GIT_COMMIT_SHA}\"")
+
+# Canonical upstream repo for the updater. Kept in sync with the URLs in
+# packaging/Packaging.cmake (CPACK_NSIS_HELP_LINK / URL_INFO_ABOUT).
+set(DISSCO_GITHUB_REPO "cmp-illinois/DISSCO-2.2.0")
+target_compile_definitions(LASSIE PRIVATE "DISSCO_GITHUB_REPO=\"${DISSCO_GITHUB_REPO}\"")
 
 if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_compile_definitions(LASSIE PRIVATE QT_NO_DEBUG_OUTPUT)
