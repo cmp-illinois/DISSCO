@@ -7,6 +7,7 @@
 #include "PostWindow.hpp"
 
 #include "../core/project_struct.hpp"
+#include "../core/Updater.hpp"
 
 #include <QApplication>
 #include <QMenuBar>
@@ -38,6 +39,7 @@
 #include <QAction>
 #include <QKeyEvent>
 #include <QStandardPaths>
+#include <QTimer>
 
 MainWindow *MainWindow::instance_ = nullptr;
 
@@ -108,6 +110,15 @@ MainWindow::MainWindow(Inst* m)
     header->setSectionResizeMode(2, QHeaderView::ResizeToContents);
     connect(Inst::get_project_manager(), &ProjectManager::dataModified,
             this, [this]{ setWindowModified(true); });
+
+    updater_ = new Updater(this);
+    if (Updater::shouldAutoCheckNow()) {
+        // Defer until the event loop is running so the main window has
+        // painted before any dialog can appear.
+        QTimer::singleShot(0, this, [this]() {
+            updater_->checkForUpdates(Updater::Trigger::Auto);
+        });
+    }
 }
 
 //MainWindow::~MainWindow() = default;
@@ -469,12 +480,31 @@ void MainWindow::createActions()
         QMessageBox::about(this, tr("About LASSIE"),
             tr("LASSIE (Library for Algorithmic Sound Synthesis and Interactive Exploration) "
                "is a tool for creating and manipulating sound synthesis algorithms.\n\n"
-               "Branch: ") + GIT_BRANCH);
+               "Version: %1\nBranch: %2\nCommit: %3")
+                .arg(Updater::currentVersion().toString(),
+                     QString::fromLatin1(GIT_BRANCH),
+                     Updater::currentCommit().left(7)));
     });
 
     aboutQtAct = new QAction(tr("About &Qt"), this);
     aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
     connect(aboutQtAct, &QAction::triggered, qApp, &QApplication::aboutQt);
+
+    checkForUpdatesAct = new QAction(tr("Check for &Updates..."), this);
+    checkForUpdatesAct->setStatusTip(tr("Check GitHub for a newer LASSIE release"));
+    connect(checkForUpdatesAct, &QAction::triggered, this, [this]() {
+        if (updater_) {
+            updater_->checkForUpdates(Updater::Trigger::Manual);
+        }
+    });
+
+    autoCheckUpdatesAct = new QAction(tr("Check for Updates on &Startup"), this);
+    autoCheckUpdatesAct->setStatusTip(tr("Automatically check for updates once per day on launch"));
+    autoCheckUpdatesAct->setCheckable(true);
+    autoCheckUpdatesAct->setChecked(QSettings().value(Updater::kAutoCheckKey, false).toBool());
+    connect(autoCheckUpdatesAct, &QAction::toggled, this, [](const bool on) {
+        QSettings().setValue(Updater::kAutoCheckKey, on);
+    });
 }
 
 void MainWindow::enableProjectActions(const bool enabled) const {
@@ -517,6 +547,9 @@ void MainWindow::createMenus()
     viewMenu->addAction(showMarkovAct);
 
     helpMenu = menuBar()->addMenu(tr("&Help"));
+    helpMenu->addAction(checkForUpdatesAct);
+    helpMenu->addAction(autoCheckUpdatesAct);
+    helpMenu->addSeparator();
     helpMenu->addAction(aboutAct);
     helpMenu->addAction(aboutQtAct);
 }

@@ -17,6 +17,7 @@ QT_END_NAMESPACE
 class EnvelopeLibraryWindow;
 class MarkovModelLibraryWindow; //nhi: more descriptive than MarkovWindow
 class ProjectView;
+class Updater;
 
 /**
  * @brief Top-level Qt main window for LASSIE.
@@ -139,6 +140,8 @@ class MainWindow : public QMainWindow
         QAction *showMarkovAct = nullptr;
         QAction *aboutAct = nullptr;
         QAction *aboutQtAct = nullptr;
+        QAction *checkForUpdatesAct = nullptr;
+        QAction *autoCheckUpdatesAct = nullptr;
 
         // Menus
         QMenu *fileMenu = nullptr;
@@ -158,6 +161,7 @@ class MainWindow : public QMainWindow
         ProjectView* projectView = nullptr;
         
         Inst *main_;
+        Updater *updater_ = nullptr;
         static MainWindow *instance_;
 };
 
