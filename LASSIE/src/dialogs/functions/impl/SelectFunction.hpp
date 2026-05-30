@@ -13,12 +13,14 @@ class Select;
 /** Select: a list of values (each a "Select" row) plus an Index field
  *  that picks one of them.
  *
+ *  @code{.xml}
  *  <Fun><Name>Select</Name>
- *    <List>v1, v2, &lt;Fun&gt;...&lt;/Fun&gt;, ...</List>
+ *    <List>v1, v2, <Fun>...</Fun>, ...</List>
  *    <Index>V</Index>
  *  </Fun>
+ *  @endcode
  *
- *  Items in <List> are joined with ", "; nested <Fun>...</Fun> values
+ *  Items in `<List>` are joined with ", "; nested `<Fun>...</Fun>` values
  *  are preserved verbatim and the parser splits only on top-level commas.
  */
 class SelectFunction : public FunctionWidget {

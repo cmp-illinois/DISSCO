@@ -8,6 +8,7 @@ class QRadioButton;
 
 /** ExpandPattern: method radio + four entries (Modulo/Low/High/Pattern).
  *
+ *  @code{.xml}
  *  <Fun><Name>ExpandPattern</Name>
  *    <Method>EQUIVALENCE|SYMMETRIES|DISTORT</Method>
  *    <Modulo>V</Modulo>
@@ -15,6 +16,7 @@ class QRadioButton;
  *    <High>V</High>
  *    <Pattern>V</Pattern>
  *  </Fun>
+ *  @endcode
  */
 class ExpandPatternFunction : public FunctionWidget {
     Q_OBJECT

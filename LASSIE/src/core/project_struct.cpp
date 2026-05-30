@@ -22,7 +22,7 @@ in the associated window (currently, the project view).
 namespace QtParser {
     /// @brief Capture the inner content of the element currently at StartElement.
     ///   Returns plain text for text-only elements, or serialized inner XML for
-    ///   elements containing nested children (e.g. <Fun>...</Fun> blocks).
+    ///   elements containing nested children (e.g. `<Fun>...</Fun>` blocks).
     ///   Pre: r.tokenType() == StartElement.
     ///   Post: r.tokenType() == EndElement of the same element.
     inline QString readInner(QXmlStreamReader& r) {
@@ -165,10 +165,10 @@ namespace QtParser {
             out.append(parseModifier(r));
     }
 
-    /// @brief Parse the shared "HEvent core" children of <Event>: from <EventName>
-    ///   through <Filter>. The <EventType> child must already have been consumed
-    ///   by the caller. Stops at <Filter> so callers can read the differing
-    ///   trailing siblings (HEvent: <Modifiers>; BottomEvent: <ExtraInfo>).
+    /// @brief Parse the shared "HEvent core" children of `<Event>`: from `<EventName>`
+    ///   through `<Filter>`. The `<EventType>` child must already have been consumed
+    ///   by the caller. Stops at `<Filter>` so callers can read the differing
+    ///   trailing siblings (HEvent: `<Modifiers>`; BottomEvent: `<ExtraInfo>`).
     inline void parseHEventCore(QXmlStreamReader& r, HEvent& event) {
         event.name              = nextChildInner(r);   // <Name>
         event.max_child_duration = nextChildInner(r);  // <MaxChildDuration>

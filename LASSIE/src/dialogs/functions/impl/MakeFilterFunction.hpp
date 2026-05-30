@@ -10,12 +10,14 @@ class QRadioButton;
  *  / dBGain entries. dBGain is only meaningful for HSF / LSF / PBEQF
  *  filters; for the others the row is disabled.
  *
+ *  @code{.xml}
  *  <Fun><Name>MakeFilter</Name>
  *    <Type>LPF|HPF|BPF|HSF|LSF|NF|PBEQF</Type>
  *    <Frequency>V</Frequency>
  *    <BandWidth>V</BandWidth>
  *    <dBGain>V</dBGain>
  *  </Fun>
+ *  @endcode
  */
 class MakeFilterFunction : public FunctionWidget {
     Q_OBJECT

@@ -13,14 +13,16 @@ class Stochos;
 
 /** Stochos: a method radio (RANGE_DISTRIB / FUNCTIONS) plus a list of
  *  envelope rows. In RANGE_DISTRIB mode each row has min/max/dist
- *  entries (three <Envelope> tags); in FUNCTIONS mode each row has one
- *  entry (one <Envelope>). Switching methods clears existing rows.
+ *  entries (three `<Envelope>` tags); in FUNCTIONS mode each row has one
+ *  entry (one `<Envelope>`). Switching methods clears existing rows.
  *
+ *  @code{.xml}
  *  <Fun><Name>Stochos</Name>
  *    <Method>RANGE_DISTRIB|FUNCTIONS</Method>
  *    <Envelopes>...rows...</Envelopes>
  *    <Offset>V</Offset>
  *  </Fun>
+ *  @endcode
  */
 class StochosFunction : public FunctionWidget {
     Q_OBJECT

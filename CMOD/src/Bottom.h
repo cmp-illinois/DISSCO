@@ -421,7 +421,7 @@ class Bottom : public Event {
      *  Sets the reverberation of a sound according to a simple
      *     "room size" parameter
      *  \param s a pointer to the sound being created
-     *  \param paramsElement pointer to the <Sizes> element
+     *  \param paramsElement pointer to the `<Sizes>` element
      *  \param applyHow string containing info if it applies to sound or
      *     individual partials
      *  \param numPartials the number of partials contained in the sound
@@ -436,7 +436,7 @@ class Bottom : public Event {
      *     "hi/low spread", "gain all pass", and "delay" parameters
      *     ==== Applying by partial not implemented in LASSIE ====
      * \param s a pointer to the sound being created
-     * \param paramsElement pointer to the <Percent> (envelope) element
+     * \param paramsElement pointer to the `<Percent>` (envelope) element
      * \param applyHow string containing info if it applies to sound or
      *     individual partials
      * \param numPartials the number of partials contained in the sound
@@ -452,7 +452,7 @@ class Bottom : public Event {
      *     "gain all pass", and "delay" parameters
      *     ==== Applying by partial not implemented in LASSIE ====
      * \param s a pointer to the sound being created
-     * \param paramsElement pointer to the <Percent> (envelope) element
+     * \param paramsElement pointer to the `<Percent>` (envelope) element
      * \param applyHow string containing info if it applies to sound or
      *     individual partials
      * \param numPartials the number of partials contained in the sound

@@ -14,6 +14,7 @@ class SPAChannel;
  *  per-partial rows. Switching either radio rebuilds the channel list
  *  from scratch.
  *
+ *  @code{.xml}
  *  <Fun><Name>SPA</Name>
  *    <Method>STEREO|MULTI_PAN|POLAR</Method>
  *    <Apply>SOUND|PARTIAL</Apply>
@@ -21,6 +22,7 @@ class SPAChannel;
  *      <Partials><P>V</P>...</Partials>...
  *    </Channels>
  *  </Fun>
+ *  @endcode
  */
 class SPAFunction : public FunctionWidget {
     Q_OBJECT

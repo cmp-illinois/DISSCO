@@ -33,7 +33,7 @@ public:
     /** Stable identity used as the registry key. */
     virtual CMODFunction id() const = 0;
 
-    /** Tag written under <Fun><Name>...</Name></Fun>, also the lookup key
+    /** Tag written under `<Fun><Name>...</Name></Fun>`, also the lookup key
      *  when parsing incoming function strings (e.g. "Random"). */
     virtual QString xmlName() const = 0;
 
@@ -46,12 +46,12 @@ public:
     virtual QList<FunctionReturnType> supportedReturnTypes() const = 0;
 
     /** Serialize the widget's current field values to an XML string.
-     *  Convention: returns "<Fun><Name>xmlName()</Name>...</Fun>". */
+     *  Convention: returns `"<Fun><Name>xmlName()</Name>...</Fun>"`. */
     virtual QString buildXMLString() const = 0;
 
     /** Restore field values from a parsed XML element. The reader is
-     *  positioned immediately after the <Name>...</Name> child; subclasses
-     *  consume the remaining siblings up to the closing </Fun>. */
+     *  positioned immediately after the `<Name>...</Name>` child; subclasses
+     *  consume the remaining siblings up to the closing `</Fun>`. */
     virtual void populateFromXML(QXmlStreamReader& reader) = 0;
 
     /** Clear all fields back to their default state. */
@@ -60,8 +60,8 @@ public:
     // -----------------------------------------------------------------
     // Shared XML helpers used by populateFromXML implementations.
     //
-    // The on-disk format mixes two child shapes under <Fun>: leaf text
-    // (e.g. "<Low>0</Low>") and nested elements (e.g. "<Low><Fun>...</Fun></Low>"
+    // The on-disk format mixes two child shapes under `<Fun>`: leaf text
+    // (e.g. `<Low>0</Low>`) and nested elements (e.g. `<Low><Fun>...</Fun></Low>`
     // for a nested function). These helpers handle both: readInner
     // captures whatever lives between the current StartElement and its
     // matching EndElement, returning either the text or a serialized

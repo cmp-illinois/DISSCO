@@ -9,6 +9,7 @@ class QRadioButton;
 /** MakeSieve. Two bounds, an elements list with method radio, a weights
  *  list with method radio, and an offset.
  *
+ *  @code{.xml}
  *  <Fun><Name>MakeSieve</Name>
  *    <Low>V</Low>
  *    <High>V</High>
@@ -18,6 +19,7 @@ class QRadioButton;
  *    <Weight>V</Weight>
  *    <Offset>V</Offset>
  *  </Fun>
+ *  @endcode
  */
 class MakeSieveFunction : public FunctionWidget {
     Q_OBJECT

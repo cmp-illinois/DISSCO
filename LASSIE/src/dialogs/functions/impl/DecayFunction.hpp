@@ -9,12 +9,14 @@ class QRadioButton;
 /** Decay. Three numeric entries (Base/Rate/Index) plus a Type radio
  *  (Exponential/Linear) that sits between Base and Rate in the XML.
  *
+ *  @code{.xml}
  *  <Fun><Name>Decay</Name>
  *    <Base>V</Base>
  *    <Type>EXPONENTIAL|LINEAR</Type>
  *    <Rate>V</Rate>
  *    <Index>V</Index>
  *  </Fun>
+ *  @endcode
  */
 class DecayFunction : public FunctionWidget {
     Q_OBJECT

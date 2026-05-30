@@ -334,7 +334,7 @@ private:
   /**
    * Helper function for finding, in a string, the substring which represents
    * a CMOD function.
-   * This function assume that at least 1 "<Fun>" exists in the string.
+   * This function assume that at least 1 `<Fun>` exists in the string.
    * \param _input The string to search
    * \return The index of _input where the substring begins
    **/

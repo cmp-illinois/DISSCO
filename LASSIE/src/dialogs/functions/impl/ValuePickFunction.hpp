@@ -9,6 +9,7 @@ class QRadioButton;
 /** ValuePick. Range/Low/High/Dist plus two radio-method element lists
  *  (elements + weights), a type radio, and an offset.
  *
+ *  @code{.xml}
  *  <Fun><Name>ValuePick</Name>
  *    <Range>V</Range><Low>V</Low><High>V</High><Dist>V</Dist>
  *    <Method>MEANINGFUL|MODS|FAKE|FIBONACCI</Method>
@@ -18,6 +19,7 @@ class QRadioButton;
  *    <Type>VARIABLE|CONSTANT</Type>
  *    <Offsets>V</Offsets>
  *  </Fun>
+ *  @endcode
  */
 class ValuePickFunction : public FunctionWidget {
     Q_OBJECT

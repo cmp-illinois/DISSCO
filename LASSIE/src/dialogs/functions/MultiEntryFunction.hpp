@@ -7,12 +7,12 @@ class FunctionEntryRow;
 
 /**
  * Base class for functions whose body is a flat sequence of labeled,
- * single-line entries -- each wrapped in its own XML tag under <Fun>.
+ * single-line entries -- each wrapped in its own XML tag under `<Fun>`.
  *
  * Subsumes the simple single- and multi-entry cases:
- *   <Fun><Name>X</Name><Entry>V</Entry></Fun>                 // Inverse / LN
- *   <Fun><Name>X</Name><Low>V</Low><High>V</High></Fun>       // Random / RandomInt
- *   <Fun><Name>X</Name><Envelope>V</Envelope><Low>V</Low>...  // RandomDensity
+ *   `<Fun><Name>X</Name><Entry>V</Entry></Fun>`                 // Inverse / LN
+ *   `<Fun><Name>X</Name><Low>V</Low><High>V</High></Fun>`       // Random / RandomInt
+ *   `<Fun><Name>X</Name><Envelope>V</Envelope><Low>V</Low>...`  // RandomDensity
  *
  * Functions with extra controls (radio buttons, textareas, repeated
  * rows) need their own widget; this base is only for flat row stacks.

@@ -12,13 +12,15 @@ class QVBoxLayout;
 /** MakeEnvelope: a dynamic list of (X, Y, interpolation, proportion)
  *  points plus a Scale factor.
  *
+ *  @code{.xml}
  *  <Fun><Name>MakeEnvelope</Name>
- *    <Xs><X>v</X>...</Xs>                              // N values
- *    <Ys><Y>v</Y>...</Ys>                              // N values
- *    <Types><T>LINEAR|SPLINE|EXPONENTIAL</T>...</Types> // N-1 (segments)
- *    <Pros><P>FLEXIBLE|FIXED</P>...</Pros>              // N-1 (segments)
+ *    <Xs><X>v</X>...</Xs>
+ *    <Ys><Y>v</Y>...</Ys>
+ *    <Types><T>LINEAR|SPLINE|EXPONENTIAL</T>...</Types>
+ *    <Pros><P>FLEXIBLE|FIXED</P>...</Pros>
  *    <Scale>v</Scale>
  *  </Fun>
+ *  @endcode
  */
 class MakeEnvelopeFunction : public FunctionWidget {
     Q_OBJECT

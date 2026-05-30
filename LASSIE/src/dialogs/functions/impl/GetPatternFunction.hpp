@@ -8,11 +8,13 @@ class QRadioButton;
 
 /** GetPattern: a method choice plus offset + pattern entries.
  *
+ *  @code{.xml}
  *  <Fun><Name>GetPattern</Name>
  *    <Method>IN_ORDER|OTHER|TYPE_CLUSTERS|TIME_DEPEND|PROBABILITY</Method>
  *    <Offset>V</Offset>
  *    <Pattern>V</Pattern>
  *  </Fun>
+ *  @endcode
  */
 class GetPatternFunction : public FunctionWidget {
     Q_OBJECT

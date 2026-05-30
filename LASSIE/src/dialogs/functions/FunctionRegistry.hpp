@@ -23,7 +23,7 @@
  *  - create(id) / idFromXmlName(name)
  *                            : produce the widget that handles a given function.
  *
- * Lookup is by CMODFunction (registry key) or by the XML <Name> tag
+ * Lookup is by CMODFunction (registry key) or by the XML `<Name>` tag
  * (the on-disk serialization key). Keeping these decoupled lets us
  * eventually treat CMODFunction as a pure in-memory id without churning
  * the file format.
@@ -54,7 +54,7 @@ public:
      *  type is registered for that id. Caller owns the returned widget. */
     FunctionWidget* create(CMODFunction id) const;
 
-    /** Look up a function id by its XML <Name> tag. Returns
+    /** Look up a function id by its XML `<Name>` tag. Returns
      *  CMODFunction::NOT_A_FUNCTION if no registered type uses that tag. */
     CMODFunction idFromXmlName(const QString& xmlName) const;
 
