@@ -4,7 +4,6 @@ project(LASSIE)
 message(STATUS "== LASSIE ==")
 
 find_package(Qt6 REQUIRED COMPONENTS Widgets Core Xml Network)
-find_package(XercesC REQUIRED)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -79,19 +78,19 @@ target_link_libraries(LASSIE PRIVATE
     Qt6::Xml
     Qt6::Network
     LASS
-    XercesC::XercesC
 )
 # Note: LASSIE invokes CMOD as a subprocess (see CMOD_BINARY below and the
 # QProcess::start call in MainWindow::runProject). No symbols are shared, so
 # CMOD is intentionally NOT in the link list. Linking against an executable
 # target requires an import library on Windows, which CMOD doesn't produce
 # (no dllexport / WINDOWS_EXPORT_ALL_SYMBOLS), and the dependency was never
-# load-bearing anyway. LASS and XercesC, which LASSIE was previously pulling
-# in transitively through CMOD's PUBLIC interface, are now linked directly.
+# load-bearing anyway. LASS, which LASSIE was previously pulling in
+# transitively through CMOD's PUBLIC interface, is now linked directly.
+# LASSIE does its own XML handling with Qt's QtXml (QDomDocument), so it
+# needs no separate XML library.
 
 include(GNUInstallDirs)
-# XercesC include path comes from the XercesC::XercesC imported target's
-# INTERFACE_INCLUDE_DIRECTORIES; LASS comes from the LASS target.
+# LASS include path comes from the LASS target.
 target_include_directories(LASSIE PRIVATE
     ${CMAKE_SOURCE_DIR}/LASS/src
 )
