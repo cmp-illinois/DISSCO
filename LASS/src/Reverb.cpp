@@ -104,13 +104,13 @@ Reverb::Reverb(float room_size, m_rate_type samplingRate)
 
 }
 
-Reverb::Reverb(Envelope *percentReverbinput, float hilow_spread, float gainAllPass,
+Reverb::Reverb(Envelope *percentReverb, float hilow_spread, float gainAllPass,
 	       float delay, m_rate_type samplingRate)
 {
   float comb_gain_list[REVERB_NUM_COMB_FILTERS];
   float lp_gain_list[REVERB_NUM_COMB_FILTERS];
   int i;
-  Envelope* temp = new Envelope(*percentReverbinput);
+  Envelope* temp = new Envelope(*percentReverb);
   percentReverb = new Envelope(*temp);
 
   comb_gain_list[0] = 0.46;
@@ -155,15 +155,15 @@ Reverb::Reverb(Envelope *percentReverbinput, float hilow_spread, float gainAllPa
  *   to room size.
  * samplingRate - the sampling rate of the input sounds
  **/
-Reverb::Reverb(Envelope *percentReverbinput, float *combGainList, float *lpGainList,
+Reverb::Reverb(Envelope *percentReverb, float *combGainList, float *lpGainList,
 	       float gainAllPass, float delay, m_rate_type samplingRate)
 {
   // We have to copy this envelope, to prevent a seg fault when the common
   // constructor deletes it  --- cavis
-  Envelope* temp = new Envelope(*percentReverbinput);
+  Envelope* temp = new Envelope(*percentReverb);
   percentReverb = new Envelope(*temp);
 
-  ConstructorCommon(percentReverbinput, combGainList, lpGainList, gainAllPass,
+  ConstructorCommon(percentReverb, combGainList, lpGainList, gainAllPass,
 		    delay, samplingRate);
 }
 
@@ -200,13 +200,13 @@ Reverb::Reverb(Envelope *percentReverbinput, float *combGainList, float *lpGainL
  *   the other reverb parameters
  * samplingRate - the sampling rate of the input sounds
  **/
-void Reverb::ConstructorCommon(Envelope *percentReverbinput, float *comb_gain_list,
-			       float *lp_gain_list, float gainAllPass, float delay,
+void Reverb::ConstructorCommon(Envelope *percentReverb, float *combGainList,
+			       float *lpGainList, float gainAllPass, float delay,
 			       m_rate_type samplingRate)
 {
   long combdelay[REVERB_NUM_COMB_FILTERS];
   int i;
-  Envelope* temp = new Envelope(*percentReverbinput);
+  Envelope* temp = new Envelope(*percentReverb);
   delete percentReverb;
   percentReverb = temp;
   // figure out allpass filter parameters
@@ -224,7 +224,7 @@ void Reverb::ConstructorCommon(Envelope *percentReverbinput, float *comb_gain_li
   // Make comb filters (figure out low-pass gains better)
   for(i=0;i<REVERB_NUM_COMB_FILTERS;i++)
     {
-      lpcfilter[i] = new LPCombFilter(comb_gain_list[i], combdelay[i], lp_gain_list[i]);
+      lpcfilter[i] = new LPCombFilter(combGainList[i], combdelay[i], lpGainList[i]);
     }
 
   // Make an all pass filter
@@ -235,7 +235,7 @@ void Reverb::ConstructorCommon(Envelope *percentReverbinput, float *comb_gain_li
   float alpha = 0.0; // alpha is the steady state gain (which is also the max of the gain fn
 #define max(x,y) ((x) > (y) ? (x) : (y))
   for(i=0;i<6;i++)
-    alpha = max(alpha, comb_gain_list[i]/(1.0 - lp_gain_list[i]));
+    alpha = max(alpha, combGainList[i]/(1.0 - lpGainList[i]));
   float T_r = -3.0 * delay / log(alpha);
   decay_duration = T_r*1.0;
 }

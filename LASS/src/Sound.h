@@ -215,7 +215,7 @@ public:
     
     /**
     *   This function performs filter in the render() method
-    *	\param newFilterbObj The Filter object
+    *	\param newFilterObj The Filter object
     **/
     void use_filter(Filter *newFilterObj);
 
@@ -249,8 +249,9 @@ public:
 
        /**
    * This function changes the parameters resolved around detune
-   *    \param direction, DETUNE_DIRECTION
-   *    \param speed, DETUNE_SPREAD
+   *    \param direction DETUNE_DIRECTION
+   *    \param spread DETUNE_SPREAD
+   *    \param velocity
    **/
    void setDetune(double direction, double spread, double velocity);
 
