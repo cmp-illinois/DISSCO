@@ -111,7 +111,7 @@ Static Public Member Functions</h2></td></tr>
 <li>functionsFor(rt) : populate the combo box for a return-type context.</li>
 <li>create(id) / idFromXmlName(name) : produce the widget that handles a given function.</li>
 </ul>
-<p>Lookup is by CMODFunction (registry key) or by the XML &lt;Name&gt; tag (the on-disk serialization key). Keeping these decoupled lets us eventually treat CMODFunction as a pure in-memory id without churning the file format. </p>
+<p>Lookup is by CMODFunction (registry key) or by the XML <code>&lt;Name&gt;</code> tag (the on-disk serialization key). Keeping these decoupled lets us eventually treat CMODFunction as a pure in-memory id without churning the file format. </p>
 
 <p class="definition">Definition at line <a class="el" href="FunctionRegistry_8hpp_source.html#l00031">31</a> of file <a class="el" href="FunctionRegistry_8hpp_source.html">FunctionRegistry.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -192,7 +192,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Look up a function id by its XML &lt;Name&gt; tag. Returns <a class="el" href="lassie_8hpp.html#a3b22db4d0c717ee8d4c739478f654744ad246f3023ba957e7670c213fb2ad7d80">CMODFunction::NOT_A_FUNCTION</a> if no registered type uses that tag. </p>
+<p>Look up a function id by its XML <code>&lt;Name&gt;</code> tag. Returns <a class="el" href="lassie_8hpp.html#a3b22db4d0c717ee8d4c739478f654744ad246f3023ba957e7670c213fb2ad7d80">CMODFunction::NOT_A_FUNCTION</a> if no registered type uses that tag. </p>
 
 <p class="definition">Definition at line <a class="el" href="FunctionRegistry_8cpp_source.html#l00014">14</a> of file <a class="el" href="FunctionRegistry_8cpp_source.html">FunctionRegistry.cpp</a>.</p>
 <div class="dynheader">

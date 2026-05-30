@@ -281,7 +281,7 @@ Here is the call graph for this function:</div>
 <p>next-most-advanaced constructor.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">reverbPercent</td><td>this determines the mix (in the resultant sound) between the direct sound (the input sound) and the reverbed sound. 0.0 is no reverb, all direct sound. 1.0 is all reverb, no direct sound. </td></tr>
+    <tr><td class="paramname">percentReverb</td><td>this determines the mix (in the resultant sound) between the direct sound (the input sound) and the reverbed sound. 0.0 is no reverb, all direct sound. 1.0 is all reverb, no direct sound. </td></tr>
     <tr><td class="paramname">hilow_spread</td><td>in most rooms the low frequecy response will be higher than the high frequency response. If we hold other parameters constant, the math gives a range of possible ratios between low frequence to high frequence response. A value of 1.0 will choose the maximum low-frequence response, holding the high-frequency response at a given. A value of 0.0 will mean an even response across all frequencies. </td></tr>
     <tr><td class="paramname">gainAllPass</td><td>Moore's reverberator has only one all-pass filter, and this is its gain. The default value is 0.7. Higher values (up to 1.0) cause more ringing at certain frequencies. Lower values (down to 0.0) cause less ringing. <br  />
  </td></tr>
@@ -315,7 +315,7 @@ Here is the call graph for this function:</div>
           <td class="memname">Reverb::Reverb </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classEnvelope.html">Envelope</a> *&#160;</td>
-          <td class="paramname"><em>percentReverbinput</em>, </td>
+          <td class="paramname"><em>percentReverb</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -357,7 +357,7 @@ Here is the call graph for this function:</div>
 <p>advanced constructor.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">reverbPercent</td><td>this determines the mix (in the resultant sound) between the direct sound (the input sound) and the reverbed sound. 0.0 is no reverb, all direct sound. 1.0 is all reverb, no direct sound. </td></tr>
+    <tr><td class="paramname">percentReverb</td><td>this determines the mix (in the resultant sound) between the direct sound (the input sound) and the reverbed sound. 0.0 is no reverb, all direct sound. 1.0 is all reverb, no direct sound. </td></tr>
     <tr><td class="paramname">combGainList</td><td>this is the address of an array of 6 floats that are the comb filter gains. <br  />
  </td></tr>
     <tr><td class="paramname">lpGainList</td><td>this is the address of an array of 6 floats that are the low-pass filter gains </td></tr>
@@ -418,19 +418,19 @@ Here is the call graph for this function:</div>
           <td class="memname">void Reverb::ConstructorCommon </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classEnvelope.html">Envelope</a> *&#160;</td>
-          <td class="paramname"><em>percentReverbinput</em>, </td>
+          <td class="paramname"><em>percentReverb</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>comb_gain_list</em>, </td>
+          <td class="paramname"><em>combGainList</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>lp_gain_list</em>, </td>
+          <td class="paramname"><em>lpGainList</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

@@ -207,8 +207,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a7081ba54096387d4537dc54271e7febf inherit pub_static_methods_classFunctionWidget"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Base class for functions whose body is a flat sequence of labeled, single-line entries &ndash; each wrapped in its own XML tag under &lt;Fun&gt;.</p>
-<p>Subsumes the simple single- and multi-entry cases: &lt;Fun&gt;&lt;Name&gt;X&lt;/Name&gt;&lt;Entry&gt;V&lt;/Entry&gt;&lt;/Fun&gt; // Inverse / LN &lt;Fun&gt;&lt;Name&gt;X&lt;/Name&gt;&lt;Low&gt;V&lt;/Low&gt;&lt;High&gt;V&lt;/High&gt;&lt;/Fun&gt; // Random / RandomInt &lt;Fun&gt;&lt;Name&gt;X&lt;/Name&gt;&lt;Envelope&gt;V&lt;/Envelope&gt;&lt;Low&gt;V&lt;/Low&gt;... // RandomDensity</p>
+<div class="textblock"><p>Base class for functions whose body is a flat sequence of labeled, single-line entries &ndash; each wrapped in its own XML tag under <code>&lt;Fun&gt;</code>.</p>
+<p>Subsumes the simple single- and multi-entry cases: <code>&lt;Fun&gt;&lt;Name&gt;X&lt;/Name&gt;&lt;Entry&gt;V&lt;/Entry&gt;&lt;/Fun&gt;</code> // Inverse / LN <code>&lt;Fun&gt;&lt;Name&gt;X&lt;/Name&gt;&lt;Low&gt;V&lt;/Low&gt;&lt;High&gt;V&lt;/High&gt;&lt;/Fun&gt;</code> // Random / RandomInt <code>&lt;Fun&gt;&lt;Name&gt;X&lt;/Name&gt;&lt;Envelope&gt;V&lt;/Envelope&gt;&lt;Low&gt;V&lt;/Low&gt;...</code> // RandomDensity</p>
 <p>Functions with extra controls (radio buttons, textareas, repeated rows) need their own widget; this base is only for flat row stacks. </p>
 
 <p class="definition">Definition at line <a class="el" href="MultiEntryFunction_8hpp_source.html#l00020">20</a> of file <a class="el" href="MultiEntryFunction_8hpp_source.html">MultiEntryFunction.hpp</a>.</p>
@@ -278,7 +278,7 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Serialize the widget's current field values to an XML string. Convention: returns "&lt;Fun&gt;&lt;Name&gt;xmlName()&lt;/Name&gt;...&lt;/Fun&gt;". </p>
+<p>Serialize the widget's current field values to an XML string. Convention: returns <code>"&lt;Fun&gt;&lt;Name&gt;xmlName()&lt;/Name&gt;...&lt;/Fun&gt;"</code>. </p>
 
 <p>Implements <a class="el" href="classFunctionWidget.html#a22734ad7c9bedbc967e04d7c003f5f4d">FunctionWidget</a>.</p>
 
@@ -319,7 +319,7 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Restore field values from a parsed XML element. The reader is positioned immediately after the &lt;Name&gt;...&lt;/Name&gt; child; subclasses consume the remaining siblings up to the closing &lt;/Fun&gt;. </p>
+<p>Restore field values from a parsed XML element. The reader is positioned immediately after the <code>&lt;Name&gt;...&lt;/Name&gt;</code> child; subclasses consume the remaining siblings up to the closing <code>&lt;/Fun&gt;</code>. </p>
 
 <p>Implements <a class="el" href="classFunctionWidget.html#a6664cfeb6794b48bbebfee30318cf1d2">FunctionWidget</a>.</p>
 

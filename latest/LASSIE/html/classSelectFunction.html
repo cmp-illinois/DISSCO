@@ -140,15 +140,13 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classSelect.html">Select</a>: a list of values (each a "Select" row) plus an Index field that picks one of them.</p>
-<p>&lt;Fun&gt;&lt;Name&gt;<a class="el" href="classSelect.html">Select</a>&lt;/Name&gt; </p><ul>
-</ul>
-<p>, v2, &lt;Fun&gt;...&lt;/Fun&gt;, ...</p>
-<p>&lt;Index&gt;V&lt;/Index&gt; &lt;/Fun&gt;</p>
-<p>Items in </p><ul>
-</ul>
-<p>joined with ", "; nested &lt;Fun&gt;...&lt;/Fun&gt; values are preserved verbatim and the parser splits only on top-level commas. </p>
+<div class="fragment"><div class="line">&lt;<span class="keywordtype">Fun</span>&gt;&lt;<span class="keywordtype">Name</span>&gt;<span class="keyword">Select</span>&lt;/<span class="keywordtype">Name</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">List</span>&gt;<span class="keyword">v1</span>, <span class="keyword">v2</span>, &lt;<span class="keywordtype">Fun</span>&gt;...&lt;/<span class="keywordtype">Fun</span>&gt;, ...&lt;/<span class="keywordtype">List</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">Index</span>&gt;<span class="keyword">V</span>&lt;/<span class="keywordtype">Index</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">Fun</span>&gt;</div>
+</div><!-- fragment --><p>Items in <code>&lt;List&gt;</code> are joined with ", "; nested <code>&lt;Fun&gt;...&lt;/Fun&gt;</code> values are preserved verbatim and the parser splits only on top-level commas. </p>
 
-<p class="definition">Definition at line <a class="el" href="SelectFunction_8hpp_source.html#l00024">24</a> of file <a class="el" href="SelectFunction_8hpp_source.html">SelectFunction.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SelectFunction_8hpp_source.html#l00026">26</a> of file <a class="el" href="SelectFunction_8hpp_source.html">SelectFunction.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad0b0a560f5835d251b9a76905892c645" name="ad0b0a560f5835d251b9a76905892c645"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad0b0a560f5835d251b9a76905892c645">&#9670;&#160;</a></span>SelectFunction()</h2>
@@ -215,7 +213,7 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Serialize the widget's current field values to an XML string. Convention: returns "&lt;Fun&gt;&lt;Name&gt;xmlName()&lt;/Name&gt;...&lt;/Fun&gt;". </p>
+<p>Serialize the widget's current field values to an XML string. Convention: returns <code>"&lt;Fun&gt;&lt;Name&gt;xmlName()&lt;/Name&gt;...&lt;/Fun&gt;"</code>. </p>
 
 <p>Implements <a class="el" href="classFunctionWidget.html#a22734ad7c9bedbc967e04d7c003f5f4d">FunctionWidget</a>.</p>
 
@@ -259,7 +257,7 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classFunctionWidget.html#a4a58d66a290e9a7a22661ceeed31acf9">FunctionWidget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SelectFunction_8hpp_source.html#l00032">32</a> of file <a class="el" href="SelectFunction_8hpp_source.html">SelectFunction.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SelectFunction_8hpp_source.html#l00034">34</a> of file <a class="el" href="SelectFunction_8hpp_source.html">SelectFunction.hpp</a>.</p>
 
 </div>
 </div>
@@ -289,7 +287,7 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classFunctionWidget.html#abad822bdf516dbaac37ff1fb9f07fd2a">FunctionWidget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SelectFunction_8hpp_source.html#l00030">30</a> of file <a class="el" href="SelectFunction_8hpp_source.html">SelectFunction.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SelectFunction_8hpp_source.html#l00032">32</a> of file <a class="el" href="SelectFunction_8hpp_source.html">SelectFunction.hpp</a>.</p>
 
 </div>
 </div>
@@ -316,7 +314,7 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Restore field values from a parsed XML element. The reader is positioned immediately after the &lt;Name&gt;...&lt;/Name&gt; child; subclasses consume the remaining siblings up to the closing &lt;/Fun&gt;. </p>
+<p>Restore field values from a parsed XML element. The reader is positioned immediately after the <code>&lt;Name&gt;...&lt;/Name&gt;</code> child; subclasses consume the remaining siblings up to the closing <code>&lt;/Fun&gt;</code>. </p>
 
 <p>Implements <a class="el" href="classFunctionWidget.html#a6664cfeb6794b48bbebfee30318cf1d2">FunctionWidget</a>.</p>
 
@@ -405,7 +403,7 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classFunctionWidget.html#aa9153bf3a36751765f33493826e431ad">FunctionWidget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SelectFunction_8hpp_source.html#l00033">33</a> of file <a class="el" href="SelectFunction_8hpp_source.html">SelectFunction.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SelectFunction_8hpp_source.html#l00035">35</a> of file <a class="el" href="SelectFunction_8hpp_source.html">SelectFunction.hpp</a>.</p>
 
 </div>
 </div>
@@ -431,11 +429,11 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Tag written under &lt;Fun&gt;&lt;Name&gt;...&lt;/Name&gt;&lt;/Fun&gt;, also the lookup key when parsing incoming function strings (e.g. "Random"). </p>
+<p>Tag written under <code>&lt;Fun&gt;&lt;Name&gt;...&lt;/Name&gt;&lt;/Fun&gt;</code>, also the lookup key when parsing incoming function strings (e.g. "Random"). </p>
 
 <p>Implements <a class="el" href="classFunctionWidget.html#aabc215910433101d09920dac76b4fdab">FunctionWidget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="SelectFunction_8hpp_source.html#l00031">31</a> of file <a class="el" href="SelectFunction_8hpp_source.html">SelectFunction.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SelectFunction_8hpp_source.html#l00033">33</a> of file <a class="el" href="SelectFunction_8hpp_source.html">SelectFunction.hpp</a>.</p>
 
 </div>
 </div>

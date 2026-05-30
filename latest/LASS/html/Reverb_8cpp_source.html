@@ -194,13 +194,13 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
 <div class="foldopen" id="foldopen00111" data-start="{" data-end="}">
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classReverb.html#aae078d70ce96505cc0b45218d4826044">  111</a></span><a class="code hl_function" href="classReverb.html#af7cd1f214ec64221a690e4fb53a87770">Reverb::Reverb</a>(<a class="code hl_class" href="classEnvelope.html">Envelope</a> *percentReverbinput, <span class="keywordtype">float</span> hilow_spread, <span class="keywordtype">float</span> gainAllPass,</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classReverb.html#aae078d70ce96505cc0b45218d4826044">  111</a></span><a class="code hl_function" href="classReverb.html#af7cd1f214ec64221a690e4fb53a87770">Reverb::Reverb</a>(<a class="code hl_class" href="classEnvelope.html">Envelope</a> *percentReverb, <span class="keywordtype">float</span> hilow_spread, <span class="keywordtype">float</span> gainAllPass,</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>         <span class="keywordtype">float</span> delay, <a class="code hl_typedef" href="Types_8h.html#ab7c593a9f05c6e76fb8e2c140c0bb92d">m_rate_type</a> samplingRate)</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>{</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  <span class="keywordtype">float</span> comb_gain_list[<a class="code hl_define" href="Reverb_8h.html#afea42ca0cd96b2023d112572d0b319e8">REVERB_NUM_COMB_FILTERS</a>];</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  <span class="keywordtype">float</span> lp_gain_list[<a class="code hl_define" href="Reverb_8h.html#afea42ca0cd96b2023d112572d0b319e8">REVERB_NUM_COMB_FILTERS</a>];</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  <span class="keywordtype">int</span> i;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  <a class="code hl_class" href="classEnvelope.html">Envelope</a>* temp = <span class="keyword">new</span> <a class="code hl_class" href="classEnvelope.html">Envelope</a>(*percentReverbinput);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  <a class="code hl_class" href="classEnvelope.html">Envelope</a>* temp = <span class="keyword">new</span> <a class="code hl_class" href="classEnvelope.html">Envelope</a>(*percentReverb);</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  percentReverb = <span class="keyword">new</span> <a class="code hl_class" href="classEnvelope.html">Envelope</a>(*temp);</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  comb_gain_list[0] = 0.46;</div>
@@ -222,27 +222,27 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
 <div class="foldopen" id="foldopen00162" data-start="{" data-end="}">
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="classReverb.html#a9dda18325ae72043bfb06e0b3377da8c">  162</a></span><a class="code hl_function" href="classReverb.html#af7cd1f214ec64221a690e4fb53a87770">Reverb::Reverb</a>(<a class="code hl_class" href="classEnvelope.html">Envelope</a> *percentReverbinput, <span class="keywordtype">float</span> *combGainList, <span class="keywordtype">float</span> *lpGainList,</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="classReverb.html#a9dda18325ae72043bfb06e0b3377da8c">  162</a></span><a class="code hl_function" href="classReverb.html#af7cd1f214ec64221a690e4fb53a87770">Reverb::Reverb</a>(<a class="code hl_class" href="classEnvelope.html">Envelope</a> *percentReverb, <span class="keywordtype">float</span> *combGainList, <span class="keywordtype">float</span> *lpGainList,</div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>         <span class="keywordtype">float</span> gainAllPass, <span class="keywordtype">float</span> delay, <a class="code hl_typedef" href="Types_8h.html#ab7c593a9f05c6e76fb8e2c140c0bb92d">m_rate_type</a> samplingRate)</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>{</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>  <span class="comment">// We have to copy this envelope, to prevent a seg fault when the common</span></div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>  <span class="comment">// constructor deletes it  --- cavis</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>  <a class="code hl_class" href="classEnvelope.html">Envelope</a>* temp = <span class="keyword">new</span> <a class="code hl_class" href="classEnvelope.html">Envelope</a>(*percentReverbinput);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>  <a class="code hl_class" href="classEnvelope.html">Envelope</a>* temp = <span class="keyword">new</span> <a class="code hl_class" href="classEnvelope.html">Envelope</a>(*percentReverb);</div>
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  percentReverb = <span class="keyword">new</span> <a class="code hl_class" href="classEnvelope.html">Envelope</a>(*temp);</div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  <a class="code hl_function" href="classReverb.html#a1b9f4baa454ce4524a88aa2f79f6584f">ConstructorCommon</a>(percentReverbinput, combGainList, lpGainList, gainAllPass,</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  <a class="code hl_function" href="classReverb.html#a1b9f4baa454ce4524a88aa2f79f6584f">ConstructorCommon</a>(percentReverb, combGainList, lpGainList, gainAllPass,</div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        delay, samplingRate);</div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>}</div>
 </div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
 <div class="foldopen" id="foldopen00207" data-start="{" data-end="}">
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno"><a class="line" href="classReverb.html#a1b9f4baa454ce4524a88aa2f79f6584f">  207</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classReverb.html#a1b9f4baa454ce4524a88aa2f79f6584f">Reverb::ConstructorCommon</a>(<a class="code hl_class" href="classEnvelope.html">Envelope</a> *percentReverbinput, <span class="keywordtype">float</span> *comb_gain_list,</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>             <span class="keywordtype">float</span> *lp_gain_list, <span class="keywordtype">float</span> gainAllPass, <span class="keywordtype">float</span> delay,</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno"><a class="line" href="classReverb.html#a1b9f4baa454ce4524a88aa2f79f6584f">  207</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classReverb.html#a1b9f4baa454ce4524a88aa2f79f6584f">Reverb::ConstructorCommon</a>(<a class="code hl_class" href="classEnvelope.html">Envelope</a> *percentReverb, <span class="keywordtype">float</span> *combGainList,</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>             <span class="keywordtype">float</span> *lpGainList, <span class="keywordtype">float</span> gainAllPass, <span class="keywordtype">float</span> delay,</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>             <a class="code hl_typedef" href="Types_8h.html#ab7c593a9f05c6e76fb8e2c140c0bb92d">m_rate_type</a> samplingRate)</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>{</div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  <span class="keywordtype">long</span> combdelay[<a class="code hl_define" href="Reverb_8h.html#afea42ca0cd96b2023d112572d0b319e8">REVERB_NUM_COMB_FILTERS</a>];</div>
 <div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  <span class="keywordtype">int</span> i;</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  <a class="code hl_class" href="classEnvelope.html">Envelope</a>* temp = <span class="keyword">new</span> <a class="code hl_class" href="classEnvelope.html">Envelope</a>(*percentReverbinput);</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  <a class="code hl_class" href="classEnvelope.html">Envelope</a>* temp = <span class="keyword">new</span> <a class="code hl_class" href="classEnvelope.html">Envelope</a>(*percentReverb);</div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>  <span class="keyword">delete</span> percentReverb;</div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>  percentReverb = temp;</div>
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>  <span class="comment">// figure out allpass filter parameters</span></div>
@@ -260,7 +260,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>  <span class="comment">// Make comb filters (figure out low-pass gains better)</span></div>
 <div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>  <span class="keywordflow">for</span>(i=0;i&lt;<a class="code hl_define" href="Reverb_8h.html#afea42ca0cd96b2023d112572d0b319e8">REVERB_NUM_COMB_FILTERS</a>;i++)</div>
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    {</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>      lpcfilter[i] = <span class="keyword">new</span> <a class="code hl_class" href="classLPCombFilter.html">LPCombFilter</a>(comb_gain_list[i], combdelay[i], lp_gain_list[i]);</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>      lpcfilter[i] = <span class="keyword">new</span> <a class="code hl_class" href="classLPCombFilter.html">LPCombFilter</a>(combGainList[i], combdelay[i], lpGainList[i]);</div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    }</div>
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>  <span class="comment">// Make an all pass filter</span></div>
@@ -271,7 +271,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>  <span class="keywordtype">float</span> alpha = 0.0; <span class="comment">// alpha is the steady state gain (which is also the max of the gain fn</span></div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="preprocessor">#define max(x,y) ((x) &gt; (y) ? (x) : (y))</span></div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>  <span class="keywordflow">for</span>(i=0;i&lt;6;i++)</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    alpha = <a class="code hl_define" href="Reverb_8cpp.html#ac39d9cef6a5e030ba8d9e11121054268">max</a>(alpha, comb_gain_list[i]/(1.0 - lp_gain_list[i]));</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    alpha = <a class="code hl_define" href="Reverb_8cpp.html#ac39d9cef6a5e030ba8d9e11121054268">max</a>(alpha, combGainList[i]/(1.0 - lpGainList[i]));</div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>  <span class="keywordtype">float</span> T_r = -3.0 * delay / log(alpha);</div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>  decay_duration = T_r*1.0;</div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>}</div>
