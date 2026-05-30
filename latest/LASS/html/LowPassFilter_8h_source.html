@@ -137,16 +137,19 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classLowPassFilter.html#afd3814880d092846d3b1fd4ed87bc80c">xml_print</a>();</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <span class="keywordtype">float</span> g;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  <span class="keywordtype">float</span> <a class="code hl_function" href="classLowPassFilter.html#a931251f60d29d9155868efbefeb98e54">get_state</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classLowPassFilter.html#a576a0e32da6e3e4965c9439dbb8f2461">set_state</a>(<span class="keywordtype">float</span> s);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  <a class="code hl_class" href="classFilter_1_1hist__queue.html">Filter::hist_queue&lt;m_sample_type&gt;</a> *y_hist;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>};</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  <span class="keywordtype">float</span> g;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  <a class="code hl_class" href="classFilter_1_1hist__queue.html">Filter::hist_queue&lt;m_sample_type&gt;</a> *y_hist;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>};</div>
 </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">#endif </span><span class="comment">//__LOW_PASS_FILTER_H</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">#endif </span><span class="comment">//__LOW_PASS_FILTER_H</span></div>
 <div class="ttc" id="aCollection_8h_html"><div class="ttname"><a href="Collection_8h.html">Collection.h</a></div></div>
 <div class="ttc" id="aFilter_8h_html"><div class="ttname"><a href="Filter_8h.html">Filter.h</a></div></div>
 <div class="ttc" id="aMultiTrack_8h_html"><div class="ttname"><a href="MultiTrack_8h.html">MultiTrack.h</a></div></div>
@@ -159,7 +162,9 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aclassLowPassFilter_html_a0c3f3acc5df212a1e702252af9cb27ef"><div class="ttname"><a href="classLowPassFilter.html#a0c3f3acc5df212a1e702252af9cb27ef">LowPassFilter::~LowPassFilter</a></div><div class="ttdeci">~LowPassFilter()</div><div class="ttdef"><b>Definition</b> <a href="LowPassFilter_8cpp_source.html#l00052">LowPassFilter.cpp:52</a></div></div>
 <div class="ttc" id="aclassLowPassFilter_html_a20c94f3752e64d7a5691c26c3471dd82"><div class="ttname"><a href="classLowPassFilter.html#a20c94f3752e64d7a5691c26c3471dd82">LowPassFilter::reset</a></div><div class="ttdeci">void reset(void)</div><div class="ttdef"><b>Definition</b> <a href="LowPassFilter_8cpp_source.html#l00070">LowPassFilter.cpp:70</a></div></div>
 <div class="ttc" id="aclassLowPassFilter_html_a56d370e9ca41cd0330a21ac429162bd0"><div class="ttname"><a href="classLowPassFilter.html#a56d370e9ca41cd0330a21ac429162bd0">LowPassFilter::do_filter</a></div><div class="ttdeci">m_sample_type do_filter(m_sample_type x_t)</div><div class="ttdef"><b>Definition</b> <a href="LowPassFilter_8cpp_source.html#l00058">LowPassFilter.cpp:58</a></div></div>
-<div class="ttc" id="aclassLowPassFilter_html_afd3814880d092846d3b1fd4ed87bc80c"><div class="ttname"><a href="classLowPassFilter.html#afd3814880d092846d3b1fd4ed87bc80c">LowPassFilter::xml_print</a></div><div class="ttdeci">void xml_print()</div><div class="ttdef"><b>Definition</b> <a href="LowPassFilter_8cpp_source.html#l00079">LowPassFilter.cpp:79</a></div></div>
+<div class="ttc" id="aclassLowPassFilter_html_a576a0e32da6e3e4965c9439dbb8f2461"><div class="ttname"><a href="classLowPassFilter.html#a576a0e32da6e3e4965c9439dbb8f2461">LowPassFilter::set_state</a></div><div class="ttdeci">void set_state(float s)</div><div class="ttdef"><b>Definition</b> <a href="LowPassFilter_8cpp_source.html#l00084">LowPassFilter.cpp:84</a></div></div>
+<div class="ttc" id="aclassLowPassFilter_html_a931251f60d29d9155868efbefeb98e54"><div class="ttname"><a href="classLowPassFilter.html#a931251f60d29d9155868efbefeb98e54">LowPassFilter::get_state</a></div><div class="ttdeci">float get_state() const</div><div class="ttdef"><b>Definition</b> <a href="LowPassFilter_8cpp_source.html#l00079">LowPassFilter.cpp:79</a></div></div>
+<div class="ttc" id="aclassLowPassFilter_html_afd3814880d092846d3b1fd4ed87bc80c"><div class="ttname"><a href="classLowPassFilter.html#afd3814880d092846d3b1fd4ed87bc80c">LowPassFilter::xml_print</a></div><div class="ttdeci">void xml_print()</div><div class="ttdef"><b>Definition</b> <a href="LowPassFilter_8cpp_source.html#l00091">LowPassFilter.cpp:91</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -111,6 +111,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a20c94f3752e64d7a5691c26c3471dd82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd3814880d092846d3b1fd4ed87bc80c" id="r_afd3814880d092846d3b1fd4ed87bc80c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLowPassFilter.html#afd3814880d092846d3b1fd4ed87bc80c">xml_print</a> ()</td></tr>
 <tr class="separator:afd3814880d092846d3b1fd4ed87bc80c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a931251f60d29d9155868efbefeb98e54" id="r_a931251f60d29d9155868efbefeb98e54"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLowPassFilter.html#a931251f60d29d9155868efbefeb98e54">get_state</a> () const</td></tr>
+<tr class="separator:a931251f60d29d9155868efbefeb98e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a576a0e32da6e3e4965c9439dbb8f2461" id="r_a576a0e32da6e3e4965c9439dbb8f2461"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLowPassFilter.html#a576a0e32da6e3e4965c9439dbb8f2461">set_state</a> (float s)</td></tr>
+<tr class="separator:a576a0e32da6e3e4965c9439dbb8f2461"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classFilter"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classFilter')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classFilter.html">Filter</a></td></tr>
 <tr class="memitem:aa37dc017d133404b3a326f363ce36b8a inherit pub_methods_classFilter" id="r_aa37dc017d133404b3a326f363ce36b8a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFilter.html#aa37dc017d133404b3a326f363ce36b8a">~Filter</a> ()</td></tr>
 <tr class="separator:aa37dc017d133404b3a326f363ce36b8a inherit pub_methods_classFilter"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -279,6 +283,36 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a931251f60d29d9155868efbefeb98e54" name="a931251f60d29d9155868efbefeb98e54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a931251f60d29d9155868efbefeb98e54">&#9670;&#160;</a></span>get_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float LowPassFilter::get_state </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the current filter state (last output value). </p>
+
+<p class="definition">Definition at line <a class="el" href="LowPassFilter_8cpp_source.html#l00079">79</a> of file <a class="el" href="LowPassFilter_8cpp_source.html">LowPassFilter.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLowPassFilter_a931251f60d29d9155868efbefeb98e54_cgraph.png" border="0" usemap="#aclassLowPassFilter_a931251f60d29d9155868efbefeb98e54_cgraph" alt=""/></div>
+<map name="aclassLowPassFilter_a931251f60d29d9155868efbefeb98e54_cgraph" id="aclassLowPassFilter_a931251f60d29d9155868efbefeb98e54_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,144,45"/>
+<area shape="rect" href="classFilter_1_1hist__queue.html#aa206fcc71ace711b16c9f6080d3ad6f6" title=" " alt="" coords="192,5,343,45"/>
+<area shape="poly" title=" " alt="" coords="144,23,179,23,179,28,144,28"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a20c94f3752e64d7a5691c26c3471dd82" name="a20c94f3752e64d7a5691c26c3471dd82"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a20c94f3752e64d7a5691c26c3471dd82">&#9670;&#160;</a></span>reset()</h2>
 
@@ -320,6 +354,39 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="a576a0e32da6e3e4965c9439dbb8f2461" name="a576a0e32da6e3e4965c9439dbb8f2461"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a576a0e32da6e3e4965c9439dbb8f2461">&#9670;&#160;</a></span>set_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LowPassFilter::set_state </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Overwrites the filter state (for block-processing continuations). </p>
+
+<p class="definition">Definition at line <a class="el" href="LowPassFilter_8cpp_source.html#l00084">84</a> of file <a class="el" href="LowPassFilter_8cpp_source.html">LowPassFilter.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLowPassFilter_a576a0e32da6e3e4965c9439dbb8f2461_cgraph.png" border="0" usemap="#aclassLowPassFilter_a576a0e32da6e3e4965c9439dbb8f2461_cgraph" alt=""/></div>
+<map name="aclassLowPassFilter_a576a0e32da6e3e4965c9439dbb8f2461_cgraph" id="aclassLowPassFilter_a576a0e32da6e3e4965c9439dbb8f2461_cgraph">
+<area shape="rect" title=" " alt="" coords="5,37,144,77"/>
+<area shape="rect" href="classFilter_1_1hist__queue.html#a909fccfcaaabd09bbc60ca6906504601" title=" " alt="" coords="192,5,327,45"/>
+<area shape="poly" title=" " alt="" coords="144,43,178,37,179,42,145,48"/>
+<area shape="rect" href="classFilter_1_1hist__queue.html#a17542b5fc79565d3baa039d2cfb18184" title=" " alt="" coords="192,69,327,109"/>
+<area shape="poly" title=" " alt="" coords="145,67,179,73,178,78,144,72"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="afd3814880d092846d3b1fd4ed87bc80c" name="afd3814880d092846d3b1fd4ed87bc80c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afd3814880d092846d3b1fd4ed87bc80c">&#9670;&#160;</a></span>xml_print()</h2>
 
@@ -336,7 +403,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000019">Deprecated:</a></b></dt><dd>This outputs an XML representation of the object to STDOUT</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LowPassFilter_8cpp_source.html#l00079">79</a> of file <a class="el" href="LowPassFilter_8cpp_source.html">LowPassFilter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LowPassFilter_8cpp_source.html#l00091">91</a> of file <a class="el" href="LowPassFilter_8cpp_source.html">LowPassFilter.cpp</a>.</p>
 
 </div>
 </div>

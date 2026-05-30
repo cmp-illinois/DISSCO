@@ -211,23 +211,29 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    }</div>
 </div>
 <div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    <span class="keywordtype">long</span> length;</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    <span class="keywordtype">long</span> front_idx;</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keywordtype">long</span> back_idx;</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    ElemType *array;</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>  };</div>
-</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <span class="comment">// Raw access for performance-critical buffer processing (use carefully).</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno"><a class="line" href="classFilter_1_1hist__queue.html#a207ac3e8cf1427208be745fb8593bc1b">  253</a></span>    ElemType* <a class="code hl_function" href="classFilter_1_1hist__queue.html#a207ac3e8cf1427208be745fb8593bc1b">raw_array</a>() { <span class="keywordflow">return</span> array; }</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno"><a class="line" href="classFilter_1_1hist__queue.html#a9028e764ad5dad7c7ed77e502ff827d5">  254</a></span>    <span class="keywordtype">long</span> <a class="code hl_function" href="classFilter_1_1hist__queue.html#a9028e764ad5dad7c7ed77e502ff827d5">raw_length</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> length; }</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno"><a class="line" href="classFilter_1_1hist__queue.html#a10d6dddcc3ee4cdce7f2ec92bbcdb9b4">  255</a></span>    <span class="keywordtype">long</span>&amp; <a class="code hl_function" href="classFilter_1_1hist__queue.html#a10d6dddcc3ee4cdce7f2ec92bbcdb9b4">raw_back</a>() { <span class="keywordflow">return</span> back_idx; }</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno"><a class="line" href="classFilter_1_1hist__queue.html#a5132210d4055da38a909d0fd58022eea">  256</a></span>    <span class="keywordtype">long</span>&amp; <a class="code hl_function" href="classFilter_1_1hist__queue.html#a5132210d4055da38a909d0fd58022eea">raw_front</a>() { <span class="keywordflow">return</span> front_idx; }</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    <span class="keywordtype">long</span> length;</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span> </div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    <span class="keywordtype">long</span> front_idx;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    <span class="keywordtype">long</span> back_idx;</div>
 <div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span> </div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>};</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    ElemType *array;</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>  };</div>
 </div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span><span class="preprocessor">#endif </span><span class="comment">//__FILTER_H</span></div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>};</div>
+</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span><span class="preprocessor">#endif </span><span class="comment">//__FILTER_H</span></div>
 <div class="ttc" id="aCollection_8h_html"><div class="ttname"><a href="Collection_8h.html">Collection.h</a></div></div>
 <div class="ttc" id="aMultiTrack_8h_html"><div class="ttname"><a href="MultiTrack_8h.html">MultiTrack.h</a></div></div>
 <div class="ttc" id="aStandardHeaders_8h_html"><div class="ttname"><a href="StandardHeaders_8h.html">StandardHeaders.h</a></div><div class="ttdoc">Single pull-in for the C/C++ standard library headers LASS uses.</div></div>
@@ -235,8 +241,12 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aTypes_8h_html_addf4c29465709fc65687f1aeb009f210"><div class="ttname"><a href="Types_8h.html#addf4c29465709fc65687f1aeb009f210">m_sample_type</a></div><div class="ttdeci">float m_sample_type</div><div class="ttdoc">Specifies a type for an individual sample value.</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00041">Types.h:41</a></div></div>
 <div class="ttc" id="aclassFilter_1_1hist__queue_html"><div class="ttname"><a href="classFilter_1_1hist__queue.html">Filter::hist_queue</a></div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00161">Filter.h:162</a></div></div>
 <div class="ttc" id="aclassFilter_1_1hist__queue_html_a0536df712fc749f2223517e1c9f7fcd5"><div class="ttname"><a href="classFilter_1_1hist__queue.html#a0536df712fc749f2223517e1c9f7fcd5">Filter::hist_queue::index_from_newest</a></div><div class="ttdeci">ElemType index_from_newest(long i)</div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00239">Filter.h:239</a></div></div>
+<div class="ttc" id="aclassFilter_1_1hist__queue_html_a10d6dddcc3ee4cdce7f2ec92bbcdb9b4"><div class="ttname"><a href="classFilter_1_1hist__queue.html#a10d6dddcc3ee4cdce7f2ec92bbcdb9b4">Filter::hist_queue::raw_back</a></div><div class="ttdeci">long &amp; raw_back()</div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00255">Filter.h:255</a></div></div>
 <div class="ttc" id="aclassFilter_1_1hist__queue_html_a17542b5fc79565d3baa039d2cfb18184"><div class="ttname"><a href="classFilter_1_1hist__queue.html#a17542b5fc79565d3baa039d2cfb18184">Filter::hist_queue::enqueue</a></div><div class="ttdeci">void enqueue(ElemType new_val)</div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00208">Filter.h:208</a></div></div>
+<div class="ttc" id="aclassFilter_1_1hist__queue_html_a207ac3e8cf1427208be745fb8593bc1b"><div class="ttname"><a href="classFilter_1_1hist__queue.html#a207ac3e8cf1427208be745fb8593bc1b">Filter::hist_queue::raw_array</a></div><div class="ttdeci">ElemType * raw_array()</div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00253">Filter.h:253</a></div></div>
 <div class="ttc" id="aclassFilter_1_1hist__queue_html_a2cb1982212804053fe3ea2604a1306ce"><div class="ttname"><a href="classFilter_1_1hist__queue.html#a2cb1982212804053fe3ea2604a1306ce">Filter::hist_queue::~hist_queue</a></div><div class="ttdeci">~hist_queue()</div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00184">Filter.h:184</a></div></div>
+<div class="ttc" id="aclassFilter_1_1hist__queue_html_a5132210d4055da38a909d0fd58022eea"><div class="ttname"><a href="classFilter_1_1hist__queue.html#a5132210d4055da38a909d0fd58022eea">Filter::hist_queue::raw_front</a></div><div class="ttdeci">long &amp; raw_front()</div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00256">Filter.h:256</a></div></div>
+<div class="ttc" id="aclassFilter_1_1hist__queue_html_a9028e764ad5dad7c7ed77e502ff827d5"><div class="ttname"><a href="classFilter_1_1hist__queue.html#a9028e764ad5dad7c7ed77e502ff827d5">Filter::hist_queue::raw_length</a></div><div class="ttdeci">long raw_length() const</div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00254">Filter.h:254</a></div></div>
 <div class="ttc" id="aclassFilter_1_1hist__queue_html_a909fccfcaaabd09bbc60ca6906504601"><div class="ttname"><a href="classFilter_1_1hist__queue.html#a909fccfcaaabd09bbc60ca6906504601">Filter::hist_queue::dequeue</a></div><div class="ttdeci">ElemType dequeue(void)</div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00194">Filter.h:194</a></div></div>
 <div class="ttc" id="aclassFilter_1_1hist__queue_html_a989a6b89d3d2a72498cd601a9c78fee0"><div class="ttname"><a href="classFilter_1_1hist__queue.html#a989a6b89d3d2a72498cd601a9c78fee0">Filter::hist_queue::hist_queue</a></div><div class="ttdeci">hist_queue(long len)</div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00170">Filter.h:170</a></div></div>
 <div class="ttc" id="aclassFilter_1_1hist__queue_html_aa206fcc71ace711b16c9f6080d3ad6f6"><div class="ttname"><a href="classFilter_1_1hist__queue.html#aa206fcc71ace711b16c9f6080d3ad6f6">Filter::hist_queue::index_from_oldest</a></div><div class="ttdeci">ElemType index_from_oldest(long i)</div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00220">Filter.h:220</a></div></div>
