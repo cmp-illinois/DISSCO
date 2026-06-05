@@ -23,14 +23,23 @@ jobs:
       - name: Install dependencies
         run: |
           brew update
-          brew install cmake ninja libsndfile qt@6
-          brew link --force qt@6
+          brew install cmake ninja libsndfile
+
+      - name: Install Qt 6.8
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: "6.8.0"
+          host: mac
+          target: desktop
+          arch: clang_64
+          modules: ""
+          cache: true
 
       - name: Configure
         run: |
           cmake -S . -B build -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_PREFIX_PATH="$(brew --prefix qt@6)"
+            -DCMAKE_PREFIX_PATH="${Qt6_DIR}"
 
       - name: Build
         run: cmake --build build --parallel
