@@ -57,16 +57,14 @@ MultiTrack::MultiTrack(
 }
 
 //----------------------------------------------------------------------------//
-MultiTrack::MultiTrack(MultiTrack& mt) : Collection<Track*>(mt)
+MultiTrack::MultiTrack(const MultiTrack& mt) : Collection<Track*>(mt)
 {
-    // copy every track from mt to this object.
-    Iterator<Track*> it = mt.iterator();
-    while (it.hasNext())
-        add(new Track(*it.next()));
+    for (int i = 0; i < mt.size(); i++)
+        add(new Track(*mt.get(i)));
 }
 
 //----------------------------------------------------------------------------//
-MultiTrack& MultiTrack::operator=(MultiTrack& mt)
+MultiTrack& MultiTrack::operator=(const MultiTrack& mt)
 {
     if ( this != &mt) // beware of self assignment
     {
@@ -74,16 +72,14 @@ MultiTrack& MultiTrack::operator=(MultiTrack& mt)
         Iterator<Track*> it = iterator();
         while(it.hasNext())
             delete it.next();
-        
+
         // clear this object
         clear();
-        
-        // copy every track from mt to this object.
-        it = mt.iterator();
-        while (it.hasNext())
-            add(new Track(*it.next()));
+
+        for (int i = 0; i < mt.size(); i++)
+            add(new Track(*mt.get(i)));
     }
-    
+
     return *this;
 }
 

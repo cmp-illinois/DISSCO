@@ -73,18 +73,16 @@ public:
     
     /**
     *	This is a copy Constructor.
-    *	\todo The argument should be const.
     *	\param mt The MultiTrack to copy
     **/
-    MultiTrack(MultiTrack& mt);
-    
+    MultiTrack(const MultiTrack& mt);
+
     /**
     *	This is an overloaded assignment operator.
-    *	\todo The argument should be const.
     *	\param mt The MultiTrack to assign.
     *	\return A MultiTrack
     **/
-    MultiTrack& operator=(MultiTrack& mt);
+    MultiTrack& operator=(const MultiTrack& mt);
     
     /**
     *	This is a destructor.

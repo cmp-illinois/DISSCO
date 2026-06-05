@@ -170,6 +170,26 @@ template<class T> int Collection<T>::size()
     return (int) vector_.size();
 }
 
+//----------------------------------------------------------------------------//
+template<class T> int Collection<T>::size() const
+{
+    return (int) vector_.size();
+}
+
+//----------------------------------------------------------------------------//
+template<class T> const T& Collection<T>::get(int index) const
+{
+    if ( (index >= 0) && (index < (int) vector_.size()))
+    {
+        return vector_[index];
+    }
+    else
+    {
+        cerr << "ERROR: Collection.get() Index out of bounds: " << index << endl;
+        return vector_[0];
+    }
+}
+
 
 //----------------------------------------------------------------------------//
 template<class T> void Collection<T>::sortCollection()

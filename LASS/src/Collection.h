@@ -121,18 +121,26 @@ public:
     
     /**
     *	Returns the size of this collection.
-    *	This is a 0-based array so the entries 
+    *	This is a 0-based array so the entries
     *	are indexed from 0 to (size-1).
     *   \return The size of the collection
     **/
     int size();
+    int size() const;
+
+    /**
+    *	\exception IndexOutOfBoundsException
+    *	\param index An integer specifying which element to retrieve
+    *	\return A const reference to the element at the specified index
+    **/
+    const T& get(int index) const;
 
     /**
     *	This sorts the collection.
     *	\note only use this function if template type of this collection has well defined operator< , operator== , and operator> . Examples of this are standard types like int and float, as well as custom types like LinearInterpolatorEntry.
     **/
     void sortCollection();
-    
+
     /**
     *	Returns an iterator over the elements in this collection.
     *   \return an iteration
