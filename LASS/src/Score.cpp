@@ -158,12 +158,9 @@ Score::Score(int _numThreads, int _numChannels, int _samplingRate )
     numChannels(_numChannels),
     samplingRate(_samplingRate)
 {
-  scoreEndTime = 1; //start with a small number
-  scoreMultiTrackLength = scoreEndTime;
-  m_sample_count_type newNumSamples =
-        (m_sample_count_type) (scoreMultiTrackLength * float(samplingRate));
-  scoreMultiTrack = new MultiTrack
-        (numChannels,newNumSamples,samplingRate);
+  scoreEndTime = 0;
+  scoreMultiTrackLength = 0;
+  scoreMultiTrack = nullptr;
 
 
   reverbObj = NULL;
@@ -282,16 +279,19 @@ void Score::checkScoreMultiTrackLength(){
       scoreMultiTrackLength = scoreEndTime;
       m_sample_count_type newNumSamples =
         (m_sample_count_type) (scoreMultiTrackLength * float(samplingRate));
-      MultiTrack* newScoreMultiTrack = new MultiTrack
-        (numChannels,newNumSamples,samplingRate);
 
-      newScoreMultiTrack->composite(*scoreMultiTrack, 0);
-      delete scoreMultiTrack;
-      scoreMultiTrack = newScoreMultiTrack;
+      if (scoreMultiTrack == nullptr) {
+        // First allocation: size it correctly up front, no copy needed.
+        scoreMultiTrack = new MultiTrack(numChannels, newNumSamples, samplingRate);
+      } else {
+        // Buffer already exists but needs to grow — copy existing data then replace.
+        MultiTrack* newScoreMultiTrack = new MultiTrack(numChannels, newNumSamples, samplingRate);
+        newScoreMultiTrack->composite(*scoreMultiTrack, 0);
+        delete scoreMultiTrack;
+        scoreMultiTrack = newScoreMultiTrack;
+      }
 
-      //pthread_mutex_unlock( &mutexVectorRenderedSound );
-      cout<<"Get a longer score with length = " << scoreEndTime << " seconds."<<endl;
-
+      cout<<"Score buffer sized to " << scoreEndTime << " seconds."<<endl;
   }
 }
 
