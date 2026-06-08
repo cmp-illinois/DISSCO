@@ -29,7 +29,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //----------------------------------------------------------------------------//
 
 #include "Types.h"
-#include "Collection.h"
 #include "EnvelopeLibrary.h"
 #include "Envelope.h"
 
@@ -43,8 +42,9 @@ EnvelopeLibrary::EnvelopeLibrary () { }
 //----------------------------------------------------------------------------//
 EnvelopeLibrary::~EnvelopeLibrary ()
 {
-  while (library.size () )
-    delete library.remove (0);
+  for (Envelope* env : library)
+    delete env;
+  library.clear ();
 }
 
 
@@ -52,7 +52,7 @@ EnvelopeLibrary::~EnvelopeLibrary ()
 EnvelopeLibrary::EnvelopeLibrary (EnvelopeLibrary & lib)
 {
   for (int envs = 0; envs < lib.library.size (); envs++)
-    library.add (lib.library.get (envs)->clone() );
+    library.push_back(lib.library.at(envs)->clone() );
 }
 
 
@@ -62,12 +62,13 @@ EnvelopeLibrary & EnvelopeLibrary::operator= (EnvelopeLibrary & lib)
   if (&lib != this)
     {
       // delete old data
-      while (library.size () )
-	delete library.remove (0);
+      for (Envelope* env : library)
+	delete env;
+      library.clear ();
 
       // reassign new data
       for (int envs = 0; envs < lib.library.size (); envs++)
-	library.add (lib.library.get (envs) );
+	library.push_back(lib.library.at(envs) );
     }
   
   return * this;
@@ -78,7 +79,7 @@ EnvelopeLibrary & EnvelopeLibrary::operator= (EnvelopeLibrary & lib)
 bool EnvelopeLibrary::saveLibrary (char * filename)
 {
   Envelope * temp_env;
-  Collection <xy_point> * temp_coll;
+  vector<xy_point> * temp_coll;
 
   if (library.size () == 0) // empty library?
     return false;
@@ -100,7 +101,7 @@ bool EnvelopeLibrary::saveLibrary (char * filename)
 
       for (int envs = 0; envs < library.size (); envs++)
 	{
-	  temp_env = library.get (envs);
+	  temp_env = library.at(envs);
 	  temp_coll = temp_env -> getPoints ();
 
 	  outData << setw(10) << "Envelope" << setw(10) << (envs + 1) << "\n"; // envelope index number
@@ -111,8 +112,8 @@ bool EnvelopeLibrary::saveLibrary (char * filename)
 	    {
 	      // write point data for this envelope
 	      // format: point nx, point ny
-	      outData << setw(10) << (temp_coll -> get(pts).x)
-		      << setw(10) << (temp_coll -> get(pts).y);
+	      outData << setw(10) << (temp_coll ->at(pts).x)
+		      << setw(10) << (temp_coll ->at(pts).y);
 	      
 	      // write segment data for this envelope
 	      // format: interpolation_type n, time_type n, time_value n
@@ -135,8 +136,8 @@ bool EnvelopeLibrary::saveLibrary (char * filename)
 	      outData << setw(10) << (temp_env -> getSegmentLength (pts) ) << "\n"; 
 	    }
 	  // write the last set of points: point (n + 1)x, point (n + 1)y
-	  outData << setw(10) << (temp_coll -> get ( (temp_coll -> size () ) - 1).x)
-		  << setw(10) << (temp_coll -> get ( (temp_coll -> size () ) - 1).y) 
+	  outData << setw(10) << (temp_coll ->at( (temp_coll -> size () ) - 1).x)
+		  << setw(10) << (temp_coll ->at( (temp_coll -> size () ) - 1).y) 
 		  << "\n\n";
 
 	}
@@ -158,8 +159,8 @@ int EnvelopeLibrary::loadLibrary (char * filename)
   m_time_type timev;
   xy_point point;
   envelope_segment segment;
-  Collection <xy_point> env_points;
-  Collection <envelope_segment> env_segments;
+  vector<xy_point> env_points;
+  vector<envelope_segment> env_segments;
   Envelope * temp_env;
 
   ifstream inData (filename, ios::in); // open an input stream
@@ -195,7 +196,7 @@ int EnvelopeLibrary::loadLibrary (char * filename)
 	      point.x = xpt;
 	      point.y = ypt;
 
-	      env_points.add (point);
+	      env_points.push_back(point);
 
 	      // read segment data for this envelope
 	      // format: interpolation_type n, time_type n, time_value n
@@ -221,7 +222,7 @@ int EnvelopeLibrary::loadLibrary (char * filename)
 	      segment.lengthType = tstyp;
 	      segment.length = timev;
 
-	      env_segments.add (segment);
+	      env_segments.push_back(segment);
 	    }
 	  // read the last set of points: point (n + 1)x, point (n + 1)y 
 	  inData >> xpt;
@@ -230,11 +231,11 @@ int EnvelopeLibrary::loadLibrary (char * filename)
 	  point.x = xpt;
 	  point.y = ypt;
 
-	  env_points.add (point);
+	  env_points.push_back(point);
 
 	  // construct a Envelope and add it to the library
 	  temp_env = new Envelope (env_points, env_segments);
-	  library.add (temp_env);
+	  library.push_back(temp_env);
 	}
 
       inData.close ();
@@ -259,12 +260,12 @@ int EnvelopeLibrary::loadLibraryNewFormat (char * filename)
     float xpt, ypt;
     xy_point point;
     std::string line, buf, interp, stretch;
-    Collection <xy_point> env_points;
+    vector<xy_point> env_points;
 
     interpolation_type intyp = LINEAR;
     stretch_type tstyp;
     envelope_segment segment;
-    Collection <envelope_segment> env_segments;
+    vector<envelope_segment> env_segments;
 
     Envelope * temp_env;
 
@@ -281,12 +282,12 @@ int EnvelopeLibrary::loadLibraryNewFormat (char * filename)
           // must be data about env
           point.x = xpt;
           point.y = ypt;
-          env_points.add(point);
+          env_points.push_back(point);
 
           //calculate and set length (timev) for the previous segment
           if (env_segments.size() > 0) {
-            float lastxpt = env_points.get(env_segments.size()-1).x;
-            env_segments.get(env_segments.size()-1).length = xpt - lastxpt;
+            float lastxpt = env_points.at(env_segments.size()-1).x;
+            env_segments.at(env_segments.size()-1).length = xpt - lastxpt;
           }
 
           if (envLine >> interp >> stretch) {
@@ -304,12 +305,12 @@ int EnvelopeLibrary::loadLibraryNewFormat (char * filename)
             }
             segment.interType = intyp;
             segment.lengthType = tstyp;
-            env_segments.add(segment); // length gets set the next time around
+            env_segments.push_back(segment); // length gets set the next time around
   
           } else {
             // last line of an env ---- create it!
             temp_env = new Envelope(env_points, env_segments);
-            library.add(temp_env);
+            library.push_back(temp_env);
           }
         }
       }
@@ -328,27 +329,27 @@ Envelope * EnvelopeLibrary::getEnvelope (int index)
   if (index > library.size () )
     return NULL;
   else
-    return (library.get (index - 1) ) -> clone ();
+    return (library.at(index - 1) ) -> clone ();
 }
 
 //----------------------------------------------------------------------------//
 
 const Envelope& EnvelopeLibrary::getEnvelopeRef (int index)
 {
-  return *library.get(index - 1);
+  return *library.at(index - 1);
 }
 
 //----------------------------------------------------------------------------//
 int EnvelopeLibrary::addEnvelope (Envelope * env)
 {
-  library.add (env);
+  library.push_back(env);
   return (library.size () );
 }
 
 
 //----------------------------------------------------------------------------//
-int EnvelopeLibrary::addEnvelope (Collection <xy_point> points,
-				  Collection <envelope_segment> segments)
+int EnvelopeLibrary::addEnvelope (vector<xy_point> points,
+				  vector<envelope_segment> segments)
 {
   Envelope * temp_env;
   temp_env = new Envelope (points, segments);
@@ -363,7 +364,7 @@ bool EnvelopeLibrary::updateEnvelope (int index, Envelope * env)
     return false;
   else
     {
-      library.set ( (index - 1), env);
+      library.at( (index - 1)) = env;
       return true;
     }
 }
@@ -378,7 +379,7 @@ void EnvelopeLibrary::showEnvelope (int index)
     return;
   else
     {
-      temp_env = library.get (index - 1);
+      temp_env = library.at(index - 1);
       temp_env -> print ();
     }
 }

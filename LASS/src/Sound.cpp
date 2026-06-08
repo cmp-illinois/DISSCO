@@ -68,7 +68,7 @@ Sound::Sound(int numPartials, m_value_type baseFreq)
         // INCREMENT FREQUENCY MULTIPLIER FOR GLISSANDO
         p.setParam(FREQUENCY, baseFreq * (i+1));
         p.setParam(PARTIAL_NUM, i);
-        add(p);
+        partials_.push_back(p);
     }
 
     setParam(DURATION, 1.0);
@@ -88,28 +88,43 @@ Sound::Sound(int numPartials, m_value_type baseFreq)
 
 
 //----------------------------------------------------------------------------//
+void Sound::add(const Partial& partial)
+{
+    partials_.push_back(partial);
+}
+
+//----------------------------------------------------------------------------//
+Partial& Sound::get(int index)
+{
+    return partials_[index];
+}
+
+//----------------------------------------------------------------------------//
+int Sound::size() const
+{
+    return (int) partials_.size();
+}
+
+//----------------------------------------------------------------------------//
 void Sound::setPartialParam(PartialStaticParam p, m_value_type v)
 {
-    Iterator<Partial> it = iterator();
-    while(it.hasNext())
-        it.next().setParam(p,v);
+    for (Partial& partial : partials_)
+        partial.setParam(p,v);
 }
 
 //----------------------------------------------------------------------------//
 void Sound::setPartialParam(PartialDynamicParam p, DynamicVariable& v)
 {
-    Iterator<Partial> it = iterator();
-    while(it.hasNext())
-        it.next().setParam(p,v);
+    for (Partial& partial : partials_)
+        partial.setParam(p,v);
 }
 
 //----------------------------------------------------------------------------//
 void Sound::setPartialParam(PartialDynamicParam p, m_value_type v)
 {
-    Iterator<Partial> it = iterator();
     int i = 1;
 
-    while(it.hasNext())
+    for (Partial& partial : partials_)
     {
         m_value_type mod_val = v;
 
@@ -117,8 +132,8 @@ void Sound::setPartialParam(PartialDynamicParam p, m_value_type v)
         if( p == FREQUENCY )
 	    mod_val *= i;
 
-        it.next().setParam(p,mod_val);
-        i++;  
+        partial.setParam(p,mod_val);
+        i++;
     }
 }
 
@@ -206,23 +221,22 @@ MultiTrack* Sound::render(
     //------------------
     if (size() != 0) {
       cout << "\t Creating Envelopes..." << endl;
-      Iterator<Partial> iter = iterator();
 
       if(getParam(DETUNE_FUNDAMENTAL) == 1.0){
 	cout << "\t using DETUNE" << endl;
 //      showDetune();
 
-        while(iter.hasNext()){
+        for (Partial& partial : partials_){
       // create the detuning envelope for this partial
 
           if (getParam( DETUNE_VELOCITY) == 0.5){
 	    LinearInterpolator dv;
             setup_detuning_env(&dv);
-            iter.next().setParam(DETUNING_ENV,dv);
+            partial.setParam(DETUNING_ENV,dv);
   	  } else{
             ExponentialInterpolator detuning_env;
             setup_detuning_env(&detuning_env);
-            iter.next().setParam(DETUNING_ENV,detuning_env);
+            partial.setParam(DETUNING_ENV,detuning_env);
 	  }
         }
       }
@@ -265,13 +279,11 @@ MultiTrack* Sound::render(
     }
     else
     {
-        Iterator<Partial> iter = iterator();
-        composite = iter.next().render(numChannels, sampleCount, duration, samplingRate);
+        composite = partials_[0].render(numChannels, sampleCount, duration, samplingRate);
 
-        MultiTrack* tempTrack;
-        while(iter.hasNext())
+        for (size_t i = 1; i < partials_.size(); i++)
         {
-            tempTrack = iter.next().render(numChannels, sampleCount, duration, samplingRate);
+            MultiTrack* tempTrack = partials_[i].render(numChannels, sampleCount, duration, samplingRate);
             composite->composite(*tempTrack);
             delete tempTrack;
         }
@@ -502,12 +514,11 @@ cout << "  x2=" << x[2] << " y2=" << y[2] << endl;
 m_time_type Sound::getTotalDuration(void)
 {
 	m_time_type curDuration, maxDuration;
-	Iterator<Partial> iter = iterator();
 
 	maxDuration = getParam(DURATION);
-	while(iter.hasNext())
+	for (Partial& partial : partials_)
 	{
-		curDuration = iter.next().getTotalDuration(getParam(DURATION));
+		curDuration = partial.getTotalDuration(getParam(DURATION));
 		if(curDuration > maxDuration)
 			maxDuration = curDuration;
 	}
@@ -549,10 +560,9 @@ void Sound::xml_print( ofstream& xmlOutput, list<Reverb*>& revObjs, list<Dynamic
 	spatializer_->xml_print( xmlOutput );
 	
 	// Output XML for partials
-	Iterator<Partial> it = iterator();
-	while(it.hasNext())
+	for (Partial& partial : partials_)
     {
-		it.next().xml_print( xmlOutput, revObjs, dynObjs );
+		partial.xml_print( xmlOutput, revObjs, dynObjs );
 	}
 
 	xmlOutput << "\t</sound>" << endl;
@@ -595,7 +605,7 @@ void Sound::xml_read(XmlReader::xmltag* soundtag, DISSCO_HASHMAP<long, Reverb *>
 	{
 		Partial p;
 		p.xml_read(partialtag, reverbHash, dvHash);
-		add(p);
+		partials_.push_back(p);
 	}
 }
 

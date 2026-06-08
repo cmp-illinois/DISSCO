@@ -39,7 +39,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "AbstractIterator.h"
 #include "AllPassFilter.h"
 #include "AuWriter.h"
-#include "Collection.h"
 #include "Constant.h"
 #include "DynamicVariable.h"
 #include "DynamicVariableSequence.h"

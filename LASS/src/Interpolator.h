@@ -32,7 +32,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Types.h"
 #include "DynamicVariable.h"
 #include "Iterator.h"
-#include "Collection.h"
 #include "XmlReader.h"
 
 //----------------------------------------------------------------------------//
@@ -105,15 +104,32 @@ public:
 *	\author Braden Kowitz
 *	\author Philipp Fraund
 **/
-class Interpolator : public DynamicVariable, public Collection<InterpolatorEntry>
+class Interpolator : public DynamicVariable
 {
 
+protected:
+
+    /**
+    *	The entries this interpolator interpolates between.
+    **/
+    vector<InterpolatorEntry> entries_;
+
 public:
-    
+
     /**
     *	This is the default constructor.
     **/
     Interpolator();
+
+    /**
+    *	\return A reference to the entry at the given index.
+    **/
+    InterpolatorEntry& get(int index);
+
+    /**
+    *	\return The number of entries.
+    **/
+    int size() const;
     
     /**
     *	This function creates an exact copy of this object.

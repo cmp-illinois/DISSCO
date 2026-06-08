@@ -21,7 +21,6 @@
 //----------------------------------------------------------------------------//
 
 #include "SoundSample.h"
-#include "Collection.h"
 #include "Track.h"
 #include "MultiTrack.h"
 #include "LPCombFilter.h"
@@ -52,14 +51,14 @@ Reverb::Reverb(m_rate_type samplingRate)
   comb_gain_list[4] = 0.53;
   comb_gain_list[5] = 0.55;
 
-  Collection<envelope_segment> segmentCollection;
+  vector<envelope_segment> segmentCollection;
   envelope_segment seg;
 
   seg.x = 0.0; seg.y = 0.83;
   seg.interType = LINEAR; seg.lengthType = FLEXIBLE;
-  segmentCollection.add(seg);
+  segmentCollection.push_back(seg);
   seg.x = 1.0; seg.y = 0.83;
-  segmentCollection.add(seg);
+  segmentCollection.push_back(seg);
 
   percentReverb = new Envelope(segmentCollection);
 
@@ -78,15 +77,15 @@ Reverb::Reverb(float room_size, m_rate_type samplingRate)
   float lp_gain_list[REVERB_NUM_COMB_FILTERS];
   int i;
 
-  Collection<envelope_segment> segmentCollection;
+  vector<envelope_segment> segmentCollection;
   envelope_segment seg;
 
   float flatReverb = 0.345 + (0.625 * room_size);
   seg.x = 0.0; seg.y = flatReverb;
   seg.interType = LINEAR; seg.lengthType = FLEXIBLE;
-  segmentCollection.add(seg);
+  segmentCollection.push_back(seg);
   seg.x = 1.0; seg.y = flatReverb;
-  segmentCollection.add(seg);
+  segmentCollection.push_back(seg);
   percentReverb = new Envelope(segmentCollection);
   float hilow_spread  = 0.056 + (0.430 * room_size);
   float gainAllPass   = 0.7;
@@ -337,14 +336,13 @@ MultiTrack &Reverb::do_reverb_MultiTrack(MultiTrack &inWave, Envelope *percentRe
   //  reset the filter so that it can be used fresh next time
   //  create a new track based on the returned, filtered SoundSample
   //  add this new track to the output MultiTrack
-  Iterator<Track*> it = inWave.iterator();
-  while (it.hasNext())
+  for (Track* curTrack : inWave)
     {
-      Track *curTrack = it.next();
-
       newWave = do_reverb_SoundSample(&curTrack->getWave(), percentReverb);
       reset();
-      newAmp  = constructAmp(newWave);
+      // Only rebuild the amplitude envelope if the source carried one; when
+      // amplitude tracking is off this avoids a full-length allocation per track.
+      newAmp  = curTrack->hasAmp() ? constructAmp(newWave) : 0;
       reset();
       newMultiTrack->add(new Track(newWave, newAmp));
     }
@@ -374,7 +372,7 @@ Track &Reverb::do_reverb_Track(Track &inWave, Envelope *percentReverbinput)
   // create a new track based on the returned, filtered SoundSample
   newWave = do_reverb_SoundSample(&inWave.getWave(), percentReverb);
   reset();
-  newAmp  = constructAmp(newWave);
+  newAmp  = inWave.hasAmp() ? constructAmp(newWave) : 0;
   newTrack = new Track(newWave, newAmp);
 
   return *newTrack;
