@@ -122,7 +122,7 @@ Public Member Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>The <a class="el" href="classFilter.html">Filter</a> objects are stateful machines with internal feedback mechanisms. Thus this filter should be allocated anew each time you begin a new channel and should not be mixed between channels. </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Jim Lindstrom </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Filter_8h_source.html#l00053">53</a> of file <a class="el" href="Filter_8h_source.html">Filter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Filter_8h_source.html#l00052">52</a> of file <a class="el" href="Filter_8h_source.html">Filter.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa37dc017d133404b3a326f363ce36b8a" name="aa37dc017d133404b3a326f363ce36b8a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa37dc017d133404b3a326f363ce36b8a">&#9670;&#160;</a></span>~Filter()</h2>
@@ -147,7 +147,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Filter_8h_source.html#l00057">57</a> of file <a class="el" href="Filter_8h_source.html">Filter.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Filter_8h_source.html#l00056">56</a> of file <a class="el" href="Filter_8h_source.html">Filter.h</a>.</p>
 
 </div>
 </div>
@@ -223,7 +223,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This method applies the filter to a <a class="el" href="classMultiTrack.html">MultiTrack</a> source, track by track. It does so by decomposing the wave into <a class="el" href="classTrack.html">Track</a> objects (organized as a <a class="el" href="classCollection.html">Collection</a> inside the <a class="el" href="classMultiTrack.html">MultiTrack</a> object) and calling the virtual function, do_filter(SoundSample *inWave), for each <a class="el" href="classTrack.html">Track</a>.</p>
+<p>This method applies the filter to a <a class="el" href="classMultiTrack.html">MultiTrack</a> source, track by track. It does so by decomposing the wave into <a class="el" href="classTrack.html">Track</a> objects (organized as a vector inside the <a class="el" href="classMultiTrack.html">MultiTrack</a> object) and calling the virtual function, do_filter(SoundSample *inWave), for each <a class="el" href="classTrack.html">Track</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">inWave</td><td>A reference to a <a class="el" href="classMultiTrack.html">MultiTrack</a> object to <a class="el" href="classFilter.html">Filter</a></td></tr>
@@ -232,35 +232,25 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to a NEW <a class="el" href="classMultiTrack.html">MultiTrack</a>, which the caller is responsible for deleting when done. The original <a class="el" href="classMultiTrack.html">MultiTrack</a> remains intact and untouched </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Filter_8cpp_source.html#l00040">40</a> of file <a class="el" href="Filter_8cpp_source.html">Filter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Filter_8cpp_source.html#l00039">39</a> of file <a class="el" href="Filter_8cpp_source.html">Filter.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFilter_a65ee6011869f1304d5dc1b9cbed5792f_cgraph.png" border="0" usemap="#aclassFilter_a65ee6011869f1304d5dc1b9cbed5792f_cgraph" alt=""/></div>
 <map name="aclassFilter_a65ee6011869f1304d5dc1b9cbed5792f_cgraph" id="aclassFilter_a65ee6011869f1304d5dc1b9cbed5792f_cgraph">
-<area shape="rect" title=" " alt="" coords="5,153,196,179"/>
-<area shape="rect" href="classCollection.html#a000bfa55f8abee5917f8c917e33b1d23" title=" " alt="" coords="291,29,409,55"/>
-<area shape="poly" title=" " alt="" coords="114,151,168,108,204,84,243,64,276,52,278,57,245,68,207,89,171,112,118,155"/>
-<area shape="rect" href="classFilter.html#af520b05513f3c171224d6f09c67e119b" title=" " alt="" coords="244,79,456,104"/>
-<area shape="poly" title=" " alt="" coords="133,151,243,113,274,105,275,110,245,118,135,156"/>
-<area shape="rect" href="classIterator.html#a69b4bebf4a915a4ee591e6c8bd9b9b9a" title=" " alt="" coords="284,128,416,153"/>
-<area shape="poly" title=" " alt="" coords="196,154,270,146,271,151,197,159"/>
-<area shape="rect" href="classCollection.html#acd5dfa486c735fe26700dd94e2b0d0c4" title=" " alt="" coords="279,177,421,203"/>
-<area shape="poly" title=" " alt="" coords="197,173,265,179,265,185,196,178"/>
-<area shape="rect" href="classIterator.html#a12aa5b9d3dd7370cd40943427834adc6" title=" " alt="" coords="297,227,403,252"/>
-<area shape="poly" title=" " alt="" coords="138,176,245,211,284,222,282,227,243,217,136,181"/>
-<area shape="rect" href="classFilter.html#a257e4310e9c1dd4279d14fa5c341cbfc" title=" " alt="" coords="302,276,398,301"/>
-<area shape="poly" title=" " alt="" coords="118,177,172,219,207,242,245,262,289,276,287,281,243,267,204,247,168,223,115,181"/>
+<area shape="rect" title=" " alt="" coords="5,55,196,80"/>
+<area shape="rect" href="classMultiTrack.html#a552838b6f90ef378dd8ae9e795e58f13" title=" " alt="" coords="289,5,411,31"/>
+<area shape="poly" title=" " alt="" coords="165,52,276,30,277,35,166,57"/>
+<area shape="rect" href="classFilter.html#af520b05513f3c171224d6f09c67e119b" title=" " alt="" coords="244,55,456,80"/>
+<area shape="poly" title=" " alt="" coords="196,65,230,65,230,70,196,70"/>
+<area shape="rect" href="classFilter.html#a257e4310e9c1dd4279d14fa5c341cbfc" title=" " alt="" coords="302,104,398,129"/>
+<area shape="poly" title=" " alt="" coords="166,77,289,102,288,107,165,83"/>
 <area shape="rect" href="classFilter.html#ade350a8c8d3687cde005bab02477216a" title=" " alt="" coords="561,5,677,31"/>
-<area shape="poly" title=" " alt="" coords="413,76,455,64,479,51,503,40,547,27,548,32,505,44,481,56,457,68,415,81"/>
+<area shape="poly" title=" " alt="" coords="420,52,547,28,548,34,420,57"/>
 <area shape="rect" href="classSoundSample.html#a8fe1248c64570253ba40d68a75114057" title=" " alt="" coords="506,55,733,80"/>
-<area shape="poly" title=" " alt="" coords="456,79,492,76,492,81,457,85"/>
+<area shape="poly" title=" " alt="" coords="456,65,492,65,492,70,456,70"/>
 <area shape="rect" href="classSoundSample.html#a08fd608ef3ada608ca32828c427c9741" title=" " alt="" coords="504,104,735,129"/>
-<area shape="poly" title=" " alt="" coords="457,99,491,102,490,107,456,104"/>
-<area shape="rect" href="classAbstractIterator.html#aabada3692730edd3a71070e9fc0fd3c0" title=" " alt="" coords="526,153,713,179"/>
-<area shape="poly" title=" " alt="" coords="416,144,512,153,512,159,416,149"/>
-<area shape="rect" href="classAbstractIterator.html#a131acaa938ffedf104e5e3b55dffc5c2" title=" " alt="" coords="539,227,700,252"/>
-<area shape="poly" title=" " alt="" coords="403,237,525,237,525,242,403,242"/>
+<area shape="poly" title=" " alt="" coords="420,77,536,99,535,104,420,83"/>
 </map>
 </div>
 <div class="dynheader">
@@ -304,7 +294,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to a NEW <a class="el" href="classMultiTrack.html">MultiTrack</a>, which the caller is responsible for deleting when done. The original <a class="el" href="classTrack.html">Track</a> remains intact and untouched </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Filter_8cpp_source.html#l00084">84</a> of file <a class="el" href="Filter_8cpp_source.html">Filter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Filter_8cpp_source.html#l00082">82</a> of file <a class="el" href="Filter_8cpp_source.html">Filter.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -364,7 +354,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to a NEW <a class="el" href="classMultiTrack.html">MultiTrack</a>, which the caller is responsible for deleting when done. The original <a class="el" href="classTrack.html">Track</a> remains intact and untouched. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Filter_8cpp_source.html#l00069">69</a> of file <a class="el" href="Filter_8cpp_source.html">Filter.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Filter_8cpp_source.html#l00067">67</a> of file <a class="el" href="Filter_8cpp_source.html">Filter.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

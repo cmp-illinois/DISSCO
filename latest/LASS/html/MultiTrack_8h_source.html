@@ -113,48 +113,64 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;<a class="code" href="Track_8h.html">Track.h</a>&quot;</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="Collection_8h.html">Collection.h</a>&quot;</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="foldopen" id="foldopen00050" data-start="{" data-end="};">
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classMultiTrack.html">   50</a></span><span class="keyword">class </span><a class="code hl_class" href="classMultiTrack.html">MultiTrack</a> : <span class="keyword">public</span> <a class="code hl_class" href="classCollection.html">Collection</a>&lt;Track*&gt;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>{</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_function" href="classMultiTrack.html#a6b7b95de0cb774045f0bae131f3a7ba9">MultiTrack</a>();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_function" href="classMultiTrack.html#a6b7b95de0cb774045f0bae131f3a7ba9">MultiTrack</a>(</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordtype">int</span> channels,</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <a class="code hl_typedef" href="Types_8h.html#a49c1579ca4315701997c706bf4da7924">m_sample_count_type</a> numSamples,</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <a class="code hl_typedef" href="Types_8h.html#ab7c593a9f05c6e76fb8e2c140c0bb92d">m_rate_type</a> samplingRate);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="};">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classMultiTrack.html">   49</a></span><span class="keyword">class </span><a class="code hl_class" href="classMultiTrack.html">MultiTrack</a></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_function" href="classMultiTrack.html#a6b7b95de0cb774045f0bae131f3a7ba9">MultiTrack</a>();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_function" href="classMultiTrack.html#a6b7b95de0cb774045f0bae131f3a7ba9">MultiTrack</a>(</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">int</span> channels,</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <a class="code hl_typedef" href="Types_8h.html#a49c1579ca4315701997c706bf4da7924">m_sample_count_type</a> numSamples,</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <a class="code hl_typedef" href="Types_8h.html#ab7c593a9f05c6e76fb8e2c140c0bb92d">m_rate_type</a> samplingRate);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    </div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <a class="code hl_function" href="classMultiTrack.html#a6b7b95de0cb774045f0bae131f3a7ba9">MultiTrack</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMultiTrack.html">MultiTrack</a>&amp; mt);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <a class="code hl_class" href="classMultiTrack.html">MultiTrack</a>&amp; <a class="code hl_function" href="classMultiTrack.html#a4627f3f1fb8100f3be281a6069154e81">operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMultiTrack.html">MultiTrack</a>&amp; mt);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_function" href="classMultiTrack.html#a1d0d10c10c2122ffaabd57475c8136b6">~MultiTrack</a>();</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d">composite</a>(<a class="code hl_class" href="classMultiTrack.html">MultiTrack</a>&amp; mt, <a class="code hl_typedef" href="Types_8h.html#a1125b6e8b8f52765d5af0d4d33edf473">m_time_type</a> startTime = 0);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>};</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <a class="code hl_function" href="classMultiTrack.html#a6b7b95de0cb774045f0bae131f3a7ba9">MultiTrack</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMultiTrack.html">MultiTrack</a>&amp; mt);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_class" href="classMultiTrack.html">MultiTrack</a>&amp; <a class="code hl_function" href="classMultiTrack.html#a4627f3f1fb8100f3be281a6069154e81">operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMultiTrack.html">MultiTrack</a>&amp; mt);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <a class="code hl_function" href="classMultiTrack.html#a1d0d10c10c2122ffaabd57475c8136b6">~MultiTrack</a>();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d">composite</a>(<a class="code hl_class" href="classMultiTrack.html">MultiTrack</a>&amp; mt, <a class="code hl_typedef" href="Types_8h.html#a1125b6e8b8f52765d5af0d4d33edf473">m_time_type</a> startTime = 0);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMultiTrack.html#a552838b6f90ef378dd8ae9e795e58f13">add</a>(<a class="code hl_class" href="classTrack.html">Track</a>* track);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <a class="code hl_class" href="classTrack.html">Track</a>* <a class="code hl_function" href="classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283">get</a>(<span class="keywordtype">int</span> index) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classMultiTrack.html#a58628666119ee3c39068e41ef9430d1e">size</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    vector&lt;Track*&gt;::iterator <a class="code hl_function" href="classMultiTrack.html#a389308b38369dc92a17546511e6dd28b">begin</a>();</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    vector&lt;Track*&gt;::iterator <a class="code hl_function" href="classMultiTrack.html#af030c356fb79a946b91af71678357e0e">end</a>();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    vector&lt;Track*&gt; tracks_;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>};</div>
 </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">#endif </span><span class="comment">//__MULTI_TRACK_H</span></div>
-<div class="ttc" id="aCollection_8h_html"><div class="ttname"><a href="Collection_8h.html">Collection.h</a></div></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="preprocessor">#endif </span><span class="comment">//__MULTI_TRACK_H</span></div>
 <div class="ttc" id="aTrack_8h_html"><div class="ttname"><a href="Track_8h.html">Track.h</a></div></div>
 <div class="ttc" id="aTypes_8h_html_a1125b6e8b8f52765d5af0d4d33edf473"><div class="ttname"><a href="Types_8h.html#a1125b6e8b8f52765d5af0d4d33edf473">m_time_type</a></div><div class="ttdeci">float m_time_type</div><div class="ttdoc">Specifies a type for an individual time value.</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00047">Types.h:47</a></div></div>
 <div class="ttc" id="aTypes_8h_html_a49c1579ca4315701997c706bf4da7924"><div class="ttname"><a href="Types_8h.html#a49c1579ca4315701997c706bf4da7924">m_sample_count_type</a></div><div class="ttdeci">long m_sample_count_type</div><div class="ttdoc">Specifies a sample count.</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00044">Types.h:44</a></div></div>
 <div class="ttc" id="aTypes_8h_html_ab7c593a9f05c6e76fb8e2c140c0bb92d"><div class="ttname"><a href="Types_8h.html#ab7c593a9f05c6e76fb8e2c140c0bb92d">m_rate_type</a></div><div class="ttdeci">unsigned int m_rate_type</div><div class="ttdoc">Specifies a rate for playback.</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00053">Types.h:53</a></div></div>
-<div class="ttc" id="aclassCollection_html"><div class="ttname"><a href="classCollection.html">Collection</a></div><div class="ttdef"><b>Definition</b> <a href="Collection_8h_source.html#l00044">Collection.h:45</a></div></div>
-<div class="ttc" id="aclassMultiTrack_html"><div class="ttname"><a href="classMultiTrack.html">MultiTrack</a></div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8h_source.html#l00050">MultiTrack.h:51</a></div></div>
-<div class="ttc" id="aclassMultiTrack_html_a1d0d10c10c2122ffaabd57475c8136b6"><div class="ttname"><a href="classMultiTrack.html#a1d0d10c10c2122ffaabd57475c8136b6">MultiTrack::~MultiTrack</a></div><div class="ttdeci">~MultiTrack()</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00087">MultiTrack.cpp:87</a></div></div>
-<div class="ttc" id="aclassMultiTrack_html_a330f89f6bbf73c2290f9a628ed47333d"><div class="ttname"><a href="classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d">MultiTrack::composite</a></div><div class="ttdeci">void composite(MultiTrack &amp;mt, m_time_type startTime=0)</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00099">MultiTrack.cpp:99</a></div></div>
-<div class="ttc" id="aclassMultiTrack_html_a4627f3f1fb8100f3be281a6069154e81"><div class="ttname"><a href="classMultiTrack.html#a4627f3f1fb8100f3be281a6069154e81">MultiTrack::operator=</a></div><div class="ttdeci">MultiTrack &amp; operator=(const MultiTrack &amp;mt)</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00067">MultiTrack.cpp:67</a></div></div>
-<div class="ttc" id="aclassMultiTrack_html_a6b7b95de0cb774045f0bae131f3a7ba9"><div class="ttname"><a href="classMultiTrack.html#a6b7b95de0cb774045f0bae131f3a7ba9">MultiTrack::MultiTrack</a></div><div class="ttdeci">MultiTrack()</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00038">MultiTrack.cpp:38</a></div></div>
+<div class="ttc" id="aclassMultiTrack_html"><div class="ttname"><a href="classMultiTrack.html">MultiTrack</a></div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8h_source.html#l00049">MultiTrack.h:50</a></div></div>
+<div class="ttc" id="aclassMultiTrack_html_a1d0d10c10c2122ffaabd57475c8136b6"><div class="ttname"><a href="classMultiTrack.html#a1d0d10c10c2122ffaabd57475c8136b6">MultiTrack::~MultiTrack</a></div><div class="ttdeci">~MultiTrack()</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00084">MultiTrack.cpp:84</a></div></div>
+<div class="ttc" id="aclassMultiTrack_html_a330f89f6bbf73c2290f9a628ed47333d"><div class="ttname"><a href="classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d">MultiTrack::composite</a></div><div class="ttdeci">void composite(MultiTrack &amp;mt, m_time_type startTime=0)</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00095">MultiTrack.cpp:95</a></div></div>
+<div class="ttc" id="aclassMultiTrack_html_a389308b38369dc92a17546511e6dd28b"><div class="ttname"><a href="classMultiTrack.html#a389308b38369dc92a17546511e6dd28b">MultiTrack::begin</a></div><div class="ttdeci">vector&lt; Track * &gt;::iterator begin()</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00122">MultiTrack.cpp:122</a></div></div>
+<div class="ttc" id="aclassMultiTrack_html_a4627f3f1fb8100f3be281a6069154e81"><div class="ttname"><a href="classMultiTrack.html#a4627f3f1fb8100f3be281a6069154e81">MultiTrack::operator=</a></div><div class="ttdeci">MultiTrack &amp; operator=(const MultiTrack &amp;mt)</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00064">MultiTrack.cpp:64</a></div></div>
+<div class="ttc" id="aclassMultiTrack_html_a552838b6f90ef378dd8ae9e795e58f13"><div class="ttname"><a href="classMultiTrack.html#a552838b6f90ef378dd8ae9e795e58f13">MultiTrack::add</a></div><div class="ttdeci">void add(Track *track)</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00104">MultiTrack.cpp:104</a></div></div>
+<div class="ttc" id="aclassMultiTrack_html_a58628666119ee3c39068e41ef9430d1e"><div class="ttname"><a href="classMultiTrack.html#a58628666119ee3c39068e41ef9430d1e">MultiTrack::size</a></div><div class="ttdeci">int size() const</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00116">MultiTrack.cpp:116</a></div></div>
+<div class="ttc" id="aclassMultiTrack_html_a6b7b95de0cb774045f0bae131f3a7ba9"><div class="ttname"><a href="classMultiTrack.html#a6b7b95de0cb774045f0bae131f3a7ba9">MultiTrack::MultiTrack</a></div><div class="ttdeci">MultiTrack()</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00034">MultiTrack.cpp:34</a></div></div>
+<div class="ttc" id="aclassMultiTrack_html_ac63f602f0d8c705e33cfa71080346283"><div class="ttname"><a href="classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283">MultiTrack::get</a></div><div class="ttdeci">Track * get(int index) const</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00110">MultiTrack.cpp:110</a></div></div>
+<div class="ttc" id="aclassMultiTrack_html_af030c356fb79a946b91af71678357e0e"><div class="ttname"><a href="classMultiTrack.html#af030c356fb79a946b91af71678357e0e">MultiTrack::end</a></div><div class="ttdeci">vector&lt; Track * &gt;::iterator end()</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00128">MultiTrack.cpp:128</a></div></div>
+<div class="ttc" id="aclassTrack_html"><div class="ttname"><a href="classTrack.html">Track</a></div><div class="ttdef"><b>Definition</b> <a href="Track_8h_source.html#l00042">Track.h:43</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

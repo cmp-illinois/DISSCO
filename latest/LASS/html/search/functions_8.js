@@ -7,5 +7,5 @@ var searchData=
   ['interpolatoriterator_4',['InterpolatorIterator',['../classInterpolatorIterator.html#a7af610034fd628d64b7cdf361dde98e3',1,'InterpolatorIterator']]],
   ['isdonegettingsoundobjects_5',['isDoneGettingSoundObjects',['../classScore.html#a113dd5aa3b93b28ec3a7c54e7b2fbc16',1,'Score']]],
   ['isparamdefined_6',['isParamDefined',['../classXmlReader_1_1xmltag.html#a97a899eb64299838320fc1e05f970b9d',1,'XmlReader::xmltag']]],
-  ['iterator_7',['iterator',['../classCollection.html#acd5dfa486c735fe26700dd94e2b0d0c4',1,'Collection::iterator()'],['../classIterator.html#abe3962e5a043decacb8506483d9bbd2f',1,'Iterator::Iterator(AbstractIterator&lt; T &gt; *it)'],['../classIterator.html#abfebc28a6eaefd09391e47a56fbfc123',1,'Iterator::Iterator(const Iterator &amp;I)']]]
+  ['iterator_7',['iterator',['../classIterator.html#abe3962e5a043decacb8506483d9bbd2f',1,'Iterator::Iterator(AbstractIterator&lt; T &gt; *it)'],['../classIterator.html#abfebc28a6eaefd09391e47a56fbfc123',1,'Iterator::Iterator(const Iterator &amp;I)']]]
 ];

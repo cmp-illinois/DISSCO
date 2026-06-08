@@ -138,7 +138,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// add copies of the scaled track to this multitrack</span></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;numTracks; i++)</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        mt-&gt;<a class="code hl_function" href="classCollection.html#a000bfa55f8abee5917f8c917e33b1d23">add</a>( <span class="keyword">new</span> <a class="code hl_class" href="classTrack.html">Track</a>(*scaledTrack) );</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        mt-&gt;<a class="code hl_function" href="classMultiTrack.html#a552838b6f90ef378dd8ae9e795e58f13">add</a>( <span class="keyword">new</span> <a class="code hl_class" href="classTrack.html">Track</a>(*scaledTrack) );</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// delete the scaled track</span></div>
@@ -162,53 +162,48 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_class" href="classMultiTrack.html">MultiTrack</a>* _tmp = <span class="keyword">new</span> <a class="code hl_class" href="classMultiTrack.html">MultiTrack</a>(numTracks, sampleCount, samplingRate);</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    </div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// superimpose each component to the output multitrack</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_class" href="classIterator.html">Iterator&lt;Track*&gt;</a> it = t.<a class="code hl_function" href="classCollection.html#acd5dfa486c735fe26700dd94e2b0d0c4">iterator</a>();</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">while</span> (it.<a class="code hl_function" href="classIterator.html#a69b4bebf4a915a4ee591e6c8bd9b9b9a">hasNext</a>())</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        _tmp = <a class="code hl_function" href="classSpatializer.html#a85146a717cd374a807f13899328b6403">spatialize_Track</a>( *(it.<a class="code hl_function" href="classIterator.html#a12aa5b9d3dd7370cd40943427834adc6">next</a>()), numTracks );</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        mt-&gt;<a class="code hl_function" href="classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d">composite</a>( *_tmp );</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">// return:</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">return</span> mt;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">for</span> (<a class="code hl_class" href="classTrack.html">Track</a>* track : t)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        _tmp = <a class="code hl_function" href="classSpatializer.html#a85146a717cd374a807f13899328b6403">spatialize_Track</a>( *track, numTracks );</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        mt-&gt;<a class="code hl_function" href="classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d">composite</a>( *_tmp );</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="comment">// return:</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordflow">return</span> mt;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
 </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classSpatializer.html#a1c1d4de3f92275fd87e75146ff763654">   88</a></span><a class="code hl_class" href="classSpatializer.html">Spatializer</a>* <a class="code hl_function" href="classSpatializer.html#a1c1d4de3f92275fd87e75146ff763654">Spatializer::clone</a>()</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>{</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_class" href="classSpatializer.html">Spatializer</a>(*<span class="keyword">this</span>);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classSpatializer.html#a1c1d4de3f92275fd87e75146ff763654">   87</a></span><a class="code hl_class" href="classSpatializer.html">Spatializer</a>* <a class="code hl_function" href="classSpatializer.html#a1c1d4de3f92275fd87e75146ff763654">Spatializer::clone</a>()</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>{</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_class" href="classSpatializer.html">Spatializer</a>(*<span class="keyword">this</span>);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
 </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classSpatializer.html#adc52c47a80728decfe4c953173ab48c5">   93</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classSpatializer.html#adc52c47a80728decfe4c953173ab48c5">Spatializer::xml_print</a>( ofstream&amp; xmlOutput )</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>{</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  xmlOutput &lt;&lt; <span class="stringliteral">&quot;\t\t&lt;spatializer&gt;&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  xmlOutput &lt;&lt; <span class="stringliteral">&quot;\t\t&lt;/spatializer&gt;&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>}</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classSpatializer.html#adc52c47a80728decfe4c953173ab48c5">   92</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classSpatializer.html#adc52c47a80728decfe4c953173ab48c5">Spatializer::xml_print</a>( ofstream&amp; xmlOutput )</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>{</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  xmlOutput &lt;&lt; <span class="stringliteral">&quot;\t\t&lt;spatializer&gt;&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  xmlOutput &lt;&lt; <span class="stringliteral">&quot;\t\t&lt;/spatializer&gt;&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>}</div>
 </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#endif </span><span class="comment">//__SPATIALIZER_CPP</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#endif </span><span class="comment">//__SPATIALIZER_CPP</span></div>
 <div class="ttc" id="aSpatializer_8h_html"><div class="ttname"><a href="Spatializer_8h.html">Spatializer.h</a></div></div>
 <div class="ttc" id="aTypes_8h_html_a49c1579ca4315701997c706bf4da7924"><div class="ttname"><a href="Types_8h.html#a49c1579ca4315701997c706bf4da7924">m_sample_count_type</a></div><div class="ttdeci">long m_sample_count_type</div><div class="ttdoc">Specifies a sample count.</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00044">Types.h:44</a></div></div>
 <div class="ttc" id="aTypes_8h_html_ab7c593a9f05c6e76fb8e2c140c0bb92d"><div class="ttname"><a href="Types_8h.html#ab7c593a9f05c6e76fb8e2c140c0bb92d">m_rate_type</a></div><div class="ttdeci">unsigned int m_rate_type</div><div class="ttdoc">Specifies a rate for playback.</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00053">Types.h:53</a></div></div>
-<div class="ttc" id="aclassCollection_html_a000bfa55f8abee5917f8c917e33b1d23"><div class="ttname"><a href="classCollection.html#a000bfa55f8abee5917f8c917e33b1d23">Collection::add</a></div><div class="ttdeci">void add(const T &amp;element)</div><div class="ttdef"><b>Definition</b> <a href="Collection_8cpp_source.html#l00083">Collection.cpp:83</a></div></div>
-<div class="ttc" id="aclassCollection_html_acd5dfa486c735fe26700dd94e2b0d0c4"><div class="ttname"><a href="classCollection.html#acd5dfa486c735fe26700dd94e2b0d0c4">Collection::iterator</a></div><div class="ttdeci">Iterator&lt; T &gt; iterator()</div><div class="ttdef"><b>Definition</b> <a href="Collection_8cpp_source.html#l00201">Collection.cpp:201</a></div></div>
-<div class="ttc" id="aclassIterator_html"><div class="ttname"><a href="classIterator.html">Iterator</a></div><div class="ttdef"><b>Definition</b> <a href="Iterator_8h_source.html#l00042">Iterator.h:43</a></div></div>
-<div class="ttc" id="aclassIterator_html_a12aa5b9d3dd7370cd40943427834adc6"><div class="ttname"><a href="classIterator.html#a12aa5b9d3dd7370cd40943427834adc6">Iterator::next</a></div><div class="ttdeci">T &amp; next()</div><div class="ttdef"><b>Definition</b> <a href="Iterator_8h_source.html#l00105">Iterator.h:105</a></div></div>
-<div class="ttc" id="aclassIterator_html_a69b4bebf4a915a4ee591e6c8bd9b9b9a"><div class="ttname"><a href="classIterator.html#a69b4bebf4a915a4ee591e6c8bd9b9b9a">Iterator::hasNext</a></div><div class="ttdeci">bool hasNext()</div><div class="ttdef"><b>Definition</b> <a href="Iterator_8h_source.html#l00096">Iterator.h:96</a></div></div>
-<div class="ttc" id="aclassMultiTrack_html"><div class="ttname"><a href="classMultiTrack.html">MultiTrack</a></div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8h_source.html#l00050">MultiTrack.h:51</a></div></div>
-<div class="ttc" id="aclassMultiTrack_html_a330f89f6bbf73c2290f9a628ed47333d"><div class="ttname"><a href="classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d">MultiTrack::composite</a></div><div class="ttdeci">void composite(MultiTrack &amp;mt, m_time_type startTime=0)</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00099">MultiTrack.cpp:99</a></div></div>
+<div class="ttc" id="aclassMultiTrack_html"><div class="ttname"><a href="classMultiTrack.html">MultiTrack</a></div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8h_source.html#l00049">MultiTrack.h:50</a></div></div>
+<div class="ttc" id="aclassMultiTrack_html_a330f89f6bbf73c2290f9a628ed47333d"><div class="ttname"><a href="classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d">MultiTrack::composite</a></div><div class="ttdeci">void composite(MultiTrack &amp;mt, m_time_type startTime=0)</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00095">MultiTrack.cpp:95</a></div></div>
+<div class="ttc" id="aclassMultiTrack_html_a552838b6f90ef378dd8ae9e795e58f13"><div class="ttname"><a href="classMultiTrack.html#a552838b6f90ef378dd8ae9e795e58f13">MultiTrack::add</a></div><div class="ttdeci">void add(Track *track)</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00104">MultiTrack.cpp:104</a></div></div>
 <div class="ttc" id="aclassSpatializer_html"><div class="ttname"><a href="classSpatializer.html">Spatializer</a></div><div class="ttdef"><b>Definition</b> <a href="Spatializer_8h_source.html#l00048">Spatializer.h:49</a></div></div>
-<div class="ttc" id="aclassSpatializer_html_a1c1d4de3f92275fd87e75146ff763654"><div class="ttname"><a href="classSpatializer.html#a1c1d4de3f92275fd87e75146ff763654">Spatializer::clone</a></div><div class="ttdeci">virtual Spatializer * clone()</div><div class="ttdef"><b>Definition</b> <a href="Spatializer_8cpp_source.html#l00088">Spatializer.cpp:88</a></div></div>
+<div class="ttc" id="aclassSpatializer_html_a1c1d4de3f92275fd87e75146ff763654"><div class="ttname"><a href="classSpatializer.html#a1c1d4de3f92275fd87e75146ff763654">Spatializer::clone</a></div><div class="ttdeci">virtual Spatializer * clone()</div><div class="ttdef"><b>Definition</b> <a href="Spatializer_8cpp_source.html#l00087">Spatializer.cpp:87</a></div></div>
 <div class="ttc" id="aclassSpatializer_html_a66c634b61bd59f6afaeeb8fd46350525"><div class="ttname"><a href="classSpatializer.html#a66c634b61bd59f6afaeeb8fd46350525">Spatializer::spatialize_MultiTrack</a></div><div class="ttdeci">virtual MultiTrack * spatialize_MultiTrack(MultiTrack &amp;t, int numTracks, m_sample_count_type sampleCount, m_rate_type samplingRate=DEFAULT_SAMPLING_RATE)</div><div class="ttdef"><b>Definition</b> <a href="Spatializer_8cpp_source.html#l00065">Spatializer.cpp:65</a></div></div>
 <div class="ttc" id="aclassSpatializer_html_a85146a717cd374a807f13899328b6403"><div class="ttname"><a href="classSpatializer.html#a85146a717cd374a807f13899328b6403">Spatializer::spatialize_Track</a></div><div class="ttdeci">virtual MultiTrack * spatialize_Track(Track &amp;t, int numTracks)</div><div class="ttdef"><b>Definition</b> <a href="Spatializer_8cpp_source.html#l00041">Spatializer.cpp:41</a></div></div>
 <div class="ttc" id="aclassSpatializer_html_ab8ce14101ee86bac530bc605101db683"><div class="ttname"><a href="classSpatializer.html#ab8ce14101ee86bac530bc605101db683">Spatializer::~Spatializer</a></div><div class="ttdeci">virtual ~Spatializer()</div><div class="ttdef"><b>Definition</b> <a href="Spatializer_8cpp_source.html#l00037">Spatializer.cpp:37</a></div></div>
-<div class="ttc" id="aclassSpatializer_html_adc52c47a80728decfe4c953173ab48c5"><div class="ttname"><a href="classSpatializer.html#adc52c47a80728decfe4c953173ab48c5">Spatializer::xml_print</a></div><div class="ttdeci">virtual void xml_print(ofstream &amp;xmlOutput)</div><div class="ttdef"><b>Definition</b> <a href="Spatializer_8cpp_source.html#l00093">Spatializer.cpp:93</a></div></div>
+<div class="ttc" id="aclassSpatializer_html_adc52c47a80728decfe4c953173ab48c5"><div class="ttname"><a href="classSpatializer.html#adc52c47a80728decfe4c953173ab48c5">Spatializer::xml_print</a></div><div class="ttdeci">virtual void xml_print(ofstream &amp;xmlOutput)</div><div class="ttdef"><b>Definition</b> <a href="Spatializer_8cpp_source.html#l00092">Spatializer.cpp:92</a></div></div>
 <div class="ttc" id="aclassTrack_html"><div class="ttname"><a href="classTrack.html">Track</a></div><div class="ttdef"><b>Definition</b> <a href="Track_8h_source.html#l00042">Track.h:43</a></div></div>
 <div class="ttc" id="aclassTrack_html_ab54ce0b0a12f52bc59fd3653a04f97d3"><div class="ttname"><a href="classTrack.html#ab54ce0b0a12f52bc59fd3653a04f97d3">Track::scale</a></div><div class="ttdeci">void scale(m_value_type factor)</div><div class="ttdef"><b>Definition</b> <a href="Track_8cpp_source.html#l00130">Track.cpp:130</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

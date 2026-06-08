@@ -101,8 +101,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a390d47503fcf32515953e82b561de502"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1346928ae3b687785f53f47f8ef0ced6" id="r_a1346928ae3b687785f53f47f8ef0ced6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvelopeLibrary.html#a1346928ae3b687785f53f47f8ef0ced6">addEnvelope</a> (<a class="el" href="classEnvelope.html">Envelope</a> *env)</td></tr>
 <tr class="separator:a1346928ae3b687785f53f47f8ef0ced6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a929cef2a5d6914d7ff13544ef289f24a" id="r_a929cef2a5d6914d7ff13544ef289f24a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvelopeLibrary.html#a929cef2a5d6914d7ff13544ef289f24a">addEnvelope</a> (<a class="el" href="classCollection.html">Collection</a>&lt; <a class="el" href="structxy__point.html">xy_point</a> &gt; points, <a class="el" href="classCollection.html">Collection</a>&lt; <a class="el" href="structenvelope__segment.html">envelope_segment</a> &gt; segments)</td></tr>
-<tr class="separator:a929cef2a5d6914d7ff13544ef289f24a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a622a46d48502930a1a1d6edf3d4c17d0" id="r_a622a46d48502930a1a1d6edf3d4c17d0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvelopeLibrary.html#a622a46d48502930a1a1d6edf3d4c17d0">addEnvelope</a> (vector&lt; <a class="el" href="structxy__point.html">xy_point</a> &gt; points, vector&lt; <a class="el" href="structenvelope__segment.html">envelope_segment</a> &gt; segments)</td></tr>
+<tr class="separator:a622a46d48502930a1a1d6edf3d4c17d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dad09ba7d238d946a0d6ccb644e1f83" id="r_a1dad09ba7d238d946a0d6ccb644e1f83"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvelopeLibrary.html#a1dad09ba7d238d946a0d6ccb644e1f83">updateEnvelope</a> (int index, <a class="el" href="classEnvelope.html">Envelope</a> *env)</td></tr>
 <tr class="separator:a1dad09ba7d238d946a0d6ccb644e1f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10c4e5568643dc9c0cfadfee29eec6f9" id="r_a10c4e5568643dc9c0cfadfee29eec6f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvelopeLibrary.html#a10c4e5568643dc9c0cfadfee29eec6f9">showEnvelope</a> (int index)</td></tr>
@@ -112,10 +112,10 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class manages a collection of Envelopes, providing methods for loading and saving the collection to a library file as well as functionality for adding to, retrieving from, updating the collection with, and displaying individual <a class="el" href="classEnvelope.html">Envelope</a> items. The name <a class="el" href="classEnvelope.html">Envelope</a> is used informally to designate an <a class="el" href="classEnvelope.html">Envelope</a>.</p>
-<dl class="section note"><dt>Note</dt><dd>All methods in this class that take an index argument begin with a first value of 1 for user ease, though the actual <a class="el" href="classCollection.html">Collection</a> indices begin at 0.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>All methods in this class that take an index argument begin with a first value of 1 for user ease, though the actual vector indices begin at 0.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Philipp Fraund </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8h_source.html#l00048">48</a> of file <a class="el" href="EnvelopeLibrary_8h_source.html">EnvelopeLibrary.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8h_source.html#l00047">47</a> of file <a class="el" href="EnvelopeLibrary_8h_source.html">EnvelopeLibrary.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="addc4e47e8a3ca9b420ae892f7e424558" name="addc4e47e8a3ca9b420ae892f7e424558"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#addc4e47e8a3ca9b420ae892f7e424558">&#9670;&#160;</a></span>EnvelopeLibrary() <span class="overload">[1/2]</span></h2>
@@ -133,7 +133,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This is the Constructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00040">40</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00039">39</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
 
 </div>
 </div>
@@ -153,19 +153,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This is the destructor. It deallocates all the Envelopes stored in the library. </p>
 
-<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00044">44</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvelopeLibrary_a7af0d2c4c318d5c164b3da533489f6dd_cgraph.png" border="0" usemap="#aclassEnvelopeLibrary_a7af0d2c4c318d5c164b3da533489f6dd_cgraph" alt=""/></div>
-<map name="aclassEnvelopeLibrary_a7af0d2c4c318d5c164b3da533489f6dd_cgraph" id="aclassEnvelopeLibrary_a7af0d2c4c318d5c164b3da533489f6dd_cgraph">
-<area shape="rect" title=" " alt="" coords="5,23,211,63"/>
-<area shape="rect" href="classCollection.html#a5eee5da64607d3bce3bc70ab840b6b88" title=" " alt="" coords="259,5,404,31"/>
-<area shape="poly" title=" " alt="" coords="211,29,244,25,245,30,212,34"/>
-<area shape="rect" href="classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="271,55,392,80"/>
-<area shape="poly" title=" " alt="" coords="212,52,257,57,257,62,211,57"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00043">43</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
 
 </div>
 </div>
@@ -193,82 +181,12 @@ Here is the call graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>A copy of lib </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00052">52</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvelopeLibrary_a39cf6da57787eeaee8810d6b3efaf71c_cgraph.png" border="0" usemap="#aclassEnvelopeLibrary_a39cf6da57787eeaee8810d6b3efaf71c_cgraph" alt=""/></div>
-<map name="aclassEnvelopeLibrary_a39cf6da57787eeaee8810d6b3efaf71c_cgraph" id="aclassEnvelopeLibrary_a39cf6da57787eeaee8810d6b3efaf71c_cgraph">
-<area shape="rect" title=" " alt="" coords="5,73,200,113"/>
-<area shape="rect" href="classCollection.html#a000bfa55f8abee5917f8c917e33b1d23" title=" " alt="" coords="251,5,370,31"/>
-<area shape="poly" title=" " alt="" coords="158,70,260,33,262,38,160,75"/>
-<area shape="rect" href="classEnvelope.html#ac7c7204c8737a39a3f6d9d22f74e9a4c" title=" " alt="" coords="248,55,373,80"/>
-<area shape="poly" title=" " alt="" coords="200,78,234,74,235,79,200,83"/>
-<area shape="rect" href="classCollection.html#aa6068a2d3ec4ad18882ebe7f9c181404" title=" " alt="" coords="253,104,369,129"/>
-<area shape="poly" title=" " alt="" coords="200,101,239,106,239,111,200,107"/>
-<area shape="rect" href="classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="250,153,371,179"/>
-<area shape="poly" title=" " alt="" coords="161,110,261,146,260,151,159,115"/>
-<area shape="rect" href="classEnvelope.html#ac609dfa5fe79dd719530e8c29bb35725" title=" " alt="" coords="421,55,572,80"/>
-<area shape="poly" title=" " alt="" coords="374,65,408,65,408,70,374,70"/>
-</map>
-</div>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a929cef2a5d6914d7ff13544ef289f24a" name="a929cef2a5d6914d7ff13544ef289f24a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a929cef2a5d6914d7ff13544ef289f24a">&#9670;&#160;</a></span>addEnvelope() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int EnvelopeLibrary::addEnvelope </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classCollection.html">Collection</a>&lt; <a class="el" href="structxy__point.html">xy_point</a> &gt;&#160;</td>
-          <td class="paramname"><em>points</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classCollection.html">Collection</a>&lt; <a class="el" href="structenvelope__segment.html">envelope_segment</a> &gt;&#160;</td>
-          <td class="paramname"><em>segments</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>This function adds a <a class="el" href="classCollection.html">Collection</a> of n+1 points and a <a class="el" href="classCollection.html">Collection</a> of n segments to the <a class="el" href="classEnvelopeLibrary.html">EnvelopeLibrary</a> and returns the index at which it has been added. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">points</td><td>A <a class="el" href="classCollection.html">Collection</a> of n+1 points </td></tr>
-    <tr><td class="paramname">segments</td><td>A <a class="el" href="classCollection.html">Collection</a> of n segments </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The index where they were added </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00350">350</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvelopeLibrary_a929cef2a5d6914d7ff13544ef289f24a_cgraph.png" border="0" usemap="#aclassEnvelopeLibrary_a929cef2a5d6914d7ff13544ef289f24a_cgraph" alt=""/></div>
-<map name="aclassEnvelopeLibrary_a929cef2a5d6914d7ff13544ef289f24a_cgraph" id="aclassEnvelopeLibrary_a929cef2a5d6914d7ff13544ef289f24a_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,224,56"/>
-<area shape="rect" href="classEnvelopeLibrary.html#a1346928ae3b687785f53f47f8ef0ced6" title=" " alt="" coords="272,31,491,56"/>
-<area shape="poly" title=" " alt="" coords="224,41,258,41,258,46,224,46"/>
-<area shape="rect" href="classCollection.html#a000bfa55f8abee5917f8c917e33b1d23" title=" " alt="" coords="540,5,659,31"/>
-<area shape="poly" title=" " alt="" coords="491,28,526,24,526,29,491,33"/>
-<area shape="rect" href="classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="539,55,660,80"/>
-<area shape="poly" title=" " alt="" coords="491,53,525,57,525,62,491,58"/>
-</map>
-</div>
-
-</div>
-</div>
 <a id="a1346928ae3b687785f53f47f8ef0ced6" name="a1346928ae3b687785f53f47f8ef0ced6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1346928ae3b687785f53f47f8ef0ced6">&#9670;&#160;</a></span>addEnvelope() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1346928ae3b687785f53f47f8ef0ced6">&#9670;&#160;</a></span>addEnvelope() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -290,27 +208,63 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The index of the new <a class="el" href="classEnvelope.html">Envelope</a> in the <a class="el" href="classEnvelopeLibrary.html">EnvelopeLibrary</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00342">342</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvelopeLibrary_a1346928ae3b687785f53f47f8ef0ced6_cgraph.png" border="0" usemap="#aclassEnvelopeLibrary_a1346928ae3b687785f53f47f8ef0ced6_cgraph" alt=""/></div>
-<map name="aclassEnvelopeLibrary_a1346928ae3b687785f53f47f8ef0ced6_cgraph" id="aclassEnvelopeLibrary_a1346928ae3b687785f53f47f8ef0ced6_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,224,56"/>
-<area shape="rect" href="classCollection.html#a000bfa55f8abee5917f8c917e33b1d23" title=" " alt="" coords="273,5,392,31"/>
-<area shape="poly" title=" " alt="" coords="224,28,259,24,260,29,225,33"/>
-<area shape="rect" href="classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="272,55,393,80"/>
-<area shape="poly" title=" " alt="" coords="225,53,259,57,258,62,224,58"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00343">343</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classEnvelopeLibrary_a1346928ae3b687785f53f47f8ef0ced6_icgraph.png" border="0" usemap="#aclassEnvelopeLibrary_a1346928ae3b687785f53f47f8ef0ced6_icgraph" alt=""/></div>
 <map name="aclassEnvelopeLibrary_a1346928ae3b687785f53f47f8ef0ced6_icgraph" id="aclassEnvelopeLibrary_a1346928ae3b687785f53f47f8ef0ced6_icgraph">
 <area shape="rect" title=" " alt="" coords="272,5,491,31"/>
-<area shape="rect" href="classEnvelopeLibrary.html#a929cef2a5d6914d7ff13544ef289f24a" title=" " alt="" coords="5,5,224,31"/>
+<area shape="rect" href="classEnvelopeLibrary.html#a622a46d48502930a1a1d6edf3d4c17d0" title=" " alt="" coords="5,5,224,31"/>
 <area shape="poly" title=" " alt="" coords="258,21,224,21,224,15,258,15"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a622a46d48502930a1a1d6edf3d4c17d0" name="a622a46d48502930a1a1d6edf3d4c17d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a622a46d48502930a1a1d6edf3d4c17d0">&#9670;&#160;</a></span>addEnvelope() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EnvelopeLibrary::addEnvelope </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; <a class="el" href="structxy__point.html">xy_point</a> &gt;&#160;</td>
+          <td class="paramname"><em>points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="structenvelope__segment.html">envelope_segment</a> &gt;&#160;</td>
+          <td class="paramname"><em>segments</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function adds a vector of n+1 points and a vector of n segments to the <a class="el" href="classEnvelopeLibrary.html">EnvelopeLibrary</a> and returns the index at which it has been added. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">points</td><td>A vector of n+1 points </td></tr>
+    <tr><td class="paramname">segments</td><td>A vector of n segments </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The index where they were added </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00351">351</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classEnvelopeLibrary_a622a46d48502930a1a1d6edf3d4c17d0_cgraph.png" border="0" usemap="#aclassEnvelopeLibrary_a622a46d48502930a1a1d6edf3d4c17d0_cgraph" alt=""/></div>
+<map name="aclassEnvelopeLibrary_a622a46d48502930a1a1d6edf3d4c17d0_cgraph" id="aclassEnvelopeLibrary_a622a46d48502930a1a1d6edf3d4c17d0_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,224,31"/>
+<area shape="rect" href="classEnvelopeLibrary.html#a1346928ae3b687785f53f47f8ef0ced6" title=" " alt="" coords="272,5,491,31"/>
+<area shape="poly" title=" " alt="" coords="224,15,258,15,258,21,224,21"/>
 </map>
 </div>
 
@@ -339,19 +293,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to an envelope </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00326">326</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvelopeLibrary_a4854884965e691990c4dfb9d7b952b39_cgraph.png" border="0" usemap="#aclassEnvelopeLibrary_a4854884965e691990c4dfb9d7b952b39_cgraph" alt=""/></div>
-<map name="aclassEnvelopeLibrary_a4854884965e691990c4dfb9d7b952b39_cgraph" id="aclassEnvelopeLibrary_a4854884965e691990c4dfb9d7b952b39_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,220,56"/>
-<area shape="rect" href="classCollection.html#aa6068a2d3ec4ad18882ebe7f9c181404" title=" " alt="" coords="271,5,387,31"/>
-<area shape="poly" title=" " alt="" coords="220,28,257,24,257,29,220,33"/>
-<area shape="rect" href="classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="268,55,389,80"/>
-<area shape="poly" title=" " alt="" coords="220,53,254,56,254,62,220,58"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00327">327</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
 
 </div>
 </div>
@@ -378,17 +320,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A const reference to the original envelope </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00336">336</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvelopeLibrary_a390d47503fcf32515953e82b561de502_cgraph.png" border="0" usemap="#aclassEnvelopeLibrary_a390d47503fcf32515953e82b561de502_cgraph" alt=""/></div>
-<map name="aclassEnvelopeLibrary_a390d47503fcf32515953e82b561de502_cgraph" id="aclassEnvelopeLibrary_a390d47503fcf32515953e82b561de502_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,243,31"/>
-<area shape="rect" href="classCollection.html#aa6068a2d3ec4ad18882ebe7f9c181404" title=" " alt="" coords="291,5,407,31"/>
-<area shape="poly" title=" " alt="" coords="243,15,277,15,277,21,243,21"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00337">337</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
 
 </div>
 </div>
@@ -415,21 +347,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of entries in the library of -1 if unsucessful </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00151">151</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvelopeLibrary_aca869bdeb02fc31f9c0a02ca824eb791_cgraph.png" border="0" usemap="#aclassEnvelopeLibrary_aca869bdeb02fc31f9c0a02ca824eb791_cgraph" alt=""/></div>
-<map name="aclassEnvelopeLibrary_aca869bdeb02fc31f9c0a02ca824eb791_cgraph" id="aclassEnvelopeLibrary_aca869bdeb02fc31f9c0a02ca824eb791_cgraph">
-<area shape="rect" title=" " alt="" coords="5,55,212,80"/>
-<area shape="rect" href="classCollection.html#a000bfa55f8abee5917f8c917e33b1d23" title=" " alt="" coords="264,5,383,31"/>
-<area shape="poly" title=" " alt="" coords="164,52,253,31,254,36,165,57"/>
-<area shape="rect" href="classCollection.html#a9ccb9847a5815d86a76b3bad7551733d" title=" " alt="" coords="260,55,387,80"/>
-<area shape="poly" title=" " alt="" coords="212,65,246,65,246,70,212,70"/>
-<area shape="rect" href="classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="263,104,384,129"/>
-<area shape="poly" title=" " alt="" coords="165,77,254,98,253,103,164,83"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00152">152</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
 
 </div>
 </div>
@@ -456,23 +374,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of entries in the library of -1 if unsucessful </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00248">248</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvelopeLibrary_af5203c8c616c4398413dc784d2b1c764_cgraph.png" border="0" usemap="#aclassEnvelopeLibrary_af5203c8c616c4398413dc784d2b1c764_cgraph" alt=""/></div>
-<map name="aclassEnvelopeLibrary_af5203c8c616c4398413dc784d2b1c764_cgraph" id="aclassEnvelopeLibrary_af5203c8c616c4398413dc784d2b1c764_cgraph">
-<area shape="rect" title=" " alt="" coords="5,73,212,113"/>
-<area shape="rect" href="classCollection.html#a000bfa55f8abee5917f8c917e33b1d23" title=" " alt="" coords="264,5,383,31"/>
-<area shape="poly" title=" " alt="" coords="166,70,272,33,274,38,168,75"/>
-<area shape="rect" href="classCollection.html#a9ccb9847a5815d86a76b3bad7551733d" title=" " alt="" coords="260,55,387,80"/>
-<area shape="poly" title=" " alt="" coords="212,78,246,74,247,79,213,83"/>
-<area shape="rect" href="classCollection.html#aa6068a2d3ec4ad18882ebe7f9c181404" title=" " alt="" coords="265,104,381,129"/>
-<area shape="poly" title=" " alt="" coords="213,102,252,106,251,111,212,107"/>
-<area shape="rect" href="classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="263,153,384,179"/>
-<area shape="poly" title=" " alt="" coords="169,110,273,146,271,151,167,115"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00249">249</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
 
 </div>
 </div>
@@ -494,22 +396,6 @@ Here is the call graph for this function:</div>
 <p>This is an overloaded assignment operator for EvelopeLibraries </p>
 
 <p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00060">60</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvelopeLibrary_a2548ced18171db610baffd1c3d4ed871_cgraph.png" border="0" usemap="#aclassEnvelopeLibrary_a2548ced18171db610baffd1c3d4ed871_cgraph" alt=""/></div>
-<map name="aclassEnvelopeLibrary_a2548ced18171db610baffd1c3d4ed871_cgraph" id="aclassEnvelopeLibrary_a2548ced18171db610baffd1c3d4ed871_cgraph">
-<area shape="rect" title=" " alt="" coords="5,80,205,105"/>
-<area shape="rect" href="classCollection.html#a000bfa55f8abee5917f8c917e33b1d23" title=" " alt="" coords="267,5,385,31"/>
-<area shape="poly" title=" " alt="" coords="143,77,252,39,273,33,274,38,254,45,144,82"/>
-<area shape="rect" href="classCollection.html#aa6068a2d3ec4ad18882ebe7f9c181404" title=" " alt="" coords="268,55,384,80"/>
-<area shape="poly" title=" " alt="" coords="205,79,254,73,255,78,206,84"/>
-<area shape="rect" href="classCollection.html#a5eee5da64607d3bce3bc70ab840b6b88" title=" " alt="" coords="253,104,399,129"/>
-<area shape="poly" title=" " alt="" coords="206,101,240,105,239,110,205,106"/>
-<area shape="rect" href="classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="265,153,387,179"/>
-<area shape="poly" title=" " alt="" coords="145,103,275,146,273,151,144,108"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -542,20 +428,15 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00078">78</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00079">79</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classEnvelopeLibrary_aecc2220d23a589b5a0fac37fa175408d_cgraph.png" border="0" usemap="#aclassEnvelopeLibrary_aecc2220d23a589b5a0fac37fa175408d_cgraph" alt=""/></div>
 <map name="aclassEnvelopeLibrary_aecc2220d23a589b5a0fac37fa175408d_cgraph" id="aclassEnvelopeLibrary_aecc2220d23a589b5a0fac37fa175408d_cgraph">
-<area shape="rect" title=" " alt="" coords="5,56,216,81"/>
-<area shape="rect" href="classCollection.html#aa6068a2d3ec4ad18882ebe7f9c181404" title=" " alt="" coords="286,5,402,31"/>
-<area shape="poly" title=" " alt="" coords="170,53,272,31,273,36,171,58"/>
-<area shape="rect" href="classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="472,81,593,107"/>
-<area shape="poly" title=" " alt="" coords="216,72,459,87,458,92,216,78"/>
-<area shape="rect" href="classEnvelopeLibrary.html#aee38f438ecd706a6aea46710f782f9d5" title=" " alt="" coords="264,107,424,132"/>
-<area shape="poly" title=" " alt="" coords="171,79,272,101,271,106,170,84"/>
-<area shape="poly" title=" " alt="" coords="424,106,458,101,459,107,425,111"/>
+<area shape="rect" title=" " alt="" coords="5,5,216,31"/>
+<area shape="rect" href="classEnvelopeLibrary.html#aee38f438ecd706a6aea46710f782f9d5" title=" " alt="" coords="264,5,424,31"/>
+<area shape="poly" title=" " alt="" coords="216,15,250,15,250,21,216,21"/>
 </map>
 </div>
 
@@ -583,19 +464,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00373">373</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvelopeLibrary_a10c4e5568643dc9c0cfadfee29eec6f9_cgraph.png" border="0" usemap="#aclassEnvelopeLibrary_a10c4e5568643dc9c0cfadfee29eec6f9_cgraph" alt=""/></div>
-<map name="aclassEnvelopeLibrary_a10c4e5568643dc9c0cfadfee29eec6f9_cgraph" id="aclassEnvelopeLibrary_a10c4e5568643dc9c0cfadfee29eec6f9_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,233,56"/>
-<area shape="rect" href="classCollection.html#aa6068a2d3ec4ad18882ebe7f9c181404" title=" " alt="" coords="284,5,400,31"/>
-<area shape="poly" title=" " alt="" coords="231,28,270,23,271,29,232,33"/>
-<area shape="rect" href="classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="281,55,403,80"/>
-<area shape="poly" title=" " alt="" coords="234,53,268,57,267,62,234,58"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00374">374</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
 
 </div>
 </div>
@@ -615,17 +484,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>This function returns the number of envelopes existing in the <a class="el" href="classEnvelopeLibrary.html">EnvelopeLibrary</a> </p><dl class="section return"><dt>Returns</dt><dd>The number of envelopes </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00388">388</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvelopeLibrary_aee38f438ecd706a6aea46710f782f9d5_cgraph.png" border="0" usemap="#aclassEnvelopeLibrary_aee38f438ecd706a6aea46710f782f9d5_cgraph" alt=""/></div>
-<map name="aclassEnvelopeLibrary_aee38f438ecd706a6aea46710f782f9d5_cgraph" id="aclassEnvelopeLibrary_aee38f438ecd706a6aea46710f782f9d5_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,165,31"/>
-<area shape="rect" href="classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="213,5,335,31"/>
-<area shape="poly" title=" " alt="" coords="166,15,200,15,200,21,166,21"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00389">389</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -679,19 +538,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00360">360</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvelopeLibrary_a1dad09ba7d238d946a0d6ccb644e1f83_cgraph.png" border="0" usemap="#aclassEnvelopeLibrary_a1dad09ba7d238d946a0d6ccb644e1f83_cgraph" alt=""/></div>
-<map name="aclassEnvelopeLibrary_a1dad09ba7d238d946a0d6ccb644e1f83_cgraph" id="aclassEnvelopeLibrary_a1dad09ba7d238d946a0d6ccb644e1f83_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,244,56"/>
-<area shape="rect" href="classCollection.html#a551e3277afbc2701ab47132041bdc2f7" title=" " alt="" coords="295,5,410,31"/>
-<area shape="poly" title=" " alt="" coords="239,28,281,23,282,29,240,33"/>
-<area shape="rect" href="classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="292,55,413,80"/>
-<area shape="poly" title=" " alt="" coords="245,53,279,57,278,62,244,59"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="EnvelopeLibrary_8cpp_source.html#l00361">361</a> of file <a class="el" href="EnvelopeLibrary_8cpp_source.html">EnvelopeLibrary.cpp</a>.</p>
 
 </div>
 </div>

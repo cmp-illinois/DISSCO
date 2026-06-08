@@ -1,7 +1,7 @@
 <map id="Pan::spatialize_Track" name="Pan::spatialize_Track">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,203,163,228"/>
-<area shape="rect" id="Node000002" href="$classCollection.html#aa6068a2d3ec4ad18882ebe7f9c181404" title=" " alt="" coords="279,5,395,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,201,104,168,130,124,165,78,186,57,209,40,236,27,264,20,266,25,238,32,212,44,189,61,169,81,134,127,109,170,93,203"/>
+<area shape="rect" id="Node000002" href="$classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283" title=" " alt="" coords="277,5,396,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,201,104,168,130,124,165,78,186,57,209,40,235,27,263,20,264,25,237,32,212,44,189,61,169,81,134,127,109,170,93,203"/>
 <area shape="rect" id="Node000003" href="$classTrack.html#acf30fde4157ac02d2183fdc8ac71498b" title=" " alt="" coords="279,55,394,80"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="92,201,138,146,171,115,209,89,237,78,265,71,266,76,238,83,212,94,174,119,142,149,96,204"/>
 <area shape="rect" id="Node000004" href="$classSoundSample.html#a8fe1248c64570253ba40d68a75114057" title=" " alt="" coords="223,104,450,129"/>

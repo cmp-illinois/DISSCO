@@ -1,7 +1,7 @@
 <map id="MultiPan::spatialize_Track" name="MultiPan::spatialize_Track">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,122,155,162"/>
-<area shape="rect" id="Node000002" href="$classCollection.html#aa6068a2d3ec4ad18882ebe7f9c181404" title=" " alt="" coords="260,5,376,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,120,142,79,171,57,202,40,245,25,247,30,204,44,174,62,146,83,102,124"/>
+<area shape="rect" id="Node000002" href="$classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283" title=" " alt="" coords="259,5,377,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,120,142,79,171,57,202,40,245,25,246,30,204,44,174,62,146,83,102,124"/>
 <area shape="rect" id="Node000003" href="$classTrack.html#acf30fde4157ac02d2183fdc8ac71498b" title=" " alt="" coords="261,55,375,80"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="123,119,202,89,246,77,248,82,203,94,125,124"/>
 <area shape="rect" id="Node000004" href="$classSoundSample.html#a8fe1248c64570253ba40d68a75114057" title=" " alt="" coords="205,104,431,129"/>

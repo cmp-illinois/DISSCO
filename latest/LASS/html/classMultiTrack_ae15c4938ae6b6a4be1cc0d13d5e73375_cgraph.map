@@ -1,9 +1,9 @@
 <map id="MultiTrack::MultiTrack" name="MultiTrack::MultiTrack">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,70,169,95"/>
-<area shape="rect" id="Node000002" href="$classCollection.html#a000bfa55f8abee5917f8c917e33b1d23" title=" " alt="" coords="217,5,364,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,67,206,46,207,52,134,73"/>
-<area shape="rect" id="Node000003" href="$classCollection.html#aa6068a2d3ec4ad18882ebe7f9c181404" title=" " alt="" coords="233,70,349,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="170,80,219,80,219,85,170,85"/>
-<area shape="rect" id="Node000004" href="$classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="230,119,351,145"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="141,93,225,113,224,119,140,98"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,169,80"/>
+<area shape="rect" id="Node000002" href="$classMultiTrack.html#a552838b6f90ef378dd8ae9e795e58f13" title=" " alt="" coords="218,5,339,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,52,214,32,216,37,138,57"/>
+<area shape="rect" id="Node000003" href="$classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283" title=" " alt="" coords="219,55,338,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="170,65,206,65,206,70,170,70"/>
+<area shape="rect" id="Node000004" href="$classMultiTrack.html#a58628666119ee3c39068e41ef9430d1e" title=" " alt="" coords="217,104,340,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="138,77,216,98,214,103,137,83"/>
 </map>

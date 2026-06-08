@@ -1,25 +1,15 @@
 <map id="Score::add" name="Score::add">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,107,96,132"/>
-<area shape="rect" id="Node000002" href="$classReverb.html#aa6f4b3abeb52759de5b8f84de09c6be7" title=" " alt="" coords="391,5,529,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,104,102,83,143,64,203,46,265,33,377,19,378,25,265,39,204,51,145,68,104,88,71,109"/>
-<area shape="rect" id="Node000003" href="$classParameterLib.html#ab7c9e5e33bc46baaa3e75514c53cd2b0" title=" " alt="" coords="371,56,549,81"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="91,104,144,91,254,77,357,69,357,75,254,82,144,97,93,109"/>
-<area shape="rect" id="Node000004" href="$classSound.html#a6dea3ab5c56ffabb1a30163c62ecd211" title=" " alt="" coords="144,107,323,132"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="96,117,130,117,130,122,96,122"/>
-<area shape="rect" id="Node000010" href="$classSemaphore.html#a99bb4da0df09d6f3181c2a376dd5b8f0" title=" " alt="" coords="167,156,299,181"/>
-<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="97,129,173,150,172,155,95,134"/>
-<area shape="rect" id="Node000011" href="$classSemaphore.html#a85500356c2f7d1057d4568227e7f35b7" title=" " alt="" coords="167,205,299,231"/>
-<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="66,130,100,161,145,192,160,198,158,203,143,196,97,165,63,134"/>
-<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="253,104,305,73,370,41,393,32,395,37,372,46,307,78,256,109"/>
-<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="291,104,389,82,390,87,292,109"/>
-<area shape="rect" id="Node000005" href="$classIterator.html#a69b4bebf4a915a4ee591e6c8bd9b9b9a" title=" " alt="" coords="394,105,526,131"/>
-<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="323,116,380,116,380,121,323,121"/>
-<area shape="rect" id="Node000007" href="$classCollection.html#acd5dfa486c735fe26700dd94e2b0d0c4" title=" " alt="" coords="389,155,531,195"/>
-<area shape="poly" id="edge8_Node000004_Node000007" title=" " alt="" coords="286,129,376,152,375,157,285,135"/>
-<area shape="rect" id="Node000008" href="$classIterator.html#a12aa5b9d3dd7370cd40943427834adc6" title=" " alt="" coords="407,220,513,245"/>
-<area shape="poly" id="edge9_Node000004_Node000008" title=" " alt="" coords="302,130,324,141,341,157,349,174,357,190,372,205,395,217,392,222,369,209,353,193,344,176,336,160,321,145,300,134"/>
-<area shape="rect" id="Node000006" href="$classAbstractIterator.html#aabada3692730edd3a71070e9fc0fd3c0" title=" " alt="" coords="597,105,784,131"/>
-<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="526,115,584,115,584,121,526,121"/>
-<area shape="rect" id="Node000009" href="$classAbstractIterator.html#a131acaa938ffedf104e5e3b55dffc5c2" title=" " alt="" coords="610,220,771,245"/>
-<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="514,230,596,230,596,235,514,235"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,90,96,115"/>
+<area shape="rect" id="Node000002" href="$classReverb.html#aa6f4b3abeb52759de5b8f84de09c6be7" title=" " alt="" coords="391,15,529,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,88,94,54,117,37,143,24,204,9,267,3,328,5,382,10,381,16,328,10,267,9,205,14,145,29,120,41,97,58,64,91"/>
+<area shape="rect" id="Node000003" href="$classParameterLib.html#ab7c9e5e33bc46baaa3e75514c53cd2b0" title=" " alt="" coords="371,64,549,90"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="96,97,357,81,357,86,96,102"/>
+<area shape="rect" id="Node000004" href="$classSound.html#a6dea3ab5c56ffabb1a30163c62ecd211" title=" " alt="" coords="144,39,323,64"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="95,87,173,66,174,71,97,93"/>
+<area shape="rect" id="Node000005" href="$classSemaphore.html#a99bb4da0df09d6f3181c2a376dd5b8f0" title=" " alt="" coords="167,140,299,166"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="97,112,174,134,173,139,95,117"/>
+<area shape="rect" id="Node000006" href="$classSemaphore.html#a85500356c2f7d1057d4568227e7f35b7" title=" " alt="" coords="167,190,299,215"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="66,113,100,145,145,176,160,183,158,188,143,181,96,149,62,117"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="323,40,376,34,377,39,323,45"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="323,59,357,63,357,68,323,64"/>
 </map>

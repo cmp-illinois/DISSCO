@@ -113,58 +113,56 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="StandardHeaders_8h.html">StandardHeaders.h</a>&quot;</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;<a class="code" href="SoundSample_8h.html">SoundSample.h</a>&quot;</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="Collection_8h.html">Collection.h</a>&quot;</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="Track_8h.html">Track.h</a>&quot;</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;<a class="code" href="MultiTrack_8h.html">MultiTrack.h</a>&quot;</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &quot;<a class="code" href="LowPassFilter_8h.html">LowPassFilter.h</a>&quot;</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;<a class="code" href="Filter_8h.html">Filter.h</a>&quot;</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;<a class="code" href="XmlReader_8h.html">XmlReader.h</a>&quot;</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="foldopen" id="foldopen00051" data-start="{" data-end="};">
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classAllPassFilter.html">   51</a></span><span class="keyword">class </span><a class="code hl_class" href="classAllPassFilter.html">AllPassFilter</a> : <span class="keyword">public</span> <a class="code hl_class" href="classFilter.html">Filter</a></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <a class="code hl_function" href="classAllPassFilter.html#a3b1ede560e39873b86d30745b0967bab">AllPassFilter</a>(<span class="keywordtype">float</span> gain, <span class="keywordtype">long</span> delay);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <a class="code hl_function" href="classAllPassFilter.html#af939772d0a931e1de990b742428b2472">~AllPassFilter</a>();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <a class="code hl_typedef" href="Types_8h.html#addf4c29465709fc65687f1aeb009f210">m_sample_type</a> <a class="code hl_function" href="classAllPassFilter.html#a35478d1e13350c818aa6ee30885701ec">do_filter</a>(<a class="code hl_typedef" href="Types_8h.html#addf4c29465709fc65687f1aeb009f210">m_sample_type</a> x_t);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#ifdef __APPLE__</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  <span class="keywordtype">void</span> do_filter_buffer(<span class="keyword">const</span> <span class="keywordtype">float</span>* in, <span class="keywordtype">float</span>* out, <span class="keywordtype">long</span> n);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classAllPassFilter.html#a7d2526a71f27ef869724259ee834efc9">reset</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classAllPassFilter.html#ac4eaf5caf57dc7f302dc943c6a0b1593">xml_print</a>( ofstream&amp; xmlOutput );</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  <a class="code hl_function" href="classAllPassFilter.html#a3b1ede560e39873b86d30745b0967bab">AllPassFilter</a>();</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classAllPassFilter.html#a4c855e8415e916dfab31bbf3e84eec8f">set_g</a>(<span class="keywordtype">float</span> gain);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classAllPassFilter.html#ab00a7e7072c7e1114326cfc78d7f8d10">set_D</a>(<span class="keywordtype">long</span> delay);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classAllPassFilter.html#aacd03ff1edec06259e5d71a75072b86b">xml_read</a>( <a class="code hl_class" href="classXmlReader_1_1xmltag.html">XmlReader::xmltag</a> *apftag);</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  <span class="keywordtype">float</span> g;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  <span class="keywordtype">float</span> g_sqrd;</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>  <span class="keywordtype">long</span> D;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>  <a class="code hl_class" href="classFilter_1_1hist__queue.html">Filter::hist_queue&lt;m_sample_type&gt;</a> *y_hist;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  <a class="code hl_class" href="classFilter_1_1hist__queue.html">Filter::hist_queue&lt;m_sample_type&gt;</a> *x_hist;</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>};</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="Track_8h.html">Track.h</a>&quot;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="MultiTrack_8h.html">MultiTrack.h</a>&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;<a class="code" href="LowPassFilter_8h.html">LowPassFilter.h</a>&quot;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &quot;<a class="code" href="Filter_8h.html">Filter.h</a>&quot;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;<a class="code" href="XmlReader_8h.html">XmlReader.h</a>&quot;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="};">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classAllPassFilter.html">   50</a></span><span class="keyword">class </span><a class="code hl_class" href="classAllPassFilter.html">AllPassFilter</a> : <span class="keyword">public</span> <a class="code hl_class" href="classFilter.html">Filter</a></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>{</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <a class="code hl_function" href="classAllPassFilter.html#a3b1ede560e39873b86d30745b0967bab">AllPassFilter</a>(<span class="keywordtype">float</span> gain, <span class="keywordtype">long</span> delay);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <a class="code hl_function" href="classAllPassFilter.html#af939772d0a931e1de990b742428b2472">~AllPassFilter</a>();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <a class="code hl_typedef" href="Types_8h.html#addf4c29465709fc65687f1aeb009f210">m_sample_type</a> <a class="code hl_function" href="classAllPassFilter.html#a35478d1e13350c818aa6ee30885701ec">do_filter</a>(<a class="code hl_typedef" href="Types_8h.html#addf4c29465709fc65687f1aeb009f210">m_sample_type</a> x_t);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#ifdef __APPLE__</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <span class="keywordtype">void</span> do_filter_buffer(<span class="keyword">const</span> <span class="keywordtype">float</span>* in, <span class="keywordtype">float</span>* out, <span class="keywordtype">long</span> n);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classAllPassFilter.html#a7d2526a71f27ef869724259ee834efc9">reset</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classAllPassFilter.html#ac4eaf5caf57dc7f302dc943c6a0b1593">xml_print</a>( ofstream&amp; xmlOutput );</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  <a class="code hl_function" href="classAllPassFilter.html#a3b1ede560e39873b86d30745b0967bab">AllPassFilter</a>();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classAllPassFilter.html#a4c855e8415e916dfab31bbf3e84eec8f">set_g</a>(<span class="keywordtype">float</span> gain);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classAllPassFilter.html#ab00a7e7072c7e1114326cfc78d7f8d10">set_D</a>(<span class="keywordtype">long</span> delay);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classAllPassFilter.html#aacd03ff1edec06259e5d71a75072b86b">xml_read</a>( <a class="code hl_class" href="classXmlReader_1_1xmltag.html">XmlReader::xmltag</a> *apftag);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  <span class="keywordtype">float</span> g;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="keywordtype">float</span> g_sqrd;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>  <span class="keywordtype">long</span> D;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  <a class="code hl_class" href="classFilter_1_1hist__queue.html">Filter::hist_queue&lt;m_sample_type&gt;</a> *y_hist;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  <a class="code hl_class" href="classFilter_1_1hist__queue.html">Filter::hist_queue&lt;m_sample_type&gt;</a> *x_hist;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>};</div>
 </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="preprocessor">#endif </span><span class="comment">//___ALL_PASS_FILTER_H</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="ttc" id="aCollection_8h_html"><div class="ttname"><a href="Collection_8h.html">Collection.h</a></div></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="preprocessor">#endif </span><span class="comment">//___ALL_PASS_FILTER_H</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
 <div class="ttc" id="aFilter_8h_html"><div class="ttname"><a href="Filter_8h.html">Filter.h</a></div></div>
 <div class="ttc" id="aLowPassFilter_8h_html"><div class="ttname"><a href="LowPassFilter_8h.html">LowPassFilter.h</a></div></div>
 <div class="ttc" id="aMultiTrack_8h_html"><div class="ttname"><a href="MultiTrack_8h.html">MultiTrack.h</a></div></div>
@@ -173,17 +171,17 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aTrack_8h_html"><div class="ttname"><a href="Track_8h.html">Track.h</a></div></div>
 <div class="ttc" id="aTypes_8h_html_addf4c29465709fc65687f1aeb009f210"><div class="ttname"><a href="Types_8h.html#addf4c29465709fc65687f1aeb009f210">m_sample_type</a></div><div class="ttdeci">float m_sample_type</div><div class="ttdoc">Specifies a type for an individual sample value.</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00041">Types.h:41</a></div></div>
 <div class="ttc" id="aXmlReader_8h_html"><div class="ttname"><a href="XmlReader_8h.html">XmlReader.h</a></div></div>
-<div class="ttc" id="aclassAllPassFilter_html"><div class="ttname"><a href="classAllPassFilter.html">AllPassFilter</a></div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8h_source.html#l00051">AllPassFilter.h:52</a></div></div>
-<div class="ttc" id="aclassAllPassFilter_html_a35478d1e13350c818aa6ee30885701ec"><div class="ttname"><a href="classAllPassFilter.html#a35478d1e13350c818aa6ee30885701ec">AllPassFilter::do_filter</a></div><div class="ttdeci">m_sample_type do_filter(m_sample_type x_t)</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00074">AllPassFilter.cpp:74</a></div></div>
-<div class="ttc" id="aclassAllPassFilter_html_a3b1ede560e39873b86d30745b0967bab"><div class="ttname"><a href="classAllPassFilter.html#a3b1ede560e39873b86d30745b0967bab">AllPassFilter::AllPassFilter</a></div><div class="ttdeci">AllPassFilter()</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00170">AllPassFilter.cpp:170</a></div></div>
-<div class="ttc" id="aclassAllPassFilter_html_a4c855e8415e916dfab31bbf3e84eec8f"><div class="ttname"><a href="classAllPassFilter.html#a4c855e8415e916dfab31bbf3e84eec8f">AllPassFilter::set_g</a></div><div class="ttdeci">void set_g(float gain)</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00174">AllPassFilter.cpp:174</a></div></div>
-<div class="ttc" id="aclassAllPassFilter_html_a7d2526a71f27ef869724259ee834efc9"><div class="ttname"><a href="classAllPassFilter.html#a7d2526a71f27ef869724259ee834efc9">AllPassFilter::reset</a></div><div class="ttdeci">void reset(void)</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00140">AllPassFilter.cpp:140</a></div></div>
-<div class="ttc" id="aclassAllPassFilter_html_aacd03ff1edec06259e5d71a75072b86b"><div class="ttname"><a href="classAllPassFilter.html#aacd03ff1edec06259e5d71a75072b86b">AllPassFilter::xml_read</a></div><div class="ttdeci">void xml_read(XmlReader::xmltag *apftag)</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00194">AllPassFilter.cpp:194</a></div></div>
-<div class="ttc" id="aclassAllPassFilter_html_ab00a7e7072c7e1114326cfc78d7f8d10"><div class="ttname"><a href="classAllPassFilter.html#ab00a7e7072c7e1114326cfc78d7f8d10">AllPassFilter::set_D</a></div><div class="ttdeci">void set_D(long delay)</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00179">AllPassFilter.cpp:179</a></div></div>
-<div class="ttc" id="aclassAllPassFilter_html_ac4eaf5caf57dc7f302dc943c6a0b1593"><div class="ttname"><a href="classAllPassFilter.html#ac4eaf5caf57dc7f302dc943c6a0b1593">AllPassFilter::xml_print</a></div><div class="ttdeci">void xml_print(ofstream &amp;xmlOutput)</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00158">AllPassFilter.cpp:158</a></div></div>
-<div class="ttc" id="aclassAllPassFilter_html_af939772d0a931e1de990b742428b2472"><div class="ttname"><a href="classAllPassFilter.html#af939772d0a931e1de990b742428b2472">AllPassFilter::~AllPassFilter</a></div><div class="ttdeci">~AllPassFilter()</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00066">AllPassFilter.cpp:66</a></div></div>
-<div class="ttc" id="aclassFilter_1_1hist__queue_html"><div class="ttname"><a href="classFilter_1_1hist__queue.html">Filter::hist_queue</a></div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00161">Filter.h:162</a></div></div>
-<div class="ttc" id="aclassFilter_html"><div class="ttname"><a href="classFilter.html">Filter</a></div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00053">Filter.h:54</a></div></div>
+<div class="ttc" id="aclassAllPassFilter_html"><div class="ttname"><a href="classAllPassFilter.html">AllPassFilter</a></div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8h_source.html#l00050">AllPassFilter.h:51</a></div></div>
+<div class="ttc" id="aclassAllPassFilter_html_a35478d1e13350c818aa6ee30885701ec"><div class="ttname"><a href="classAllPassFilter.html#a35478d1e13350c818aa6ee30885701ec">AllPassFilter::do_filter</a></div><div class="ttdeci">m_sample_type do_filter(m_sample_type x_t)</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00073">AllPassFilter.cpp:73</a></div></div>
+<div class="ttc" id="aclassAllPassFilter_html_a3b1ede560e39873b86d30745b0967bab"><div class="ttname"><a href="classAllPassFilter.html#a3b1ede560e39873b86d30745b0967bab">AllPassFilter::AllPassFilter</a></div><div class="ttdeci">AllPassFilter()</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00169">AllPassFilter.cpp:169</a></div></div>
+<div class="ttc" id="aclassAllPassFilter_html_a4c855e8415e916dfab31bbf3e84eec8f"><div class="ttname"><a href="classAllPassFilter.html#a4c855e8415e916dfab31bbf3e84eec8f">AllPassFilter::set_g</a></div><div class="ttdeci">void set_g(float gain)</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00173">AllPassFilter.cpp:173</a></div></div>
+<div class="ttc" id="aclassAllPassFilter_html_a7d2526a71f27ef869724259ee834efc9"><div class="ttname"><a href="classAllPassFilter.html#a7d2526a71f27ef869724259ee834efc9">AllPassFilter::reset</a></div><div class="ttdeci">void reset(void)</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00139">AllPassFilter.cpp:139</a></div></div>
+<div class="ttc" id="aclassAllPassFilter_html_aacd03ff1edec06259e5d71a75072b86b"><div class="ttname"><a href="classAllPassFilter.html#aacd03ff1edec06259e5d71a75072b86b">AllPassFilter::xml_read</a></div><div class="ttdeci">void xml_read(XmlReader::xmltag *apftag)</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00193">AllPassFilter.cpp:193</a></div></div>
+<div class="ttc" id="aclassAllPassFilter_html_ab00a7e7072c7e1114326cfc78d7f8d10"><div class="ttname"><a href="classAllPassFilter.html#ab00a7e7072c7e1114326cfc78d7f8d10">AllPassFilter::set_D</a></div><div class="ttdeci">void set_D(long delay)</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00178">AllPassFilter.cpp:178</a></div></div>
+<div class="ttc" id="aclassAllPassFilter_html_ac4eaf5caf57dc7f302dc943c6a0b1593"><div class="ttname"><a href="classAllPassFilter.html#ac4eaf5caf57dc7f302dc943c6a0b1593">AllPassFilter::xml_print</a></div><div class="ttdeci">void xml_print(ofstream &amp;xmlOutput)</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00157">AllPassFilter.cpp:157</a></div></div>
+<div class="ttc" id="aclassAllPassFilter_html_af939772d0a931e1de990b742428b2472"><div class="ttname"><a href="classAllPassFilter.html#af939772d0a931e1de990b742428b2472">AllPassFilter::~AllPassFilter</a></div><div class="ttdeci">~AllPassFilter()</div><div class="ttdef"><b>Definition</b> <a href="AllPassFilter_8cpp_source.html#l00065">AllPassFilter.cpp:65</a></div></div>
+<div class="ttc" id="aclassFilter_1_1hist__queue_html"><div class="ttname"><a href="classFilter_1_1hist__queue.html">Filter::hist_queue</a></div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00160">Filter.h:161</a></div></div>
+<div class="ttc" id="aclassFilter_html"><div class="ttname"><a href="classFilter.html">Filter</a></div><div class="ttdef"><b>Definition</b> <a href="Filter_8h_source.html#l00052">Filter.h:53</a></div></div>
 <div class="ttc" id="aclassXmlReader_1_1xmltag_html"><div class="ttname"><a href="classXmlReader_1_1xmltag.html">XmlReader::xmltag</a></div><div class="ttdef"><b>Definition</b> <a href="XmlReader_8h_source.html#l00079">XmlReader.h:80</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

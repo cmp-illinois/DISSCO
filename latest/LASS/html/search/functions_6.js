@@ -1,7 +1,7 @@
 var searchData=
 [
   ['generatecounttable_0',['generateCountTable',['../classProbabilityEnvelope.html#a0fdd918a8252fcc03a672f2110dcbda1',1,'ProbabilityEnvelope']]],
-  ['get_1',['get',['../classCollection.html#aa6068a2d3ec4ad18882ebe7f9c181404',1,'Collection::get(int index)'],['../classCollection.html#a3c74faa7781a6fba66cbbfd1ce0ddfc0',1,'Collection::get(int index) const']]],
+  ['get_1',['get',['../classInterpolator.html#ab3094fbee45bd075096ac75ecdb20975',1,'Interpolator::get()'],['../classSound.html#a7870199ea1f109270168b209fcd71f76',1,'Sound::get()'],['../classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283',1,'MultiTrack::get()']]],
   ['get_5fstate_2',['get_state',['../classLowPassFilter.html#a931251f60d29d9155868efbefeb98e54',1,'LowPassFilter']]],
   ['getamp_3',['getAmp',['../classTrack.html#acf30fde4157ac02d2183fdc8ac71498b',1,'Track']]],
   ['getclippingmanagementmode_4',['getClippingManagementMode',['../classScore.html#ab7708ecd0626ba74b42243212bfc8be9',1,'Score']]],
@@ -15,7 +15,7 @@ var searchData=
   ['getparamvalue_12',['getParamValue',['../classXmlReader_1_1xmltag.html#ad6a217ae1be50cb448b51b8334ccb9e0',1,'XmlReader::xmltag']]],
   ['getpartialparamenv_13',['getPartialParamEnv',['../classSound.html#a24e3d5ca8a6bc08060813aa6e33f19af',1,'Sound']]],
   ['getpoint_14',['getpoint',['../classDynamicVariableSequence.html#a9f1f471dd94612acc25a187b5ce63eb8',1,'DynamicVariableSequence::getPoint()'],['../classEnvelope.html#abc14176c36a291328c8dea7d98699bca',1,'Envelope::getPoint()']]],
-  ['getpoints_15',['getpoints',['../classDynamicVariableSequence.html#a35b14b02949c34150858df25a6297778',1,'DynamicVariableSequence::getPoints()'],['../classEnvelope.html#a50fb743c910ac51921cf3e90cf5c8d59',1,'Envelope::getPoints()']]],
+  ['getpoints_15',['getpoints',['../classDynamicVariableSequence.html#a771cb45dc13290e2be10eba93bd51531',1,'DynamicVariableSequence::getPoints()'],['../classEnvelope.html#ade4b9d10277d2d4b8fb7811a98b5e7bb',1,'Envelope::getPoints()']]],
   ['getsamplecount_16',['getsamplecount',['../classDynamicVariable.html#a46f9b84315ee989ee1ddad902624634a',1,'DynamicVariable::getSampleCount()'],['../classSoundSample.html#a8fe1248c64570253ba40d68a75114057',1,'SoundSample::getSampleCount()']]],
   ['getsamplingrate_17',['getsamplingrate',['../classDynamicVariable.html#ae748c97f7a5831e8138bcc5a6f1cdd76',1,'DynamicVariable::getSamplingRate()'],['../classSoundSample.html#a08fd608ef3ada608ca32828c427c9741',1,'SoundSample::getSamplingRate()']]],
   ['getscaledvaluenew_18',['getScaledValueNew',['../classEnvelope.html#a90e126d9b3028de0751df94278f6d3f6',1,'Envelope']]],
@@ -24,7 +24,7 @@ var searchData=
   ['getsegmentinterpolationtype_21',['getsegmentinterpolationtype',['../classDynamicVariableSequence.html#a081281c17c942a1d87f6ee337955a745',1,'DynamicVariableSequence::getSegmentInterpolationType()'],['../classEnvelope.html#ac7ea92d4753d7555834f9513401b0f88',1,'Envelope::getSegmentInterpolationType(int index)']]],
   ['getsegmentlength_22',['getSegmentLength',['../classEnvelope.html#a671d7496e576cea80e444fffc6fb708a',1,'Envelope']]],
   ['getsegmentlengthtype_23',['getSegmentLengthType',['../classEnvelope.html#a4ccb3e407ba90ef62d8ac072831bb921',1,'Envelope']]],
-  ['getsegments_24',['getsegments',['../classDynamicVariableSequence.html#ac92911111b7ade670a881b15e372496d',1,'DynamicVariableSequence::getSegments()'],['../classEnvelope.html#ae0be29b3cacf996729d85cfaca8d2843',1,'Envelope::getSegments()']]],
+  ['getsegments_24',['getsegments',['../classDynamicVariableSequence.html#a865296845e5f263c7310be8611fe832a',1,'DynamicVariableSequence::getSegments()'],['../classEnvelope.html#a1c45a493da7c83989cc15d2c717f6f12',1,'Envelope::getSegments()']]],
   ['getsegmenttime_25',['getSegmentTime',['../classDynamicVariableSequence.html#a8933d90381b2e02f6741ba935785e24f',1,'DynamicVariableSequence']]],
   ['getsegmenttimetype_26',['getSegmentTimeType',['../classDynamicVariableSequence.html#a02a17aae1dddcf3f334cf3dc149c4b42',1,'DynamicVariableSequence']]],
   ['getstatesize_27',['getStateSize',['../classMarkovModel.html#a0fdb9dccd4fdd0adca58910dd9419987',1,'MarkovModel']]],

@@ -1,3 +1,19 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classCollection.html" title=" " alt="" coords="5,5,193,31"/>
+<area shape="rect" id="Node000000" href="$classDynamicVariable.html" title=" " alt="" coords="5,80,139,105"/>
+<area shape="rect" id="Node000001" href="$classConstant.html" title=" " alt="" coords="245,5,325,31"/>
+<area shape="poly" id="edge7_Node000000_Node000001" title=" " alt="" coords="109,72,186,39,244,23,245,29,188,45,112,77"/>
+<area shape="rect" id="Node000002" href="$classDynamicVariableSequence.html" title=" " alt="" coords="187,55,383,80"/>
+<area shape="poly" id="edge8_Node000000_Node000002" title=" " alt="" coords="152,80,186,76,187,82,153,86"/>
+<area shape="rect" id="Node000003" href="$classEnvelope.html" title=" " alt="" coords="243,104,326,129"/>
+<area shape="poly" id="edge9_Node000000_Node000003" title=" " alt="" coords="153,99,243,109,242,115,152,104"/>
+<area shape="rect" id="Node000005" href="$classInterpolator.html" title=" " alt="" coords="235,165,334,191"/>
+<area shape="poly" id="edge11_Node000000_Node000005" title=" " alt="" coords="116,108,188,138,251,163,249,168,186,143,114,113"/>
+<area shape="rect" id="Node000004" href="$classProbabilityEnvelope.html" title="Envelope subclass with probability&#45;distribution semantics." alt="" coords="442,91,594,116"/>
+<area shape="poly" id="edge10_Node000003_Node000004" title=" " alt="" coords="339,111,441,105,442,110,340,116"/>
+<area shape="rect" id="Node000006" href="$classCubicSplineInterpolator.html" title=" " alt="" coords="431,140,605,165"/>
+<area shape="poly" id="edge12_Node000005_Node000006" title=" " alt="" coords="347,169,430,159,431,165,348,174"/>
+<area shape="rect" id="Node000007" href="$classExponentialInterpolator.html" title=" " alt="" coords="431,189,605,215"/>
+<area shape="poly" id="edge13_Node000005_Node000007" title=" " alt="" coords="348,182,431,190,430,196,348,187"/>
+<area shape="rect" id="Node000008" href="$classLinearInterpolator.html" title=" " alt="" coords="449,239,587,264"/>
+<area shape="poly" id="edge14_Node000005_Node000008" title=" " alt="" coords="337,193,431,223,473,236,472,241,430,229,336,198"/>
 </map>

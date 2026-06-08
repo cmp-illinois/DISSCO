@@ -18,8 +18,7 @@ var searchData=
   ['phase_15',['PHASE',['../Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a434d1244bb0c93d8c0f72b7dcbc9e530',1,'Partial.h']]],
   ['post_16',['post',['../classSemaphore.html#a99bb4da0df09d6f3181c2a376dd5b8f0',1,'Semaphore']]],
   ['print_17',['print',['../classEnvelope.html#a01310b230d146104637e19630866c3ec',1,'Envelope::print()'],['../classMultiPan.html#a21f61e6da65345a83a094301361cf733',1,'MultiPan::print()'],['../classProbabilityEnvelope.html#a073d65e1c0a0718879523989013089a4',1,'ProbabilityEnvelope::print()'],['../classSpatializer.html#ada9e6f2bdf61fcd779fea15ddf444936',1,'Spatializer::print()'],['../classDynamicVariableSequence.html#a0de08370d41cfe7d509b985fd2e7e8ec',1,'DynamicVariableSequence::Print()']]],
-  ['printpointers_18',['printPointers',['../classCollection.html#a88bdb02fd1fa63a61c6150fd8c2c14d5',1,'Collection']]],
-  ['probabilityenvelope_19',['probabilityenvelope',['../classProbabilityEnvelope.html#a0e601fb77035256f363b4f7c1ca2709d',1,'ProbabilityEnvelope::ProbabilityEnvelope()'],['../classProbabilityEnvelope.html#a0058b0a97bdc47fade569361be382639',1,'ProbabilityEnvelope::ProbabilityEnvelope(const Envelope &amp;other)'],['../classProbabilityEnvelope.html',1,'ProbabilityEnvelope']]],
-  ['probabilityenvelope_2ecpp_20',['ProbabilityEnvelope.cpp',['../ProbabilityEnvelope_8cpp.html',1,'']]],
-  ['probabilityenvelope_2eh_21',['ProbabilityEnvelope.h',['../ProbabilityEnvelope_8h.html',1,'']]]
+  ['probabilityenvelope_18',['probabilityenvelope',['../classProbabilityEnvelope.html#a0e601fb77035256f363b4f7c1ca2709d',1,'ProbabilityEnvelope::ProbabilityEnvelope()'],['../classProbabilityEnvelope.html#a0058b0a97bdc47fade569361be382639',1,'ProbabilityEnvelope::ProbabilityEnvelope(const Envelope &amp;other)'],['../classProbabilityEnvelope.html',1,'ProbabilityEnvelope']]],
+  ['probabilityenvelope_2ecpp_19',['ProbabilityEnvelope.cpp',['../ProbabilityEnvelope_8cpp.html',1,'']]],
+  ['probabilityenvelope_2eh_20',['ProbabilityEnvelope.h',['../ProbabilityEnvelope_8h.html',1,'']]]
 ];

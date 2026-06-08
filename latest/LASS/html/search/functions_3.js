@@ -2,7 +2,7 @@ var searchData=
 [
   ['debugdelete_0',['DebugDelete',['../classMemoryLeak.html#af97accdde164131eb38de58923994f64',1,'MemoryLeak']]],
   ['debugnew_1',['debugnew',['../classMemoryLeak.html#a1d883495567a0a78e64f8a301071ba7e',1,'MemoryLeak::DebugNew(int LineNumber, const char *Filename)'],['../classMemoryLeak.html#ae54a958895a16c8a7cbc5188252b9c7a',1,'MemoryLeak::DebugNew(T *Object, int LineNumber, const char *Filename)']]],
-  ['defineshape_2',['defineshape',['../classEnvelope.html#abaddf39e300db75e79479bdc773f6a5b',1,'Envelope::defineShape()'],['../classDynamicVariableSequence.html#a4349a9f5df2b25562943525e75a69dcf',1,'DynamicVariableSequence::DefineShape()']]],
+  ['defineshape_2',['defineshape',['../classDynamicVariableSequence.html#a2f13c8bae20302fc0c5eb78bb51e475a',1,'DynamicVariableSequence::DefineShape()'],['../classEnvelope.html#abaddf39e300db75e79479bdc773f6a5b',1,'Envelope::defineShape()']]],
   ['delete_3',['Delete',['../MemoryLeakCheck_8h.html#aee67ff420709dfb92fad8c05d863b691',1,'MemoryLeakCheck.h']]],
   ['dequeue_4',['dequeue',['../classFilter_1_1hist__queue.html#a909fccfcaaabd09bbc60ca6906504601',1,'Filter::hist_queue']]],
   ['destroytag_5',['destroyTag',['../classXmlReader_1_1xmltag.html#ac5548e52a237b9104fec6f389c68ecf5',1,'XmlReader::xmltag']]],
@@ -18,6 +18,6 @@ var searchData=
   ['doneaddentrylocation_15',['doneAddEntryLocation',['../classMultiPan.html#a46305c00398158ea631865a3293da2e2',1,'MultiPan']]],
   ['doneaddingsounds_16',['doneAddingSounds',['../classScore.html#a70de1da2f362a695b56f6738d8a33ac1',1,'Score']]],
   ['dynamicvariable_17',['DynamicVariable',['../classDynamicVariable.html#a9adada96b46fbf15b7cecc60b266f4e5',1,'DynamicVariable']]],
-  ['dynamicvariablesequence_18',['dynamicvariablesequence',['../classDynamicVariableSequence.html#ac7d77035c1708077dd4c1b00a8204e81',1,'DynamicVariableSequence::DynamicVariableSequence()'],['../classDynamicVariableSequence.html#a20f36789606ed9ee73b418379ef69d8e',1,'DynamicVariableSequence::DynamicVariableSequence(DynamicVariableSequence &amp;dvs)'],['../classDynamicVariableSequence.html#a242381769cb1817d81b3a0da5a2e066a',1,'DynamicVariableSequence::DynamicVariableSequence(Collection&lt; xy_point &gt; xyPoints, Collection&lt; envelope_segment &gt; segments)']]],
-  ['dynamicvariablesequenceiterator_19',['DynamicVariableSequenceIterator',['../classDynamicVariableSequenceIterator.html#a1c0cd5b93e0bd43a75a0fc3f5ade9bbd',1,'DynamicVariableSequenceIterator']]]
+  ['dynamicvariablesequence_18',['dynamicvariablesequence',['../classDynamicVariableSequence.html#ac7d77035c1708077dd4c1b00a8204e81',1,'DynamicVariableSequence::DynamicVariableSequence()'],['../classDynamicVariableSequence.html#a20f36789606ed9ee73b418379ef69d8e',1,'DynamicVariableSequence::DynamicVariableSequence(DynamicVariableSequence &amp;dvs)'],['../classDynamicVariableSequence.html#a807a67934ec09b767a112b6a6d5acce6',1,'DynamicVariableSequence::DynamicVariableSequence(vector&lt; xy_point &gt; xyPoints, vector&lt; envelope_segment &gt; segments)']]],
+  ['dynamicvariablesequenceiterator_19',['DynamicVariableSequenceIterator',['../classDynamicVariableSequenceIterator.html#a613c52c6a783d4c0518a2f9a85bd9237',1,'DynamicVariableSequenceIterator']]]
 ];

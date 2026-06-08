@@ -1,11 +1,5 @@
 <map id="DynamicVariableSequence::AddToShape" name="DynamicVariableSequence::AddToShape">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,47,201,87"/>
-<area shape="rect" id="Node000002" href="$classDynamicVariableSequence.html#a8ba482fa36348246b8b511e62cbd60b9" title=" " alt="" coords="249,47,445,87"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,65,236,65,236,70,201,70"/>
-<area shape="rect" id="Node000003" href="$classCollection.html#a000bfa55f8abee5917f8c917e33b1d23" title=" " alt="" coords="495,5,613,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="431,45,486,31,488,36,432,50"/>
-<area shape="rect" id="Node000004" href="$classCollection.html#aa6068a2d3ec4ad18882ebe7f9c181404" title=" " alt="" coords="496,55,612,80"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="446,65,482,65,482,70,446,70"/>
-<area shape="rect" id="Node000005" href="$classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="493,104,615,129"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="432,85,488,98,486,103,431,90"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,201,45"/>
+<area shape="rect" id="Node000002" href="$classDynamicVariableSequence.html#aa6e6daf827591f75c9ed0a38c8d79e61" title=" " alt="" coords="249,5,445,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,23,236,23,236,28,201,28"/>
 </map>

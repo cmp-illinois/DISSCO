@@ -1,27 +1,23 @@
 <map id="Spatializer::spatialize_MultiTrack" name="Spatializer::spatialize_MultiTrack">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,73,168,113"/>
-<area shape="rect" id="Node000002" href="$classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d" title=" " alt="" coords="216,80,381,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,90,202,90,202,95,168,95"/>
-<area shape="rect" id="Node000003" href="$classIterator.html#a69b4bebf4a915a4ee591e6c8bd9b9b9a" title=" " alt="" coords="435,5,567,31"/>
-<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="134,70,215,43,322,26,421,18,421,23,323,31,217,49,135,75"/>
-<area shape="rect" id="Node000005" href="$classCollection.html#acd5dfa486c735fe26700dd94e2b0d0c4" title=" " alt="" coords="429,80,572,105"/>
-<area shape="poly" id="edge9_Node000001_Node000005" title=" " alt="" coords="168,72,216,65,299,59,382,65,438,74,438,80,381,70,299,64,216,70,169,77"/>
-<area shape="rect" id="Node000006" href="$classIterator.html#a12aa5b9d3dd7370cd40943427834adc6" title=" " alt="" coords="447,129,554,155"/>
-<area shape="poly" id="edge10_Node000001_Node000006" title=" " alt="" coords="168,106,216,114,331,127,434,135,433,141,331,132,216,119,168,112"/>
-<area shape="rect" id="Node000008" href="$classSpatializer.html#a85146a717cd374a807f13899328b6403" title=" " alt="" coords="217,181,380,221"/>
-<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="125,111,217,160,243,172,240,177,215,164,123,115"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="333,77,452,33,454,38,335,82"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="382,99,415,99,415,104,382,104"/>
-<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="382,81,415,81,415,86,382,86"/>
-<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="352,103,435,123,434,129,351,108"/>
-<area shape="rect" id="Node000004" href="$classAbstractIterator.html#aabada3692730edd3a71070e9fc0fd3c0" title=" " alt="" coords="620,5,807,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="567,15,606,15,606,21,567,21"/>
-<area shape="rect" id="Node000007" href="$classAbstractIterator.html#a131acaa938ffedf104e5e3b55dffc5c2" title=" " alt="" coords="633,129,794,155"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="554,139,619,139,619,145,554,145"/>
-<area shape="rect" id="Node000009" href="$classCollection.html#a000bfa55f8abee5917f8c917e33b1d23" title=" " alt="" coords="441,232,560,257"/>
-<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="381,216,429,226,428,232,380,221"/>
-<area shape="rect" id="Node000010" href="$classTrack.html#ab54ce0b0a12f52bc59fd3653a04f97d3" title=" " alt="" coords="451,183,550,208"/>
-<area shape="poly" id="edge13_Node000008_Node000010" title=" " alt="" coords="380,196,438,194,438,200,381,201"/>
-<area shape="rect" id="Node000011" href="$classSoundSample.html#ab3fa484eca68228e0d69c59997c99d56" title=" " alt="" coords="637,183,790,208"/>
-<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="550,193,623,193,623,198,550,198"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,142,168,182"/>
+<area shape="rect" id="Node000002" href="$classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d" title=" " alt="" coords="216,100,381,125"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,140,230,126,231,131,169,146"/>
+<area shape="rect" id="Node000008" href="$classSpatializer.html#a85146a717cd374a807f13899328b6403" title=" " alt="" coords="217,170,380,210"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="169,170,204,175,204,180,168,175"/>
+<area shape="rect" id="Node000003" href="$classTrack.html#a684dc87cb52830a8e9708973b230a9fa" title=" " alt="" coords="429,29,561,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="334,97,446,57,447,62,336,102"/>
+<area shape="rect" id="Node000006" href="$classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283" title=" " alt="" coords="436,79,555,104"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="381,101,422,97,423,102,382,106"/>
+<area shape="rect" id="Node000007" href="$classMultiTrack.html#a58628666119ee3c39068e41ef9430d1e" title=" " alt="" coords="434,128,557,153"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="382,122,421,127,420,133,381,127"/>
+<area shape="rect" id="Node000004" href="$classSoundSample.html#a53b3afff0865d19546b82beede0a4132" title=" " alt="" coords="609,5,796,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="561,32,596,28,596,33,562,37"/>
+<area shape="rect" id="Node000005" href="$classTrack.html#a3e7092c64e99d7c15280243167cacb06" title=" " alt="" coords="644,55,761,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="562,47,631,56,630,61,561,53"/>
+<area shape="rect" id="Node000009" href="$classMultiTrack.html#a552838b6f90ef378dd8ae9e795e58f13" title=" " alt="" coords="435,177,556,203"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="380,187,421,187,421,193,380,193"/>
+<area shape="rect" id="Node000010" href="$classTrack.html#ab54ce0b0a12f52bc59fd3653a04f97d3" title=" " alt="" coords="446,227,545,252"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="380,207,433,221,432,226,378,213"/>
+<area shape="rect" id="Node000011" href="$classSoundSample.html#ab3fa484eca68228e0d69c59997c99d56" title=" " alt="" coords="626,227,779,252"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="545,237,613,237,613,242,545,242"/>
 </map>

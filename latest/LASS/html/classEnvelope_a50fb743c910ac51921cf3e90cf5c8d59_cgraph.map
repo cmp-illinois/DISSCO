@@ -1,9 +1,0 @@
-<map id="Envelope::getPoints" name="Envelope::getPoints">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,156,80"/>
-<area shape="rect" id="Node000002" href="$classCollection.html#a000bfa55f8abee5917f8c917e33b1d23" title=" " alt="" coords="205,5,324,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,52,202,32,204,37,129,57"/>
-<area shape="rect" id="Node000003" href="$classCollection.html#aa6068a2d3ec4ad18882ebe7f9c181404" title=" " alt="" coords="207,55,323,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="156,65,193,65,193,70,156,70"/>
-<area shape="rect" id="Node000004" href="$classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="204,104,325,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="129,77,204,98,202,103,128,83"/>
-</map>

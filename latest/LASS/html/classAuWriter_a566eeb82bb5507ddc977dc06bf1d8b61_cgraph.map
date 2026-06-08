@@ -1,16 +1,6 @@
 <map id="AuWriter::write" name="AuWriter::write">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,125,105"/>
-<area shape="rect" id="Node000002" href="$classIterator.html#a69b4bebf4a915a4ee591e6c8bd9b9b9a" title=" " alt="" coords="179,5,311,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,78,172,40,190,33,192,38,174,44,92,82"/>
-<area shape="rect" id="Node000004" href="$classCollection.html#acd5dfa486c735fe26700dd94e2b0d0c4" title=" " alt="" coords="173,55,316,80"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="125,82,159,77,160,82,126,87"/>
-<area shape="rect" id="Node000005" href="$classIterator.html#a12aa5b9d3dd7370cd40943427834adc6" title=" " alt="" coords="191,104,298,129"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="126,98,178,105,177,110,125,103"/>
-<area shape="rect" id="Node000007" href="$classAuWriter.html#adf322581cc6c8fcb655a151ef332a2aa" title=" " alt="" coords="185,177,305,203"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="91,103,209,168,207,173,88,108"/>
-<area shape="rect" id="Node000003" href="$classAbstractIterator.html#aabada3692730edd3a71070e9fc0fd3c0" title=" " alt="" coords="364,5,551,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="311,15,350,15,350,21,311,21"/>
-<area shape="rect" id="Node000006" href="$classAbstractIterator.html#a131acaa938ffedf104e5e3b55dffc5c2" title=" " alt="" coords="377,104,538,129"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="298,114,363,114,363,119,298,119"/>
-<area shape="poly" id="edge7_Node000007_Node000007" title=" " alt="" coords="215,179,209,169,212,159,224,153,245,151,269,154,280,163,276,167,267,159,245,156,226,158,216,163,214,168,219,176"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,125,55"/>
+<area shape="rect" id="Node000002" href="$classAuWriter.html#adf322581cc6c8fcb655a151ef332a2aa" title=" " alt="" coords="173,29,293,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,39,159,39,159,45,125,45"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="205,31,199,21,202,11,214,5,233,3,256,6,266,15,263,19,254,11,233,8,216,10,207,15,205,20,210,28"/>
 </map>

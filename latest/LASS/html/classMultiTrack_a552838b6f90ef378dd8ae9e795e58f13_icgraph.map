@@ -1,0 +1,33 @@
+<map id="MultiTrack::add" name="MultiTrack::add">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1032,231,1153,256"/>
+<area shape="rect" id="Node000002" href="$classFilter.html#a65ee6011869f1304d5dc1b9cbed5792f" title=" " alt="" coords="519,5,709,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1076,220,1039,164,1013,134,983,110,916,75,844,51,773,36,709,26,710,21,774,30,846,46,918,71,985,105,1017,130,1043,160,1081,217"/>
+<area shape="rect" id="Node000006" href="$classReverb.html#a42bdd4e8f5d952841436c79f73d43a17" title=" " alt="" coords="769,120,984,145"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1057,226,983,184,906,148,908,143,985,180,1060,221"/>
+<area shape="rect" id="Node000010" href="$classMultiTrack.html#ae15c4938ae6b6a4be1cc0d13d5e73375" title=" " alt="" coords="795,259,959,284"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="1019,256,959,263,959,258,1018,250"/>
+<area shape="rect" id="Node000011" href="$classMultiTrack.html#a563b4432960a22abd7da11c2ebdf3da1" title=" " alt="" coords="795,308,959,333"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="1059,265,985,299,946,311,945,305,983,294,1056,260"/>
+<area shape="rect" id="Node000012" href="$classMultiTrack.html#a4627f3f1fb8100f3be281a6069154e81" title=" " alt="" coords="795,357,958,383"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="1076,268,1037,310,1012,331,985,348,958,360,956,355,983,344,1009,326,1034,306,1072,265"/>
+<area shape="rect" id="Node000013" href="$classSpatializer.html#a85146a717cd374a807f13899328b6403" title=" " alt="" coords="795,194,958,234"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="1018,236,958,228,959,222,1019,231"/>
+<area shape="rect" id="Node000003" href="$classSound.html#a4f246242d337ab7ef8a646f69f2a04ae" title=" " alt="" coords="307,56,419,81"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="538,36,420,60,419,55,536,31"/>
+<area shape="rect" id="Node000004" href="$Score_8cpp.html#a39d69126a1c6f253e4f8e8dbe365ee1d" title=" " alt="" coords="156,56,220,81"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="293,71,220,71,220,66,293,66"/>
+<area shape="rect" id="Node000005" href="$classScore.html#acb0a205511c777b06c258f673f7e0d4d" title=" " alt="" coords="5,56,108,81"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="142,71,108,71,108,66,142,66"/>
+<area shape="poly" id="edge9_Node000006_Node000003" title=" " alt="" coords="820,119,721,97,639,86,557,79,419,72,420,67,557,73,640,81,722,91,821,114"/>
+<area shape="rect" id="Node000007" href="$classReverb.html#a8bd7f920f397363c7265ace64f78a1e2" title=" " alt="" coords="507,107,721,132"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="756,129,721,127,722,122,756,124"/>
+<area shape="rect" id="Node000008" href="$classScore.html#ac480924baa909e86012b9672e1be2ec7" title=" " alt="" coords="519,156,709,181"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="770,150,707,159,707,153,770,145"/>
+<area shape="rect" id="Node000009" href="$classScore.html#a70de1da2f362a695b56f6738d8a33ac1" title=" " alt="" coords="268,156,459,181"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="505,171,459,171,459,166,505,166"/>
+<area shape="rect" id="Node000014" href="$classPartial.html#a6ab80d7069346d873d3811de427a53d8" title=" " alt="" coords="557,271,671,296"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="796,240,722,261,671,273,670,268,721,255,794,235"/>
+<area shape="rect" id="Node000015" href="$classSpatializer.html#a66c634b61bd59f6afaeeb8fd46350525" title=" " alt="" coords="533,206,695,246"/>
+<area shape="poly" id="edge15_Node000013_Node000015" title=" " alt="" coords="782,221,696,225,696,220,781,216"/>
+<area shape="poly" id="edge16_Node000015_Node000003" title=" " alt="" coords="519,204,505,196,489,184,479,172,457,145,381,84,384,79,461,141,483,169,493,180,508,192,521,199"/>
+</map>

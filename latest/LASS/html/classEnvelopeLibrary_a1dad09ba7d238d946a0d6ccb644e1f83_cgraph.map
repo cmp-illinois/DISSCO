@@ -1,7 +1,0 @@
-<map id="EnvelopeLibrary::updateEnvelope" name="EnvelopeLibrary::updateEnvelope">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,244,56"/>
-<area shape="rect" id="Node000002" href="$classCollection.html#a551e3277afbc2701ab47132041bdc2f7" title=" " alt="" coords="295,5,410,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="239,28,281,23,282,29,240,33"/>
-<area shape="rect" id="Node000003" href="$classCollection.html#ae169d364f128bc873207540019978cad" title=" " alt="" coords="292,55,413,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="245,53,279,57,278,62,244,59"/>
-</map>

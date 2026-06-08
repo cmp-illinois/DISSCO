@@ -1,17 +1,7 @@
 <map id="Envelope::xml_print" name="Envelope::xml_print">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,104,157,129"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,157,56"/>
 <area shape="rect" id="Node000002" href="$classDynamicVariable.html#ad535d26db2fb71e8e9fd05f142d9d844" title=" " alt="" coords="223,5,441,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,102,144,70,204,40,229,32,230,37,206,44,147,75,101,106"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,33,209,28,209,33,158,38"/>
 <area shape="rect" id="Node000003" href="$classDynamicVariable.html#ae748c97f7a5831e8138bcc5a6f1cdd76" title=" " alt="" coords="205,55,459,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="143,101,205,89,249,80,250,85,206,94,144,107"/>
-<area shape="rect" id="Node000004" href="$classIterator.html#a69b4bebf4a915a4ee591e6c8bd9b9b9a" title=" " alt="" coords="266,104,398,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="157,114,252,114,252,119,157,119"/>
-<area shape="rect" id="Node000006" href="$classCollection.html#acd5dfa486c735fe26700dd94e2b0d0c4" title=" " alt="" coords="261,153,403,179"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="147,127,254,148,253,153,146,132"/>
-<area shape="rect" id="Node000007" href="$classIterator.html#a12aa5b9d3dd7370cd40943427834adc6" title=" " alt="" coords="279,203,385,228"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="101,127,147,158,206,188,266,204,264,209,204,192,144,162,98,132"/>
-<area shape="rect" id="Node000005" href="$classAbstractIterator.html#aabada3692730edd3a71070e9fc0fd3c0" title=" " alt="" coords="507,104,693,129"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="398,114,493,114,493,119,398,119"/>
-<area shape="rect" id="Node000008" href="$classAbstractIterator.html#a131acaa938ffedf104e5e3b55dffc5c2" title=" " alt="" coords="519,203,681,228"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="386,213,506,213,506,218,386,218"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="158,48,192,51,192,57,157,53"/>
 </map>

@@ -1,5 +1,5 @@
 <map id="MultiTrack::MultiTrack" name="MultiTrack::MultiTrack">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,169,38"/>
-<area shape="rect" id="Node000002" href="$classCollection.html#a000bfa55f8abee5917f8c917e33b1d23" title=" " alt="" coords="217,5,364,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,23,204,23,204,28,170,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,169,31"/>
+<area shape="rect" id="Node000002" href="$classMultiTrack.html#a552838b6f90ef378dd8ae9e795e58f13" title=" " alt="" coords="217,5,339,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,15,204,15,204,21,169,21"/>
 </map>
