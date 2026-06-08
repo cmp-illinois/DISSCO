@@ -258,9 +258,12 @@ MultiTrack* Score::joinThreadsAndMix(){
   if(reverbObj != NULL)
   {
     cout << "Applying reverb to the score..." << endl;
-    MultiTrack *tmp = & reverbObj->do_reverb_MultiTrack(*scoreMultiTrack);
-    delete scoreMultiTrack;
-    scoreMultiTrack = tmp;
+    // Process one track at a time so peak RSS is 1× score + 1 track,
+    // not 2× score as do_reverb_MultiTrack would require.
+    for (int i = 0; i < scoreMultiTrack->size(); i++) {
+      Track& newTrack = reverbObj->do_reverb_Track(*scoreMultiTrack->get(i));
+      delete scoreMultiTrack->set(i, &newTrack);
+    }
   }
 
   // perform Clipping management on the composite:
