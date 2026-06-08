@@ -54,10 +54,9 @@ bool AuWriter::write(MultiTrack& mt, string filename, int bits)
 {
     vector<SoundSample*> channels;
 
-    Iterator<Track*> it = mt.iterator();
-    while (it.hasNext())
+    for (Track* track : mt)
     {
-        channels.push_back(& it.next()->getWave());
+        channels.push_back(& track->getWave());
     }
 
     return write(channels, filename, bits);
@@ -71,12 +70,11 @@ bool AuWriter::write_one_per_track(MultiTrack& mt, char *filename, ...)
 
 	bool ret_val = true;
 	char *cur_filename = filename;
-	Iterator<Track*> it = mt.iterator();
 
 	va_start(marker, filename);
-	while (it.hasNext())
+	for (Track* track : mt)
 	{
-		channels.push_back(& it.next()->getWave());
+		channels.push_back(& track->getWave());
 		ret_val = ret_val & write(channels, string(cur_filename));
 		channels.pop_back();
 		cur_filename = va_arg(marker, char *);

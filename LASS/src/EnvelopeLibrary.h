@@ -29,7 +29,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //----------------------------------------------------------------------------//
 
 #include "Types.h"
-#include "Collection.h"
 #include "Envelope.h"
 
 
@@ -40,7 +39,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *	with, and displaying individual Envelope items. The name Envelope
  *	is used informally to designate an Envelope.
  *
- *	\note All methods in this class that take an index argument begin with a first value of 1 for user ease, though the actual Collection indices begin at 0.
+ *	\note All methods in this class that take an index argument begin with a first value of 1 for user ease, though the actual vector indices begin at 0.
  *
  *	\author Philipp Fraund
  **/
@@ -119,15 +118,15 @@ public:
     int addEnvelope (Envelope * env);
 
     /**
-     *  This function adds a Collection of n+1 points and a Collection of n
+     *  This function adds a vector of n+1 points and a vector of n
      *  segments to the EnvelopeLibrary and returns the index at which it
      *  has been added.
-     *	\param points A Collection of n+1 points
-     *	\param segments A Collection of n segments
+     *	\param points A vector of n+1 points
+     *	\param segments A vector of n segments
      *	\return The index where they were added
      **/
-    int addEnvelope (Collection <xy_point> points,
-		     Collection <envelope_segment> segments);
+    int addEnvelope (vector<xy_point> points,
+		     vector<envelope_segment> segments);
 
     /**
      *  This function updates the EnvelopeLibrary entry at the index with an
@@ -162,7 +161,7 @@ private:
      *  This is a data structure to hold the library of envelopes.
      **/
 
-    Collection <Envelope *> library;
+    vector<Envelope *> library;
 };
 
 //----------------------------------------------------------------------------//

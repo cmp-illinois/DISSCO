@@ -31,10 +31,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "MultiTrack.h"
 
 //----------------------------------------------------------------------------//
-
-#include "Iterator.h"
-
-//----------------------------------------------------------------------------//
 MultiTrack::MultiTrack()
 {
     // nothing
@@ -57,8 +53,9 @@ MultiTrack::MultiTrack(
 }
 
 //----------------------------------------------------------------------------//
-MultiTrack::MultiTrack(const MultiTrack& mt) : Collection<Track*>(mt)
+MultiTrack::MultiTrack(const MultiTrack& mt)
 {
+    // copy every track from mt to this object.
     for (int i = 0; i < mt.size(); i++)
         add(new Track(*mt.get(i)));
 }
@@ -69,13 +66,13 @@ MultiTrack& MultiTrack::operator=(const MultiTrack& mt)
     if ( this != &mt) // beware of self assignment
     {
         // delete any tracks:
-        Iterator<Track*> it = iterator();
-        while(it.hasNext())
-            delete it.next();
+        for (Track* track : tracks_)
+            delete track;
 
         // clear this object
-        clear();
+        tracks_.clear();
 
+        // copy every track from mt to this object.
         for (int i = 0; i < mt.size(); i++)
             add(new Track(*mt.get(i)));
     }
@@ -87,27 +84,50 @@ MultiTrack& MultiTrack::operator=(const MultiTrack& mt)
 MultiTrack::~MultiTrack()
 {
         // delete any tracks:
-        Iterator<Track*> it = iterator();
-        while(it.hasNext())
-            delete it.next();
-        
+        for (Track* track : tracks_)
+            delete track;
+
         // clear this object
-        clear();
+        tracks_.clear();
 }
 
 //----------------------------------------------------------------------------//
 void MultiTrack::composite(MultiTrack& mt, m_time_type startTime)
 {
+    for (int i = 0; i < size() && i < mt.size(); i++)
+        get(i)->composite(*mt.get(i), startTime);
 
-    Iterator<Track*> it1 = iterator();
-    Iterator<Track*> it2 = mt.iterator();
-    
-    while (it1.hasNext() && it2.hasNext())
-    {
-        it1.next()->composite(*it2.next(), startTime);
-    }
-    
     // we should do some warning if sizes aren't equal and such.
+}
+
+//----------------------------------------------------------------------------//
+void MultiTrack::add(Track* track)
+{
+    tracks_.push_back(track);
+}
+
+//----------------------------------------------------------------------------//
+Track* MultiTrack::get(int index) const
+{
+    return tracks_[index];
+}
+
+//----------------------------------------------------------------------------//
+int MultiTrack::size() const
+{
+    return (int) tracks_.size();
+}
+
+//----------------------------------------------------------------------------//
+vector<Track*>::iterator MultiTrack::begin()
+{
+    return tracks_.begin();
+}
+
+//----------------------------------------------------------------------------//
+vector<Track*>::iterator MultiTrack::end()
+{
+    return tracks_.end();
 }
 
 //----------------------------------------------------------------------------//

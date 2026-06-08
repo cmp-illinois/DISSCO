@@ -34,7 +34,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Semaphore.h"
 #include "XmlReader.h"
 #include "Types.h"
-#include "Collection.h"
 #include "MultiTrack.h"
 #include "Sound.h"
 #include "Reverb.h"

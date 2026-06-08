@@ -37,9 +37,9 @@ using std::setw;
 // This is the default constructor
 Envelope::Envelope()
 {
-    segments_ = new Collection<envelope_segment>();
-    interpolators_ = new Collection<Interpolator*>();
-    generatedSegmentLengths_ = new Collection<m_value_type>();
+    segments_ = new vector<envelope_segment>();
+    interpolators_ = new vector<Interpolator*>();
+    generatedSegmentLengths_ = new vector<m_value_type>();
     totalLength_ = -1;
     currentInterpolatorRate_ = 0;
 }
@@ -50,14 +50,14 @@ Envelope::Envelope(const Envelope &env)
 {
 	//cout << "Copy in Envelope from " << &env << " to " << this << endl;
 
-	segments_ = new Collection<envelope_segment>( *env.segments_ );
+	segments_ = new vector<envelope_segment>( *env.segments_ );
 
 	// there's not an easy way to transfer these, so the copy does not contain
 	// the generated interpolators, but these are only stored to help
 	// optimize the code
-	interpolators_ = new Collection<Interpolator*>();
+	interpolators_ = new vector<Interpolator*>();
 
-	generatedSegmentLengths_ = new Collection<m_value_type>( *env.generatedSegmentLengths_ );
+	generatedSegmentLengths_ = new vector<m_value_type>( *env.generatedSegmentLengths_ );
 
 	totalLength_ = env.totalLength_;
 	currentInterpolatorRate_ = env.currentInterpolatorRate_;
@@ -65,44 +65,44 @@ Envelope::Envelope(const Envelope &env)
 
 //----------------------------------------------------------------------------//
 // This constructor uses points and segments to build an envelope
-Envelope::Envelope(Collection<xy_point> xy_points, Collection<envelope_segment> segs)
+Envelope::Envelope(vector<xy_point> xy_points, vector<envelope_segment> segs)
 {
-	segments_ = new Collection<envelope_segment>();
-	interpolators_ = new Collection<Interpolator*>();
-	generatedSegmentLengths_ = new Collection<m_value_type>();
+	segments_ = new vector<envelope_segment>();
+	interpolators_ = new vector<Interpolator*>();
+	generatedSegmentLengths_ = new vector<m_value_type>();
 	totalLength_ = -1;
 	currentInterpolatorRate_ = 0;
 
     envelope_segment seg;
-    xy_point tpt = xy_points.get(0);
+    xy_point tpt = xy_points.at(0);
     seg.x = tpt.x;
     seg.y = tpt.y;
-    segments_->add(seg);
+    segments_->push_back(seg);
     for (int i = 1; i < xy_points.size(); i++)
 	{
-	    seg = segs.get(i - 1);
-	    seg.x = xy_points.get(i).x;
-	    seg.y = xy_points.get(i).y;
-	    segments_->add(seg);
+	    seg = segs.at(i - 1);
+	    seg.x = xy_points.at(i).x;
+	    seg.y = xy_points.at(i).y;
+	    segments_->push_back(seg);
 	}
 
-    // define the shape, given the Collection
+    // define the shape, given the vector
     defineShape();
 }
 
 //----------------------------------------------------------------------------//
 // This constructor just uses a collection of segments
-Envelope::Envelope(Collection<envelope_segment> segs)
+Envelope::Envelope(vector<envelope_segment> segs)
 {
 	// Copy the segments passed in
-	segments_ = new Collection<envelope_segment>(segs);
+	segments_ = new vector<envelope_segment>(segs);
 
-	interpolators_ = new Collection<Interpolator*>();
-	generatedSegmentLengths_ = new Collection<m_value_type>();
+	interpolators_ = new vector<Interpolator*>();
+	generatedSegmentLengths_ = new vector<m_value_type>();
 	totalLength_ = -1;
 	currentInterpolatorRate_ = 0;
 
-  // define the shape, given the Collections
+  // define the shape, given the vectors
   defineShape();
 }
 
@@ -113,7 +113,7 @@ Envelope::~Envelope()
 
 	if (interpolators_) {
 		for (int i = 0; i < interpolators_->size(); i++) {
-			delete(interpolators_->get(i));
+			delete(interpolators_->at(i));
 		}
 		delete(interpolators_);
 	}
@@ -140,9 +140,9 @@ void Envelope::print()
         {
             // print a line with form (x, y):
             cout << " x, y: " << "(";
-            cout << setw(5) << segments_->get(iLoop).x;
+            cout << setw(5) << segments_->at(iLoop).x;
             cout << ", ";
-            cout << setw(5) << segments_->get(iLoop).y;
+            cout << setw(5) << segments_->at(iLoop).y;
             cout << ")" << endl;
 
             // print the entry number
@@ -181,9 +181,9 @@ void Envelope::print()
 
     // output the last point
     cout << " x, y: " << "(";
-    cout << setw(5) << segments_->get(iLoop).x;
+    cout << setw(5) << segments_->at(iLoop).x;
     cout << ", ";
-    cout << setw(5) << segments_->get(iLoop).y;
+    cout << setw(5) << segments_->at(iLoop).y;
     cout << ")" << endl;
 
     cout << "End of Envelope." << endl;
@@ -209,7 +209,7 @@ m_value_type Envelope::getValue(m_value_type x, m_value_type totalLength)
 
 	//Handle special case where absolute end of envelope is asked for
 	if (x == totalLength) {
-		return segments_->get(segments_->size() - 1).y;
+		return segments_->at(segments_->size() - 1).y;
 	}
 
     //TODO: Make come sort of cached flag that will see if this
@@ -220,14 +220,14 @@ m_value_type Envelope::getValue(m_value_type x, m_value_type totalLength)
     m_value_type current = 0;
     int x_Index = 0;
     while (current < x) {
-	    current += generatedSegmentLengths_->get(x_Index);
+	    current += generatedSegmentLengths_->at(x_Index);
 	    x_Index++;
 	}
 
     //If we have overshot, lets go back
     if (current != x) {
 	    x_Index--;
-	    current -= generatedSegmentLengths_->get(x_Index);
+	    current -= generatedSegmentLengths_->at(x_Index);
 	}
 
     //Spawn an interpolator of the proper type
@@ -265,7 +265,7 @@ m_value_type Envelope::getValue(m_value_type x, m_value_type totalLength)
     // Figure out which sample we want from the interpolator.
     // This is done by taking the percentage we have to iterate thru
     // the interpolator, and then multiplying that by the number of samples
-    int sample = (int) (round(((x - current) / generatedSegmentLengths_->get(x_Index)) * 100.0));
+    int sample = (int) (round(((x - current) / generatedSegmentLengths_->at(x_Index)) * 100.0));
 
     // Create a value iterator to get values from the interpolator
     Iterator < m_value_type > tempIterator = interp->valueIterator();
@@ -350,15 +350,15 @@ void Envelope::defineShape()
 	envelope_segment temp_seg;
 	m_value_type temp = 0;
 	for (int i = 0; i < segments_->size(); i++)	{
-		temp_seg = segments_->get(i);
+		temp_seg = segments_->at(i);
 		temp_seg.length = temp_seg.x - temp;
-		segments_->set(i, temp_seg);
+		segments_->at(i) = temp_seg;
 		temp = temp_seg.x;
 	}
 }
 
 //----------------------------------------------------------------------------//
-void Envelope::addToShape(Collection<envelope_segment> segs)
+void Envelope::addToShape(vector<envelope_segment> segs)
 {
 	int startIndex;  // want to start at 0 if segments_ is empty; otherwise 1
 	m_value_type x_Offset;
@@ -366,12 +366,12 @@ void Envelope::addToShape(Collection<envelope_segment> segs)
 		x_Offset = 0;
 		startIndex = 0;
 	} else {
-		x_Offset = segments_->get(segments_->size() - 1).x;
+		x_Offset = segments_->at(segments_->size() - 1).x;
 		startIndex = 1;
 		
 		// verify that the last old point and the first new point have the
 	    // same y value (usually zero), that they can be appended
-	    if ((segments_->get(segments_->size() - 1).y) != (segs.get(0).y))
+	    if ((segments_->at(segments_->size() - 1).y) != (segs.at(0).y))
 		{
 		    cout << "WARNING: Y values of last point of first envelope\n";
 		    cout << "and first point of second envelope do not match.\n";
@@ -386,12 +386,12 @@ void Envelope::addToShape(Collection<envelope_segment> segs)
     // for every element in the new collections
     for (int i = startIndex; i < segs.size(); i++)
 	{
-		// add the current segment and point + 1 to our existing Collections
-	    segTemp = segs.get(i);
+		// add the current segment and point + 1 to our existing vectors
+	    segTemp = segs.at(i);
 	    segTemp.x = segTemp.x + x_Offset;
 	    segTemp.length = segTemp.x - x_Last;
 	    x_Last = segTemp.x;
-	    segments_->add(segTemp);
+	    segments_->push_back(segTemp);
 	}
 }
 
@@ -412,23 +412,23 @@ void Envelope::addToShape(Envelope * shape)
 Envelope* Envelope::multiply(Envelope & env1, Envelope & env2)
 {
 	// new envelope that will be returned based on this:
-  Collection<envelope_segment> result;
+  vector<envelope_segment> result;
 
 	// X and Y segments
-	Collection<envelope_segment>* env1Segs = env1.getSegments();
-	Collection<envelope_segment>* env2Segs = env2.getSegments();
+	vector<envelope_segment>* env1Segs = env1.getSegments();
+	vector<envelope_segment>* env2Segs = env2.getSegments();
 
 	envelope_segment seg1, seg2, newseg;
 	m_value_type length=0, max1=0, max2=0;
 	// find the biggest x values
 	for (int i = 0; i < env1Segs->size(); i++) {
-		if (env1Segs->get(i).x > max1) {
-			max1 = env1Segs->get(i).x;
+		if (env1Segs->at(i).x > max1) {
+			max1 = env1Segs->at(i).x;
 		}
 	}
 	for (int i = 0; i < env2Segs->size(); i++) {
-		if (env2Segs->get(i).x > max2) {
-			max2 = env2Segs->get(i).x;
+		if (env2Segs->at(i).x > max2) {
+			max2 = env2Segs->at(i).x;
 		}
 	}
 	if (max1 >= max2) {
@@ -438,8 +438,8 @@ Envelope* Envelope::multiply(Envelope & env1, Envelope & env2)
 	}
 
 	// multiply - find y values for every x value in either envelope
-    Iterator<envelope_segment> segments1 = env1Segs->iterator();
-    Iterator<envelope_segment> segments2 = env2Segs->iterator();
+    vector<envelope_segment>::iterator segments1 = env1Segs->begin();
+    vector<envelope_segment>::iterator segments2 = env2Segs->begin();
 
 	envelope_segment *add_seg, *first_seg, *second_seg;
 
@@ -451,19 +451,19 @@ Envelope* Envelope::multiply(Envelope & env1, Envelope & env2)
 		// advance pointers depending on which seg was added last
 		if (add_seg == &seg1) {
 			printf("was 1\n");
-			if (segments1.hasNext())
-				seg1 = segments1.next();
+			if (segments1 != env1Segs->end())
+				seg1 = *segments1++;
 			else
 				first_seg = NULL;
 		} else if (add_seg == &seg2) {
 			printf("was 2\n");
-			if (segments2.hasNext())
-				seg2 = segments2.next();
+			if (segments2 != env2Segs->end())
+				seg2 = *segments2++;
 			else
 				second_seg = NULL;
 		} else {	// this is the first time
-			seg1 = segments1.next();
-			seg2 = segments2.next();
+			seg1 = *segments1++;
+			seg2 = *segments2++;
 			printf("first time\n");
 		}
 
@@ -491,10 +491,7 @@ Envelope* Envelope::multiply(Envelope & env1, Envelope & env2)
 
 		// check for duplicate of x value
 		int duplicate = 0;
-		Iterator <envelope_segment> res_it = result.iterator();
-
-		while (res_it.hasNext()) {
-			envelope_segment oldseg = res_it.next();
+		for (envelope_segment& oldseg : result) {
 			if (newseg.x < (oldseg.x + ENV_MULT_EPSILON) &&	newseg.x > (oldseg.x - ENV_MULT_EPSILON)) {
 				duplicate = 1;
 				break;
@@ -504,7 +501,7 @@ Envelope* Envelope::multiply(Envelope & env1, Envelope & env2)
 		printf("doing x=%f", newseg.x);
 		// add only if not a duplicate
 		if (duplicate == 0) {
-			result.add(newseg);
+			result.push_back(newseg);
 			printf(" added.");
 		}
 		printf("\n");
@@ -518,25 +515,25 @@ Envelope* Envelope::multiply(Envelope & env1, Envelope & env2)
 }
 
 //----------------------------------------------------------------------------//
-Collection<xy_point>* Envelope::getPoints()
+vector<xy_point>* Envelope::getPoints()
 {
     //extract point information out of the segments
-    Collection < xy_point > *points = new Collection<xy_point>();
+    vector< xy_point > *points = new vector<xy_point>();
     xy_point
 	xy;
     for (int i = 0; i < segments_->size(); i++) {
-	    xy.x = segments_->get(i).x;
-	    xy.y = segments_->get(i).y;
-	    points->add(xy);
+	    xy.x = segments_->at(i).x;
+	    xy.y = segments_->at(i).y;
+	    points->push_back(xy);
 	}
     return points;
 }
 
 //----------------------------------------------------------------------------//
-Collection<envelope_segment>* Envelope::getSegments()
+vector<envelope_segment>* Envelope::getSegments()
 {
     // the point data are stored in a member variable, so return a copy of it
-    return (new Collection<envelope_segment>(*segments_));
+    return (new vector<envelope_segment>(*segments_));
 }
 
 //----------------------------------------------------------------------------//
@@ -545,11 +542,11 @@ void Envelope::setSegment(int index, envelope_segment segment)
     index++;
     if (checkValidSegmentIndex(index)) {
 	    if (checkValidSegmentIndex(index - 1)) {
-		    segment.length = segment.x - (segments_->get(index - 1)).x;
+		    segment.length = segment.x - (segments_->at(index - 1)).x;
 		} else {
 			segment.length = segment.x;
 		}
-	    segments_->set(index, segment);
+	    segments_->at(index) = segment;
 	} else {
 		cout << "Invalid setSegment index!!!\n";
 	}
@@ -559,27 +556,27 @@ void Envelope::setSegment(int index, envelope_segment segment)
 envelope_segment Envelope::getSegment(int index)
 {
     index++;
-    // lets the Collection class hand an invalid index
-    return segments_->get(index);
+    // lets std::vector hand an invalid index
+    return segments_->at(index);
 }
 
 //----------------------------------------------------------------------------//
 void Envelope::setPoint(int index, xy_point point)
 {
     envelope_segment seg;
-    seg = segments_->get(index);
+    seg = segments_->at(index);
     seg.x = point.x;
     seg.y = point.y;
-    segments_->set(index, seg);
+    segments_->at(index) = seg;
 }
 
 //----------------------------------------------------------------------------//
 xy_point Envelope::getPoint(int index)
 {
-    //lets the Collection class hand an invalid index
+    //lets std::vector hand an invalid index
     envelope_segment tempseg;
     xy_point pt;
-    tempseg = segments_->get(index);
+    tempseg = segments_->at(index);
     pt.x = tempseg.x;
     pt.y = tempseg.y;
     return pt;
@@ -589,8 +586,8 @@ xy_point Envelope::getPoint(int index)
 void Envelope::addSegment(envelope_segment segment)
 {
     //make sure it is an addable segment
-    segment.length = segment.x - segments_->get(segments_->size() - 1).x;
-    segments_->add(segment);
+    segment.length = segment.x - segments_->at(segments_->size() - 1).x;
+    segments_->push_back(segment);
 }
 
 //----------------------------------------------------------------------------//
@@ -608,8 +605,8 @@ void Envelope::addPoint(xy_point point)
 m_value_type Envelope::getSegmentLength(int index)
 {
     index++;
-    // lets the Collection class hand an invalid index
-    return (segments_->get(index).length);
+    // lets std::vector hand an invalid index
+    return (segments_->at(index).length);
 }
 
 //----------------------------------------------------------------------------//
@@ -622,9 +619,9 @@ void Envelope::setSegmentLength(int index, m_value_type length)
 	}
 
     // assumes a valid index is supplied
-    envelope_segment segTemp = segments_->get(index);
+    envelope_segment segTemp = segments_->at(index);
     segTemp.length = length;
-    segments_->set(index, segTemp);
+    segments_->at(index) = segTemp;
 }
 
 //----------------------------------------------------------------------------//
@@ -632,7 +629,7 @@ stretch_type Envelope::getSegmentLengthType(int index)
 {
     index++;
     // assumes a valid index is supplied
-    return (segments_->get(index).lengthType);
+    return (segments_->at(index).lengthType);
 }
 
 //----------------------------------------------------------------------------//
@@ -640,9 +637,9 @@ void Envelope::setSegmentLengthType(int index, stretch_type lengthType)
 {
     index++;
     // assumes a valid index is supplied
-    envelope_segment segTemp = segments_->get(index);
+    envelope_segment segTemp = segments_->at(index);
     segTemp.lengthType = lengthType;
-    segments_->set(index, segTemp);
+    segments_->at(index) = segTemp;
 }
 
 //----------------------------------------------------------------------------//
@@ -650,7 +647,7 @@ interpolation_type Envelope::getSegmentInterpolationType(int index)
 {
     index++;
     // assumes a valid index is supplied
-    return (segments_->get(index).interType);
+    return (segments_->at(index).interType);
 }
 
 //----------------------------------------------------------------------------//
@@ -659,9 +656,9 @@ void Envelope::setSegmentInterpolationType(int index, interpolation_type interTy
     index++;
     // assumes a valid index is supplied
     envelope_segment
-	segTemp = segments_->get(index);
+	segTemp = segments_->at(index);
     segTemp.interType = interType;
-    segments_->set(index, segTemp);
+    segments_->at(index) = segTemp;
 }
 
 //----------------------------------------------------------------------------//
@@ -717,7 +714,7 @@ void Envelope::generateLengths(m_time_type totalLength)
 			dTotalFlexPercent += getSegmentLength(iIndex);
 		}
 		// append their current value to our values for generated lengths
-		generatedSegmentLengths_->add(getSegmentLength(iIndex));
+		generatedSegmentLengths_->push_back(getSegmentLength(iIndex));
 	}
 
     // now, correct the generated values as necessary (i.e. the rest of this)
@@ -744,11 +741,11 @@ void Envelope::generateLengths(m_time_type totalLength)
 	    for (int iIndex = 0; iIndex < iNumSegments; iIndex++) {
 		    // scale every FIXED length value
 		    if (this->getSegmentLengthType(iIndex) == FIXED) {
-				generatedSegmentLengths_->set(iIndex, getSegmentLength(iIndex) * dScaleRatio);
+				generatedSegmentLengths_->at(iIndex) = getSegmentLength(iIndex) * dScaleRatio;
 			    setSegmentLength(iIndex, getSegmentLength(iIndex) * dScaleRatio);
 			} else {
 			    // all flex length entries are set to 0
-			    generatedSegmentLengths_->set(iIndex, 0);
+			    generatedSegmentLengths_->at(iIndex) = 0;
 			    setSegmentLength(iIndex, 0);
 			}
 		}
@@ -760,7 +757,7 @@ void Envelope::generateLengths(m_time_type totalLength)
 	    // scale percentages
 	    for (int iIndex = 0; iIndex < iNumSegments; iIndex++) {
 		    if (getSegmentLengthType(iIndex) == FLEXIBLE) {
-				generatedSegmentLengths_->set(iIndex, getSegmentLength(iIndex) * dScaleRatio);
+				generatedSegmentLengths_->at(iIndex) = getSegmentLength(iIndex) * dScaleRatio;
 			}
 		}
 	}
@@ -775,7 +772,7 @@ void Envelope::generateLengths(m_time_type totalLength)
 	    for (int iIndex = 0; iIndex < iNumSegments; iIndex++) {
 		    // if this is a flex-length entry, set length accordingly
 		    if (getSegmentLengthType(iIndex) == FLEXIBLE) {
-			    generatedSegmentLengths_->set(iIndex, generatedSegmentLengths_->get(iIndex) * flexLengthAvailable);
+			    generatedSegmentLengths_->at(iIndex) = generatedSegmentLengths_->at(iIndex) * flexLengthAvailable;
 			}
 		}
 	}
@@ -787,42 +784,42 @@ void Envelope::addInterpolators(m_rate_type rate)
 	int iNumSegments = segments_->size();
 	// clear out interpolators that are stored, if there are any stored
 	for (int i = 0; i < interpolators_->size(); i++) {
-		delete(interpolators_->get(i));
+		delete(interpolators_->at(i));
 	}
 	interpolators_->clear();
 
-    // initialize a new Collection for interpolators
-    m_value_type prev = segments_->get(0).y;
+    // initialize a new vector for interpolators
+    m_value_type prev = segments_->at(0).y;
 
 
     // for each segment that we have, store a new interpolator
     for (int iIndex = 0; iIndex < iNumSegments - 1; iIndex++) {
-	    // add an interpolator for the current segment to the Collection
+	    // add an interpolator for the current segment to the vector
 	    switch (getSegmentInterpolationType(iIndex)) {
 		  case EXPONENTIAL:
-		      interpolators_->add(new ExponentialInterpolator());
+		      interpolators_->push_back(new ExponentialInterpolator());
 		      break;
 
 		  case CUBIC_SPLINE:
-		      interpolators_->add(new CubicSplineInterpolator());
+		      interpolators_->push_back(new CubicSplineInterpolator());
 		      break;
 
 		  default:
-		      interpolators_->add(new LinearInterpolator());
+		      interpolators_->push_back(new LinearInterpolator());
 		      break;
 		}
 
 	    // set the Interpolator's sampling rate to the rate specified
-	    interpolators_->get(iIndex)->setSamplingRate(rate);
-	    m_value_type tempLengthValue = generatedSegmentLengths_->get(iIndex);
+	    interpolators_->at(iIndex)->setSamplingRate(rate);
+	    m_value_type tempLengthValue = generatedSegmentLengths_->at(iIndex);
 
 	    // add a start and end point to this interpolator:
-	    interpolators_->get(iIndex)->addEntry(0, prev);
-	    interpolators_->get(iIndex)->addEntry(tempLengthValue, segments_->get(iIndex + 1).y);
+	    interpolators_->at(iIndex)->addEntry(0, prev);
+	    interpolators_->at(iIndex)->addEntry(tempLengthValue, segments_->at(iIndex + 1).y);
 
 	    // set interpolator duration
-	    interpolators_->get(iIndex)->setDuration(tempLengthValue);
-	    prev = segments_->get(iIndex + 1).y;
+	    interpolators_->at(iIndex)->setDuration(tempLengthValue);
+	    prev = segments_->at(iIndex + 1).y;
 	}
 }
 
@@ -835,9 +832,9 @@ void Envelope::scale(m_value_type factor)
 	// for every point that we've got stored
 	for (int iIndex = 0; iIndex < iNumSegments; iIndex++) {
 		// scale this value by the factor given
-		segTemp = segments_->get(iIndex);
+		segTemp = segments_->at(iIndex);
 		segTemp.y *= factor;
-		segments_->set(iIndex, segTemp);
+		segments_->at(iIndex) = segTemp;
 	}
 }
 
@@ -851,8 +848,8 @@ m_value_type Envelope::getMaxValue()
     // for every point that we've got stored
     for (int iIndex = 0; iIndex < iNumSegments; iIndex++) {
 	    // if this point's value is greater than the max, set max = this value
-	    if (segments_->get(iIndex).y > maxVal) {
-		    maxVal = segments_->get(iIndex).y;
+	    if (segments_->at(iIndex).y > maxVal) {
+		    maxVal = segments_->at(iIndex).y;
 		}
 	}
 
@@ -907,11 +904,7 @@ void Envelope::xml_print(ofstream & xmlOutput)
     xmlOutput << "\t<totalLength value=\"" << totalLength_ << "\" />" << endl;
     xmlOutput << "\t<currentInterpolatorRate value=\"" <<
 	currentInterpolatorRate_ << "\" />" << endl;
-    envelope_segment myseg;
-
-    Iterator < envelope_segment > it_segments = segments_->iterator();
-    while (it_segments.hasNext()) {
-	    myseg = it_segments.next();
+    for (envelope_segment& myseg : *segments_) {
 	    xmlOutput << "\t<segment>" << endl;
 	    xmlOutput << "\t\t<type value=\"";
 	    switch (myseg.interType) {
@@ -1005,7 +998,7 @@ void Envelope::xml_read(XmlReader::xmltag * envtag)
 		    if (strcmp(value, "FLEXIBLE") == 0)
 				seg.lengthType = FLEXIBLE;
 		}
-	    segments_->add(seg);
+	    segments_->push_back(seg);
 	}
 
     defineShape();

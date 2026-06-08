@@ -53,7 +53,7 @@ class XmlReader
 *	tagparam class
 *	A linked list of tag parameters
 *	I suppose to be more "lasslike" this should probably just
-*	be a Collection.
+*	be a vector.
 **/
 	class tagparam
 	{

@@ -54,8 +54,8 @@ MultiPan::MultiPan(int nChans)
 	for(i=0;i<n_channels;i++)
 	{
 		EnvList.push_back(NULL);
-		xyCollectionsList.push_back(new Collection<xy_point>());
-		segCollectionsList.push_back(new Collection<envelope_segment>());
+		xyCollectionsList.push_back(new vector<xy_point>());
+		segCollectionsList.push_back(new vector<envelope_segment>());
 	}
 	useEnvDirectly = false;
 }
@@ -109,7 +109,7 @@ MultiPan::~MultiPan()
 
 	while(!xyCollectionsList.empty())
 	{
-		Collection<xy_point> *c;
+		vector<xy_point> *c;
 
 		c = xyCollectionsList.back();
 		xyCollectionsList.pop_back();
@@ -118,7 +118,7 @@ MultiPan::~MultiPan()
 
 	while(!segCollectionsList.empty())
 	{
-		Collection<envelope_segment> *c;
+		vector<envelope_segment> *c;
 
 		c = segCollectionsList.back();
 		segCollectionsList.pop_back();
@@ -161,18 +161,18 @@ MultiPan* MultiPan::clone()
 		  // needed anymore. 
 		  
 	    /*	  
-		  Collection<xy_point>* xyCollection = new Collection<xy_point>();
+		  vector<xy_point>* xyCollection = new vector<xy_point>();
 		  
 		  for (int j = 0; j < xyCollectionsList[i]->size(); j ++){
-		    xyCollection->add(xyCollectionsList[i]->get(j));
+		    xyCollection->push_back(xyCollectionsList[i]->get(j));
 		  }
 		  copy->xyCollectionsList.push_back(xyCollection);
 		  
 		  
-		  Collection<envelope_segment>* segmentCollection = new Collection <envelope_segment>();
+		  vector<envelope_segment>* segmentCollection = new vector<envelope_segment>();
 		  
 		  for (int j = 0; j < segCollectionsList[i]->size(); j ++){
-		    segmentCollection->add(segCollectionsList[i]->get(j));
+		    segmentCollection->push_back(segCollectionsList[i]->get(j));
 		  }
 		  copy->segCollectionsList.push_back(segmentCollection);
       */
@@ -395,18 +395,18 @@ void MultiPan::addEntryHelperFn(int envIdx, float t, float amp)
 
 	xy.x = t;
 	xy.y = amp;
-	(xyCollectionsList[envIdx])->add(xy);
+	(xyCollectionsList[envIdx])->push_back(xy);
 
 	if((xyCollectionsList[envIdx])->size() > 1)
 	{
 		seg.interType = LINEAR;
                 seg.lengthType  = FLEXIBLE; //FIXED; -- created lengths of envs too long -- changed 8/09 rcavis
 		seg.timeValue = 1.0;
-		(segCollectionsList[envIdx])->add(seg);	
+		(segCollectionsList[envIdx])->push_back(seg);	
 	}
   /*
-	Collection<xy_point> c1 = Collection<xy_point>(*xyCollectionsList[envIdx]);
-	Collection<envelope_segment> c2 = Collection<envelope_segment>(*segCollectionsList[envIdx]);
+	vector<xy_point> c1 = vector<xy_point>(*xyCollectionsList[envIdx]);
+	vector<envelope_segment> c2 = vector<envelope_segment>(*segCollectionsList[envIdx]);
 	//cout<<"this new is excuted"<<endl;
 	if (EnvList[envIdx]!=NULL) delete EnvList[envIdx];
 	(EnvList[envIdx]) = new Envelope(*xyCollectionsList[envIdx],
@@ -430,8 +430,8 @@ void MultiPan::doneAddEntryLocation(){
 
   for (int i = 0; i < n_channels; i ++){
   
-  //Collection<xy_point> c1 = Collection<xy_point>(*xyCollectionsList[envIdx]);
-	//Collection<envelope_segment> c2 = Collection<envelope_segment>(*segCollectionsList[envIdx]);
+  //vector<xy_point> c1 = vector<xy_point>(*xyCollectionsList[envIdx]);
+	//vector<envelope_segment> c2 = vector<envelope_segment>(*segCollectionsList[envIdx]);
 	//cout<<"this new is excuted"<<endl;
 	  if (EnvList[i]!=NULL) delete EnvList[i];
 	  (EnvList[i]) = new Envelope(*xyCollectionsList[i],

@@ -33,7 +33,6 @@
 #include "Types.h"
 #include "Interpolator.h"
 #include "Iterator.h"
-#include "Collection.h"
 #include "DynamicVariable.h"
 #include "InterpolatorIterator.h"
 //#include "EnvelopeLibrary.h"
@@ -77,14 +76,14 @@ public:
    * \param xy_points the vertices to be used in the envelope
    * \param segs specifies the type of each segment
    **/
-  Envelope (Collection<xy_point> xy_points, Collection<envelope_segment> segs);
+  Envelope (vector<xy_point> xy_points, vector<envelope_segment> segs);
 
   /**
    *	This is a constructor.  It makes a new envelope using a collection
    *	of envelope segments.
-   *	\param segs A Collection of envelop segments
+   *	\param segs A vector of envelop segments
    */
-  Envelope (Collection<envelope_segment> segs);
+  Envelope (vector<envelope_segment> segs);
 
   /**
    *	This makes a new copy of this envelope
@@ -114,9 +113,9 @@ public:
 
   /**
    *	This function adds to the env the given segment descriptions.
-   *	\param segs A Collection of envelope segments
+   *	\param segs A vector of envelope segments
    **/
-  void addToShape (Collection<envelope_segment> segs);
+  void addToShape (vector<envelope_segment> segs);
 
   /**
    *	This overloaded function appends one envelope to another.
@@ -134,15 +133,15 @@ public:
 
   /**
    *	This function returns a collection of points that make up the shape.
-   *	\return A Collection of points
+   *	\return A vector of points
    **/
-  Collection<xy_point>* getPoints ();
+  vector<xy_point>* getPoints ();
 
   /**
    *	This function returns a collection of segments that make up the shape.
-   *	\return A Collection of envelope segments
+   *	\return A vector of envelope segments
    **/
-  Collection<envelope_segment>* getSegments ();
+  vector<envelope_segment>* getSegments ();
 
   /**
    *	This function sets an envelope segment identified by its index.
@@ -296,22 +295,22 @@ public:
 
 private:
   /**
-   *	This is a Collection to hold the segment data for this DVS.
+   *	This is a vector to hold the segment data for this DVS.
    **/
-  Collection<envelope_segment>* segments_;
+  vector<envelope_segment>* segments_;
 
   /**
-   *	This is a Collection to hold interpolators.
+   *	This is a vector to hold interpolators.
    **/
-  Collection<Interpolator*>* interpolators_;
+  vector<Interpolator*>* interpolators_;
 
   /**
-   *	This is a Collection of Time values for segments that were
+   *	This is a vector of Time values for segments that were
    *	generated based on the stored value.  This collection will not
    *	include the 0 dummy segment, so element 0 will correspond to element
    *	1 in segments_.
    **/
-  Collection<m_value_type>* generatedSegmentLengths_;
+  vector<m_value_type>* generatedSegmentLengths_;
 
   /** This is the value with which the segment times were generated **/
   m_value_type totalLength_;

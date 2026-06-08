@@ -242,7 +242,7 @@ class Matrix {
 //    void Envelopes(vector<Envelope*> envList);
 /*
     void Envelopes(vector<float> probs, vector<Envelope*> envList)
-    void Envelopes(vector<Collection<xy_point> > xyCollection,
+    void Envelopes(vector<vector<xy_point> > xyCollection,
                    vector<vector<string> > segmentTypes,
                    vector<vector<string> > segmentFixed);
 */
