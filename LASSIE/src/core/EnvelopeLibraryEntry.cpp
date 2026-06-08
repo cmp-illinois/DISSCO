@@ -104,7 +104,7 @@ EnvelopeLibraryEntry::EnvelopeLibraryEntry(Envelope* _envelope, int _number)
   int lastIndex = segments->size() - 1;
   for (int i = 0; i < lastIndex; ++i) {
     // create node
-    EnvLibEntryNode* node = new EnvLibEntryNode(segments->get(i).x, segments->get(i).y);
+    EnvLibEntryNode* node = new EnvLibEntryNode(segments->at(i).x, segments->at(i).y);
     if (i == 0) head = node;
     if (prevSeg) {
       prevSeg->rightNode = node;
@@ -134,8 +134,8 @@ EnvelopeLibraryEntry::EnvelopeLibraryEntry(Envelope* _envelope, int _number)
 
   // final node
   EnvLibEntryNode* finalNode = new EnvLibEntryNode(
-    segments->get(lastIndex).x,
-    segments->get(lastIndex).y
+    segments->at(lastIndex).x,
+    segments->at(lastIndex).y
   );
   prevSeg->rightNode = finalNode;
   finalNode->leftSeg = prevSeg;

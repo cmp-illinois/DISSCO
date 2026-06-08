@@ -29,7 +29,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //----------------------------------------------------------------------------//
 
 #include "Track.h"
-#include "Collection.h"
 
 //----------------------------------------------------------------------------//
 
@@ -37,7 +36,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 *	A MultiTrack is basically a collection of track pointers.
 *	When the MultiTrack object is deleted, it deletes each of the tracks
 *	in the collection.  When it is copied or assigned, it copies the
-*	underlying objects. When tracks are removed or replaced, they 
+*	underlying objects. When tracks are removed or replaced, they
 *	are not deleted.
 *
 *	The idea is that copying entire MultiTrack objects should be covered,
@@ -47,7 +46,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 *
 *	\author Braden Kowitz
 **/
-class MultiTrack : public Collection<Track*>
+class MultiTrack
 {
 public:
 
@@ -95,6 +94,29 @@ public:
     *	- startTime will offset the argument MultiTrack before compositing.
     **/
     void composite(MultiTrack& mt, m_time_type startTime = 0);
+
+    /**
+    *	Appends a track. The MultiTrack takes ownership of the pointer.
+    **/
+    void add(Track* track);
+
+    /**
+    *	\return The track pointer at the given index.
+    **/
+    Track* get(int index) const;
+
+    /**
+    *	\return The number of tracks.
+    **/
+    int size() const;
+
+    /** Range-based iteration support over the underlying tracks. **/
+    vector<Track*>::iterator begin();
+    vector<Track*>::iterator end();
+
+private:
+
+    vector<Track*> tracks_;
 
 };
 

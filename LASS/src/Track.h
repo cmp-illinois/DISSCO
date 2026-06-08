@@ -127,10 +127,32 @@ public:
     **/
     void scale(m_value_type factor);
 
+    /**
+    *	Globally enable or disable allocation of the per-track amplitude
+    *	SoundSample.  The amp buffer is the same size as the wave buffer, so
+    *	suppressing it roughly halves the memory used by rendering.  It is only
+    *	needed by the amplitude-based clipping management modes (SCALE,
+    *	CHANNEL_SCALE, ANTICLIP); the default/most-used modes (NONE, CLIP,
+    *	CHANNEL_ANTICLIP) never read it.
+    *
+    *	This is a process-wide setting and must be configured before rendering
+    *	begins (a single Score is rendered at a time); it is only written from
+    *	the main thread before worker threads start, then read concurrently.
+    *	\param enabled Whether newly created tracks should carry an amp buffer
+    **/
+    static void setAmplitudeTracking(bool enabled);
+
+    /**
+    *	\return Whether newly created tracks carry an amplitude buffer.
+    **/
+    static bool amplitudeTrackingEnabled();
+
 private:
 
     SoundSample* wave_;
     SoundSample* amp_;
+
+    static bool amplitudeTracking_;
 };
 
 

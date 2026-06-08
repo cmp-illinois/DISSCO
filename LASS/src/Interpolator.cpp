@@ -39,22 +39,31 @@ Interpolator::Interpolator()
 }
 
 //----------------------------------------------------------------------------//
+InterpolatorEntry& Interpolator::get(int index)
+{
+    return entries_[index];
+}
+
+//----------------------------------------------------------------------------//
+int Interpolator::size() const
+{
+    return (int) entries_.size();
+}
+
+//----------------------------------------------------------------------------//
 void Interpolator::addEntry(m_time_type time, m_value_type value)
 {
-    //Create a new entry:
-    InterpolatorEntry ie(time,value);
-    //add the entry to this collection
-    add(ie);
+    //Create a new entry and add it:
+    entries_.push_back(InterpolatorEntry(time,value));
 }
 
 //----------------------------------------------------------------------------//
 void Interpolator::scale(m_value_type scale)
 {
-    // iterate through this collection:
-    Iterator<InterpolatorEntry> it = iterator();
-    while (it.hasNext())
+    // iterate through the entries:
+    for (InterpolatorEntry& entry : entries_)
     {
-        it.next().value_ *= scale;
+        entry.value_ *= scale;
     }
 }
 
@@ -62,16 +71,12 @@ void Interpolator::scale(m_value_type scale)
 //----------------------------------------------------------------------------//
 m_value_type Interpolator::getMaxValue()
 {
-    Iterator<InterpolatorEntry> it = iterator();
-    
-    m_value_type val = 0.0;
     m_value_type maxVal = 0.0;
-    while (it.hasNext())
+    for (InterpolatorEntry& entry : entries_)
     {
-        val = it.next().value_;
-        if (val > maxVal) maxVal = val;
+        if (entry.value_ > maxVal) maxVal = entry.value_;
     }
-    
+
     return maxVal;
 }
 
@@ -87,11 +92,8 @@ void Interpolator::xml_print( ofstream& xmlOutput )
         xmlOutput << "\t<rate value=\"" << getSamplingRate() << "\" />" << endl;
 
         //Print out private vars and collections for Interpolator here
-	InterpolatorEntry myent(0,0);
-	Iterator<InterpolatorEntry> it = iterator();
-	while(it.hasNext())
+	for (InterpolatorEntry& myent : entries_)
 	{
-		myent = it.next();
 		xmlOutput << "\t<entry time=\"" << myent.time_ << "\" ";
 		xmlOutput << "value=\"" << myent.value_ << "\" />" << endl;
 	}
@@ -146,10 +148,8 @@ void Interpolator::xml_read(XmlReader::xmltag* envtag)
 			time = atof(value);
 		if((value=entrytag->getParamValue("value")) != 0)
 			val = atof(value);
-		InterpolatorEntry ie(time,val);
-		
-		//Add the entry to this collection.
-    add(ie);
+		//Add the entry to the collection.
+    entries_.push_back(InterpolatorEntry(time,val));
 	}
 }
 

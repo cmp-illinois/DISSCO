@@ -1945,7 +1945,7 @@ Envelope* Utilities::makeEnvelope(pugi::xml_node _functionElement, void* _object
   double scale = evaluate(XMLTranscode(GNES(_functionElement)), _object);
 
   // create the collection of points
-  Collection<xy_point> points;
+  vector<xy_point> points;
 
 
   float prevYVal = 0;
@@ -1964,14 +1964,14 @@ Envelope* Utilities::makeEnvelope(pugi::xml_node _functionElement, void* _object
     prevXVal = xy.x;
     prevYVal = xy.y;
 
-    points.add(xy);
+    points.push_back(xy);
     x = GNES(x);
     y = GNES(y);
 
   }
 
   // create the collection of segments
-  Collection<envelope_segment> segments;
+  vector<envelope_segment> segments;
   while (t!=NULL && p!=NULL) {
     envelope_segment seg;
 
@@ -2000,7 +2000,7 @@ Envelope* Utilities::makeEnvelope(pugi::xml_node _functionElement, void* _object
       exit(1);
     }
 
-    segments.add(seg);
+    segments.push_back(seg);
 
     t = GNES(t);
     p = GNES(p);

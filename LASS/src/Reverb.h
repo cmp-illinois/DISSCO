@@ -19,7 +19,6 @@
 #include "StandardHeaders.h"
 
 #include "SoundSample.h"
-#include "Collection.h"
 #include "Track.h"
 #include "MultiTrack.h"
 #include "LPCombFilter.h"
@@ -174,7 +173,7 @@ class Reverb
   /**
    * This method applies reverb to a source MultiTrack, track by track.
    * It does so by decomposing the wave into Track objects (organized with
-   * a Collection inside the MultiTrack object) and calling the
+   * a vector inside the MultiTrack object) and calling the
    * virtual function, do_reverb(SoundSample *inWave), for each Track.
    *
    * @return The original MultiTrack remains intact and untouched.  The return

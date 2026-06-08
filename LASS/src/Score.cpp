@@ -34,6 +34,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <memory>
 
+// Defined further down; maps a clipping mode to whether it reads the amp buffer.
+static bool modeNeedsAmplitude(Score::ClippingManagementMode mode);
+
 //----------------------------------------------------------------------------//
 
 // This struct passes data between the main thread and the worker threads
@@ -158,8 +161,15 @@ Score::Score(int _numThreads, int _numChannels, int _samplingRate )
     numChannels(_numChannels),
     samplingRate(_samplingRate)
 {
+  // Configure amplitude tracking before any track is allocated, based on the
+  // initial clipping mode (callers may override later via
+  // setClippingManagementMode, before sounds are added/rendered).
+  Track::setAmplitudeTracking(modeNeedsAmplitude(cmm_));
+
   scoreEndTime = 0;
   scoreMultiTrackLength = 0;
+  m_sample_count_type newNumSamples =
+        (m_sample_count_type)0;
   scoreMultiTrack = nullptr;
 
 
@@ -260,9 +270,10 @@ MultiTrack* Score::joinThreadsAndMix(){
     cout << "Applying reverb to the score..." << endl;
     // Process one track at a time so peak RSS is 1× score + 1 track,
     // not 2× score as do_reverb_MultiTrack would require.
-    for (int i = 0; i < scoreMultiTrack->size(); i++) {
-      Track& newTrack = reverbObj->do_reverb_Track(*scoreMultiTrack->get(i));
-      delete scoreMultiTrack->set(i, &newTrack);
+    for (Track*& trackPtr : *scoreMultiTrack) {
+      Track& newTrack = reverbObj->do_reverb_Track(*trackPtr);
+      delete trackPtr;
+      trackPtr = &newTrack;
     }
   }
 
@@ -301,10 +312,22 @@ void Score::checkScoreMultiTrackLength(){
 
 //----------------------------------------------------------------------------//
 
+// Only the amplitude-based clipping modes inspect the per-track amp buffer.
+// For every other mode the amp buffer is dead weight, so we can avoid
+// allocating it (roughly halving rendering memory) by disabling amplitude
+// tracking before any track is created.
+static bool modeNeedsAmplitude(Score::ClippingManagementMode mode)
+{
+    return mode == Score::SCALE
+        || mode == Score::CHANNEL_SCALE
+        || mode == Score::ANTICLIP;
+}
+
 void Score::setClippingManagementMode(ClippingManagementMode mode)
 {
     cout << "Score::setClippingManagementMode - " << mode << endl;
     cmm_ = mode;
+    Track::setAmplitudeTracking(modeNeedsAmplitude(mode));
 }
 
 //----------------------------------------------------------------------------//
@@ -353,16 +376,14 @@ void Score::clip(MultiTrack* mt)
     for (int t=0; t<mt->size(); t++)
     {
         SoundSample& wave = mt->get(t)->getWave();
-        SoundSample& amp = mt->get(t)->getAmp();
 
-        // for each sample
+        // for each sample (only the wave is written to file; the amp buffer is
+        // not clamped here because it is never read back out)
         m_sample_count_type numSamples = wave.getSampleCount();
         for (m_sample_count_type s=0; s<numSamples; s++)
         {
             if (wave[s] >  1.0) wave[s] =  1.0;
             if (wave[s] < -1.0) wave[s] = -1.0;
-            if (amp[s] >  1.0) amp[s] =  1.0;
-            if (amp[s] < -1.0) amp[s] = -1.0;
         }
 
     }
@@ -550,21 +571,12 @@ void Score::channelAnticlip(MultiTrack* mt)
     {
 	// cout << "Score::channelAnticlip - first time track=" << t << endl;
         SoundSample& wave = mt->get(t)->getWave();
-        SoundSample& amp = mt->get(t)->getAmp();
 
-        // for each sample
+        // for each sample (peak is measured from the wave; the amp buffer is
+        // not consulted, so it is not allocated for this mode)
         m_sample_count_type numSamples = wave.getSampleCount();
         for (m_sample_count_type s=0; s<numSamples; s++)
         {
-
-            if (amp[s] > 1.0) {
-/* 				deprecated
-                scale this sample:
-                wave[s] *= 1.0 / amp[s];
-                amp[s] = 1.0;
-*/
-            }
-
             m_sample_type cur = wave[s];
             if(cur < 0) cur = -cur;
             if(cur > maxAmplitude)
@@ -592,14 +604,11 @@ void Score::channelAnticlip(MultiTrack* mt)
       for (int t=0; t<mt->size(); t++)
       {
           SoundSample& wave = mt->get(t)->getWave();
-          SoundSample& amp = mt->get(t)->getAmp();
 
           // for each sample
           m_sample_count_type numSamples = wave.getSampleCount();
           for (m_sample_count_type s=0; s<numSamples; s++)
           {
-              amp[s] = 1.0;
-
  	    if (wave[s] < 0) {
 	      wave[s] *= -1;
               wave[s] = compressSound(wave[s], maxAmplitude, -6.0);

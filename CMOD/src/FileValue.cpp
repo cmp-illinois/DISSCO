@@ -803,7 +803,7 @@
 //   }
 
 //   // create the collection of points
-//   Collection<xy_point> points;
+//   vector<xy_point> points;
 //   list<FileValue>::iterator xIter = xPoints->begin();
 //   list<FileValue>::iterator yIter = yPoints->begin();
 
@@ -831,7 +831,7 @@
 //   }
 
 //   // create the collection of segments
-//   Collection<envelope_segment> segments;
+//   vector<envelope_segment> segments;
 //   list<FileValue>::iterator interpIter = interpTypes->begin();
 //   list<FileValue>::iterator ffIter = flexOrFix->begin();
 

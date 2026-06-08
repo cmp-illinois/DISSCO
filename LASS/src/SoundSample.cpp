@@ -51,16 +51,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //----------------------------------------------------------------------------//
 SoundSample::SoundSample(m_sample_count_type sampleCount,
             m_rate_type samplingRate,
-            bool zeroData)
+            bool /*zeroData*/)
     :samplingRate_(samplingRate),data_(sampleCount)
 {
-    if (zeroData)
-    {
-        for (m_sample_count_type s=0; s<sampleCount; s++)
-        {
-            data_[s] = 0.0;
-        }
-    }
+    // The vector constructor value-initializes every element to 0.0, so the
+    // data is already zeroed regardless of the (now vestigial) zeroData flag.
 }
 
 //----------------------------------------------------------------------------//

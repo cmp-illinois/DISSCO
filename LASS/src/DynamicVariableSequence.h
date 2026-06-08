@@ -33,7 +33,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Types.h"
 #include "Interpolator.h"
 #include "Iterator.h"
-#include "Collection.h"
 #include "DynamicVariable.h"
 #include "XmlReader.h"
 
@@ -92,11 +91,11 @@ public:
 
     /**
     *	Constructor
-    * 	\param xyPoints A Collection of points
-    *	\param segments A Collection of information for the segments between the points
+    * 	\param xyPoints A vector of points
+    *	\param segments A vector of information for the segments between the points
     **/
-    DynamicVariableSequence (Collection<xy_point> xyPoints,
-                             Collection<envelope_segment> segments); 
+    DynamicVariableSequence (vector<xy_point> xyPoints,
+                             vector<envelope_segment> segments); 
                                      
     /**
     *	Destructor
@@ -125,19 +124,19 @@ public:
 
     /**
     *	This (re)defines the DVS point and segment descriptions.
-    *	\param xyPoints A Collection of points
-    *	\param segments A Collection of information about the segments between points
+    *	\param xyPoints A vector of points
+    *	\param segments A vector of information about the segments between points
     **/
-    inline void DefineShape (Collection<xy_point> xyPoints,
-                             Collection<envelope_segment> segments);
+    inline void DefineShape (vector<xy_point> xyPoints,
+                             vector<envelope_segment> segments);
 
     /**
     *	This adds to the DVS the given point and segment descriptions.
-    *	\param xyPoints A Collection of points
-    *	\param segments A Collection of information about the segments between points
+    *	\param xyPoints A vector of points
+    *	\param segments A vector of information about the segments between points
     **/
-    void AddToShape (Collection<xy_point> xyPoints,
-                     Collection<envelope_segment> segments);
+    void AddToShape (vector<xy_point> xyPoints,
+                     vector<envelope_segment> segments);
 
     /**
     *	This appends one DVS to another.
@@ -146,15 +145,15 @@ public:
     void AddToShape (DynamicVariableSequence * shape);
 
     /**
-    *	This returns the Collection of points that make up the shape.
-    *	\return A Collection of points
+    *	This returns the vector of points that make up the shape.
+    *	\return A vector of points
     **/
-    Collection<xy_point>* getPoints ();
+    vector<xy_point>* getPoints ();
 
     /** This returns the collection of segments that make up the shape.
-    *	\return A Collection of segments
+    *	\return A vector of segments
     **/
-    Collection<envelope_segment>* getSegments ();
+    vector<envelope_segment>* getSegments ();
 
     /**	This sets a segment by index.
     *	\param index Which segment to set
@@ -277,24 +276,24 @@ public:
 
 private:
     /**
-    *	This is a Collection to hold the x-y points that define this DVS
+    *	This is a vector to hold the x-y points that define this DVS
     **/
-    Collection<xy_point>* xyPoints_;
+    vector<xy_point>* xyPoints_;
 
     /**
-    *	This is a Collection to hold the segment data for this DVS
+    *	This is a vector to hold the segment data for this DVS
     **/
-    Collection<envelope_segment>* segments_;
+    vector<envelope_segment>* segments_;
 
     /**
-    *	This is a Collection to hold interpolators
+    *	This is a vector to hold interpolators
     **/
-    Collection<Interpolator*>* interpolators_;
+    vector<Interpolator*>* interpolators_;
 
     /**
     *	Time values for segments that were generated based on the stored value
     **/
-    Collection<m_time_type>* generatedSegmentTimes_;
+    vector<m_time_type>* generatedSegmentTimes_;
 
     /** 
     *	This is the value with which the segment times were generated
