@@ -358,7 +358,8 @@ MultiTrack* MultiPan::spatialize_Track(Track& t, int numTracks)
 
 	// get references to the input
 	SoundSample &inWave = t.getWave();
-	SoundSample &inAmp  = t.getAmp();
+	bool doAmp = t.hasAmp();
+	SoundSample *inAmp = doAmp ? &t.getAmp() : 0;
 
 	// for each channel
 	for(int c=0; c<n_channels; c++)
@@ -368,19 +369,19 @@ MultiTrack* MultiPan::spatialize_Track(Track& t, int numTracks)
 
 		// get references for this channel
 		SoundSample &thisWave = mt->get(c)->getWave();
-		SoundSample &thisAmp  = mt->get(c)->getAmp();
+		SoundSample *thisAmp  = doAmp ? &mt->get(c)->getAmp() : 0;
 
 		// Iterate over each sample
 		m_value_type scale;
 		for(m_sample_count_type i=0; i<sampleCount; i++)
 		{
-			// calculate scaling factor -- FIXME, I don't 
+			// calculate scaling factor -- FIXME, I don't
 			//  understand what Pan.cpp does here, what is
 			//  'pos' for?
 			scale = iter.next();
 
 			thisWave[i] = scale * inWave[i];
-			thisAmp[i]  = scale * inAmp[i];
+			if (doAmp) (*thisAmp)[i] = scale * (*inAmp)[i];
 		}
 	}
 

@@ -65,7 +65,8 @@ MultiTrack* Pan::spatialize_Track(Track& t, int numTracks)
     
     // get references to the input
     SoundSample& inWave = t.getWave();
-    SoundSample& inAmp = t.getAmp();
+    bool doAmp = t.hasAmp();
+    SoundSample* inAmp = doAmp ? &t.getAmp() : 0;
 
 
     // for each channel:
@@ -73,14 +74,14 @@ MultiTrack* Pan::spatialize_Track(Track& t, int numTracks)
     {
         // get an iterator for the pan variable:
         Iterator<m_value_type> panIter = panVar_->valueIterator();
-        
+
         // get references for this channel.
         SoundSample& thisWave = mt->get(c)->getWave();
-        SoundSample& thisAmp = mt->get(c)->getAmp();
+        SoundSample* thisAmp = doAmp ? &mt->get(c)->getAmp() : 0;
 
         // create a position value for this channel:
         m_value_type pos = float(c) / float(numTracks-1);
-        
+
         // Iterate over each sample
         m_value_type scale;
         for (m_sample_count_type i=0; i<sampleCount; i++)
@@ -89,9 +90,9 @@ MultiTrack* Pan::spatialize_Track(Track& t, int numTracks)
             scale = 1.0 - fabs(pos - panIter.next());
             if (scale > 1.0) scale = 1.0;
             if (scale < 0.0) scale = 0.0;
-            
+
             thisWave[i] = scale * inWave[i];
-            thisAmp[i] = scale * inAmp[i];
+            if (doAmp) (*thisAmp)[i] = scale * (*inAmp)[i];
         }
     }
      

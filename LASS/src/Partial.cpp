@@ -78,9 +78,13 @@ MultiTrack* Partial::render(int numChannels,
     // one for the actuial sound:
     //    SoundSample* waveSample = new SoundSample(numSamplesTotal, samplingRate);
     SoundSample* waveSample = new SoundSample(sampleCount, samplingRate);
-    // and one to store amplitude data:
+    // and one to store amplitude data (only when a downstream consumer, i.e. an
+    // amplitude-based clipping mode, actually needs it -- otherwise this would
+    // double the rendering memory for nothing):
     //    SoundSample* ampSample = new SoundSample(numSamplesTotal, samplingRate);
-    SoundSample* ampSample = new SoundSample(sampleCount, samplingRate);
+    SoundSample* ampSample = Track::amplitudeTrackingEnabled()
+        ? new SoundSample(sampleCount, samplingRate)
+        : 0;
 
     // tell each dynamic variable what the DURATION will be:
     getParam(FREQUENCY).setDuration(duration);
@@ -353,7 +357,7 @@ MultiTrack* Partial::render(int numChannels,
 
         // assign it:
         (*waveSample)[s] = sample;
-        (*ampSample)[s] = amplitude;
+        if (ampSample) (*ampSample)[s] = amplitude;
     }
 
     // create a TrackObject:
@@ -362,13 +366,12 @@ MultiTrack* Partial::render(int numChannels,
     // do the reverb, if necessary
     if(reverbObj != NULL)
     {
+        // do_reverb_Track() returns a freshly heap-allocated Track, so take
+        // ownership of it directly instead of deep-copying its full-length
+        // buffers into another new Track and then freeing the original.
         Track &tmp = reverbObj->do_reverb_Track(*_track);
         delete _track;
-        _track = new Track(tmp);
-
-        // delete the temporary track object
-        delete &tmp;
-
+        _track = &tmp;
     }
 
     /* ZIYUAN CHEN, July 2023: On the default behavior of spatialization (Partial side)
