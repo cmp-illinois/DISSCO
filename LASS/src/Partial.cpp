@@ -364,10 +364,7 @@ MultiTrack* Partial::render(int numChannels,
     {
         Track &tmp = reverbObj->do_reverb_Track(*_track);
         delete _track;
-        _track = new Track(tmp);
-
-        // delete the temporary track object
-        delete &tmp;
+        _track = &tmp;
 
     }
 
