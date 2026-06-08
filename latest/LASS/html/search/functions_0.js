@@ -9,6 +9,7 @@ var searchData=
   ['addsegment_6',['addsegment',['../classDynamicVariableSequence.html#ae48d0de0999d36c7eb8264879622e940',1,'DynamicVariableSequence::addSegment()'],['../classEnvelope.html#ae43fec7d141f35a28cc029bbf84ddbea',1,'Envelope::addSegment()']]],
   ['addtoshape_7',['addtoshape',['../classDynamicVariableSequence.html#aa6e6daf827591f75c9ed0a38c8d79e61',1,'DynamicVariableSequence::AddToShape(vector&lt; xy_point &gt; xyPoints, vector&lt; envelope_segment &gt; segments)'],['../classDynamicVariableSequence.html#aeafc9abe627f68fb4994c29b771533cf',1,'DynamicVariableSequence::AddToShape(DynamicVariableSequence *shape)'],['../classEnvelope.html#a4050bd9aee0956dc8cebb2c313535cea',1,'Envelope::addToShape(vector&lt; envelope_segment &gt; segs)'],['../classEnvelope.html#a511340c489e608bd6fc97f6003b0bb31',1,'Envelope::addToShape(Envelope *shape)']]],
   ['allpassfilter_8',['allpassfilter',['../classAllPassFilter.html#abaf8df071c2a36a28c0d3368f0d81a5b',1,'AllPassFilter::AllPassFilter(float gain, long delay)'],['../classAllPassFilter.html#a3b1ede560e39873b86d30745b0967bab',1,'AllPassFilter::AllPassFilter()']]],
-  ['append_9',['append',['../classInterpolatorIterator.html#a8d213e1d9fa707ef532fe17b8b16caa8',1,'InterpolatorIterator']]],
-  ['auxfind_10',['auxfind',['../classXmlReader_1_1xmltagset.html#a8d9c775e373d51793507238993db7fdb',1,'XmlReader::xmltagset']]]
+  ['amplitudetrackingenabled_9',['amplitudeTrackingEnabled',['../classTrack.html#a236fff68869b1f2b464faeea7a3cb6dc',1,'Track']]],
+  ['append_10',['append',['../classInterpolatorIterator.html#a8d213e1d9fa707ef532fe17b8b16caa8',1,'InterpolatorIterator']]],
+  ['auxfind_11',['auxfind',['../classXmlReader_1_1xmltagset.html#a8d9c775e373d51793507238993db7fdb',1,'XmlReader::xmltagset']]]
 ];

@@ -158,54 +158,55 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">// get references to the input</span></div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_class" href="classSoundSample.html">SoundSample</a>&amp; inWave = t.<a class="code hl_function" href="classTrack.html#ab79cee3945dd8cb7fda7597c6878d212">getWave</a>();</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_class" href="classSoundSample.html">SoundSample</a>&amp; inAmp = t.<a class="code hl_function" href="classTrack.html#acf30fde4157ac02d2183fdc8ac71498b">getAmp</a>();</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">bool</span> doAmp = t.<a class="code hl_function" href="classTrack.html#a3e7092c64e99d7c15280243167cacb06">hasAmp</a>();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_class" href="classSoundSample.html">SoundSample</a>* inAmp = doAmp ? &amp;t.<a class="code hl_function" href="classTrack.html#acf30fde4157ac02d2183fdc8ac71498b">getAmp</a>() : 0;</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">// for each channel:</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> c=0; c&lt;numTracks; c++)</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="comment">// get an iterator for the pan variable:</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <a class="code hl_class" href="classIterator.html">Iterator&lt;m_value_type&gt;</a> panIter = panVar_-&gt;<a class="code hl_function" href="classDynamicVariable.html#a9b18059d44ec3050c1fc7723193dd9cd">valueIterator</a>();</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="comment">// get references for this channel.</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <a class="code hl_class" href="classSoundSample.html">SoundSample</a>&amp; thisWave = mt-&gt;<a class="code hl_function" href="classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283">get</a>(c)-&gt;<a class="code hl_function" href="classTrack.html#ab79cee3945dd8cb7fda7597c6878d212">getWave</a>();</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <a class="code hl_class" href="classSoundSample.html">SoundSample</a>&amp; thisAmp = mt-&gt;<a class="code hl_function" href="classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283">get</a>(c)-&gt;<a class="code hl_function" href="classTrack.html#acf30fde4157ac02d2183fdc8ac71498b">getAmp</a>();</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="comment">// create a position value for this channel:</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <a class="code hl_typedef" href="Types_8h.html#af51a0a23512330487bbef4e87cec7a7e">m_value_type</a> pos = float(c) / float(numTracks-1);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="comment">// Iterate over each sample</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <a class="code hl_typedef" href="Types_8h.html#af51a0a23512330487bbef4e87cec7a7e">m_value_type</a> scale;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="Types_8h.html#a49c1579ca4315701997c706bf4da7924">m_sample_count_type</a> i=0; i&lt;sampleCount; i++)</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        {</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            <span class="comment">// calculate the scaling factor:</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            scale = 1.0 - fabs(pos - panIter.<a class="code hl_function" href="classIterator.html#a12aa5b9d3dd7370cd40943427834adc6">next</a>());</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <span class="keywordflow">if</span> (scale &gt; 1.0) scale = 1.0;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="keywordflow">if</span> (scale &lt; 0.0) scale = 0.0;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            thisWave[i] = scale * inWave[i];</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            thisAmp[i] = scale * inAmp[i];</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        }</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    }</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>     </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="comment">// Return the multitrack object</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">return</span> mt;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// for each channel:</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> c=0; c&lt;numTracks; c++)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="comment">// get an iterator for the pan variable:</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_class" href="classIterator.html">Iterator&lt;m_value_type&gt;</a> panIter = panVar_-&gt;<a class="code hl_function" href="classDynamicVariable.html#a9b18059d44ec3050c1fc7723193dd9cd">valueIterator</a>();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="comment">// get references for this channel.</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <a class="code hl_class" href="classSoundSample.html">SoundSample</a>&amp; thisWave = mt-&gt;<a class="code hl_function" href="classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283">get</a>(c)-&gt;<a class="code hl_function" href="classTrack.html#ab79cee3945dd8cb7fda7597c6878d212">getWave</a>();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <a class="code hl_class" href="classSoundSample.html">SoundSample</a>* thisAmp = doAmp ? &amp;mt-&gt;<a class="code hl_function" href="classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283">get</a>(c)-&gt;<a class="code hl_function" href="classTrack.html#acf30fde4157ac02d2183fdc8ac71498b">getAmp</a>() : 0;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="comment">// create a position value for this channel:</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <a class="code hl_typedef" href="Types_8h.html#af51a0a23512330487bbef4e87cec7a7e">m_value_type</a> pos = float(c) / float(numTracks-1);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="comment">// Iterate over each sample</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <a class="code hl_typedef" href="Types_8h.html#af51a0a23512330487bbef4e87cec7a7e">m_value_type</a> scale;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="Types_8h.html#a49c1579ca4315701997c706bf4da7924">m_sample_count_type</a> i=0; i&lt;sampleCount; i++)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <span class="comment">// calculate the scaling factor:</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            scale = 1.0 - fabs(pos - panIter.<a class="code hl_function" href="classIterator.html#a12aa5b9d3dd7370cd40943427834adc6">next</a>());</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="keywordflow">if</span> (scale &gt; 1.0) scale = 1.0;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="keywordflow">if</span> (scale &lt; 0.0) scale = 0.0;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            thisWave[i] = scale * inWave[i];</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <span class="keywordflow">if</span> (doAmp) (*thisAmp)[i] = scale * (*inAmp)[i];</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>     </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="comment">// Return the multitrack object</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">return</span> mt;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>}</div>
 </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="foldopen" id="foldopen00102" data-start="{" data-end="}">
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classPan.html#a4fff5f20ea8ea69880ac9ec5ba53ed53">  102</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPan.html#a4fff5f20ea8ea69880ac9ec5ba53ed53">Pan::xml_print</a>( ofstream&amp; xmlOutput )</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>{</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  xmlOutput &lt;&lt; <span class="stringliteral">&quot;\t\t&lt;pan&gt;&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  xmlOutput &lt;&lt; <span class="stringliteral">&quot;\t\t&lt;/pan&gt;&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="foldopen" id="foldopen00103" data-start="{" data-end="}">
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="classPan.html#a4fff5f20ea8ea69880ac9ec5ba53ed53">  103</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classPan.html#a4fff5f20ea8ea69880ac9ec5ba53ed53">Pan::xml_print</a>( ofstream&amp; xmlOutput )</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>{</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  xmlOutput &lt;&lt; <span class="stringliteral">&quot;\t\t&lt;pan&gt;&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  xmlOutput &lt;&lt; <span class="stringliteral">&quot;\t\t&lt;/pan&gt;&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
 </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#endif </span><span class="comment">//__PAN_CPP</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">#endif </span><span class="comment">//__PAN_CPP</span></div>
 <div class="ttc" id="aIterator_8h_html"><div class="ttname"><a href="Iterator_8h.html">Iterator.h</a></div></div>
 <div class="ttc" id="aPan_8h_html"><div class="ttname"><a href="Pan_8h.html">Pan.h</a></div></div>
 <div class="ttc" id="aTypes_8h_html_a49c1579ca4315701997c706bf4da7924"><div class="ttname"><a href="Types_8h.html#a49c1579ca4315701997c706bf4da7924">m_sample_count_type</a></div><div class="ttdeci">long m_sample_count_type</div><div class="ttdoc">Specifies a sample count.</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00044">Types.h:44</a></div></div>
@@ -222,17 +223,18 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aclassMultiTrack_html_ac63f602f0d8c705e33cfa71080346283"><div class="ttname"><a href="classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283">MultiTrack::get</a></div><div class="ttdeci">Track * get(int index) const</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00110">MultiTrack.cpp:110</a></div></div>
 <div class="ttc" id="aclassPan_html"><div class="ttname"><a href="classPan.html">Pan</a></div><div class="ttdef"><b>Definition</b> <a href="Pan_8h_source.html#l00045">Pan.h:46</a></div></div>
 <div class="ttc" id="aclassPan_html_a35a83945980980b28c83f54ea5b72af4"><div class="ttname"><a href="classPan.html#a35a83945980980b28c83f54ea5b72af4">Pan::~Pan</a></div><div class="ttdeci">~Pan()</div><div class="ttdef"><b>Definition</b> <a href="Pan_8cpp_source.html#l00039">Pan.cpp:39</a></div></div>
-<div class="ttc" id="aclassPan_html_a4fff5f20ea8ea69880ac9ec5ba53ed53"><div class="ttname"><a href="classPan.html#a4fff5f20ea8ea69880ac9ec5ba53ed53">Pan::xml_print</a></div><div class="ttdeci">void xml_print(ofstream &amp;xmlOutput)</div><div class="ttdef"><b>Definition</b> <a href="Pan_8cpp_source.html#l00102">Pan.cpp:102</a></div></div>
+<div class="ttc" id="aclassPan_html_a4fff5f20ea8ea69880ac9ec5ba53ed53"><div class="ttname"><a href="classPan.html#a4fff5f20ea8ea69880ac9ec5ba53ed53">Pan::xml_print</a></div><div class="ttdeci">void xml_print(ofstream &amp;xmlOutput)</div><div class="ttdef"><b>Definition</b> <a href="Pan_8cpp_source.html#l00103">Pan.cpp:103</a></div></div>
 <div class="ttc" id="aclassPan_html_a69e820c09fd00c0c38ee415d0a5ed4e6"><div class="ttname"><a href="classPan.html#a69e820c09fd00c0c38ee415d0a5ed4e6">Pan::spatialize_Track</a></div><div class="ttdeci">MultiTrack * spatialize_Track(Track &amp;t, int numTracks)</div><div class="ttdef"><b>Definition</b> <a href="Pan_8cpp_source.html#l00054">Pan.cpp:54</a></div></div>
 <div class="ttc" id="aclassPan_html_a719ffe74ea0cee0010a3e98a786c5b37"><div class="ttname"><a href="classPan.html#a719ffe74ea0cee0010a3e98a786c5b37">Pan::set</a></div><div class="ttdeci">void set(DynamicVariable &amp;v)</div><div class="ttdef"><b>Definition</b> <a href="Pan_8cpp_source.html#l00043">Pan.cpp:43</a></div></div>
 <div class="ttc" id="aclassPan_html_a9d6c42a3000e6dfc536ec72e156ff9fc"><div class="ttname"><a href="classPan.html#a9d6c42a3000e6dfc536ec72e156ff9fc">Pan::clone</a></div><div class="ttdeci">Pan * clone()</div><div class="ttdef"><b>Definition</b> <a href="Pan_8cpp_source.html#l00049">Pan.cpp:49</a></div></div>
 <div class="ttc" id="aclassPan_html_aa1a7ac92d60af88c1736c1199f1bc290"><div class="ttname"><a href="classPan.html#aa1a7ac92d60af88c1736c1199f1bc290">Pan::Pan</a></div><div class="ttdeci">Pan(DynamicVariable &amp;v)</div><div class="ttdef"><b>Definition</b> <a href="Pan_8cpp_source.html#l00037">Pan.cpp:37</a></div></div>
 <div class="ttc" id="aclassSoundSample_html"><div class="ttname"><a href="classSoundSample.html">SoundSample</a></div><div class="ttdef"><b>Definition</b> <a href="SoundSample_8h_source.html#l00042">SoundSample.h:43</a></div></div>
-<div class="ttc" id="aclassSoundSample_html_a08fd608ef3ada608ca32828c427c9741"><div class="ttname"><a href="classSoundSample.html#a08fd608ef3ada608ca32828c427c9741">SoundSample::getSamplingRate</a></div><div class="ttdeci">m_rate_type getSamplingRate()</div><div class="ttdef"><b>Definition</b> <a href="SoundSample_8cpp_source.html#l00099">SoundSample.cpp:99</a></div></div>
-<div class="ttc" id="aclassSoundSample_html_a8fe1248c64570253ba40d68a75114057"><div class="ttname"><a href="classSoundSample.html#a8fe1248c64570253ba40d68a75114057">SoundSample::getSampleCount</a></div><div class="ttdeci">m_sample_count_type getSampleCount()</div><div class="ttdef"><b>Definition</b> <a href="SoundSample_8cpp_source.html#l00105">SoundSample.cpp:105</a></div></div>
+<div class="ttc" id="aclassSoundSample_html_a08fd608ef3ada608ca32828c427c9741"><div class="ttname"><a href="classSoundSample.html#a08fd608ef3ada608ca32828c427c9741">SoundSample::getSamplingRate</a></div><div class="ttdeci">m_rate_type getSamplingRate()</div><div class="ttdef"><b>Definition</b> <a href="SoundSample_8cpp_source.html#l00094">SoundSample.cpp:94</a></div></div>
+<div class="ttc" id="aclassSoundSample_html_a8fe1248c64570253ba40d68a75114057"><div class="ttname"><a href="classSoundSample.html#a8fe1248c64570253ba40d68a75114057">SoundSample::getSampleCount</a></div><div class="ttdeci">m_sample_count_type getSampleCount()</div><div class="ttdef"><b>Definition</b> <a href="SoundSample_8cpp_source.html#l00100">SoundSample.cpp:100</a></div></div>
 <div class="ttc" id="aclassTrack_html"><div class="ttname"><a href="classTrack.html">Track</a></div><div class="ttdef"><b>Definition</b> <a href="Track_8h_source.html#l00042">Track.h:43</a></div></div>
-<div class="ttc" id="aclassTrack_html_ab79cee3945dd8cb7fda7597c6878d212"><div class="ttname"><a href="classTrack.html#ab79cee3945dd8cb7fda7597c6878d212">Track::getWave</a></div><div class="ttdeci">SoundSample &amp; getWave()</div><div class="ttdef"><b>Definition</b> <a href="Track_8cpp_source.html#l00094">Track.cpp:94</a></div></div>
-<div class="ttc" id="aclassTrack_html_acf30fde4157ac02d2183fdc8ac71498b"><div class="ttname"><a href="classTrack.html#acf30fde4157ac02d2183fdc8ac71498b">Track::getAmp</a></div><div class="ttdeci">SoundSample &amp; getAmp()</div><div class="ttdef"><b>Definition</b> <a href="Track_8cpp_source.html#l00106">Track.cpp:106</a></div></div>
+<div class="ttc" id="aclassTrack_html_a3e7092c64e99d7c15280243167cacb06"><div class="ttname"><a href="classTrack.html#a3e7092c64e99d7c15280243167cacb06">Track::hasAmp</a></div><div class="ttdeci">bool hasAmp()</div><div class="ttdef"><b>Definition</b> <a href="Track_8cpp_source.html#l00108">Track.cpp:108</a></div></div>
+<div class="ttc" id="aclassTrack_html_ab79cee3945dd8cb7fda7597c6878d212"><div class="ttname"><a href="classTrack.html#ab79cee3945dd8cb7fda7597c6878d212">Track::getWave</a></div><div class="ttdeci">SoundSample &amp; getWave()</div><div class="ttdef"><b>Definition</b> <a href="Track_8cpp_source.html#l00102">Track.cpp:102</a></div></div>
+<div class="ttc" id="aclassTrack_html_acf30fde4157ac02d2183fdc8ac71498b"><div class="ttname"><a href="classTrack.html#acf30fde4157ac02d2183fdc8ac71498b">Track::getAmp</a></div><div class="ttdeci">SoundSample &amp; getAmp()</div><div class="ttdef"><b>Definition</b> <a href="Track_8cpp_source.html#l00114">Track.cpp:114</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

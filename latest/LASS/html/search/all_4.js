@@ -2,7 +2,7 @@ var searchData=
 [
   ['debugdelete_0',['DebugDelete',['../classMemoryLeak.html#af97accdde164131eb38de58923994f64',1,'MemoryLeak']]],
   ['debugnew_1',['debugnew',['../classMemoryLeak.html#ae54a958895a16c8a7cbc5188252b9c7a',1,'MemoryLeak::DebugNew(T *Object, int LineNumber, const char *Filename)'],['../classMemoryLeak.html#a1d883495567a0a78e64f8a301071ba7e',1,'MemoryLeak::DebugNew(int LineNumber, const char *Filename)']]],
-  ['defineshape_2',['defineshape',['../classEnvelope.html#abaddf39e300db75e79479bdc773f6a5b',1,'Envelope::defineShape()'],['../classDynamicVariableSequence.html#a2f13c8bae20302fc0c5eb78bb51e475a',1,'DynamicVariableSequence::DefineShape()']]],
+  ['defineshape_2',['defineshape',['../classDynamicVariableSequence.html#a2f13c8bae20302fc0c5eb78bb51e475a',1,'DynamicVariableSequence::DefineShape()'],['../classEnvelope.html#abaddf39e300db75e79479bdc773f6a5b',1,'Envelope::defineShape()']]],
   ['delete_3',['Delete',['../MemoryLeakCheck_8h.html#aee67ff420709dfb92fad8c05d863b691',1,'MemoryLeakCheck.h']]],
   ['delta_5f_4',['delta_',['../classInterpolatorIterator.html#ac8e3296940b1ebac800b2c6b0b02a22d',1,'InterpolatorIterator']]],
   ['deprecated_20list_5',['Deprecated List',['../deprecated.html',1,'']]],

@@ -1,13 +1,15 @@
 <map id="Reverb::do_reverb_Track" name="Reverb::do_reverb_Track">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,541,188,567"/>
-<area shape="rect" id="Node000002" href="$classReverb.html#ace20af68ae86853a9e9ef803b9eb2a4d" title=" " alt="" coords="236,541,419,567"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,551,222,551,222,557,188,557"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,567,188,592"/>
+<area shape="rect" id="Node000002" href="$classReverb.html#ace20af68ae86853a9e9ef803b9eb2a4d" title=" " alt="" coords="236,567,419,592"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,577,222,577,222,582,188,582"/>
 <area shape="rect" id="Node000003" href="$classReverb.html#a195b8f9b4f2c827a610eb89d5893f599" title=" " alt="" coords="467,429,704,455"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="357,539,542,458,544,463,359,544"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="351,564,547,459,550,464,353,569"/>
 <area shape="rect" id="Node000022" href="$classTrack.html#ab79cee3945dd8cb7fda7597c6878d212" title=" " alt="" coords="525,591,646,616"/>
-<area shape="poly" id="edge27_Node000002_Node000022" title=" " alt="" coords="395,564,512,587,511,592,394,569"/>
-<area shape="rect" id="Node000023" href="$classReverb.html#a8e5b74b8cd84a26019b3d4759c94bf3f" title=" " alt="" coords="531,541,640,567"/>
-<area shape="poly" id="edge28_Node000002_Node000023" title=" " alt="" coords="419,551,517,551,517,557,419,557"/>
+<area shape="poly" id="edge27_Node000002_Node000022" title=" " alt="" coords="419,585,511,594,511,599,418,590"/>
+<area shape="rect" id="Node000023" href="$classTrack.html#a3e7092c64e99d7c15280243167cacb06" title=" " alt="" coords="527,640,644,665"/>
+<area shape="poly" id="edge28_Node000002_Node000023" title=" " alt="" coords="361,590,467,626,514,637,512,642,466,631,360,595"/>
+<area shape="rect" id="Node000024" href="$classReverb.html#a8e5b74b8cd84a26019b3d4759c94bf3f" title=" " alt="" coords="531,541,640,567"/>
+<area shape="poly" id="edge29_Node000002_Node000024" title=" " alt="" coords="418,568,517,558,517,563,419,573"/>
 <area shape="rect" id="Node000004" href="$classReverb.html#a1cff433c04ff5cf8b010761fbdc9de96" title=" " alt="" coords="797,355,938,380"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="626,427,751,390,791,380,792,386,753,395,627,432"/>
 <area shape="rect" id="Node000010" href="$classDynamicVariable.html#ad535d26db2fb71e8e9fd05f142d9d844" title=" " alt="" coords="1031,499,1249,524"/>
@@ -50,8 +52,8 @@
 <area shape="poly" id="edge22_Node000011_Node000019" title=" " alt="" coords="1151,201,1209,146,1251,115,1296,89,1329,77,1331,83,1298,94,1253,119,1213,150,1155,205"/>
 <area shape="rect" id="Node000016" href="$classAbstractIterator.html#a131acaa938ffedf104e5e3b55dffc5c2" title=" " alt="" coords="1628,5,1789,31"/>
 <area shape="poly" id="edge19_Node000015_Node000016" title=" " alt="" coords="1492,15,1614,15,1614,21,1492,21"/>
-<area shape="poly" id="edge31_Node000023_Node000023" title=" " alt="" coords="544,543,535,533,540,523,557,517,585,515,621,519,632,523,636,529,631,532,628,527,620,524,585,520,558,522,543,527,540,532,548,539"/>
-<area shape="rect" id="Node000024" href="$classAllPassFilter.html#a7d2526a71f27ef869724259ee834efc9" title=" " alt="" coords="1069,555,1211,580"/>
-<area shape="poly" id="edge29_Node000023_Node000024" title=" " alt="" coords="640,553,1055,563,1055,568,640,558"/>
-<area shape="poly" id="edge30_Node000024_Node000007" title=" " alt="" coords="1212,567,1380,563,1480,554,1579,539,1646,520,1647,525,1581,545,1481,560,1381,568,1212,572"/>
+<area shape="poly" id="edge32_Node000024_Node000024" title=" " alt="" coords="544,543,535,533,540,523,557,517,585,515,621,519,632,523,636,529,631,532,628,527,620,524,585,520,558,522,543,527,540,532,548,539"/>
+<area shape="rect" id="Node000025" href="$classAllPassFilter.html#a7d2526a71f27ef869724259ee834efc9" title=" " alt="" coords="1069,555,1211,580"/>
+<area shape="poly" id="edge30_Node000024_Node000025" title=" " alt="" coords="640,553,1055,563,1055,568,640,558"/>
+<area shape="poly" id="edge31_Node000025_Node000007" title=" " alt="" coords="1212,567,1380,563,1480,554,1579,539,1646,520,1647,525,1581,545,1481,560,1381,568,1212,572"/>
 </map>

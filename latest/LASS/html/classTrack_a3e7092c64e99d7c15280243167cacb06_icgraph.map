@@ -1,15 +1,21 @@
 <map id="Track::hasAmp" name="Track::hasAmp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1459,70,1576,95"/>
-<area shape="rect" id="Node000002" href="$classTrack.html#a684dc87cb52830a8e9708973b230a9fa" title=" " alt="" coords="1279,70,1411,95"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1445,85,1411,85,1411,80,1445,80"/>
-<area shape="rect" id="Node000003" href="$classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d" title=" " alt="" coords="1065,70,1231,95"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1265,85,1231,85,1231,80,1265,80"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1527,149,1644,174"/>
+<area shape="rect" id="Node000002" href="$classTrack.html#a684dc87cb52830a8e9708973b230a9fa" title=" " alt="" coords="1321,70,1453,95"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1550,144,1478,109,1443,98,1445,93,1480,104,1552,139"/>
+<area shape="rect" id="Node000011" href="$classReverb.html#ace20af68ae86853a9e9ef803b9eb2a4d" title=" " alt="" coords="1296,119,1479,145"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="1513,153,1473,147,1474,142,1514,148"/>
+<area shape="rect" id="Node000014" href="$classMultiPan.html#ae814ca649cb2909bc482c9e138e049c9" title=" " alt="" coords="1313,169,1462,209"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="1513,174,1463,181,1462,176,1513,169"/>
+<area shape="rect" id="Node000015" href="$classPan.html#a69e820c09fd00c0c38ee415d0a5ed4e6" title=" " alt="" coords="1309,234,1466,259"/>
+<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="1555,184,1519,204,1480,224,1443,236,1441,231,1478,219,1517,200,1552,179"/>
+<area shape="rect" id="Node000003" href="$classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d" title=" " alt="" coords="1074,70,1239,95"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1308,85,1240,85,1240,80,1308,80"/>
 <area shape="rect" id="Node000004" href="$classScore.html#a3a4fd110381c2d6dea6d7d84edf094c7" title=" " alt="" coords="811,5,1017,45"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1082,69,995,48,997,43,1083,64"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1088,69,998,48,1000,43,1089,64"/>
 <area shape="rect" id="Node000005" href="$classScore.html#a5454303993d1efa3db744d9d6e39bf58" title=" " alt="" coords="567,49,763,89"/>
-<area shape="poly" id="edge10_Node000003_Node000005" title=" " alt="" coords="1051,83,763,75,763,69,1052,77"/>
+<area shape="poly" id="edge10_Node000003_Node000005" title=" " alt="" coords="1060,83,763,75,763,69,1061,77"/>
 <area shape="rect" id="Node000010" href="$classSpatializer.html#a66c634b61bd59f6afaeeb8fd46350525" title=" " alt="" coords="583,113,746,153"/>
-<area shape="poly" id="edge11_Node000003_Node000010" title=" " alt="" coords="1052,95,747,128,746,122,1051,90"/>
+<area shape="poly" id="edge11_Node000003_Node000010" title=" " alt="" coords="1061,95,747,128,746,122,1060,90"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="798,49,763,55,762,49,797,43"/>
 <area shape="rect" id="Node000006" href="$Score_8cpp.html#a2e1065ce25c966cc4228e217e80ce1e7" title=" " alt="" coords="428,61,519,86"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="553,74,519,75,519,70,553,69"/>
@@ -21,4 +27,8 @@
 <area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="254,127,220,127,220,121,254,121"/>
 <area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="142,118,108,111,109,106,143,113"/>
 <area shape="poly" id="edge12_Node000010_Node000007" title=" " alt="" coords="570,133,380,128,380,123,570,128"/>
+<area shape="rect" id="Node000012" href="$classReverb.html#ac8dd1a7ca6f03d889159ff37ca98b546" title=" " alt="" coords="1065,169,1248,194"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="1315,150,1217,171,1216,166,1314,145"/>
+<area shape="rect" id="Node000013" href="$classPartial.html#a6ab80d7069346d873d3811de427a53d8" title=" " alt="" coords="1100,119,1213,145"/>
+<area shape="poly" id="edge15_Node000011_Node000013" title=" " alt="" coords="1282,135,1213,135,1213,129,1282,129"/>
 </map>

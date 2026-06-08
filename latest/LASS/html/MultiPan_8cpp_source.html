@@ -372,100 +372,101 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span> </div>
 <div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>  <span class="comment">// get references to the input</span></div>
 <div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>  <a class="code hl_class" href="classSoundSample.html">SoundSample</a> &amp;inWave = t.<a class="code hl_function" href="classTrack.html#ab79cee3945dd8cb7fda7597c6878d212">getWave</a>();</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>  <a class="code hl_class" href="classSoundSample.html">SoundSample</a> &amp;inAmp  = t.<a class="code hl_function" href="classTrack.html#acf30fde4157ac02d2183fdc8ac71498b">getAmp</a>();</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span> </div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>  <span class="comment">// for each channel</span></div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> c=0; c&lt;n_channels; c++)</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>  {</div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    <span class="comment">// get an iterator for the current interpolator</span></div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    <a class="code hl_class" href="classIterator.html">Iterator&lt;m_value_type&gt;</a> iter = (EnvList[c])-&gt;valueIterator();</div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span> </div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>    <span class="comment">// get references for this channel</span></div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    <a class="code hl_class" href="classSoundSample.html">SoundSample</a> &amp;thisWave = mt-&gt;<a class="code hl_function" href="classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283">get</a>(c)-&gt;<a class="code hl_function" href="classTrack.html#ab79cee3945dd8cb7fda7597c6878d212">getWave</a>();</div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    <a class="code hl_class" href="classSoundSample.html">SoundSample</a> &amp;thisAmp  = mt-&gt;<a class="code hl_function" href="classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283">get</a>(c)-&gt;<a class="code hl_function" href="classTrack.html#acf30fde4157ac02d2183fdc8ac71498b">getAmp</a>();</div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span> </div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>    <span class="comment">// Iterate over each sample</span></div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    <a class="code hl_typedef" href="Types_8h.html#af51a0a23512330487bbef4e87cec7a7e">m_value_type</a> scale;</div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>    <span class="keywordflow">for</span>(<a class="code hl_typedef" href="Types_8h.html#a49c1579ca4315701997c706bf4da7924">m_sample_count_type</a> i=0; i&lt;sampleCount; i++)</div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    {</div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>      <span class="comment">// calculate scaling factor -- FIXME, I don&#39;t </span></div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>      <span class="comment">//  understand what Pan.cpp does here, what is</span></div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>      <span class="comment">//  &#39;pos&#39; for?</span></div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>      scale = iter.<a class="code hl_function" href="classIterator.html#a12aa5b9d3dd7370cd40943427834adc6">next</a>();</div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span> </div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>      thisWave[i] = scale * inWave[i];</div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>      thisAmp[i]  = scale * inAmp[i];</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>    }</div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>  }</div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span> </div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>  <span class="comment">// Return the multitrack object</span></div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>  <span class="keywordflow">return</span> mt;</div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>}</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>  <span class="keywordtype">bool</span> doAmp = t.<a class="code hl_function" href="classTrack.html#a3e7092c64e99d7c15280243167cacb06">hasAmp</a>();</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>  <a class="code hl_class" href="classSoundSample.html">SoundSample</a> *inAmp = doAmp ? &amp;t.<a class="code hl_function" href="classTrack.html#acf30fde4157ac02d2183fdc8ac71498b">getAmp</a>() : 0;</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span> </div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>  <span class="comment">// for each channel</span></div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> c=0; c&lt;n_channels; c++)</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>  {</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    <span class="comment">// get an iterator for the current interpolator</span></div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    <a class="code hl_class" href="classIterator.html">Iterator&lt;m_value_type&gt;</a> iter = (EnvList[c])-&gt;valueIterator();</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span> </div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    <span class="comment">// get references for this channel</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    <a class="code hl_class" href="classSoundSample.html">SoundSample</a> &amp;thisWave = mt-&gt;<a class="code hl_function" href="classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283">get</a>(c)-&gt;<a class="code hl_function" href="classTrack.html#ab79cee3945dd8cb7fda7597c6878d212">getWave</a>();</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>    <a class="code hl_class" href="classSoundSample.html">SoundSample</a> *thisAmp  = doAmp ? &amp;mt-&gt;<a class="code hl_function" href="classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283">get</a>(c)-&gt;<a class="code hl_function" href="classTrack.html#acf30fde4157ac02d2183fdc8ac71498b">getAmp</a>() : 0;</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span> </div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    <span class="comment">// Iterate over each sample</span></div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>    <a class="code hl_typedef" href="Types_8h.html#af51a0a23512330487bbef4e87cec7a7e">m_value_type</a> scale;</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <span class="keywordflow">for</span>(<a class="code hl_typedef" href="Types_8h.html#a49c1579ca4315701997c706bf4da7924">m_sample_count_type</a> i=0; i&lt;sampleCount; i++)</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    {</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>      <span class="comment">// calculate scaling factor -- FIXME, I don&#39;t</span></div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>      <span class="comment">//  understand what Pan.cpp does here, what is</span></div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>      <span class="comment">//  &#39;pos&#39; for?</span></div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>      scale = iter.<a class="code hl_function" href="classIterator.html#a12aa5b9d3dd7370cd40943427834adc6">next</a>();</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>      thisWave[i] = scale * inWave[i];</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>      <span class="keywordflow">if</span> (doAmp) (*thisAmp)[i] = scale * (*inAmp)[i];</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    }</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>  }</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span> </div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>  <span class="comment">// Return the multitrack object</span></div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>  <span class="keywordflow">return</span> mt;</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>}</div>
 </div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span> </div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span><span class="keywordtype">void</span> MultiPan::addEntryHelperFn(<span class="keywordtype">int</span> envIdx, <span class="keywordtype">float</span> t, <span class="keywordtype">float</span> amp)</div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>{</div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>  <a class="code hl_struct" href="structxy__point.html">xy_point</a> xy;</div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>  <a class="code hl_struct" href="structenvelope__segment.html">envelope_segment</a> seg;</div>
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span> </div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>  xy.<a class="code hl_variable" href="structxy__point.html#a4ea82357a95a576f5565ebb2189a3549">x</a> = t;</div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>  xy.<a class="code hl_variable" href="structxy__point.html#adee12938d778a466838a27f9394217c4">y</a> = amp;</div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>  (xyCollectionsList[envIdx])-&gt;push_back(xy);</div>
-<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span> </div>
-<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>  <span class="keywordflow">if</span>((xyCollectionsList[envIdx])-&gt;size() &gt; 1)</div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>  {</div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>    seg.<a class="code hl_variable" href="structenvelope__segment.html#aac5fe4106fab37797d81c3c868756a11">interType</a> = <a class="code hl_enumvalue" href="Types_8h.html#afe289733af5a151e49b7dadc43a70a8cadc101ebf31c49c2d4b80b7c6f59f22cb">LINEAR</a>;</div>
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>                seg.<a class="code hl_variable" href="structenvelope__segment.html#a238d646696aac8ca4370ca4c88c5d856">lengthType</a>  = <a class="code hl_enumvalue" href="Types_8h.html#a471e7651aeb8074017a8d0a0059a958bad2dab1cda43e225012f8bd9148868b81">FLEXIBLE</a>; <span class="comment">//FIXED; -- created lengths of envs too long -- changed 8/09 rcavis</span></div>
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>    seg.<a class="code hl_variable" href="structenvelope__segment.html#a5f6821aa28a09bcfaf8f643c8f0c4556">timeValue</a> = 1.0;</div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>    (segCollectionsList[envIdx])-&gt;push_back(seg); </div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>  }</div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>  <span class="comment">/*</span></div>
-<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span><span class="comment">  vector&lt;xy_point&gt; c1 = vector&lt;xy_point&gt;(*xyCollectionsList[envIdx]);</span></div>
-<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span><span class="comment">  vector&lt;envelope_segment&gt; c2 = vector&lt;envelope_segment&gt;(*segCollectionsList[envIdx]);</span></div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span><span class="comment">  //cout&lt;&lt;&quot;this new is excuted&quot;&lt;&lt;endl;</span></div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span><span class="comment">  if (EnvList[envIdx]!=NULL) delete EnvList[envIdx];</span></div>
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span><span class="comment">  (EnvList[envIdx]) = new Envelope(*xyCollectionsList[envIdx],</span></div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span><span class="comment">              *segCollectionsList[envIdx]);</span></div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span><span class="comment">        //cout &lt;&lt; &quot;CREATED ENV&quot; &lt;&lt; endl;</span></div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span><span class="comment">        //EnvList[envIdx]-&gt;print();</span></div>
-<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span><span class="comment">        //cout &lt;&lt; &quot;    END CREATE&quot; &lt;&lt; endl;</span></div>
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span><span class="comment">        */</span></div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>}</div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span> </div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span> </div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span><span class="keywordtype">void</span> MultiPan::addEntryHelperFn(<span class="keywordtype">int</span> envIdx, <span class="keywordtype">float</span> t, <span class="keywordtype">float</span> amp)</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>{</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>  <a class="code hl_struct" href="structxy__point.html">xy_point</a> xy;</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>  <a class="code hl_struct" href="structenvelope__segment.html">envelope_segment</a> seg;</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span> </div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>  xy.<a class="code hl_variable" href="structxy__point.html#a4ea82357a95a576f5565ebb2189a3549">x</a> = t;</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>  xy.<a class="code hl_variable" href="structxy__point.html#adee12938d778a466838a27f9394217c4">y</a> = amp;</div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>  (xyCollectionsList[envIdx])-&gt;push_back(xy);</div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span> </div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>  <span class="keywordflow">if</span>((xyCollectionsList[envIdx])-&gt;size() &gt; 1)</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>  {</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>    seg.<a class="code hl_variable" href="structenvelope__segment.html#aac5fe4106fab37797d81c3c868756a11">interType</a> = <a class="code hl_enumvalue" href="Types_8h.html#afe289733af5a151e49b7dadc43a70a8cadc101ebf31c49c2d4b80b7c6f59f22cb">LINEAR</a>;</div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>                seg.<a class="code hl_variable" href="structenvelope__segment.html#a238d646696aac8ca4370ca4c88c5d856">lengthType</a>  = <a class="code hl_enumvalue" href="Types_8h.html#a471e7651aeb8074017a8d0a0059a958bad2dab1cda43e225012f8bd9148868b81">FLEXIBLE</a>; <span class="comment">//FIXED; -- created lengths of envs too long -- changed 8/09 rcavis</span></div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>    seg.<a class="code hl_variable" href="structenvelope__segment.html#a5f6821aa28a09bcfaf8f643c8f0c4556">timeValue</a> = 1.0;</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>    (segCollectionsList[envIdx])-&gt;push_back(seg); </div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>  }</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>  <span class="comment">/*</span></div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span><span class="comment">  vector&lt;xy_point&gt; c1 = vector&lt;xy_point&gt;(*xyCollectionsList[envIdx]);</span></div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span><span class="comment">  vector&lt;envelope_segment&gt; c2 = vector&lt;envelope_segment&gt;(*segCollectionsList[envIdx]);</span></div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span><span class="comment">  //cout&lt;&lt;&quot;this new is excuted&quot;&lt;&lt;endl;</span></div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span><span class="comment">  if (EnvList[envIdx]!=NULL) delete EnvList[envIdx];</span></div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span><span class="comment">  (EnvList[envIdx]) = new Envelope(*xyCollectionsList[envIdx],</span></div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span><span class="comment">              *segCollectionsList[envIdx]);</span></div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span><span class="comment">        //cout &lt;&lt; &quot;CREATED ENV&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span><span class="comment">        //EnvList[envIdx]-&gt;print();</span></div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span><span class="comment">        //cout &lt;&lt; &quot;    END CREATE&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span><span class="comment">        */</span></div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>}</div>
 <div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span> </div>
-<div class="foldopen" id="foldopen00429" data-start="{" data-end="}">
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno"><a class="line" href="classMultiPan.html#a46305c00398158ea631865a3293da2e2">  429</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classMultiPan.html#a46305c00398158ea631865a3293da2e2">MultiPan::doneAddEntryLocation</a>(){</div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span> </div>
-<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n_channels; i ++){</div>
-<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>  </div>
-<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>  <span class="comment">//vector&lt;xy_point&gt; c1 = vector&lt;xy_point&gt;(*xyCollectionsList[envIdx]);</span></div>
-<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>  <span class="comment">//vector&lt;envelope_segment&gt; c2 = vector&lt;envelope_segment&gt;(*segCollectionsList[envIdx]);</span></div>
-<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>  <span class="comment">//cout&lt;&lt;&quot;this new is excuted&quot;&lt;&lt;endl;</span></div>
-<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>    <span class="keywordflow">if</span> (EnvList[i]!=NULL) <span class="keyword">delete</span> EnvList[i];</div>
-<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>    (EnvList[i]) = <span class="keyword">new</span> <a class="code hl_class" href="classEnvelope.html">Envelope</a>(*xyCollectionsList[i],</div>
-<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>              *segCollectionsList[i]);</div>
-<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>        <span class="comment">//cout &lt;&lt; &quot;CREATED ENV&quot; &lt;&lt; endl;</span></div>
-<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>        <span class="comment">//EnvList[envIdx]-&gt;print();</span></div>
-<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>        <span class="comment">//cout &lt;&lt; &quot;    END CREATE&quot; &lt;&lt; endl;</span></div>
-<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>  }</div>
-<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span> </div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span> </div>
+<div class="foldopen" id="foldopen00430" data-start="{" data-end="}">
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno"><a class="line" href="classMultiPan.html#a46305c00398158ea631865a3293da2e2">  430</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classMultiPan.html#a46305c00398158ea631865a3293da2e2">MultiPan::doneAddEntryLocation</a>(){</div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span> </div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n_channels; i ++){</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>  </div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>  <span class="comment">//vector&lt;xy_point&gt; c1 = vector&lt;xy_point&gt;(*xyCollectionsList[envIdx]);</span></div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>  <span class="comment">//vector&lt;envelope_segment&gt; c2 = vector&lt;envelope_segment&gt;(*segCollectionsList[envIdx]);</span></div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>  <span class="comment">//cout&lt;&lt;&quot;this new is excuted&quot;&lt;&lt;endl;</span></div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>    <span class="keywordflow">if</span> (EnvList[i]!=NULL) <span class="keyword">delete</span> EnvList[i];</div>
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>    (EnvList[i]) = <span class="keyword">new</span> <a class="code hl_class" href="classEnvelope.html">Envelope</a>(*xyCollectionsList[i],</div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>              *segCollectionsList[i]);</div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>        <span class="comment">//cout &lt;&lt; &quot;CREATED ENV&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>        <span class="comment">//EnvList[envIdx]-&gt;print();</span></div>
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>        <span class="comment">//cout &lt;&lt; &quot;    END CREATE&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>  }</div>
 <div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span> </div>
 <div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span> </div>
-<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>}</div>
+<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span> </div>
+<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>}</div>
 </div>
-<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span> </div>
 <div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span> </div>
-<div class="foldopen" id="foldopen00449" data-start="{" data-end="}">
-<div class="line"><a id="l00449" name="l00449"></a><span class="lineno"><a class="line" href="classMultiPan.html#ad3b4117335cc57d4fe3f71fc82678315">  449</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classMultiPan.html#ad3b4117335cc57d4fe3f71fc82678315">MultiPan::xml_print</a>( ofstream&amp; xmlOutput )</div>
-<div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span>{</div>
-<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>  xmlOutput &lt;&lt; <span class="stringliteral">&quot;\t\t&lt;multipan&gt;&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>  </div>
-<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>  xmlOutput &lt;&lt; <span class="stringliteral">&quot;\t\t&lt;/multipan&gt;&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>}</div>
+<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span> </div>
+<div class="foldopen" id="foldopen00450" data-start="{" data-end="}">
+<div class="line"><a id="l00450" name="l00450"></a><span class="lineno"><a class="line" href="classMultiPan.html#ad3b4117335cc57d4fe3f71fc82678315">  450</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classMultiPan.html#ad3b4117335cc57d4fe3f71fc82678315">MultiPan::xml_print</a>( ofstream&amp; xmlOutput )</div>
+<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>{</div>
+<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>  xmlOutput &lt;&lt; <span class="stringliteral">&quot;\t\t&lt;multipan&gt;&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>  </div>
+<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>  xmlOutput &lt;&lt; <span class="stringliteral">&quot;\t\t&lt;/multipan&gt;&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>}</div>
 </div>
-<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span> </div>
-<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span><span class="preprocessor">#endif </span><span class="comment">//__MULTI_PAN_CPP</span></div>
-<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span> </div>
+<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span> </div>
+<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span><span class="preprocessor">#endif </span><span class="comment">//__MULTI_PAN_CPP</span></div>
+<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span> </div>
 <div class="ttc" id="aBiQuadFilter_8cpp_html_ae71449b1cc6e6250b91f539153a7a0d3"><div class="ttname"><a href="BiQuadFilter_8cpp.html#ae71449b1cc6e6250b91f539153a7a0d3">M_PI</a></div><div class="ttdeci">#define M_PI</div><div class="ttdef"><b>Definition</b> <a href="BiQuadFilter_8cpp_source.html#l00036">BiQuadFilter.cpp:36</a></div></div>
 <div class="ttc" id="aEnvelope_8h_html"><div class="ttname"><a href="Envelope_8h.html">Envelope.h</a></div></div>
 <div class="ttc" id="aMultiPan_8cpp_html_a10673a9795257f57f33959b7c952c608"><div class="ttname"><a href="MultiPan_8cpp.html#a10673a9795257f57f33959b7c952c608">JBL_SQRD</a></div><div class="ttdeci">#define JBL_SQRD(x)</div></div>
@@ -485,21 +486,22 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aclassMultiPan_html"><div class="ttname"><a href="classMultiPan.html">MultiPan</a></div><div class="ttdef"><b>Definition</b> <a href="MultiPan_8h_source.html#l00048">MultiPan.h:49</a></div></div>
 <div class="ttc" id="aclassMultiPan_html_a0910592418412d35ed21a45a0b31dd86"><div class="ttname"><a href="classMultiPan.html#a0910592418412d35ed21a45a0b31dd86">MultiPan::MultiPan</a></div><div class="ttdeci">MultiPan(int nChans)</div><div class="ttdef"><b>Definition</b> <a href="MultiPan_8cpp_source.html#l00047">MultiPan.cpp:47</a></div></div>
 <div class="ttc" id="aclassMultiPan_html_a21f61e6da65345a83a094301361cf733"><div class="ttname"><a href="classMultiPan.html#a21f61e6da65345a83a094301361cf733">MultiPan::print</a></div><div class="ttdeci">void print()</div><div class="ttdef"><b>Definition</b> <a href="MultiPan_8cpp_source.html#l00191">MultiPan.cpp:191</a></div></div>
-<div class="ttc" id="aclassMultiPan_html_a46305c00398158ea631865a3293da2e2"><div class="ttname"><a href="classMultiPan.html#a46305c00398158ea631865a3293da2e2">MultiPan::doneAddEntryLocation</a></div><div class="ttdeci">void doneAddEntryLocation()</div><div class="ttdef"><b>Definition</b> <a href="MultiPan_8cpp_source.html#l00429">MultiPan.cpp:429</a></div></div>
+<div class="ttc" id="aclassMultiPan_html_a46305c00398158ea631865a3293da2e2"><div class="ttname"><a href="classMultiPan.html#a46305c00398158ea631865a3293da2e2">MultiPan::doneAddEntryLocation</a></div><div class="ttdeci">void doneAddEntryLocation()</div><div class="ttdef"><b>Definition</b> <a href="MultiPan_8cpp_source.html#l00430">MultiPan.cpp:430</a></div></div>
 <div class="ttc" id="aclassMultiPan_html_a4ec27725135055493a05c93374a47785"><div class="ttname"><a href="classMultiPan.html#a4ec27725135055493a05c93374a47785">MultiPan::~MultiPan</a></div><div class="ttdeci">~MultiPan()</div><div class="ttdef"><b>Definition</b> <a href="MultiPan_8cpp_source.html#l00096">MultiPan.cpp:96</a></div></div>
 <div class="ttc" id="aclassMultiPan_html_a7c192d3bb8e5a2f5d5f36132ea7bbdcd"><div class="ttname"><a href="classMultiPan.html#a7c192d3bb8e5a2f5d5f36132ea7bbdcd">MultiPan::addEntry</a></div><div class="ttdeci">void addEntry(double t,...)</div><div class="ttdef"><b>Definition</b> <a href="MultiPan_8cpp_source.html#l00209">MultiPan.cpp:209</a></div></div>
 <div class="ttc" id="aclassMultiPan_html_ab00e588f20c00033ffac794426d9e883"><div class="ttname"><a href="classMultiPan.html#ab00e588f20c00033ffac794426d9e883">MultiPan::addEntryLocation</a></div><div class="ttdeci">void addEntryLocation(float t, float theta, float radius)</div><div class="ttdef"><b>Definition</b> <a href="MultiPan_8cpp_source.html#l00254">MultiPan.cpp:254</a></div></div>
-<div class="ttc" id="aclassMultiPan_html_ad3b4117335cc57d4fe3f71fc82678315"><div class="ttname"><a href="classMultiPan.html#ad3b4117335cc57d4fe3f71fc82678315">MultiPan::xml_print</a></div><div class="ttdeci">void xml_print(ofstream &amp;xmlOutput)</div><div class="ttdef"><b>Definition</b> <a href="MultiPan_8cpp_source.html#l00449">MultiPan.cpp:449</a></div></div>
+<div class="ttc" id="aclassMultiPan_html_ad3b4117335cc57d4fe3f71fc82678315"><div class="ttname"><a href="classMultiPan.html#ad3b4117335cc57d4fe3f71fc82678315">MultiPan::xml_print</a></div><div class="ttdeci">void xml_print(ofstream &amp;xmlOutput)</div><div class="ttdef"><b>Definition</b> <a href="MultiPan_8cpp_source.html#l00450">MultiPan.cpp:450</a></div></div>
 <div class="ttc" id="aclassMultiPan_html_ae814ca649cb2909bc482c9e138e049c9"><div class="ttname"><a href="classMultiPan.html#ae814ca649cb2909bc482c9e138e049c9">MultiPan::spatialize_Track</a></div><div class="ttdeci">MultiTrack * spatialize_Track(Track &amp;t, int numTracks)</div><div class="ttdef"><b>Definition</b> <a href="MultiPan_8cpp_source.html#l00343">MultiPan.cpp:343</a></div></div>
 <div class="ttc" id="aclassMultiPan_html_af0c4b6897443661d062e10e64fd2f183"><div class="ttname"><a href="classMultiPan.html#af0c4b6897443661d062e10e64fd2f183">MultiPan::clone</a></div><div class="ttdeci">MultiPan * clone()</div><div class="ttdef"><b>Definition</b> <a href="MultiPan_8cpp_source.html#l00134">MultiPan.cpp:134</a></div></div>
 <div class="ttc" id="aclassMultiTrack_html"><div class="ttname"><a href="classMultiTrack.html">MultiTrack</a></div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8h_source.html#l00049">MultiTrack.h:50</a></div></div>
 <div class="ttc" id="aclassMultiTrack_html_ac63f602f0d8c705e33cfa71080346283"><div class="ttname"><a href="classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283">MultiTrack::get</a></div><div class="ttdeci">Track * get(int index) const</div><div class="ttdef"><b>Definition</b> <a href="MultiTrack_8cpp_source.html#l00110">MultiTrack.cpp:110</a></div></div>
 <div class="ttc" id="aclassSoundSample_html"><div class="ttname"><a href="classSoundSample.html">SoundSample</a></div><div class="ttdef"><b>Definition</b> <a href="SoundSample_8h_source.html#l00042">SoundSample.h:43</a></div></div>
-<div class="ttc" id="aclassSoundSample_html_a08fd608ef3ada608ca32828c427c9741"><div class="ttname"><a href="classSoundSample.html#a08fd608ef3ada608ca32828c427c9741">SoundSample::getSamplingRate</a></div><div class="ttdeci">m_rate_type getSamplingRate()</div><div class="ttdef"><b>Definition</b> <a href="SoundSample_8cpp_source.html#l00099">SoundSample.cpp:99</a></div></div>
-<div class="ttc" id="aclassSoundSample_html_a8fe1248c64570253ba40d68a75114057"><div class="ttname"><a href="classSoundSample.html#a8fe1248c64570253ba40d68a75114057">SoundSample::getSampleCount</a></div><div class="ttdeci">m_sample_count_type getSampleCount()</div><div class="ttdef"><b>Definition</b> <a href="SoundSample_8cpp_source.html#l00105">SoundSample.cpp:105</a></div></div>
+<div class="ttc" id="aclassSoundSample_html_a08fd608ef3ada608ca32828c427c9741"><div class="ttname"><a href="classSoundSample.html#a08fd608ef3ada608ca32828c427c9741">SoundSample::getSamplingRate</a></div><div class="ttdeci">m_rate_type getSamplingRate()</div><div class="ttdef"><b>Definition</b> <a href="SoundSample_8cpp_source.html#l00094">SoundSample.cpp:94</a></div></div>
+<div class="ttc" id="aclassSoundSample_html_a8fe1248c64570253ba40d68a75114057"><div class="ttname"><a href="classSoundSample.html#a8fe1248c64570253ba40d68a75114057">SoundSample::getSampleCount</a></div><div class="ttdeci">m_sample_count_type getSampleCount()</div><div class="ttdef"><b>Definition</b> <a href="SoundSample_8cpp_source.html#l00100">SoundSample.cpp:100</a></div></div>
 <div class="ttc" id="aclassTrack_html"><div class="ttname"><a href="classTrack.html">Track</a></div><div class="ttdef"><b>Definition</b> <a href="Track_8h_source.html#l00042">Track.h:43</a></div></div>
-<div class="ttc" id="aclassTrack_html_ab79cee3945dd8cb7fda7597c6878d212"><div class="ttname"><a href="classTrack.html#ab79cee3945dd8cb7fda7597c6878d212">Track::getWave</a></div><div class="ttdeci">SoundSample &amp; getWave()</div><div class="ttdef"><b>Definition</b> <a href="Track_8cpp_source.html#l00094">Track.cpp:94</a></div></div>
-<div class="ttc" id="aclassTrack_html_acf30fde4157ac02d2183fdc8ac71498b"><div class="ttname"><a href="classTrack.html#acf30fde4157ac02d2183fdc8ac71498b">Track::getAmp</a></div><div class="ttdeci">SoundSample &amp; getAmp()</div><div class="ttdef"><b>Definition</b> <a href="Track_8cpp_source.html#l00106">Track.cpp:106</a></div></div>
+<div class="ttc" id="aclassTrack_html_a3e7092c64e99d7c15280243167cacb06"><div class="ttname"><a href="classTrack.html#a3e7092c64e99d7c15280243167cacb06">Track::hasAmp</a></div><div class="ttdeci">bool hasAmp()</div><div class="ttdef"><b>Definition</b> <a href="Track_8cpp_source.html#l00108">Track.cpp:108</a></div></div>
+<div class="ttc" id="aclassTrack_html_ab79cee3945dd8cb7fda7597c6878d212"><div class="ttname"><a href="classTrack.html#ab79cee3945dd8cb7fda7597c6878d212">Track::getWave</a></div><div class="ttdeci">SoundSample &amp; getWave()</div><div class="ttdef"><b>Definition</b> <a href="Track_8cpp_source.html#l00102">Track.cpp:102</a></div></div>
+<div class="ttc" id="aclassTrack_html_acf30fde4157ac02d2183fdc8ac71498b"><div class="ttname"><a href="classTrack.html#acf30fde4157ac02d2183fdc8ac71498b">Track::getAmp</a></div><div class="ttdeci">SoundSample &amp; getAmp()</div><div class="ttdef"><b>Definition</b> <a href="Track_8cpp_source.html#l00114">Track.cpp:114</a></div></div>
 <div class="ttc" id="astructenvelope__segment_html"><div class="ttname"><a href="structenvelope__segment.html">envelope_segment</a></div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00092">Types.h:93</a></div></div>
 <div class="ttc" id="astructenvelope__segment_html_a238d646696aac8ca4370ca4c88c5d856"><div class="ttname"><a href="structenvelope__segment.html#a238d646696aac8ca4370ca4c88c5d856">envelope_segment::lengthType</a></div><div class="ttdeci">stretch_type lengthType</div><div class="ttdoc">length stretch type to use for the segment</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00101">Types.h:101</a></div></div>
 <div class="ttc" id="astructenvelope__segment_html_a5f6821aa28a09bcfaf8f643c8f0c4556"><div class="ttname"><a href="structenvelope__segment.html#a5f6821aa28a09bcfaf8f643c8f0c4556">envelope_segment::timeValue</a></div><div class="ttdeci">m_value_type timeValue</div><div class="ttdoc">number of seconds or percentage of flex time that segment should play</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00099">Types.h:99</a></div></div>
