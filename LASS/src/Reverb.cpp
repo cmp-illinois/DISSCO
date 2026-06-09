@@ -203,15 +203,15 @@ Reverb::Reverb(Envelope *percentReverb, float *combGainList, float *lpGainList,
  *   the other reverb parameters
  * samplingRate - the sampling rate of the input sounds
  **/
-void Reverb::ConstructorCommon(Envelope *percentReverb, float *combGainList,
+void Reverb::ConstructorCommon(Envelope *percentReverbInput, float *combGainList,
 			       float *lpGainList, float gainAllPass, float delay,
 			       m_rate_type samplingRate)
 {
   long combdelay[REVERB_NUM_COMB_FILTERS];
   int i;
-  Envelope* temp = new Envelope(*percentReverb);
-  delete percentReverb;
-  percentReverb = temp;
+  // Own a private copy of the mix envelope, then release the caller's.
+  this->percentReverb = new Envelope(*percentReverbInput);
+  delete percentReverbInput;
   // figure out allpass filter parameters
   //gainReverb = percentReverb;              //these two lines need fixing
   //    actually, the above and below two lines probably won't be needed
