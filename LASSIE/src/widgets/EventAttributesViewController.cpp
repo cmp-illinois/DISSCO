@@ -349,12 +349,17 @@ void EventAttributesViewController::saveCurrentShownEventData() {
         ExtraInfo& extra_info = bottom_event.extra_info;
 
         FreqInfo& freq_info = extra_info.freq_info;
-        if (ui->wellTemperedRadio->isChecked()) { freq_info.freq_flag = 0; }
-        if (ui->fundamentalRadio->isChecked()) { freq_info.freq_flag = 1; }
-        if (ui->continuumRadio->isChecked()) { freq_info.freq_flag = 2; }
-        freq_info.entry_1 = ui->wellTemperedEntry->text();
-        freq_info.entry_1 = ui->funFreqEntry1->text();
-        freq_info.entry_2 = ui->funFreqEntry2->text();
+        if (ui->wellTemperedRadio->isChecked()) {
+            freq_info.freq_flag = 0;
+            freq_info.entry_1 = ui->wellTemperedEntry->text();
+        } else if (ui->fundamentalRadio->isChecked()) {
+            freq_info.freq_flag = 1;
+            freq_info.entry_1 = ui->funFreqEntry1->text();
+            freq_info.entry_2 = ui->funFreqEntry2->text();
+        } else if (ui->continuumRadio->isChecked()) {
+            freq_info.freq_flag = 2;
+            freq_info.entry_1 = ui->continuumFreqEntry->text();
+        }
         if (ui->hertzRadio->isChecked()) { freq_info.continuum_flag = 0; }
         if (ui->powerOfTwoRadio->isChecked()) { freq_info.continuum_flag = 1; }
 
@@ -622,7 +627,7 @@ void EventAttributesViewController::showCurrentEventData() {
             ui->wellTemperedEntry->setText(freq_info.entry_1);
             ui->funFreqEntry1->setText(freq_info.entry_1);
             ui->funFreqEntry2->setText(freq_info.entry_2);
-            // ui->contFreqEntry->setText(freq_info.entry_1);
+            ui->continuumFreqEntry->setText(freq_info.entry_1);
             ui->hertzRadio->setChecked(freq_info.continuum_flag == 0);
             ui->powerOfTwoRadio->setChecked(freq_info.continuum_flag == 1);
 
