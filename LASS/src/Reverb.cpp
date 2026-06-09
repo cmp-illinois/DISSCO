@@ -203,15 +203,22 @@ Reverb::Reverb(Envelope *percentReverb, float *combGainList, float *lpGainList,
  *   the other reverb parameters
  * samplingRate - the sampling rate of the input sounds
  **/
-void Reverb::ConstructorCommon(Envelope *percentReverb, float *combGainList,
+void Reverb::ConstructorCommon(Envelope *percentReverbInput, float *combGainList,
 			       float *lpGainList, float gainAllPass, float delay,
 			       m_rate_type samplingRate)
 {
   long combdelay[REVERB_NUM_COMB_FILTERS];
   int i;
-  Envelope* temp = new Envelope(*percentReverb);
-  delete percentReverb;
-  percentReverb = temp;
+  // Own a private copy of the mix envelope, then release the caller's.
+  // NOTE: this parameter used to be named 'percentReverb', which shadowed the
+  // member of the same name -- so "percentReverb = temp" updated the local
+  // pointer and never this->percentReverb.  That left the member dangling
+  // (default/room ctors) or uninitialised (the Envelope* ctors, whose own
+  // parameter likewise shadows the member), causing a use-after-free +
+  // double-free on the first reverb call.  Assigning this->percentReverb here
+  // is the intended behaviour.
+  this->percentReverb = new Envelope(*percentReverbInput);
+  delete percentReverbInput;
   // figure out allpass filter parameters
   //gainReverb = percentReverb;              //these two lines need fixing
   //    actually, the above and below two lines probably won't be needed
