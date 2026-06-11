@@ -19,7 +19,6 @@
 #include "StandardHeaders.h"
 
 #include "SoundSample.h"
-#include "Collection.h"
 #include "Track.h"
 #include "MultiTrack.h"
 #include "LPCombFilter.h"
@@ -84,7 +83,7 @@ class Reverb
 	
   /** next-most-advanaced constructor.
    *
-   * @param reverbPercent this determines the mix (in the resultant sound)
+   * @param percentReverb this determines the mix (in the resultant sound)
    *  between the direct sound (the input sound) and the reverbed sound.
    *  0.0 is no reverb, all direct sound.  1.0 is all reverb, no direct
    *  sound.
@@ -108,7 +107,7 @@ class Reverb
 	
   /** advanced constructor.
    *
-   * @param reverbPercent this determines the mix (in the resultant sound)
+   * @param percentReverb this determines the mix (in the resultant sound)
    *  between the direct sound (the input sound) and the reverbed sound.
    *  0.0 is no reverb, all direct sound.  1.0 is all reverb, no direct
    *  sound.
@@ -174,7 +173,7 @@ class Reverb
   /**
    * This method applies reverb to a source MultiTrack, track by track.
    * It does so by decomposing the wave into Track objects (organized with
-   * a Collection inside the MultiTrack object) and calling the
+   * a vector inside the MultiTrack object) and calling the
    * virtual function, do_reverb(SoundSample *inWave), for each Track.
    *
    * @return The original MultiTrack remains intact and untouched.  The return

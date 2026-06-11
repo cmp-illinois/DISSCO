@@ -33,7 +33,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Types.h"
 #include "Partial.h"
 #include "MultiTrack.h"
-#include "Collection.h"
 #include "DynamicVariable.h"
 #include "Spatializer.h"
 #include "Reverb.h"
@@ -133,14 +132,31 @@ enum SoundDynamicParam
 *	\author Braden Kowitz	
 **/
 class Sound
-    : public Collection<Partial>
-    , public ParameterLib<SoundStaticParam, SoundDynamicParam>
+    : public ParameterLib<SoundStaticParam, SoundDynamicParam>
 {
 private:
     Spatializer* spatializer_;
     bool spa_modified_; /* ZIYUAN CHEN, July 2023 */
 
+    /** The partials that make up this sound. **/
+    vector<Partial> partials_;
+
 public:
+
+    /**
+    *	Appends a partial to this sound.
+    **/
+    void add(const Partial& partial);
+
+    /**
+    *	\return A reference to the partial at the given index.
+    **/
+    Partial& get(int index);
+
+    /**
+    *	\return The number of partials in this sound.
+    **/
+    int size() const;
 
     /**
     *	This is a default constructor that sets a few basic parameters
@@ -215,7 +231,7 @@ public:
     
     /**
     *   This function performs filter in the render() method
-    *	\param newFilterbObj The Filter object
+    *	\param newFilterObj The Filter object
     **/
     void use_filter(Filter *newFilterObj);
 
@@ -249,8 +265,9 @@ public:
 
        /**
    * This function changes the parameters resolved around detune
-   *    \param direction, DETUNE_DIRECTION
-   *    \param speed, DETUNE_SPREAD
+   *    \param direction DETUNE_DIRECTION
+   *    \param spread DETUNE_SPREAD
+   *    \param velocity
    **/
    void setDetune(double direction, double spread, double velocity);
 

@@ -20,8 +20,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #ifndef __CMOD_H
 #define __CMOD_H
 
-
-
+/**
+ * @file CMOD.h
+ * @brief Umbrella header for the Composition Module (CMOD).
+ *
+ * CMOD is the engine half of DISSCO: it reads a `.dissco` project file,
+ * expands its hierarchical Event tree (top → high → mid → low → bottom),
+ * and emits both rendered sound (via the LASS audio library) and a
+ * notated score. This header pulls in everything a translation unit
+ * outside CMOD needs in order to drive a Piece end-to-end.
+ *
+ * @see Piece for the project-root model
+ * @see Event for the layer base class
+ * @see Bottom for the leaf event that produces Notes and Sounds
+ */
 
 #include "Libraries.h"
 

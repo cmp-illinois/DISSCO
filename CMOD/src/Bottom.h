@@ -48,6 +48,31 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <stdlib.h>
 
 //----------------------------------------------------------------------------//
+
+/**
+ * @file Bottom.h
+ * @brief Leaf event in a DISSCO composition.
+ *
+ * Unlike higher layers, a Bottom event does not spawn further sub-events:
+ * it is the point where the composition tree turns into renderable output.
+ * Each Bottom emits a sequence of Sounds (for synthesis) and/or Notes
+ * (for traditional notation), driven by frequency / loudness / modifier
+ * elements that are re-evaluated per child to allow stochastic variation.
+ */
+
+/**
+ * @brief Concrete leaf @ref Event that produces Sounds and Notes.
+ *
+ * Bottom keeps the XML element handles for the per-event attribute blocks
+ * (frequency, loudness, modifiers, modifier group, ancestor modifiers) and
+ * recomputes them for every child it emits — the same Bottom can produce
+ * different frequencies / loudnesses on successive children when the
+ * driving expressions contain randomness.
+ *
+ * Bottom also tracks the bookkeeping needed for notated output (current
+ * partial, well-tempered pitch number, absolute pitch number, modifier
+ * usage map) and owns the list of child Sounds.
+ */
 class Bottom : public Event {
 
   private:
@@ -55,13 +80,13 @@ class Bottom : public Event {
     /*DOMElements are held here because these variables need to be recomputed for
     every sound and note since there could be some randomness built in. */
 
-    DOMElement* frequencyElement;
-    DOMElement* loudnessElement;
-    DOMElement* modifiersElement;
+    pugi::xml_node frequencyElement;
+    pugi::xml_node loudnessElement;
+    pugi::xml_node modifiersElement;
     /* ZIYUAN CHEN, July 2023 - The "Modifier Group" is only present
        in Bottom events, so this element doesn't appear in Event.h */
-    DOMElement* modifierGroupElement;
-    DOMElement* ancestorModifiersElement;
+    pugi::xml_node modifierGroupElement;
+    pugi::xml_node ancestorModifiersElement;
 
     //Current partial during the processing of the event
     int currPartialNum;
@@ -89,8 +114,8 @@ class Bottom : public Event {
     *
     */
 
-    Bottom(DOMElement* _element, TimeSpan _timeSpan, int _type, Tempo _tempo, Utilities* _utilities, DOMElement* _ancestorSpa, DOMElement* _ancestorRev,
-          DOMElement* _ancestorFil,DOMElement* _ancestorModifiers);
+    Bottom(pugi::xml_node _element, TimeSpan _timeSpan, int _type, Tempo _tempo, Utilities* _utilities, pugi::xml_node _ancestorSpa, pugi::xml_node _ancestorRev,
+          pugi::xml_node _ancestorFil,pugi::xml_node _ancestorModifiers);
 
 
 
@@ -181,9 +206,9 @@ class Bottom : public Event {
     void constructChild(TimeSpan ts, int type, string name, Tempo tempo);
 
     //getters
-    DOMElement* getSPAElement(){return spatializationElement;}
-    DOMElement* getREVElement(){return reverberationElement;}
-    DOMElement* getFILElement(){return filterElement;}
+    pugi::xml_node getSPAElement(){return spatializationElement;}
+    pugi::xml_node getREVElement(){return reverberationElement;}
+    pugi::xml_node getFILElement(){return filterElement;}
 
 
 
@@ -211,12 +236,12 @@ class Bottom : public Event {
     /**
      *  Computes the number of partials to create
      **/
-    int computeNumPartials(float baseFreq, DOMElement* _spectrum);
+    int computeNumPartials(float baseFreq, pugi::xml_node _spectrum);
 
     /**
      *  Computes a deviation value for the bottom event
      **/
-    float computeDeviation( DOMElement* _spectrum);
+    float computeDeviation( pugi::xml_node _spectrum);
 
     /**
      *   Assigns a frequency to a partial according to baseFrequency and the
@@ -237,7 +262,7 @@ class Bottom : public Event {
      * \param part reference to a partial
      * \param partNum the number of the partial
      **/
-    void setPartialSpectrum(Partial& part, int partNum, DOMElement* _element);
+    void setPartialSpectrum(Partial& part, int partNum, pugi::xml_node _element);
 
     /**
      *  Given frequency, loudness, distance and envelope, add partials to the
@@ -298,7 +323,7 @@ class Bottom : public Event {
      *  \param iPartial index of the partial currently being processed
      *  \return pointer to a parameterized Reverb object
      **/
-    Reverb* computeReverberationSimple(DOMElement* sizeElement, int iPartial);
+    Reverb* computeReverberationSimple(pugi::xml_node sizeElement, int iPartial);
 
     /** ZIYUAN CHEN, July 2023
      *  Computes a Reverb for applying ReverberationMedium to a sound.
@@ -309,9 +334,9 @@ class Bottom : public Event {
      *  \param iPartial index of the partial currently being processed
      *  \return pointer to a parameterized Reverb object
      **/
-    Reverb* computeReverberationMedium(DOMElement* percentElement,
-      DOMElement* spreadElement, DOMElement* allPassElement,
-      DOMElement* delayElement, int iPartial);
+    Reverb* computeReverberationMedium(pugi::xml_node percentElement,
+      pugi::xml_node spreadElement, pugi::xml_node allPassElement,
+      pugi::xml_node delayElement, int iPartial);
 
     /** ZIYUAN CHEN, July 2023
      *  Computes a Reverb for applying ReverberationAdvanced to a sound.
@@ -323,9 +348,9 @@ class Bottom : public Event {
      *  \param iPartial index of the partial currently being processed
      *  \return pointer to a parameterized Reverb object
      **/
-    Reverb* computeReverberationAdvanced(DOMElement* percentElement,
-      DOMElement* combGainListElement, DOMElement* lpGainListElement,
-      DOMElement* allPassElement, DOMElement* delayElement, int iPartial);
+    Reverb* computeReverberationAdvanced(pugi::xml_node percentElement,
+      pugi::xml_node combGainListElement, pugi::xml_node lpGainListElement,
+      pugi::xml_node allPassElement, pugi::xml_node delayElement, int iPartial);
 
 //----------------------------------------------------------------------------//
 
@@ -351,7 +376,7 @@ class Bottom : public Event {
      *  \param numParts the number of partials in this sound
      **/
     void spatializationStereo(Sound *s,
-                              DOMElement* _channels,
+                              pugi::xml_node _channels,
                               string applyHow,
                               int numParts);
 
@@ -365,7 +390,7 @@ class Bottom : public Event {
      *  \param numParts the number of partials in this sound
      **/
     void spatializationMultiPan(Sound *s,
-                                DOMElement* _channels,
+                                pugi::xml_node _channels,
                                 string applyHow,
                                 int numParts);
 
@@ -381,7 +406,7 @@ class Bottom : public Event {
      *  \param numParts the number of partials in this sound
      **/
     void spatializationPolar(Sound *s,
-                             DOMElement* _channels,
+                             pugi::xml_node _channels,
                              string applyHow,
                              int numParts);
 
@@ -396,13 +421,13 @@ class Bottom : public Event {
      *  Sets the reverberation of a sound according to a simple
      *     "room size" parameter
      *  \param s a pointer to the sound being created
-     *  \param paramsElement pointer to the <Sizes> element
+     *  \param paramsElement pointer to the `<Sizes>` element
      *  \param applyHow string containing info if it applies to sound or
      *     individual partials
      *  \param numPartials the number of partials contained in the sound
      **/
     void reverberationSimple(Sound *s,
-                             DOMElement* paramsElement,
+                             pugi::xml_node paramsElement,
                              string applyHow,
                              int numPartials);
 
@@ -411,13 +436,13 @@ class Bottom : public Event {
      *     "hi/low spread", "gain all pass", and "delay" parameters
      *     ==== Applying by partial not implemented in LASSIE ====
      * \param s a pointer to the sound being created
-     * \param paramsElement pointer to the <Percent> (envelope) element
+     * \param paramsElement pointer to the `<Percent>` (envelope) element
      * \param applyHow string containing info if it applies to sound or
      *     individual partials
      * \param numPartials the number of partials contained in the sound
      **/
     void reverberationMedium(Sound *s,
-                             DOMElement* paramsElement,
+                             pugi::xml_node paramsElement,
                              string applyHow,
                              int numPartials);
 
@@ -427,13 +452,13 @@ class Bottom : public Event {
      *     "gain all pass", and "delay" parameters
      *     ==== Applying by partial not implemented in LASSIE ====
      * \param s a pointer to the sound being created
-     * \param paramsElement pointer to the <Percent> (envelope) element
+     * \param paramsElement pointer to the `<Percent>` (envelope) element
      * \param applyHow string containing info if it applies to sound or
      *     individual partials
      * \param numPartials the number of partials contained in the sound
      **/
     void reverberationAdvanced(Sound *s,
-                               DOMElement* paramsElement,
+                               pugi::xml_node paramsElement,
                                string applyHow,
                                int numPartials);
 
@@ -451,13 +476,13 @@ class Bottom : public Event {
      *  Apply modifiers for a note.
      **/
     //  vector<string> applyNoteModifiers();
-    vector<string> applyNoteModifiers(DOMElement* _playingMethods);
+    vector<string> applyNoteModifiers(pugi::xml_node _playingMethods);
     vector<string> applyNoteModifiersOld();
     // multistaffs
     /**
      *  Apply staff for a note.
      **/
-    // int applyNoteStaffs(DOMElement* _playingMethods);
+    // int applyNoteStaffs(pugi::xml_node _playingMethods);
 
 };
 #endif

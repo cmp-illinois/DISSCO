@@ -19,6 +19,8 @@
 
 #include <functional>
 
+using enum FunctionReturnType;
+
 // EventAttributesViewController::EventAttributesViewController(SharedPointers* sharedPointers,
 //                                                              QWidget* parent)
 EventAttributesViewController::EventAttributesViewController(ProjectView* projectView)
@@ -347,12 +349,17 @@ void EventAttributesViewController::saveCurrentShownEventData() {
         ExtraInfo& extra_info = bottom_event.extra_info;
 
         FreqInfo& freq_info = extra_info.freq_info;
-        if (ui->wellTemperedRadio->isChecked()) { freq_info.freq_flag = 0; }
-        if (ui->fundamentalRadio->isChecked()) { freq_info.freq_flag = 1; }
-        if (ui->continuumRadio->isChecked()) { freq_info.freq_flag = 2; }
-        freq_info.entry_1 = ui->wellTemperedEntry->text();
-        freq_info.entry_1 = ui->funFreqEntry1->text();
-        freq_info.entry_2 = ui->funFreqEntry2->text();
+        if (ui->wellTemperedRadio->isChecked()) {
+            freq_info.freq_flag = 0;
+            freq_info.entry_1 = ui->wellTemperedEntry->text();
+        } else if (ui->fundamentalRadio->isChecked()) {
+            freq_info.freq_flag = 1;
+            freq_info.entry_1 = ui->funFreqEntry1->text();
+            freq_info.entry_2 = ui->funFreqEntry2->text();
+        } else if (ui->continuumRadio->isChecked()) {
+            freq_info.freq_flag = 2;
+            freq_info.entry_1 = ui->continuumFreqEntry->text();
+        }
         if (ui->hertzRadio->isChecked()) { freq_info.continuum_flag = 0; }
         if (ui->powerOfTwoRadio->isChecked()) { freq_info.continuum_flag = 1; }
 
@@ -620,7 +627,7 @@ void EventAttributesViewController::showCurrentEventData() {
             ui->wellTemperedEntry->setText(freq_info.entry_1);
             ui->funFreqEntry1->setText(freq_info.entry_1);
             ui->funFreqEntry2->setText(freq_info.entry_2);
-            // ui->contFreqEntry->setText(freq_info.entry_1);
+            ui->continuumFreqEntry->setText(freq_info.entry_1);
             ui->hertzRadio->setChecked(freq_info.continuum_flag == 0);
             ui->powerOfTwoRadio->setChecked(freq_info.continuum_flag == 1);
 
@@ -813,7 +820,9 @@ void EventAttributesViewController::fixedButtonClicked() {
     ui->numOfChildLabel2->setText("");
     ui->numOfChildLabel3->setText("");
     ui->childCountEntry2->setEnabled(false);
+    ui->numOfChildFunButton2->setEnabled(false);
     ui->childCountEntry3->setEnabled(false);
+    ui->numOfChildFunButton3->setEnabled(false);
     for (auto* box : m_layerBoxes) box->setWeightEnabled(false);
 }
 
@@ -822,8 +831,11 @@ void EventAttributesViewController::densityButtonClicked() {
     ui->numOfChildLabel2->setText("Area:");
     ui->numOfChildLabel3->setText("Under One:");
     ui->childCountEntry1->setEnabled(true);
+    ui->numOfChildFunButton1->setEnabled(true);
     ui->childCountEntry2->setEnabled(true);
+    ui->numOfChildFunButton2->setEnabled(true);
     ui->childCountEntry3->setEnabled(true);
+    ui->numOfChildFunButton3->setEnabled(true);
     for (auto* box : m_layerBoxes) box->setWeightEnabled(false);
 }
 
@@ -832,8 +844,11 @@ void EventAttributesViewController::byLayerButtonClicked() {
     ui->numOfChildLabel2->setText("");
     ui->numOfChildLabel3->setText("");
     ui->childCountEntry1->setEnabled(false);
+    ui->numOfChildFunButton1->setEnabled(false);
     ui->childCountEntry2->setEnabled(false);
+    ui->numOfChildFunButton2->setEnabled(false);
     ui->childCountEntry3->setEnabled(false);
+    ui->numOfChildFunButton3->setEnabled(false);
     for (auto* box : m_layerBoxes) box->setWeightEnabled(true);
 }
 
@@ -844,17 +859,6 @@ void EventAttributesViewController::continuumButtonClicked() {
     ui->childEventDefContSweepPage->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     ui->childEventDefStack->updateGeometry();
     for (LayerBox* box : m_layerBoxes) box->setPackageFieldsVisible(false);
-    // ui->childDefEntry1->setEnabled(true);
-    // ui->childDefEntry2->setEnabled(true);
-    // ui->childDefEntry3->setEnabled(true);
-    // ui->attackSieveEntry->setEnabled(false);
-    // ui->durationSieveEntry->setEnabled(false);
-    // ui->startTypePercentRadio->setEnabled(true);
-    // ui->startTypeUnitsRadio->setEnabled(true);
-    // ui->startTypeSecondsRadio->setEnabled(true);
-    // ui->durationTypePercentRadio->setEnabled(true);
-    // ui->durationTypeUnitsRadio->setEnabled(true);
-    // ui->durationTypeSecondsRadio->setEnabled(true);
 }
 
 void EventAttributesViewController::sweepButtonClicked() {

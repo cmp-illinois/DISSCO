@@ -17,11 +17,17 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-//----------------------------------------------------------------------------//
-//
-//	StandardHeaders.h
-//
-//----------------------------------------------------------------------------//
+/**
+ * @file StandardHeaders.h
+ * @brief Single pull-in for the C/C++ standard library headers LASS uses.
+ *
+ * Included transitively by every LASS public header (via @ref LASS.h) so
+ * downstream code does not have to remember which `<algorithm>`, `<cmath>`,
+ * `<vector>`, ... it needs. Also picks the hash-map implementation
+ * (currently the libstdc++ `ext/hash_map`, aliased as @c DISSCO_HASHMAP)
+ * and applies the `using namespace std` / `using namespace __gnu_cxx`
+ * declarations the rest of the library is written against.
+ */
 
 #ifndef __STANDARDHEADERS_H
 #define __STANDARDHEADERS_H
@@ -54,11 +60,6 @@ will be used here for now.*/
   #include <unordered_map>
   #define DISSCO_HASHMAP unordered_map
 */
-
-//Also need pthreads from the POSIX library (link with -lpthread)
-#include <pthread.h>
-
-#include <semaphore.h>
 
 using namespace std;
 using namespace __gnu_cxx; 

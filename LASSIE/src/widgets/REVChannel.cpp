@@ -1,5 +1,7 @@
 #include "REVChannel.hpp"
 
+using enum FunctionReturnType;
+
 REVChannel::REVChannel(int id, int revMode, QWidget* parent) 
     : QFrame(parent), m_revMode(revMode) {
         

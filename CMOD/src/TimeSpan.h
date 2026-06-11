@@ -30,11 +30,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Libraries.h"
 #include "Rational.h"
 
-/*A TimeSpan is a span in time. It has a start time and a duration.
-It also has an end time. A time-span may be expressed in terms of
-seconds and, in the case of it being an exact interval, EDU.*/
+/**
+ * @file TimeSpan.h
+ * @brief Dual-representation [start, end] interval used by every Event.
+ *
+ * Each event lives on two clocks at once: the audible / wall-clock seconds
+ * used by LASS for synthesis, and the rational EDU grid used by CMOD for
+ * notated rhythm. TimeSpan carries both, plus the absolute EDU offset
+ * needed when stitching multiple events onto a single global timeline.
+ */
 
 //----------------------------------------------------------------------------//
+
+/**
+ * @brief Interval expressed simultaneously in seconds and in EDUs.
+ *
+ * `start` / `duration` / `end` are seconds; `startEDU` / `durationEDU` /
+ * `endEDU` are exact rationals on the EDU grid. `startEDUAbsolute` is the
+ * cumulative integer EDU offset from the start of the piece.
+ */
 struct TimeSpan {
   float start;
   float duration;

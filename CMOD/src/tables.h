@@ -1,6 +1,16 @@
 #ifndef TABLES_H
 #define TABLES_H
 
+/**
+ * @file tables.h
+ * @brief Static lookup tables used by the notated-score path.
+ *
+ * Pitch names (sharps and flats), tuplet name labels, rhythmic-ratio
+ * names, rest-sign labels, the canonical list of note-modifier strings,
+ * and a few power-of-two lookups. The arrays are declared `extern` here
+ * and defined once in tables.cpp.
+ */
+
 #include <string>
 using namespace std;
 

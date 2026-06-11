@@ -1,0 +1,243 @@
+name: Docs
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+    # Only rebuild when something actually changes —
+    # source under the three subprojects, the Doxyfile, or this workflow.
+    paths:
+      - 'CMOD/**/*.cpp'
+      - 'CMOD/**/*.hpp'
+      - 'CMOD/**/*.h'
+      - 'LASS/**/*.cpp'
+      - 'LASS/**/*.hpp'
+      - 'LASS/**/*.h'
+      - 'LASSIE/**/*.cpp'
+      - 'LASSIE/**/*.hpp'
+      - 'LASSIE/**/*.h'
+      - 'Doxyfile'
+      - '.github/workflows/docs.yml'
+  pull_request:
+    paths:
+      - 'CMOD/**/*.cpp'
+      - 'CMOD/**/*.hpp'
+      - 'CMOD/**/*.h'
+      - 'LASS/**/*.cpp'
+      - 'LASS/**/*.hpp'
+      - 'LASS/**/*.h'
+      - 'LASSIE/**/*.cpp'
+      - 'LASSIE/**/*.hpp'
+      - 'LASSIE/**/*.h'
+      - 'Doxyfile'
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write   # peaceiris/actions-gh-pages pushes to the gh-pages branch.
+
+# PRs get their own cancellable group; push runs serialize to avoid races.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('docs-pr-{0}', github.head_ref) || 'docs-pages' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    name: Build and publish Doxygen
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install Doxygen and Graphviz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen graphviz
+
+      - name: Pick target subdirectory
+        id: target
+        run: |
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            echo "dir=$GITHUB_REF_NAME"     >> "$GITHUB_OUTPUT"
+            echo "label=$GITHUB_REF_NAME"   >> "$GITHUB_OUTPUT"
+          else
+            echo "dir=latest"               >> "$GITHUB_OUTPUT"
+            echo "label=latest (main)"      >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build docs
+        env:
+          OUT: staging/${{ steps.target.outputs.dir }}
+          LABEL: ${{ steps.target.outputs.label }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$OUT/LASSIE" "$OUT/CMOD" "$OUT/LASS"
+
+          run_doxygen () {
+            local input=$1 out=$2 name=$3 brief=$4
+            ( cat Doxyfile
+              echo
+              echo "INPUT = $input"
+              echo "OUTPUT_DIRECTORY = ./$OUT/$out"
+              echo "PROJECT_NAME = \"$name\""
+              echo "PROJECT_BRIEF = \"$brief\""
+              echo "PROJECT_NUMBER = \"$LABEL\""
+              echo "HAVE_DOT = YES"
+            ) | doxygen -
+          }
+
+          run_doxygen LASSIE/src LASSIE "DISSCO :: LASSIE" "Composition environment GUI for CMOD"
+          run_doxygen CMOD/src   CMOD   "DISSCO :: CMOD"   "Composition module — stochastic event generator"
+          run_doxygen LASS/src   LASS   "DISSCO :: LASS"   "Library of Audio Sound Synthesis"
+
+          # Per-version landing page so /<target>/ itself doesn't 404 — it
+          # just lists the three subproject doc trees.
+          cat > "$OUT/index.html" <<HTML
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <title>DISSCO $LABEL</title>
+            <style>
+              body { font-family: system-ui, sans-serif; max-width: 40rem;
+                     margin: 4rem auto; padding: 0 1rem; line-height: 1.5; }
+              h1 { margin-bottom: 0.25rem; }
+              p.tag { color: #555; margin-top: 0; }
+              ul { list-style: none; padding: 0; }
+              li { margin: 0.6rem 0; }
+              a { font-weight: 600; }
+              .up { font-size: 0.9rem; }
+            </style>
+          </head>
+          <body>
+            <p class="up"><a href="../">&larr; all versions</a></p>
+            <h1>DISSCO <span style="color:#666;font-weight:400">$LABEL</span></h1>
+            <p class="tag">API documentation, generated from source with Doxygen.</p>
+            <ul>
+              <li><a href="LASSIE/html/index.html">LASSIE</a> &mdash;
+                  composition environment GUI</li>
+              <li><a href="CMOD/html/index.html">CMOD</a> &mdash;
+                  composition module (stochastic event generator)</li>
+              <li><a href="LASS/html/index.html">LASS</a> &mdash;
+                  library of audio sound synthesis</li>
+            </ul>
+          </body>
+          </html>
+          HTML
+
+      - name: Assemble publish tree
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TARGET:   ${{ steps.target.outputs.dir }}
+        run: |
+          set -euo pipefail
+
+          # Pull the existing gh-pages branch so we can preserve other versions.
+          # If the branch doesn't exist yet (first run), start with an empty tree.
+          if git clone --depth=1 --branch gh-pages \
+               "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" publish 2>/dev/null; then
+            rm -rf publish/.git
+          else
+            mkdir publish
+          fi
+
+          # Drop in this run's version subdir, replacing any previous build of
+          # the same target.
+          rm -rf "publish/$TARGET"
+          mv "staging/$TARGET" "publish/$TARGET"
+
+          # Discover what's published: a separate "latest" tracker built from
+          # main, and the v* tag releases sorted newest-first.
+          has_latest=0
+          [ -d publish/latest ] && has_latest=1
+          releases=$(find publish -maxdepth 1 -type d -name 'v*' -printf '%f\n' | sort -rV)
+
+          emit_row () {
+            local v=$1
+            echo "      <li>"
+            echo "        <a href=\"$v/\">$v</a>"
+            echo "        <span class=\"sub\">"
+            echo "          (<a href=\"$v/LASSIE/html/index.html\">LASSIE</a>,"
+            echo "           <a href=\"$v/CMOD/html/index.html\">CMOD</a>,"
+            echo "           <a href=\"$v/LASS/html/index.html\">LASS</a>)"
+            echo "        </span>"
+            echo "      </li>"
+          }
+
+          # Rewrite the top-level landing page with a Latest section above a
+          # Releases section.
+          {
+            cat <<'HEAD'
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <title>DISSCO Doxygen</title>
+            <style>
+              body { font-family: system-ui, sans-serif; max-width: 44rem;
+                     margin: 4rem auto; padding: 0 1rem; line-height: 1.5; }
+              h1 { margin-bottom: 0.25rem; }
+              p.tag { color: #555; margin-top: 0; }
+              section { margin-top: 2.5rem; padding-top: 1rem;
+                        border-top: 1px solid #e0e0e0; }
+              section h2 { margin: 0 0 0.5rem 0; font-size: 1.1rem; }
+              section p.hint { color: #666; margin-top: 0; font-size: 0.9rem; }
+              ul { list-style: none; padding: 0; }
+              li { margin: 0.35rem 0; }
+              a { font-weight: 600; }
+              .sub { font-weight: 400; color: #555; margin-left: 0.5em; }
+              .empty { color: #888; font-style: italic; }
+            </style>
+          </head>
+          <body>
+            <h1>DISSCO</h1>
+            <p class="tag">Digital Instrument for Sound Synthesis and Composition</p>
+            <p>API documentation, generated from source with Doxygen.</p>
+
+            <section>
+              <h2>Latest</h2>
+              <p class="hint">Rebuilt on every push to <code>main</code>; overwrites itself.</p>
+              <ul>
+          HEAD
+
+            if [ "$has_latest" -eq 1 ]; then
+              emit_row latest
+            else
+              echo "      <li class=\"empty\">No build yet &mdash; push to main to populate.</li>"
+            fi
+
+            cat <<'MID'
+              </ul>
+            </section>
+
+            <section>
+              <h2>Releases</h2>
+              <p class="hint">Snapshots from <code>v*</code> tag pushes.</p>
+              <ul>
+          MID
+
+            if [ -n "$releases" ]; then
+              for v in $releases; do emit_row "$v"; done
+            else
+              echo "      <li class=\"empty\">No releases published yet.</li>"
+            fi
+
+            cat <<'TAIL'
+              </ul>
+            </section>
+          </body>
+          </html>
+          TAIL
+          } > publish/index.html
+
+      - name: Publish to gh-pages
+        if: github.event_name != 'pull_request'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./publish
+          # The staged tree is the full intended branch contents — no need for
+          # keep_files; the assemble step already merged with existing state.
+          keep_files: false
+          commit_message: "docs: publish ${{ steps.target.outputs.dir }} (${{ github.sha }})"

@@ -31,7 +31,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //----------------------------------------------------------------------------//
 
 #include "SoundSample.h"
-#include "Collection.h"
 #include "Track.h"
 #include "MultiTrack.h"
 #include "Filter.h"
@@ -73,6 +72,18 @@ void LowPassFilter::reset()
 	delete y_hist;
 	y_hist = new Filter::hist_queue<m_sample_type>(1);
 	y_hist->enqueue(0.0);
+}
+
+//----------------------------------------------------------------------------//
+float LowPassFilter::get_state() const
+{
+	return y_hist->index_from_oldest(0);
+}
+
+void LowPassFilter::set_state(float s)
+{
+	y_hist->dequeue();
+	y_hist->enqueue(s);
 }
 
 //----------------------------------------------------------------------------//

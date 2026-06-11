@@ -32,52 +32,177 @@
     </property>
 
     <item>
-     <widget class="QSplitter" name="splitter">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <widget class="QWidget" name="paletteWidget">
-       <property name="minimumWidth"><number>250</number></property>
-       <attribute name="Splitter.stretchFactor" stdset="0"><number>0</number></attribute>
-       <layout class="QVBoxLayout" name="paletteLayout">
-        <item alignment="Qt::AlignHCenter">
-         <widget class="QPushButton" name="envButton">
-          <property name="minimumWidth"><number>200</number></property>
-          <property name="maximumWidth"><number>200</number></property>
-          <property name="text">
-           <string>Envelope Library</string>
-          </property>
+     <widget class="QStackedWidget" name="mainStack">
+      <property name="currentIndex"><number>0</number></property>
+
+      <widget class="QWidget" name="welcomePage">
+       <layout class="QVBoxLayout" name="welcomeLayout">
+        <property name="leftMargin"><number>16</number></property>
+        <property name="topMargin"><number>16</number></property>
+        <property name="rightMargin"><number>16</number></property>
+        <property name="bottomMargin"><number>16</number></property>
+        <property name="spacing"><number>8</number></property>
+        <item>
+         <layout class="QHBoxLayout" name="welcomeHeader">
+          <item>
+           <widget class="QLabel" name="welcomeLabel">
+            <property name="text">
+             <string>Recent Projects</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font-size: 18px; font-weight: bold;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="welcomeHeaderSpacer">
+            <property name="orientation"><enum>Qt::Horizontal</enum></property>
+            <property name="sizeHint" stdset="0">
+             <size><width>40</width><height>20</height></size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QToolButton" name="viewModeButton">
+            <property name="text">
+             <string>List View</string>
+            </property>
+            <property name="toolTip">
+             <string>Toggle between icon and list view</string>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextOnly</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QStackedWidget" name="recentProjectsStack">
+          <property name="currentIndex"><number>0</number></property>
+          <widget class="QListWidget" name="recentProjectsList">
+           <property name="viewMode">
+            <enum>QListView::IconMode</enum>
+           </property>
+           <property name="movement">
+            <enum>QListView::Static</enum>
+           </property>
+           <property name="resizeMode">
+            <enum>QListView::Adjust</enum>
+           </property>
+           <property name="iconSize">
+            <size><width>64</width><height>64</height></size>
+           </property>
+           <property name="gridSize">
+            <size><width>140</width><height>110</height></size>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+           <property name="uniformItemSizes">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QTreeWidget" name="recentProjectsTree">
+           <property name="rootIsDecorated">
+            <bool>false</bool>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="uniformRowHeights">
+            <bool>true</bool>
+           </property>
+           <property name="iconSize">
+            <size><width>32</width><height>32</height></size>
+           </property>
+           <property name="indentation">
+            <number>0</number>
+           </property>
+           <column>
+            <property name="text"><string>Name</string></property>
+           </column>
+           <column>
+            <property name="text"><string>Last Modified</string></property>
+           </column>
+           <column>
+            <property name="text"><string>Size</string></property>
+           </column>
+          </widget>
          </widget>
         </item>
-        <item alignment="Qt::AlignHCenter">
-         <widget class="QPushButton" name="markovButton">
-          <property name="minimumWidth"><number>200</number></property>
-          <property name="maximumWidth"><number>200</number></property>
+        <item>
+         <widget class="QLabel" name="welcomeHintLabel">
           <property name="text">
-           <string>Markov Model Library</string>
+           <string>Double-click a project to open it, or use File &gt; Open Project / New Project.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: gray;</string>
           </property>
          </widget>
         </item>
        </layout>
       </widget>
-      <widget class="QTabWidget" name="tabWidget">
-       <property name="currentIndex">
-        <number>0</number>
-       </property>
-       <property name="minimumWidth"><number>680</number></property>
-       <attribute name="Splitter.stretchFactor" stdset="0"><number>1</number></attribute>
-       <widget class="QWidget" name="attributesTab">
-        <attribute name="title">
-         <string>Event Attributes</string>
-        </attribute>
-        <layout class="QVBoxLayout" name="eventTablayout">
-         <item>
-          <widget class="QScrollArea" name="eventsScrollArea">
+
+      <widget class="QWidget" name="projectPage">
+       <layout class="QHBoxLayout" name="projectPageLayout">
+        <property name="spacing"><number>0</number></property>
+        <property name="leftMargin"><number>0</number></property>
+        <property name="topMargin"><number>0</number></property>
+        <property name="rightMargin"><number>0</number></property>
+        <property name="bottomMargin"><number>0</number></property>
+        <item>
+         <widget class="QSplitter" name="splitter">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QWidget" name="paletteWidget">
+           <property name="minimumWidth"><number>250</number></property>
+           <attribute name="Splitter.stretchFactor" stdset="0"><number>0</number></attribute>
+           <layout class="QVBoxLayout" name="paletteLayout">
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QPushButton" name="envButton">
+              <property name="minimumWidth"><number>200</number></property>
+              <property name="maximumWidth"><number>200</number></property>
+              <property name="text">
+               <string>Envelope Library</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QPushButton" name="markovButton">
+              <property name="minimumWidth"><number>200</number></property>
+              <property name="maximumWidth"><number>200</number></property>
+              <property name="text">
+               <string>Markov Model Library</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
-         </item>
-        </layout>
-       </widget>
+          <widget class="QTabWidget" name="tabWidget">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <property name="minimumWidth"><number>680</number></property>
+           <attribute name="Splitter.stretchFactor" stdset="0"><number>1</number></attribute>
+           <widget class="QWidget" name="attributesTab">
+            <attribute name="title">
+             <string>Event Attributes</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="eventTablayout">
+             <item>
+              <widget class="QScrollArea" name="eventsScrollArea">
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
+
      </widget>
     </item>
    </layout>

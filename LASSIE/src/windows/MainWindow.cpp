@@ -7,6 +7,7 @@
 #include "PostWindow.hpp"
 
 #include "../core/project_struct.hpp"
+#include "../core/Updater.hpp"
 
 #include <QApplication>
 #include <QMenuBar>
@@ -25,8 +26,42 @@
 
 #include <QProcess>
 #include <QMessageBox>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
+#include <QStackedWidget>
+#include <QToolButton>
+#include <QFileIconProvider>
+#include <QLocale>
+#include <QHeaderView>
+#include <QMenu>
+#include <QAction>
+#include <QKeyEvent>
+#include <QStandardPaths>
+#include <QTimer>
 
 MainWindow *MainWindow::instance_ = nullptr;
+
+namespace {
+    constexpr int kMaxRecentProjects = 12;
+    constexpr const char *kRecentProjectsKey = "recentProjects";
+    constexpr const char *kRecentViewModeIconKey = "recentViewModeIcon";
+}
+
+static QString resolveCmodBinary()
+{
+    // Prefer a CMOD sitting next to the LASSIE binary (packaged builds:
+    // LASSIE.app/Contents/MacOS/CMOD on macOS, the AppDir's usr/bin/CMOD on
+    // Linux). Fall back to the compile-time CMOD_BINARY path for dev builds.
+    const QString appDir = QCoreApplication::applicationDirPath();
+    for (const QString &candidate : { appDir + "/CMOD", appDir + "/../Resources/CMOD" }) {
+        if (QFileInfo(candidate).isExecutable()) {
+            return QDir::cleanPath(candidate);
+        }
+    }
+    return QStringLiteral(CMOD_BINARY);
+}
 
 MainWindow::MainWindow(Inst* m)
     : QMainWindow()
@@ -40,24 +75,50 @@ MainWindow::MainWindow(Inst* m)
 
     ui->setupUi(this);
 
-    ui->tabWidget->hide();
-    ui->paletteWidget->hide();
-    
     createActions();
     enableProjectActions(false);
     createMenus();
     createToolBars();
     createStatusBar();
-    
+
     readSettings();
-    
+    applyRecentViewMode();
+    refreshRecentProjects();
+    showWelcomePage();
+
     setWindowTitle(tr("LASSIE"));
     setUnifiedTitleAndToolBarOnMac(true);
 
     connect(ui->envButton, &QPushButton::clicked, this, &MainWindow::showEnvelopeLibraryWindow);
     connect(ui->markovButton, &QPushButton::clicked, this, &MainWindow::showMarkovWindow);
+    connect(ui->viewModeButton, &QToolButton::clicked, this, &MainWindow::toggleRecentViewMode);
+    connect(ui->recentProjectsList, &QListWidget::itemActivated, this, &MainWindow::openRecentProject);
+    connect(ui->recentProjectsTree, &QTreeWidget::itemActivated, this, &MainWindow::openRecentProjectTree);
+
+    ui->recentProjectsList->setContextMenuPolicy(Qt::CustomContextMenu);
+    ui->recentProjectsTree->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->recentProjectsList, &QWidget::customContextMenuRequested,
+            this, &MainWindow::showRecentListContextMenu);
+    connect(ui->recentProjectsTree, &QWidget::customContextMenuRequested,
+            this, &MainWindow::showRecentTreeContextMenu);
+    ui->recentProjectsList->installEventFilter(this);
+    ui->recentProjectsTree->installEventFilter(this);
+
+    QHeaderView *header = ui->recentProjectsTree->header();
+    header->setSectionResizeMode(0, QHeaderView::Stretch);
+    header->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    header->setSectionResizeMode(2, QHeaderView::ResizeToContents);
     connect(Inst::get_project_manager(), &ProjectManager::dataModified,
             this, [this]{ setWindowModified(true); });
+
+    updater_ = new Updater(this);
+    if (Updater::shouldAutoCheckNow()) {
+        // Defer until the event loop is running so the main window has
+        // painted before any dialog can appear.
+        QTimer::singleShot(0, this, [this]() {
+            updater_->checkForUpdates(Updater::Trigger::Auto);
+        });
+    }
 }
 
 //MainWindow::~MainWindow() = default;
@@ -109,13 +170,14 @@ void MainWindow::closeCurrentProject()
     pm->close(pm->get_curr_project());
 
     // Reset UI to the no-project state
-    ui->tabWidget->hide();
-    ui->paletteWidget->hide();
     enableProjectActions(false);
     openAct->setEnabled(true);
     newAct->setEnabled(true);
 
     setCurrentFile(QString(), false);
+
+    refreshRecentProjects();
+    showWelcomePage();
 }
 
 void MainWindow::newFile()
@@ -139,6 +201,7 @@ void MainWindow::newFile()
 
     setCurrentFile(currentFile, true);
     Inst::get_project_manager()->build(currentFile, nullptr);
+    addToRecentProjects(currentFile);
     showFile();
 }
 
@@ -149,13 +212,24 @@ void MainWindow::openFile()
                                                   tr("DISSCO Files (*.dissco);;All Files (*)"));
     if (fileName.isEmpty())
         return;
+    openProjectPath(fileName);
+}
 
-    QFile file(fileName);
+void MainWindow::openProjectPath(const QString &path)
+{
+    QFile file(path);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
         QMessageBox::warning(this, tr("LASSIE"),
                         tr("Cannot read file %1:\n%2.")
-                        .arg(QDir::toNativeSeparators(fileName),
+                        .arg(QDir::toNativeSeparators(path),
                             file.errorString()));
+        // Remove a missing/unreadable entry from the recents list so it doesn't keep haunting the welcome page.
+        QSettings settings;
+        QStringList recents = settings.value(kRecentProjectsKey).toStringList();
+        if (recents.removeAll(path) > 0) {
+            settings.setValue(kRecentProjectsKey, recents);
+            refreshRecentProjects();
+        }
         return;
     }
     file.close();
@@ -165,8 +239,9 @@ void MainWindow::openFile()
 
     closeCurrentProject();
 
-    currentFile = fileName;
+    currentFile = path;
     Inst::get_project_manager()->open(currentFile, nullptr);
+    addToRecentProjects(currentFile);
     showFile();
 }
 
@@ -201,6 +276,7 @@ void MainWindow::saveFileAs()
         ProjectManager *pm = Inst::get_project_manager();
         pm->fileinfo() = QFileInfo(currentFile);
         saveFile();
+        addToRecentProjects(currentFile);
     }
 }
 
@@ -279,13 +355,14 @@ void MainWindow::runProject()
                 statusBar()->showMessage(tr("CMOD exited with code %1").arg(exit_code)); 
             }
         );
-    qDebug() << "Project run with string:" << QString(CMOD_BINARY) + " " + pm->fileinfo().canonicalFilePath();
+    const QString cmodBinary = resolveCmodBinary();
+    qDebug() << "Project run with string:" << cmodBinary + " " + pm->fileinfo().canonicalFilePath();
 
     const auto pw = new PostWindow(cmod, this);
     pw->resize(600,400);
     pw->show();
 
-    cmod->start(QString(CMOD_BINARY), QStringList() << pm->fileinfo().canonicalFilePath());
+    cmod->start(cmodBinary, QStringList() << pm->fileinfo().canonicalFilePath());
 }
 
 void MainWindow::readSettings()
@@ -299,6 +376,7 @@ void MainWindow::readSettings()
     } else {
         restoreGeometry(geometry);
     }
+    recentIconMode = settings.value(kRecentViewModeIconKey, true).toBool();
 }
 
 void MainWindow::writeSettings() const {
@@ -402,12 +480,31 @@ void MainWindow::createActions()
         QMessageBox::about(this, tr("About LASSIE"),
             tr("LASSIE (Library for Algorithmic Sound Synthesis and Interactive Exploration) "
                "is a tool for creating and manipulating sound synthesis algorithms.\n\n"
-               "Branch: ") + GIT_BRANCH);
+               "Version: %1\nBranch: %2\nCommit: %3")
+                .arg(Updater::currentVersion().toString(),
+                     QString::fromLatin1(GIT_BRANCH),
+                     Updater::currentCommit().left(7)));
     });
 
     aboutQtAct = new QAction(tr("About &Qt"), this);
     aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
     connect(aboutQtAct, &QAction::triggered, qApp, &QApplication::aboutQt);
+
+    checkForUpdatesAct = new QAction(tr("Check for &Updates..."), this);
+    checkForUpdatesAct->setStatusTip(tr("Check GitHub for a newer LASSIE release"));
+    connect(checkForUpdatesAct, &QAction::triggered, this, [this]() {
+        if (updater_) {
+            updater_->checkForUpdates(Updater::Trigger::Manual);
+        }
+    });
+
+    autoCheckUpdatesAct = new QAction(tr("Check for Updates on &Startup"), this);
+    autoCheckUpdatesAct->setStatusTip(tr("Automatically check for updates once per day on launch"));
+    autoCheckUpdatesAct->setCheckable(true);
+    autoCheckUpdatesAct->setChecked(QSettings().value(Updater::kAutoCheckKey, false).toBool());
+    connect(autoCheckUpdatesAct, &QAction::toggled, this, [](const bool on) {
+        QSettings().setValue(Updater::kAutoCheckKey, on);
+    });
 }
 
 void MainWindow::enableProjectActions(const bool enabled) const {
@@ -450,6 +547,9 @@ void MainWindow::createMenus()
     viewMenu->addAction(showMarkovAct);
 
     helpMenu = menuBar()->addMenu(tr("&Help"));
+    helpMenu->addAction(checkForUpdatesAct);
+    helpMenu->addAction(autoCheckUpdatesAct);
+    helpMenu->addSeparator();
     helpMenu->addAction(aboutAct);
     helpMenu->addAction(aboutQtAct);
 }
@@ -492,8 +592,7 @@ void MainWindow::showFile()
             //nhi: connect envelope library to loaded project
             envelopeLibraryWindow->setActiveProject(projectView);
 
-            ui->tabWidget->show();
-            ui->paletteWidget->show();
+            showProjectPage();
             enableProjectActions(true);
         }else{
             qDebug() << "WARNING: file attempted to display while ProjectView is already allocated for an existing project.";
@@ -510,4 +609,226 @@ void MainWindow::setCurrentFile(const QString &file, bool modified){
     else
         setWindowTitle(tr("%1[*] - %2").arg(currentFile, tr("LASSIE")));
     setWindowModified(modified);
+}
+
+void MainWindow::showWelcomePage()
+{
+    ui->mainStack->setCurrentWidget(ui->welcomePage);
+}
+
+void MainWindow::showProjectPage() const
+{
+    ui->mainStack->setCurrentWidget(ui->projectPage);
+}
+
+void MainWindow::refreshRecentProjects() const
+{
+    const QSettings settings;
+    const QStringList recents = settings.value(kRecentProjectsKey).toStringList();
+
+    ui->recentProjectsList->clear();
+    ui->recentProjectsTree->clear();
+
+    const QFileIconProvider iconProvider;
+    const QIcon fallbackIcon = iconProvider.icon(QFileIconProvider::File);
+    const QLocale locale;
+
+    for (const QString &path : recents) {
+        const QFileInfo info(path);
+
+        QIcon icon = iconProvider.icon(info);
+        if (icon.isNull())
+            icon = fallbackIcon;
+
+        // Icon-mode list
+        auto *listItem = new QListWidgetItem(ui->recentProjectsList);
+        listItem->setText(info.completeBaseName());
+        listItem->setToolTip(QDir::toNativeSeparators(path));
+        listItem->setData(Qt::UserRole, path);
+        listItem->setIcon(icon);
+        listItem->setTextAlignment(Qt::AlignHCenter | Qt::AlignTop);
+
+        // Details tree (list mode)
+        auto *treeItem = new QTreeWidgetItem(ui->recentProjectsTree);
+        treeItem->setText(0, info.completeBaseName());
+        treeItem->setIcon(0, icon);
+        treeItem->setToolTip(0, QDir::toNativeSeparators(path));
+        treeItem->setData(0, Qt::UserRole, path);
+
+        if (info.exists()) {
+            treeItem->setText(1, locale.toString(info.lastModified(), QLocale::ShortFormat));
+            treeItem->setText(2, locale.formattedDataSize(info.size()));
+        } else {
+            treeItem->setText(1, tr("(missing)"));
+            treeItem->setText(2, QString());
+        }
+    }
+}
+
+void MainWindow::addToRecentProjects(const QString &path) const
+{
+    if (path.isEmpty())
+        return;
+
+    const QString canonical = QFileInfo(path).absoluteFilePath();
+
+    QSettings settings;
+    QStringList recents = settings.value(kRecentProjectsKey).toStringList();
+
+    // Remove any existing entry that refers to the same file, then prepend.
+    recents.removeAll(canonical);
+    recents.removeAll(path);
+    recents.prepend(canonical);
+    while (recents.size() > kMaxRecentProjects)
+        recents.removeLast();
+
+    settings.setValue(kRecentProjectsKey, recents);
+    refreshRecentProjects();
+}
+
+void MainWindow::applyRecentViewMode() const
+{
+    if (recentIconMode) {
+        ui->recentProjectsStack->setCurrentWidget(ui->recentProjectsList);
+        ui->viewModeButton->setText(tr("List View"));
+    } else {
+        ui->recentProjectsStack->setCurrentWidget(ui->recentProjectsTree);
+        ui->viewModeButton->setText(tr("Icon View"));
+    }
+}
+
+void MainWindow::toggleRecentViewMode()
+{
+    recentIconMode = !recentIconMode;
+    QSettings settings;
+    settings.setValue(kRecentViewModeIconKey, recentIconMode);
+    applyRecentViewMode();
+}
+
+void MainWindow::openRecentProject(QListWidgetItem *item)
+{
+    if (!item)
+        return;
+    const QString path = item->data(Qt::UserRole).toString();
+    if (path.isEmpty())
+        return;
+    openProjectPath(path);
+}
+
+void MainWindow::openRecentProjectTree(QTreeWidgetItem *item, int /*column*/)
+{
+    if (!item)
+        return;
+    const QString path = item->data(0, Qt::UserRole).toString();
+    if (path.isEmpty())
+        return;
+    openProjectPath(path);
+}
+
+QStringList MainWindow::selectedRecentPaths() const
+{
+    QStringList paths;
+    if (recentIconMode) {
+        const QList<QListWidgetItem *> items = ui->recentProjectsList->selectedItems();
+        paths.reserve(items.size());
+        for (const QListWidgetItem *item : items) {
+            const QString path = item->data(Qt::UserRole).toString();
+            if (!path.isEmpty())
+                paths.append(path);
+        }
+    } else {
+        const QList<QTreeWidgetItem *> items = ui->recentProjectsTree->selectedItems();
+        paths.reserve(items.size());
+        for (const QTreeWidgetItem *item : items) {
+            const QString path = item->data(0, Qt::UserRole).toString();
+            if (!path.isEmpty())
+                paths.append(path);
+        }
+    }
+    return paths;
+}
+
+void MainWindow::removeRecents(const QStringList &paths) const
+{
+    if (paths.isEmpty())
+        return;
+
+    QSettings settings;
+    QStringList recents = settings.value(kRecentProjectsKey).toStringList();
+    for (const QString &path : paths)
+        recents.removeAll(path);
+
+    settings.setValue(kRecentProjectsKey, recents);
+    refreshRecentProjects();
+}
+
+void MainWindow::promptAndRemoveSelectedRecents()
+{
+    const QStringList paths = selectedRecentPaths();
+    if (paths.isEmpty())
+        return;
+
+    const QString message = paths.size() == 1
+        ? tr("Remove \"%1\" from recent projects?\n\nThe project files on disk will not be affected.")
+              .arg(QFileInfo(paths.first()).completeBaseName())
+        : tr("Remove %1 entries from recent projects?\n\nThe project files on disk will not be affected.")
+              .arg(paths.size());
+
+    const QMessageBox::StandardButton reply = QMessageBox::question(
+        this,
+        tr("Remove from Recents"),
+        message,
+        QMessageBox::Yes | QMessageBox::No,
+        QMessageBox::No
+    );
+
+    if (reply == QMessageBox::Yes)
+        removeRecents(paths);
+}
+
+void MainWindow::showRecentListContextMenu(const QPoint &pos)
+{
+    const QListWidgetItem *item = ui->recentProjectsList->itemAt(pos);
+    if (!item)
+        return;
+    if (!item->isSelected())
+        ui->recentProjectsList->setCurrentItem(const_cast<QListWidgetItem *>(item));
+
+    const int count = ui->recentProjectsList->selectedItems().size();
+    QMenu menu(this);
+    QAction *removeAct = menu.addAction(count > 1
+        ? tr("Remove %1 entries from Recents").arg(count)
+        : tr("Remove from Recents"));
+    if (menu.exec(ui->recentProjectsList->viewport()->mapToGlobal(pos)) == removeAct)
+        removeRecents(selectedRecentPaths());
+}
+
+void MainWindow::showRecentTreeContextMenu(const QPoint &pos)
+{
+    const QTreeWidgetItem *item = ui->recentProjectsTree->itemAt(pos);
+    if (!item)
+        return;
+    if (!item->isSelected())
+        ui->recentProjectsTree->setCurrentItem(const_cast<QTreeWidgetItem *>(item));
+
+    const int count = ui->recentProjectsTree->selectedItems().size();
+    QMenu menu(this);
+    QAction *removeAct = menu.addAction(count > 1
+        ? tr("Remove %1 entries from Recents").arg(count)
+        : tr("Remove from Recents"));
+    if (menu.exec(ui->recentProjectsTree->viewport()->mapToGlobal(pos)) == removeAct)
+        removeRecents(selectedRecentPaths());
+}
+
+bool MainWindow::eventFilter(QObject *watched, QEvent *event)
+{
+    if ((watched == ui->recentProjectsList || watched == ui->recentProjectsTree)
+            && event->type() == QEvent::KeyPress) {
+        const auto *keyEvent = static_cast<QKeyEvent *>(event);
+        if (keyEvent->key() == Qt::Key_Delete || keyEvent->key() == Qt::Key_Backspace) {
+            promptAndRemoveSelectedRecents();
+            return true;
+        }
+    }
+    return QMainWindow::eventFilter(watched, event);
 }

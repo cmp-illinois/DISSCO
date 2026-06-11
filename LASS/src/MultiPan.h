@@ -159,8 +159,8 @@ private:
 
 	bool useEnvDirectly;
 	vector<Envelope*> EnvList;
-	vector<Collection<xy_point>*> xyCollectionsList;
-	vector<Collection<envelope_segment>*> segCollectionsList;
+	vector<vector<xy_point>*> xyCollectionsList;
+	vector<vector<envelope_segment>*> segCollectionsList;
 	//not in used elsewhere in the program so I commented it out. --Ming-ching May 06, 2013
 	//vector<int> nPoints;
 	int n_channels;

@@ -31,7 +31,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //----------------------------------------------------------------------------//
 #include "StandardHeaders.h"
 
-#include "Collection.h"
 #include "Track.h"
 #include "MultiTrack.h"
 
@@ -58,7 +57,7 @@ public:
     	/**
 	 *This method applies the filter to a MultiTrack source, track by track.
 	 * It does so by decomposing the wave into Track objects (organized as
-	 * a Collection inside the MultiTrack object) and calling the
+	 * a vector inside the MultiTrack object) and calling the
 	 * virtual function, do_filter(SoundSample *inWave), for each Track.
 	 *
 	 * \param inWave A reference to a MultiTrack object to Filter
@@ -248,6 +247,12 @@ public:
 			// return the index
 			return array[idx];
 		}
+
+		// Raw access for performance-critical buffer processing (use carefully).
+		ElemType* raw_array() { return array; }
+		long raw_length() const { return length; }
+		long& raw_back() { return back_idx; }
+		long& raw_front() { return front_idx; }
 
 	private:
 

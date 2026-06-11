@@ -66,8 +66,8 @@ DynamicVariableSequence::DynamicVariableSequence (DynamicVariableSequence &dvs)
 
 //----------------------------------------------------------------------------//
 DynamicVariableSequence::DynamicVariableSequence(
-    Collection<xy_point> xyPoints,
-    Collection<envelope_segment> segments)
+    vector<xy_point> xyPoints,
+    vector<envelope_segment> segments)
 {
     xyPoints_ = NULL;
     segments_ = NULL;
@@ -76,7 +76,7 @@ DynamicVariableSequence::DynamicVariableSequence(
     totalTime_ = -1;
     currentInterpolatorRate_ = 0;
 
-    // define the shape, given the Collections
+    // define the shape, given the vectors
     DefineShape (xyPoints, segments);
 
 }
@@ -95,15 +95,9 @@ DynamicVariableSequence::~DynamicVariableSequence()
     }
     if (interpolators_ != NULL)
     {
-        Interpolator* interTemp = NULL;
-
-        // remove each interpolator* from the collection and delete the
-        // allocated memory
-        while (interpolators_->size() > 0)
-        {
-            interTemp = interpolators_->remove(0);
+        // delete each interpolator* and free the collection
+        for (Interpolator* interTemp : *interpolators_)
             delete (interTemp);
-        }
 
         delete (interpolators_);
     }
@@ -133,9 +127,9 @@ void DynamicVariableSequence::Print()
     {
         // print a line with form (x, y):
         cout << " x, y: " << "(";
-        cout << setw(5) << xyPoints_->get(iLoop).x;
+        cout << setw(5) << xyPoints_->at(iLoop).x;
         cout << ", ";
-        cout << setw(5) << xyPoints_->get(iLoop).y;
+        cout << setw(5) << xyPoints_->at(iLoop).y;
         cout << ")" << endl;
 
         // print the entry number
@@ -174,9 +168,9 @@ void DynamicVariableSequence::Print()
 
     // output the last point
     cout << " x, y: " << "(";
-    cout << setw(5) << xyPoints_->get(iLoop).x;
+    cout << setw(5) << xyPoints_->at(iLoop).x;
     cout << ", ";
-    cout << setw(5) << xyPoints_->get(iLoop).y;
+    cout << setw(5) << xyPoints_->at(iLoop).y;
     cout << ")" << endl;
     
     cout << "End of DVS." << endl;
@@ -206,7 +200,7 @@ m_value_type DynamicVariableSequence::getValue (m_time_type time,
 	//Handle special case where absolute end of dvs is asked for
 	if(time==timeTotal)
 	{
-		return xyPoints_->get(xyPoints_->size()-1).y;
+		return xyPoints_->at(xyPoints_->size()-1).y;
 	}
 
 	//TODO: Make come sort of cached flag that will see if this
@@ -218,7 +212,7 @@ m_value_type DynamicVariableSequence::getValue (m_time_type time,
 	int timeIndex=0;
 	while(current<time)
 	{
-		current+=generatedSegmentTimes_->get(timeIndex);
+		current+=generatedSegmentTimes_->at(timeIndex);
 		timeIndex++;
 	}
 	
@@ -226,7 +220,7 @@ m_value_type DynamicVariableSequence::getValue (m_time_type time,
 	if(current!=time)
 	{
 		timeIndex--;
-		current-=generatedSegmentTimes_->get(timeIndex);
+		current-=generatedSegmentTimes_->at(timeIndex);
 	}
 
 	//Spawn an interpolator of the proper type
@@ -265,7 +259,7 @@ m_value_type DynamicVariableSequence::getValue (m_time_type time,
 	// Figure out which sample we want from the interpolator.
 	// This is done by taking the percentage we have to iterate thru
 	// the interpolator, and then multiplying that by the number of samples
-	int sample=int(round(((time-current)/generatedSegmentTimes_->get(timeIndex))*100.0));
+	int sample=int(round(((time-current)/generatedSegmentTimes_->at(timeIndex))*100.0));
 
 	// Create a value iterator to get values from the interpolator
 	Iterator<m_value_type> tempIterator=interp->valueIterator();
@@ -344,8 +338,8 @@ m_value_type DynamicVariableSequence::getValue (m_time_type time,
 
 //----------------------------------------------------------------------------//
 inline void DynamicVariableSequence::DefineShape
-    (Collection<xy_point> xyPoints,
-     Collection<envelope_segment> segments)
+    (vector<xy_point> xyPoints,
+     vector<envelope_segment> segments)
 {
     // make sure we don't cause a memory leak
     if (xyPoints_ != NULL)
@@ -359,36 +353,36 @@ inline void DynamicVariableSequence::DefineShape
 
     if (xyPoints.size ( ) != (segments.size ( ) + 1) )
       {
-	cout << "WARNING: Invalid Collection sizes for points or segments" << endl;
+	cout << "WARNING: Invalid vector sizes for points or segments" << endl;
 	cout << "points.size ( ) should be segments.size ( ) + 1" << endl;
       }
 
     // set our local variables to copies of the variables passed in
-    xyPoints_ = new Collection<xy_point> (xyPoints);
-    segments_ = new Collection<envelope_segment> (segments);
+    xyPoints_ = new vector<xy_point> (xyPoints);
+    segments_ = new vector<envelope_segment> (segments);
 }
 
 //----------------------------------------------------------------------------//
 void DynamicVariableSequence::AddToShape
-(Collection<xy_point> xyPoints,
- Collection<envelope_segment> segments)
+(vector<xy_point> xyPoints,
+ vector<envelope_segment> segments)
 {
-  // case: Adding to an empty Collection
+  // case: Adding to an empty vector
   if ( (xyPoints_ == NULL) || (segments_ == NULL) )
     {
-      xyPoints_ = new Collection <xy_point> (xyPoints);
-      segments_ = new Collection <envelope_segment> (segments);
+      xyPoints_ = new vector<xy_point> (xyPoints);
+      segments_ = new vector<envelope_segment> (segments);
       return;
     }
 
   int iNumSegments = segments.size();
-  m_time_type timeOffset = xyPoints_->get(xyPoints_->size() - 1).x;
+  m_time_type timeOffset = xyPoints_->at(xyPoints_->size() - 1).x;
   xy_point pointTemp;
 
   // verify that the last old point and the first new point have the
   // same y value (usually zero), that they can be appended
-  if ( (xyPoints_ -> get (xyPoints_ -> size ( ) -1).y)
-       != (xyPoints.get (0).y ) )
+  if ( (xyPoints_ ->at(xyPoints_ -> size ( ) -1).y)
+       != (xyPoints.at(0).y ) )
     {
       cout << "WARNING: Y values of last point of first envelope\n";
       cout << "and first point of second envelope do not match.\n";
@@ -399,11 +393,11 @@ void DynamicVariableSequence::AddToShape
   // for every element in the new collections
   for (int iIndex = 0; iIndex < iNumSegments; iIndex++)
     {
-      // add the current segment and point + 1 to our existing Collections
-      pointTemp = xyPoints.get(iIndex + 1);
+      // add the current segment and point + 1 to our existing vectors
+      pointTemp = xyPoints.at(iIndex + 1);
       pointTemp.x = pointTemp.x + timeOffset;
-      xyPoints_->add(pointTemp);
-      segments_->add(segments.get(iIndex));
+      xyPoints_->push_back(pointTemp);
+      segments_->push_back(segments.at(iIndex));
     }
 }
 
@@ -421,72 +415,72 @@ void DynamicVariableSequence::AddToShape
 }
 
 //----------------------------------------------------------------------------//
-Collection<xy_point>* DynamicVariableSequence::getPoints ()
+vector<xy_point>* DynamicVariableSequence::getPoints ()
 {
     // the point data are stored in a member variable, so return a copy of it
-    return (new Collection<xy_point> (*xyPoints_));
+    return (new vector<xy_point> (*xyPoints_));
 }
 
 
 //----------------------------------------------------------------------------//
-Collection<envelope_segment>* DynamicVariableSequence::getSegments ()
+vector<envelope_segment>* DynamicVariableSequence::getSegments ()
 {
     // the point data are stored in a member variable, so return a copy of it
-    return (new Collection<envelope_segment> (*segments_));
+    return (new vector<envelope_segment> (*segments_));
 }
 
 
 //----------------------------------------------------------------------------//
 void DynamicVariableSequence::setSegment (int index, envelope_segment segment)
 {
-    // lets the Collection class hand an invalid index
-    segments_->set(index, segment);
+    // lets std::vector hand an invalid index
+    segments_->at(index) = segment;
 }
 
 
 //----------------------------------------------------------------------------//
 envelope_segment DynamicVariableSequence::getSegment (int index)
 {
-    // lets the Collection class hand an invalid index
-    return segments_->get(index);
+    // lets std::vector hand an invalid index
+    return segments_->at(index);
 }
 
 
 //----------------------------------------------------------------------------//
 void DynamicVariableSequence::setPoint (int index, xy_point point)
 {
-    // lets the Collection class hand an invalid index
-    xyPoints_->set(index, point);
+    // lets std::vector hand an invalid index
+    xyPoints_->at(index) = point;
 }
 
 
 //----------------------------------------------------------------------------//
 xy_point DynamicVariableSequence::getPoint (int index)
 {
-    // lets the Collection class hand an invalid index
-    return xyPoints_->get(index);
+    // lets std::vector hand an invalid index
+    return xyPoints_->at(index);
 }
 
 
 //----------------------------------------------------------------------------//
 void DynamicVariableSequence::addPoint (xy_point point)
 {
-    xyPoints_->add(point);
+    xyPoints_->push_back(point);
 }
 
 
 //----------------------------------------------------------------------------//
 void DynamicVariableSequence::addSegment (envelope_segment segment)
 {
-    segments_->add(segment);
+    segments_->push_back(segment);
 }
 
 
 //----------------------------------------------------------------------------//
 m_time_type DynamicVariableSequence::getSegmentTime (int index)
 {
-    // lets the Collection class hand an invalid index
-    return (segments_->get(index).timeValue);
+    // lets std::vector hand an invalid index
+    return (segments_->at(index).timeValue);
 }
 
 
@@ -500,16 +494,16 @@ void DynamicVariableSequence::setSegmentTime (int index, m_time_type time)
     }
 
     // assumes a valid index is supplied
-    envelope_segment segTemp = segments_->get (index);
+    envelope_segment segTemp = segments_->at(index);
     segTemp.timeValue = time;
-    segments_->set (index, segTemp);
+    segments_->at(index) = segTemp;
 }
 
 //----------------------------------------------------------------------------//
 stretch_type DynamicVariableSequence::getSegmentTimeType (int index)
 {
     // assumes a valid index is supplied
-    return (segments_->get(index).timeType);
+    return (segments_->at(index).timeType);
 }
 
 
@@ -518,9 +512,9 @@ void DynamicVariableSequence::setSegmentTimeType (int index,
                                                   stretch_type timeType)
 {
     // assumes a valid index is supplied
-    envelope_segment segTemp = segments_->get (index);
+    envelope_segment segTemp = segments_->at(index);
     segTemp.timeType = timeType;
-    segments_->set (index, segTemp);
+    segments_->at(index) = segTemp;
 }
 
 
@@ -529,7 +523,7 @@ interpolation_type DynamicVariableSequence::getSegmentInterpolationType
                                             (int index)
 {
     // assumes a valid index is supplied
-    return (segments_->get(index).interType);
+    return (segments_->at(index).interType);
 }
 
 
@@ -539,9 +533,9 @@ void DynamicVariableSequence::setSegmentInterpolationType
                                interpolation_type interType)
 {
     // assumes a valid index is supplied
-    envelope_segment segTemp = segments_->get (index);
+    envelope_segment segTemp = segments_->at(index);
     segTemp.interType = interType;
-    segments_->set (index, segTemp);
+    segments_->at(index) = segTemp;
 }
 
 //----------------------------------------------------------------------------//
@@ -604,7 +598,7 @@ void DynamicVariableSequence::generateTimes (m_time_type totalTime)
     {
         delete (generatedSegmentTimes_);
     }
-    generatedSegmentTimes_ = new Collection<m_time_type> ();
+    generatedSegmentTimes_ = new vector<m_time_type> ();
 
     // figure out how they want to allocate time for each segment and populate
     // the generated times with their current values
@@ -621,7 +615,7 @@ void DynamicVariableSequence::generateTimes (m_time_type totalTime)
             dTotalFlexPercent += this->getSegmentTime(iIndex);
         }
         // append their current value to our values for generated times
-        generatedSegmentTimes_->add(this->getSegmentTime(iIndex));
+        generatedSegmentTimes_->push_back(this->getSegmentTime(iIndex));
     }
 
     // now, correct the generated values as necessary (i.e. the rest of this)
@@ -648,14 +642,13 @@ void DynamicVariableSequence::generateTimes (m_time_type totalTime)
             // scale every FIXED time value
             if (this->getSegmentTimeType(iIndex) == FIXED)
             {
-                generatedSegmentTimes_->set
-                    (iIndex,
-                     this->getSegmentTime(iIndex) * dScaleRatio);
+                generatedSegmentTimes_->at(iIndex) =
+                     this->getSegmentTime(iIndex) * dScaleRatio;
             }
             else
             {
                 // all flex time entries are set to 0
-                generatedSegmentTimes_->set (iIndex, 0);
+                generatedSegmentTimes_->at(iIndex) = 0;
             }
         }
     }
@@ -674,9 +667,8 @@ void DynamicVariableSequence::generateTimes (m_time_type totalTime)
         {
             if (this->getSegmentTimeType(iIndex) == FLEXIBLE)
             {
-                generatedSegmentTimes_->set
-                    (iIndex,
-                     this->getSegmentTime(iIndex) * dScaleRatio);
+                generatedSegmentTimes_->at(iIndex) =
+                     this->getSegmentTime(iIndex) * dScaleRatio;
             }
         }
     }
@@ -698,9 +690,8 @@ void DynamicVariableSequence::generateTimes (m_time_type totalTime)
             // if this is a flex-time entry, set time accordingly
             if (this->getSegmentTimeType(iIndex) == FLEXIBLE)
             {
-                generatedSegmentTimes_->set
-                    (iIndex,
-                     generatedSegmentTimes_->get(iIndex) * flexTimeAvailable);
+                generatedSegmentTimes_->at(iIndex) =
+                     generatedSegmentTimes_->at(iIndex) * flexTimeAvailable;
             }
         }
     }
@@ -710,7 +701,7 @@ void DynamicVariableSequence::generateTimes (m_time_type totalTime)
 
     for (int iIndex = 0; iIndex < iNumSegments; iIndex++)
     {
-        cout << "Segment " << iIndex << ": " << generatedSegmentTimes_->get(iIndex) << endl;
+        cout << "Segment " << iIndex << ": " << generatedSegmentTimes_->at(iIndex) << endl;
     }
 #endif
 }
@@ -733,47 +724,47 @@ void DynamicVariableSequence::addInterpolators (m_rate_type rate)
         delete (interpolators_);
     }
 
-    // initialize a new Collection for interpolators
-    interpolators_ = new Collection<Interpolator*> ();
+    // initialize a new vector for interpolators
+    interpolators_ = new vector<Interpolator*> ();
 
     // for each segment that we have, store a new interpolator
     for (int iIndex = 0; iIndex < iNumSegments; iIndex++)
     {
-        // add an interpolator for the current segment to the Collection
+        // add an interpolator for the current segment to the vector
         switch (getSegmentInterpolationType(iIndex))
         {
             case EXPONENTIAL:
-                interpolators_->add(new ExponentialInterpolator());
+                interpolators_->push_back(new ExponentialInterpolator());
                 break;
            
             case CUBIC_SPLINE:
-                interpolators_->add(new CubicSplineInterpolator());
+                interpolators_->push_back(new CubicSplineInterpolator());
                 break;
 
             default: 
-                interpolators_->add(new LinearInterpolator());
+                interpolators_->push_back(new LinearInterpolator());
                 break;
         }
 
         // set the Interpolator's sampling rate to the rate specified
-        interpolators_->get(iIndex)->setSamplingRate(rate);
+        interpolators_->at(iIndex)->setSamplingRate(rate);
 
-        m_time_type tempTimeValue = generatedSegmentTimes_->get(iIndex);
+        m_time_type tempTimeValue = generatedSegmentTimes_->at(iIndex);
 
         // add a start and end point to this interpolator:
-        interpolators_->get(iIndex)->addEntry(0, xyPoints_->get(iIndex).y);
-        interpolators_->get(iIndex)->addEntry
+        interpolators_->at(iIndex)->addEntry(0, xyPoints_->at(iIndex).y);
+        interpolators_->at(iIndex)->addEntry
             (tempTimeValue,
-             xyPoints_->get(iIndex + 1).y);
+             xyPoints_->at(iIndex + 1).y);
 
         // set interpolator duration
-        interpolators_->get(iIndex)->setDuration(tempTimeValue);
+        interpolators_->at(iIndex)->setDuration(tempTimeValue);
 
 #ifdef DEBUG_MODE
     cout << "Interpolator #" << iIndex << " - added points: " << endl;
-    cout << "   (0, " << xyPoints_->get(iIndex).y << ")" << endl;
-    cout << "   (" << generatedSegmentTimes_->get(iIndex) << ", ";
-    cout << xyPoints_->get(iIndex + 1).y << ")" << endl;
+    cout << "   (0, " << xyPoints_->at(iIndex).y << ")" << endl;
+    cout << "   (" << generatedSegmentTimes_->at(iIndex) << ", ";
+    cout << xyPoints_->at(iIndex + 1).y << ")" << endl;
 #endif
     }
 }
@@ -789,9 +780,9 @@ void DynamicVariableSequence::scale(m_value_type factor)
     for (int iIndex = 0; iIndex < iNumPoints; iIndex++)
     {
         // scale this value by the factor given
-        pointTemp.x = xyPoints_->get(iIndex).x;
-        pointTemp.y = (xyPoints_->get(iIndex).y) * factor;
-        xyPoints_->set(iIndex, pointTemp);
+        pointTemp.x = xyPoints_->at(iIndex).x;
+        pointTemp.y = (xyPoints_->at(iIndex).y) * factor;
+        xyPoints_->at(iIndex) = pointTemp;
     }
 }
     
@@ -806,9 +797,9 @@ m_value_type DynamicVariableSequence::getMaxValue()
     for (int iIndex = 0; iIndex < iNumPoints; iIndex++)
     {
         // if this point's value is greater than the max, set max = this value
-        if (xyPoints_->get(iIndex).y > maxVal)
+        if (xyPoints_->at(iIndex).y > maxVal)
         {
-            maxVal = xyPoints_->get(iIndex).y;
+            maxVal = xyPoints_->at(iIndex).y;
         }
     }
 
@@ -828,19 +819,13 @@ void DynamicVariableSequence::xml_print( ofstream& xmlOutput )
 	//Print out private vars and collections for DVS here
 	xmlOutput << "\t<totalTime value=\"" << totalTime_ << "\" />" << endl;
 	xmlOutput << "\t<currentInterpolatorRate value=\"" << currentInterpolatorRate_ << "\" />" << endl;
-	xy_point mypoint;
-	Iterator<xy_point> it_points = xyPoints_->iterator();
-        while( it_points.hasNext() )
+	for (xy_point& mypoint : *xyPoints_)
         {
-		mypoint = it_points.next();
                 xmlOutput << "\t<xyPoints x=\"" << mypoint.x << "\" ";
                 xmlOutput << "value=\"" << mypoint.y << "\" />" << endl;
         }
-	envelope_segment myseg;
-        Iterator<envelope_segment> it_segments = segments_->iterator();
-        while(it_segments.hasNext())
+        for (envelope_segment& myseg : *segments_)
         {
-		myseg = it_segments.next();
                 xmlOutput << "\t<segments interType=\"" << myseg.interType << "\" ";
                 xmlOutput << "timeType=\"" << myseg.timeType << "\" ";
 		xmlOutput << "timeValue=\"" << myseg.timeValue << "\" />" << endl;

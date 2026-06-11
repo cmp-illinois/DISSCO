@@ -40,7 +40,7 @@
 #include <functional>
 #include <limits>
 
-#include "Markov.h"
+#include "MarkovModel.h"
 #include "../utilities.hpp"
 #include "../widgets/ProjectViewController.hpp"
 

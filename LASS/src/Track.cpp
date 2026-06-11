@@ -31,6 +31,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Track.h"
 
 //----------------------------------------------------------------------------//
+
+// Amplitude tracking defaults to on so that direct LASS library users keep the
+// original behavior; Score turns it off for clipping modes that never read it.
+bool Track::amplitudeTracking_ = true;
+
+//----------------------------------------------------------------------------//
 // CONSTRUCTORS, DESTRUCTOR, ASSIGNMENT
 
 //----------------------------------------------------------------------------//
@@ -44,7 +50,9 @@ Track::Track(m_sample_count_type sampleCount,
        m_rate_type samplingRate,
        bool zeroData)
     :wave_(new SoundSample(sampleCount, samplingRate, zeroData)),
-     amp_(new SoundSample(sampleCount, samplingRate, zeroData))
+     amp_(amplitudeTracking_
+              ? new SoundSample(sampleCount, samplingRate, zeroData)
+              : 0)
 {
 }
 
@@ -131,6 +139,18 @@ void Track::scale(m_value_type factor)
 {
     wave_->scale(factor);
     if (amp_ != 0) amp_->scale(factor);
+}
+
+//----------------------------------------------------------------------------//
+void Track::setAmplitudeTracking(bool enabled)
+{
+    amplitudeTracking_ = enabled;
+}
+
+//----------------------------------------------------------------------------//
+bool Track::amplitudeTrackingEnabled()
+{
+    return amplitudeTracking_;
 }
 
 //----------------------------------------------------------------------------//

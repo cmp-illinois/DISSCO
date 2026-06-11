@@ -224,61 +224,58 @@ Piece::Piece(string _workingPath, string _projectTitle){
   chdir(_workingPath.c_str());
 
   //Parse .dissco File
-  XMLPlatformUtils::Initialize();
-  XercesDOMParser* parser = new XercesDOMParser();
+  pugi::xml_document disscoDoc;
   string disscoFile = _projectTitle+ ".dissco";
-  parser->parse(disscoFile.c_str());
+  disscoDoc.load_file(disscoFile.c_str());
 
-  //get the parsed DOM Document and read the configuration
-  DOMDocument* xmlDocument = parser->getDocument();
-  DOMElement* root = xmlDocument->getDocumentElement();
-  DOMElement* configurations = root->GFEC();
-  DOMElement* element = configurations->GFEC();
+  pugi::xml_node root = disscoDoc.document_element();
+  pugi::xml_node configurations = GFEC(root);
+  pugi::xml_node element = GFEC(configurations);
   title = XMLTC(element);
-  element = element->GNES();
+  element = GNES(element);
   fileFlags = XMLTC(element);
-  element = element->GNES();
+  element = GNES(element);
   fileList = XMLTC(element);
-  element = element->GNES();
+  element = GNES(element);
   pieceStartTime = XMLTC(element);
-  element = element->GNES();
+  element = GNES(element);
   pieceDuration = XMLTC(element);
-  element = element->GNES();
+  element = GNES(element);
   soundSynthesis = (XMLTC(element).compare("True")==0)?true:false;
-  element = element->GNES();
+  element = GNES(element);
   scorePrinting = (XMLTC(element).compare("True")==0)?true:false;
-  element = element->GNES();
+  element = GNES(element);
 
   // multistaffs
   grandStaff = (XMLTC(element).compare("True")==0)?true:false;
   cout <<"grandStaff: " << grandStaff << endl;
-  element = element->GNES();
+  element = GNES(element);
 
   // get the staffs number
   
   numberOfStaff = atoi(XMLTC(element).c_str());
   cout <<"numberOfStaff: " << numberOfStaff << endl;
-  element = element->GNES();
+  element = GNES(element);
 
   numChannels = atoi(XMLTC(element).c_str());
   cout << "Channel: " << numChannels << "\n";
-  element = element->GNES();
+  element = GNES(element);
 
   sampleRate = atoi(XMLTC(element).c_str());
   cout << "Sample Rate: "<< sampleRate << "\n";
-  element = element->GNES();
+  element = GNES(element);
 
   sampleSize = atoi(XMLTC(element).c_str());
   cout << "Sample Size: "<< sampleSize << "\n";
-  element = element->GNES();
+  element = GNES(element);
   numThreads = atoi(XMLTC(element).c_str());
-  element = element->GNES();
+  element = GNES(element);
   bool outputParticel = (XMLTC(element).compare("True")==0)?true:false;
 
   //check if seed exists
   string seed;
-  element = element->GNES();
-  if(element->getFirstChild()){
+  element = GNES(element);
+  if(element.first_child()){
     seed = XMLTC(element);
   }
   else{
@@ -337,10 +334,10 @@ Piece::Piece(string _workingPath, string _projectTitle){
 
   //Create the Top event and recursively build its children.
   
-  DOMElement* topElement = utilities->getEventElement(eventTop, fileList);
+  pugi::xml_node topElement = utilities->getEventElement(eventTop, fileList);
   utilities->currChild = 0;
   Event* topEvent = new Event(topElement,
-        pieceSpan,0, mainTempo, utilities, NULL,NULL,NULL,NULL);
+        pieceSpan,0, mainTempo, utilities, {},{},{},{});
   topEvent->buildChildren();
 
   //get the final MultiTrack object and write it to disk
@@ -404,9 +401,7 @@ Piece::Piece(string _workingPath, string _projectTitle){
 
   //clean up
   delete utilities;
-  delete parser;
   delete topEvent; //wait till the thread join
-  XMLPlatformUtils::Terminate();
 
 }
 
@@ -415,42 +410,42 @@ Piece::~Piece(){
 }
 
 //Experiment 2
-vector<DOMElement*> Piece::calcEventM(DOMElement* eventElement){
+vector<pugi::xml_node> Piece::calcEventM(pugi::xml_node eventElement){
 
-      vector<DOMElement*> childElements;
-	    DOMElement* thisEventElement = eventElement->GFEC(); //type
+      vector<pugi::xml_node> childElements;
+	    pugi::xml_node thisEventElement = GFEC(eventElement); //type
 	    string typeString = XMLTC(thisEventElement);
 	    int type = atoi(typeString.c_str());
 	    double mVal = 0.0;
 
-	    thisEventElement = thisEventElement->GNES(); //name
+	    thisEventElement = GNES(thisEventElement); //name
 	    string name = XMLTC(thisEventElement);
 
 	    if(type <= 4){  //Top, High, Medium, Low, Bottom
 
-	      thisEventElement = thisEventElement->GNES(); //maxChildDur
+	      thisEventElement = GNES(thisEventElement); //maxChildDur
 	      float maxChildDur = (float)utilities->evaluate(XMLTC(thisEventElement), (void*)this);
 
-	      thisEventElement = thisEventElement->GNES(); //newEDUPerBeat
+	      thisEventElement = GNES(thisEventElement); //newEDUPerBeat
 	      int newEDUPerBeat = (int) utilities->evaluate(XMLTC(thisEventElement),(void*)this);
 
-	      thisEventElement = thisEventElement->GNES(); //Time Signature element
+	      thisEventElement = GNES(thisEventElement); //Time Signature element
 
-	      thisEventElement = thisEventElement->GNES(); //Tempo element
+	      thisEventElement = GNES(thisEventElement); //Tempo element
 
-	      DOMElement* numChildrenElement = thisEventElement->GNES(); //Num children element
+	      pugi::xml_node numChildrenElement = GNES(thisEventElement); //Num children element
 
-	      DOMElement* childEventDefElement = numChildrenElement->GNES();
-	      DOMElement* childStartTimeElement = childEventDefElement->GFEC();
-	      DOMElement* childTypeElement = childStartTimeElement->GNES();
+	      pugi::xml_node childEventDefElement = GNES(numChildrenElement);
+	      pugi::xml_node childStartTimeElement = GFEC(childEventDefElement);
+	      pugi::xml_node childTypeElement = GNES(childStartTimeElement);
           cout << "pieceExperimental - childTypeElement=" << childTypeElement << endl;
       int sever; cin >> sever;
-	      DOMElement* childDurationElement = childTypeElement->GNES();
-	      DOMElement* AttackSieveElement = childDurationElement->GNES();
-	      DOMElement* DurationSieveElement = AttackSieveElement->GNES();
-	      DOMElement* methodFlagElement = DurationSieveElement->GNES();
-	      DOMElement* childStartTypeFlag = methodFlagElement->GNES();
-	      DOMElement* childDurationTypeFlag = childStartTypeFlag->GNES();
+	      pugi::xml_node childDurationElement = GNES(childTypeElement);
+	      pugi::xml_node AttackSieveElement = GNES(childDurationElement);
+	      pugi::xml_node DurationSieveElement = GNES(AttackSieveElement);
+	      pugi::xml_node methodFlagElement = GNES(DurationSieveElement);
+	      pugi::xml_node childStartTypeFlag = GNES(methodFlagElement);
+	      pugi::xml_node childDurationTypeFlag = GNES(childStartTypeFlag);
 
 	      //Read Flag values (Needed for modification)
 	      string defFlag = XMLTC(methodFlagElement);
@@ -463,27 +458,27 @@ vector<DOMElement*> Piece::calcEventM(DOMElement* eventElement){
 		int startFlagVal = atoi(startFlag.c_str());
 
 	      //layers, initialize child names
-	      thisEventElement = childEventDefElement->GNES();
-	      DOMElement* layerElement = thisEventElement->GFEC();
-	      vector<DOMElement*> layerElements;
-	      vector<DOMElement*> childTypeElements;
+	      thisEventElement = GNES(childEventDefElement);
+	      pugi::xml_node layerElement = GFEC(thisEventElement);
+	      vector<pugi::xml_node> layerElements;
+	      vector<pugi::xml_node> childTypeElements;
 
 	      while (layerElement){
 
 		layerElements.push_back(layerElement);
-		DOMElement* childPackage = layerElement->GFEC()->GNES()->GFEC();
+		pugi::xml_node childPackage = GFEC(GNES(GFEC(layerElement)));
 
 		while(childPackage){
 		  childTypeElements.push_back(childPackage);
-		  childPackage = childPackage->GNES();
+		  childPackage = GNES(childPackage);
 		}
-		layerElement = layerElement->GNES();
+		layerElement = GNES(layerElement);
 	      }
 
 	      int numChildren;
-	      DOMElement* flagElement = numChildrenElement->GFEC();
+	      pugi::xml_node flagElement = GFEC(numChildrenElement);
 	      if (XMLTC(flagElement) =="0"){ // Continuum
-		DOMElement* entry1Element = flagElement->GNES();
+		pugi::xml_node entry1Element = GNES(flagElement);
 		if (XMLTC(entry1Element)==""){
 		  numChildren = childTypeElements.size();
 		}
@@ -492,9 +487,9 @@ vector<DOMElement*> Piece::calcEventM(DOMElement* eventElement){
 		}
 	      }
 	      else if (XMLTC(flagElement) == "1"){ // Density
-		DOMElement* densityElement = numChildrenElement->GFEC()->GNES();
-		DOMElement* areaElement = densityElement->GNES();
-		DOMElement* underOneElement = areaElement->GNES();
+		pugi::xml_node densityElement = GNES(GFEC(numChildrenElement));
+		pugi::xml_node areaElement = GNES(densityElement);
+		pugi::xml_node underOneElement = GNES(areaElement);
 		double density = utilities->evaluate( XMLTC(densityElement),(void*)this);
 		double area = utilities->evaluate( XMLTC(areaElement),(void*)this);
 		double underOne = utilities->evaluate( XMLTC(underOneElement),(void*)this);
@@ -506,37 +501,34 @@ vector<DOMElement*> Piece::calcEventM(DOMElement* eventElement){
 	      else {// by layer
 	      numChildren = 0;
           for (unsigned i = 0; i < layerElements.size(); i ++){
-            numChildren +=utilities->evaluate(XMLTC(layerElements[i]->GFEC()),(void*)this);
+            numChildren +=utilities->evaluate(XMLTC(GFEC(layerElements[i])),(void*)this);
           }
 	      }
 
 	      if(type == 4){ //Bottom
-		XMLCh* extraInfoString = XMLString::transcode("ExtraInfo");
-		DOMNodeList* extraInfoList = eventElement->getElementsByTagName(extraInfoString);
-		DOMElement* extraInfo = (DOMElement*) extraInfoList->item(0);
-		XMLString::release(&extraInfoString);
+		pugi::xml_node extraInfo = descendantByName(eventElement, "ExtraInfo");
 
 		//Frequency Entropy
-		DOMElement* frequencyElement = extraInfo->GFEC();
-		DOMElement* frequencyFlagElement = frequencyElement->GFEC();
+		pugi::xml_node frequencyElement = GFEC(extraInfo);
+		pugi::xml_node frequencyFlagElement = GFEC(frequencyElement);
 		string flagNum = XMLTC(frequencyFlagElement);
 		int flagVal = atoi(flagNum.c_str());
 
 		if(flagVal == 0){ //Equal Temperament
 		  mVal += EQUAL_TEMP * (log(1 / EQUAL_TEMP)/log(2));
-		  DOMElement* freqEntry1 = frequencyFlagElement->GNES()->GNES();
+		  pugi::xml_node freqEntry1 = GNES(GNES(frequencyFlagElement));
 	      }
 
 	      else if(flagVal == 1){//Fundamental
 		mVal += FUNDAMENTAL * (log(1 / FUNDAMENTAL)/log(2));
-		DOMElement* freqEntry1 = frequencyFlagElement->GNES()->GNES();
-		DOMElement* freqEntry2 = freqEntry1->GNES();
+		pugi::xml_node freqEntry1 = GNES(GNES(frequencyFlagElement));
+		pugi::xml_node freqEntry2 = GNES(freqEntry1);
 	      }
 
 	      else if(flagVal == 2){//Continuum
 	        mVal += CONTINUUM * (log(1 / CONTINUUM)/log(2));
-		DOMElement* freqEntry1 = frequencyFlagElement->GNES()->GNES();
-		DOMElement* continuumFlagElement = frequencyFlagElement->GNES();
+		pugi::xml_node freqEntry1 = GNES(GNES(frequencyFlagElement));
+		pugi::xml_node continuumFlagElement = GNES(frequencyFlagElement);
 
 		if (utilities->evaluate(XMLTC(continuumFlagElement), NULL)==0) { //Hertz
 		   mVal += HZ * (log(1 / HZ)/log(2));
@@ -564,10 +556,10 @@ vector<DOMElement*> Piece::calcEventM(DOMElement* eventElement){
 	    for(int i = 0; i < numChildren; i++){
 
 	      double childType = utilities->evaluate(XMLTC(childTypeElement),(void*)this);
-	      string childName = XMLTC(childTypeElements[childType]->GFEC());
-	      EventType childEventType = (EventType) utilities->evaluate(XMLTC(childTypeElements[childType]->GFEC()->GNES()),(void*)this);
+	      string childName = XMLTC(GFEC(childTypeElements[childType]));
+	      EventType childEventType = (EventType) utilities->evaluate(XMLTC(GNES(GFEC(childTypeElements[childType]))),(void*)this);
 
-	      DOMElement* childElement = utilities->getEventElement(childEventType, childName);
+	      pugi::xml_node childElement = utilities->getEventElement(childEventType, childName);
 	      childElements.push_back(childElement);
 	  }
 
@@ -587,13 +579,13 @@ void Piece::geneticOptimization(string fitnessFunction, double optimum){
   utilities->currChild = 0;
 
   //for(int k = 0; k < 10; k++){
-  DOMElement* topEvEl = utilities->getEventElement(evType, evName);
-  vector<DOMElement*> children = calculateAesthetic(topEvEl);
+  pugi::xml_node topEvEl = utilities->getEventElement(evType, evName);
+  vector<pugi::xml_node> children = calculateAesthetic(topEvEl);
 
   cout << "EventValues: " << utilities->eventValues.size() << endl;
 
   for(unsigned i = 0; i < children.size(); i++){
-      vector<DOMElement*> currChildren = calculateAesthetic(children[i]);
+      vector<pugi::xml_node> currChildren = calculateAesthetic(children[i]);
 
       for(unsigned j = 0; j < currChildren.size(); j++){
         children.push_back(currChildren[j]);
@@ -630,8 +622,8 @@ void Piece::geneticOptimization(string fitnessFunction, double optimum){
 
 // Step 2: Find suitable parents
 vector<string> sortedEvents;
-vector<DOMElement*> parents;
-vector<DOMElement*> child;
+vector<pugi::xml_node> parents;
+vector<pugi::xml_node> child;
 vector<double> prange;
 double runningSum = 0.0;
 EventType t = (EventType)4;
@@ -731,111 +723,95 @@ for(unsigned i = 0; i < names.size(); i++){
 
 }
 
-void Piece::crossoverMutation(DOMElement* parent1, DOMElement* parent2, DOMElement* child, double mutationProb){
+void Piece::crossoverMutation(pugi::xml_node parent1, pugi::xml_node parent2, pugi::xml_node child, double mutationProb){
 
   int freqParent = Random::RandInt(0, 1);
-  XMLCh* extraInfoString = XMLString::transcode("ExtraInfo");
-  DOMNodeList* extraInfoList;
+  pugi::xml_node extraInfoList;
 
   if(freqParent == 0){
-    extraInfoList = parent1->getElementsByTagName(extraInfoString);
+    extraInfoList = descendantByName(parent1, "ExtraInfo");
   }
 
   else{
-    extraInfoList = parent2->getElementsByTagName(extraInfoString);
+    extraInfoList = descendantByName(parent2, "ExtraInfo");
   }
 
-  DOMElement* extraInfo = (DOMElement*) extraInfoList->item(0);
+  pugi::xml_node extraInfo = extraInfoList;
 
-  DOMElement* parentFrequencyElement = extraInfo->GFEC();
+  pugi::xml_node parentFrequencyElement = GFEC(extraInfo);
 
-  DOMNode* clone = parentFrequencyElement->cloneNode(true);
+  pugi::xml_node extraInfoList2 = descendantByName(child, "ExtraInfo");
+  pugi::xml_node extraInfo2 = extraInfoList2;
 
-  DOMNodeList* extraInfoList2 = child->getElementsByTagName(extraInfoString);
-  DOMElement* extraInfo2 = (DOMElement*) extraInfoList2->item(0);
-  XMLString::release(&extraInfoString);
-
-  /*DOMElement* frequencyFlagElement = extraInfo2->GFEC()->GFEC();
-  string flagNum = XMLTC(frequencyFlagElement);
-  int flagVal = atoi(flagNum.c_str());
-  cout<<flagVal<<"\t";
-
-  frequencyFlagElement = parentFrequencyElement->GFEC();
-  flagNum = XMLTC(frequencyFlagElement);
-  flagVal = atoi(flagNum.c_str());
-  cout<<flagVal<<"\t";*/
-
-  extraInfo2->replaceChild(clone, extraInfo2->GFEC());
+  // Replace child's frequency element with a copy of parent's.
+  pugi::xml_node oldFreq = GFEC(extraInfo2);
+  extraInfo2.insert_copy_before(parentFrequencyElement, oldFreq);
+  extraInfo2.remove_child(oldFreq);
 
   /*
-  DOMElement* childFrequencyElement = extraInfo2->GFEC();
-  frequencyFlagElement = childFrequencyElement->GFEC();
+  pugi::xml_node childFrequencyElement = GFEC(extraInfo2);
+  frequencyFlagElement = GFEC(childFrequencyElement);
   flagNum = XMLTC(frequencyFlagElement);
   flagVal = atoi(flagNum.c_str());
   cout<<flagVal<<"\t";*/
 
   int loudParent = Random::RandInt(0, 1);
-  extraInfoString = XMLString::transcode("ExtraInfo");
-
   if(loudParent == 0){
-    extraInfoList = parent1->getElementsByTagName(extraInfoString);
+    extraInfoList = descendantByName(parent1, "ExtraInfo");
   }
 
   else{
-    extraInfoList = parent2->getElementsByTagName(extraInfoString);
+    extraInfoList = descendantByName(parent2, "ExtraInfo");
   }
 
-  extraInfo = (DOMElement*) extraInfoList->item(0);
+  extraInfo = extraInfoList;
 
-  DOMElement* parentLoudnessElement = extraInfo->GFEC()->GNES();
+  pugi::xml_node parentLoudnessElement = GNES(GFEC(extraInfo));
 
-  clone = parentLoudnessElement->cloneNode(true);
+  extraInfoList2 = descendantByName(child, "ExtraInfo");
+  extraInfo2 = extraInfoList2;
 
-  extraInfoList2 = child->getElementsByTagName(extraInfoString);
-  extraInfo2 = (DOMElement*) extraInfoList2->item(0);
-  XMLString::release(&extraInfoString);
-
-  extraInfo2->replaceChild(clone, extraInfo2->GFEC()->GNES());
+  // Replace child's loudness element with a copy of parent's.
+  pugi::xml_node oldLoud = GNES(GFEC(extraInfo2));
+  extraInfo2.insert_copy_before(parentLoudnessElement, oldLoud);
+  extraInfo2.remove_child(oldLoud);
 
   //Mutation - Use modifypiece method for random modification
 
   if(mutationProb * 10 >= Random::RandInt(1, 10)){
     cout<<"MUTATED"<<endl;
-    modifyPiece(extraInfo2->GFEC()); //Mutate the new child
+    modifyPiece(GFEC(extraInfo2)); //Mutate the new child
   }
 
 }
 
 //Experimental
 
-vector<DOMElement*> Piece::modifyPiece(DOMElement* eventElement){
+vector<pugi::xml_node> Piece::modifyPiece(pugi::xml_node eventElement){
 
   //Read certain properties of this event/ Navigate the XML
-  vector<DOMElement*> childElements;
-  DOMElement* thisEventElement = eventElement->GFEC(); //type
+  vector<pugi::xml_node> childElements;
+  pugi::xml_node thisEventElement = GFEC(eventElement); //type
   string typeString = XMLTC(thisEventElement);
   int type = atoi(typeString.c_str());
 
-  thisEventElement = thisEventElement->GNES(); //name
+  thisEventElement = GNES(thisEventElement); //name
   string name = XMLTC(thisEventElement);
 
      if(type == 4){ //Bottom
-      XMLCh* extraInfoString = XMLString::transcode("ExtraInfo");
-      DOMNodeList* extraInfoList = eventElement->getElementsByTagName(extraInfoString);
-      DOMElement* extraInfo = (DOMElement*) extraInfoList->item(0);
-      XMLString::release(&extraInfoString);
+      pugi::xml_node extraInfo = descendantByName(eventElement, "ExtraInfo");
 
       //Modifying Frequency
-      DOMElement* frequencyElement = extraInfo->GFEC();
-      DOMElement* frequencyFlagElement = frequencyElement->GFEC();
+      pugi::xml_node frequencyElement = GFEC(extraInfo);
+      pugi::xml_node frequencyFlagElement = GFEC(frequencyElement);
       string flagNum = XMLTC(frequencyFlagElement);
       int flagVal = atoi(flagNum.c_str());
 
       if(flagVal == 0){
-        DOMElement* freqEntry1 = frequencyFlagElement->GNES()->GNES();
+        pugi::xml_node freqEntry1 = GNES(GNES(frequencyFlagElement));
 
-        if(freqEntry1->GFEC() != NULL){
-          DOMElement* funcElement = freqEntry1->GFEC();
+        if(GFEC(freqEntry1) != NULL){
+          pugi::xml_node funcElement = GFEC(freqEntry1);
           functionModifier(funcElement, 80);
         }
 
@@ -847,20 +823,16 @@ vector<DOMElement*> Piece::modifyPiece(DOMElement* eventElement){
 
           char lval[33];
           sprintf(lval, "%d", freqVal);
-
-          XMLCh *freq;
-          freq = XMLString::transcode(lval);
-          freqEntry1->getFirstChild()->setNodeValue(freq);
-          XMLString::release(&freq);
+          freqEntry1.text().set(lval);
 
       }
     }
 
     else if(flagVal == 1){    //Didnt change Partial Number
-      DOMElement* freqEntry1 = frequencyFlagElement->GNES()->GNES();
+      pugi::xml_node freqEntry1 = GNES(GNES(frequencyFlagElement));
 
-      if(freqEntry1->GFEC() != NULL){
-        DOMElement* funcElement = freqEntry1->GFEC();
+      if(GFEC(freqEntry1) != NULL){
+        pugi::xml_node funcElement = GFEC(freqEntry1);
         //functionModifier(funcElement, 100);
       }
 
@@ -872,23 +844,19 @@ vector<DOMElement*> Piece::modifyPiece(DOMElement* eventElement){
 
         char lval[33];
         sprintf(lval, "%d", freqVal);
-
-        XMLCh *freq;
-        freq = XMLString::transcode(lval);
-        freqEntry1->getFirstChild()->setNodeValue(freq);
-        XMLString::release(&freq);
+          freqEntry1.text().set(lval);
 
     }
     }
 
     else if(flagVal == 2){
-      DOMElement* continuumFlagElement = frequencyFlagElement->GNES();
+      pugi::xml_node continuumFlagElement = GNES(frequencyFlagElement);
       string contflagNum = XMLTC(continuumFlagElement);
       int contflagVal = atoi(contflagNum.c_str());
-      DOMElement* freqEntry1 = frequencyFlagElement->GNES()->GNES();
+      pugi::xml_node freqEntry1 = GNES(GNES(frequencyFlagElement));
 
-      if(freqEntry1->GFEC() != NULL){
-        DOMElement* funcElement = freqEntry1->GFEC();
+      if(GFEC(freqEntry1) != NULL){
+        pugi::xml_node funcElement = GFEC(freqEntry1);
         if(contflagVal == 0){
          functionModifier(funcElement, 15000);
       }
@@ -910,20 +878,16 @@ vector<DOMElement*> Piece::modifyPiece(DOMElement* eventElement){
 
         char lval[33];
         sprintf(lval, "%d", freqVal);
-
-        XMLCh *freq;
-        freq = XMLString::transcode(lval);
-        freqEntry1->getFirstChild()->setNodeValue(freq);
-        XMLString::release(&freq);
+          freqEntry1.text().set(lval);
 
     }
     }
 
       //Modifying Loudness
-      DOMElement* loudnessElement = frequencyElement->GNES();
+      pugi::xml_node loudnessElement = GNES(frequencyElement);
 
-      if(loudnessElement->GFEC() != NULL){
-        DOMElement* funcElement = loudnessElement->GFEC();
+      if(GFEC(loudnessElement) != NULL){
+        pugi::xml_node funcElement = GFEC(loudnessElement);
         functionModifier(funcElement, 225);
       }
 
@@ -939,27 +903,23 @@ vector<DOMElement*> Piece::modifyPiece(DOMElement* eventElement){
 
         char lval[33];
         sprintf(lval, "%d", loudnessNum);
-
-        XMLCh *loud;
-        loud = XMLString::transcode(lval);
-        loudnessElement->getFirstChild()->setNodeValue(loud);
-        XMLString::release(&loud);
+          loudnessElement.text().set(lval);
 
     }
 
-      loudnessElement->GNES(); // Spatialization element
-      loudnessElement->GNES()->GNES(); // Reverb element
-      loudnessElement->GNES()->GNES()->GNES(); // Filters element
-      loudnessElement->GNES()->GNES()->GNES()->GNES(); // Modifiers element
+      GNES(loudnessElement); // Spatialization element
+      GNES(GNES(loudnessElement)); // Reverb element
+      GNES(GNES(GNES(loudnessElement))); // Filters element
+      GNES(GNES(GNES(GNES(loudnessElement)))); // Modifiers element
     }
 
     /*for(int i = 0; i < numChildren; i++){
 
       double childType = utilities->evaluate(XMLTC(childTypeElement),(void*)this);
-      string childName = XMLTC(childTypeElements[childType]->GFEC());
-      EventType childEventType = (EventType) utilities->evaluate(XMLTC(childTypeElements[childType]->GFEC()->GNES()),(void*)this);
+      string childName = XMLTC(GFEC(childTypeElements[childType]));
+      EventType childEventType = (EventType) utilities->evaluate(XMLTC(GNES(GFEC(childTypeElements[childType]))),(void*)this);
 
-      DOMElement* childElement = utilities->getEventElement(childEventType, childName);
+      pugi::xml_node childElement = utilities->getEventElement(childEventType, childName);
       childElements.push_back(childElement);
 
       //cout<<childName<<"!!!!!!!!!!!!!!!!!!!!!!"<<endl;
@@ -971,12 +931,12 @@ vector<DOMElement*> Piece::modifyPiece(DOMElement* eventElement){
 
  /*//Modifying Spectrum Class (Spectrum event has diff layout than others)
  else if(type == 5){
-   thisEventElement = thisEventElement->GNES(); //Num Partials
-   DOMElement* deviationElement = thisEventElement->GNES(); //Deviation
+   thisEventElement = GNES(thisEventElement); //Num Partials
+   pugi::xml_node deviationElement = GNES(thisEventElement); //Deviation
 
    //Modifying Deviation
-   if(deviationElement->GFEC() != NULL){
-     DOMElement* funcElement = deviationElement->GFEC();
+   if(GFEC(deviationElement) != NULL){
+     pugi::xml_node funcElement = GFEC(deviationElement);
      //functionModifier(funcElement, 1);
    }
 
@@ -987,11 +947,7 @@ vector<DOMElement*> Piece::modifyPiece(DOMElement* eventElement){
 
      char lval[33];
      sprintf(lval, "%f", val);
-
-     XMLCh *dev;
-     dev = XMLString::transcode(lval);
-     deviationElement->getFirstChild()->setNodeValue(dev);
-     XMLString::release(&dev);
+          deviationElement.text().set(lval);
  }
 
  return childElements;
@@ -999,19 +955,19 @@ vector<DOMElement*> Piece::modifyPiece(DOMElement* eventElement){
 //}
 
 //Experimental
-void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs some range info
+void Piece::functionModifier(pugi::xml_node functionElement, int maxValue){ //Needs some range info
 
-  string functionName = XMLTC(functionElement->GFEC());
+  string functionName = XMLTC(GFEC(functionElement));
 
   if(functionName.compare("RandomInt") == 0){
 
     // cout<<"RandomInt"<<endl;
 
-    DOMElement* lowBoundElement = functionElement->GFEC()->GNES();
-    DOMElement* highBoundElement = lowBoundElement->GNES();
+    pugi::xml_node lowBoundElement = GNES(GFEC(functionElement));
+    pugi::xml_node highBoundElement = GNES(lowBoundElement);
 
-    if(lowBoundElement->GFEC() != NULL){
-      functionModifier(lowBoundElement->GFEC(), maxValue);
+    if(GFEC(lowBoundElement) != NULL){
+      functionModifier(GFEC(lowBoundElement), maxValue);
     }
 
     else{
@@ -1019,15 +975,12 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
       lowBound = (lowBound + Random::RandInt(0, maxValue/2)) % (maxValue/2);
       char val[33];
       sprintf(val, "%d", lowBound);
-      XMLCh *low;
-      low = XMLString::transcode(val);
-      lowBoundElement->getFirstChild()->setNodeValue(low);
-      XMLString::release(&low);
+          lowBoundElement.text().set(val);
 
     }
 
-    if(highBoundElement->GFEC() != NULL){
-      functionModifier(highBoundElement->GFEC(), maxValue);
+    if(GFEC(highBoundElement) != NULL){
+      functionModifier(GFEC(highBoundElement), maxValue);
     }
 
     else{
@@ -1035,21 +988,18 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
       highBound = (highBound + Random::RandInt(0, maxValue/2)) % (maxValue/2) + maxValue/2;
       char val[33];
       sprintf(val, "%d", highBound);
-      XMLCh *high;
-      high = XMLString::transcode(val);
-      highBoundElement->getFirstChild()->setNodeValue(high);
-      XMLString::release(&high);
+          highBoundElement.text().set(val);
 
   }
   }
 
   else if (functionName.compare("Random") == 0){
 
-    DOMElement* lowBoundElement = functionElement->GFEC()->GNES();
-    DOMElement* highBoundElement = lowBoundElement->GNES();
+    pugi::xml_node lowBoundElement = GNES(GFEC(functionElement));
+    pugi::xml_node highBoundElement = GNES(lowBoundElement);
 
-    if(lowBoundElement->GFEC() != NULL){
-      functionModifier(lowBoundElement->GFEC(), maxValue);
+    if(GFEC(lowBoundElement) != NULL){
+      functionModifier(GFEC(lowBoundElement), maxValue);
     }
 
     else{
@@ -1057,15 +1007,12 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
       lowBound = fmod((lowBound + Random::Rand(0, maxValue/2)), maxValue/2);
       char val[33];
       sprintf(val, "%f", lowBound);
-      XMLCh *low;
-      low = XMLString::transcode(val);
-      lowBoundElement->getFirstChild()->setNodeValue(low);
-      XMLString::release(&low);
+          lowBoundElement.text().set(val);
 
     }
 
-    if(highBoundElement->GFEC() != NULL){
-      functionModifier(highBoundElement->GFEC(), maxValue);
+    if(GFEC(highBoundElement) != NULL){
+      functionModifier(GFEC(highBoundElement), maxValue);
     }
 
     else{
@@ -1073,23 +1020,20 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
       highBound = fmod((highBound + Random::Rand(0, maxValue/2)), maxValue/2) + maxValue/2;
       char val[33];
       sprintf(val, "%f", highBound);
-      XMLCh *high;
-      high = XMLString::transcode(val);
-      highBoundElement->getFirstChild()->setNodeValue(high);
-      XMLString::release(&high);
+          highBoundElement.text().set(val);
 
   }
 
   }
 
   else if (functionName.compare("Select") == 0){
-    DOMElement* listElement = functionElement->GFEC()->GNES();
-    DOMElement* indexElement = listElement->GNES();
+    pugi::xml_node listElement = GNES(GFEC(functionElement));
+    pugi::xml_node indexElement = GNES(listElement);
 
     std::vector<std::string> list = utilities->listElementToStringVector(listElement);
 
-    if(indexElement->GFEC() != NULL){
-      functionModifier(indexElement->GFEC(), list.size() - 1);
+    if(GFEC(indexElement) != NULL){
+      functionModifier(GFEC(indexElement), list.size() - 1);
     }
 
     else{
@@ -1097,10 +1041,7 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
       indexVal = (indexVal + 1)%(list.size() - 1);
       char val[33];
       sprintf(val, "%d", indexVal);
-      XMLCh *index;
-      index = XMLString::transcode(val);
-      indexElement->getFirstChild()->setNodeValue(index);
-      XMLString::release(&index);
+          indexElement.text().set(val);
     }
   }
 
@@ -1110,11 +1051,11 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
   }
   else if (functionName.compare("Randomizer") == 0){
 
-    DOMElement* baseValElement = functionElement->GFEC()->GNES();
-    DOMElement* percDevElement = baseValElement->GNES();
+    pugi::xml_node baseValElement = GNES(GFEC(functionElement));
+    pugi::xml_node percDevElement = GNES(baseValElement);
 
-    if(baseValElement->GFEC() != NULL){
-      functionModifier(baseValElement->GFEC(), maxValue);
+    if(GFEC(baseValElement) != NULL){
+      functionModifier(GFEC(baseValElement), maxValue);
     }
 
     else{
@@ -1122,15 +1063,12 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
       baseVal = fmod(baseVal + Random::Rand(0, baseVal/10), maxValue/2);
       char val[33];
       sprintf(val, "%f", baseVal);
-      XMLCh *base;
-      base = XMLString::transcode(val);
-      baseValElement->getFirstChild()->setNodeValue(base);
-      XMLString::release(&base);
+          baseValElement.text().set(val);
 
     }
 
-    if(percDevElement->GFEC() != NULL){
-      functionModifier(percDevElement->GFEC(), maxValue);
+    if(GFEC(percDevElement) != NULL){
+      functionModifier(GFEC(percDevElement), maxValue);
     }
 
     else{
@@ -1138,22 +1076,19 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
       percDev = fmod((percDev + Random::Rand(0, percDev/10)), 1);
       char val[33];
       sprintf(val, "%f", percDev);
-      XMLCh *dev;
-      dev = XMLString::transcode(val);
-      percDevElement->getFirstChild()->setNodeValue(dev);
-      XMLString::release(&dev);
+          percDevElement.text().set(val);
 
    }
 
   }
   else if (functionName.compare("RandomDensity") == 0) {
 
-    DOMElement* envelopeNumberElement = functionElement->GFEC()->GNES();
-    DOMElement* lowBoundElement = envelopeNumberElement->GNES();
-    DOMElement* highBoundElement = lowBoundElement->GNES();
+    pugi::xml_node envelopeNumberElement = GNES(GFEC(functionElement));
+    pugi::xml_node lowBoundElement = GNES(envelopeNumberElement);
+    pugi::xml_node highBoundElement = GNES(lowBoundElement);
 
-    if(lowBoundElement->GFEC() != NULL){
-      functionModifier(lowBoundElement->GFEC(), maxValue);
+    if(GFEC(lowBoundElement) != NULL){
+      functionModifier(GFEC(lowBoundElement), maxValue);
     }
 
     else{
@@ -1161,15 +1096,12 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
       lowBound = fmod((lowBound + Random::Rand(0, maxValue/2)), maxValue/2);
       char val[33];
       sprintf(val, "%f", lowBound);
-      XMLCh *low;
-      low = XMLString::transcode(val);
-      lowBoundElement->getFirstChild()->setNodeValue(low);
-      XMLString::release(&low);
+          lowBoundElement.text().set(val);
 
     }
 
-    if(highBoundElement->GFEC() != NULL){
-      functionModifier(highBoundElement->GFEC(), maxValue);
+    if(GFEC(highBoundElement) != NULL){
+      functionModifier(GFEC(highBoundElement), maxValue);
     }
 
     else{
@@ -1177,10 +1109,7 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
       highBound = fmod((highBound + Random::Rand(0, maxValue/2)), maxValue/2) + maxValue/2;
       char val[33];
       sprintf(val, "%f", highBound);
-      XMLCh *high;
-      high = XMLString::transcode(val);
-      highBoundElement->getFirstChild()->setNodeValue(high);
-      XMLString::release(&high);
+          highBoundElement.text().set(val);
 
   }
 
@@ -1215,43 +1144,43 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
   }
 }
 
-  vector<DOMElement*> Piece::calculateAesthetic(DOMElement* eventElement){
+  vector<pugi::xml_node> Piece::calculateAesthetic(pugi::xml_node eventElement){
 
-    vector<DOMElement*> childElements;
+    vector<pugi::xml_node> childElements;
     const int NUM_SAMPLES = 100;
     std::vector<double> samples;
     double entropy = 0.0;
     double currentEntropy, newEntropy;
-    DOMElement* thisEventElement = eventElement->GFEC(); //type
+    pugi::xml_node thisEventElement = GFEC(eventElement); //type
     string typeString = XMLTC(thisEventElement);
     int type = atoi(typeString.c_str());
 
-    thisEventElement = thisEventElement->GNES(); //name
+    thisEventElement = GNES(thisEventElement); //name
     string name = XMLTC(thisEventElement);
 
     if(type <= 4){  //Top, High, Medium, Low, Bottom
 
-      thisEventElement = thisEventElement->GNES(); //maxChildDur
+      thisEventElement = GNES(thisEventElement); //maxChildDur
       float maxChildDur = (float)utilities->evaluate(XMLTC(thisEventElement), (void*)this);
 
-      thisEventElement = thisEventElement->GNES(); //newEDUPerBeat
+      thisEventElement = GNES(thisEventElement); //newEDUPerBeat
       int newEDUPerBeat = (int) utilities->evaluate(XMLTC(thisEventElement),(void*)this);
 
-      thisEventElement = thisEventElement->GNES(); //Time Signature element
+      thisEventElement = GNES(thisEventElement); //Time Signature element
 
-      thisEventElement = thisEventElement->GNES(); //Tempo element
+      thisEventElement = GNES(thisEventElement); //Tempo element
 
-      DOMElement* numChildrenElement = thisEventElement->GNES(); //Num children element
+      pugi::xml_node numChildrenElement = GNES(thisEventElement); //Num children element
 
-      DOMElement* childEventDefElement = numChildrenElement->GNES();
-      DOMElement* childStartTimeElement = childEventDefElement->GFEC();
-      DOMElement* childTypeElement = childStartTimeElement->GNES();
-      DOMElement* childDurationElement = childTypeElement->GNES();
-      DOMElement* AttackSieveElement = childDurationElement->GNES();
-      DOMElement* DurationSieveElement = AttackSieveElement->GNES();
-      DOMElement* methodFlagElement = DurationSieveElement->GNES();
-      DOMElement* childStartTypeFlag = methodFlagElement->GNES();
-      DOMElement* childDurationTypeFlag = childStartTypeFlag->GNES();
+      pugi::xml_node childEventDefElement = GNES(numChildrenElement);
+      pugi::xml_node childStartTimeElement = GFEC(childEventDefElement);
+      pugi::xml_node childTypeElement = GNES(childStartTimeElement);
+      pugi::xml_node childDurationElement = GNES(childTypeElement);
+      pugi::xml_node AttackSieveElement = GNES(childDurationElement);
+      pugi::xml_node DurationSieveElement = GNES(AttackSieveElement);
+      pugi::xml_node methodFlagElement = GNES(DurationSieveElement);
+      pugi::xml_node childStartTypeFlag = GNES(methodFlagElement);
+      pugi::xml_node childDurationTypeFlag = GNES(childStartTypeFlag);
 
       //Read Flag values (Needed for modification)
       string defFlag = XMLTC(methodFlagElement);
@@ -1301,27 +1230,27 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
         //cout<<"Entropy Ratio:"<<entropy<<endl;*/
 
       //layers, initialize child names
-      thisEventElement = childEventDefElement->GNES();
-      DOMElement* layerElement = thisEventElement->GFEC();
-      vector<DOMElement*> layerElements;
-      vector<DOMElement*> childTypeElements;
+      thisEventElement = GNES(childEventDefElement);
+      pugi::xml_node layerElement = GFEC(thisEventElement);
+      vector<pugi::xml_node> layerElements;
+      vector<pugi::xml_node> childTypeElements;
 
       while (layerElement){
 
         layerElements.push_back(layerElement);
-        DOMElement* childPackage = layerElement->GFEC()->GNES()->GFEC();
+        pugi::xml_node childPackage = GFEC(GNES(GFEC(layerElement)));
 
         while(childPackage){
           childTypeElements.push_back(childPackage);
-          childPackage = childPackage->GNES();
+          childPackage = GNES(childPackage);
         }
-        layerElement = layerElement->GNES();
+        layerElement = GNES(layerElement);
       }
 
       int numChildren;
-      DOMElement* flagElement = numChildrenElement->GFEC();
+      pugi::xml_node flagElement = GFEC(numChildrenElement);
       if (XMLTC(flagElement) =="0"){ // Continuum
-        DOMElement* entry1Element = flagElement->GNES();
+        pugi::xml_node entry1Element = GNES(flagElement);
         if (XMLTC(entry1Element)==""){
           numChildren = childTypeElements.size();
         }
@@ -1330,9 +1259,9 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
         }
       }
       else if (XMLTC(flagElement) == "1"){ // Density
-        DOMElement* densityElement = numChildrenElement->GFEC()->GNES();
-        DOMElement* areaElement = densityElement->GNES();
-        DOMElement* underOneElement = areaElement->GNES();
+        pugi::xml_node densityElement = GNES(GFEC(numChildrenElement));
+        pugi::xml_node areaElement = GNES(densityElement);
+        pugi::xml_node underOneElement = GNES(areaElement);
         double density = utilities->evaluate( XMLTC(densityElement),(void*)this);
         double area = utilities->evaluate( XMLTC(areaElement),(void*)this);
         double underOne = utilities->evaluate( XMLTC(underOneElement),(void*)this);
@@ -1344,25 +1273,22 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
       else {// by layer
         numChildren = 0;
         for (unsigned i = 0; i < layerElements.size(); i ++){
-          numChildren +=utilities->evaluate(XMLTC(layerElements[i]->GFEC()),(void*)this);
+          numChildren +=utilities->evaluate(XMLTC(GFEC(layerElements[i])),(void*)this);
         }
       }
 
       if(type == 4){ //Bottom
-        XMLCh* extraInfoString = XMLString::transcode("ExtraInfo");
-        DOMNodeList* extraInfoList = eventElement->getElementsByTagName(extraInfoString);
-        DOMElement* extraInfo = (DOMElement*) extraInfoList->item(0);
-        XMLString::release(&extraInfoString);
+        pugi::xml_node extraInfo = descendantByName(eventElement, "ExtraInfo");
 
         //Frequency Entropy
         samples.clear();
-        DOMElement* frequencyElement = extraInfo->GFEC();
-        DOMElement* frequencyFlagElement = frequencyElement->GFEC();
+        pugi::xml_node frequencyElement = GFEC(extraInfo);
+        pugi::xml_node frequencyFlagElement = GFEC(frequencyElement);
         string flagNum = XMLTC(frequencyFlagElement);
         int flagVal = atoi(flagNum.c_str());
 
         if(flagVal == 0){
-          DOMElement* freqEntry1 = frequencyFlagElement->GNES()->GNES();
+          pugi::xml_node freqEntry1 = GNES(GNES(frequencyFlagElement));
 
           for(int i = 0; i < NUM_SAMPLES; i++){
             double wellTempPitch = utilities->evaluate(XMLTC(freqEntry1), (void*)this);
@@ -1372,8 +1298,8 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
       }
 
       else if(flagVal == 1){
-        DOMElement* freqEntry1 = frequencyFlagElement->GNES()->GNES();
-        DOMElement* freqEntry2 = freqEntry1->GNES();
+        pugi::xml_node freqEntry1 = GNES(GNES(frequencyFlagElement));
+        pugi::xml_node freqEntry2 = GNES(freqEntry1);
 
         for(int i = 0; i < NUM_SAMPLES; i++){
           float fund_freq = utilities->evaluate(XMLTC(freqEntry1), (void*)this);
@@ -1384,8 +1310,8 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
       }
 
       else if(flagVal == 2){
-        DOMElement* freqEntry1 = frequencyFlagElement->GNES()->GNES();
-        DOMElement* continuumFlagElement = frequencyFlagElement->GNES();
+        pugi::xml_node freqEntry1 = GNES(GNES(frequencyFlagElement));
+        pugi::xml_node continuumFlagElement = GNES(frequencyFlagElement);
 
         for(int i = 0; i < NUM_SAMPLES; i++){
         if (utilities->evaluate(XMLTC(continuumFlagElement), NULL)==0) { //Hertz
@@ -1411,7 +1337,7 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
 
       //LOUDNESS Entropy
 
-      DOMElement *loudnessElement = frequencyElement->GNES();
+      pugi::xml_node loudnessElement = GNES(frequencyElement);
       samples.clear();
 
       for(int i = 0; i < NUM_SAMPLES;){
@@ -1433,10 +1359,10 @@ void Piece::functionModifier(DOMElement* functionElement, int maxValue){ //Needs
     for(int i = 0; i < numChildren; i++){
 
       double childType = utilities->evaluate(XMLTC(childTypeElement),(void*)this);
-      string childName = XMLTC(childTypeElements[childType]->GFEC());
-      EventType childEventType = (EventType) utilities->evaluate(XMLTC(childTypeElements[childType]->GFEC()->GNES()),(void*)this);
+      string childName = XMLTC(GFEC(childTypeElements[childType]));
+      EventType childEventType = (EventType) utilities->evaluate(XMLTC(GNES(GFEC(childTypeElements[childType]))),(void*)this);
 
-      DOMElement* childElement = utilities->getEventElement(childEventType, childName);
+      pugi::xml_node childElement = utilities->getEventElement(childEventType, childName);
       childElements.push_back(childElement);
   }
 

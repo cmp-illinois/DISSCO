@@ -36,6 +36,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 //----------------------------------------------------------------------------//
 
+/**
+ * @file Piece.h
+ * @brief Top-level composition object and supporting filesystem helpers.
+ *
+ * A Piece is the result of parsing a complete `.dissco` project on disk. It
+ * owns the global synthesis parameters (sample rate / size, channel count,
+ * staff layout, score and synthesis toggles) and is the root from which
+ * Event-tree expansion eventually produces output sound files and score
+ * pages. PieceHelper exposes the side-band filesystem utilities the project
+ * needs while a piece is being rendered (locating the project root,
+ * provisioning sound/score directories, picking unique output filenames).
+ */
+
+/**
+ * @brief Stateless filesystem helpers used while rendering a Piece.
+ *
+ * Each member is a static convenience that wraps a small bit of path or
+ * directory bookkeeping — no shared state is held between calls.
+ */
 struct PieceHelper {
 
   ///Lists contents of directory.
@@ -67,6 +86,20 @@ struct PieceHelper {
 class FileValue;
 class Utilities;
 
+/**
+ * @brief Root model of a DISSCO composition.
+ *
+ * A Piece is constructed from a working directory plus a project title and
+ * pulls all global settings out of the project file: sample rate, sample
+ * size, channel count, sound-synthesis vs. score-only mode, grand-staff and
+ * multi-staff layout, thread count, etc. From there the Event tree is
+ * expanded into Notes and Sounds; sound files are emitted into the
+ * directory hierarchy that PieceHelper provisions.
+ *
+ * The experimental aesthetic / entropy / genetic methods below are
+ * research-grade and operate directly on the XML DOM rather than on the
+ * fully-parsed event tree.
+ */
 class Piece {
 
   public:
@@ -92,14 +125,14 @@ class Piece {
 
   //Modifies the Piece by writing to the DOMDocument. Returns vector of its children.
   // Experimental
-  vector<DOMElement*> modifyPiece(DOMElement* eventElement);
+  vector<pugi::xml_node> modifyPiece(pugi::xml_node eventElement);
 
   //Identifies function and modifies their numbers. Experimental
-  void functionModifier(DOMElement* functionElement, int maxValue);
+  void functionModifier(pugi::xml_node functionElement, int maxValue);
 
   //Calculates Aesthetic value for every event. Returns vector of events children.
   //Experimental
-  vector<DOMElement*> calculateAesthetic(DOMElement* eventElement);
+  vector<pugi::xml_node> calculateAesthetic(pugi::xml_node eventElement);
 
   //Calculates Shannon Entropy ratio based on sampled values
   double calculateEntropyRatio(vector<double> sampleData, string partitionMethod,
@@ -109,11 +142,11 @@ class Piece {
   void geneticOptimization(string fitnessFunction, double optimum);
 
   // Crossover and Mutation Function
-  void crossoverMutation(DOMElement* parent1, DOMElement* parent2, DOMElement* child,
+  void crossoverMutation(pugi::xml_node parent1, pugi::xml_node parent2, pugi::xml_node child,
                          double mutationProb);
 
   // Experiment 2: Calculate M val for an event
-  vector<DOMElement *> calcEventM(DOMElement* eventElement);
+  vector<pugi::xml_node> calcEventM(pugi::xml_node eventElement);
 
   // Exp 2: List
 

@@ -33,16 +33,41 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "TimeSpan.h"
 #include "tables.h"
 
+/**
+ * @file Note.h
+ * @brief Notated-score representation of a single musical event.
+ *
+ * A Note is the score-side counterpart to a Sound: where Sound carries the
+ * data needed to synthesize audio for an event, Note carries the data
+ * needed to render that same event on a traditional staff (pitch number /
+ * name / octave, dynamic, tuplet bracketing, modifier list, etc.).
+ * Sequences of Notes are gathered into a @ref Section for layout.
+ */
+
+/**
+ * @brief Tag for what kind of token a Note represents in the score stream.
+ */
 struct NoteType {
   enum type {
-    kNote,
-    kRest,
-    kBarline,
-    kTimeSignature,
-    kUnknown
+    kNote,           ///< Pitched (or unpitched) musical note.
+    kRest,           ///< Silence.
+    kBarline,        ///< Barline marker.
+    kTimeSignature,  ///< Time-signature change.
+    kUnknown         ///< Sentinel for parser errors.
   };
 };
 
+/**
+ * @brief A single notated event emitted by a Bottom event.
+ *
+ * Notes carry both the abstract musical data (pitch, octave, dynamic,
+ * modifier list) and the bookkeeping needed by the score writer (tuplet
+ * grouping, start / end EDU positions, the textual `pitch_out` /
+ * `loudness_out` strings used in the output file).
+ *
+ * @ref Section is declared friend so it can rearrange Notes during layout
+ * without exposing setters for every field.
+ */
 class Note {
   friend class Section;
 

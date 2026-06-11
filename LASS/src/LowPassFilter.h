@@ -31,7 +31,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //----------------------------------------------------------------------------//
 
 #include "SoundSample.h"
-#include "Collection.h"
 #include "Track.h"
 #include "MultiTrack.h"
 #include "Filter.h"
@@ -91,6 +90,11 @@ public:
          *   This outputs an XML representation of the object to STDOUT
         **/
 	void xml_print();
+
+	/** Returns the current filter state (last output value). **/
+	float get_state() const;
+	/** Overwrites the filter state (for block-processing continuations). **/
+	void set_state(float s);
 
 private:
 

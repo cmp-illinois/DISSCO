@@ -35,7 +35,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 //----------------------------------------------------------------------------//
 DynamicVariableSequenceIterator::DynamicVariableSequenceIterator(
-                                 Collection<Interpolator*> interpolators)
+                                 vector<Interpolator*> interpolators)
 {
 #ifdef DEBUG_MODE
     cout << "DVSI::Constructor" << endl;
@@ -43,7 +43,7 @@ DynamicVariableSequenceIterator::DynamicVariableSequenceIterator(
 #endif
 
     // make a new collection
-    interpolators_ = new Collection<Interpolator*> (interpolators);
+    interpolators_ = new vector<Interpolator*> (interpolators);
 
     // initialize Entry index (to the first valid Entry index value)
     iSegmentIndex_ = 0;
@@ -63,15 +63,15 @@ DynamicVariableSequenceIterator::DynamicVariableSequenceIterator(
 for (int iLoop = 0; iLoop < interpolators_->size(); iLoop++)
 {
     cout << "  Interpolator #" << iLoop << " - has points: " << endl;
-    if (interpolators_->get(iLoop)->size() != 2)
+    if (interpolators_->at(iLoop)->size() != 2)
     {
         cout << "     ERROR IN SIZE (size = ";
-        cout << interpolators_->get(iLoop)->size() << endl;
+        cout << interpolators_->at(iLoop)->size() << endl;
     }
-    cout << "    (" << interpolators_->get(iLoop)->get(0).time_ << ", ";
-    cout << interpolators_->get(iLoop)->get(0).value_ << ")" << endl;
-    cout << "    (" << interpolators_->get(iLoop)->get(1).time_ << ", ";
-    cout << interpolators_->get(iLoop)->get(1).value_ << ")" << endl;
+    cout << "    (" << interpolators_->at(iLoop)->get(0).time_ << ", ";
+    cout << interpolators_->at(iLoop)->get(0).value_ << ")" << endl;
+    cout << "    (" << interpolators_->at(iLoop)->get(1).time_ << ", ";
+    cout << interpolators_->at(iLoop)->get(1).value_ << ")" << endl;
 }
 #endif
 }
@@ -121,7 +121,7 @@ m_value_type& DynamicVariableSequenceIterator::next()
     if ((currentIterator_ == NULL) && (iNumInterpolators > 0))
     {
         currentIterator_ = new Iterator<m_value_type> 
-            (interpolators_->get(0)->valueIterator());
+            (interpolators_->at(0)->valueIterator());
         
         iSegmentIndex_ = 0;
     }
@@ -157,7 +157,7 @@ m_value_type& DynamicVariableSequenceIterator::next()
 
             // set current Iterator to the next Iterator
             currentIterator_ = new Iterator<m_value_type> 
-                (interpolators_->get(iSegmentIndex_)->valueIterator());
+                (interpolators_->at(iSegmentIndex_)->valueIterator());
 
             // see if we can grab values from this Iterator
             if ((*currentIterator_).hasNext())

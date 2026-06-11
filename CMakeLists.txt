@@ -12,7 +12,7 @@ if (${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
     
 endif()
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake-modules")
 
@@ -20,6 +20,14 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake-modules")
 include(DISSCOVersions.txt)
 
 project(DISSCO VERSION ${DISSCO_VERSION})
+
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    find_program(LLD_LINKER ld.lld)
+    if(LLD_LINKER)
+        add_link_options(-fuse-ld=lld)
+        message(STATUS "Using lld linker")
+    endif()
+endif()
 
 option(BUILD_LASS_EXAMPLES "Build LASS examples" OFF)
 
@@ -39,3 +47,5 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/LASS)
 add_subdirectory(${CMAKE_SOURCE_DIR}/external-libs)
 add_subdirectory(${CMAKE_SOURCE_DIR}/CMOD) # if successful, will set a CMOD_BINARY_DIR variable in the scope of _this_ file
 add_subdirectory(${CMAKE_SOURCE_DIR}/LASSIE)
+
+include(${CMAKE_SOURCE_DIR}/packaging/Packaging.cmake)

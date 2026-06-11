@@ -24,6 +24,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 //----------------------------------------------------------------------------//
 
+/**
+ * @file Modifier.h
+ * @brief Per-note synthesis modifier (tremolo, vibrato, bend, etc.).
+ *
+ * Modifiers are attached to Bottom events and reshape the rendered sound
+ * after a Note has been chosen. Each Modifier carries a type tag, an
+ * "apply how" flag (apply across the whole SOUND or to individual
+ * PARTIALs), a probability envelope, and the parameter envelopes that
+ * drive its behaviour (spread, direction, velocity, plus a queue of
+ * per-step values). The user-facing list of modifier types is mirrored in
+ * LASSIE's @ref ModifierType enum.
+ */
+
+/**
+ * @brief One configured modifier instance attached to a Bottom event.
+ *
+ * Stateful — keeps a checkpoint for WAVE_TYPE modifiers and tracks which
+ * partial index it last fired against when @c applyHow == PARTIAL.
+ */
 class Modifier {
   private:
     string type;      // TREMOLO, VIBRATO, BEND, etc

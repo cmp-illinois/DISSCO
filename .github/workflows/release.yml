@@ -1,0 +1,192 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag/version to release (e.g. v2.2.0). Optional; if empty, a draft release for the current SHA is produced."
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  macos:
+    name: macOS DMG
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install dependencies
+        run: |
+          brew update
+          brew install cmake ninja libsndfile
+
+      - name: Install Qt 6.8
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: "6.8.0"
+          host: mac
+          target: desktop
+          arch: clang_64
+          modules: ""
+          cache: true
+
+      - name: Configure
+        run: |
+          cmake -S . -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_PREFIX_PATH="${Qt6_DIR}"
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Package (DMG)
+        run: cmake --build build --target package
+
+      - name: Locate artifact
+        id: artifact
+        run: |
+          dmg=$(ls build/DISSCO-*-Darwin.dmg | head -n1)
+          echo "path=${dmg}" >> "$GITHUB_OUTPUT"
+          echo "name=$(basename "${dmg}")" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-artifact@v5
+        with:
+          name: ${{ steps.artifact.outputs.name }}
+          path: ${{ steps.artifact.outputs.path }}
+
+  linux:
+    name: Linux AppImage
+    # Pinned to 22.04 for older glibc: AppImages built here run on more
+    # downstream distros than ones built on 24.04+.
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential cmake ninja-build \
+            libsndfile1-dev \
+            libgl1-mesa-dev libfuse2 \
+            file desktop-file-utils \
+            libxkbcommon-dev '^libxcb.*-dev' libx11-xcb-dev \
+            libglu1-mesa-dev libxrender-dev libxi-dev libxkbfile-dev
+
+      - name: Install Qt 6.8
+        uses: jurplel/install-qt-action@v4
+        with:
+          # DISSCO's source uses Qt::StringLiterals (6.4+) and project docs
+          # require >= 6.8. Ubuntu 22.04's apt qt6-base-dev is 6.2 — too old.
+          version: "6.8.0"
+          host: linux
+          target: desktop
+          arch: linux_gcc_64
+          modules: ""
+          cache: true
+
+      - name: Configure
+        run: |
+          cmake -S . -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_PREFIX_PATH="${Qt6_DIR}"
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Package (AppImage)
+        env:
+          # linuxdeploy-plugin-qt picks up qmake via QMAKE; install-qt-action
+          # exports QT_ROOT_DIR and prepends Qt's bin/ to PATH, so qmake6 is
+          # findable, but be explicit to avoid surprises.
+          QMAKE: ${{ env.QT_ROOT_DIR }}/bin/qmake
+        run: cmake --build build --target appimage
+
+      - name: Locate artifact
+        id: artifact
+        run: |
+          img=$(ls build/DISSCO-*.AppImage | head -n1)
+          echo "path=${img}" >> "$GITHUB_OUTPUT"
+          echo "name=$(basename "${img}")" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-artifact@v5
+        with:
+          name: ${{ steps.artifact.outputs.name }}
+          path: ${{ steps.artifact.outputs.path }}
+
+  windows:
+    name: Windows installer
+    if: false
+    runs-on: windows-2022
+    defaults:
+      run:
+        shell: pwsh
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Configure MSVC environment
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      - name: Install Qt 6.8
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: "6.8.0"
+          host: windows
+          target: desktop
+          arch: win64_msvc2022_64
+          modules: ""
+          cache: true
+
+      - name: Configure
+        # libsndfile is resolved by FindSndFile, which downloads libsndfile's
+        # official Windows prebuilt zip when no local install is present
+        # (DISSCO_SNDFILE_FETCH_PREBUILT, ON by default on Windows). Qt comes
+        # from install-qt-action's exported Qt6_DIR. XML parsing uses the
+        # bundled pugixml, so there's no external XML dependency.
+        run: |
+          cmake -S . -B build -G Ninja `
+            -DCMAKE_BUILD_TYPE=Release `
+            -DCMAKE_PREFIX_PATH="$env:Qt6_DIR"
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Package (NSIS installer)
+        run: cmake --build build --target package
+
+      - name: Locate artifact
+        id: artifact
+        run: |
+          $exe = Get-ChildItem build/DISSCO-*-Windows.exe | Select-Object -First 1
+          "path=$($exe.FullName)" | Out-File -Append -Encoding utf8 $env:GITHUB_OUTPUT
+          "name=$($exe.Name)"     | Out-File -Append -Encoding utf8 $env:GITHUB_OUTPUT
+
+      - uses: actions/upload-artifact@v5
+        with:
+          name: ${{ steps.artifact.outputs.name }}
+          path: ${{ steps.artifact.outputs.path }}
+
+  release:
+    name: Publish GitHub release
+    needs: [macos, linux, windows]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/download-artifact@v5
+        with:
+          path: dist
+          merge-multiple: true
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          draft: true
+          generate_release_notes: true

@@ -5,6 +5,9 @@
 #include <memory>
 #include <QStatusBar>
 
+class QListWidgetItem;
+class QTreeWidgetItem;
+
 #include "../inst.hpp"
 
 QT_BEGIN_NAMESPACE
@@ -14,15 +17,36 @@ QT_END_NAMESPACE
 class EnvelopeLibraryWindow;
 class MarkovModelLibraryWindow; //nhi: more descriptive than MarkovWindow
 class ProjectView;
+class Updater;
 
+/**
+ * @brief Top-level Qt main window for LASSIE.
+ *
+ * MainWindow is the application's root widget. It owns the menus, toolbars,
+ * status bar, recent-projects landing page, and the embedded ProjectView
+ * shown once a project is loaded. The two satellite library windows for
+ * envelope and Markov-model editing are owned here as unique_ptrs so they
+ * close cleanly when the app exits.
+ *
+ * Construction takes the global @ref Inst singleton; MainWindow registers
+ * itself as a static instance() so dialogs that need to post status messages
+ * can find it without a parent pointer.
+ *
+ * @note Project lifecycle (new / open / save / close) is mediated through
+ *       maybeSaveBeforeClose() and closeCurrentProject() to keep the
+ *       project model and the visible UI in sync.
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
     public:
         //MainWindow(QWidget *parent = nullptr);
+        /// Build the main window and bind it to the application singleton.
         explicit MainWindow(Inst*);
+        /// Access the most recently constructed MainWindow.
         static MainWindow* instance() { return instance_; }
         ~MainWindow() override;
+        /// Update the window title to reflect @p file (with a [modified] tag if requested).
         void setCurrentFile(const QString &file, bool modified = false);
 
         std::unique_ptr<Ui::MainWindow> ui;
@@ -50,10 +74,18 @@ class MainWindow : public QMainWindow
         void showPropertiesDialog() const;
         void showFileNewObjectDialog() const;
 
+        // Welcome / recent projects
+        void openRecentProject(QListWidgetItem *item);
+        void openRecentProjectTree(QTreeWidgetItem *item, int column);
+        void toggleRecentViewMode();
+        void showRecentListContextMenu(const QPoint &pos);
+        void showRecentTreeContextMenu(const QPoint &pos);
+
         
 
     protected:
         void closeEvent(QCloseEvent *event) override;
+        bool eventFilter(QObject *watched, QEvent *event) override;
         void readSettings();
         void writeSettings() const;
 
@@ -65,6 +97,7 @@ class MainWindow : public QMainWindow
         void createStatusBar() const { statusBar()->showMessage(tr("Ready")); }
         void runProject();
         void showFile();
+        void openProjectPath(const QString &path);
 
         // Returns false if the user cancelled, true otherwise.
         // Prompts to save unsaved changes when a project is already open.
@@ -72,7 +105,18 @@ class MainWindow : public QMainWindow
         // Tears down the current project view and project data, resetting UI state.
         void closeCurrentProject();
 
+        // Welcome / recent projects helpers
+        void showWelcomePage();
+        void showProjectPage() const;
+        void refreshRecentProjects() const;
+        void addToRecentProjects(const QString &path) const;
+        void applyRecentViewMode() const;
+        QStringList selectedRecentPaths() const;
+        void removeRecents(const QStringList &paths) const;
+        void promptAndRemoveSelectedRecents();
+
         QString currentFile;
+        bool recentIconMode = true;
         
         // Actions
         QAction *newAct = nullptr;
@@ -96,6 +140,8 @@ class MainWindow : public QMainWindow
         QAction *showMarkovAct = nullptr;
         QAction *aboutAct = nullptr;
         QAction *aboutQtAct = nullptr;
+        QAction *checkForUpdatesAct = nullptr;
+        QAction *autoCheckUpdatesAct = nullptr;
 
         // Menus
         QMenu *fileMenu = nullptr;
@@ -115,6 +161,7 @@ class MainWindow : public QMainWindow
         ProjectView* projectView = nullptr;
         
         Inst *main_;
+        Updater *updater_ = nullptr;
         static MainWindow *instance_;
 };
 

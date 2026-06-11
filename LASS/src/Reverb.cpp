@@ -21,13 +21,16 @@
 //----------------------------------------------------------------------------//
 
 #include "SoundSample.h"
-#include "Collection.h"
 #include "Track.h"
 #include "MultiTrack.h"
 #include "LPCombFilter.h"
 #include "AllPassFilter.h"
 #include "Reverb.h"
 #include "Types.h"
+
+#ifdef __APPLE__
+#include <vecLib/vDSP.h>
+#endif
 
 //----------------------------------------------------------------------------//
 
@@ -48,14 +51,14 @@ Reverb::Reverb(m_rate_type samplingRate)
   comb_gain_list[4] = 0.53;
   comb_gain_list[5] = 0.55;
 
-  Collection<envelope_segment> segmentCollection;
+  vector<envelope_segment> segmentCollection;
   envelope_segment seg;
 
   seg.x = 0.0; seg.y = 0.83;
   seg.interType = LINEAR; seg.lengthType = FLEXIBLE;
-  segmentCollection.add(seg);
+  segmentCollection.push_back(seg);
   seg.x = 1.0; seg.y = 0.83;
-  segmentCollection.add(seg);
+  segmentCollection.push_back(seg);
 
   percentReverb = new Envelope(segmentCollection);
 
@@ -74,15 +77,15 @@ Reverb::Reverb(float room_size, m_rate_type samplingRate)
   float lp_gain_list[REVERB_NUM_COMB_FILTERS];
   int i;
 
-  Collection<envelope_segment> segmentCollection;
+  vector<envelope_segment> segmentCollection;
   envelope_segment seg;
 
   float flatReverb = 0.345 + (0.625 * room_size);
   seg.x = 0.0; seg.y = flatReverb;
   seg.interType = LINEAR; seg.lengthType = FLEXIBLE;
-  segmentCollection.add(seg);
+  segmentCollection.push_back(seg);
   seg.x = 1.0; seg.y = flatReverb;
-  segmentCollection.add(seg);
+  segmentCollection.push_back(seg);
   percentReverb = new Envelope(segmentCollection);
   float hilow_spread  = 0.056 + (0.430 * room_size);
   float gainAllPass   = 0.7;
@@ -104,13 +107,13 @@ Reverb::Reverb(float room_size, m_rate_type samplingRate)
 
 }
 
-Reverb::Reverb(Envelope *percentReverbinput, float hilow_spread, float gainAllPass,
+Reverb::Reverb(Envelope *percentReverb, float hilow_spread, float gainAllPass,
 	       float delay, m_rate_type samplingRate)
 {
   float comb_gain_list[REVERB_NUM_COMB_FILTERS];
   float lp_gain_list[REVERB_NUM_COMB_FILTERS];
   int i;
-  Envelope* temp = new Envelope(*percentReverbinput);
+  Envelope* temp = new Envelope(*percentReverb);
   percentReverb = new Envelope(*temp);
 
   comb_gain_list[0] = 0.46;
@@ -155,15 +158,15 @@ Reverb::Reverb(Envelope *percentReverbinput, float hilow_spread, float gainAllPa
  *   to room size.
  * samplingRate - the sampling rate of the input sounds
  **/
-Reverb::Reverb(Envelope *percentReverbinput, float *combGainList, float *lpGainList,
+Reverb::Reverb(Envelope *percentReverb, float *combGainList, float *lpGainList,
 	       float gainAllPass, float delay, m_rate_type samplingRate)
 {
   // We have to copy this envelope, to prevent a seg fault when the common
   // constructor deletes it  --- cavis
-  Envelope* temp = new Envelope(*percentReverbinput);
+  Envelope* temp = new Envelope(*percentReverb);
   percentReverb = new Envelope(*temp);
 
-  ConstructorCommon(percentReverbinput, combGainList, lpGainList, gainAllPass,
+  ConstructorCommon(percentReverb, combGainList, lpGainList, gainAllPass,
 		    delay, samplingRate);
 }
 
@@ -200,15 +203,15 @@ Reverb::Reverb(Envelope *percentReverbinput, float *combGainList, float *lpGainL
  *   the other reverb parameters
  * samplingRate - the sampling rate of the input sounds
  **/
-void Reverb::ConstructorCommon(Envelope *percentReverbinput, float *comb_gain_list,
-			       float *lp_gain_list, float gainAllPass, float delay,
+void Reverb::ConstructorCommon(Envelope *percentReverbInput, float *combGainList,
+			       float *lpGainList, float gainAllPass, float delay,
 			       m_rate_type samplingRate)
 {
   long combdelay[REVERB_NUM_COMB_FILTERS];
   int i;
-  Envelope* temp = new Envelope(*percentReverbinput);
-  delete percentReverb;
-  percentReverb = temp;
+  // Own a private copy of the mix envelope, then release the caller's.
+  this->percentReverb = new Envelope(*percentReverbInput);
+  delete percentReverbInput;
   // figure out allpass filter parameters
   //gainReverb = percentReverb;              //these two lines need fixing
   //    actually, the above and below two lines probably won't be needed
@@ -224,7 +227,7 @@ void Reverb::ConstructorCommon(Envelope *percentReverbinput, float *comb_gain_li
   // Make comb filters (figure out low-pass gains better)
   for(i=0;i<REVERB_NUM_COMB_FILTERS;i++)
     {
-      lpcfilter[i] = new LPCombFilter(comb_gain_list[i], combdelay[i], lp_gain_list[i]);
+      lpcfilter[i] = new LPCombFilter(combGainList[i], combdelay[i], lpGainList[i]);
     }
 
   // Make an all pass filter
@@ -235,7 +238,7 @@ void Reverb::ConstructorCommon(Envelope *percentReverbinput, float *comb_gain_li
   float alpha = 0.0; // alpha is the steady state gain (which is also the max of the gain fn
 #define max(x,y) ((x) > (y) ? (x) : (y))
   for(i=0;i<6;i++)
-    alpha = max(alpha, comb_gain_list[i]/(1.0 - lp_gain_list[i]));
+    alpha = max(alpha, combGainList[i]/(1.0 - lpGainList[i]));
   float T_r = -3.0 * delay / log(alpha);
   decay_duration = T_r*1.0;
 }
@@ -333,14 +336,13 @@ MultiTrack &Reverb::do_reverb_MultiTrack(MultiTrack &inWave, Envelope *percentRe
   //  reset the filter so that it can be used fresh next time
   //  create a new track based on the returned, filtered SoundSample
   //  add this new track to the output MultiTrack
-  Iterator<Track*> it = inWave.iterator();
-  while (it.hasNext())
+  for (Track* curTrack : inWave)
     {
-      Track *curTrack = it.next();
-
       newWave = do_reverb_SoundSample(&curTrack->getWave(), percentReverb);
       reset();
-      newAmp  = constructAmp(newWave);
+      // Only rebuild the amplitude envelope if the source carried one; when
+      // amplitude tracking is off this avoids a full-length allocation per track.
+      newAmp  = curTrack->hasAmp() ? constructAmp(newWave) : 0;
       reset();
       newMultiTrack->add(new Track(newWave, newAmp));
     }
@@ -370,7 +372,7 @@ Track &Reverb::do_reverb_Track(Track &inWave, Envelope *percentReverbinput)
   // create a new track based on the returned, filtered SoundSample
   newWave = do_reverb_SoundSample(&inWave.getWave(), percentReverb);
   reset();
-  newAmp  = constructAmp(newWave);
+  newAmp  = inWave.hasAmp() ? constructAmp(newWave) : 0;
   newTrack = new Track(newWave, newAmp);
 
   return *newTrack;
@@ -385,21 +387,61 @@ SoundSample *Reverb::do_reverb_SoundSample(SoundSample *inWave)
 }
 SoundSample *Reverb::do_reverb_SoundSample(SoundSample *inWave, Envelope *percentReverbinput)
 {
-  int i;
   SoundSample *outWave;
-  // delete percentReverb;
-  // percentReverb = new Envelope(*percentReverbinput);
 
   Envelope* temp = new Envelope(*percentReverbinput);
   delete percentReverb;
   percentReverb = temp;
-  // create new SoundSample
+
   outWave = new SoundSample(inWave->getSampleCount(),
 			    inWave->getSamplingRate());
 
-  for(i=0;i<inWave->getSampleCount();i++)
-    (*outWave)[i] = do_reverb((*inWave)[i],(float) i / inWave->getSampleCount()
-			      , percentReverb);
+#ifdef __APPLE__
+  // macOS buffer path: process entire audio buffer at once using
+  // do_filter_buffer (tight loops / vDSP SIMD) instead of per-sample calls.
+  long N = (long)inWave->getSampleCount();
+  float* inData  = &(*inWave)[0];
+  float* outData = &(*outWave)[0];
+
+  // Accumulate the 6 comb filter outputs.
+  vector<float> combSum(N, 0.0f);
+  vector<float> filterBuf(N);
+  for (int f = 0; f < REVERB_NUM_COMB_FILTERS; f++) {
+    lpcfilter[f]->do_filter_buffer(inData, filterBuf.data(), N);
+    vDSP_vadd(combSum.data(), 1, filterBuf.data(), 1,
+              combSum.data(), 1, (vDSP_Length)N);
+  }
+
+  // Scale by 1 / REVERB_NUM_COMB_FILTERS.
+  float scale = 1.0f / (float)REVERB_NUM_COMB_FILTERS;
+  vDSP_vsmul(combSum.data(), 1, &scale, combSum.data(), 1, (vDSP_Length)N);
+
+  // All-pass filter into outData.
+  apfilter->do_filter_buffer(combSum.data(), outData, N);
+
+  // Precompute envelope values and apply wet/dry mix:
+  //   out[i] = env[i] * apOut[i] + (1-env[i]) * in[i]
+  //          = env[i] * (apOut[i] - in[i]) + in[i]
+  float duration = percentReverb->getDuration();
+  float invN = 1.0f / (float)N;
+  vector<float> envVals(N);
+  for (long i = 0; i < N; i++)
+    envVals[i] = percentReverb->getValue((float)i * invN, duration);
+
+  // diff[i] = apOut[i] - in[i]  (vDSP_vsub: C = B - A)
+  vector<float> diff(N);
+  vDSP_vsub(inData, 1, outData, 1, diff.data(), 1, (vDSP_Length)N);
+
+  // outData[i] = envVals[i] * diff[i] + in[i]
+  vDSP_vma(envVals.data(), 1, diff.data(), 1, inData, 1,
+           outData, 1, (vDSP_Length)N);
+
+#else
+  for (int i = 0; i < inWave->getSampleCount(); i++)
+    (*outWave)[i] = do_reverb((*inWave)[i],
+                              (float)i / inWave->getSampleCount(),
+                              percentReverb);
+#endif
 
   return outWave;
 }

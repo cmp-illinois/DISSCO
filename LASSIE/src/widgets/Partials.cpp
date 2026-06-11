@@ -1,6 +1,8 @@
 #include "Partials.hpp"
 #include "../inst.hpp"
 
+using enum FunctionReturnType;
+
 Partials::Partials(unsigned eventIndex, int partialIndex, QWidget* parent)
     : QFrame(parent),
       m_eventIndex(eventIndex),

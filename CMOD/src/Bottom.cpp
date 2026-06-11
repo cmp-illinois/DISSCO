@@ -32,23 +32,20 @@ static int test=0;
 
 //----------------------------------------------------------------------------//
 
-Bottom::Bottom(DOMElement* _element,
+Bottom::Bottom(pugi::xml_node _element,
                TimeSpan _timeSpan,
                int _type,
                Tempo _tempo,
                Utilities* _utilities,
-               DOMElement* _ancestorSpa,
-               DOMElement* _ancestorRev,
-               DOMElement* _ancestorFil,
-               DOMElement* _ancestorModifiers):
-  Event(_element, _timeSpan,_type, _tempo, _utilities, NULL,NULL,NULL,NULL),
+               pugi::xml_node _ancestorSpa,
+               pugi::xml_node _ancestorRev,
+               pugi::xml_node _ancestorFil,
+               pugi::xml_node _ancestorModifiers):
+  Event(_element, _timeSpan,_type, _tempo, _utilities, {},{},{},{}),
   ancestorModifiersElement(_ancestorModifiers){
 
 
-  XMLCh* extraInfoString = XMLString::transcode("ExtraInfo");
-  DOMNodeList* extraInfoList = _element->getElementsByTagName(extraInfoString);
-  DOMElement* extraInfo = (DOMElement*) extraInfoList->item(0);
-  XMLString::release(&extraInfoString);
+  pugi::xml_node extraInfo = descendantByName(_element, "ExtraInfo");
 
   /*
   <ExtraInfo>
@@ -68,33 +65,33 @@ Bottom::Bottom(DOMElement* _element,
   </ExtraInfo>
   */
 
-  frequencyElement = extraInfo->GFEC();
-  loudnessElement = frequencyElement->GNES();
+  frequencyElement = GFEC(extraInfo);
+  loudnessElement = GNES(frequencyElement);
   if (_ancestorSpa != NULL){
     spatializationElement = _ancestorSpa;
   }
   else {
-    spatializationElement = loudnessElement->GNES();
+    spatializationElement = GNES(loudnessElement);
   }
 
   if (_ancestorRev != NULL){
     reverberationElement = _ancestorRev;
   }
   else {
-    reverberationElement = loudnessElement->GNES()->GNES();
+    reverberationElement = GNES(GNES(loudnessElement));
   }
 
   if (_ancestorFil != NULL){
     filterElement = _ancestorFil;
   }
   else {
-    filterElement = loudnessElement->GNES()->GNES()->GNES();
+    filterElement = GNES(GNES(GNES(loudnessElement)));
   }
 
   /* ZIYUAN CHEN, July 2023 */
-  modifierGroupElement = loudnessElement->GNES()->GNES()->GNES()->GNES();
+  modifierGroupElement = GNES(GNES(GNES(GNES(loudnessElement))));
 
-  modifiersElement = loudnessElement->GNES()->GNES()->GNES()->GNES()->GNES();
+  modifiersElement = GNES(GNES(GNES(GNES(GNES(loudnessElement)))));
 
 }
 
@@ -244,16 +241,12 @@ void Bottom::buildSound(SoundAndNoteWrapper* _soundNoteWrapper) {
   int numPartials = computeNumPartials( baseFrequency ,_soundNoteWrapper->element );
 
  //Element for GenSpectrum
-  DOMElement* specElement = _soundNoteWrapper->element->GFEC()
-    ->GNES()
-    ->GNES()
-    ->GNES()
-    ->GNES();
+  pugi::xml_node specElement = GNES(GNES(GNES(GNES(GFEC(_soundNoteWrapper->element)))));
 
   //if there is no spec element,go to partial routine;else, go to gen_spectrum
-  if (specElement->GFEC() != NULL){
-    DOMElement* partialEnvElement = (DOMElement*)utilities->evaluateObject(XMLTC(specElement), (void*)this,eventSpec);
-    DOMElement* distanceElement = partialEnvElement->GNES();
+  if (GFEC(specElement) != NULL){
+    pugi::xml_node partialEnvElement = utilities->evaluateSpectrumElement(XMLTC(specElement), (void*)this);
+    pugi::xml_node distanceElement = GNES(partialEnvElement);
 
     Envelope* waveShape = (Envelope*) utilities->evaluateObject(XMLTC(partialEnvElement),(void*)this, eventEnv );
     float distance = utilities->evaluate(XMLTC(distanceElement),(void*)this);
@@ -359,9 +352,9 @@ void Bottom::buildNote(SoundAndNoteWrapper* _soundNoteWrapper) {
   //  <Modifiers>...<\Modifiers>
   //<\NoteInfo>
   // multistaffs
-  DOMElement* noteInfo = _soundNoteWrapper->element->GFEC()->GNES()->GNES();
-  DOMElement* staffsInfo = noteInfo->GFEC();
-  DOMElement* modifiersInfo = noteInfo->GFEC()->GNES();
+  pugi::xml_node noteInfo = GNES(GNES(GFEC(_soundNoteWrapper->element)));
+  pugi::xml_node staffsInfo = GFEC(noteInfo);
+  pugi::xml_node modifiersInfo = GNES(GFEC(noteInfo));
 //set modifiers
   vector<string> noteMods = applyNoteModifiers(modifiersInfo);
   newNote->setModifiers(noteMods);
@@ -417,10 +410,10 @@ list<Note> Bottom::getNotes() {
 float Bottom::computeBaseFreq() {
 
   float baseFreqResult;
-  DOMElement* freqFlagElement = frequencyElement->GFEC();
-  DOMElement* continuumFlagElement = freqFlagElement->GNES();
-  DOMElement* valueElement = continuumFlagElement->GNES();
-  DOMElement* valueElement2 = valueElement->GNES();
+  pugi::xml_node freqFlagElement = GFEC(frequencyElement);
+  pugi::xml_node continuumFlagElement = GNES(freqFlagElement);
+  pugi::xml_node valueElement = GNES(continuumFlagElement);
+  pugi::xml_node valueElement2 = GNES(valueElement);
   if (utilities->evaluate(XMLTC(freqFlagElement),(void*) this)==2) {//contiruum
     /* 2nd arg is a string (HERTZ or POW2) */
 
@@ -468,11 +461,9 @@ float Bottom::computeLoudness() {
 
 //----------------------------------------------------------------------------//
 
-int Bottom::computeNumPartials(float baseFreq, DOMElement* _spectrum) {
+int Bottom::computeNumPartials(float baseFreq, pugi::xml_node _spectrum) {
 
-  DOMElement* numPartialElement = _spectrum->GFEC()
-    ->GNES()
-    ->GNES();
+  pugi::xml_node numPartialElement = GNES(GNES(GFEC(_spectrum)));
   int numPartsResult = utilities->evaluate(XMLTC(numPartialElement), (void*) this);
 
   // Decrease numPartials until p < CEILING
@@ -492,11 +483,8 @@ int Bottom::computeNumPartials(float baseFreq, DOMElement* _spectrum) {
 
 //----------------------------------------------------------------------------//
 
-float Bottom::computeDeviation( DOMElement* _spectrum) {
-  DOMElement* devElement = _spectrum->GFEC()
-    ->GNES()
-    ->GNES()
-    ->GNES();
+float Bottom::computeDeviation( pugi::xml_node _spectrum) {
+  pugi::xml_node devElement = GNES(GNES(GNES(GFEC(_spectrum))));
   return utilities->evaluate(XMLTC(devElement), (void*)this);
 }
 
@@ -521,19 +509,13 @@ float Bottom::setPartialFreq(Partial& part, float deviation, float baseFreq, int
 
 //----------------------------------------------------------------------------//
 
-void Bottom::setPartialSpectrum(Partial& part, int partNum, DOMElement* _element) {
+void Bottom::setPartialSpectrum(Partial& part, int partNum, pugi::xml_node _element) {
 
-  DOMElement* partialEnvElement = _element->GFEC()
-    ->GNES()
-    ->GNES()
-    ->GNES()
-    ->GNES()
-    ->GNES()
-    ->GFEC();
+  pugi::xml_node partialEnvElement = GFEC(GNES(GNES(GNES(GNES(GNES(GFEC(_element)))))));
 
     int counter = partNum;
     while(counter != 0){
-      partialEnvElement=partialEnvElement->GNES();
+      partialEnvElement=GNES(partialEnvElement);
       counter--;
     }
     Envelope* waveShape = (Envelope*) utilities->evaluateObject(XMLTC(partialEnvElement),(void*)this, eventEnv );
@@ -545,7 +527,7 @@ void Bottom::setPartialSpectrum(Partial& part, int partNum, DOMElement* _element
 
 void Bottom::applySpatialization(Sound* s, int numPartials) {
 
-  DOMElement* SPAElement = (DOMElement*) utilities->evaluateObject("", (void*) this, eventSpa); //this call will return a spa function, just in case users use "select" here. The string here is just a dummy since the callee will find the right spa element  within "this".
+  pugi::xml_node SPAElement = utilities->evaluateSpa((void*) this); //this call will return a spa function, just in case users use "select" here.
 
 
 //  <Fun>
@@ -554,13 +536,13 @@ void Bottom::applySpatialization(Sound* s, int numPartials) {
 //    <Apply>SOUND</Apply>
 //    <Channels>  bla bla bla ... </Channels>
 //  </Fun>
-  DOMElement* methodElement = SPAElement->GFEC()->GNES();
+  pugi::xml_node methodElement = GNES(GFEC(SPAElement));
   string method = XMLTC(methodElement);
 
-  DOMElement* applyHowElement = methodElement->GNES();
+  pugi::xml_node applyHowElement = GNES(methodElement);
   string apply = XMLTC(applyHowElement);
 
-  DOMElement* channelsElement = applyHowElement->GNES();
+  pugi::xml_node channelsElement = GNES(applyHowElement);
 
   if (method.compare("STEREO")==0) {
     //will be a list of envs, of length 1 if applyhow == SOUND, or
@@ -589,7 +571,7 @@ void Bottom::applySpatialization(Sound* s, int numPartials) {
 //----------------------------------------------------------------------------//
 
 void Bottom::spatializationStereo(Sound *s,
-                                  DOMElement* _channels,
+                                  pugi::xml_node _channels,
                                   string applyHow,
                                   int numParts) {
 //  <Channels>
@@ -598,7 +580,7 @@ void Bottom::spatializationStereo(Sound *s,
 //    </Partials>
 //  </Channels>
 
-  DOMElement* envelopeElement = _channels->GFEC()->GFEC();
+  pugi::xml_node envelopeElement = GFEC(GFEC(_channels));
   string envstr;
 
   if (applyHow == "SOUND") {
@@ -625,7 +607,7 @@ void Bottom::spatializationStereo(Sound *s,
         // ^ this cannot be wrapped into computeSpatializationStereo
         // since Sound and Partial does not inherit each other
       }
-      envelopeElement = envelopeElement->GNES();
+      envelopeElement = GNES(envelopeElement);
     }
 
   }
@@ -652,7 +634,7 @@ Pan Bottom::computeSpatializationStereo(string envstr) {
 //----------------------------------------------------------------------------//
 
 void Bottom::spatializationMultiPan(Sound *s,
-                                    DOMElement* _channels,
+                                    pugi::xml_node _channels,
                                     string applyHow,
                                     int numParts) {
 
@@ -673,14 +655,14 @@ void Bottom::spatializationMultiPan(Sound *s,
   vector<bool> isPartialValid;
   string envstr;
   Envelope* env;
-  DOMElement* partials = _channels->GFEC();
-  DOMElement* envElement;
+  pugi::xml_node partials = GFEC(_channels);
+  pugi::xml_node envElement;
 
   unsigned j; // index of partials
 
   // populate mults, essentially "transposing" the grid of envelopes
   while (partials!=NULL){
-    envElement = partials->GFEC();
+    envElement = GFEC(partials);
     j = 0;
     while (envElement != NULL) { // for each partial
       if (j >= mults.size()) {
@@ -695,10 +677,10 @@ void Bottom::spatializationMultiPan(Sound *s,
         env = (Envelope*)utilities->evaluateObject(envstr, (void*)this, eventEnv);
         mults.at(j).push_back(env);
       }
-      envElement = envElement->GNES();
+      envElement = GNES(envElement);
       j++;
     }
-    partials = partials->GNES();
+    partials = GNES(partials);
   }
 
   if (applyHow == "SOUND") {
@@ -749,7 +731,7 @@ MultiPan Bottom::computeSpatializationMultiPan(vector<Envelope*> mult) {
 //----------------------------------------------------------------------------//
 
 void Bottom::spatializationPolar(Sound *s,
-                                 DOMElement* _channels,
+                                 pugi::xml_node _channels,
                                  string applyHow,
                                  int numParts) {
 //<Channels>
@@ -761,8 +743,8 @@ void Bottom::spatializationPolar(Sound *s,
 //  </Partials>
 //</Channels>
 
-  DOMElement* thetaElement = _channels->GFEC()->GFEC();
-  DOMElement* radiusElement = _channels->GFEC()->GNES()->GFEC();
+  pugi::xml_node thetaElement = GFEC(GFEC(_channels));
+  pugi::xml_node radiusElement = GFEC(GNES(GFEC(_channels)));
   string theta, radius;
 
   if (applyHow == "SOUND") {
@@ -786,8 +768,8 @@ void Bottom::spatializationPolar(Sound *s,
         MultiPan multipan = computeSpatializationPolar(theta, radius);
         s->get(i).setSpatializer(multipan);
       }
-      thetaElement = thetaElement->GNES();
-      radiusElement = radiusElement->GNES();
+      thetaElement = GNES(thetaElement);
+      radiusElement = GNES(radiusElement);
     }
 
   }
@@ -842,7 +824,7 @@ MultiPan Bottom::computeSpatializationPolar(string thetaEnvStr, string radiusEnv
 //----------------------------------------------------------------------------//
 
 void Bottom::applyFilter(Sound* s){
-  DOMElement* filterElement = (DOMElement*) utilities->evaluateObject("", (void*) this, eventFil);
+  pugi::xml_node filterElement = utilities->evaluateFil((void*) this);
   if (filterElement == NULL) return; //no filter
 
 //  <Fun>
@@ -852,13 +834,13 @@ void Bottom::applyFilter(Sound* s){
 //    <BandWidth>4.5</BandWidth>
 //    <dBGain/>
 //  </Fun>
-  DOMElement* it = filterElement->GFEC()->GNES();
+  pugi::xml_node it = GNES(GFEC(filterElement));
   string type = XMLTC(it);
-  it = it->GNES();
+  it = GNES(it);
   double frequency = utilities->evaluate(XMLTC(it), (void*)this);
-  it = it->GNES();
+  it = GNES(it);
   double bandWidth = utilities->evaluate(XMLTC(it), (void*)this);
-  it = it->GNES();
+  it = GNES(it);
   double gain = utilities->evaluate(XMLTC(it), (void*)this);
 
   int typeInt;
@@ -924,23 +906,22 @@ void Bottom::applyReverberation(Sound *s, int numPartials) {
   // </Reverb>
 	
   // May need to modify utilities...
-  DOMElement* reverbElement =
-          (DOMElement*) utilities->evaluateObject("", (void*) this, eventRev);
+  pugi::xml_node reverbElement = utilities->evaluateRev((void*) this);
 
 //this call will return a rev function, just in case users use "select" here.
 //The string here is just a dummy since the callee will find the right rev
 //element  within "this".
 
   // Assume this correctly gets <Name>
-  string rev_method =  XMLTC(reverbElement->GFEC());
+  string rev_method =  XMLTC(GFEC(reverbElement));
 
-  DOMElement* applyHowElement = reverbElement->GFEC()->GNES();
+  pugi::xml_node applyHowElement = GNES(GFEC(reverbElement));
   string rev_apply = XMLTC(applyHowElement);
 
 	// Number of parameters varies between methods. But unlike spatialization,
 	// this "everything else" part is NOT enclosed in a <Channel> element;
 	// instead, they are listed in the same level under "Fun"
-  DOMElement* paramsElement = applyHowElement->GNES();
+  pugi::xml_node paramsElement = GNES(applyHowElement);
 
   if (rev_method.compare("REV_Simple") == 0) {
     reverberationSimple(s, paramsElement, rev_apply, numPartials);
@@ -964,7 +945,7 @@ void Bottom::applyReverberation(Sound *s, int numPartials) {
 //----------------------------------------------------------------------------//
 
 void Bottom::reverberationSimple(Sound *s,
-                                 DOMElement* paramsElement,
+                                 pugi::xml_node paramsElement,
                                  string applyHow,
                                  int numPartials) {
 
@@ -974,7 +955,7 @@ void Bottom::reverberationSimple(Sound *s,
     //       <Size>0.3</Size>
     //     </Sizes>
 
-    DOMElement* sizeElement = paramsElement->GFEC(); // First <Size>
+    pugi::xml_node sizeElement = GFEC(paramsElement); // First <Size>
     if (applyHow == "SOUND") {
         Reverb* reverbObj = computeReverberationSimple(sizeElement, -1);
         s->use_reverb(reverbObj);
@@ -984,7 +965,7 @@ void Bottom::reverberationSimple(Sound *s,
         Reverb* reverbObj = computeReverberationSimple(sizeElement, i);
         // Add the reverb obj to the partial. It appears that this is already implemented in LASS/src/Partial.cpp.
         s->get(i).use_reverb(reverbObj);
-        sizeElement = sizeElement->GNES();
+        sizeElement = GNES(sizeElement);
         if (!sizeElement) {
           cerr << "WARNING: reverberationSimple parameters undefined since partial "
             << i + 1 << "; ignoring" << endl;
@@ -1004,7 +985,7 @@ void Bottom::reverberationSimple(Sound *s,
 //----------------------------------------------------------------------------//
 
 /* ZIYUAN CHEN, July 2023 */
-Reverb* Bottom::computeReverberationSimple(DOMElement* sizeElement, int iPartial) {
+Reverb* Bottom::computeReverberationSimple(pugi::xml_node sizeElement, int iPartial) {
 
   float roomSize;
 
@@ -1026,7 +1007,7 @@ Reverb* Bottom::computeReverberationSimple(DOMElement* sizeElement, int iPartial
 //----------------------------------------------------------------------------//
 
 void Bottom::reverberationMedium(Sound *s,
-                                 DOMElement* paramsElement,
+                                 pugi::xml_node paramsElement,
                                  string applyHow,
                                  int numPartials) {
 
@@ -1039,10 +1020,10 @@ void Bottom::reverberationMedium(Sound *s,
 //    <AllPasses><AllPass>0.5</AllPass></AllPasses>
 //    <Delays><Delay>0.5</Delay></Delays>
 
-  DOMElement* percentElement = paramsElement->GFEC();
-  DOMElement* spreadElement  = paramsElement->GNES()->GFEC();
-  DOMElement* allPassElement = paramsElement->GNES()->GNES()->GFEC();
-  DOMElement* delayElement   = paramsElement->GNES()->GNES()->GNES()->GFEC();
+  pugi::xml_node percentElement = GFEC(paramsElement);
+  pugi::xml_node spreadElement  = GFEC(GNES(paramsElement));
+  pugi::xml_node allPassElement = GFEC(GNES(GNES(paramsElement)));
+  pugi::xml_node delayElement   = GFEC(GNES(GNES(GNES(paramsElement))));
 
   if (applyHow == "SOUND") {
 
@@ -1057,10 +1038,10 @@ void Bottom::reverberationMedium(Sound *s,
         spreadElement, allPassElement, delayElement, i);
       s->get(i).use_reverb(reverbObj);
 
-      percentElement = percentElement->GNES();
-      spreadElement  = spreadElement->GNES();
-      allPassElement = allPassElement->GNES();
-      delayElement   = delayElement->GNES();
+      percentElement = GNES(percentElement);
+      spreadElement  = GNES(spreadElement);
+      allPassElement = GNES(allPassElement);
+      delayElement   = GNES(delayElement);
 
       if (!percentElement || !spreadElement || !allPassElement || !delayElement) {
         cerr << "WARNING: reverberationMedium parameters undefined since partial "
@@ -1083,9 +1064,9 @@ void Bottom::reverberationMedium(Sound *s,
 //----------------------------------------------------------------------------//
 
 /* ZIYUAN CHEN, July 2023 */
-Reverb* Bottom::computeReverberationMedium(DOMElement* percentElement,
-  DOMElement* spreadElement, DOMElement* allPassElement,
-  DOMElement* delayElement, int iPartial) {
+Reverb* Bottom::computeReverberationMedium(pugi::xml_node percentElement,
+  pugi::xml_node spreadElement, pugi::xml_node allPassElement,
+  pugi::xml_node delayElement, int iPartial) {
 
     //second input is percent reverb envelope
     string envstr = XMLTC(percentElement);
@@ -1120,7 +1101,7 @@ Reverb* Bottom::computeReverberationMedium(DOMElement* percentElement,
 //----------------------------------------------------------------------------//
 
 void Bottom::reverberationAdvanced(Sound *s,
-                                   DOMElement* paramsElement,
+                                   pugi::xml_node paramsElement,
                                    string applyHow,
                                    int numPartials) {
 
@@ -1134,11 +1115,11 @@ void Bottom::reverberationAdvanced(Sound *s,
 //	<AllPasses><AllPass></AllPass></AllPasses>
 //	<Delays><Delay></Delay></Delays>
 
-  DOMElement* percentElement = paramsElement->GFEC();
-  DOMElement* combGainListElement = paramsElement->GNES()->GFEC();
-  DOMElement* lpGainListElement   = paramsElement->GNES()->GNES()->GFEC();
-  DOMElement* allPassElement = paramsElement->GNES()->GNES()->GNES()->GFEC();
-  DOMElement* delayElement   = paramsElement->GNES()->GNES()->GNES()->GNES()->GFEC();
+  pugi::xml_node percentElement = GFEC(paramsElement);
+  pugi::xml_node combGainListElement = GFEC(GNES(paramsElement));
+  pugi::xml_node lpGainListElement   = GFEC(GNES(GNES(paramsElement)));
+  pugi::xml_node allPassElement = GFEC(GNES(GNES(GNES(paramsElement))));
+  pugi::xml_node delayElement   = GFEC(GNES(GNES(GNES(GNES(paramsElement)))));
 
   if (applyHow == "SOUND") {
 
@@ -1153,11 +1134,11 @@ void Bottom::reverberationAdvanced(Sound *s,
         combGainListElement, lpGainListElement, allPassElement, delayElement, i);
       s->get(i).use_reverb(reverbObj);
 
-      percentElement = percentElement->GNES();
-      combGainListElement = combGainListElement->GNES();
-      lpGainListElement   = lpGainListElement->GNES();
-      allPassElement = allPassElement->GNES();
-      delayElement   = delayElement->GNES();
+      percentElement = GNES(percentElement);
+      combGainListElement = GNES(combGainListElement);
+      lpGainListElement   = GNES(lpGainListElement);
+      allPassElement = GNES(allPassElement);
+      delayElement   = GNES(delayElement);
 
       if (!percentElement || !combGainListElement || !lpGainListElement ||
           !allPassElement || !delayElement) {
@@ -1182,9 +1163,9 @@ void Bottom::reverberationAdvanced(Sound *s,
 //----------------------------------------------------------------------------//
 
 /* ZIYUAN CHEN, July 2023 */
-Reverb* Bottom::computeReverberationAdvanced(DOMElement* percentElement,
-  DOMElement* combGainListElement, DOMElement* lpGainListElement,
-  DOMElement* allPassElement, DOMElement* delayElement, int iPartial) {
+Reverb* Bottom::computeReverberationAdvanced(pugi::xml_node percentElement,
+  pugi::xml_node combGainListElement, pugi::xml_node lpGainListElement,
+  pugi::xml_node allPassElement, pugi::xml_node delayElement, int iPartial) {
 
     //second input is percent reverb envelope
     string envstr = XMLTC(percentElement);
@@ -1256,25 +1237,20 @@ void Bottom::applyModifiers(Sound *s, int numPartials) {
   map<string, vector<Modifier> > modGroups; // ZIYUAN CHEN, July 2023 - map group names to the mods
 
 
-  DOMElement* modifiersIncludingAncestorsElement = (DOMElement*) modifiersElement->cloneNode(true);
-
-
-  if (ancestorModifiersElement != NULL){
-
-      DOMElement* ancestorModifierIter = ancestorModifiersElement->GFEC();
-      while(ancestorModifierIter !=NULL){
-        DOMElement* cloneModifier = (DOMElement*) ancestorModifierIter->cloneNode(true);
-        modifiersIncludingAncestorsElement->appendChild((DOMNode*)cloneModifier);
-        ancestorModifierIter = ancestorModifierIter->GNES();
-      }
-
-  }// end handling ancestorModifiers
+  pugi::xml_document mergedModifiersDoc;
+  pugi::xml_node modifiersIncludingAncestorsElement =
+      mergedModifiersDoc.append_copy(modifiersElement);
+  if (ancestorModifiersElement) {
+    for (auto a = GFEC(ancestorModifiersElement); a; a = GNES(a)) {
+      modifiersIncludingAncestorsElement.append_copy(a);
+    }
+  }
 
   //cout<<"Bottom-"<<name<<": Modifiers after merge:"<<XMLTC(modifiersIncludingAncestorsElement)<<endl<<endl<<"============="<<endl;
 
 
 
-  DOMElement* modifierElement = modifiersIncludingAncestorsElement->GFEC();
+  pugi::xml_node modifierElement = GFEC(modifiersIncludingAncestorsElement);
   while (modifierElement!=NULL) {
 
 //    <Modifier>
@@ -1291,7 +1267,7 @@ void Bottom::applyModifiers(Sound *s, int numPartials) {
 //      <PartialResultString></PartialResultString>
 //    </Modifier>
 
-    DOMElement* arg = modifierElement->GFEC();
+    pugi::xml_node arg = GFEC(modifierElement);
     string modType;
     switch ((int)utilities->evaluate(XMLTC(arg), this)){
       case 0: modType = "TREMOLO"; break;
@@ -1304,14 +1280,14 @@ void Bottom::applyModifiers(Sound *s, int numPartials) {
       case 6: modType = "WAVE_TYPE"; break;
     }
     //cout<<"Mod Type: "<<modType<<endl;
-    arg = arg->GNES();
+    arg = GNES(arg);
     string applyHow = ((int)utilities->evaluate(XMLTC(arg), this)==0)?"SOUND":"PARTIAL";
 
-    arg = arg->GNES();
+    arg = GNES(arg);
 
     Envelope* probEnv = NULL;
-    DOMElement *ampElement,*spreadElement, *directionElement, *velocityElement, *rateElement, *widthElement, 
-    *partialResultStringElement;
+    pugi::xml_node ampElement, spreadElement, directionElement, velocityElement, rateElement, widthElement,
+                   partialResultStringElement;
     string ampStr, spreadStr, directionStr, velocityStr, rateStr, widthStr, probStr, partialResultStr;
 
     // Only evaluate the envelope if we apply by SOUND. Otherwise, may segfault on empty probability envelopes.
@@ -1320,13 +1296,13 @@ void Bottom::applyModifiers(Sound *s, int numPartials) {
       probStr = XMLTC(arg);
     }
 
-    ampElement = arg->GNES();
-    rateElement = ampElement->GNES();
-    widthElement = rateElement->GNES();
-    spreadElement = ampElement->GNES()->GNES()->GNES();
-    directionElement = spreadElement->GNES();
-    velocityElement = directionElement->GNES();
-    partialResultStringElement = velocityElement->GNES()->GNES();	
+    ampElement = GNES(arg);
+    rateElement = GNES(ampElement);
+    widthElement = GNES(rateElement);
+    spreadElement = GNES(GNES(GNES(ampElement)));
+    directionElement = GNES(spreadElement);
+    velocityElement = GNES(directionElement);
+    partialResultStringElement = GNES(GNES(velocityElement));	
     
     ampStr = XMLTC(ampElement);
     spreadStr = XMLTC(spreadElement);
@@ -1338,7 +1314,7 @@ void Bottom::applyModifiers(Sound *s, int numPartials) {
 
     // ADDED BY TEJUS
     // skip group name
-    // DOMElement* partialResultStringElement = widthElement->GNES()->GNES();
+    // pugi::xml_node partialResultStringElement = GNES(GNES(widthElement));
 
     // TEJUS 2/8
     // and apply modifiers one by one via their partial number.
@@ -1375,7 +1351,7 @@ float vel;
       }
 
       /* ZIYUAN CHEN, July 2023 - Categorizing a modifier into groups */
-      arg = velocityElement->GNES();//group name
+      arg = GNES(velocityElement);//group name
       std::stringstream ss(XMLTC(arg));
       std::string groupName;
       while (std::getline(ss, groupName, ',')) {
@@ -1388,19 +1364,13 @@ float vel;
       delete probEnv;
     }
     else if (applyHow == "PARTIAL") {
-      // See PartialWindow.cpp (and FunctionGenerator) -- same parsing used here
-      XMLPlatformUtils::Initialize();
-      XercesDOMParser* parser = new XercesDOMParser();
-      xercesc::MemBufInputSource myxml_buf  ((const XMLByte*)partialResultStr.c_str(), partialResultStr.size(),
-                                        "function (in memory)");
+      pugi::xml_document partialResultDoc;
+      partialResultDoc.load_string(partialResultStr.c_str());
+      pugi::xml_node root = partialResultDoc.document_element();
+      pugi::xml_node thisElement = GFEC(root);    //start of envelopes
+      thisElement = GNES(thisElement);    //envelopes
 
-      parser->parse(myxml_buf);
-      DOMDocument* xmlDocument = parser->getDocument();
-      DOMElement* root = xmlDocument->getDocumentElement();
-      DOMElement* thisElement = root->GFEC();    //start of envelopes
-      thisElement = thisElement->GNES();    //envelopes
-
-      DOMElement* envelopeElement = thisElement->GFEC();//first envelope
+      pugi::xml_node envelopeElement = GFEC(thisElement);//first envelope
       for (int i = 0; i <numPartials; i ++){
         // make envelopes for all the partials
         if (envelopeElement == NULL){
@@ -1416,12 +1386,12 @@ float vel;
    
       	// Make a new modifier 
       	Modifier newPartialMod(modType, probEnv, applyHow, i);
-        envelopeElement = envelopeElement->GNES();
+        envelopeElement = GNES(envelopeElement);
         ampStr = XMLTC(envelopeElement);
        // return;
-       envelopeElement = envelopeElement->GNES();
+       envelopeElement = GNES(envelopeElement);
         widthStr = XMLTC(envelopeElement);
-        envelopeElement = envelopeElement->GNES();
+        envelopeElement = GNES(envelopeElement);
         rateStr = XMLTC(envelopeElement);
         if (ampStr!="" && ampStr!="N/A"){
           Envelope* env =  (Envelope*)utilities->evaluateObject(ampStr, this, eventEnv );
@@ -1442,7 +1412,7 @@ float vel;
         
 
 	// delete probEnv;
-        arg = velocityElement->GNES();//group name
+        arg = GNES(velocityElement);//group name
         std::stringstream ss(XMLTC(arg));
         std::string groupName;
         while (std::getline(ss, groupName, ',')) {
@@ -1450,11 +1420,11 @@ float vel;
           groupName.erase(groupName.find_last_not_of(' ') + 1);
           modGroups[groupName].push_back(newPartialMod);
         }
-        envelopeElement = envelopeElement->GNES();
+        envelopeElement = GNES(envelopeElement);
       }
     }
 
-    modifierElement = modifierElement->GNES(); // go to the next MOD in the list
+    modifierElement = GNES(modifierElement); // go to the next MOD in the list
   } // end of the main while loop
 
   /* ZIYUAN CHEN, July 2023 -
@@ -1482,8 +1452,8 @@ float vel;
 
   if (targetModGroupName.find("<Fun>") != string::npos) { // evaluate if it's function string
 
-    DOMElement* modifierGroupListElement = modifierGroupElement->GFEC()->GFEC()->GNES(); // <List>
-    DOMElement* modifierGroupIndexFunElement = modifierGroupListElement->GNES(); // <Index>
+    pugi::xml_node modifierGroupListElement = GNES(GFEC(GFEC(modifierGroupElement))); // <List>
+    pugi::xml_node modifierGroupIndexFunElement = GNES(modifierGroupListElement); // <Index>
     int targetModGroupIndex = (int)utilities->evaluate(XMLTC(modifierGroupIndexFunElement), this);
 
     std::stringstream ss(XMLTC(modifierGroupListElement));
@@ -1518,21 +1488,14 @@ vector<string> Bottom::applyNoteModifiersOld() {
   cout << "Bottom::applyNoteModifiers begin" << endl;
 
 
-  DOMElement* modifiersIncludingAncestorsElement =
-			(DOMElement*) modifiersElement->cloneNode(true);
-
-  // ancestorModifiers
-  if (ancestorModifiersElement != NULL){
-      DOMElement* ancestorModifierIter = ancestorModifiersElement->GFEC();
-
-      while(ancestorModifierIter !=NULL){
-        DOMElement* cloneModifier =
-			(DOMElement*) ancestorModifierIter->cloneNode(true);
-        modifiersIncludingAncestorsElement->appendChild((DOMNode*)cloneModifier);
-        ancestorModifierIter = ancestorModifierIter->GNES();
-      }
-
-  }	// end handling ancestorModifiers
+  pugi::xml_document mergedModifiersDoc;
+  pugi::xml_node modifiersIncludingAncestorsElement =
+      mergedModifiersDoc.append_copy(modifiersElement);
+  if (ancestorModifiersElement) {
+    for (auto a = GFEC(ancestorModifiersElement); a; a = GNES(a)) {
+      modifiersIncludingAncestorsElement.append_copy(a);
+    }
+  }
 
   cout << "Bottom-"<<name<<": Modifiers after merge:"
        << XMLTC(modifiersIncludingAncestorsElement) << endl << endl
@@ -1544,9 +1507,9 @@ vector<string> Bottom::applyNoteModifiersOld() {
   list<FileValue>::iterator modIter = modList->begin();
 */
 
-  DOMElement* modifierElement = modifiersIncludingAncestorsElement->GFEC();
+  pugi::xml_node modifierElement = GFEC(modifiersIncludingAncestorsElement);
 /*
-  DOMElement* modifierElement = modifiersElement->GFEC();
+  pugi::xml_node modifierElement = GFEC(modifiersElement);
 
     cout<<"modifierElement: "<<XMLTC(modifierElement)<<endl;
    int sever;  cin >> sever;
@@ -1554,7 +1517,7 @@ vector<string> Bottom::applyNoteModifiersOld() {
 
   while (modifierElement != NULL) {
 
-    DOMElement* arg = modifierElement->GFEC();
+    pugi::xml_node arg = GFEC(modifierElement);
     string modType;
     switch ((int)utilities->evaluate(XMLTC(arg), this)){
       case 0: modType = "TREMOLO"; break;
@@ -1565,16 +1528,16 @@ vector<string> Bottom::applyNoteModifiersOld() {
     }
     //cout<<"Mod Type: "<<modType<<endl;
 
-    arg = arg->GNES();
+    arg = GNES(arg);
     string applyHow =
            ((int)utilities->evaluate(XMLTC(arg), this) == 0)? "SOUND":"PARTIAL";
 
-    arg = arg->GNES();
+    arg = GNES(arg);
     Envelope* probEnv =
 	   (Envelope*)utilities->evaluateObject(XMLTC(arg), this, eventEnv);
 
-    DOMElement* ampElement = arg->GNES();
-    DOMElement* rateElement = ampElement->GNES();
+    pugi::xml_node ampElement = GNES(arg);
+    pugi::xml_node rateElement = GNES(ampElement);
 
     string ampStr = XMLTC(ampElement);
     string rateStr = XMLTC(rateElement);
@@ -1608,7 +1571,7 @@ vector<string> Bottom::applyNoteModifiersOld() {
       }
 */
 
-    arg = rateElement->GNES();//group name (MUT_EX)
+    arg = GNES(rateElement);//group name (MUT_EX)
     string mutExGroup = XMLTC(arg);
 
     if (applyHow == "SOUND") {
@@ -1638,14 +1601,14 @@ vector<string> Bottom::applyNoteModifiersOld() {
       // mutually exclusive
       modMutEx[mutExGroup].push_back(newMod);
     }
-/*    arg = widthElement->GNES();//group name (MUT_EX)
+/*    arg = GNES(widthElement);//group name (MUT_EX)
     string mutExGroup = XMLTC(arg);
 
     modIter++; // go to the next MOD in the list
   }
 */
     delete probEnv;
-    modifierElement = modifierElement->GNES(); // go to the next MOD in the list
+    modifierElement = GNES(modifierElement); // go to the next MOD in the list
   } // end of the main while loop
 
 
@@ -1677,11 +1640,11 @@ vector<string> Bottom::applyNoteModifiersOld() {
   return modNames;
 }
 
-// int applyNoteStaffs(DOMElement* _playingMethods){
+// int applyNoteStaffs(pugi::xml_node _playingMethods){
 //   int noteStaff;
 
-//   DOMElement* noteInfo = _playingMethods->GFEC()->GNES()->GNES();
-//   DOMElement* techniqueElement = noteInfo->GFEC();
+//   pugi::xml_node noteInfo = GNES(GNES(GFEC(_playingMethods)));
+//   pugi::xml_node techniqueElement = GFEC(noteInfo);
 
 //   noteStaff = utilities->evaluate(XMLTC(techniqueElement),(void*)this);
 
@@ -1690,29 +1653,29 @@ vector<string> Bottom::applyNoteModifiersOld() {
 
 //----------------------------------------------------------------------------//
 
-vector<string> Bottom::applyNoteModifiers( DOMElement* _playingMethods) {
+vector<string> Bottom::applyNoteModifiers( pugi::xml_node _playingMethods) {
 
   vector<string> modNames;
 
-  // DOMElement* noteInfo = _playingMethods->GFEC()->GNES()->GNES();
-  // DOMElement* techniqueElement = noteInfo->GFEC()->GNES();
+  // pugi::xml_node noteInfo = GNES(GNES(GFEC(_playingMethods)));
+  // pugi::xml_node techniqueElement = GNES(GFEC(noteInfo));
 
 //  string name0 = XMLTC(techniqueElement);
 //  cout << "name0: " << name0 << endl;
 
-  // DOMElement* currentTechnique = techniqueElement->GFEC();
-  DOMElement* currentTechnique = _playingMethods->GFEC();
+  // pugi::xml_node currentTechnique = GFEC(techniqueElement);
+  pugi::xml_node currentTechnique = GFEC(_playingMethods);
 
   // do {
   //   string name = XMLTC(currentTechnique);
   //   modNames.push_back(name);
-  //   currentTechnique = currentTechnique->GNES();
+  //   currentTechnique = GNES(currentTechnique);
   // } while ( currentTechnique != NULL);
 
   while (currentTechnique != NULL) {
     string name = XMLTC(currentTechnique);
     modNames.push_back(name);
-    currentTechnique = currentTechnique->GNES();
+    currentTechnique = GNES(currentTechnique);
   }
 
   return modNames;

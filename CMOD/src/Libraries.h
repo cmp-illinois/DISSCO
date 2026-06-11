@@ -20,6 +20,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #ifndef __CMOD_LIBRARIES_H
 #define __CMOD_LIBRARIES_H
 
+/**
+ * @file Libraries.h
+ * @brief Central include hub for CMOD.
+ *
+ * Pulls in the C++ standard library headers CMOD touches, the LASS audio
+ * library (@ref LASS.h), the templated rational arithmetic
+ * (@ref Rational.h), pugixml for project parsing, and muParser for
+ * arithmetic-expression evaluation. Also declares the @ref EventType,
+ * @ref TempoPrefix, and @ref TempoNoteValue enums plus the small pugixml
+ * helpers (@ref GFEC, @ref GNES, @ref descendantByName) that emulate the
+ * Xerces "element-only" traversal CMOD originally targeted, and applies
+ * the project-wide `using namespace std`.
+ */
+
 //Several C++ standard library includes needed by CMOD
 #include <algorithm>
 #include <cerrno>
@@ -36,7 +50,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <string>
 #include <set>
 #include <vector>
-#include <pthread.h>
+#include <thread>
 
 //Pseudo-standard, but widely used headers
 #include <dirent.h>
@@ -54,21 +68,9 @@ using namespace std;
 
 
 
-// This part is for Xerces
-
-#include <xercesc/dom/DOM.hpp>
-#include <xercesc/util/PlatformUtils.hpp>
-#include <xercesc/util/XMLUni.hpp>
-#include <xercesc/dom/DOMDocument.hpp>
-#include <xercesc/dom/DOMDocumentType.hpp>
-#include <xercesc/dom/DOMElement.hpp>
-#include <xercesc/dom/DOMImplementation.hpp>
-#include <xercesc/dom/DOMImplementationLS.hpp>
-#include <xercesc/dom/DOMNodeIterator.hpp>
-#include <xercesc/dom/DOMNodeList.hpp>
-#include <xercesc/dom/DOMText.hpp>
-#include <xercesc/parsers/XercesDOMParser.hpp>
-#include <xercesc/framework/MemBufInputSource.hpp>
+// XML parsing via pugixml
+#include <pugixml.hpp>
+#include <cstring>
 #include <stdexcept>
 
 // this is the math expression parser : muparser
@@ -115,8 +117,31 @@ typedef enum {
 } TempoNoteValue;
 
 
-#define GFEC getFirstElementChild  //for easy coding
-#define GNES getNextElementSibling
+// Element-only navigation helpers for pugi::xml_node. pugixml's first_child()
+// and next_sibling() return any node type (including whitespace), so wrap them
+// to skip non-element nodes, matching Xerces' getFirstElementChild semantics.
+inline pugi::xml_node GFEC(pugi::xml_node n) {
+  auto c = n.first_child();
+  while (c && c.type() != pugi::node_element) c = c.next_sibling();
+  return c;
+}
+inline pugi::xml_node GNES(pugi::xml_node n) {
+  auto c = n.next_sibling();
+  while (c && c.type() != pugi::node_element) c = c.next_sibling();
+  return c;
+}
+
+// Recursive descendant lookup by tag name (Xerces getElementsByTagName first hit).
+inline pugi::xml_node descendantByName(pugi::xml_node root, const char* tag) {
+  if (!root) return pugi::xml_node();
+  for (auto c = root.first_child(); c; c = c.next_sibling()) {
+    if (c.type() == pugi::node_element && std::strcmp(c.name(), tag) == 0) return c;
+    auto found = descendantByName(c, tag);
+    if (found) return found;
+  }
+  return pugi::xml_node();
+}
+
 #define XMLTC Utilities::XMLTranscode
 
 #endif

@@ -73,10 +73,9 @@ MultiTrack* Spatializer::spatialize_MultiTrack(MultiTrack& t, int numTracks,
     MultiTrack* _tmp = new MultiTrack(numTracks, sampleCount, samplingRate);
     
     // superimpose each component to the output multitrack
-    Iterator<Track*> it = t.iterator();
-    while (it.hasNext())
+    for (Track* track : t)
     {
-        _tmp = spatialize_Track( *(it.next()), numTracks );
+        _tmp = spatialize_Track( *track, numTracks );
         mt->composite( *_tmp );
     }
     

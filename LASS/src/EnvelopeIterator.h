@@ -49,7 +49,7 @@ class EnvelopeIterator : public AbstractIterator<m_value_type>
     *   This is the constructor which initalizes some basic values.
     *	\param interpolators
     **/
-    EnvelopeIterator(Collection<Interpolator*> interpolators);
+    EnvelopeIterator(vector<Interpolator*> interpolators);
     
     /**
     *   This is the Destructor.
@@ -83,7 +83,7 @@ private:
     /**
     *	This is a collection that holds the interpolators for all the segments.
     **/
-    Collection<Interpolator*>* interpolators_;
+    vector<Interpolator*>* interpolators_;
 
     /**
     *	This is the current segment's index.

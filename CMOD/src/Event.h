@@ -42,8 +42,24 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
 /**
-* This class is to store the created patterns and its XML representation as key
-**/
+ * @file Event.h
+ * @brief Core Event class — the common base for every layer in a DISSCO
+ *        composition tree (top, high, mid, low, bottom).
+ *
+ * Each Event holds the metadata that is shared regardless of layer:
+ * timespan, tempo, pattern cache, the XML nodes for the sieve / spa /
+ * reverb / filter / modifier attribute blocks, and the bookkeeping needed
+ * to merge ancestor modifiers when expanding children. Layer-specific
+ * behaviour lives in subclasses (e.g. @ref Bottom).
+ */
+
+/**
+ * @brief A (key, pattern) cache entry kept on an Event.
+ *
+ * Patterns are looked up by the literal XML text that defined them; this
+ * lets the Event reuse the same Patter instance when the same pattern is
+ * referenced multiple times within a single event expansion.
+ */
 class PatternPair{
 
 protected:
@@ -59,23 +75,24 @@ public:
 
 
 /**
-* this class is used for bottom to construct its children
-**/
+ * @brief Per-child snapshot used while a Bottom event is building its notes.
+ *
+ * Bundles the XML element describing the child (either a spectrum entry, if
+ * the bottom is a Sound, or a note entry), the resolved timespan, the
+ * resolved tempo, and the child's display name / numeric type so the
+ * Bottom's expansion routines can iterate without going back to the parser.
+ */
 class SoundAndNoteWrapper{
 public:
   // this is the element of the spectrum if the bottom event is a sound
   // or of the note
-  DOMElement* element;
+  pugi::xml_node element;
   TimeSpan ts;
   string name;
   int type;
   Tempo tempo;
 
-  // multistaffs
-  // DOMElement* staffs;
-  // DOMElement* modifiers;
-
-  SoundAndNoteWrapper(DOMElement* _element, TimeSpan _ts, string _name, int _type, Tempo _tempo ):
+  SoundAndNoteWrapper(pugi::xml_node _element, TimeSpan _ts, string _name, int _type, Tempo _tempo ):
     element(_element),
     ts(_ts),
     name(_name),
@@ -85,8 +102,24 @@ public:
 
 
 /**
-*
-**/
+ * @brief Generic event in a DISSCO composition tree.
+ *
+ * Event is the shared base for every hierarchical layer in a piece:
+ * top, high, mid, low, and bottom. It carries the data common to all
+ * layers (name, integer type, timespan, tempo, pattern cache) along with
+ * the unresolved XML element handles for the attribute sub-blocks (attack
+ * sieve, duration sieve, spatialization, reverberation, filter, modifiers).
+ *
+ * Modifier inheritance is handled here too: the
+ * `modifiersIncludingAncestorsElement` is computed when an event is
+ * expanded and is then passed to each child, so a Bottom event sees the
+ * full chain of modifiers applied above it. The underlying XML document
+ * that backs the merged tree is owned by `modifiersDoc` for the Event's
+ * lifetime.
+ *
+ * Subclasses extend Event with layer-specific behaviour — most notably
+ * @ref Bottom, which produces the actual Notes and Sounds.
+ */
 class Event {
 public:
     //---------------------------- Information -------------------------------//
@@ -107,22 +140,25 @@ public:
     vector<PatternPair*> patternStorage;
 
     //Utilities needs these
-    DOMElement* AttackSieveElement;
-    DOMElement* DurationSieveElement;
+    pugi::xml_node AttackSieveElement;
+    pugi::xml_node DurationSieveElement;
 
-    DOMElement* spatializationElement;
-    DOMElement* reverberationElement;
-    DOMElement* filterElement;
-    DOMElement* modifiersElement;
+    pugi::xml_node spatializationElement;
+    pugi::xml_node reverberationElement;
+    pugi::xml_node filterElement;
+    pugi::xml_node modifiersElement;
 
     //This Element is created by the Event, not the parser. It is passed to the
     // children and needs to be deleted once the event is done.
-    DOMElement* modifiersIncludingAncestorsElement;
+    pugi::xml_node modifiersIncludingAncestorsElement;
+    // pugi handles are non-owning; the merged <Modifiers> tree lives in this
+    // document, which the Event owns for its lifetime.
+    std::unique_ptr<pugi::xml_document> modifiersDoc;
 
     // Storage for temporary parsers. For evaluating objects, XML parsers are
     // sometimes created by the utilities object. The event has the ownership
     // of these temporary parsers and is responsible to clean up.
-    vector<XercesDOMParser*> temporaryXMLParsers;
+    vector<std::unique_ptr<pugi::xml_document>> temporaryXMLDocuments;
 
 protected:
     //------------------------------ Children --------------------------------//
@@ -138,7 +174,7 @@ protected:
     //------------------------------ Building --------------------------------//
 
     //Child Event Def
-    DOMElement* childEventDefElement;
+    pugi::xml_node childEventDefElement;
 
     //Maximum allowed duration for a child
     float maxChildDur;
@@ -162,12 +198,12 @@ protected:
 
     //Names of the layers
     vector< vector<string> > layerVect;
-    vector<DOMElement*> layerElements;
+    vector<pugi::xml_node> layerElements;
 
 
     //Names of the children by type.
     vector<string> typeVect;
-    vector<DOMElement*> childTypeElements; //discretepackage
+    vector<pugi::xml_node> childTypeElements; //discretepackage
     //Number of children to create (all layers)
     int numChildren;
 
@@ -214,16 +250,16 @@ protected:
     TimeSpan tsChild;
 
     Utilities* utilities;
-    DOMElement* childStartTimeElement ;
-    DOMElement* childTypeElement;
-    DOMElement* childDurationElement;
-    DOMElement* methodFlagElement;
-    DOMElement* childStartTypeFlag;
-    DOMElement* childDurationTypeFlag;
+    pugi::xml_node childStartTimeElement ;
+    pugi::xml_node childTypeElement;
+    pugi::xml_node childDurationElement;
+    pugi::xml_node methodFlagElement;
+    pugi::xml_node childStartTypeFlag;
+    pugi::xml_node childDurationTypeFlag;
 
     // This thing sorta works, but killing a thread waiting for cin causes
     // memory leak..   -- Ming-ching May 06, 2013
-    pthread_t discreteWaitForInputIfFailedThread;
+    std::thread discreteWaitForInputIfFailedThread;
     string discreteFailedResponse;
 
 
@@ -235,15 +271,15 @@ protected:
     *
     **/
 
-    Event(DOMElement* _element,
+    Event(pugi::xml_node _element,
           TimeSpan _timeSpan,
           int _type,
           Tempo _tempo,
           Utilities* _utilities,
-          DOMElement* _ancestorSpa,
-          DOMElement* _ancestorRev,
-          DOMElement* _ancestorFil,
-          DOMElement* _ancestorModifiers);
+          pugi::xml_node _ancestorSpa,
+          pugi::xml_node _ancestorRev,
+          pugi::xml_node _ancestorFil,
+          pugi::xml_node _ancestorModifiers);
 
 
 	/**
@@ -350,7 +386,7 @@ protected:
     /**
     * gives the ownership of the temporary XML parser to the event.
     **/
-    void addTemporaryXMLParser(XercesDOMParser* _parser);
+    void addTemporaryXMLDocument(std::unique_ptr<pugi::xml_document> _doc);
 
     /**
     * gives the ownership of the pattern to the event.
@@ -411,9 +447,9 @@ protected:
     /**
     *  helper functions
     **/
-    string getTempoStringFromDOMElement(DOMElement* _element);
+    string getTempoStringFromDOMElement(pugi::xml_node _element);
 
-    string getTimeSignatureStringFromDOMElement(DOMElement* _element);
+    string getTimeSignatureStringFromDOMElement(pugi::xml_node _element);
 
     void buildMatrix(bool discrete);
     

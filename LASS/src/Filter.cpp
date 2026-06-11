@@ -31,7 +31,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //----------------------------------------------------------------------------//
 
 #include "SoundSample.h"
-#include "Collection.h"
 #include "Track.h"
 #include "MultiTrack.h"
 #include "Filter.h"
@@ -53,10 +52,9 @@ MultiTrack &Filter::do_filter_MultiTrack(MultiTrack &inWave)
 	//  reset the filter so that it can be used fresh next time
 	//  create a new track based on the returned, filtered SoundSample
 	//  add this new track to the output MultiTrack
-    Iterator<Track*> it = inWave.iterator();
-    while (it.hasNext())
+    for (Track* track : inWave)
     {
-		channel = & it.next()->getWave();
+		channel = & track->getWave();
 		newTrack = new Track(do_filter_SoundSample(channel));
 		reset();
 		newMultiTrack->add(newTrack);

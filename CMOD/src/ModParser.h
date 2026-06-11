@@ -5,6 +5,25 @@
 #include "Define.h"
 #include <map>
 
+/**
+ * @file ModParser.h
+ * @brief Expression parser for modular-arithmetic sieve definitions.
+ *
+ * Parses the small infix language used by sieve attributes — modular
+ * residue classes (`m mod n`), unions / intersections / differences /
+ * complements over those sets, and integer offsets — into a flat list of
+ * allowed integers. The supported operators have hard-coded precedence so
+ * no grammar table is needed.
+ */
+
+/**
+ * @brief Builds an integer set from a sieve expression string.
+ *
+ * Holds the parser's working state: the modulus list, the offset list,
+ * and the resolved element set after parsing. The private @ref Token
+ * helper lets operators be polymorphic across numbers and lists so future
+ * operations (e.g. offsetting a list by an integer) drop in cleanly.
+ */
 class ModParser {
   private:
     std::vector<int> _mods;

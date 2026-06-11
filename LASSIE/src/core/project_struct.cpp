@@ -15,732 +15,497 @@ in the associated window (currently, the project view).
 #include <QTextStream>
 #include <QFileInfo>
 #include <QProcess>
-// #include <QtLogging>
-#include <xercesc/dom/DOM.hpp>
-#include <xercesc/util/PlatformUtils.hpp>
-#include <xercesc/util/XMLUni.hpp>
-#include <xercesc/parsers/XercesDOMParser.hpp>
+#include <QXmlStreamReader>
+#include <QXmlStreamWriter>
+#include <sstream>
 
-namespace XercesParser {
-    using namespace xercesc;
-    inline QString getFunctionString(DOMElement* _thisFunctionElement){
-        char* charBuffer;
-
-        DOMCharacterData* textData;
-        std::string returnString;
-        DOMNode* child = _thisFunctionElement->getFirstChild();
-        if (child == NULL){ //not containing any child, return string
-            return "";
+namespace QtParser {
+    /// @brief Capture the inner content of the element currently at StartElement.
+    ///   Returns plain text for text-only elements, or serialized inner XML for
+    ///   elements containing nested children (e.g. `<Fun>...</Fun>` blocks).
+    ///   Pre: r.tokenType() == StartElement.
+    ///   Post: r.tokenType() == EndElement of the same element.
+    inline QString readInner(QXmlStreamReader& r) {
+        QString result;
+        QXmlStreamWriter w(&result);
+        bool hasChildElement = false;
+        QString textBuffer;
+        int depth = 0;
+        while (!r.atEnd()) {
+            r.readNext();
+            switch (r.tokenType()) {
+                case QXmlStreamReader::StartElement: {
+                    hasChildElement = true;
+                    w.writeStartElement(r.name().toString());
+                    const auto attrs = r.attributes();
+                    for (const auto& a : attrs)
+                        w.writeAttribute(a.name().toString(), a.value().toString());
+                    ++depth;
+                    break;
+                }
+                case QXmlStreamReader::EndElement:
+                    if (depth == 0)
+                        return hasChildElement ? result : textBuffer;
+                    w.writeEndElement();
+                    --depth;
+                    break;
+                case QXmlStreamReader::Characters:
+                    if (hasChildElement)
+                        w.writeCharacters(r.text().toString());
+                    else
+                        textBuffer += r.text().toString();
+                    break;
+                default:
+                    break;
+            }
         }
-
-        XMLCh tempStr[3] = {chLatin_L, chLatin_S, chNull};
-        DOMImplementation *impl          = DOMImplementationRegistry::getDOMImplementation(tempStr);
-        DOMLSSerializer   *theSerializer = ((DOMImplementationLS*)impl)->createLSSerializer();
-        XMLCh* bla = theSerializer->writeToString (_thisFunctionElement);
-        char* toTranscode = XMLString::transcode(bla);
-        returnString = string (toTranscode);
-        XMLString::release(&toTranscode);
-        XMLString::release(&bla);
-
-        int tagLength = (int) XMLString::stringLen(_thisFunctionElement->getTagName());
-
-        delete theSerializer;
-        returnString = returnString.substr(tagLength+2, returnString.size() - tagLength * 2 - 5);
-        return QString::fromStdString(returnString);
+        return hasChildElement ? result : textBuffer;
     }
 
-    /// @brief For use when transcoding a basic `std::string` from a `DOMElement*` and assigning it to a `QString` variable.
-    /// @param element the DOMElement to be transcoded from
-    /// @param lhs the QString to be assigned to
-    /// @note Performs the conversion from `std::string` to `QString` inside the function;
-    /// @note If the `DOMCharacterData*` from `element`'s first child is `null`, sets `lhs` to the empty string
-    inline void transcodeToQString(DOMElement *element, QString& lhs){
-        DOMCharacterData *textdata = (DOMCharacterData*)(element->getFirstChild());
-        if(textdata != nullptr){
-            char *buffer = XMLString::transcode(textdata->getData());;
-            lhs = QString::fromStdString(buffer);
-            XMLString::release(&buffer);     
-        }else{
-            lhs = "";
-        }
+    /// @brief Advance to the next child StartElement and return its inner content.
+    ///   Returns an empty QString if no further child element exists in the
+    ///   current scope (and leaves r at the parent EndElement).
+    inline QString nextChildInner(QXmlStreamReader& r) {
+        if (!r.readNextStartElement()) return QString();
+        return readInner(r);
     }
 
-    /// @brief Parse a `DOMElement` corresponding to a discrete package and return a corresponding `Package`
-    /// @param package_el the `DOMElement` pointing to the opening tag for the <Package/> attribute
-    /// @return the `Package` variable parsed from `package_el`
-    inline Package parseForPackage(DOMElement *package_el){
+    /// @brief Consume any remaining children of the element currently being read,
+    ///   advancing to its EndElement.
+    inline void consumeRest(QXmlStreamReader& r) {
+        while (r.readNextStartElement()) r.skipCurrentElement();
+    }
+
+    inline Package parsePackage(QXmlStreamReader& r) {
+        // r at <Package> StartElement; consumes through </Package>.
         Package package;
-        DOMElement *name_el = package_el->getFirstElementChild();
-        transcodeToQString(name_el, package.event_name);
-
-        DOMElement *type_el = name_el->getNextElementSibling();
-        transcodeToQString(type_el, package.event_type);
-        // convert (bad) non-numeric values to their enum value equivalent
-        bool ok;
-        int type_val = package.event_type.toInt(&ok); 
-        if(!ok)
+        package.event_name           = nextChildInner(r);
+        package.event_type           = nextChildInner(r);
+        bool ok = false;
+        package.event_type.toInt(&ok);
+        if (!ok)
             package.event_type = displayStringToEventtypeString(package.event_type);
-
-        DOMElement *weight_el = type_el->getNextElementSibling();
-        transcodeToQString(weight_el, package.weight);
-
-        DOMElement *attackenv_el = weight_el->getNextElementSibling();
-        transcodeToQString(attackenv_el, package.attack_envelope);
-
-        DOMElement *attackenvscale_el = attackenv_el->getNextElementSibling();
-        transcodeToQString(attackenvscale_el, package.attackenvelope_scale);
-
-        DOMElement *durationenv_el = attackenvscale_el->getNextElementSibling();
-        transcodeToQString(durationenv_el, package.duration_envelope);
-
-        DOMElement *durationenvscale_el = durationenv_el->getNextElementSibling();
-        transcodeToQString(durationenvscale_el, package.durationenvelope_scale);    
-
+        package.weight               = nextChildInner(r);
+        package.attack_envelope      = nextChildInner(r);
+        package.attackenvelope_scale = nextChildInner(r);
+        package.duration_envelope    = nextChildInner(r);
+        package.durationenvelope_scale = nextChildInner(r);
+        consumeRest(r);
         return package;
     }
 
-    Layer parseForLayer(DOMElement *layer_el){
-        Layer layer; 
-        DOMElement *bylayer_el = layer_el->getFirstElementChild();
-        layer.by_layer = getFunctionString(bylayer_el);
-
-        DOMElement *package_el = bylayer_el->getNextElementSibling();
-        if(package_el != nullptr){
-            package_el = package_el->getFirstElementChild();
-            while(package_el != nullptr){
-                Package package = parseForPackage(package_el);
-                layer.discrete_packages.append(package);
-                package_el = package_el->getNextElementSibling();
-            }
+    inline Layer parseLayer(QXmlStreamReader& r) {
+        // r at <Layer>; first child is <ByLayer>, second is <DiscretePackages>.
+        Layer layer;
+        if (r.readNextStartElement()) // <ByLayer>
+            layer.by_layer = readInner(r);
+        if (r.readNextStartElement()) { // <DiscretePackages>
+            while (r.readNextStartElement())
+                layer.discrete_packages.append(parsePackage(r));
         }
+        consumeRest(r);
         return layer;
     }
 
-    DOMElement* parseHEvent(DOMElement *eventtype_el, HEvent& event){
-        DOMElement *name_el = eventtype_el->getNextElementSibling();
-        transcodeToQString(name_el, event.name);
-
-        DOMElement *maxchilddur_el = name_el->getNextElementSibling();
-        event.max_child_duration = getFunctionString(maxchilddur_el);
-
-        DOMElement *eduperbeat_el = maxchilddur_el->getNextElementSibling();
-        event.edu_perbeat = getFunctionString(eduperbeat_el);
-
-        DOMElement *timesig_el = eduperbeat_el->getNextElementSibling();
-        DOMElement *barval_el = timesig_el->getFirstElementChild();
-        event.timesig.bar_value = getFunctionString(barval_el);
-
-        DOMElement *noteval_el = barval_el->getNextElementSibling();
-        event.timesig.note_value = getFunctionString(noteval_el);
-
-        DOMElement *tempo_el = timesig_el->getNextElementSibling();
-        DOMElement *tempomethodflag_el = tempo_el->getFirstElementChild();
-        event.tempo.method_flag = getFunctionString(tempomethodflag_el).toUInt();
-
-        DOMElement *tempoprefix_el = tempomethodflag_el->getNextElementSibling();
-        event.tempo.prefix = getFunctionString(tempoprefix_el);
-
-        DOMElement *temponoteval_el = tempoprefix_el->getNextElementSibling();
-        event.tempo.note_value = getFunctionString(temponoteval_el);
-
-        DOMElement *tempofrentry1_el = temponoteval_el->getNextElementSibling();
-        event.tempo.frentry_1 = getFunctionString(tempofrentry1_el);
-
-        DOMElement *tempofrentry2_el = tempofrentry1_el->getNextElementSibling();
-        event.tempo.frentry_2 = getFunctionString(tempofrentry2_el);
-
-        DOMElement *tempovalue_el = tempofrentry2_el->getNextElementSibling();
-        event.tempo.valentry = getFunctionString(tempovalue_el);
-
-        DOMElement *numchildren_el = tempo_el->getNextElementSibling();
-        DOMElement *numchildrenmethodflag_el = numchildren_el->getFirstElementChild();
-        event.numchildren.method_flag = getFunctionString(numchildrenmethodflag_el).toUInt();
-
-        DOMElement *curr = numchildrenmethodflag_el->getNextElementSibling();
-        event.numchildren.entry_1 = getFunctionString(curr);
-
-        curr = curr->getNextElementSibling();
-        event.numchildren.entry_2 = getFunctionString(curr);
-
-        curr = curr->getNextElementSibling();
-        event.numchildren.entry_3 = getFunctionString(curr);
-
-        DOMElement *childdef_el = numchildren_el->getNextElementSibling();
-        curr = childdef_el->getFirstElementChild();
-        event.child_event_def.entry_1 = getFunctionString(curr);
-         
-        curr = curr->getNextElementSibling();
-        event.child_event_def.entry_2 = getFunctionString(curr);
-
-        curr = curr->getNextElementSibling();
-        event.child_event_def.entry_3 = getFunctionString(curr);
-
-        curr = curr->getNextElementSibling();
-        event.child_event_def.attack_sieve = getFunctionString(curr);
-
-        curr = curr->getNextElementSibling();
-        event.child_event_def.duration_sieve = getFunctionString(curr);
-
-        curr = curr->getNextElementSibling();
-        event.child_event_def.definition_flag = getFunctionString(curr).toUInt();
-
-        curr = curr->getNextElementSibling();
-        event.child_event_def.starttype_flag = getFunctionString(curr).toUInt();
-
-        curr = curr->getNextElementSibling();
-        event.child_event_def.durationtype_flag = getFunctionString(curr).toUInt();
-
-        DOMElement *layers_el = childdef_el->getNextElementSibling();
-        DOMElement *layer_el = layers_el->getFirstElementChild();
-        while(layer_el != nullptr){
-            Layer layer = parseForLayer(layer_el);
-            event.event_layers.append(layer);
-            layer_el = layer_el->getNextElementSibling();
-        }
-        
-        DOMElement *spa_el = layers_el->getNextElementSibling();
-        event.spa = getFunctionString(spa_el);
-        DOMElement *reverb_el = spa_el->getNextElementSibling();
-        event.reverb = getFunctionString(reverb_el);
-        DOMElement *filter_el = reverb_el->getNextElementSibling();
-        event.filter = getFunctionString(filter_el);
-
-        return filter_el;
-    }
-
-    Modifier parseForModifier(DOMElement *modifier_el){
+    inline Modifier parseModifier(QXmlStreamReader& r) {
         Modifier modifier;
-        DOMElement *type_el = modifier_el->getFirstElementChild();
-        modifier.type = getFunctionString(type_el).toUInt();
-
-        DOMElement *applyhow_el = type_el->getNextElementSibling();
-        modifier.applyhow_flag = (getFunctionString(applyhow_el) == "0");
-
-        DOMElement *probability_el = applyhow_el->getNextElementSibling();
-        modifier.probability = getFunctionString(probability_el);
-
-        DOMElement *amplitude_el = probability_el->getNextElementSibling();
-        modifier.amplitude = getFunctionString(amplitude_el);
-
-        DOMElement *rate_el = amplitude_el->getNextElementSibling();
-        modifier.rate = getFunctionString(rate_el);
-
-        DOMElement *width_el = rate_el->getNextElementSibling();
-        modifier.width = getFunctionString(width_el);
-
-        DOMElement *detune_spread_el = width_el->getNextElementSibling();
-        modifier.detune_spread = getFunctionString(detune_spread_el);
-
-        DOMElement *detune_direction_el = detune_spread_el->getNextElementSibling();
-        modifier.detune_direction = getFunctionString(detune_direction_el);
-
-        DOMElement *detune_velocity_el = detune_direction_el->getNextElementSibling();
-        modifier.detune_velocity = getFunctionString(detune_velocity_el);
-
-        DOMElement *group_name_el = detune_velocity_el->getNextElementSibling();
-        modifier.group_name = getFunctionString(group_name_el);
-        // qDebug() << "SHOWING modifier.group_name: " << modifier.group_name;
-
-        DOMElement *partialresultstring_el = group_name_el->getNextElementSibling();
-        modifier.partialresult_string = getFunctionString(partialresultstring_el);
-        // qDebug() << "SHOWING modifier.partialresult_string: " << modifier.partialresult_string;
-
+        modifier.type                  = nextChildInner(r).toUInt();
+        modifier.applyhow_flag         = (nextChildInner(r) == "0");
+        modifier.probability           = nextChildInner(r);
+        modifier.amplitude             = nextChildInner(r);
+        modifier.rate                  = nextChildInner(r);
+        modifier.width                 = nextChildInner(r);
+        modifier.detune_spread         = nextChildInner(r);
+        modifier.detune_direction      = nextChildInner(r);
+        modifier.detune_velocity       = nextChildInner(r);
+        modifier.group_name            = nextChildInner(r);
+        modifier.partialresult_string  = nextChildInner(r);
+        consumeRest(r);
         return modifier;
     }
 
-    void parseEndOfHEvent(DOMElement *filter_el, HEvent& event){
-        DOMElement *modifiers_el = filter_el->getNextElementSibling();
-        DOMElement *modifier_el = modifiers_el->getFirstElementChild();
-        while(modifier_el != nullptr){
-            event.modifiers.append(parseForModifier(modifier_el));
-            modifier_el = modifier_el->getNextElementSibling();
+    inline void parseTimeSig(QXmlStreamReader& r, TimeSignature& ts) {
+        ts.bar_value  = nextChildInner(r);
+        ts.note_value = nextChildInner(r);
+        consumeRest(r);
+    }
+
+    inline void parseTempo(QXmlStreamReader& r, Tempo& t) {
+        t.method_flag = nextChildInner(r).toUInt();
+        t.prefix      = nextChildInner(r);
+        t.note_value  = nextChildInner(r);
+        t.frentry_1   = nextChildInner(r);
+        t.frentry_2   = nextChildInner(r);
+        t.valentry    = nextChildInner(r);
+        consumeRest(r);
+    }
+
+    inline void parseNumChildren(QXmlStreamReader& r, NumChildren& n) {
+        n.method_flag = nextChildInner(r).toUInt();
+        n.entry_1     = nextChildInner(r);
+        n.entry_2     = nextChildInner(r);
+        n.entry_3     = nextChildInner(r);
+        consumeRest(r);
+    }
+
+    inline void parseChildEventDef(QXmlStreamReader& r, ChildDef& c) {
+        c.entry_1            = nextChildInner(r);
+        c.entry_2            = nextChildInner(r);
+        c.entry_3            = nextChildInner(r);
+        c.attack_sieve       = nextChildInner(r);
+        c.duration_sieve     = nextChildInner(r);
+        c.definition_flag    = nextChildInner(r).toUInt();
+        c.starttype_flag     = nextChildInner(r).toUInt();
+        c.durationtype_flag  = nextChildInner(r).toUInt();
+        consumeRest(r);
+    }
+
+    inline void parseModifiers(QXmlStreamReader& r, QList<Modifier>& out) {
+        while (r.readNextStartElement())
+            out.append(parseModifier(r));
+    }
+
+    /// @brief Parse the shared "HEvent core" children of `<Event>`: from `<EventName>`
+    ///   through `<Filter>`. The `<EventType>` child must already have been consumed
+    ///   by the caller. Stops at `<Filter>` so callers can read the differing
+    ///   trailing siblings (HEvent: `<Modifiers>`; BottomEvent: `<ExtraInfo>`).
+    inline void parseHEventCore(QXmlStreamReader& r, HEvent& event) {
+        event.name              = nextChildInner(r);   // <Name>
+        event.max_child_duration = nextChildInner(r);  // <MaxChildDuration>
+        event.edu_perbeat       = nextChildInner(r);   // <EDUPerBeat>
+
+        if (r.readNextStartElement()) parseTimeSig(r, event.timesig);
+        if (r.readNextStartElement()) parseTempo(r, event.tempo);
+        if (r.readNextStartElement()) parseNumChildren(r, event.numchildren);
+        if (r.readNextStartElement()) parseChildEventDef(r, event.child_event_def);
+
+        if (r.readNextStartElement()) { // <Layers>
+            while (r.readNextStartElement())
+                event.event_layers.append(parseLayer(r));
         }
+
+        event.spa    = nextChildInner(r); // <Spatialization>
+        event.reverb = nextChildInner(r); // <Reverb>
+        event.filter = nextChildInner(r); // <Filter>
     }
 
-    /// @brief Parses <ExtraInfo/> for `ExtraInfo` struct; does _not_ set childtype_flag.
-    /// @param extrainfo_el `DOMElement*` for <ExtraInfo/>
-    /// @return resulting `ExtraInfo`
-    ExtraInfo parseExtraInfo(DOMElement *extrainfo_el){
-        ExtraInfo extrainfo;
-        DOMElement *freqinfo_el = extrainfo_el->getFirstElementChild();
-        DOMElement *freqflag_el = freqinfo_el->getFirstElementChild();
-        extrainfo.freq_info.freq_flag = getFunctionString(freqflag_el).toUInt();
+    inline void parseHEventChildren(QXmlStreamReader& r, HEvent& event) {
+        parseHEventCore(r, event);
+        if (r.readNextStartElement()) // <Modifiers>
+            parseModifiers(r, event.modifiers);
+        consumeRest(r);
+    }
 
-        DOMElement *freqcontflag_el = freqflag_el->getNextElementSibling();
-        extrainfo.freq_info.continuum_flag = getFunctionString(freqcontflag_el).toUInt();
-
-        DOMElement *freqentry1_el = freqcontflag_el->getNextElementSibling();
-        extrainfo.freq_info.entry_1 = getFunctionString(freqentry1_el);
-
-        DOMElement *freqentry2_el = freqentry1_el->getNextElementSibling();
-        extrainfo.freq_info.entry_2 = getFunctionString(freqentry2_el);
-        
-        DOMElement *loudness_el = freqinfo_el->getNextElementSibling();
-        extrainfo.loudness = getFunctionString(loudness_el);
-
-        DOMElement *spa_el = loudness_el->getNextElementSibling();
-        extrainfo.spa = getFunctionString(spa_el);
-
-        DOMElement *reverb_el = spa_el->getNextElementSibling();
-        extrainfo.reverb = getFunctionString(reverb_el);
-
-        DOMElement *filter_el = reverb_el->getNextElementSibling();
-        extrainfo.filter = getFunctionString(filter_el);
-
-        DOMElement *modifiergroup_el = filter_el->getNextElementSibling();
-        extrainfo.modifier_group = getFunctionString(modifiergroup_el);
-
-        DOMElement *modifiers_el = modifiergroup_el->getNextElementSibling();
-        DOMElement *modifier_el = modifiers_el->getFirstElementChild();
-        while(modifier_el != nullptr){
-            extrainfo.modifiers.append(parseForModifier(modifier_el));
-            modifier_el = modifier_el->getNextElementSibling();
+    inline void parseExtraInfo(QXmlStreamReader& r, ExtraInfo& info) {
+        if (r.readNextStartElement()) { // <FreqInfo>
+            info.freq_info.freq_flag      = nextChildInner(r).toUInt();
+            info.freq_info.continuum_flag = nextChildInner(r).toUInt();
+            info.freq_info.entry_1        = nextChildInner(r);
+            info.freq_info.entry_2        = nextChildInner(r);
+            consumeRest(r);
         }
-        
-        return extrainfo;
+        info.loudness        = nextChildInner(r);
+        info.spa             = nextChildInner(r);
+        info.reverb          = nextChildInner(r);
+        info.filter          = nextChildInner(r);
+        info.modifier_group  = nextChildInner(r);
+        if (r.readNextStartElement()) // <Modifiers>
+            parseModifiers(r, info.modifiers);
+        consumeRest(r);
     }
 
-    void parseEndOfBottomEvent(DOMElement *filter_el, BottomEvent& bottom_event){
-        DOMElement *extrainfo_el = filter_el->getNextElementSibling();
-        bottom_event.extra_info = parseExtraInfo(extrainfo_el);
+    inline void parseBottomEventChildren(QXmlStreamReader& r, BottomEvent& bev) {
+        parseHEventCore(r, bev.event);
+        if (r.readNextStartElement()) // <ExtraInfo>
+            parseExtraInfo(r, bev.extra_info);
+        consumeRest(r);
 
-        QString prefix = bottom_event.event.name[0];
-        unsigned childtype_flag;
-        if(prefix=="s")
-            childtype_flag = 0;
-        else if(prefix=="n")
-            childtype_flag = 1;
-        else
-            childtype_flag = 2;
-        
-        bottom_event.extra_info.childtype_flag = childtype_flag;
+        QString prefix = bev.event.name.isEmpty() ? QString() : QString(bev.event.name[0]);
+        if (prefix == "s")      bev.extra_info.childtype_flag = 0;
+        else if (prefix == "n") bev.extra_info.childtype_flag = 1;
+        else                    bev.extra_info.childtype_flag = 2;
     }
 
-    Spectrum parseForSpectrum(DOMElement *spectrum_el) {
+    inline Spectrum parseSpectrum(QXmlStreamReader& r) {
         Spectrum spectrum;
-        DOMElement *partial_el = spectrum_el->getFirstElementChild();
-        while (partial_el) {
-            spectrum.partials.append(getFunctionString(partial_el));
-            partial_el = partial_el->getNextElementSibling();
-        }
-        if (spectrum.partials.size() > 1 && spectrum.partials[0] == "") {
+        while (r.readNextStartElement())
+            spectrum.partials.append(readInner(r));
+        if (spectrum.partials.size() > 1 && spectrum.partials[0] == "")
             spectrum.partials.removeFirst();
-        }
         return spectrum;
     }
 
-    void parseSpectrumEvent(DOMElement *orderinpalette_el, SpectrumEvent& event) {
-        DOMElement *child = orderinpalette_el->getNextElementSibling();
-        event.name = getFunctionString(child);
-
-        child = child->getNextElementSibling();
-        event.num_partials = getFunctionString(child);
-
-        child = child->getNextElementSibling();
-        event.deviation = getFunctionString(child);
-
-        child = child->getNextElementSibling();
-        event.generate_spectrum = getFunctionString(child);
-
-        child = child->getNextElementSibling();
-        event.spectrum = parseForSpectrum(child);
+    inline void parseSpectrumEventChildren(QXmlStreamReader& r, SpectrumEvent& event) {
+        event.name              = nextChildInner(r);
+        event.num_partials      = nextChildInner(r);
+        event.deviation         = nextChildInner(r);
+        event.generate_spectrum = nextChildInner(r);
+        if (r.readNextStartElement())
+            event.spectrum = parseSpectrum(r);
+        consumeRest(r);
     }
 
-    NoteInfo parseForNoteInfo(DOMElement *noteinfo_el) {
+    inline NoteInfo parseNoteInfo(QXmlStreamReader& r) {
         NoteInfo ni;
-        DOMElement *staffs_el = noteinfo_el->getFirstElementChild();
-        ni.staffs = getFunctionString(staffs_el);
-
-        DOMElement *modifiers_el = staffs_el->getNextElementSibling();
-        DOMElement *modifier_el = modifiers_el->getFirstElementChild();
-        while(modifier_el != nullptr){
-            ni.modifiers.append(getFunctionString(modifier_el));
-            modifier_el = modifier_el->getNextElementSibling();
+        ni.staffs = nextChildInner(r);
+        if (r.readNextStartElement()) { // <Modifiers>
+            while (r.readNextStartElement())
+                ni.modifiers.append(readInner(r));
         }
-
+        consumeRest(r);
         return ni;
     }
 
-    void parseNoteEvent(DOMElement *event_el, NoteEvent& event) {
-        DOMElement *child = event_el->getNextElementSibling();
-        event.name = getFunctionString(child);
-
-        child = child->getNextElementSibling();
-        event.note_info = parseForNoteInfo(child);
+    inline void parseNoteEventChildren(QXmlStreamReader& r, NoteEvent& event) {
+        event.name = nextChildInner(r);
+        if (r.readNextStartElement())
+            event.note_info = parseNoteInfo(r);
+        consumeRest(r);
     }
 
-    void parseEnvelopeEvent(DOMElement* event_el, EnvelopeEvent& ev) {
-        DOMElement *child = event_el->getNextElementSibling();
-        ev.name = getFunctionString(child);
-
-        child = child->getNextElementSibling();
-        ev.envelope_builder = getFunctionString(child);
-    }
-
-    void parseSieveEvent(DOMElement* event_el, SieveEvent& ev) {
-        DOMElement *child = event_el->getNextElementSibling();
-        ev.name = getFunctionString(child);
-
-        child = child->getNextElementSibling();
-        ev.sieve_builder = getFunctionString(child);
-    }
-
-    void parseSpaEvent(DOMElement* event_el, SpaEvent& ev) {
-        DOMElement *child = event_el->getNextElementSibling();
-        ev.name = getFunctionString(child);
-
-        child = child->getNextElementSibling();
-        ev.spatialization = getFunctionString(child);
-    }
-
-    void parsePatternEvent(DOMElement* event_el, PatternEvent& ev) {
-        DOMElement *child = event_el->getNextElementSibling();
-        ev.name = getFunctionString(child);
-
-        child = child->getNextElementSibling();
-        ev.pattern_builder = getFunctionString(child);
-    }
-
-    void parseReverbEvent(DOMElement* event_el, ReverbEvent& ev) {
-        DOMElement *child = event_el->getNextElementSibling();
-        ev.name = getFunctionString(child);
-
-        child = child->getNextElementSibling();
-        ev.reverberation = getFunctionString(child);
-    }
-
-    void parseFilterEvent(DOMElement* event_el, FilterEvent& ev) {
-        DOMElement *child = event_el->getNextElementSibling();
-        ev.name = getFunctionString(child);
-
-        child = child->getNextElementSibling();
-        ev.filter_builder = getFunctionString(child);
-    }
 }
 
-void Project::parseEvent(xercesc::DOMElement *event_start){
-    using namespace xercesc;
-    XMLCh *xmldata = XMLString::transcode("orderInPalette");
-    std::string orderinpalette = XMLString::transcode(event_start->getAttribute(xmldata));
-    XMLString::release(&xmldata);
+void Project::parseEvent(QXmlStreamReader& r) {
+    // r at <Event> StartElement (with orderInPalette attribute).
+    QString orderinpalette = r.attributes().value("orderInPalette").toString();
 
-    DOMElement *eventtype_el = event_start->getFirstElementChild();
-    DOMCharacterData* textdata = (DOMCharacterData*)eventtype_el->getFirstChild();
-    char* buffer = XMLString::transcode(textdata->getData());
-    Eventtype type = (Eventtype)std::stoi(buffer);
-    XMLString::release(&buffer);
+    // First child is <EventType>, whose text content is the integer type.
+    if (!r.readNextStartElement()) { r.skipCurrentElement(); return; }
+    int typeInt = QtParser::readInner(r).toInt();
+    Eventtype type = (Eventtype)typeInt;
 
-    switch(type){
+    switch (type) {
         case top:
         case high:
         case mid:
         case low: {
             HEvent eh;
-            eh.orderinpalette = QString::fromStdString(orderinpalette);
+            eh.orderinpalette = orderinpalette;
             eh.type = type;
-            DOMElement *filter_el = XercesParser::parseHEvent(eventtype_el, eh);
-            XercesParser::parseEndOfHEvent(filter_el, eh);
+            QtParser::parseHEventChildren(r, eh);
             qDebug() << "parsed" << eh.type << "event named" << eh.name;
-            switch(type){
-                case top: 
-                    top_event = eh;
-                    // qDebug() << "--- TOP EVENT ---";
-                    // qDebug() << "name: " << top_event.name;
-                    // qDebug() << "mcd: " << top_event.max_child_duration;
-                    // qDebug() << "edu_per_beat: " << top_event.edu_perbeat;
-                    break;
-                case high:
-                    high_events.append(eh);
-                    break;
-                case mid:
-                    mid_events.append(eh);
-                    break;
-                case low:
-                    low_events.append(eh);
-                    break;
+            switch (type) {
+                case top:   top_event = eh; break;
+                case high:  high_events.append(eh); break;
+                case mid:   mid_events.append(eh); break;
+                case low:   low_events.append(eh); break;
+                default: break;
             }
             break;
         }
         case bottom: {
             BottomEvent eb;
-            eb.event.orderinpalette = QString::fromStdString(orderinpalette);
+            eb.event.orderinpalette = orderinpalette;
             eb.event.type = type;
-            DOMElement *filter_el = XercesParser::parseHEvent(eventtype_el, eb.event);
-            XercesParser::parseEndOfBottomEvent(filter_el, eb);
+            QtParser::parseBottomEventChildren(r, eb);
             qDebug() << "parsed Bottom event named" << eb.event.name;
             bottom_events.append(eb);
             break;
         }
         case sound: {
             SpectrumEvent espec;
-            espec.orderinpalette = QString::fromStdString(orderinpalette);
-            XercesParser::parseSpectrumEvent(eventtype_el, espec);
+            espec.orderinpalette = orderinpalette;
+            QtParser::parseSpectrumEventChildren(r, espec);
             qDebug() << "parsed Spectrum event named" << espec.name;
             spectrum_events.append(espec);
             break;
         }
         case note: {
             NoteEvent en;
-            en.orderinpalette = QString::fromStdString(orderinpalette);
-            XercesParser::parseNoteEvent(eventtype_el, en);
+            en.orderinpalette = orderinpalette;
+            QtParser::parseNoteEventChildren(r, en);
             qDebug() << "parsed Note event named " << en.name;
             note_events.append(en);
             break;
         }
         case env: {
             EnvelopeEvent ee;
-            ee.orderinpalette = QString::fromStdString(orderinpalette);
-            XercesParser::parseEnvelopeEvent(eventtype_el, ee);
+            ee.orderinpalette = orderinpalette;
+            ee.name             = QtParser::nextChildInner(r);
+            ee.envelope_builder = QtParser::nextChildInner(r);
+            QtParser::consumeRest(r);
             qDebug() << "parsed Envelope event named" << ee.name;
             envelope_events.append(ee);
             break;
         }
         case sieve: {
             SieveEvent esi;
-            esi.orderinpalette = QString::fromStdString(orderinpalette);
-            XercesParser::parseSieveEvent(eventtype_el, esi);
+            esi.orderinpalette = orderinpalette;
+            esi.name          = QtParser::nextChildInner(r);
+            esi.sieve_builder = QtParser::nextChildInner(r);
+            QtParser::consumeRest(r);
             qDebug() << "parsed Sieve event named" << esi.name;
             sieve_events.append(esi);
             break;
         }
         case spa: {
             SpaEvent espa;
-            espa.orderinpalette = QString::fromStdString(orderinpalette);
-            XercesParser::parseSpaEvent(eventtype_el, espa);
+            espa.orderinpalette = orderinpalette;
+            espa.name           = QtParser::nextChildInner(r);
+            espa.spatialization = QtParser::nextChildInner(r);
+            QtParser::consumeRest(r);
             qDebug() << "parsed Spa event named" << espa.name;
             spa_events.append(espa);
             break;
         }
         case pattern: {
             PatternEvent ep;
-            ep.orderinpalette = QString::fromStdString(orderinpalette);
-            XercesParser::parsePatternEvent(eventtype_el, ep);
+            ep.orderinpalette = orderinpalette;
+            ep.name            = QtParser::nextChildInner(r);
+            ep.pattern_builder = QtParser::nextChildInner(r);
+            QtParser::consumeRest(r);
             qDebug() << "parsed Pattern event named" << ep.name;
             pattern_events.append(ep);
             break;
         }
         case reverb: {
             ReverbEvent er;
-            er.orderinpalette = QString::fromStdString(orderinpalette);
-            XercesParser::parseReverbEvent(eventtype_el, er);
+            er.orderinpalette = orderinpalette;
+            er.name          = QtParser::nextChildInner(r);
+            er.reverberation = QtParser::nextChildInner(r);
+            QtParser::consumeRest(r);
             qDebug() << "parsed Reverb event named" << er.name;
             reverb_events.append(er);
             break;
         }
         case filter: {
             FilterEvent ef;
-            ef.orderinpalette = QString::fromStdString(orderinpalette);
-            XercesParser::parseFilterEvent(eventtype_el, ef);
+            ef.orderinpalette = orderinpalette;
+            ef.name           = QtParser::nextChildInner(r);
+            ef.filter_builder = QtParser::nextChildInner(r);
+            QtParser::consumeRest(r);
             qDebug() << "parsed Filter event named" << ef.name;
             filter_events.append(ef);
             break;
         }
         default:
             qDebug() << "ERROR: parsing event gave event type outside defined types";
+            r.skipCurrentElement();
     }
 }
 
-void ProjectManager::parse(Project *p, const QString& filepath){
-    using namespace xercesc;
-    XMLPlatformUtils::Initialize();
-    XercesDOMParser* parser = new XercesDOMParser();
-
-    std::string file_name = filepath.toStdString();
-    parser->parse(file_name.c_str());
-    DOMDocument *document = parser->getDocument();
-    DOMElement *root = document->getDocumentElement();
-
-    char *buffer;
-    DOMCharacterData *char_data;
-
-    //Configurations
-    DOMElement* configuration = root->getFirstElementChild();
-    p->config_el = configuration;
-
-    //fileFlag
-    DOMElement* element = configuration->getFirstElementChild();
-    element = element->getNextElementSibling(); // skip Title attribute
-    p->file_flag = XercesParser::getFunctionString(element);
-
-    // topEvent
-    element = element->getNextElementSibling(); //skipped, always = "0"
-    p->top_event.name = "0";
-
-    // pieceStartTime
-    element = element->getNextElementSibling();
-    p->start_time = XercesParser::getFunctionString(element);
-
-    //duration
-    element = element->getNextElementSibling();
-    p->duration = XercesParser::getFunctionString(element);
-
-    //synthesis
-    element = element->getNextElementSibling();
-    qDebug() << "Synthesis: " << element->getTagName();
-
-    if(XercesParser::getFunctionString(element) == "True")
-        p->synthesis = true;
-    else
-        p->synthesis = false;
-
-    //score
-    element = element->getNextElementSibling();
-    if(XercesParser::getFunctionString(element) == "True")
-        p->score = true;
-    else
-        p->score = false;
-
-    //grandstaff
-    element = element->getNextElementSibling();
-    qDebug() << "Grandstaff: " << element->getTagName();
-    if(XercesParser::getFunctionString(element) == "True")
-        p->grand_staff = true;
-    else
-        p->grand_staff = false;
-
-    //numOfStaff
-    element = element->getNextElementSibling();
-    p->num_staffs = XercesParser::getFunctionString(element);
-
-    //numOfChannels
-    element = element->getNextElementSibling();
-    p->num_channels = XercesParser::getFunctionString(element);
-
-    //sampleRate
-    element = element->getNextElementSibling();
-    p->sample_rate = XercesParser::getFunctionString(element);
-
-    //sampleSize
-    element = element->getNextElementSibling();
-    p->sample_size = XercesParser::getFunctionString(element);
-
-    //numOfThreads
-    element = element->getNextElementSibling();
-    p->num_threads = XercesParser::getFunctionString(element);
-
-    // Output Particel
-    element = element->getNextElementSibling();
-    if(element != nullptr /* why this nullptr check? -6/23/25 */ && XercesParser::getFunctionString(element) == "True")
-        p->output_particel = true;
-    else
-        p->output_particel = false;
-    
-    DOMElement* noteModifiers = configuration->getNextElementSibling();
-    element = noteModifiers->getFirstElementChild(); //default modifiers
-    char_data = ( DOMCharacterData*) element->getFirstChild();
-    buffer = XMLString::transcode(char_data->getData());
-
-    // auto modifierMapIter = p->default_note_modifiers.begin();
-    // int index = 0;
-    // for(auto modifierMapIter = p->default_note_modifiers.begin(); modifierMapIter != p->default_note_modifiers.end(); ++modifierMapIter){
-    //     modifierMapIter.value() = true;
-    // //    (*modifierMapIter).second = (charBuffer[index]=='1')?true:false;
-    //     index = index + 3;
-    // }
-    XMLString::release(&buffer);
-
-    element = element->getNextElementSibling(); //custom modifiers
-    DOMElement* modifier = element->getFirstElementChild();
-
-    while (modifier != NULL){
-        char_data = (DOMCharacterData*)modifier->getFirstChild();
-        buffer = XMLString::transcode(char_data->getData());
-        p->custom_note_modifiers.append(QString::fromStdString(string(buffer)));
-        XMLString::release(&buffer);
-        modifier = modifier->getNextElementSibling();
+void ProjectManager::parse(Project* p, const QString& filepath) {
+    QFile file(filepath);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "ERROR: cannot open" << filepath;
+        return;
     }
-    qDebug() << "Passed modifiers";
+    QXmlStreamReader r(&file);
 
-    DOMElement *envlibelement = noteModifiers->getNextElementSibling();
-    char_data = (DOMCharacterData*) envlibelement->getFirstChild();
+    if (!r.readNextStartElement()) return; // <DISSCO> root
 
-    EnvelopeLibrary* envelopeLibrary = new EnvelopeLibrary();
-    if(char_data != nullptr){
-        buffer = XMLString::transcode(char_data->getData());
-        std::string fileString = file_name + ".lib.temp"; /* the conversion from char* to QString is MUCH better than the other way around */
-        QFile file(QString::fromStdString(fileString));
-        if(!file.open(QIODevice::WriteOnly | QIODevice::Text))
-            return;
-            
-        QTextStream out(&file);
-        out << buffer;
-        XMLString::release(&buffer);
-        file.close();
+    while (r.readNextStartElement()) {
+        const QString elName = r.name().toString();
 
-        envelopeLibrary->loadLibraryNewFormat((char*)fileString.c_str());
-        QString deleteCommand = "rm " + QString::fromStdString(fileString);
-        QProcess::execute(deleteCommand);
-    }
-
-    /// \todo refactor this (from old lassie)
-    EnvelopeLibraryEntry* previousEntry = nullptr;
-    Envelope* thisEnvelope;
-
-    for (int i = 1; i <= envelopeLibrary->size(); i ++){
-        thisEnvelope = envelopeLibrary->getEnvelope(i);
-        EnvelopeLibraryEntry* thisEntry = new EnvelopeLibraryEntry(thisEnvelope, i);
-        delete thisEnvelope;
-
-        if (previousEntry == nullptr){
-            p->elentry = thisEntry;
-            previousEntry = thisEntry;
-            thisEntry->prev = nullptr;
-        }else{
-            previousEntry->next = thisEntry;
-            thisEntry->prev = previousEntry;
-        }
-        previousEntry = thisEntry;
-    }
-
-    delete envelopeLibrary;
-    qDebug() << "Passed envelopes";
-
-    DOMElement *currentElement = envlibelement;
-
-    /// \todo remove need for that "MarkovModelLibrary" check
-    DOMElement *markovModelLibraryElement = envlibelement->getNextElementSibling();
-    buffer = XMLString::transcode(markovModelLibraryElement->getTagName());
-    std::string tagName = std::string(buffer);
-    XMLString::release(&buffer);
-    if (tagName == "MarkovModelLibrary") {
-        currentElement = markovModelLibraryElement;
-        DOMText* text = dynamic_cast<DOMText*>(markovModelLibraryElement->getFirstChild());
-        if(text != nullptr){
-            std::string data = buffer = XMLString::transcode(text->getWholeText());
-            XMLString::release(&buffer);
-
-            std::stringstream ss(data);
-            // read the number of models
-            long long size;
-            ss >> size;
-            p->markov_models.resize(size);
-            // read individual models
-            std::string modelText, line;
-            std::getline(ss, line, '\n');
-            for (int i = 0; i < size; i++) {
-                std::getline(ss, line, '\n');
-                modelText = line + '\n';
-                std::getline(ss, line, '\n');
-                modelText += line + '\n';
-                std::getline(ss, line, '\n');
-                modelText += line + '\n';
-                std::getline(ss, line, '\n');
-                modelText += line;
-
-                (p->markov_models[i]).from_str(modelText);
+        if (elName == "ProjectConfiguration") {
+            // Children: <Title>, <FileFlag>, <TopEvent>, <PieceStartTime>, <Duration>,
+            //           <Synthesis>, <Score>, <Grandstaff>, <NumOfStaff>, <NumOfChannels>,
+            //           <SampleRate>, <SampleSize>, <NumOfThreads>, <OutputParticel> (optional)
+            r.readNextStartElement(); // <Title> — skipped
+            QtParser::readInner(r);
+            p->file_flag = QtParser::nextChildInner(r);
+            QtParser::nextChildInner(r); // <TopEvent> — always "0"
+            p->top_event.name = "0";
+            p->start_time   = QtParser::nextChildInner(r);
+            p->duration     = QtParser::nextChildInner(r);
+            p->synthesis    = (QtParser::nextChildInner(r) == "True");
+            p->score        = (QtParser::nextChildInner(r) == "True");
+            p->grand_staff  = (QtParser::nextChildInner(r) == "True");
+            p->num_staffs   = QtParser::nextChildInner(r);
+            p->num_channels = QtParser::nextChildInner(r);
+            p->sample_rate  = QtParser::nextChildInner(r);
+            p->sample_size  = QtParser::nextChildInner(r);
+            p->num_threads  = QtParser::nextChildInner(r);
+            // <OutputParticel> is optional; defaults to false.
+            p->output_particel = false;
+            while (r.readNextStartElement()) {
+                if (r.name() == QStringView(u"OutputParticel"))
+                    p->output_particel = (QtParser::readInner(r) == "True");
+                else
+                    r.skipCurrentElement();
             }
         }
+        else if (elName == "NoteModifiers") {
+            // First child: default modifiers bitstring (currently ignored — see
+            // pre-Qt code: the loop that consumed it was commented out).
+            if (r.readNextStartElement()) {
+                QtParser::readInner(r);
+                // Second child: custom modifiers list
+                if (r.readNextStartElement()) {
+                    while (r.readNextStartElement())
+                        p->custom_note_modifiers.append(QtParser::readInner(r));
+                }
+                QtParser::consumeRest(r);
+            }
+            qDebug() << "Passed modifiers";
+        }
+        else if (elName == "EnvelopeLibrary") {
+            QString envLibText = r.readElementText(QXmlStreamReader::IncludeChildElements);
+            EnvelopeLibrary* envelopeLibrary = new EnvelopeLibrary();
+            if (!envLibText.isEmpty()) {
+                QString tempPath = filepath + ".lib.temp";
+                QFile temp(tempPath);
+                if (temp.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                    QTextStream out(&temp);
+                    out << envLibText;
+                    temp.close();
+                    envelopeLibrary->loadLibraryNewFormat(
+                        const_cast<char*>(tempPath.toLocal8Bit().constData()));
+                    QFile::remove(tempPath);
+                }
+            }
+            EnvelopeLibraryEntry* previousEntry = nullptr;
+            for (int i = 1; i <= envelopeLibrary->size(); i++) {
+                Envelope* thisEnvelope = envelopeLibrary->getEnvelope(i);
+                EnvelopeLibraryEntry* thisEntry = new EnvelopeLibraryEntry(thisEnvelope, i);
+                delete thisEnvelope;
+                if (previousEntry == nullptr) {
+                    p->elentry = thisEntry;
+                    thisEntry->prev = nullptr;
+                } else {
+                    previousEntry->next = thisEntry;
+                    thisEntry->prev = previousEntry;
+                }
+                previousEntry = thisEntry;
+            }
+            delete envelopeLibrary;
+            qDebug() << "Passed envelopes";
+        }
+        else if (elName == "MarkovModelLibrary") {
+            QString data = r.readElementText(QXmlStreamReader::IncludeChildElements);
+            if (!data.isEmpty()) {
+                std::stringstream ss(data.toStdString());
+                long long size = 0;
+                ss >> size;
+                p->markov_models.resize(size);
+                std::string line;
+                std::getline(ss, line, '\n');
+                for (long long i = 0; i < size; i++) {
+                    std::string modelText;
+                    std::getline(ss, line, '\n'); modelText  = line + '\n';
+                    std::getline(ss, line, '\n'); modelText += line + '\n';
+                    std::getline(ss, line, '\n'); modelText += line + '\n';
+                    std::getline(ss, line, '\n'); modelText += line;
+                    p->markov_models[i].from_str(modelText);
+                }
+            }
+            qDebug() << "Passed markov";
+        }
+        else if (elName == "Events") {
+            while (r.readNextStartElement()) {
+                if (r.name() == QStringView(u"Event"))
+                    p->parseEvent(r);
+                else
+                    r.skipCurrentElement();
+            }
+        }
+        else {
+            r.skipCurrentElement();
+        }
     }
-    qDebug() << "Passed markov";
 
-    DOMElement *domEvents = currentElement->getNextElementSibling();
-    DOMElement *eventElement = domEvents->getFirstElementChild();
-    qDebug() << "eventElement: " << eventElement;
-
-    while (eventElement != NULL){
-        p->parseEvent(eventElement);
-        eventElement = eventElement->getNextElementSibling();
-    }
+    if (r.hasError())
+        qDebug() << "XML parse error:" << r.errorString();
 }
 
 

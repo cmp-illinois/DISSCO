@@ -50,7 +50,7 @@ public:
     *   This is a constructor which initalizes some basic values.
     *   \param interpolators
     **/
-    DynamicVariableSequenceIterator(Collection<Interpolator*> interpolators);
+    DynamicVariableSequenceIterator(vector<Interpolator*> interpolators);
     
     /**
     *   This is the destructor.
@@ -82,10 +82,10 @@ public:
 
 private:
 	/**
-	*	This is a Collection that holds the 
+	*	This is a vector that holds the 
 	*	interpolators for all the segments.
 	**/
-	Collection<Interpolator*>* interpolators_;
+	vector<Interpolator*>* interpolators_;
 
 	/**
 	*	This is the current segment's index.

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=LASSIE
+GenericName=DISSCO Composition Environment
+Comment=Graphical front-end for the DISSCO composition system
+Exec=LASSIE %F
+Icon=LASSIE
+Terminal=false
+Categories=AudioVideo;Audio;Music;
+Keywords=composition;music;sound;synthesis;dissco;cmod;
