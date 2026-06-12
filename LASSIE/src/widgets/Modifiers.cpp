@@ -157,14 +157,15 @@ void Modifiers::updateModState() {
     int typeIndex = ui->modifierType->currentIndex();
 
     // GLISSANDO (2) is always SOUND — disable the apply combo
-    if (typeIndex == 2) {
+    // In 2.1.0, GLISSANDO has enabled apply combo
+    /*if (typeIndex == 2) {
         ui->modifierApply->blockSignals(true);
         ui->modifierApply->setCurrentIndex(0);
         ui->modifierApply->blockSignals(false);
         ui->modifierApply->setEnabled(false);
     } else {
         ui->modifierApply->setEnabled(true);
-    }
+    }*/
 
     bool isPartial = (ui->modifierApply->currentIndex() == 1);
 
@@ -178,7 +179,7 @@ void Modifiers::updateModState() {
         /* DETUNE   */ { true,  false, false, false, true,  true,  true  },
         /* AMPTRANS */ { true,  true,  true,  true,  false, false, false },
         /* FREQTRANS*/ { true,  true,  true,  true,  false, false, false },
-        /* WAVE_TYPE*/ { false, true,  false, false, false, false, false },
+        /* WAVE_TYPE*/ { true,  true,  true,  false, false, false, false },
     };
 
     struct Row { QLabel* label; QLineEdit* edit; QPushButton* btn; };
