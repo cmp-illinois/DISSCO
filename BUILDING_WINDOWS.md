@@ -1,6 +1,7 @@
 Building on Windows 
 =================
 (WIP, not yet building without some hacking)
+(Works good on WSL! please refer to [BUILDING_LINUX](BUILDING_LINUX.md) for more)
 
 Preliminary Requirements
 --------------------------
