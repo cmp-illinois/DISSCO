@@ -885,7 +885,7 @@
                         <layout class="QHBoxLayout" name="modGroupLayout">
                             <item>
                                 <widget class="QLabel" name="modGroupLabel">
-                                <property name="text"><string>Modifier Group:</string></property>
+                                <property name="text"><string>Modifier Group(Optional):</string></property>
                                 </widget>
                             </item>
                             <item>
