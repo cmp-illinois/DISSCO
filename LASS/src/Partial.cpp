@@ -374,16 +374,24 @@ MultiTrack* Partial::render(int numChannels,
         _track = &tmp;
     }
 
-    /* ZIYUAN CHEN, July 2023: On the default behavior of spatialization (Partial side)
-     *   If a non-placeholder subclass of Spatializer (Pan/MultiPan) is set in the sound,
-     *     "spatializer_" in the partials will be placeholders that merely averages the
-     *     sound evenly accross all tracks.
-     *   But unlike Sound::render(), the placeholders are NOT IGNORED since they are essential
-     *     for transforming Track to MultiTrack, whose channels uniformly hold scaled versions
-     *     of the original Track.
-     *   Compare Sound::render().
-     */
-    MultiTrack* returnTrack = spatializer_->spatialize_Track(*_track, numChannels);
+    /* ZIYUAN CHEN, July 2023 (revised by Jacob McGrath, June 2026) */
+    MultiTrack* returnTrack;
+    if (spatializer_->isPlaceholder())
+    {
+        // The placeholder spatializer would expand into `numChannels` identical 
+        // copies if done here, so instead we return a single-track (mono) 
+        // `MultiTrack` and let `Sound::render()` perform one placeholder expansion after 
+        // all partials are composited (scaled by `1/numChannels`).
+        returnTrack = new MultiTrack();
+        returnTrack->add(_track);   // transfer ownership of the Track
+    }
+    else
+    {
+        // Non-placeholder subclasses (e.g., `Pan`/`MultiPan`) spatialize each partial 
+        // differently, so we must perform the expansion per-partial.
+        returnTrack = spatializer_->spatialize_Track(*_track, numChannels);
+        delete _track;   // spatialize_Track copies its input; free the original
+    }
 
 //cout << "Partial::render - frequency after detune:" << getParam(FREQ_ENV).getMaxValue() << endl;
 //  cout<< "--------------------------------------------"<< endl;
@@ -395,7 +403,6 @@ MultiTrack* Partial::render(int numChannels,
     delete amptrans_rate_env;
     delete freqtrans_amp_env;
     delete freqtrans_rate_env;
-
 
     return returnTrack;
 }
