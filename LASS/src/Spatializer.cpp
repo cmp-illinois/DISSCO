@@ -69,16 +69,15 @@ MultiTrack* Spatializer::spatialize_MultiTrack(MultiTrack& t, int numTracks,
     // create a new multitrack:
     MultiTrack* mt = new MultiTrack(numTracks, sampleCount, samplingRate);
 
-    // this temporary multitrack holds each spatialized "component"
-    MultiTrack* _tmp = new MultiTrack(numTracks, sampleCount, samplingRate);
-    
-    // superimpose each component to the output multitrack
+    // superimpose each spatialized "component" onto the output multitrack
     for (Track* track : t)
     {
-        _tmp = spatialize_Track( *track, numTracks );
+        // spatialize_Track returns a freshly allocated MultiTrack that we own
+        MultiTrack* _tmp = spatialize_Track( *track, numTracks );
         mt->composite( *_tmp );
+        delete _tmp;
     }
-    
+
     // return:
     return mt;
 }
