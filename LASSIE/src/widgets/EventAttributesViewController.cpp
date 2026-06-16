@@ -765,6 +765,7 @@ void EventAttributesViewController::showCurrentEventData() {
             const SpectrumEvent& event = pm->spectrumevents()[m_curreventindex];
             ui->soundNameEntry->setText(event.name);
             ui->spectrumNumPartialEntry->setText(event.num_partials);
+            //ui->spectrumNumPartialEntry->setEnabled(false);
             ui->spectrumDeviationEntry->setText(event.deviation);
             ui->spectrumGenEntry->setText(event.generate_spectrum);
 
