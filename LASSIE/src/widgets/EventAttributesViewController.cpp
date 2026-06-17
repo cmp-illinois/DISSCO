@@ -766,7 +766,7 @@ void EventAttributesViewController::showCurrentEventData() {
             ui->soundNameEntry->setText(event.name);
             ui->soundNameEntry->setEnabled(false);
             ui->spectrumNumPartialEntry->setText(event.num_partials);
-            //ui->spectrumNumPartialEntry->setEnabled(false);
+            ui->spectrumNumPartialEntry->setEnabled(false); //gray out number of partials
             ui->spectrumDeviationEntry->setText(event.deviation);
             ui->spectrumGenEntry->setText(event.generate_spectrum);
 
