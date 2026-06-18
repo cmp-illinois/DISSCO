@@ -56,6 +56,9 @@ void Loudness::calculate(Sound& snd, m_rate_type rate)
     vector< Iterator<m_value_type> > freqIter;
     // finally, grab the maximum waveshape value from each partial
     vector<m_value_type> maxWaveShape;
+    // RELATIVE_AMPLITUDE is a static param (constant over time), so cache it
+    // here instead of re-looking it up for every partial on every sample below
+    vector<m_value_type> relAmp;
     // go:
     for (int i=0; i<numPartials; i++)
     {
@@ -64,6 +67,7 @@ void Loudness::calculate(Sound& snd, m_rate_type rate)
         part.getParam(FREQUENCY).setSamplingRate(rate);
         freqIter.push_back( part.getParam(FREQUENCY).valueIterator() );
         maxWaveShape.push_back( part.getParam(WAVE_SHAPE).getMaxValue() );
+        relAmp.push_back( part.getParam(RELATIVE_AMPLITUDE) );
     }
 
     // create a vector of critical band objects (one for each valid band)
@@ -73,7 +77,13 @@ void Loudness::calculate(Sound& snd, m_rate_type rate)
     
     // calculate the number of samples to do loudness on:
     m_sample_count_type numSamples = (m_sample_count_type) ((m_time_type)rate * (m_time_type)duration);
-    
+
+    // LOUDNESS is a static param (constant over time); read it once
+    m_value_type loudness = snd.getParam(LOUDNESS);
+
+    // fully overwritten each sample, so allocate once and reuse
+    vector<m_value_type> bandGamma(NUM_BANDS);
+
     // iterate over time:
     for (int s=0; s<numSamples; s++)
     {
@@ -91,7 +101,7 @@ void Loudness::calculate(Sound& snd, m_rate_type rate)
             m_value_type waveShape = maxWaveShape[p];
                         
             // scale the amplitude by the relative amplitude:
-            m_value_type thisAmp = waveShape * snd.get(p).getParam(RELATIVE_AMPLITUDE);
+            m_value_type thisAmp = waveShape * relAmp[p];
             
             // is this the loudest partial?
             if (thisAmp > maxAmp) maxAmp = thisAmp;
@@ -104,7 +114,6 @@ void Loudness::calculate(Sound& snd, m_rate_type rate)
         }
         
         // calculate the band gamma for each band:
-        vector<m_value_type> bandGamma(NUM_BANDS);
         for (int i=0; i<NUM_BANDS; i++)
             bandGamma[i] = CBands[i].getBandGamma(maxAmp);
         
@@ -117,7 +126,7 @@ void Loudness::calculate(Sound& snd, m_rate_type rate)
         m_value_type gammaTotal = 0.0;
         for (int i=0; i<NUM_BANDS; i++)
             if (i != maxGamma) gammaTotal += bandGamma[i] * BANDS[i][F_FACTOR];
-        m_value_type numerator = snd.getParam(LOUDNESS) / (bandGamma[(int)maxGamma] + gammaTotal);
+        m_value_type numerator = loudness / (bandGamma[(int)maxGamma] + gammaTotal);
         
         // for each band:
         for (int b=0; b<NUM_BANDS; b++)
@@ -133,7 +142,7 @@ void Loudness::calculate(Sound& snd, m_rate_type rate)
                 int partial_id = CBands[b].partials_[p].ID_;
                 
                 // scale the factor by the relative amplitude again:
-                scaleFactor *= snd.get(partial_id).getParam(RELATIVE_AMPLITUDE);
+                scaleFactor *= relAmp[partial_id];
 
                 //add the scaling factor for this moment in time.
                 scalingFactors[partial_id].addEntry(relativeTime, scaleFactor);
