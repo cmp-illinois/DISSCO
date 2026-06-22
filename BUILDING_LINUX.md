@@ -78,7 +78,7 @@ Building a release AppImage
 ---------------------------
 Extra packages needed for AppImage builds:
 
-    sudo apt install libfuse2 file desktop-file-utils libgl1-mesa-dev
+    sudo apt install curl libfuse2 file desktop-file-utils libgl1-mesa-dev
 
 From the project root:
 

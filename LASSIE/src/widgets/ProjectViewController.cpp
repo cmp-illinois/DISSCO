@@ -111,9 +111,10 @@ void ProjectView::writeInlineXml(QXmlStreamWriter& xmlWriter, const QString& xml
                 // Write raw XML
                 QString rawXml;
                 QTextStream stream(&rawXml);
-                node.save(stream, 0); 
+                node.save(stream, 0);
                 rawXml.remove(QRegularExpression("[\\n\\t\\r]+"));
                 rawXml.replace(QRegularExpression(">\\s+<"), "><");
+                xmlWriter.writeCharacters("");
                 xmlWriter.device()->write(rawXml.toUtf8());
             } else {
                 // Write plain text (like "1 - ") normally so it's safely escaped
