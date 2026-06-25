@@ -1258,18 +1258,10 @@ void ProjectView::deleteEvent(const QString& typeStr, int index)
 
 void ProjectView::duplicateEvent(const QString& typeStr, int index)
 {
-
-
-
-
     ProjectManager* pm = Inst::get_project_manager();
 
     QStandardItem* folder = paletteView->folderForType(typeStr);
     if (!folder) return;
-
-
-
-    
 
     Eventtype etype = eventtypeFromString(typeStr);
 
