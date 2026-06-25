@@ -124,6 +124,7 @@ void NotationScore::InsertNote(Note* n) {
 // }
 
 // multistaffs
+
 void NotationScore::Build() {
   if (!is_built_) {
     for(int i=0 ; i<staffSum; i++){
@@ -132,38 +133,26 @@ void NotationScore::Build() {
       vector<Section>::iterator iter = score_staff[i].begin();
       vector<Section>::iterator next = score_staff[i].begin() + 1;
       int last_start_time_edu = 0;
-      
-      //diyun-S
-      TimeSignature previous_time_signature = iter->GetTimeSignature();
-      bool first_section = true;
-      //diyun-E
+      string previous_time_signature;
+      bool first_section = true;    
 
       while (next != score_staff[i].end()) {
         float dur_seconds = next->GetStartTimeGlobal() - iter->GetStartTimeGlobal();
         iter->SetDurationEDUS(iter->CalculateEDUsFromSecondsInTempo(dur_seconds));
-        
-        //diyun-S
-        TimeSignature current_time_signature = iter->GetTimeSignature(); 
-        bool print_time_signature = first_section || !(current_time_signature == previous_time_signature);
-        
+
+        string current_time_signature = iter->GetTimeSignature().time_signature_;
+        bool print_time_signature = first_section || current_time_signature != previous_time_signature;
         iter->Build(print_time_signature);
+
         first_section = false;
-        
-        //iter->Build(true);
-        //diyun-E
+        previous_time_signature = current_time_signature;
         ++iter; ++next;
-	    previous_time_signature = current_time_signature; //diyun
       }
-      
+
       iter->SetDurationEDUS(-1);
-      //diyun-S
-      //iter->Build(true);
-      TimeSignature current_time_signature = iter->GetTimeSignature();
-      
-      bool print_time_signature = first_section || !(current_time_signature == previous_time_signature);
-      
+      string current_time_signature = iter->GetTimeSignature().time_signature_;
+      bool print_time_signature = first_section || current_time_signature != previous_time_signature;
       iter->Build(print_time_signature);
-      //diyun-E
     }
     is_built_ = true;
   }
