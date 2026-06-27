@@ -661,7 +661,7 @@ void EventAttributesViewController::showCurrentEventData() {
             event = pm->lowevents()[m_curreventindex];
         }
         ui->nameEntry->setText(event.name);
-        ui->nameEntry->setEnabled(type != top);
+        ui->nameEntry->setEnabled(false); //gray out the event
 
         ui->maxChildDurEntry->setText(event.max_child_duration);
         ui->timeSig1Entry->setText(event.timesig.bar_value);
@@ -764,6 +764,7 @@ void EventAttributesViewController::showCurrentEventData() {
         if (type == sound) {
             const SpectrumEvent& event = pm->spectrumevents()[m_curreventindex];
             ui->soundNameEntry->setText(event.name);
+            ui->soundNameEntry->setEnabled(false);
             ui->spectrumNumPartialEntry->setText(event.num_partials);
             ui->spectrumNumPartialEntry->setEnabled(false); //gray out number of partials
             ui->spectrumDeviationEntry->setText(event.deviation);
@@ -784,30 +785,37 @@ void EventAttributesViewController::showCurrentEventData() {
         }else if(type == env){
             const EnvelopeEvent& event = pm->envelopeevents()[m_curreventindex];
             ui->envNameEntry->setText(event.name);
+            ui->envNameEntry->setEnabled(false);
             ui->envBuilderEntry->setText(event.envelope_builder);
         }else if(type == sieve){
             const SieveEvent& event = pm->sieveevents()[m_curreventindex];
             ui->sieveNameEntry->setText(event.name);
+            ui->sieveNameEntry->setEnabled(false);
             ui->sieveBuilderEntry->setText(event.sieve_builder);
         }else if(type == spa){
             const SpaEvent& event = pm->spaevents()[m_curreventindex];
             ui->spaNameEntry->setText(event.name);
+            ui->spaNameEntry->setEnabled(false);
             ui->spaBuilderEntry->setText(event.spatialization);
         }else if(type == pattern){
             const PatternEvent& event = pm->patternevents()[m_curreventindex];
             ui->patNameEntry->setText(event.name);
+            ui->patNameEntry->setEnabled(false);
             ui->patBuilderEntry->setText(event.pattern_builder);
         }else if(type == reverb){
             const ReverbEvent& event = pm->reverbevents()[m_curreventindex];
             ui->revNameEntry->setText(event.name);
+            ui->revNameEntry->setEnabled(false);
             ui->revBuilderEntry->setText(event.reverberation);
         }else if(type == note){
             const NoteEvent& event = pm->noteevents()[m_curreventindex];
             ui->noteNameEntry->setText(event.name);
+            ui->noteNameEntry->setEnabled(false);
             ui->staffNumberEntry->setText(event.note_info.staffs);
         }else if(type == filter){
             const FilterEvent& event = pm->filterevents()[m_curreventindex];
             ui->filNameEntry->setText(event.name);
+            ui->filNameEntry->setEnabled(false);
             ui->filBuilderEntry->setText(event.filter_builder);
         }else{
             qDebug() << "Cannot show event data: type of event not valid";
