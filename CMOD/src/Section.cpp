@@ -259,6 +259,10 @@ float Section::GetStartTimeGlobal() const {
   return time_signature_.start_time_global_;
 }
 
+TimeSignature Section::GetTimeSignature() const{
+    return time_signature_;
+} //diyun
+
 int Section::CalculateEDUsFromSecondsInTempo(float seconds) {
   return time_signature_.tempo_.convertSecondsToEDUs(seconds);
 }

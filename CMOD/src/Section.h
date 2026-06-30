@@ -37,6 +37,7 @@ public:
    * @param time_signature The time signature of the section
   **/
   Section(TimeSignature time_signature);
+  TimeSignature GetTimeSignature() const; //diyun
 
   /**
    * Copy a Section.
