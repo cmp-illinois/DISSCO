@@ -1275,16 +1275,9 @@ void ProjectView::duplicateEvent(const QString& typeStr, int index)
     QStandardItem* folder = paletteView->folderForType(typeStr);
     if (!folder) return;
 
-    // Copies element at index, appends " (copy)" to .name, appends to list, returns new name
-    auto dup = [index](auto& list) -> QString {
-        auto copy = list[index];
-        copy.name += " (copy)";
-        list.append(copy);
-        return copy.name;
-    };
-
     Eventtype etype = eventtypeFromString(typeStr);
-    QString newName;
+
+    /*QString newName;
     if      (etype == high)    newName = dup(pm->highevents());
     else if (etype == mid)     newName = dup(pm->midevents());
     else if (etype == low)     newName = dup(pm->lowevents());
@@ -1302,6 +1295,94 @@ void ProjectView::duplicateEvent(const QString& typeStr, int index)
     else if (etype == pattern) newName = dup(pm->patternevents());
     else if (etype == reverb)  newName = dup(pm->reverbevents());
     else if (etype == filter)  newName = dup(pm->filterevents());
+    else return; */
+
+    // Get original name
+    QString oldName;
+    if      (etype == high)    oldName = pm->highevents()[index].name;
+    else if (etype == mid)     oldName = pm->midevents()[index].name;
+    else if (etype == low)     oldName = pm->lowevents()[index].name;
+    else if (etype == bottom)  oldName = pm->bottomevents()[index].event.name;
+    else if (etype == sound)   oldName = pm->spectrumevents()[index].name;
+    else if (etype == note)    oldName = pm->noteevents()[index].name;
+    else if (etype == env)     oldName = pm->envelopeevents()[index].name;
+    else if (etype == sieve)   oldName = pm->sieveevents()[index].name;
+    else if (etype == spa)     oldName = pm->spaevents()[index].name;
+    else if (etype == pattern) oldName = pm->patternevents()[index].name;
+    else if (etype == reverb)  oldName = pm->reverbevents()[index].name;
+    else if (etype == filter)  oldName = pm->filterevents()[index].name;
+    else return;
+
+    // Ask user for new name
+    bool ok = false;
+    QString newName = QInputDialog::getText(
+        nullptr,
+        "lassie",
+        QString("You are about to duplicate this object:\n\n"
+                "%1/%2\n\n"
+                "Please name the newly created copy object")
+            .arg(typeStr, oldName),
+        QLineEdit::Normal,
+        oldName + "_copy",
+        &ok
+    );
+
+    if (!ok || newName.trimmed().isEmpty()) {
+        return;
+    }
+
+    newName = newName.trimmed();
+
+    auto nameExists = [&](const QString& name) -> bool {
+    for (int i = 0; i < folder->rowCount(); ++i) {
+        QStandardItem* nameItem = folder->child(i, 1);
+        if (nameItem && nameItem->text() == name) {
+            return true;
+        }
+    }
+    return false;
+};
+
+if (nameExists(newName)) {
+    QMessageBox::warning(
+        nullptr,
+        "lassie",
+        "Object with the same name exists."
+    );
+    return;
+}
+
+    // Copies element at index, appends " (copy)" to .name, appends to list, returns new name
+    /*auto dup = [index](auto& list) -> QString {
+        auto copy = list[index];
+        copy.name += " (copy)";
+        list.append(copy);
+        return copy.name;
+    };*/
+
+    // Duplicate object with user-given name
+    auto dup = [index, &newName](auto& list) {
+        auto copy = list[index];
+        copy.name = newName;
+        list.append(copy);
+    };
+
+    if      (etype == high)    dup(pm->highevents());
+    else if (etype == mid)     dup(pm->midevents());
+    else if (etype == low)     dup(pm->lowevents());
+    else if (etype == bottom) {
+        BottomEvent copy = pm->bottomevents()[index];
+        copy.event.name = newName;
+        pm->bottomevents().append(copy);
+    }
+    else if (etype == sound)   dup(pm->spectrumevents());
+    else if (etype == note)    dup(pm->noteevents());
+    else if (etype == env)     dup(pm->envelopeevents());
+    else if (etype == sieve)   dup(pm->sieveevents());
+    else if (etype == spa)     dup(pm->spaevents());
+    else if (etype == pattern) dup(pm->patternevents());
+    else if (etype == reverb)  dup(pm->reverbevents());
+    else if (etype == filter)  dup(pm->filterevents());
     else return;
 
     folder->appendRow(PVCHelper::make_child_palette_tuple(typeStr, newName));

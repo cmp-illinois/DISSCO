@@ -379,16 +379,17 @@ void LayerBox::onDeleteSelected() {
 void LayerBox::onContextMenu(const QPoint& pos) {
     bool hasSelection = !selectedRows().isEmpty();
     QMenu menu(this);
-    QAction* dupAction  = menu.addAction("Duplicate");
+    //QAction* dupAction  = menu.addAction("Duplicate");
     QAction* delAction  = menu.addAction("Delete");
-    dupAction->setEnabled(hasSelection);
+    //dupAction->setEnabled(hasSelection);
     delAction->setEnabled(hasSelection);
 
     QAction* chosen = menu.exec(m_treeView->viewport()->mapToGlobal(pos));
-    if (chosen == dupAction) {
+    /*if (chosen == dupAction) {
         onCopySelected();
         onPasteClipboard();
-    } else if (chosen == delAction) {
+    } else */ 
+    if (chosen == delAction) {
         onDeleteSelected();
     }
 }
