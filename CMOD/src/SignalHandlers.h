@@ -17,12 +17,44 @@
 
 #include <iostream>
 #include <csignal>
-#include <execinfo.h>
 #include <cstdlib>
-#include <unistd.h>
-#include <cxxabi.h>
 #include <algorithm>
 #include <cstring>
+
+#ifdef _WIN32
+  #include <io.h>
+
+  #ifndef STDERR_FILENO
+    #define STDERR_FILENO 2
+  #endif
+
+  inline int backtrace(void** buffer, int size) {
+    return 0;
+  }
+
+  inline char** backtrace_symbols(void* const* buffer, int size) {
+    return nullptr;
+  }
+
+  inline void backtrace_symbols_fd(void* const* buffer, int size, int fd) {
+  }
+
+  namespace abi {
+    inline char* __cxa_demangle(const char* mangled_name,
+                                char* output_buffer,
+                                size_t* length,
+                                int* status) {
+      if (status) {
+        *status = -1;
+      }
+      return nullptr;
+    }
+  }
+#else
+  #include <execinfo.h>
+  #include <unistd.h>
+  #include <cxxabi.h>
+#endif
 
 #define BACKTRACE_NUM 10    // Number of stack frames to print
 
