@@ -49,12 +49,16 @@ namespace QtParser {
                     w.writeEndElement();
                     --depth;
                     break;
-                case QXmlStreamReader::Characters:
-                    if (hasChildElement)
-                        w.writeCharacters(r.text().toString());
-                    else
-                        textBuffer += r.text().toString();
+                case QXmlStreamReader::Characters: {
+                    QString text = r.text().toString();
+                    if (hasChildElement) {
+                       if (!text.trimmed().isEmpty()) {
+                        w.writeCharacters(text.trimmed());
+                       }
+                    } else
+                        textBuffer += text;
                     break;
+            }
                 default:
                     break;
             }
