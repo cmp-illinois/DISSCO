@@ -1008,6 +1008,7 @@ void ProjectView::insertObject() {
             HEvent obj = {};
             obj.type = t;
             obj.name = nameStr;
+            obj.event_layers.append(Layer());
             list.push_back(obj);
             typeStr = ts;
             folder = f;
@@ -1034,6 +1035,7 @@ void ProjectView::insertObject() {
             BottomEvent obj = {};
             obj.event.type = bottom;
             obj.event.name = nameStr;
+            obj.event.event_layers.append(Layer());
             pm->bottomevents().push_back(obj);
             typeStr = "Bottom";
             folder = paletteView->folderBottom;

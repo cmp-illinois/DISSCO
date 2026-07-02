@@ -92,6 +92,10 @@ void RevFunctionBase::rebuildDefaults() {
         first->setTitle(QStringLiteral("Sound"));
         first->hideButtons();
     }
+
+    if (m_mode == 0) {
+        first ->setRoomSizeText(QStringLiteral("0.5"));
+    }
 }
 
 void RevFunctionBase::updateLabels() {

@@ -603,6 +603,7 @@ Project* ProjectManager::build(const QString& filepath, const QByteArray& id){
     defaultTop.type = top;
     defaultTop.name = "0";
     defaultTop.orderinpalette = "-1";
+    defaultTop.event_layers.append(Layer());
     topevent = defaultTop;
 
     return project;
