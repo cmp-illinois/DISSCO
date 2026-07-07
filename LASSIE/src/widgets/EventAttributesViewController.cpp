@@ -554,7 +554,6 @@ void EventAttributesViewController::showCurrentEventData() {
     bool isHEvent = (type == top || type == high || type == mid || type == low);
     ui->spaLabel->setText(isHEvent ? "Spatialization (Optional):" : "Spatialization:");
     ui->revLabel->setText(isHEvent ? "Reverb (Optional):" : "Reverb:");
-    ui->filLabel->setText(isHEvent ? "Filter (Optional):" : "Filter:");
     
     //qDebug() << "In showCurrentEventData saving " << type;
     switch(type) {
@@ -775,7 +774,7 @@ void EventAttributesViewController::showCurrentEventData() {
             ui->spectrumNumPartialEntry->setText(event.num_partials);
             ui->spectrumNumPartialEntry->setEnabled(false); //gray out number of partials
             ui->spectrumDeviationEntry->setText(event.deviation);
-            ui->spectrumGenEntry->setText(event.generate_spectrum);
+            ui->spectrumGenEntry->setEnabled(false);
 
             // Clear all existing Partials widgets so the panel reflects the new event
             for (Partials* par : m_partials) {

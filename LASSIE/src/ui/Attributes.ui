@@ -865,7 +865,7 @@
                         <layout class="QHBoxLayout" name="filLayout">
                             <item>
                                 <widget class="QLabel" name="filLabel">
-                                <property name="text"><string>Filter:</string></property>
+                                <property name="text"><string>Filter(Optional):</string></property>
                                 </widget>
                             </item>
                             <item>
