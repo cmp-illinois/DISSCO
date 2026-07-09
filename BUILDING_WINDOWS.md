@@ -1,90 +1,393 @@
-Building on Windows 
-=================
-(WIP, not yet building without some hacking)
-(Works good on WSL! please refer to [BUILDING_LINUX](BUILDING_LINUX.md) for more)
+Building on Windows
+===================
 
-Preliminary Requirements
---------------------------
+This guide explains how to build and run DISSCO on Windows with MSVC, CMake, Ninja, Qt, vcpkg, libsndfile, dirent, Git for Windows, and LilyPond.
 
-The following are *necessary* to anything:
+DISSCO contains three main parts:
 
-- git,
-- A C/C++ compiler (like MSVC `cl` or `clang-cl`), and
-- cmake >= 3.25
-<!-- - muparser >= 2.X -->
+- **LASS**: sound synthesis library
+- **CMOD**: composition module
+- **LASSIE**: Qt GUI for editing `.dissco` files
 
-To compile LASS:
+LASSIE can run CMOD, and CMOD can generate LilyPond score output.
 
-- [libsndfile](https://libsndfile.github.io/libsndfile/#download) >= 1.0,
+---
 
-To compile CMOD:
-- muparser >= 2.X, and
-- pugixml >= 1.15
+Before You Start
+----------------
 
-> *Note*: the source code for both of these parsers are included in this repo, so you don't need to download them.
+Use **x64 Native Tools Command Prompt for VS** for all build commands below.
 
-To compile LASSIE:
+The commands in this guide use **CMD syntax**. If you use PowerShell, line continuation and environment variable syntax are different.
 
-- [Qt](https://www.qt.io/development/download-qt-installer-oss) >= 6.8
+You may install DISSCO, vcpkg, Qt, and LilyPond anywhere. In this guide, replace the following paths with your own paths:
 
-> *Note*: there are several ways to get these packages onto your system. This doc will go through a fairly simple one.
+```cmd
+set "DISSCO_ROOT=C:\dev\DISSCO-2.2.0"
+set "VCPKG_ROOT=C:\dev\vcpkg"
+set "QT_ROOT=C:\Qt\6.11.1\msvc2022_64"
+set "LILYPOND_BIN=C:\Program Files\LilyPond\usr\bin"
+```
 
-Installing requirements and recommendations:
---------------------------------------------
+These are examples only. Choose any directories you prefer, but keep the paths consistent in the commands.
 
-When installing Qt via the graphical installer, you'll have the option to install additional tools. These include **CMake** and a **compiler**. Please choose a compiler for your computer's architecture (x86-64 for Intel and ARM for Arm).
+---
 
-Please be aware that the compiler architecture must match the architecture of the Qt version you install. You will get an error at link-time if they differ.
-
-Installing DISSCO
+Required Software
 -----------------
-Just `git clone` this repo; explicitly:
 
-    git clone https://github.com/cmp-illinois/DISSCO-2.2.0.git
+Install:
 
-Building
+- Git for Windows
+- Visual Studio or Visual Studio Build Tools with **Desktop development with C++**
+- CMake 3.25 or newer
+- Ninja
+- Qt 6.8 or newer, **MSVC 64-bit** build
+- vcpkg
+- LilyPond for Windows
+
+The repository already includes:
+
+- muParser
+- pugixml
+
+The following are installed through vcpkg:
+
+- libsndfile
+- dirent
+
+---
+
+1. Install Git
+--------------
+
+Using winget:
+
+```cmd
+winget install --id Git.Git -e
+```
+
+Git for Windows usually provides Unix-style tools such as `rm` and `mv` in:
+
+```text
+C:\Program Files\Git\usr\bin
+```
+
+Add this directory to your User PATH later.
+
+---
+
+2. Install Visual Studio C++ Tools
+----------------------------------
+
+Install Visual Studio Community or Visual Studio Build Tools.
+
+Select:
+
+```text
+Desktop development with C++
+```
+
+Make sure the following are installed:
+
+- MSVC x64/x86 build tools
+- Windows SDK
+- C++ CMake tools for Windows
+
+Open **x64 Native Tools Command Prompt for VS** and check:
+
+```cmd
+cl
+```
+
+You should see Microsoft C/C++ compiler information.
+
+---
+
+3. Install Qt
+-------------
+
+Install Qt using the Qt Online Installer.
+
+Select a Qt version with the MSVC 64-bit component, for example:
+
+```text
+Qt 6.x -> MSVC 2022 64-bit
+```
+
+Set `QT_ROOT` to the Qt MSVC 64-bit directory, for example:
+
+```cmd
+set "QT_ROOT=C:\Qt\6.11.1\msvc2022_64"
+```
+
+The important subdirectories are:
+
+```text
+%QT_ROOT%\bin
+%QT_ROOT%\lib\cmake\Qt6
+```
+
+---
+
+4. Install vcpkg Dependencies
+-----------------------------
+
+Choose a location for vcpkg, then run:
+
+```cmd
+cd /d C:\dev
+git clone https://github.com/microsoft/vcpkg.git
+cd vcpkg
+bootstrap-vcpkg.bat
+```
+
+Set `VCPKG_ROOT` to your vcpkg directory:
+
+```cmd
+set "VCPKG_ROOT=C:\dev\vcpkg"
+```
+
+Install required packages:
+
+```cmd
+cd /d "%VCPKG_ROOT%"
+vcpkg install libsndfile:x64-windows
+vcpkg install dirent:x64-windows
+```
+
+Optional: save `VCPKG_ROOT` as a user environment variable:
+
+```cmd
+setx VCPKG_ROOT "%VCPKG_ROOT%"
+```
+
+Verify:
+
+```cmd
+dir "%VCPKG_ROOT%\installed\x64-windows\include\sndfile.h"
+dir "%VCPKG_ROOT%\installed\x64-windows\include\dirent.h"
+dir "%VCPKG_ROOT%\installed\x64-windows\lib\*sndfile*.lib"
+```
+
+---
+
+5. Install LilyPond
+-------------------
+
+Install or extract LilyPond for Windows.
+
+Set `LILYPOND_BIN` to the directory containing `lilypond.exe`, for example:
+
+```cmd
+set "LILYPOND_BIN=C:\Program Files\LilyPond\usr\bin"
+```
+
+Other possible locations include:
+
+```text
+C:\Program Files\LilyPond\bin
+C:\Users\<UserName>\AppData\Local\Programs\LilyPond\bin
+D:\Programs\lilypond-2.26.0\bin
+```
+
+Test:
+
+```cmd
+"%LILYPOND_BIN%\lilypond.exe" --version
+```
+
+---
+
+6. Update PATH
+--------------
+
+Add these directories to your **User PATH**:
+
+```text
+%QT_ROOT%\bin
+%LILYPOND_BIN%
+C:\Program Files\Git\usr\bin
+```
+
+You can edit PATH from:
+
+```text
+System Properties -> Environment Variables -> User variables -> Path -> Edit
+```
+
+After editing PATH, close and reopen all terminals.
+
+Verify:
+
+```cmd
+where qmake
+where lilypond
+where rm
+where mv
+lilypond --version
+```
+
+---
+
+7. Clone DISSCO
+---------------
+
+Choose any source directory and clone the repository:
+
+```cmd
+cd /d C:\dev
+git clone https://github.com/cmp-illinois/DISSCO-2.2.0.git
+cd DISSCO-2.2.0
+```
+
+Set `DISSCO_ROOT` to the source directory:
+
+```cmd
+set "DISSCO_ROOT=C:\dev\DISSCO-2.2.0"
+```
+
+If the repository uses submodules, run:
+
+```cmd
+git submodule update --init --recursive
+```
+
+---
+
+8. Configure with CMake
+-----------------------
+
+Open **x64 Native Tools Command Prompt for VS**.
+
+Set or confirm your paths:
+
+```cmd
+set "DISSCO_ROOT=C:\dev\DISSCO-2.2.0"
+set "VCPKG_ROOT=C:\dev\vcpkg"
+set "QT_ROOT=C:\Qt\6.11.1\msvc2022_64"
+```
+
+Go to the DISSCO source directory:
+
+```cmd
+cd /d "%DISSCO_ROOT%"
+cd
+```
+
+Remove any old build directory:
+
+```cmd
+rmdir /s /q build
+```
+
+Configure:
+
+```cmd
+cmake -S . -B build -G Ninja ^
+  -DCMAKE_BUILD_TYPE=Release ^
+  -DCMAKE_TOOLCHAIN_FILE="%VCPKG_ROOT%/scripts/buildsystems/vcpkg.cmake" ^
+  -DVCPKG_TARGET_TRIPLET=x64-windows ^
+  -DQt6_DIR="%QT_ROOT%/lib/cmake/Qt6" ^
+  -DCMAKE_PREFIX_PATH="%QT_ROOT%" ^
+  -DBUILD_SHARED_LIBS=OFF ^
+  -DCMAKE_CXX_FLAGS="/EHsc /DNOMINMAX /DNOGDI /DMUPARSER_STATIC /D_CRT_SECURE_NO_WARNINGS" ^
+  -DSNDFILE_INCLUDE_DIR="%VCPKG_ROOT%/installed/x64-windows/include" ^
+  -DSNDFILE_LIBRARY="%VCPKG_ROOT%/installed/x64-windows/lib/sndfile.lib"
+```
+
+Notes:
+
+- Use the x64 Native Tools Command Prompt.
+- Qt, vcpkg packages, and MSVC must all be 64-bit.
+- `MUPARSER_STATIC` is required for static muParser builds on MSVC.
+- `NOMINMAX` avoids Windows `min` and `max` macro conflicts.
+- `NOGDI` avoids Windows GDI name conflicts.
+- `_CRT_SECURE_NO_WARNINGS` suppresses MSVC warnings for older C library calls.
+- `/EHsc` enables standard C++ exception handling.
+
+---
+
+9. Build
 --------
 
-From the project's root directory (by default: `C:\path\to\DISSCO-X.X.X`), configure the build:
+Build:
 
-    cmake -S . -B build -G Ninja
+```cmd
+cmake --build build --parallel
+```
 
-If you installed `libsndfile` somewhere outside the standard locations, point CMake at it:
+A successful build should produce:
 
-    cmake -S . -B build -G Ninja -DCMAKE_PREFIX_PATH="C:/path/to/libsndfile"
+```text
+%DISSCO_ROOT%\build\CMOD\CMOD.exe
+%DISSCO_ROOT%\build\LASSIE\LASSIE.exe
+```
 
-Then, from `build/`, do
+Verify:
 
-    cmake --build .
+```cmd
+dir "%DISSCO_ROOT%\build\CMOD\CMOD.exe"
+dir "%DISSCO_ROOT%\build\LASSIE\LASSIE.exe"
+```
 
-to build.
+---
 
-By running this command in `build`, one generates a so-called *out-of-source* (OOS) build. The alternative, an in-source build, is heavily discouraged (including [by the CMake maintainers](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Getting%20Started.html#directory-structure)), and the root `CMakeLists.txt` reflects this distaste. The rationale is that OOS builds minimize clutter and collect all build files in one directory, whereas in-source builds put build files virtually everywhere. (This is bad.)
+10. Run LASSIE
+--------------
 
-From `build`, you can clean `build` using `cmake --build . --target clean`. Alternatively, you can do `rmdir /s build` from outside of `build`.
+Run:
 
-Building a release installer
-----------------------------
-The release pipeline produces an NSIS installer `.exe` that bundles `LASSIE.exe`, `CMOD.exe`, the Qt runtime, and writes registry entries for the `.dissco` file association.
+```cmd
+"%DISSCO_ROOT%\build\LASSIE\LASSIE.exe"
+```
 
-Extra requirement: **NSIS** (Nullsoft Scriptable Install System).
+If LASSIE opens, the GUI build is working.
 
-    choco install nsis
+If Windows reports missing Qt DLLs, run:
 
-Then from Developer PowerShell at the project root:
+```cmd
+"%QT_ROOT%\bin\windeployqt.exe" "%DISSCO_ROOT%\build\LASSIE\LASSIE.exe"
+```
 
-    cmake -S . -B build -G Ninja `
-        -DCMAKE_BUILD_TYPE=Release
-    cmake --build build --parallel
-    cmake --build build --target package
+Then run LASSIE again.
 
-This produces `build/DISSCO-<version>-Windows.exe`. Under the hood:
+---
 
-- CPack's NSIS generator wraps the install tree into a single-file installer.
-- `windeployqt` runs at install time against the installed `LASSIE.exe` and copies the Qt DLLs + platform plugins next to it.
-- The installer writes `HKLM\Software\Classes\.dissco` registry entries so `.dissco` files open LASSIE on double-click immediately after install (system-wide). If the file-association branch (`claude/sad-hermann-4b5591`) is merged, LASSIE.exe will additionally self-register per-user (HKCU) on first launch — both layers describe the same ProgID.
-- The installer also installs a Start Menu shortcut and an optional desktop shortcut.
+11. Run CMOD Manually
+---------------------
 
-The icon (`packaging/windows/LASSIE.ico`) is a placeholder; regenerate it from updated artwork via `packaging/windows/make-ico.sh`.
+CMOD can be run directly with a `.dissco` file:
 
-**Code signing:** unsigned `.exe` installers trigger Windows SmartScreen warnings on download. Production releases should be signed with an EV or OV code-signing certificate. The GitHub Actions release workflow has a clean place to wire signtool in once the certificate is provisioned.
+```cmd
+"%DISSCO_ROOT%\build\CMOD\CMOD.exe" "<path-to-project>\your_file.dissco"
+```
+
+Example:
+
+```cmd
+"%DISSCO_ROOT%\build\CMOD\CMOD.exe" "C:\Users\<UserName>\Documents\DISSCO\TestProject\TestProject.dissco"
+```
+
+---
+
+Cleaning and Rebuilding
+-----------------------
+
+Clean and rebuild:
+
+```cmd
+cd /d "%DISSCO_ROOT%"
+cmake --build build --clean-first
+```
+
+Fully reset the build directory:
+
+```cmd
+cd /d "%DISSCO_ROOT%"
+rmdir /s /q build
+```
+
+Then rerun the CMake configure command and build again.
+
+---
