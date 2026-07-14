@@ -42,6 +42,8 @@ MakeEnvelopeRow::MakeEnvelopeRow(int index, QWidget* parent)
 
     m_xEdit->setFixedHeight(20);
     m_yEdit->setFixedHeight(20);
+    m_xEdit->setMinimumWidth(70);
+    m_yEdit->setMinimumWidth(70);
 
     connect(m_xFnBtn,    &QPushButton::clicked, this, &MakeEnvelopeRow::onXFnClicked);
     connect(m_yFnBtn,    &QPushButton::clicked, this, &MakeEnvelopeRow::onYFnClicked);
