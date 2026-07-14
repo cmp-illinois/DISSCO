@@ -202,8 +202,8 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        newX = activeNode-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#a563d1727565814d4d030b78f3f447123">x</a>; <span class="comment">// Keep X unchanged for head/tail</span></div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    }</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="comment">// Constrain Y to [0, 4]</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    newY = qBound(0.0, newY, 4.0);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="comment">// Constrain Y to [0, 10]</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    newY = qBound(0.0, newY, 10.0);</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    </div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    activeNode-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#a563d1727565814d4d030b78f3f447123">x</a> = newX;</div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    activeNode-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#afce9c0ab8f8078d479ff2a25f53eb104">y</a> = newY;</div>
@@ -229,67 +229,67 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        segment = nd-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#a1c6800bceb099bc7c27d51804f20b638">rightSeg</a>;</div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    }</div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="comment">// Fixed 0-4 range (Y is capped at 4)</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="comment">//upperY = 4.0;</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    upperY = 1.0; <span class="comment">// 0-1 range</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    lowerY = 0.0;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="comment">// Update boundary display</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    QString txt = QString(<span class="stringliteral">&quot;%1\n\n\n\n\n\n\n\n\n\n\n\n%2&quot;</span>)</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                  .arg(QString::number(upperY, <span class="charliteral">&#39;f&#39;</span>, 3))</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                  .arg(QString::number(lowerY, <span class="charliteral">&#39;f&#39;</span>, 3));</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>}</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="comment">// Fixed 0-10 range (Y is capped at 10)</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    upperY = qMax(1.0, maxVal);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    lowerY = 0.0;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="comment">// Update boundary display</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    QString txt = QString(<span class="stringliteral">&quot;%1\n\n\n\n\n\n\n\n\n\n\n\n%2&quot;</span>)</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                  .arg(QString::number(upperY, <span class="charliteral">&#39;f&#39;</span>, 3))</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                  .arg(QString::number(lowerY, <span class="charliteral">&#39;f&#39;</span>, 3));</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>}</div>
 </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
-<div class="foldopen" id="foldopen00177" data-start="{" data-end="}">
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno"><a class="line" href="classEnvLibDrawingArea.html#ab4cfea94d2e24cdec337e0549a3f0531">  177</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classEnvLibDrawingArea.html#ab4cfea94d2e24cdec337e0549a3f0531">EnvLibDrawingArea::paintEvent</a>(QPaintEvent* event)</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>{</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    Q_UNUSED(event);</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    QPainter painter(<span class="keyword">this</span>);</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    painter.fillRect(rect(), Qt::white);</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <a class="code hl_class" href="classEnvelopeLibraryEntry.html">EnvelopeLibraryEntry</a>* <a class="code hl_enumvalue" href="event__struct_8hpp.html#ab79062bb6e4e9edab1293c4d05ad3b65a9de8f14e4eab7732d5b59eedcbb860b0">env</a> = envelopeLibraryWindow-&gt;<a class="code hl_function" href="classEnvelopeLibraryWindow.html#a748389013fcd6b8fa47857c6407e8d50">getActiveEnvelope</a>();</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keywordflow">if</span> (!<a class="code hl_enumvalue" href="event__struct_8hpp.html#ab79062bb6e4e9edab1293c4d05ad3b65a9de8f14e4eab7732d5b59eedcbb860b0">env</a>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordtype">int</span> w = width(), h = height();</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="comment">// Draw grid lines</span></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    painter.save();</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    QPen gridPen(QColor(220,220,220));</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    gridPen.setStyle(Qt::DashLine);</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    painter.setPen(gridPen);</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="comment">// Y-axis: lines every 0.25 (4 intervals)</span></div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; 4; ++i) {</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="keywordtype">int</span> y = h - i * h / 4;</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        painter.drawLine(0, y, w, y);</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    }</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="comment">// X-axis: lines every 0.2 (5 intervals)</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; 5; ++i) {</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="keywordtype">int</span> x = i * w / 5;</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        painter.drawLine(x, 0, x, h);</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    }</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    painter.restore();</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    <span class="comment">// Draw axis labels</span></div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    QFont font = painter.font();</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    font.setPointSize(10);</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    painter.setFont(font);</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    painter.setPen(Qt::black);</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    <span class="comment">// Y-axis labels along left edge at each grid line (skip 0, shown by X-axis)</span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt;= 4; ++i) {</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        <span class="keywordtype">int</span> y = h - i * h / 4;</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        QString label = QString::number(i * 0.25, <span class="charliteral">&#39;f&#39;</span>, 2);</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        painter.drawText(3, y - 3, label);</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    }</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="comment">// X-axis labels along bottom at each grid line</span></div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt;= 5; ++i) {</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="keywordtype">int</span> x = i * w / 5;</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        QString label = QString::number(i * 0.2, <span class="charliteral">&#39;f&#39;</span>, 1);</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        painter.drawText(x + 2, h - 3, label);</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    }</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <a class="code hl_function" href="classEnvLibDrawingArea.html#a049ecb2a281b1b7801303d5cc354f890">adjustBoundary</a>(<a class="code hl_enumvalue" href="event__struct_8hpp.html#ab79062bb6e4e9edab1293c4d05ad3b65a9de8f14e4eab7732d5b59eedcbb860b0">env</a>);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="foldopen" id="foldopen00176" data-start="{" data-end="}">
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="classEnvLibDrawingArea.html#ab4cfea94d2e24cdec337e0549a3f0531">  176</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classEnvLibDrawingArea.html#ab4cfea94d2e24cdec337e0549a3f0531">EnvLibDrawingArea::paintEvent</a>(QPaintEvent* event)</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>{</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    Q_UNUSED(event);</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    QPainter painter(<span class="keyword">this</span>);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    painter.fillRect(rect(), Qt::white);</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <a class="code hl_class" href="classEnvelopeLibraryEntry.html">EnvelopeLibraryEntry</a>* <a class="code hl_enumvalue" href="event__struct_8hpp.html#ab79062bb6e4e9edab1293c4d05ad3b65a9de8f14e4eab7732d5b59eedcbb860b0">env</a> = envelopeLibraryWindow-&gt;<a class="code hl_function" href="classEnvelopeLibraryWindow.html#a748389013fcd6b8fa47857c6407e8d50">getActiveEnvelope</a>();</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keywordflow">if</span> (!<a class="code hl_enumvalue" href="event__struct_8hpp.html#ab79062bb6e4e9edab1293c4d05ad3b65a9de8f14e4eab7732d5b59eedcbb860b0">env</a>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <a class="code hl_function" href="classEnvLibDrawingArea.html#a049ecb2a281b1b7801303d5cc354f890">adjustBoundary</a>(<a class="code hl_enumvalue" href="event__struct_8hpp.html#ab79062bb6e4e9edab1293c4d05ad3b65a9de8f14e4eab7732d5b59eedcbb860b0">env</a>);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordtype">int</span> w = width(), h = height();</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="comment">// Draw grid lines</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    painter.save();</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    QPen gridPen(QColor(220,220,220));</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    gridPen.setStyle(Qt::DashLine);</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    painter.setPen(gridPen);</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="comment">// Y-axis: lines every 0.25 (4 intervals)</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; 4; ++i) {</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="keywordtype">int</span> y = h - i * h / 4;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        painter.drawLine(0, y, w, y);</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    }</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="comment">// X-axis: lines every 0.2 (5 intervals)</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; 5; ++i) {</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <span class="keywordtype">int</span> x = i * w / 5;</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        painter.drawLine(x, 0, x, h);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    }</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    painter.restore();</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="comment">// Draw axis labels</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    QFont font = painter.font();</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    font.setPointSize(10);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    painter.setFont(font);</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    painter.setPen(Qt::black);</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="comment">// Y-axis labels along left edge at each grid line (skip 0, shown by X-axis)</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt;= 4; ++i) {</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        <span class="keywordtype">int</span> y = h - i * h / 4;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        <span class="keywordtype">double</span> value = lowerY + (upperY - lowerY) * i / 4.0;</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        QString label = QString::number(value, <span class="charliteral">&#39;f&#39;</span>, 2);</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        painter.drawText(3, y - 3, label);</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    }</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    <span class="comment">// X-axis labels along bottom at each grid line</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt;= 5; ++i) {</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        <span class="keywordtype">int</span> x = i * w / 5;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        QString label = QString::number(i * 0.2, <span class="charliteral">&#39;f&#39;</span>, 1);</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        painter.drawText(x + 2, h - 3, label);</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    }</div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="comment">// Draw each segment</span></div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <a class="code hl_class" href="classEnvLibEntrySeg.html">EnvLibEntrySeg</a>* seg = <a class="code hl_enumvalue" href="event__struct_8hpp.html#ab79062bb6e4e9edab1293c4d05ad3b65a9de8f14e4eab7732d5b59eedcbb860b0">env</a>-&gt;head ? <a class="code hl_enumvalue" href="event__struct_8hpp.html#ab79062bb6e4e9edab1293c4d05ad3b65a9de8f14e4eab7732d5b59eedcbb860b0">env</a>-&gt;head-&gt;rightSeg : <span class="keyword">nullptr</span>;</div>
@@ -390,7 +390,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    y = qRound(y*1000)/1000.0;</div>
 <div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    x = qBound(0.0, x, 1.0);</div>
 <div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>    <span class="comment">// Constrain Y to [0, 4]</span></div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    y = qBound(0.0, y, 4.0);</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    y = qBound(0.0, y, 10.0);</div>
 <div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
 <div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    <span class="keywordflow">if</span> (mouseLeftButtonPressedDown) {</div>
 <div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        mouseX = x;</div>
@@ -618,10 +618,10 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span>    <span class="keywordtype">double</span> rb = activeNode-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#a1c6800bceb099bc7c27d51804f20b638">rightSeg</a> ? activeNode-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#a1c6800bceb099bc7c27d51804f20b638">rightSeg</a>-&gt;<a class="code hl_variable" href="classEnvLibEntrySeg.html#a398b46370d0810ef0e732c8ebf7266cb">rightNode</a>-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#a563d1727565814d4d030b78f3f447123">x</a> - 0.001 : 1.0;</div>
 <div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span> </div>
 <div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>    <span class="keywordflow">if</span> (!activeNode-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#a82921bad2d63e97ae0c854e4e2465dd4">leftSeg</a> || !activeNode-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#a1c6800bceb099bc7c27d51804f20b638">rightSeg</a>) {</div>
-<div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span>        activeNode-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#afce9c0ab8f8078d479ff2a25f53eb104">y</a> = qBound(0.0, mouseY, 4.0);</div>
+<div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span>        activeNode-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#afce9c0ab8f8078d479ff2a25f53eb104">y</a> = qBound(0.0, mouseY, 10.0);</div>
 <div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span>    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>        activeNode-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#a563d1727565814d4d030b78f3f447123">x</a> = qBound(lb, mouseX, rb);</div>
-<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>        activeNode-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#afce9c0ab8f8078d479ff2a25f53eb104">y</a> = qBound(0.0, mouseY, 4.0);</div>
+<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>        activeNode-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#afce9c0ab8f8078d479ff2a25f53eb104">y</a> = qBound(0.0, mouseY, 10.0);</div>
 <div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>    }</div>
 <div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span> </div>
 <div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>    envelopeLibraryWindow-&gt;<a class="code hl_function" href="classEnvelopeLibraryWindow.html#a5569ae9d30f88f6080575130f28c64cf">setEntries</a>(</div>
@@ -654,7 +654,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aclassEnvLibDrawingArea_html_a553e642f59f3c1ff33cf279fc7b2ba1e"><div class="ttname"><a href="classEnvLibDrawingArea.html#a553e642f59f3c1ff33cf279fc7b2ba1e">EnvLibDrawingArea::contextMenuEvent</a></div><div class="ttdeci">void contextMenuEvent(QContextMenuEvent *event) override</div><div class="ttdoc">Fallback for context menu key events.</div><div class="ttdef"><b>Definition</b> <a href="EnvLibDrawingArea_8cpp_source.html#l00406">EnvLibDrawingArea.cpp:406</a></div></div>
 <div class="ttc" id="aclassEnvLibDrawingArea_html_a720fca5e8faaf07a750fb2876581913b"><div class="ttname"><a href="classEnvLibDrawingArea.html#a720fca5e8faaf07a750fb2876581913b">EnvLibDrawingArea::mouseMoveEvent</a></div><div class="ttdeci">void mouseMoveEvent(QMouseEvent *event) override</div><div class="ttdoc">Track mouse movement (update coords display &amp; drag)</div><div class="ttdef"><b>Definition</b> <a href="EnvLibDrawingArea_8cpp_source.html#l00315">EnvLibDrawingArea.cpp:315</a></div></div>
 <div class="ttc" id="aclassEnvLibDrawingArea_html_a86b78447c41ef939d691e041ab6f6ed2"><div class="ttname"><a href="classEnvLibDrawingArea.html#a86b78447c41ef939d691e041ab6f6ed2">EnvLibDrawingArea::mouseReleaseEvent</a></div><div class="ttdeci">void mouseReleaseEvent(QMouseEvent *event) override</div><div class="ttdoc">Handle releases (end drag)</div><div class="ttdef"><b>Definition</b> <a href="EnvLibDrawingArea_8cpp_source.html#l00393">EnvLibDrawingArea.cpp:393</a></div></div>
-<div class="ttc" id="aclassEnvLibDrawingArea_html_ab4cfea94d2e24cdec337e0549a3f0531"><div class="ttname"><a href="classEnvLibDrawingArea.html#ab4cfea94d2e24cdec337e0549a3f0531">EnvLibDrawingArea::paintEvent</a></div><div class="ttdeci">void paintEvent(QPaintEvent *event) override</div><div class="ttdoc">Paint the envelope graph.</div><div class="ttdef"><b>Definition</b> <a href="EnvLibDrawingArea_8cpp_source.html#l00177">EnvLibDrawingArea.cpp:177</a></div></div>
+<div class="ttc" id="aclassEnvLibDrawingArea_html_ab4cfea94d2e24cdec337e0549a3f0531"><div class="ttname"><a href="classEnvLibDrawingArea.html#ab4cfea94d2e24cdec337e0549a3f0531">EnvLibDrawingArea::paintEvent</a></div><div class="ttdeci">void paintEvent(QPaintEvent *event) override</div><div class="ttdoc">Paint the envelope graph.</div><div class="ttdef"><b>Definition</b> <a href="EnvLibDrawingArea_8cpp_source.html#l00176">EnvLibDrawingArea.cpp:176</a></div></div>
 <div class="ttc" id="aclassEnvLibDrawingArea_html_aca692664dc8aa19535b80bab00102141"><div class="ttname"><a href="classEnvLibDrawingArea.html#aca692664dc8aa19535b80bab00102141">EnvLibDrawingArea::mousePressEvent</a></div><div class="ttdeci">void mousePressEvent(QMouseEvent *event) override</div><div class="ttdoc">Handle presses (select node, start drag, show popup)</div><div class="ttdef"><b>Definition</b> <a href="EnvLibDrawingArea_8cpp_source.html#l00341">EnvLibDrawingArea.cpp:341</a></div></div>
 <div class="ttc" id="aclassEnvLibDrawingArea_html_acd90441af0d8a675174ac6e5059de143"><div class="ttname"><a href="classEnvLibDrawingArea.html#acd90441af0d8a675174ac6e5059de143">EnvLibDrawingArea::~EnvLibDrawingArea</a></div><div class="ttdeci">~EnvLibDrawingArea() override</div><div class="ttdoc">Destructor: Qt cleans up child widgets/actions automatically.</div><div class="ttdef"><b>Definition</b> <a href="EnvLibDrawingArea_8cpp_source.html#l00071">EnvLibDrawingArea.cpp:71</a></div></div>
 <div class="ttc" id="aclassEnvLibDrawingArea_html_aec8c2261fe1ab157a1f7323c71dabc5b"><div class="ttname"><a href="classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b">EnvLibDrawingArea::showGraph</a></div><div class="ttdeci">void showGraph(EnvelopeLibraryEntry *_envelope)</div><div class="ttdoc">Trigger a redraw of the given envelope.</div><div class="ttdef"><b>Definition</b> <a href="EnvLibDrawingArea_8cpp_source.html#l00093">EnvLibDrawingArea.cpp:93</a></div></div>
