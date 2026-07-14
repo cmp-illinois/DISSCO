@@ -39,9 +39,9 @@ Stochos::Stochos(int methodType, int stochosIndex, QWidget *parent)
         stochosHBox->addWidget(m_distEntry);
         stochosHBox->addWidget(m_removeStochosButton);
 
-        m_minEntry->setFixedHeight(20);
-        m_maxEntry->setFixedHeight(20);
-        m_distEntry->setFixedHeight(20);
+        m_minEntry->setFixedHeight(30);
+        m_maxEntry->setFixedHeight(30);
+        m_distEntry->setFixedHeight(30);
 
         m_mainLayout->addLayout(stochosHBox);
     }

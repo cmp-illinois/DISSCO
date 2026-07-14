@@ -33,7 +33,7 @@ FunctionEntryRow::FunctionEntryRow(const QString& labelText,
     connect(m_entry,    &QLineEdit::textChanged,         this, &FunctionEntryRow::onTextChanged);
     connect(m_entry,    &QLineEdit::cursorPositionChanged, this, [this](){ emit editFocused(m_entry); });
 
-    m_entry->setFixedHeight(20);
+    m_entry->setFixedHeight(30);
     setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 }
 
