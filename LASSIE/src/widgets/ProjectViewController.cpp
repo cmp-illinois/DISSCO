@@ -1407,12 +1407,12 @@ if (nameExists(newName)) {
         case low: 
             dup(pm->lowevents());
             break;
-        case bottom:
+        case bottom: {
             BottomEvent copy = pm->bottomevents()[index];
             copy.event.name = newName;
             pm->bottomevents().append(copy);
-            break; 
-        case sound:
+            break;
+        } case sound:
             dup(pm->spectrumevents());
             break; 
         case note:
