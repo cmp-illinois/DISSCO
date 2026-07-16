@@ -119,47 +119,49 @@ $(document).ready(function() { init_codefold(0); });
 <div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="FunctionRegistrations_8cpp.html#af7ab3ca3de0ba687af5c308a0180a0ee">   35</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="FunctionRegistrations_8cpp.html#af7ab3ca3de0ba687af5c308a0180a0ee">registerAllFunctions</a>() {</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">auto</span>&amp; r = <a class="code hl_function" href="classFunctionRegistry.html#a2533dd10f3042e64520beaad70002952">FunctionRegistry::instance</a>();</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    r.registerType&lt;<a class="code hl_class" href="classInverseFunction.html">InverseFunction</a>&gt;();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    r.registerType&lt;<a class="code hl_class" href="classLNFunction.html">LNFunction</a>&gt;();</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    r.registerType&lt;<a class="code hl_class" href="classFibonacciFunction.html">FibonacciFunction</a>&gt;();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    r.registerType&lt;<a class="code hl_class" href="classChooseLFunction.html">ChooseLFunction</a>&gt;();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    r.registerType&lt;<a class="code hl_class" href="classMarkovFunction.html">MarkovFunction</a>&gt;();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    r.registerType&lt;<a class="code hl_class" href="classRandomFunction.html">RandomFunction</a>&gt;();</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    r.registerType&lt;<a class="code hl_class" href="classRandomIntFunction.html">RandomIntFunction</a>&gt;();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    r.registerType&lt;<a class="code hl_class" href="classRandomOrderIntFunction.html">RandomOrderIntFunction</a>&gt;();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    r.registerType&lt;<a class="code hl_class" href="classRandomizerFunction.html">RandomizerFunction</a>&gt;();</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    r.registerType&lt;<a class="code hl_class" href="classRandomDensityFunction.html">RandomDensityFunction</a>&gt;();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    r.registerType&lt;<a class="code hl_class" href="classEnvLibFunction.html">EnvLibFunction</a>&gt;();</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    r.registerType&lt;<a class="code hl_class" href="classMakeListFunction.html">MakeListFunction</a>&gt;();</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    r.registerType&lt;<a class="code hl_class" href="classSpectrumGenFunction.html">SpectrumGenFunction</a>&gt;();</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    r.registerType&lt;<a class="code hl_class" href="classReadENVFileFunction.html">ReadENVFileFunction</a>&gt;();</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    r.registerType&lt;<a class="code hl_class" href="classReadSIVFileFunction.html">ReadSIVFileFunction</a>&gt;();</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    r.registerType&lt;<a class="code hl_class" href="classReadPATFileFunction.html">ReadPATFileFunction</a>&gt;();</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    r.registerType&lt;<a class="code hl_class" href="classReadSPAFileFunction.html">ReadSPAFileFunction</a>&gt;();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    r.registerType&lt;<a class="code hl_class" href="classReadREVFileFunction.html">ReadREVFileFunction</a>&gt;();</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    r.registerType&lt;<a class="code hl_class" href="classReadFILFileFunction.html">ReadFILFileFunction</a>&gt;();</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    r.registerType&lt;<a class="code hl_class" href="classCurrentTypeFunction.html">CurrentTypeFunction</a>&gt;();</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    r.registerType&lt;<a class="code hl_class" href="classCurrentChildNumFunction.html">CurrentChildNumFunction</a>&gt;();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    r.registerType&lt;<a class="code hl_class" href="classCurrentPartialNumFunction.html">CurrentPartialNumFunction</a>&gt;();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    r.registerType&lt;<a class="code hl_class" href="classCurrentSegmentFunction.html">CurrentSegmentFunction</a>&gt;();</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    r.registerType&lt;<a class="code hl_class" href="classAvailableEduFunction.html">AvailableEduFunction</a>&gt;();</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    r.registerType&lt;<a class="code hl_class" href="classPreviousChildDurationFunction.html">PreviousChildDurationFunction</a>&gt;();</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    r.registerType&lt;<a class="code hl_class" href="classCurrentLayerFunction.html">CurrentLayerFunction</a>&gt;();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    r.registerType&lt;<a class="code hl_class" href="classDecayFunction.html">DecayFunction</a>&gt;();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    r.registerType&lt;<a class="code hl_class" href="classGetPatternFunction.html">GetPatternFunction</a>&gt;();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    r.registerType&lt;<a class="code hl_class" href="classExpandPatternFunction.html">ExpandPatternFunction</a>&gt;();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    r.registerType&lt;<a class="code hl_class" href="classMakeFilterFunction.html">MakeFilterFunction</a>&gt;();</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    r.registerType&lt;<a class="code hl_class" href="classMakePatternFunction.html">MakePatternFunction</a>&gt;();</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    r.registerType&lt;<a class="code hl_class" href="classMakeEnvelopeFunction.html">MakeEnvelopeFunction</a>&gt;();</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    r.registerType&lt;<a class="code hl_class" href="classMakeSieveFunction.html">MakeSieveFunction</a>&gt;();</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    r.registerType&lt;<a class="code hl_class" href="classValuePickFunction.html">ValuePickFunction</a>&gt;();</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    r.registerType&lt;<a class="code hl_class" href="classSelectFunction.html">SelectFunction</a>&gt;();</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    r.registerType&lt;<a class="code hl_class" href="classStochosFunction.html">StochosFunction</a>&gt;();</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    r.registerType&lt;<a class="code hl_class" href="classSPAFunction.html">SPAFunction</a>&gt;();</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    r.registerType&lt;<a class="code hl_class" href="classRevSimpleFunction.html">RevSimpleFunction</a>&gt;();</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    r.registerType&lt;<a class="code hl_class" href="classRevMediumFunction.html">RevMediumFunction</a>&gt;();</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    r.registerType&lt;<a class="code hl_class" href="classRevAdvancedFunction.html">RevAdvancedFunction</a>&gt;();</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// FunctionGenerator displays functions in registration order.</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    r.registerType&lt;<a class="code hl_class" href="classRandomFunction.html">RandomFunction</a>&gt;();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    r.registerType&lt;<a class="code hl_class" href="classRandomIntFunction.html">RandomIntFunction</a>&gt;();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    r.registerType&lt;<a class="code hl_class" href="classRandomOrderIntFunction.html">RandomOrderIntFunction</a>&gt;();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    r.registerType&lt;<a class="code hl_class" href="classRandomizerFunction.html">RandomizerFunction</a>&gt;();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    r.registerType&lt;<a class="code hl_class" href="classRandomDensityFunction.html">RandomDensityFunction</a>&gt;();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    r.registerType&lt;<a class="code hl_class" href="classSelectFunction.html">SelectFunction</a>&gt;();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    r.registerType&lt;<a class="code hl_class" href="classStochosFunction.html">StochosFunction</a>&gt;();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    r.registerType&lt;<a class="code hl_class" href="classValuePickFunction.html">ValuePickFunction</a>&gt;();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    r.registerType&lt;<a class="code hl_class" href="classMarkovFunction.html">MarkovFunction</a>&gt;();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    r.registerType&lt;<a class="code hl_class" href="classChooseLFunction.html">ChooseLFunction</a>&gt;();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    r.registerType&lt;<a class="code hl_class" href="classGetPatternFunction.html">GetPatternFunction</a>&gt;();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    r.registerType&lt;<a class="code hl_class" href="classInverseFunction.html">InverseFunction</a>&gt;();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    r.registerType&lt;<a class="code hl_class" href="classFibonacciFunction.html">FibonacciFunction</a>&gt;();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    r.registerType&lt;<a class="code hl_class" href="classLNFunction.html">LNFunction</a>&gt;();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    r.registerType&lt;<a class="code hl_class" href="classDecayFunction.html">DecayFunction</a>&gt;();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    r.registerType&lt;<a class="code hl_class" href="classCurrentChildNumFunction.html">CurrentChildNumFunction</a>&gt;();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    r.registerType&lt;<a class="code hl_class" href="classCurrentTypeFunction.html">CurrentTypeFunction</a>&gt;();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    r.registerType&lt;<a class="code hl_class" href="classPreviousChildDurationFunction.html">PreviousChildDurationFunction</a>&gt;();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    r.registerType&lt;<a class="code hl_class" href="classAvailableEduFunction.html">AvailableEduFunction</a>&gt;();</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    r.registerType&lt;<a class="code hl_class" href="classCurrentPartialNumFunction.html">CurrentPartialNumFunction</a>&gt;();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    r.registerType&lt;<a class="code hl_class" href="classCurrentSegmentFunction.html">CurrentSegmentFunction</a>&gt;();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    r.registerType&lt;<a class="code hl_class" href="classCurrentLayerFunction.html">CurrentLayerFunction</a>&gt;();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    r.registerType&lt;<a class="code hl_class" href="classEnvLibFunction.html">EnvLibFunction</a>&gt;();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    r.registerType&lt;<a class="code hl_class" href="classMakeListFunction.html">MakeListFunction</a>&gt;();</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    r.registerType&lt;<a class="code hl_class" href="classSpectrumGenFunction.html">SpectrumGenFunction</a>&gt;();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    r.registerType&lt;<a class="code hl_class" href="classReadENVFileFunction.html">ReadENVFileFunction</a>&gt;();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    r.registerType&lt;<a class="code hl_class" href="classReadSIVFileFunction.html">ReadSIVFileFunction</a>&gt;();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    r.registerType&lt;<a class="code hl_class" href="classReadPATFileFunction.html">ReadPATFileFunction</a>&gt;();</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    r.registerType&lt;<a class="code hl_class" href="classReadSPAFileFunction.html">ReadSPAFileFunction</a>&gt;();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    r.registerType&lt;<a class="code hl_class" href="classReadREVFileFunction.html">ReadREVFileFunction</a>&gt;();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    r.registerType&lt;<a class="code hl_class" href="classReadFILFileFunction.html">ReadFILFileFunction</a>&gt;();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    r.registerType&lt;<a class="code hl_class" href="classExpandPatternFunction.html">ExpandPatternFunction</a>&gt;();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    r.registerType&lt;<a class="code hl_class" href="classMakeFilterFunction.html">MakeFilterFunction</a>&gt;();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    r.registerType&lt;<a class="code hl_class" href="classMakePatternFunction.html">MakePatternFunction</a>&gt;();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    r.registerType&lt;<a class="code hl_class" href="classMakeEnvelopeFunction.html">MakeEnvelopeFunction</a>&gt;();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    r.registerType&lt;<a class="code hl_class" href="classMakeSieveFunction.html">MakeSieveFunction</a>&gt;();</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    r.registerType&lt;<a class="code hl_class" href="classSPAFunction.html">SPAFunction</a>&gt;();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    r.registerType&lt;<a class="code hl_class" href="classRevSimpleFunction.html">RevSimpleFunction</a>&gt;();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    r.registerType&lt;<a class="code hl_class" href="classRevMediumFunction.html">RevMediumFunction</a>&gt;();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    r.registerType&lt;<a class="code hl_class" href="classRevAdvancedFunction.html">RevAdvancedFunction</a>&gt;();</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}</div>
 </div>
 <div class="ttc" id="aChooseLFunction_8hpp_html"><div class="ttname"><a href="ChooseLFunction_8hpp.html">ChooseLFunction.hpp</a></div></div>
 <div class="ttc" id="aDecayFunction_8hpp_html"><div class="ttname"><a href="DecayFunction_8hpp.html">DecayFunction.hpp</a></div></div>
