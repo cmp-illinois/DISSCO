@@ -2,11 +2,13 @@
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,77,60,102"/>
 <area shape="rect" id="Node000002" href="$structPieceHelper.html#a83d099d9ffdc29cf83935b927d172aa0" title="Creates the score files directory if it does not exist." alt="" coords="110,5,295,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,75,107,55,127,48,129,53,109,60,61,80"/>
-<area shape="rect" id="Node000004" href="$structPieceHelper.html#abfe0ff1bd5655dfcdd27a11bba4248eb" title="Creates the sound files directory if it does not exist." alt="" coords="108,69,297,109"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="60,87,94,87,94,92,60,92"/>
-<area shape="rect" id="Node000005" href="$SignalHandlers_8cpp.html#ae7aa0f0897500b3fafae9f011afb0d4d" title=" " alt="" coords="139,134,266,159"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="61,99,109,119,137,128,135,133,107,124,59,104"/>
-<area shape="rect" id="Node000003" href="$structPieceHelper.html#a28358171bf3acd8d2dbee00838a6b5ae" title="Lists contents of directory." alt="" coords="345,45,557,70"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="296,35,340,40,339,46,295,40"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="297,75,339,69,340,74,298,80"/>
+<area shape="rect" id="Node000005" href="$structPieceHelper.html#abfe0ff1bd5655dfcdd27a11bba4248eb" title="Creates the sound files directory if it does not exist." alt="" coords="108,69,297,109"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="60,87,94,87,94,92,60,92"/>
+<area shape="rect" id="Node000006" href="$SignalHandlers_8cpp.html#ae7aa0f0897500b3fafae9f011afb0d4d" title=" " alt="" coords="139,134,266,159"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="61,99,109,119,137,128,135,133,107,124,59,104"/>
+<area shape="rect" id="Node000003" href="$structPieceHelper.html#a28358171bf3acd8d2dbee00838a6b5ae" title="Lists contents of directory." alt="" coords="345,13,557,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="296,23,331,23,331,28,296,28"/>
+<area shape="rect" id="Node000004" href="$structPieceHelper.html#a4d29c17a334bec68b78518ba32e62481" title="Ensures a path has a backslash on the end." alt="" coords="356,69,547,94"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="293,43,382,63,381,68,292,48"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="297,84,342,82,342,88,297,89"/>
 </map>

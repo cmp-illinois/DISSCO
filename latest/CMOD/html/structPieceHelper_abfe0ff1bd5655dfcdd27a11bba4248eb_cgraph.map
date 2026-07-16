@@ -1,5 +1,5 @@
 <map id="PieceHelper::createSoundFilesDirectory" name="PieceHelper::createSoundFilesDirectory">
 <area shape="rect" id="Node000001" title="Creates the sound files directory if it does not exist." alt="" coords="5,5,195,45"/>
-<area shape="rect" id="Node000002" href="$structPieceHelper.html#a28358171bf3acd8d2dbee00838a6b5ae" title="Lists contents of directory." alt="" coords="243,13,455,38"/>
+<area shape="rect" id="Node000002" href="$structPieceHelper.html#a4d29c17a334bec68b78518ba32e62481" title="Ensures a path has a backslash on the end." alt="" coords="243,13,433,38"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,23,229,23,229,28,195,28"/>
 </map>

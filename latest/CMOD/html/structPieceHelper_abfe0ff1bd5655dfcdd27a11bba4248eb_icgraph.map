@@ -1,5 +1,7 @@
 <map id="PieceHelper::createSoundFilesDirectory" name="PieceHelper::createSoundFilesDirectory">
-<area shape="rect" id="Node000001" title="Creates the sound files directory if it does not exist." alt="" coords="108,5,297,45"/>
-<area shape="rect" id="Node000002" href="$Main_8cpp.html#ad7fad620c08fb93cc7f4b5ebe35b9368" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,28,60,28,60,23,95,23"/>
+<area shape="rect" id="Node000001" title="Creates the sound files directory if it does not exist." alt="" coords="153,23,343,63"/>
+<area shape="rect" id="Node000002" href="$Main_8cpp.html#ad7fad620c08fb93cc7f4b5ebe35b9368" title=" " alt="" coords="28,5,83,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,32,83,24,83,19,139,26"/>
+<area shape="rect" id="Node000003" href="$classPiece.html#a4dc9d0d3627fc2208b7da6a36a2ca9c2" title=" " alt="" coords="5,55,105,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,60,106,64,105,58,139,54"/>
 </map>
