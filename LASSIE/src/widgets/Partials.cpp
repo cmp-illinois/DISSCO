@@ -31,6 +31,8 @@ Partials::Partials(unsigned eventIndex, int partialIndex, QWidget* parent)
 
     m_mainLayout->addWidget(m_row);
     setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+    // Set spacing between spectrum partial rows.
+    setFixedHeight(28);
 }
 
 
