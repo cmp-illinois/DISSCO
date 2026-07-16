@@ -60,7 +60,7 @@ var searchData=
   ['gettempobeatsperminute_57',['getTempoBeatsPerMinute',['../classTempo.html#aae19b8ae92d7551768ba8b15d051efa6',1,'Tempo']]],
   ['gettempostringfromdomelement_58',['getTempoStringFromDOMElement',['../classEvent.html#a6de16acb3bc169f61f611c733f15b4de',1,'Event']]],
   ['gettext_59',['GetText',['../classNote.html#acb14b6c07f419acc4225bbb49b79d728',1,'Note']]],
-  ['gettimesignature_60',['getTimeSignature',['../classTempo.html#aa91c36908082625ddd546a219af1b472',1,'Tempo']]],
+  ['gettimesignature_60',['gettimesignature',['../classSection.html#a4b212f3bea5c80fcdc256d783fda4707',1,'Section::GetTimeSignature()'],['../classTempo.html#aa91c36908082625ddd546a219af1b472',1,'Tempo::getTimeSignature(void)']]],
   ['gettimesignaturebeat_61',['getTimeSignatureBeat',['../classTempo.html#a94f456adbe3677ad512acac8386c45dc',1,'Tempo']]],
   ['gettimesignaturebeatdurationinseconds_62',['getTimeSignatureBeatDurationInSeconds',['../classTempo.html#ade906f53101b477bb1187014e9fa6710',1,'Tempo']]],
   ['gettimesignaturebeatsperbar_63',['getTimeSignatureBeatsPerBar',['../classTempo.html#a9ce4848db195436377dde76b9f7b794e',1,'Tempo']]],

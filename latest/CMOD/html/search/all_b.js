@@ -3,7 +3,7 @@ var searchData=
   ['main_0',['main',['../Main_8cpp.html#ad7fad620c08fb93cc7f4b5ebe35b9368',1,'Main.cpp']]],
   ['main_2ecpp_1',['Main.cpp',['../Main_8cpp.html',1,'']]],
   ['matpoint_2',['MatPoint',['../structMatPoint.html',1,'']]],
-  ['matrix_3',['matrix',['../classMatrix.html',1,'Matrix'],['../classMatrix.html#a437090a5a7b96085513ce6e66532d567',1,'Matrix::Matrix(int numTypes, int numAttacks, int numDurations, vector&lt; int &gt; numTypesInLayers, int maxVal, Tempo tempo, bool wellAligned=false)'],['../classMatrix.html#a806b603175d91477ca28ccf83ef589ea',1,'Matrix::Matrix(const Matrix &amp;orig)'],['../classEvent.html#aef30ab1b612f04183116d3cad019989c',1,'Event::matrix']]],
+  ['matrix_3',['matrix',['../classMatrix.html',1,'Matrix'],['../classEvent.html#aef30ab1b612f04183116d3cad019989c',1,'Event::matrix'],['../classMatrix.html#a437090a5a7b96085513ce6e66532d567',1,'Matrix::Matrix(int numTypes, int numAttacks, int numDurations, vector&lt; int &gt; numTypesInLayers, int maxVal, Tempo tempo, bool wellAligned=false)'],['../classMatrix.html#a806b603175d91477ca28ccf83ef589ea',1,'Matrix::Matrix(const Matrix &amp;orig)']]],
   ['matrix_2ecpp_4',['Matrix.cpp',['../Matrix_8cpp.html',1,'']]],
   ['matrix_2eh_5',['Matrix.h',['../Matrix_8h.html',1,'']]],
   ['maxchilddur_6',['maxChildDur',['../classEvent.html#a5e7f6e3576084c031fc6822ec4a7ee32',1,'Event']]],
