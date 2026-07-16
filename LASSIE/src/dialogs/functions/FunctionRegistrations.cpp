@@ -34,16 +34,30 @@
 
 void registerAllFunctions() {
     auto& r = FunctionRegistry::instance();
-    r.registerType<InverseFunction>();
-    r.registerType<LNFunction>();
-    r.registerType<FibonacciFunction>();
-    r.registerType<ChooseLFunction>();
-    r.registerType<MarkovFunction>();
+    // FunctionGenerator displays functions in registration order.
     r.registerType<RandomFunction>();
     r.registerType<RandomIntFunction>();
     r.registerType<RandomOrderIntFunction>();
     r.registerType<RandomizerFunction>();
     r.registerType<RandomDensityFunction>();
+    r.registerType<SelectFunction>();
+    r.registerType<StochosFunction>();
+    r.registerType<ValuePickFunction>();
+    r.registerType<MarkovFunction>();
+    r.registerType<ChooseLFunction>();
+    r.registerType<GetPatternFunction>();
+    r.registerType<InverseFunction>();
+    r.registerType<FibonacciFunction>();
+    r.registerType<LNFunction>();
+    r.registerType<DecayFunction>();
+    r.registerType<CurrentChildNumFunction>();
+    r.registerType<CurrentTypeFunction>();
+    r.registerType<PreviousChildDurationFunction>();
+    r.registerType<AvailableEduFunction>();
+    r.registerType<CurrentPartialNumFunction>();
+    r.registerType<CurrentSegmentFunction>();
+    r.registerType<CurrentLayerFunction>();
+
     r.registerType<EnvLibFunction>();
     r.registerType<MakeListFunction>();
     r.registerType<SpectrumGenFunction>();
@@ -53,23 +67,11 @@ void registerAllFunctions() {
     r.registerType<ReadSPAFileFunction>();
     r.registerType<ReadREVFileFunction>();
     r.registerType<ReadFILFileFunction>();
-    r.registerType<CurrentTypeFunction>();
-    r.registerType<CurrentChildNumFunction>();
-    r.registerType<CurrentPartialNumFunction>();
-    r.registerType<CurrentSegmentFunction>();
-    r.registerType<AvailableEduFunction>();
-    r.registerType<PreviousChildDurationFunction>();
-    r.registerType<CurrentLayerFunction>();
-    r.registerType<DecayFunction>();
-    r.registerType<GetPatternFunction>();
     r.registerType<ExpandPatternFunction>();
     r.registerType<MakeFilterFunction>();
     r.registerType<MakePatternFunction>();
     r.registerType<MakeEnvelopeFunction>();
     r.registerType<MakeSieveFunction>();
-    r.registerType<ValuePickFunction>();
-    r.registerType<SelectFunction>();
-    r.registerType<StochosFunction>();
     r.registerType<SPAFunction>();
     r.registerType<RevSimpleFunction>();
     r.registerType<RevMediumFunction>();

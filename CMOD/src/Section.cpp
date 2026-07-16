@@ -259,6 +259,10 @@ float Section::GetStartTimeGlobal() const {
   return time_signature_.start_time_global_;
 }
 
+TimeSignature Section::GetTimeSignature() const{
+    return time_signature_;
+} //diyun
+
 int Section::CalculateEDUsFromSecondsInTempo(float seconds) {
   return time_signature_.tempo_.convertSecondsToEDUs(seconds);
 }
@@ -408,18 +412,23 @@ void Section::AddRestsAndFlatten() {
 }
 
 void Section::Notate() {
-  list<Note*>::iterator it = section_flat_.begin();
-  list<Note*>::iterator next_it = ++section_flat_.begin();
   int prev_tuplet = 0; // the previous tuplet type
   int tuplet_dur = 0; // the current tuplet duration in edus
-  for (; it != section_flat_.end(); ++it, ++next_it) {
+
+  for (list<Note*>::iterator it = section_flat_.begin();
+       it != section_flat_.end();
+       ++it) {
+
+    list<Note*>::iterator next_it = it;
+    ++next_it;  // valid: increment current iterator once to get next/end
+
     Note* cur = *it;
 
     // adjust note duration according to the tuplet type
     if(tuplet_dur > 0) {
       int duration = cur->end_t - cur->start_t;
-      int dur_remainder = (duration) % time_signature_.beat_edus_;
-      int dur_beats = (duration) / time_signature_.beat_edus_;
+      int dur_remainder = duration % time_signature_.beat_edus_;
+      int dur_beats = duration / time_signature_.beat_edus_;
       int desire_type = prev_tuplet;
       int cur_type = time_signature_.DetermineTuplet(dur_remainder);
       int excess_tuplet_type = time_signature_.DetermineTuplet(duration - tuplet_dur);
@@ -438,17 +447,16 @@ void Section::Notate() {
 
         cur->end_t = cur->start_t + dur_beats * time_signature_.beat_edus_ + best_fit;
 
-        Note* next_note = *(next_it);
-        if (next_note == 0 || next_it == section_flat_.end()) {
-          continue;
+        if (next_it != section_flat_.end()) {
+          Note* next_note = *next_it;
+          if (next_note != 0) {
+            next_note->start_t = cur->start_t + dur_beats * time_signature_.beat_edus_ + best_fit;
+          }
         }
-
-        next_note->start_t = cur->start_t + dur_beats * time_signature_.beat_edus_ + best_fit;
       }
     }
 
-    // force the closing of the tuplet before the bar line (not necessary if
-    // the code is correct)
+    // force the closing of the tuplet before the bar line
     if(cur->type_out == "\\bar\"|\" \n" || cur->type_out == " "){
       if(tuplet_dur > 0){
         cur->type_out = "} " + cur->type_out;
