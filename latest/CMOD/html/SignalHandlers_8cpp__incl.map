@@ -1,21 +1,23 @@
 <map id="CMOD/src/SignalHandlers.cpp" name="CMOD/src/SignalHandlers.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="287,5,502,31"/>
-<area shape="rect" id="Node000002" href="$SignalHandlers_8h.html" title="Custom POSIX signal handlers for CMOD (Rubin Du, 2024)." alt="" coords="329,79,461,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="397,31,397,65,392,65,392,31"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="327,5,542,31"/>
+<area shape="rect" id="Node000002" href="$SignalHandlers_8h.html" title="Custom POSIX signal handlers for CMOD (Rubin Du, 2024)." alt="" coords="369,79,501,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="437,31,437,65,432,65,432,31"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="5,152,85,177"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="336,107,99,154,98,149,335,101"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="369,106,100,154,99,149,368,101"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="110,152,178,177"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="355,107,192,153,191,147,354,101"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="202,152,291,177"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="372,106,284,148,282,144,370,102"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="315,152,381,177"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="389,106,365,142,361,139,385,103"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="405,152,480,177"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="405,103,430,139,425,142,400,106"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="504,152,581,177"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="420,102,507,144,505,148,417,106"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="605,152,691,177"/>
-<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="436,101,594,146,593,151,435,107"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="715,152,781,177"/>
-<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="460,101,701,149,700,154,459,107"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="388,107,192,154,191,149,387,101"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="202,152,267,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="403,107,281,150,280,145,402,102"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="292,152,377,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="420,106,364,146,361,142,417,102"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="401,152,468,177"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="437,104,437,138,432,138,432,104"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="493,152,563,177"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="451,102,504,141,500,146,448,106"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="587,152,677,177"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="467,102,588,145,586,150,465,107"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="701,152,776,177"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="484,101,688,149,687,154,483,107"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="800,152,877,177"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="502,100,787,149,786,154,501,105"/>
 </map>
