@@ -475,24 +475,25 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span><span class="keywordtype">void</span> LayerBox::onContextMenu(<span class="keyword">const</span> QPoint&amp; pos) {</div>
 <div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    <span class="keywordtype">bool</span> hasSelection = !selectedRows().isEmpty();</div>
 <div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    QMenu menu(<span class="keyword">this</span>);</div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>    QAction* dupAction  = menu.addAction(<span class="stringliteral">&quot;Duplicate&quot;</span>);</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>    <span class="comment">//QAction* dupAction  = menu.addAction(&quot;Duplicate&quot;);</span></div>
 <div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>    QAction* delAction  = menu.addAction(<span class="stringliteral">&quot;Delete&quot;</span>);</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>    dupAction-&gt;setEnabled(hasSelection);</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>    <span class="comment">//dupAction-&gt;setEnabled(hasSelection);</span></div>
 <div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    delAction-&gt;setEnabled(hasSelection);</div>
 <div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span> </div>
 <div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>    QAction* chosen = menu.exec(m_treeView-&gt;viewport()-&gt;mapToGlobal(pos));</div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>    <span class="keywordflow">if</span> (chosen == dupAction) {</div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>        onCopySelected();</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>        onPasteClipboard();</div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (chosen == delAction) {</div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>        onDeleteSelected();</div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>    }</div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>}</div>
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span> </div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno"><a class="line" href="classLayerBox.html#a12b0a5d040db9fbf921407b546e3baef">  396</a></span><a class="code hl_function" href="classLayerBox.html#a12b0a5d040db9fbf921407b546e3baef">LayerBox::~LayerBox</a>() {}</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>    <span class="comment">/*if (chosen == dupAction) {</span></div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span><span class="comment">        onCopySelected();</span></div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span><span class="comment">        onPasteClipboard();</span></div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span><span class="comment">    } else */</span> </div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>    <span class="keywordflow">if</span> (chosen == delAction) {</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>        onDeleteSelected();</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>    }</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>}</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span> </div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno"><a class="line" href="classLayerBox.html#a12b0a5d040db9fbf921407b546e3baef">  397</a></span><a class="code hl_function" href="classLayerBox.html#a12b0a5d040db9fbf921407b546e3baef">LayerBox::~LayerBox</a>() {}</div>
 <div class="ttc" id="aLayerBox_8hpp_html"><div class="ttname"><a href="LayerBox_8hpp.html">LayerBox.hpp</a></div></div>
 <div class="ttc" id="aclassInst_html_a730b7c5af1b0c9ed3804c8c028aadb76"><div class="ttname"><a href="classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76">Inst::get_project_manager</a></div><div class="ttdeci">static ProjectManager * get_project_manager()</div><div class="ttdef"><b>Definition</b> <a href="inst_8hpp_source.html#l00036">inst.hpp:36</a></div></div>
-<div class="ttc" id="aclassLayerBox_html_a12b0a5d040db9fbf921407b546e3baef"><div class="ttname"><a href="classLayerBox.html#a12b0a5d040db9fbf921407b546e3baef">LayerBox::~LayerBox</a></div><div class="ttdeci">~LayerBox() override</div><div class="ttdef"><b>Definition</b> <a href="LayerBox_8cpp_source.html#l00396">LayerBox.cpp:396</a></div></div>
+<div class="ttc" id="aclassLayerBox_html_a12b0a5d040db9fbf921407b546e3baef"><div class="ttname"><a href="classLayerBox.html#a12b0a5d040db9fbf921407b546e3baef">LayerBox::~LayerBox</a></div><div class="ttdeci">~LayerBox() override</div><div class="ttdef"><b>Definition</b> <a href="LayerBox_8cpp_source.html#l00397">LayerBox.cpp:397</a></div></div>
 <div class="ttc" id="aclassLayerBox_html_a35920df990fa0c097fd914cac7c50105"><div class="ttname"><a href="classLayerBox.html#a35920df990fa0c097fd914cac7c50105">LayerBox::reloadFromBackend</a></div><div class="ttdeci">void reloadFromBackend()</div><div class="ttdef"><b>Definition</b> <a href="LayerBox_8cpp_source.html#l00137">LayerBox.cpp:137</a></div></div>
 <div class="ttc" id="aclassLayerBox_html_a35eed7ed1993fcb02d285c78fac9cd00"><div class="ttname"><a href="classLayerBox.html#a35eed7ed1993fcb02d285c78fac9cd00">LayerBox::deleteRequested</a></div><div class="ttdeci">void deleteRequested(LayerBox *self)</div></div>
 <div class="ttc" id="aclassLayerBox_html_a37e348d6c95ccc86621330abad7053c0"><div class="ttname"><a href="classLayerBox.html#a37e348d6c95ccc86621330abad7053c0">LayerBox::dragEnterEvent</a></div><div class="ttdeci">void dragEnterEvent(QDragEnterEvent *event) override</div><div class="ttdef"><b>Definition</b> <a href="LayerBox_8cpp_source.html#l00230">LayerBox.cpp:230</a></div></div>
