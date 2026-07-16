@@ -26,6 +26,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     if(LLD_LINKER)
         add_link_options(-fuse-ld=lld)
         message(STATUS "Using lld linker")
+        
     endif()
 endif()
 
