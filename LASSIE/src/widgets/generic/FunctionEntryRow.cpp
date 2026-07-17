@@ -15,6 +15,10 @@ FunctionEntryRow::FunctionEntryRow(const QString& labelText,
     setFrameShape(QFrame::NoFrame);
 
     m_hBox    = new QHBoxLayout(this);
+    // Set spacing between spectrum partial rows
+    m_hBox->setContentsMargins(0, 0, 0, 0);
+    m_hBox->setSpacing(4);
+
     m_label   = new QLabel(labelText);
     m_entry   = new QLineEdit;
     if(fnVisible) { m_fnButton = new QPushButton("fn"); }
@@ -32,9 +36,15 @@ FunctionEntryRow::FunctionEntryRow(const QString& labelText,
     if(insVisible) { connect(m_insButton, &QPushButton::clicked, this, &FunctionEntryRow::onInsClicked); }
     connect(m_entry,    &QLineEdit::textChanged,         this, &FunctionEntryRow::onTextChanged);
     connect(m_entry,    &QLineEdit::cursorPositionChanged, this, [this](){ emit editFocused(m_entry); });
+    // Set spacing between spectrum partial rows
+    m_label->setFixedHeight(24);
+    m_entry->setFixedHeight(24);
+    if (fnVisible) { m_fnButton->setFixedHeight(24); }
+    if (rmVisible) { m_rmButton->setFixedHeight(24); }
+    if (insVisible) { m_insButton->setFixedHeight(24); }
 
-    m_entry->setFixedHeight(20);
     setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+    setFixedHeight(28);
 }
 
 QString FunctionEntryRow::getText() const {

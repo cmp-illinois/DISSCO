@@ -1277,16 +1277,9 @@ void ProjectView::duplicateEvent(const QString& typeStr, int index)
     QStandardItem* folder = paletteView->folderForType(typeStr);
     if (!folder) return;
 
-    // Copies element at index, appends " (copy)" to .name, appends to list, returns new name
-    auto dup = [index](auto& list) -> QString {
-        auto copy = list[index];
-        copy.name += " (copy)";
-        list.append(copy);
-        return copy.name;
-    };
-
     Eventtype etype = eventtypeFromString(typeStr);
-    QString newName;
+
+    /*QString newName;
     if      (etype == high)    newName = dup(pm->highevents());
     else if (etype == mid)     newName = dup(pm->midevents());
     else if (etype == low)     newName = dup(pm->lowevents());
@@ -1304,7 +1297,148 @@ void ProjectView::duplicateEvent(const QString& typeStr, int index)
     else if (etype == pattern) newName = dup(pm->patternevents());
     else if (etype == reverb)  newName = dup(pm->reverbevents());
     else if (etype == filter)  newName = dup(pm->filterevents());
-    else return;
+    else return; */
+
+    // Get original name
+    QString oldName;
+    switch (etype) {
+        case high: 
+           oldName = pm->highevents()[index].name;
+           break;
+        case mid: 
+            oldName = pm->midevents()[index].name;
+            break;
+        case low: 
+            oldName = pm->lowevents()[index].name;
+            break;
+        case bottom: 
+            oldName = pm->bottomevents()[index].event.name;
+            break;
+        case sound: 
+            oldName = pm->spectrumevents()[index].name;
+            break;
+        case note: 
+            oldName = pm->noteevents()[index].name;
+            break;
+        case env: 
+            oldName = pm->envelopeevents()[index].name;
+            break;
+        case sieve: 
+            oldName = pm->sieveevents()[index].name;
+            break;
+        case spa:
+            oldName = pm->spaevents()[index].name;
+            break;
+        case pattern: 
+            oldName = pm->patternevents()[index].name;
+            break;
+        case reverb: 
+            oldName = pm->reverbevents()[index].name;
+            break;
+        case filter: 
+            oldName = pm->filterevents()[index].name;
+            break;
+        default: 
+            return;
+    }
+
+
+    // Ask user for new name
+    bool ok = false;
+    QString newName = QInputDialog::getText(
+        nullptr,
+        "lassie",
+        QString("You are about to duplicate this object:\n\n"
+                "%1/%2\n\n"
+                "Please name the newly created copy object")
+            .arg(typeStr, oldName),
+        QLineEdit::Normal,
+        oldName + "_copy",
+        &ok
+    );
+
+    if (!ok || newName.trimmed().isEmpty()) {
+        return;
+    }
+
+    newName = newName.trimmed();
+
+    auto nameExists = [&](const QString& name) -> bool {
+    for (int i = 0; i < folder->rowCount(); ++i) {
+        QStandardItem* nameItem = folder->child(i, 1);
+        if (nameItem && nameItem->text() == name) {
+            return true;
+        }
+    }
+    return false;
+};
+
+if (nameExists(newName)) {
+    QMessageBox::warning(
+        nullptr,
+        "lassie",
+        "Object with the same name exists."
+    );
+    return;
+}
+
+    // Copies element at index, appends " (copy)" to .name, appends to list, returns new name
+    /*auto dup = [index](auto& list) -> QString {
+        auto copy = list[index];
+        copy.name += " (copy)";
+        list.append(copy);
+        return copy.name;
+    };*/
+
+    // Duplicate object with user-given name
+    auto dup = [index, &newName](auto& list) {
+        auto copy = list[index];
+        copy.name = newName;
+        list.append(copy);
+    };
+
+    switch (etype) {
+        case high:
+            dup(pm->highevents()); 
+            break;
+        case mid: 
+            dup(pm->midevents());
+            break;
+        case low: 
+            dup(pm->lowevents());
+            break;
+        case bottom: {
+            BottomEvent copy = pm->bottomevents()[index];
+            copy.event.name = newName;
+            pm->bottomevents().append(copy);
+            break;
+        } case sound:
+            dup(pm->spectrumevents());
+            break; 
+        case note:
+            dup(pm->noteevents());
+            break; 
+        case env: 
+            dup(pm->envelopeevents());
+            break;
+        case sieve:
+            dup(pm->sieveevents());
+            break; 
+        case spa: 
+            dup(pm->spaevents());
+            break;
+        case pattern:
+            dup(pm->patternevents());
+            break; 
+        case reverb:
+            dup(pm->reverbevents());
+            break; 
+        case filter:
+            dup(pm->filterevents());
+            break;
+        default: 
+            return;
+    }
 
     folder->appendRow(PVCHelper::make_child_palette_tuple(typeStr, newName));
 }
