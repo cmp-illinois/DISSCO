@@ -26,13 +26,14 @@ var searchData=
   ['reset_23',['reset',['../classExpandPatternFunction.html#ae53498c1f3651e8cec98e375143d75c6',1,'ExpandPatternFunction::reset()'],['../classMultiEntryFunction.html#a64829d62760bc1a3b813191178741195',1,'MultiEntryFunction::reset()'],['../classValuePickFunction.html#aebc3c1ffe89bc8aa3d84841ee41c8162',1,'ValuePickFunction::reset()'],['../classStochosFunction.html#aa1c31996f0a61bcfd12b6dd27461b3c7',1,'StochosFunction::reset()'],['../classSPAFunction.html#a3b2a9f80eaec36a3108edcae95fe2eb8',1,'SPAFunction::reset()'],['../classRevFunctionBase.html#a2f07e58d3fb4d3e4f85cdd81ea9a2ba8',1,'RevFunctionBase::reset()'],['../classMakeSieveFunction.html#a1d39ab5672566076af7e6e626a973efa',1,'MakeSieveFunction::reset()'],['../classMakeFilterFunction.html#a23cea107364d3325947e408440651ebf',1,'MakeFilterFunction::reset()'],['../classMakeEnvelopeFunction.html#af87984de84359f2ca30b587e335f55d6',1,'MakeEnvelopeFunction::reset()'],['../classSelectFunction.html#ab589bcd77f8ae534d7a8dadac2acc1e5',1,'SelectFunction::reset()'],['../classFunctionWidget.html#a8db2ace0be73e66b0b24b2a8ea75b1f5',1,'FunctionWidget::reset()'],['../classDecayFunction.html#ae619a11eeb2b16e80015a7ea41cca365',1,'DecayFunction::reset()'],['../classGetPatternFunction.html#ae32c17149fc46fd66f863e24f36cf22a',1,'GetPatternFunction::reset()']]],
   ['resetfields_24',['resetFields',['../classEnvLibDrawingArea.html#a0380a5ec1208dc2fff6da2659706a81a',1,'EnvLibDrawingArea']]],
   ['resolveowner_25',['resolveOwner',['../namespaceLayerRefs.html#a88af7fddaa76aac27994e46d3b303b0a',1,'LayerRefs']]],
-  ['revadvancedfunction_26',['RevAdvancedFunction',['../classRevAdvancedFunction.html#a81f279aa8e43292a9f2b395c0c60984a',1,'RevAdvancedFunction']]],
-  ['revchannel_27',['REVChannel',['../classREVChannel.html#abda76caeccce2af3122c3f68387b6c24',1,'REVChannel']]],
-  ['reverbevents_28',['reverbevents',['../classProjectManager.html#ab0ab6ad9bc299b5d899031def05dd123',1,'ProjectManager']]],
-  ['revfunctionbase_29',['RevFunctionBase',['../classRevFunctionBase.html#ab366b2cd4fb4150d75a79c34c6edd747',1,'RevFunctionBase']]],
-  ['revmediumfunction_30',['RevMediumFunction',['../classRevMediumFunction.html#af03f29b9059364a765f80aba3b3c92b8',1,'RevMediumFunction']]],
-  ['revsimplefunction_31',['RevSimpleFunction',['../classRevSimpleFunction.html#a7c3c4b6ac7dfead6ddb06de3e621e0b0',1,'RevSimpleFunction']]],
-  ['rowcount_32',['rowCount',['../classSPAChannel.html#a8ca23309bac51df4900b5a8a913c13dc',1,'SPAChannel']]],
-  ['rowinsertrequested_33',['rowInsertRequested',['../classSPAChannel.html#af642547b6b3fcae3c0baef38d5069409',1,'SPAChannel']]],
-  ['rowremoverequested_34',['rowRemoveRequested',['../classSPAChannel.html#a47006894ad10c38081f7f83949454c45',1,'SPAChannel']]]
+  ['resultstring_26',['resultString',['../classPartialModifierDialog.html#a70398f166d240f00994c93b6067862b0',1,'PartialModifierDialog']]],
+  ['revadvancedfunction_27',['RevAdvancedFunction',['../classRevAdvancedFunction.html#a81f279aa8e43292a9f2b395c0c60984a',1,'RevAdvancedFunction']]],
+  ['revchannel_28',['REVChannel',['../classREVChannel.html#abda76caeccce2af3122c3f68387b6c24',1,'REVChannel']]],
+  ['reverbevents_29',['reverbevents',['../classProjectManager.html#ab0ab6ad9bc299b5d899031def05dd123',1,'ProjectManager']]],
+  ['revfunctionbase_30',['RevFunctionBase',['../classRevFunctionBase.html#ab366b2cd4fb4150d75a79c34c6edd747',1,'RevFunctionBase']]],
+  ['revmediumfunction_31',['RevMediumFunction',['../classRevMediumFunction.html#af03f29b9059364a765f80aba3b3c92b8',1,'RevMediumFunction']]],
+  ['revsimplefunction_32',['RevSimpleFunction',['../classRevSimpleFunction.html#a7c3c4b6ac7dfead6ddb06de3e621e0b0',1,'RevSimpleFunction']]],
+  ['rowcount_33',['rowCount',['../classSPAChannel.html#a8ca23309bac51df4900b5a8a913c13dc',1,'SPAChannel']]],
+  ['rowinsertrequested_34',['rowInsertRequested',['../classSPAChannel.html#af642547b6b3fcae3c0baef38d5069409',1,'SPAChannel']]],
+  ['rowremoverequested_35',['rowRemoveRequested',['../classSPAChannel.html#a47006894ad10c38081f7f83949454c45',1,'SPAChannel']]]
 ];

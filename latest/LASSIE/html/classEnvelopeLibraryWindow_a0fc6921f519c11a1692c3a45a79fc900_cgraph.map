@@ -8,12 +8,12 @@
 <area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="184,564,239,552,457,513,458,518,241,557,185,569"/>
 <area shape="rect" id="Node000018" href="$classEnvelopeLibraryWindow.html#af515ba1cc128d9d9c20c6fff1fcb62b7" title="Save via project controller (e.g. Ctrl+S)" alt="" coords="240,681,419,721"/>
 <area shape="poly" id="edge23_Node000001_Node000018" title=" " alt="" coords="137,604,241,660,269,673,267,678,239,665,134,609"/>
-<area shape="rect" id="Node000053" href="$classEnvelopeLibraryWindow.html#aa14f7e18a87521c7d42f1a4320488217" title="Called when a tree item is activated (double‐click or Enter)" alt="" coords="471,645,650,685"/>
-<area shape="poly" id="edge55_Node000001_Node000053" title=" " alt="" coords="183,604,240,616,458,650,457,655,240,621,182,609"/>
-<area shape="rect" id="Node000056" href="$classEnvelopeLibraryWindow.html#a2550a852f6dc85af1bfb560b367aefa7" title="Show context menu on right‐click." alt="" coords="240,745,419,785"/>
-<area shape="poly" id="edge59_Node000001_Node000056" title=" " alt="" coords="117,605,168,667,203,701,241,731,251,737,249,741,239,735,199,705,164,670,112,609"/>
-<area shape="rect" id="Node000057" href="$classEnvelopeLibraryWindow.html#ad1b4a1ec9a80b782cc8666d04f5a05a2" title="Called when either X or Y QLineEdit text changes." alt="" coords="240,567,419,607"/>
-<area shape="poly" id="edge60_Node000001_Node000057" title=" " alt="" coords="192,584,226,584,226,589,192,589"/>
+<area shape="rect" id="Node000056" href="$classEnvelopeLibraryWindow.html#aa14f7e18a87521c7d42f1a4320488217" title="Called when a tree item is activated (double‐click or Enter)" alt="" coords="471,645,650,685"/>
+<area shape="poly" id="edge55_Node000001_Node000056" title=" " alt="" coords="183,604,240,616,458,650,457,655,240,621,182,609"/>
+<area shape="rect" id="Node000059" href="$classEnvelopeLibraryWindow.html#a2550a852f6dc85af1bfb560b367aefa7" title="Show context menu on right‐click." alt="" coords="240,745,419,785"/>
+<area shape="poly" id="edge59_Node000001_Node000059" title=" " alt="" coords="117,605,168,667,203,701,241,731,251,737,249,741,239,735,199,705,164,670,112,609"/>
+<area shape="rect" id="Node000060" href="$classEnvelopeLibraryWindow.html#ad1b4a1ec9a80b782cc8666d04f5a05a2" title="Called when either X or Y QLineEdit text changes." alt="" coords="240,567,419,607"/>
+<area shape="poly" id="edge60_Node000001_Node000060" title=" " alt="" coords="192,584,226,584,226,589,192,589"/>
 <area shape="rect" id="Node000003" href="$namespaceEnvelopeUtilities.html#a89aa270b6266dbefc58dabcf4f0fc4d0" title=" " alt="" coords="741,193,935,233"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="584,328,636,289,701,249,737,235,739,240,704,254,639,293,587,333"/>
 <area shape="rect" id="Node000004" href="$classProjectManager.html#aef96b4de43479dce1deecf558fce632e" title=" " alt="" coords="729,602,947,627"/>
@@ -103,14 +103,14 @@
 <area shape="poly" id="edge54_Node000019_Node000045" title=" " alt="" coords="565,1477,576,1601,600,1800,619,1905,642,2001,671,2080,687,2109,705,2131,722,2144,718,2148,701,2135,683,2112,666,2082,637,2003,614,1906,595,1801,570,1602,560,1477"/>
 <area shape="poly" id="edge27_Node000021_Node000021" title=" " alt="" coords="787,855,784,845,792,835,810,830,838,828,870,831,888,838,886,843,869,836,838,833,811,835,795,840,789,846,792,853"/>
 <area shape="poly" id="edge29_Node000022_Node000022" title=" " alt="" coords="787,943,784,933,792,923,810,918,838,916,870,919,888,926,886,931,869,924,838,921,811,923,795,928,789,934,792,941"/>
-<area shape="poly" id="edge57_Node000053_Node000014" title=" " alt="" coords="618,643,653,619,670,596,677,573,684,549,701,523,738,491,778,466,781,471,741,496,705,527,689,551,682,575,674,598,657,623,621,647"/>
-<area shape="rect" id="Node000054" href="$classEnvLibDrawingArea.html#a049ecb2a281b1b7801303d5cc354f890" title="Recompute upperY/lowerY based on envelope data." alt="" coords="759,716,917,756"/>
-<area shape="poly" id="edge56_Node000053_Node000054" title=" " alt="" coords="634,683,703,701,747,712,745,717,702,706,632,688"/>
-<area shape="rect" id="Node000055" href="$classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b" title="Trigger a redraw of the given envelope." alt="" coords="759,652,917,692"/>
-<area shape="poly" id="edge58_Node000053_Node000055" title=" " alt="" coords="650,665,746,667,746,672,650,670"/>
-<area shape="rect" id="Node000058" href="$classEnvLibDrawingArea.html#a41f39121793a68415000a76edf0f9b33" title="Update the active node&#39;s coords from external input." alt="" coords="467,569,655,609"/>
-<area shape="poly" id="edge61_Node000057_Node000058" title=" " alt="" coords="419,585,453,585,453,591,419,590"/>
-<area shape="poly" id="edge63_Node000058_Node000008" title=" " alt="" coords="608,567,632,551,653,530,666,506,672,482,672,435,671,413,673,390,683,367,701,345,723,330,748,321,750,326,726,334,704,348,687,370,679,391,676,413,677,435,677,482,671,508,657,533,636,555,611,571"/>
-<area shape="poly" id="edge62_Node000058_Node000054" title=" " alt="" coords="618,607,656,631,672,650,680,669,688,686,704,702,725,713,747,721,745,726,722,718,701,706,684,689,675,671,668,653,653,635,615,612"/>
-<area shape="poly" id="edge64_Node000058_Node000055" title=" " alt="" coords="616,607,703,636,747,648,745,653,702,641,615,612"/>
+<area shape="poly" id="edge57_Node000056_Node000014" title=" " alt="" coords="618,643,653,619,670,596,677,573,684,549,701,523,738,491,778,466,781,471,741,496,705,527,689,551,682,575,674,598,657,623,621,647"/>
+<area shape="rect" id="Node000057" href="$classEnvLibDrawingArea.html#a049ecb2a281b1b7801303d5cc354f890" title="Recompute upperY/lowerY based on envelope data." alt="" coords="759,716,917,756"/>
+<area shape="poly" id="edge56_Node000056_Node000057" title=" " alt="" coords="634,683,703,701,747,712,745,717,702,706,632,688"/>
+<area shape="rect" id="Node000058" href="$classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b" title="Trigger a redraw of the given envelope." alt="" coords="759,652,917,692"/>
+<area shape="poly" id="edge58_Node000056_Node000058" title=" " alt="" coords="650,665,746,667,746,672,650,670"/>
+<area shape="rect" id="Node000061" href="$classEnvLibDrawingArea.html#a41f39121793a68415000a76edf0f9b33" title="Update the active node&#39;s coords from external input." alt="" coords="467,569,655,609"/>
+<area shape="poly" id="edge61_Node000060_Node000061" title=" " alt="" coords="419,585,453,585,453,591,419,590"/>
+<area shape="poly" id="edge63_Node000061_Node000008" title=" " alt="" coords="608,567,632,551,653,530,666,506,672,482,672,435,671,413,673,390,683,367,701,345,723,330,748,321,750,326,726,334,704,348,687,370,679,391,676,413,677,435,677,482,671,508,657,533,636,555,611,571"/>
+<area shape="poly" id="edge62_Node000061_Node000057" title=" " alt="" coords="618,607,656,631,672,650,680,669,688,686,704,702,725,713,747,721,745,726,722,718,701,706,684,689,675,671,668,653,653,635,615,612"/>
+<area shape="poly" id="edge64_Node000061_Node000058" title=" " alt="" coords="616,607,703,636,747,648,745,653,702,641,615,612"/>
 </map>

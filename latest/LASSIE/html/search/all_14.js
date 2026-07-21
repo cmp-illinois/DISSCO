@@ -5,5 +5,5 @@ var searchData=
   ['valuepickfunction_2',['valuepickfunction',['../classValuePickFunction.html',1,'ValuePickFunction'],['../classValuePickFunction.html#a9a6db04b6f8c77f8d42fc19fc3cfc028',1,'ValuePickFunction::ValuePickFunction()']]],
   ['valuepickfunction_2ecpp_3',['ValuePickFunction.cpp',['../ValuePickFunction_8cpp.html',1,'']]],
   ['valuepickfunction_2ehpp_4',['ValuePickFunction.hpp',['../ValuePickFunction_8hpp.html',1,'']]],
-  ['values_5',['values',['../structMarkovModelLibraryWindow_1_1EditorSnapshot.html#aff63fe1a7872da39f8ccfbe2fe597ecc',1,'MarkovModelLibraryWindow::EditorSnapshot']]]
+  ['values_5',['values',['../structPartialModifierFormat_1_1Values.html',1,'PartialModifierFormat::Values'],['../structMarkovModelLibraryWindow_1_1EditorSnapshot.html#aff63fe1a7872da39f8ccfbe2fe597ecc',1,'MarkovModelLibraryWindow::EditorSnapshot::values']]]
 ];

@@ -88,82 +88,99 @@ $(function() {
 <code>#include &lt;QTextEdit&gt;</code><br />
 <code>#include &lt;QDialogButtonBox&gt;</code><br />
 <code>#include &lt;QDialog&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &quot;../ui/ui_Attributes.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="inst_8hpp_source.html">../inst.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="FunctionGenerator_8hpp_source.html">../dialogs/FunctionGenerator.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="PartialModifierDialog_8hpp_source.html">../dialogs/PartialModifierDialog.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ModifierUiPolicy_8hpp_source.html">ModifierUiPolicy.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Modifiers.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="Modifiers_8cpp__incl.png" border="0" usemap="#aLASSIE_2src_2widgets_2Modifiers_8cpp" alt=""/></div>
 <map name="aLASSIE_2src_2widgets_2Modifiers_8cpp" id="aLASSIE_2src_2widgets_2Modifiers_8cpp">
-<area shape="rect" title=" " alt="" coords="768,5,913,45"/>
-<area shape="rect" href="Modifiers_8hpp.html" title=" " alt="" coords="1064,167,1174,192"/>
-<area shape="poly" title=" " alt="" coords="768,30,575,33,336,43,222,51,124,63,51,77,27,86,13,95,8,106,13,117,27,123,57,129,156,140,455,158,793,169,1050,174,1050,180,793,174,455,163,155,146,56,134,25,128,9,121,3,106,9,92,25,81,50,72,123,57,222,46,336,37,575,28,768,24"/>
-<area shape="rect" title=" " alt="" coords="23,93,164,119"/>
-<area shape="poly" title=" " alt="" coords="768,36,512,60,178,96,178,91,511,55,767,30"/>
-<area shape="rect" title=" " alt="" coords="189,93,300,119"/>
-<area shape="poly" title=" " alt="" coords="768,38,568,62,314,96,313,91,567,56,767,32"/>
-<area shape="rect" title=" " alt="" coords="324,93,434,119"/>
-<area shape="poly" title=" " alt="" coords="768,42,448,96,447,90,767,36"/>
-<area shape="rect" title=" " alt="" coords="458,93,524,119"/>
-<area shape="poly" title=" " alt="" coords="768,45,539,96,537,90,767,39"/>
-<area shape="rect" title=" " alt="" coords="549,93,633,119"/>
-<area shape="poly" title=" " alt="" coords="782,48,641,92,640,87,780,43"/>
-<area shape="rect" title=" " alt="" coords="658,93,764,119"/>
-<area shape="poly" title=" " alt="" coords="811,48,743,88,740,84,808,43"/>
-<area shape="rect" title=" " alt="" coords="789,93,892,119"/>
-<area shape="poly" title=" " alt="" coords="843,46,843,79,838,79,838,46"/>
-<area shape="rect" title=" " alt="" coords="916,93,1000,119"/>
-<area shape="poly" title=" " alt="" coords="870,43,931,84,928,88,867,48"/>
-<area shape="rect" title=" " alt="" coords="1024,93,1166,119"/>
-<area shape="poly" title=" " alt="" coords="902,43,1045,87,1044,92,901,48"/>
-<area shape="rect" title=" " alt="" coords="1199,167,1274,192"/>
-<area shape="poly" title=" " alt="" coords="914,32,1062,55,1131,71,1179,91,1209,120,1228,153,1224,155,1205,123,1176,96,1130,76,1061,60,913,37"/>
-<area shape="rect" title=" " alt="" coords="1242,93,1300,119"/>
-<area shape="poly" title=" " alt="" coords="914,35,1057,59,1224,91,1229,92,1228,97,1223,96,1056,65,913,41"/>
-<area shape="rect" title=" " alt="" coords="1325,93,1470,119"/>
-<area shape="poly" title=" " alt="" coords="914,34,1312,90,1311,95,913,40"/>
-<area shape="rect" href="inst_8hpp.html" title=" " alt="" coords="1830,93,1917,119"/>
-<area shape="poly" title=" " alt="" coords="913,29,1739,91,1817,97,1816,102,1739,96,913,34"/>
-<area shape="rect" href="FunctionGenerator_8hpp.html" title=" " alt="" coords="1495,93,1727,119"/>
-<area shape="poly" title=" " alt="" coords="914,31,1486,89,1485,95,913,37"/>
-<area shape="rect" title=" " alt="" coords="1096,240,1174,265"/>
-<area shape="poly" title=" " alt="" coords="1124,192,1132,226,1127,227,1119,193"/>
-<area shape="rect" title=" " alt="" coords="1348,313,1418,339"/>
-<area shape="poly" title=" " alt="" coords="1142,190,1352,305,1349,309,1139,195"/>
-<area shape="rect" title=" " alt="" coords="998,240,1072,265"/>
-<area shape="poly" title=" " alt="" coords="1107,194,1061,233,1058,229,1104,190"/>
-<area shape="rect" href="event__struct_8hpp.html" title=" " alt="" coords="1349,240,1524,265"/>
-<area shape="poly" title=" " alt="" coords="1171,189,1373,234,1371,240,1170,195"/>
-<area shape="poly" title=" " alt="" coords="1430,267,1402,304,1398,301,1426,264"/>
-<area shape="rect" title=" " alt="" coords="1461,313,1516,339"/>
-<area shape="poly" title=" " alt="" coords="1447,264,1474,301,1470,304,1443,267"/>
-<area shape="rect" title=" " alt="" coords="2183,240,2258,265"/>
-<area shape="poly" title=" " alt="" coords="1903,116,2182,232,2180,237,1901,121"/>
-<area shape="rect" title=" " alt="" coords="1910,167,1984,192"/>
-<area shape="poly" title=" " alt="" coords="1888,117,1927,155,1923,159,1884,121"/>
-<area shape="rect" href="project__struct_8hpp.html" title="In&#45;memory model of a DISSCO project and its top&#45;level manager." alt="" coords="1715,167,1886,192"/>
-<area shape="poly" title=" " alt="" coords="1864,121,1824,159,1820,155,1860,117"/>
-<area shape="poly" title=" " alt="" coords="1776,195,1674,242,1648,256,1621,268,1522,298,1433,318,1432,313,1520,293,1620,263,1646,251,1671,238,1774,190"/>
-<area shape="poly" title=" " alt="" coords="1742,195,1509,240,1508,235,1741,189"/>
-<area shape="poly" title=" " alt="" coords="1887,188,2032,210,2091,224,2122,238,2129,253,2122,267,2110,276,2090,283,2031,295,1860,313,1673,322,1529,327,1529,321,1672,317,1860,307,2030,290,2088,278,2108,271,2118,264,2123,253,2119,242,2089,229,2031,216,1886,194"/>
-<area shape="poly" title=" " alt="" coords="1876,189,2165,237,2169,238,2168,243,2164,243,1875,195"/>
-<area shape="rect" title=" " alt="" coords="1548,240,1608,265"/>
-<area shape="poly" title=" " alt="" coords="1765,195,1622,240,1620,235,1764,189"/>
-<area shape="rect" title=" " alt="" coords="1684,240,1749,265"/>
-<area shape="poly" title=" " alt="" coords="1789,194,1743,233,1739,229,1785,190"/>
-<area shape="rect" title=" " alt="" coords="1773,240,1828,265"/>
-<area shape="poly" title=" " alt="" coords="1803,192,1803,226,1798,226,1798,192"/>
-<area shape="rect" title=" " alt="" coords="1852,240,1932,265"/>
-<area shape="poly" title=" " alt="" coords="1817,190,1868,229,1865,234,1814,194"/>
-<area shape="rect" title=" " alt="" coords="1957,240,2108,265"/>
-<area shape="poly" title=" " alt="" coords="1839,189,1983,233,1981,239,1837,195"/>
-<area shape="poly" title=" " alt="" coords="1541,121,1487,136,1431,160,1379,195,1358,216,1340,241,1336,257,1340,272,1361,302,1357,305,1335,274,1331,256,1335,239,1354,213,1376,190,1429,155,1486,131,1540,116"/>
-<area shape="poly" title=" " alt="" coords="1549,121,1293,169,1288,170,1287,165,1292,164,1548,116"/>
-<area shape="poly" title=" " alt="" coords="1611,120,1586,227,1581,226,1606,119"/>
-<area shape="rect" href="lassie_8hpp.html" title="Project&#45;wide enum definitions for LASSIE." alt="" coords="1473,167,1573,192"/>
-<area shape="poly" title=" " alt="" coords="1599,121,1550,160,1546,156,1595,117"/>
+<area shape="rect" title=" " alt="" coords="954,5,1100,45"/>
+<area shape="rect" href="Modifiers_8hpp.html" title=" " alt="" coords="414,174,525,199"/>
+<area shape="poly" title=" " alt="" coords="954,29,723,29,424,36,280,44,156,56,63,73,32,84,14,95,9,104,10,112,17,121,31,128,75,143,134,154,273,171,401,180,401,185,273,176,133,160,73,148,29,133,14,125,5,115,3,103,10,91,30,79,61,68,155,51,280,39,424,31,722,23,954,23"/>
+<area shape="rect" title=" " alt="" coords="24,93,166,119"/>
+<area shape="poly" title=" " alt="" coords="954,34,623,56,180,96,179,91,623,51,954,28"/>
+<area shape="rect" title=" " alt="" coords="190,93,301,119"/>
+<area shape="poly" title=" " alt="" coords="954,34,678,57,315,96,314,91,677,52,954,29"/>
+<area shape="rect" title=" " alt="" coords="326,93,435,119"/>
+<area shape="poly" title=" " alt="" coords="954,36,733,60,449,96,449,91,732,55,954,31"/>
+<area shape="rect" title=" " alt="" coords="459,93,526,119"/>
+<area shape="poly" title=" " alt="" coords="954,37,770,59,540,96,539,91,769,54,954,31"/>
+<area shape="rect" title=" " alt="" coords="550,93,634,119"/>
+<area shape="poly" title=" " alt="" coords="954,41,648,96,647,91,954,36"/>
+<area shape="rect" title=" " alt="" coords="659,93,766,119"/>
+<area shape="poly" title=" " alt="" coords="955,47,772,93,771,87,953,42"/>
+<area shape="rect" title=" " alt="" coords="790,93,893,119"/>
+<area shape="poly" title=" " alt="" coords="984,48,882,90,880,85,982,43"/>
+<area shape="rect" title=" " alt="" coords="917,93,1001,119"/>
+<area shape="poly" title=" " alt="" coords="1013,47,980,84,976,81,1008,44"/>
+<area shape="rect" title=" " alt="" coords="1025,93,1168,119"/>
+<area shape="poly" title=" " alt="" coords="1046,44,1079,81,1075,84,1042,47"/>
+<area shape="rect" title=" " alt="" coords="1692,255,1767,280"/>
+<area shape="poly" title=" " alt="" coords="1100,27,1251,36,1431,49,1589,68,1645,79,1676,91,1693,106,1705,124,1722,165,1730,206,1733,241,1727,241,1725,207,1717,166,1701,127,1689,110,1674,96,1643,84,1588,73,1430,54,1251,41,1100,33"/>
+<area shape="rect" title=" " alt="" coords="1303,93,1388,119"/>
+<area shape="poly" title=" " alt="" coords="1100,42,1290,88,1289,94,1099,47"/>
+<area shape="rect" title=" " alt="" coords="1412,93,1471,119"/>
+<area shape="poly" title=" " alt="" coords="1100,35,1235,58,1399,91,1398,96,1234,63,1100,40"/>
+<area shape="rect" title=" " alt="" coords="1496,93,1641,119"/>
+<area shape="poly" title=" " alt="" coords="1100,35,1482,90,1481,95,1100,40"/>
+<area shape="rect" href="inst_8hpp.html" title=" " alt="" coords="1192,93,1278,119"/>
+<area shape="poly" title=" " alt="" coords="1078,43,1193,86,1191,91,1076,48"/>
+<area shape="rect" href="FunctionGenerator_8hpp.html" title=" " alt="" coords="1460,174,1692,199"/>
+<area shape="poly" title=" " alt="" coords="1100,26,1248,33,1422,46,1573,64,1625,77,1654,91,1661,102,1662,113,1653,134,1634,153,1611,169,1608,164,1630,149,1648,131,1657,112,1656,104,1650,95,1624,82,1572,70,1421,51,1247,39,1100,32"/>
+<area shape="rect" href="PartialModifierDialog_8hpp.html" title=" " alt="" coords="1767,167,1946,207"/>
+<area shape="poly" title=" " alt="" coords="1100,25,1252,30,1441,41,1621,60,1694,74,1749,91,1774,104,1796,120,1833,154,1830,158,1793,124,1771,108,1747,96,1693,79,1620,66,1440,46,1252,35,1100,31"/>
+<area shape="rect" href="ModifierUiPolicy_8hpp.html" title=" " alt="" coords="1818,93,1972,119"/>
+<area shape="poly" title=" " alt="" coords="1100,30,1405,54,1799,91,1804,91,1804,97,1799,96,1404,60,1100,35"/>
+<area shape="rect" title=" " alt="" coords="430,255,509,280"/>
+<area shape="poly" title=" " alt="" coords="472,200,472,241,467,241,467,200"/>
+<area shape="rect" title=" " alt="" coords="1428,328,1498,353"/>
+<area shape="poly" title=" " alt="" coords="480,198,517,239,544,261,573,278,624,289,712,299,956,317,1414,335,1413,341,956,322,712,305,623,294,571,282,541,265,514,243,476,201"/>
+<area shape="rect" title=" " alt="" coords="333,255,406,280"/>
+<area shape="poly" title=" " alt="" coords="457,202,397,248,394,244,453,197"/>
+<area shape="rect" href="event__struct_8hpp.html" title=" " alt="" coords="585,255,760,280"/>
+<area shape="poly" title=" " alt="" coords="500,197,631,247,629,252,498,202"/>
+<area shape="poly" title=" " alt="" coords="760,276,773,277,1141,311,1414,333,1414,338,1140,316,772,283,760,281"/>
+<area shape="rect" title=" " alt="" coords="757,328,812,353"/>
+<area shape="poly" title=" " alt="" coords="692,278,756,318,753,323,689,282"/>
+<area shape="rect" title=" " alt="" coords="784,255,859,280"/>
+<area shape="poly" title=" " alt="" coords="1194,121,1124,142,1045,169,943,212,858,251,856,246,941,207,1043,164,1122,137,1193,116"/>
+<area shape="rect" title=" " alt="" coords="1252,174,1325,199"/>
+<area shape="poly" title=" " alt="" coords="1245,117,1275,161,1270,164,1241,120"/>
+<area shape="rect" href="project__struct_8hpp.html" title="In&#45;memory model of a DISSCO project and its top&#45;level manager." alt="" coords="1056,174,1227,199"/>
+<area shape="poly" title=" " alt="" coords="1223,121,1168,167,1164,163,1219,117"/>
+<area shape="poly" title=" " alt="" coords="1190,197,1290,223,1337,238,1371,252,1413,283,1446,316,1442,319,1410,287,1368,257,1336,243,1289,228,1189,202"/>
+<area shape="poly" title=" " alt="" coords="1074,202,755,255,754,250,1073,197"/>
+<area shape="poly" title=" " alt="" coords="1092,202,1011,224,923,257,863,289,813,322,810,318,860,285,921,252,1009,219,1090,197"/>
+<area shape="poly" title=" " alt="" coords="1096,202,873,256,872,251,1094,197"/>
+<area shape="rect" title=" " alt="" coords="1433,255,1493,280"/>
+<area shape="poly" title=" " alt="" coords="1189,197,1420,253,1419,258,1188,202"/>
+<area shape="rect" title=" " alt="" coords="1109,255,1174,280"/>
+<area shape="poly" title=" " alt="" coords="1144,200,1144,241,1139,241,1139,200"/>
+<area shape="rect" title=" " alt="" coords="1198,255,1253,280"/>
+<area shape="poly" title=" " alt="" coords="1156,198,1205,243,1201,247,1152,201"/>
+<area shape="rect" title=" " alt="" coords="1278,255,1358,280"/>
+<area shape="poly" title=" " alt="" coords="1168,197,1281,247,1279,252,1166,202"/>
+<area shape="rect" title=" " alt="" coords="934,255,1085,280"/>
+<area shape="poly" title=" " alt="" coords="1124,202,1042,250,1039,245,1121,197"/>
+<area shape="poly" title=" " alt="" coords="1570,201,1482,319,1477,316,1566,198"/>
+<area shape="poly" title=" " alt="" coords="1600,197,1696,246,1694,251,1598,202"/>
+<area shape="poly" title=" " alt="" coords="1561,202,1492,249,1489,245,1558,197"/>
+<area shape="rect" href="lassie_8hpp.html" title="Project&#45;wide enum definitions for LASSIE." alt="" coords="1569,255,1669,280"/>
+<area shape="poly" title=" " alt="" coords="1585,198,1608,241,1604,244,1580,201"/>
+<area shape="poly" title=" " alt="" coords="1848,208,1821,247,1802,266,1780,282,1747,299,1711,313,1639,331,1569,340,1512,343,1512,337,1569,335,1638,326,1710,308,1745,294,1778,278,1799,262,1817,243,1844,205"/>
+<area shape="poly" title=" " alt="" coords="1827,209,1761,250,1758,245,1824,205"/>
+<area shape="rect" title=" " alt="" coords="1968,328,2041,353"/>
+<area shape="poly" title=" " alt="" coords="1946,194,1975,203,2002,215,2027,231,2048,253,2054,270,2050,288,2029,319,2025,316,2045,286,2048,271,2043,256,2024,235,2000,219,1973,208,1945,200"/>
+<area shape="rect" href="PartialModifierFormat_8hpp.html" title=" " alt="" coords="1842,255,2033,280"/>
+<area shape="poly" title=" " alt="" coords="1878,205,1917,243,1914,247,1874,209"/>
+<area shape="poly" title=" " alt="" coords="1862,283,1512,335,1512,329,1861,277"/>
+<area shape="poly" title=" " alt="" coords="1951,279,1986,316,1982,320,1947,282"/>
 </map>
 </div>
 </div>

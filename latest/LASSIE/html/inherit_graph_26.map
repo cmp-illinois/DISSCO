@@ -1,5 +1,13 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,173,31"/>
-<area shape="rect" id="Node000001" href="$classPaletteSortProxy.html" title=" " alt="" coords="221,5,352,31"/>
-<area shape="poly" id="edge22_Node000000_Node000001" title=" " alt="" coords="187,15,221,15,221,21,187,21"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,104,80,129"/>
+<area shape="rect" id="Node000001" href="$classInst.html" title="Process&#45;wide singleton that owns LASSIE&#39;s top&#45;level services." alt="" coords="167,5,213,31"/>
+<area shape="poly" id="edge18_Node000000_Node000001" title=" " alt="" coords="64,92,92,65,127,40,165,22,168,27,129,44,96,69,67,96"/>
+<area shape="rect" id="Node000002" href="$classProject.html" title="Aggregate state for a single open DISSCO project." alt="" coords="157,55,223,80"/>
+<area shape="poly" id="edge19_Node000000_Node000002" title=" " alt="" coords="92,97,156,76,157,81,94,102"/>
+<area shape="rect" id="Node000003" href="$classProjectManager.html" title="Owner and broker for all open Project instances." alt="" coords="128,104,252,129"/>
+<area shape="poly" id="edge20_Node000000_Node000003" title=" " alt="" coords="94,114,128,114,128,119,94,119"/>
+<area shape="rect" id="Node000004" href="$classProjectView.html" title=" " alt="" coords="141,153,239,179"/>
+<area shape="poly" id="edge21_Node000000_Node000004" title=" " alt="" coords="94,131,152,151,151,156,92,136"/>
+<area shape="rect" id="Node000005" href="$classUpdater.html" title="In&#45;app &quot;Check for Updates&quot; client backed by the GitHub Releases API." alt="" coords="153,203,227,228"/>
+<area shape="poly" id="edge22_Node000000_Node000005" title=" " alt="" coords="67,137,96,163,129,188,154,200,151,205,127,192,92,167,64,141"/>
 </map>

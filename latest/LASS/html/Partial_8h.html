@@ -282,17 +282,21 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372ab5e040f9956678f8f3d40a64509d5d2d">VIBRATO_AMP</a>
 , <a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372aab43d6fede520ad27d59bc79701ae409">VIBRATO_RATE</a>
 , <a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a434d1244bb0c93d8c0f72b7dcbc9e530">PHASE</a>
-, <a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a923697a6a1e1ca2b9623085e19e7b1fb">LOUDNESS_SCALAR</a>
+, <a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372aee3073908912b0bf6db498c835d74ebc">CARRIER_PHASE</a> = PHASE
 , <br />
-&#160;&#160;<a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372ae8351669bf385ea2fa6294e7fed9d9ae">FREQ_ENV</a>
+&#160;&#160;<a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a923697a6a1e1ca2b9623085e19e7b1fb">LOUDNESS_SCALAR</a>
+, <a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372ae8351669bf385ea2fa6294e7fed9d9ae">FREQ_ENV</a>
 , <a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a3bc93c6b13b19c4bfc8ee8c46f6841e5">DETUNING_ENV</a>
 , <a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a879d711457847ed045f8554de1687081">AMPTRANS_AMP_ENV</a>
-, <a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372acddf69883791e4ba64bd9f5d90b29c00">AMPTRANS_RATE_ENV</a>
 , <br />
-&#160;&#160;<a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a08f089392979e5b9ea8e2b658aa603d3">FREQTRANS_AMP_ENV</a>
+&#160;&#160;<a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372acddf69883791e4ba64bd9f5d90b29c00">AMPTRANS_RATE_ENV</a>
+, <a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a08f089392979e5b9ea8e2b658aa603d3">FREQTRANS_AMP_ENV</a>
 , <a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a1c7ad465ef369f390f6ca34ec12a2167">FREQTRANS_RATE_ENV</a>
 , <a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372aa5f7b37fb2c04b3fb516a30eebec057e">AMPTRANS_WIDTH</a>
-, <a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a257dacfb0aa66a99f95d63a384a1d989">FREQTRANS_WIDTH</a>
+, <br />
+&#160;&#160;<a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a257dacfb0aa66a99f95d63a384a1d989">FREQTRANS_WIDTH</a>
+, <a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a312bc24f890701808061d5beaa6405e4">PHASE_AMP_ENV</a>
+, <a class="el" href="Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a5ec4ee82ec72d77bddaa1ec5feab7aae">PHASE_RATE_ENV</a>
 <br />
  }</td></tr>
 <tr class="separator:ad32e52ba876fe18e207dfcf53b0e9372"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -340,6 +344,19 @@ Enumerations</h2></td></tr>
 </li>
 <li>VIBRATO_RATE<ul>
 <li>Given in Hz. (6 Hz is a "normal" vibrato)</li>
+</ul>
+</li>
+<li>PHASE / CARRIER_PHASE<ul>
+<li>The fixed carrier phase offset, expressed as a normalized cycle.</li>
+<li>0.0 is 0 degrees, 0.25 is 90 degrees, and 1.0 is one full cycle.</li>
+</ul>
+</li>
+<li>PHASE_AMP_ENV<ul>
+<li>The depth of phase modulation, expressed as a normalized cycle.</li>
+</ul>
+</li>
+<li>PHASE_RATE_ENV<ul>
+<li>The phase-modulation oscillator rate, expressed in Hz.</li>
 </ul>
 </li>
 <li>FREQUENCY_DEVIATION ****Commmented out (i.e. not used anywhere, but can be put back in)*****<ul>
@@ -405,6 +422,7 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="ad32e52ba876fe18e207dfcf53b0e9372ab5e040f9956678f8f3d40a64509d5d2d" name="ad32e52ba876fe18e207dfcf53b0e9372ab5e040f9956678f8f3d40a64509d5d2d"></a>VIBRATO_AMP&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad32e52ba876fe18e207dfcf53b0e9372aab43d6fede520ad27d59bc79701ae409" name="ad32e52ba876fe18e207dfcf53b0e9372aab43d6fede520ad27d59bc79701ae409"></a>VIBRATO_RATE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad32e52ba876fe18e207dfcf53b0e9372a434d1244bb0c93d8c0f72b7dcbc9e530" name="ad32e52ba876fe18e207dfcf53b0e9372a434d1244bb0c93d8c0f72b7dcbc9e530"></a>PHASE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad32e52ba876fe18e207dfcf53b0e9372aee3073908912b0bf6db498c835d74ebc" name="ad32e52ba876fe18e207dfcf53b0e9372aee3073908912b0bf6db498c835d74ebc"></a>CARRIER_PHASE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad32e52ba876fe18e207dfcf53b0e9372a923697a6a1e1ca2b9623085e19e7b1fb" name="ad32e52ba876fe18e207dfcf53b0e9372a923697a6a1e1ca2b9623085e19e7b1fb"></a>LOUDNESS_SCALAR&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad32e52ba876fe18e207dfcf53b0e9372ae8351669bf385ea2fa6294e7fed9d9ae" name="ad32e52ba876fe18e207dfcf53b0e9372ae8351669bf385ea2fa6294e7fed9d9ae"></a>FREQ_ENV&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad32e52ba876fe18e207dfcf53b0e9372a3bc93c6b13b19c4bfc8ee8c46f6841e5" name="ad32e52ba876fe18e207dfcf53b0e9372a3bc93c6b13b19c4bfc8ee8c46f6841e5"></a>DETUNING_ENV&#160;</td><td class="fielddoc"></td></tr>
@@ -414,9 +432,11 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="ad32e52ba876fe18e207dfcf53b0e9372a1c7ad465ef369f390f6ca34ec12a2167" name="ad32e52ba876fe18e207dfcf53b0e9372a1c7ad465ef369f390f6ca34ec12a2167"></a>FREQTRANS_RATE_ENV&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad32e52ba876fe18e207dfcf53b0e9372aa5f7b37fb2c04b3fb516a30eebec057e" name="ad32e52ba876fe18e207dfcf53b0e9372aa5f7b37fb2c04b3fb516a30eebec057e"></a>AMPTRANS_WIDTH&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad32e52ba876fe18e207dfcf53b0e9372a257dacfb0aa66a99f95d63a384a1d989" name="ad32e52ba876fe18e207dfcf53b0e9372a257dacfb0aa66a99f95d63a384a1d989"></a>FREQTRANS_WIDTH&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad32e52ba876fe18e207dfcf53b0e9372a312bc24f890701808061d5beaa6405e4" name="ad32e52ba876fe18e207dfcf53b0e9372a312bc24f890701808061d5beaa6405e4"></a>PHASE_AMP_ENV&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad32e52ba876fe18e207dfcf53b0e9372a5ec4ee82ec72d77bddaa1ec5feab7aae" name="ad32e52ba876fe18e207dfcf53b0e9372a5ec4ee82ec72d77bddaa1ec5feab7aae"></a>PHASE_RATE_ENV&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="Partial_8h_source.html#l00134">134</a> of file <a class="el" href="Partial_8h_source.html">Partial.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Partial_8h_source.html#l00141">141</a> of file <a class="el" href="Partial_8h_source.html">Partial.h</a>.</p>
 
 </div>
 </div>

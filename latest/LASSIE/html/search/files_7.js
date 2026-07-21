@@ -18,6 +18,7 @@ var searchData=
   ['markovmodellibrarywindow_2ehpp_15',['MarkovModelLibraryWindow.hpp',['../MarkovModelLibraryWindow_8hpp.html',1,'']]],
   ['modifiers_2ecpp_16',['Modifiers.cpp',['../Modifiers_8cpp.html',1,'']]],
   ['modifiers_2ehpp_17',['Modifiers.hpp',['../Modifiers_8hpp.html',1,'']]],
-  ['multientryfunction_2ecpp_18',['MultiEntryFunction.cpp',['../MultiEntryFunction_8cpp.html',1,'']]],
-  ['multientryfunction_2ehpp_19',['MultiEntryFunction.hpp',['../MultiEntryFunction_8hpp.html',1,'']]]
+  ['modifieruipolicy_2ehpp_18',['ModifierUiPolicy.hpp',['../ModifierUiPolicy_8hpp.html',1,'']]],
+  ['multientryfunction_2ecpp_19',['MultiEntryFunction.cpp',['../MultiEntryFunction_8cpp.html',1,'']]],
+  ['multientryfunction_2ehpp_20',['MultiEntryFunction.hpp',['../MultiEntryFunction_8hpp.html',1,'']]]
 ];

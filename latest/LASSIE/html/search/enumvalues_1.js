@@ -6,5 +6,6 @@ var searchData=
   ['bsfunfreq2funbutton_3',['BSFunFreq2FunButton',['../EventAttributesViewController_8hpp.html#a7368f316b8cba93e88233efe6fc580b6a716d3008c9af152fd3a2abfaa48ecc9d',1,'EventAttributesViewController.hpp']]],
   ['bsloudnessfunbutton_4',['BSLoudnessFunButton',['../EventAttributesViewController_8hpp.html#a7368f316b8cba93e88233efe6fc580b6add19927149bd4eef878edc494f11d45e',1,'EventAttributesViewController.hpp']]],
   ['bsmodgroupfunbutton_5',['BSModGroupFunButton',['../EventAttributesViewController_8hpp.html#a7368f316b8cba93e88233efe6fc580b6a5629fc5fc431d1b4247ea7e7ca094872',1,'EventAttributesViewController.hpp']]],
-  ['bswelltemperedfunbutton_6',['BSWellTemperedFunButton',['../EventAttributesViewController_8hpp.html#a7368f316b8cba93e88233efe6fc580b6abcade4bb604810a083d4124efdf40571',1,'EventAttributesViewController.hpp']]]
+  ['bsphasefunbutton_6',['BSPhaseFunButton',['../EventAttributesViewController_8hpp.html#a7368f316b8cba93e88233efe6fc580b6ad8a90ea9655da2ef42a7823d10a917f0',1,'EventAttributesViewController.hpp']]],
+  ['bswelltemperedfunbutton_7',['BSWellTemperedFunButton',['../EventAttributesViewController_8hpp.html#a7368f316b8cba93e88233efe6fc580b6abcade4bb604810a083d4124efdf40571',1,'EventAttributesViewController.hpp']]]
 ];
