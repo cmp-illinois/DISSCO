@@ -34,6 +34,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Utilities.h"
 #include <fstream>
 
+#include <cerrno>
+#include <cstdio>
+#include <cstring>
+#include <sys/stat.h>
+
+#ifdef _WIN32
+#include <direct.h>
+#endif
 //----------------------------------------------------------------------------//
 
 int PieceHelper::getDirectoryList(string dir, vector<string> &files) {
@@ -60,6 +68,31 @@ string PieceHelper::getFixedPath(string path) {
   if(path.c_str()[path.length() - 1] != '/')
     path = path + "/";
   return path;
+}
+
+static bool directoryExists(const string& path) {
+  struct stat info;
+  return stat(path.c_str(), &info) == 0 && (info.st_mode & S_IFDIR);
+}
+
+static bool createDirectoryIfMissing(const string& path) {
+  if (directoryExists(path)) {
+    return true;
+  }
+
+#ifdef _WIN32
+  int result = _mkdir(path.c_str());
+#else
+  int result = mkdir(path.c_str(), 0755);
+#endif
+
+  if (result == 0 || directoryExists(path)) {
+    return true;
+  }
+
+  cerr << "Error: could not create directory " << path
+       << " (" << strerror(errno) << ")" << endl;
+  return false;
 }
 
 //----------------------------------------------------------------------------//
@@ -120,44 +153,36 @@ int PieceHelper::getSeedNumber(string seed) {
 //----------------------------------------------------------------------------//
 
 void PieceHelper::createSoundFilesDirectory(string path) {
-  string dir = string(path);
-  vector<string> files = vector<string>();
-  getDirectoryList(dir, files);
-  string g = "";
-  for(unsigned int i = 0; i < files.size(); i++) {
-    if(files[i] == "SoundFiles")
-      return;
-  }
-
-  string h = "mkdir " + path + "SoundFiles";
-  system(h.c_str());
-
+  string soundDir = PieceHelper::getFixedPath(path) + "SoundFiles";
+  createDirectoryIfMissing(soundDir);
 }
 
 //----------------------------------------------------------------------------//
 
 void PieceHelper::createScoreFilesDirectory(string path) {
+  string scoreDir = PieceHelper::getFixedPath(path) + "ScoreFiles";
 
-  string dir = string(path);
-  vector<string> files = vector<string>();
-  getDirectoryList(dir, files);
-  string g = "";
-  bool dirExists = false;
-  for(unsigned int i = 0; i < files.size(); i++) {
-    if(files[i] == "ScoreFiles") {
-      dirExists = true;
-      break;
-    }
+  if (!createDirectoryIfMissing(scoreDir)) {
+    return;
   }
 
-  string h = "mkdir " + path + "ScoreFiles";
-  if(!dirExists)
-    system(h.c_str());
-  h = "rm -f " + path + "ScoreFiles/*.fms";
-  system(h.c_str());
+  vector<string> files = vector<string>();
+  getDirectoryList(scoreDir, files);
 
+  for(unsigned int i = 0; i < files.size(); i++) {
+    string filename = files[i];
+
+    if(filename.length() >= 4 &&
+       filename.substr(filename.length() - 4, 4) == ".fms") {
+      string fileToRemove = scoreDir + "/" + filename;
+
+      if(remove(fileToRemove.c_str()) != 0) {
+        cerr << "Warning: could not remove " << fileToRemove
+             << " (" << strerror(errno) << ")" << endl;
+      }
+    }
+  }
 }
-
 //----------------------------------------------------------------------------//
 
 bool PieceHelper::doesFileExist(string path, string filename) {
@@ -272,6 +297,14 @@ Piece::Piece(string _workingPath, string _projectTitle){
   element = GNES(element);
   bool outputParticel = (XMLTC(element).compare("True")==0)?true:false;
 
+  if (soundSynthesis) {
+  PieceHelper::createSoundFilesDirectory("");
+  }
+
+  if (scorePrinting) {
+  PieceHelper::createScoreFilesDirectory("");
+  }
+
   //check if seed exists
   string seed;
   element = GNES(element);
@@ -365,22 +398,38 @@ Piece::Piece(string _workingPath, string _projectTitle){
     score_file << Output::notation_score_;
     score_file.close();
 
-    // execute lilypond to create pdf file
-    system(("lilypond " + projectName + ".ly").c_str());
+  // execute lilypond to create pdf file
+  string lilypondCommand = "lilypond \"" + projectName + ".ly\"";
+  int lilypondStatus = system(lilypondCommand.c_str());
 
-    // generating score files with different suffixes instead of replacing the older files.
+  if (lilypondStatus != 0) {
+    cerr << "Error: LilyPond failed to generate "
+       << projectName << ".pdf" << endl;
+  }
+  else {
+    PieceHelper::createScoreFilesDirectory("");
+
     int suffix_rank = 0;
     int exist = 1;
     string suffix = "";
-    while (exist){
+
+    while (exist) {
       suffix = "_" + Note::int_to_str(suffix_rank);
-      std::ifstream infile(( "ScoreFiles/" + projectName + suffix + ".pdf").c_str());
+      std::ifstream infile(("ScoreFiles/" + projectName + suffix + ".pdf").c_str());
       exist = infile.good();
       infile.close();
       suffix_rank++;
     }
 
-    system(("mv " + projectName + ".pdf " + "ScoreFiles/" + projectName + suffix + ".pdf").c_str());
+    string sourcePdf = projectName + ".pdf";
+    string targetPdf = "ScoreFiles/" + projectName + suffix + ".pdf";
+
+    if (rename(sourcePdf.c_str(), targetPdf.c_str()) != 0) {
+      cerr << "Error: could not move " << sourcePdf
+          << " to " << targetPdf
+          << " (" << strerror(errno) << ")" << endl;
+    }
+  }
 
   }
 

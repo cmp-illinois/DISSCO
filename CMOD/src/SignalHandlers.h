@@ -1,4 +1,3 @@
-
 /**
  * @file SignalHandlers.h
  * @brief Custom POSIX signal handlers for CMOD (Rubin Du, 2024).
@@ -17,26 +16,68 @@
 
 #include <iostream>
 #include <csignal>
-#include <execinfo.h>
 #include <cstdlib>
-#include <unistd.h>
-#include <cxxabi.h>
 #include <algorithm>
 #include <cstring>
+#include <cstddef>
 
-#define BACKTRACE_NUM 10    // Number of stack frames to print
+#ifdef _WIN32
+
+#include <io.h>
+
+#ifndef STDERR_FILENO
+#define STDERR_FILENO 2
+#endif
+
+// Windows does not provide POSIX backtrace functions.
+// These stubs preserve compilation while disabling stack traces.
+inline int backtrace(void**, int) {
+  return 0;
+}
+
+inline char** backtrace_symbols(void* const*, int) {
+  return nullptr;
+}
+
+inline void backtrace_symbols_fd(void* const*, int, int) {
+}
+
+namespace abi {
+
+inline char* __cxa_demangle(const char*,
+                           char*,
+                           std::size_t*,
+                           int* status) {
+  if (status != nullptr) {
+    *status = -1;
+  }
+
+  return nullptr;
+}
+
+}  // namespace abi
+
+#else
+
+#include <execinfo.h>
+#include <unistd.h>
+#include <cxxabi.h>
+
+#endif
+
+#define BACKTRACE_NUM 10
 
 // Rubin Du 2024
-// Custom signal handler to print stack trace on segfault and then exit
+// Custom signal handler to print stack trace on segfault and then exit.
 void segfaultHandler(int signal);
 
-// Unimplemented, can be used to detect ctrl+c while the output is generating and decide whether to abandon and clean up the output or not, and release resources
+// Can be used to detect Ctrl+C during output generation.
 void interruptHandler(int signal);
 
-// Unimplemented, could be the same as the above but for quitting unexpectedly
+// Can be used for unexpected termination handling.
 void terminateHandler();
 
-//Unimplemented, could be useful in conjunction with assert to detect trash inputs or other unexpected behavior
+// Can be used with assert or invalid-input handling.
 void abortHandler();
 
 #endif

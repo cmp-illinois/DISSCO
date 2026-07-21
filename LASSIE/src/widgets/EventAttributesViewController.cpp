@@ -1197,7 +1197,6 @@ void EventAttributesViewController::addNewLayerButtonClicked() {
 }
 
 void EventAttributesViewController::addPartialsUI(int partialIndex) {
-
     Partials* par = new Partials(m_curreventindex, partialIndex, this);
     connect(par, &Partials::deleteRequested, this, [this](Partials* p) {
         qDebug() << "deleting in addPartialsUI";

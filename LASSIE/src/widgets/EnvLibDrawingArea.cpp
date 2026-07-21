@@ -130,8 +130,8 @@ void EnvLibDrawingArea::setActiveNodeCoordinate(const QString& _x, const QString
         newX = activeNode->x; // Keep X unchanged for head/tail
     }
     
-    // Constrain Y to [0, 4]
-    newY = qBound(0.0, newY, 4.0);
+    // Constrain Y to [0, 10]
+    newY = qBound(0.0, newY, 10.0);
     
     activeNode->x = newX;
     activeNode->y = newY;
@@ -159,9 +159,8 @@ void EnvLibDrawingArea::adjustBoundary(EnvelopeLibraryEntry* _envelope)
         segment = nd->rightSeg;
     }
 
-    // Fixed 0-4 range (Y is capped at 4)
-    //upperY = 4.0;
-    upperY = 1.0; // 0-1 range
+    // Fixed 0-10 range (Y is capped at 10)
+    upperY = qMax(1.0, maxVal);
     lowerY = 0.0;
 
     // Update boundary display
@@ -182,6 +181,8 @@ void EnvLibDrawingArea::paintEvent(QPaintEvent* event)
 
     EnvelopeLibraryEntry* env = envelopeLibraryWindow->getActiveEnvelope();
     if (!env) return;
+
+    adjustBoundary(env);
 
     int w = width(), h = height();
 
@@ -211,7 +212,8 @@ void EnvLibDrawingArea::paintEvent(QPaintEvent* event)
     // Y-axis labels along left edge at each grid line (skip 0, shown by X-axis)
     for (int i = 1; i <= 4; ++i) {
         int y = h - i * h / 4;
-        QString label = QString::number(i * 0.25, 'f', 2);
+        double value = lowerY + (upperY - lowerY) * i / 4.0;
+        QString label = QString::number(value, 'f', 2);
         painter.drawText(3, y - 3, label);
     }
     // X-axis labels along bottom at each grid line
@@ -220,8 +222,6 @@ void EnvLibDrawingArea::paintEvent(QPaintEvent* event)
         QString label = QString::number(i * 0.2, 'f', 1);
         painter.drawText(x + 2, h - 3, label);
     }
-
-    adjustBoundary(env);
 
     // Draw each segment
     EnvLibEntrySeg* seg = env->head ? env->head->rightSeg : nullptr;
@@ -324,7 +324,7 @@ void EnvLibDrawingArea::mouseMoveEvent(QMouseEvent* event)
     y = qRound(y*1000)/1000.0;
     x = qBound(0.0, x, 1.0);
     // Constrain Y to [0, 4]
-    y = qBound(0.0, y, 4.0);
+    y = qBound(0.0, y, 10.0);
 
     if (mouseLeftButtonPressedDown) {
         mouseX = x;
@@ -581,10 +581,10 @@ void EnvLibDrawingArea::moveNode()
     double rb = activeNode->rightSeg ? activeNode->rightSeg->rightNode->x - 0.001 : 1.0;
 
     if (!activeNode->leftSeg || !activeNode->rightSeg) {
-        activeNode->y = qBound(0.0, mouseY, 4.0);
+        activeNode->y = qBound(0.0, mouseY, 10.0);
     } else {
         activeNode->x = qBound(lb, mouseX, rb);
-        activeNode->y = qBound(0.0, mouseY, 4.0);
+        activeNode->y = qBound(0.0, mouseY, 10.0);
     }
 
     envelopeLibraryWindow->setEntries(

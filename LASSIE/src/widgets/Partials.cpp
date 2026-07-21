@@ -28,7 +28,7 @@ Partials::Partials(unsigned eventIndex, int partialIndex, QWidget* parent)
             [this](FunctionEntryRow*){ emit deleteRequested(this); });
     connect(m_row, &FunctionEntryRow::textChanged, this,
             [this](FunctionEntryRow*){ getBackendLayer().partials[m_partialIndex] = m_row->getText(); });
-           
+
     m_mainLayout->addWidget(m_row);
     setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
     // Set spacing between spectrum partial rows.
