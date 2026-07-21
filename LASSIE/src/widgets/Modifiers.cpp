@@ -11,13 +11,20 @@
 #include <QDialogButtonBox>
 #include <QDialog>
 
+#include <algorithm>
 #include <string>
 
 #include "../ui/ui_Attributes.h"
 #include "../inst.hpp"
 #include "../dialogs/FunctionGenerator.hpp"
+#include "../dialogs/PartialModifierDialog.hpp"
+#include "ModifierUiPolicy.hpp"
 
 using enum FunctionReturnType;
+
+namespace {
+constexpr int phaseModType = 7;
+}
 
 Modifiers::Modifiers(Eventtype eventType, unsigned eventIndex, int modifierIndex, QWidget *parent)
     : QFrame(parent),
@@ -156,6 +163,14 @@ void Modifiers::setupUi() {
 void Modifiers::updateModState() {
     int typeIndex = ui->modifierType->currentIndex();
 
+    const bool isPhaseMod = (typeIndex == phaseModType);
+    ui->modifierMagLabel->setText(isPhaseMod
+        ? tr("Magnitude Envelope (cycle depth):")
+        : tr("Magnitude Envelope:"));
+    ui->modifierRateLabel->setText(isPhaseMod
+        ? tr("Rate Envelope (Hz):")
+        : tr("Rate Value Envelope:"));
+
     // GLISSANDO (2) is always SOUND — disable the apply combo
     // In 2.1.0, GLISSANDO has enabled apply combo
     /*if (typeIndex == 2) {
@@ -172,16 +187,6 @@ void Modifiers::updateModState() {
     // Enabled flags per type: { prob, mag, rate, width, spread, dir, vel, res }
     // res (partial result string) depends on apply mode, not type — set below
     //                             prob   mag    rate   width  spread dir    vel
-    static const bool table[7][7] = {
-        /* TREMOLO  */ { true,  true,  true,  false, false, false, false },
-        /* VIBRATO  */ { true,  true,  true,  false, false, false, false },
-        /* GLISSANDO*/ { true,  true,  false, false, false, false, false },
-        /* DETUNE   */ { true,  false, false, false, true,  true,  true  },
-        /* AMPTRANS */ { true,  true,  true,  true,  false, false, false },
-        /* FREQTRANS*/ { true,  true,  true,  true,  false, false, false },
-        /* WAVE_TYPE*/ { true,  true,  true,  false, false, false, false },
-    };
-
     struct Row { QLabel* label; QLineEdit* edit; QPushButton* btn; };
     const Row rows[8] = {
         { ui->modifierProbLabel,   ui->modifierProbEdit,   ui->modifierProbFunButton   },
@@ -194,14 +199,23 @@ void Modifiers::updateModState() {
         { ui->modifierResLabel,    ui->modifierResEdit,    ui->modifierResFunButton    },
     };
 
-    bool enabled[8];
-    for (int i = 0; i < 7; i++) enabled[i] = table[typeIndex][i];
-    enabled[7] = isPartial;
+    constexpr int modifierTypeCount = 8;
+    if (typeIndex < 0 || typeIndex >= modifierTypeCount) {
+        ui->modifierApply->setEnabled(false);
+        for (const Row& row : rows) {
+            row.label->setEnabled(false);
+            row.edit->setEnabled(false);
+            row.btn->setEnabled(false);
+        }
+        return;
+    }
+    ui->modifierApply->setEnabled(true);
 
     for (int i = 0; i < 8; i++) {
-        rows[i].label->setEnabled(enabled[i]);
-        rows[i].edit->setEnabled(enabled[i]);
-        rows[i].btn->setEnabled(enabled[i]);
+        const bool enabled = ModifierUiPolicy::fieldEnabled(typeIndex, i, isPartial);
+        rows[i].label->setEnabled(enabled);
+        rows[i].edit->setEnabled(enabled);
+        rows[i].btn->setEnabled(enabled);
     }
 }
 
@@ -278,6 +292,39 @@ void Modifiers::modFunctionButtonClicked(ModChanged type) {
     }
 
     if (!target) return;
+
+    // The structured editor is deliberately PHASE_MOD-only. Other modifier
+    // types retain their legacy FunctionGenerator path and wire semantics.
+    if (type == modPartialChanged
+        && ui->modifierType->currentIndex() == phaseModType) {
+        ProjectManager* pm = Inst::get_project_manager();
+        int spectrumPartialCount = 0;
+        constexpr int generatedSpectrumPartialCount = 20;
+        if (pm->get_curr_project()) {
+            for (const SpectrumEvent& spectrum : pm->spectrumevents()) {
+                spectrumPartialCount = std::max(
+                    spectrumPartialCount,
+                    static_cast<int>(spectrum.spectrum.partials.size()));
+
+                bool isInteger = false;
+                const int declaredCount = spectrum.num_partials.toInt(&isInteger);
+                if (isInteger)
+                    spectrumPartialCount = std::max(spectrumPartialCount, declaredCount);
+
+                // CMOD's generated-spectrum path currently creates 20 partials.
+                if (!spectrum.generate_spectrum.trimmed().isEmpty())
+                    spectrumPartialCount = std::max(spectrumPartialCount,
+                                                    generatedSpectrumPartialCount);
+            }
+        }
+
+        PartialModifierDialog dialog(this,
+                                     std::max(1, spectrumPartialCount),
+                                     target->text());
+        if (dialog.exec() == QDialog::Accepted)
+            target->setText(dialog.resultString());
+        return;
+    }
 
     gen = new FunctionGenerator(nullptr, functionReturnENV, target->text());
     if (gen) {

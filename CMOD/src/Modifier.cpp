@@ -41,6 +41,7 @@ Modifier::Modifier() {
 
 Modifier::Modifier(string modType, Envelope* prob, string modApplyHow, int modPartialNum) {
   type = modType;
+  probEnv = NULL;
   if (prob != NULL) {
       probEnv = new Envelope(*prob);
   }
@@ -120,7 +121,9 @@ Modifier::~Modifier() {
 //----------------------------------------------------------------------------//
 
 void Modifier::addValueEnv( Envelope* env ) {
-  env_values.push_back( new Envelope(*env) );
+  if (env != NULL) {
+    env_values.push_back( new Envelope(*env) );
+  }
 }
 
 //----------------------------------------------------------------------------//
@@ -148,6 +151,11 @@ float Modifier::getProbability(double checkPoint) {
     cerr << "Modifier::getProbability -- Error: checkPt out of bounds;" << endl;
     cerr << "        checkPoint = " << checkPoint << endl;
     return -1;
+  }
+  if (probEnv == NULL) {
+    cerr << "WARNING: Modifier " << type
+         << " has no probability envelope and will be skipped." << endl;
+    return 0;
   }
   checkPt = checkPoint;
   return probEnv->getValue(checkPoint, 1);
@@ -205,8 +213,18 @@ void Modifier::applyModSound(Sound* snd) {
   } else if (type == "VIBRATO") {
     snd->setPartialParam(VIBRATO_AMP, *(env_values[0]));
     snd->setPartialParam(VIBRATO_RATE, *(env_values[1]));
+  } else if (type == "PHASE_MOD") {
+    if (env_values.size() < 2 || env_values[0] == NULL || env_values[1] == NULL) {
+      cerr << "WARNING: PHASE_MOD requires magnitude and rate envelopes; modifier skipped."
+           << endl;
+      return;
+    }
+    snd->setPartialParam(PHASE_AMP_ENV, *(env_values[0]));
+    snd->setPartialParam(PHASE_RATE_ENV, *(env_values[1]));
   } else if (type == "PHASE") {
-    snd->setPartialParam(PHASE, *(env_values[0]));
+    // Legacy single-envelope phase modifier: retain source compatibility,
+    // but treat it as the fixed carrier offset rather than PM.
+    snd->setPartialParam(CARRIER_PHASE, *(env_values[0]));
   } else if (type == "AMPTRANS") {
     snd->setPartialParam(AMPTRANS_AMP_ENV, *(env_values[0]));
     snd->setPartialParam(AMPTRANS_RATE_ENV, *(env_values[1]));
@@ -253,8 +271,20 @@ void Modifier::applyModPartial(Sound* snd) {
     snd->get(partialNum).setParam(VIBRATO_RATE, *(env_values.front()));
     delete env_values.front();
     env_values.pop_front();
+  } else if (type == "PHASE_MOD") {
+    if (env_values.size() < 2 || env_values[0] == NULL || env_values[1] == NULL) {
+      cerr << "WARNING: PHASE_MOD requires magnitude and rate envelopes; modifier skipped."
+           << endl;
+      return;
+    }
+    snd->get(partialNum).setParam(PHASE_AMP_ENV, *(env_values.front()));
+    delete env_values.front();
+    env_values.pop_front();
+    snd->get(partialNum).setParam(PHASE_RATE_ENV, *(env_values.front()));
+    delete env_values.front();
+    env_values.pop_front();
   } else if (type == "PHASE") {
-    snd->get(partialNum).setParam(PHASE, *(env_values.front()));
+    snd->get(partialNum).setParam(CARRIER_PHASE, *(env_values.front()));
     delete env_values.front();
     env_values.pop_front();
   } else if (type == "AMPTRANS") {

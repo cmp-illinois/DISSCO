@@ -81,6 +81,13 @@ enum PartialStaticParam
 *		- Given as a scaling factor to frequency.
 *	- VIBRATO_RATE
 *		- Given in Hz. (6 Hz is a "normal" vibrato)
+*	- PHASE / CARRIER_PHASE
+*		- The fixed carrier phase offset, expressed as a normalized cycle.
+*		- 0.0 is 0 degrees, 0.25 is 90 degrees, and 1.0 is one full cycle.
+*	- PHASE_AMP_ENV
+*		- The depth of phase modulation, expressed as a normalized cycle.
+*	- PHASE_RATE_ENV
+*		- The phase-modulation oscillator rate, expressed in Hz.
 *	- FREQUENCY_DEVIATION ****Commmented out (i.e. not used anywhere, but can be put back in)*****
 *		- Specifies how randomly scaled the frequencies
 *		  of this partial will be.
@@ -140,6 +147,7 @@ enum PartialDynamicParam
     VIBRATO_AMP,
     VIBRATO_RATE,
     PHASE,
+    CARRIER_PHASE = PHASE,
     //FREQUENCY_DEVIATION,
     LOUDNESS_SCALAR,
     //GLISSANDO_ENV,
@@ -150,7 +158,9 @@ enum PartialDynamicParam
     FREQTRANS_AMP_ENV,
     FREQTRANS_RATE_ENV,
     AMPTRANS_WIDTH,
-    FREQTRANS_WIDTH
+    FREQTRANS_WIDTH,
+    PHASE_AMP_ENV,
+    PHASE_RATE_ENV
 };
 
 // the loudness routines will look at RELATIVE_AMPLITUDE, FREQUENCY,
@@ -171,6 +181,9 @@ public:
 	 * - WAVE_SHAPE = 1.0
 	 * - FREQUENCY = 440
 	 * - LOUDNESS_SCALAR = 1.0
+	 * - CARRIER_PHASE = 0.0 cycles
+	 * - PHASE_AMP_ENV = 0.0 cycles
+	 * - PHASE_RATE_ENV = 0.0 Hz
 	 * - All trans envelopes = 0
 	 * - Both TRANS_WIDTH = 1103
 	 **/

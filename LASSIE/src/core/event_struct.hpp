@@ -209,6 +209,7 @@ struct ExtraInfo {
     unsigned childtype_flag = 0;
     FreqInfo freq_info;
     QString loudness;
+    QString phase = "0"; // normalized carrier-phase cycle: 0.25 == 90 degrees
     QString spa;
     QString reverb;
     QString filter;

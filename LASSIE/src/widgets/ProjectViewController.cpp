@@ -11,7 +11,6 @@
 #include <QXmlStreamWriter>
 #include <QDebug>
 #include <QTextStream>
-#include <QDomDocument>
 
 #include <QDialog>
 #include <QVBoxLayout>
@@ -30,6 +29,7 @@
 #include "../inst.hpp"
 #include "../core/LayerReferenceUtils.hpp"
 #include "../core/EnvelopeLibraryEntry.hpp"
+#include "../core/ProjectXmlWriter.hpp"
 #include "../dialogs/ProjectPropertiesDialog.hpp"
 #include "../ui/ui_ProjectPropertiesDialog.h"
 #include "../dialogs/FunctionGenerator.hpp"
@@ -100,74 +100,9 @@ ProjectView::~ProjectView() {
     }
 }
 
-/** Re-emits a parsed DOM node through the QXmlStreamWriter. Doing this 
- * through the writer allows us to write inline xml (as in <Fun/> blocks) properly.
- */ 
-static void writeDomNode(QXmlStreamWriter& xmlWriter, const QDomNode& node) {
-    if (node.isElement()) {
-        QDomElement element = node.toElement();
-        xmlWriter.writeStartElement(element.tagName());
-        QDomNamedNodeMap attrs = element.attributes();
-        for (int i = 0; i < attrs.count(); ++i) {
-            QDomAttr attr = attrs.item(i).toAttr();
-            xmlWriter.writeAttribute(attr.name(), attr.value());
-        }
-        for (QDomNode child = element.firstChild(); !child.isNull();
-             child = child.nextSibling()) {
-            writeDomNode(xmlWriter, child);
-        }
-        xmlWriter.writeEndElement();
-    } else if (node.isCDATASection()) {
-        xmlWriter.writeCDATA(node.toCDATASection().data());
-    } else if (node.isText()) {
-        // Skip whitespace-only text nodes (formatting between elements) so the
-        // output stays compact, but keep real values like "STEREO" or "250".
-        const QString text = node.toText().data();
-        if (!text.trimmed().isEmpty()) {
-            xmlWriter.writeCharacters(text);
-        }
-    }
-}
-
 // Function to write XML Formatting
 void ProjectView::writeInlineXml(QXmlStreamWriter& xmlWriter, const QString& xmlString) {
-    QDomDocument tempDoc;
-    QString wrappedXml = QString("<root>%1</root>").arg(xmlString.trimmed());
-    if (tempDoc.setContent(wrappedXml)) {
-        QDomNodeList children = tempDoc.documentElement().childNodes();
-        for (int i = 0; i < children.count(); ++i) {
-            writeDomNode(xmlWriter, children.at(i));
-        }
-    } else {
-        // String/Number
-        xmlWriter.writeCharacters(xmlString);
-    }
-}
-
-// Returns the modifier field value only if it is active for the modifier's type;
-// returns an empty string for fields disabled by the type, so CMOD ignores them.
-static QString modActiveField(const Modifier& mod, int fieldIdx) {
-    // columns: prob(0), amp(1), rate(2), width(3), spread(4), dir(5), vel(6)
-    static const bool table[7][7] = {
-        /* TREMOLO  */ { true,  true,  true,  false, false, false, false },
-        /* VIBRATO  */ { true,  true,  true,  false, false, false, false },
-        /* GLISSANDO*/ { true,  true,  false, false, false, false, false },
-        /* DETUNE   */ { true,  false, false, false, true,  true,  true  },
-        /* AMPTRANS */ { true,  true,  true,  true,  false, false, false },
-        /* FREQTRANS*/ { true,  true,  true,  true,  false, false, false },
-        /* WAVE_TYPE*/ { false, true,  false, false, false, false, false },
-    };
-    if (mod.type >= 7 || !table[mod.type][fieldIdx]) return {};
-    switch (fieldIdx) {
-        case 0: return mod.probability;
-        case 1: return mod.amplitude;
-        case 2: return mod.rate;
-        case 3: return mod.width;
-        case 4: return mod.detune_spread;
-        case 5: return mod.detune_direction;
-        case 6: return mod.detune_velocity;
-        default: return {};
-    }
+    ProjectXmlWriter::writeInlineXml(xmlWriter, xmlString);
 }
 
 /* Function that creates and saves the xml .dissco file */
@@ -491,44 +426,8 @@ void ProjectView::save(){
                         writeInlineXml(xmlWriter, item.filter);
                     xmlWriter.writeEndElement(); 
                     xmlWriter.writeStartElement("Modifiers");
-                    //xmlWriter.writeCharacters("");
-                    for (const Modifier& itemMod : item.modifiers) {
-                        xmlWriter.writeStartElement("Modifier");
-                            xmlWriter.writeStartElement("Type");
-                                xmlWriter.writeCharacters(QString("%1").arg(itemMod.type));
-                            xmlWriter.writeEndElement();
-                            xmlWriter.writeStartElement("ApplyHow");
-                                xmlWriter.writeCharacters(itemMod.applyhow_flag ? "0" : "1");
-                            xmlWriter.writeEndElement();
-                            xmlWriter.writeStartElement("Probability");
-                                writeInlineXml(xmlWriter, modActiveField(itemMod, 0));
-                            xmlWriter.writeEndElement();
-                            xmlWriter.writeStartElement("Amplitude");
-                                writeInlineXml(xmlWriter, modActiveField(itemMod, 1));
-                            xmlWriter.writeEndElement();
-                            xmlWriter.writeStartElement("Rate");
-                                writeInlineXml(xmlWriter, modActiveField(itemMod, 2));
-                            xmlWriter.writeEndElement();
-                            xmlWriter.writeStartElement("Width");
-                                writeInlineXml(xmlWriter, modActiveField(itemMod, 3));
-                            xmlWriter.writeEndElement();
-                            xmlWriter.writeStartElement("DetuneSpread");
-                                writeInlineXml(xmlWriter, modActiveField(itemMod, 4));
-                            xmlWriter.writeEndElement();
-                            xmlWriter.writeStartElement("DetuneDirection");
-                                writeInlineXml(xmlWriter, modActiveField(itemMod, 5));
-                            xmlWriter.writeEndElement();
-                            xmlWriter.writeStartElement("DetuneVelocity");
-                                writeInlineXml(xmlWriter, modActiveField(itemMod, 6));
-                            xmlWriter.writeEndElement();
-                            xmlWriter.writeStartElement("GroupName");
-                                writeInlineXml(xmlWriter, itemMod.group_name);
-                            xmlWriter.writeEndElement();
-                            xmlWriter.writeStartElement("PartialResultString");
-                                writeInlineXml(xmlWriter, itemMod.applyhow_flag ? itemMod.partialresult_string : QString{});
-                            xmlWriter.writeEndElement();
-                        xmlWriter.writeEndElement();
-                    }
+                    for (const Modifier& itemMod : item.modifiers)
+                        ProjectXmlWriter::writeModifier(xmlWriter, itemMod);
                     xmlWriter.writeEndElement();
               xmlWriter.writeEndElement();
             }
@@ -662,76 +561,7 @@ void ProjectView::save(){
                     xmlWriter.writeStartElement("Filter");
                         writeInlineXml(xmlWriter, item.event.filter);
                     xmlWriter.writeEndElement();  
-                    xmlWriter.writeStartElement("ExtraInfo");
-                        xmlWriter.writeStartElement("FrequencyInfo");
-                            xmlWriter.writeStartElement("FrequencyFlag");
-                                xmlWriter.writeCharacters(QString("%1").arg(item.extra_info.freq_info.freq_flag));
-                            xmlWriter.writeEndElement();
-                            xmlWriter.writeStartElement("FrequencyContinuumFlag");
-                                xmlWriter.writeCharacters(QString("%1").arg(item.extra_info.freq_info.continuum_flag));
-                            xmlWriter.writeEndElement(); 
-                            xmlWriter.writeStartElement("FrequencyEntry1");
-                                writeInlineXml(xmlWriter, item.extra_info.freq_info.entry_1);
-                            xmlWriter.writeEndElement(); 
-                            xmlWriter.writeStartElement("FrequencyEntry2");
-                                writeInlineXml(xmlWriter, item.extra_info.freq_info.entry_2);
-                            xmlWriter.writeEndElement(); 
-                        xmlWriter.writeEndElement(); 
-                        xmlWriter.writeStartElement("Loudness");
-                            writeInlineXml(xmlWriter, item.extra_info.loudness);
-                        xmlWriter.writeEndElement(); 
-                        xmlWriter.writeStartElement("Spatialization");
-                            writeInlineXml(xmlWriter, item.extra_info.spa);
-                        xmlWriter.writeEndElement();
-                        xmlWriter.writeStartElement("Reverb");
-                            writeInlineXml(xmlWriter, item.extra_info.reverb);
-                        xmlWriter.writeEndElement(); 
-                        xmlWriter.writeStartElement("Filter");
-                            writeInlineXml(xmlWriter, item.extra_info.filter);
-                        xmlWriter.writeEndElement(); 
-                        xmlWriter.writeStartElement("ModifierGroup");
-                            writeInlineXml(xmlWriter, item.extra_info.modifier_group);
-                        xmlWriter.writeEndElement(); 
-                        xmlWriter.writeStartElement("Modifiers");
-                        for (const Modifier& itemMod : item.extra_info.modifiers) {
-                            xmlWriter.writeStartElement("Modifier");
-                                xmlWriter.writeStartElement("Type");
-                                    xmlWriter.writeCharacters(QString("%1").arg(itemMod.type));
-                                xmlWriter.writeEndElement();
-                                xmlWriter.writeStartElement("ApplyHow");
-                                    xmlWriter.writeCharacters(itemMod.applyhow_flag ? "0" : "1");
-                                xmlWriter.writeEndElement();
-                                xmlWriter.writeStartElement("Probability");
-                                    writeInlineXml(xmlWriter, modActiveField(itemMod, 0));
-                                xmlWriter.writeEndElement();
-                                xmlWriter.writeStartElement("Amplitude");
-                                    writeInlineXml(xmlWriter, modActiveField(itemMod, 1));
-                                xmlWriter.writeEndElement();
-                                xmlWriter.writeStartElement("Rate");
-                                    writeInlineXml(xmlWriter, modActiveField(itemMod, 2));
-                                xmlWriter.writeEndElement();
-                                xmlWriter.writeStartElement("Width");
-                                    writeInlineXml(xmlWriter, modActiveField(itemMod, 3));
-                                xmlWriter.writeEndElement();
-                                xmlWriter.writeStartElement("DetuneSpread");
-                                    writeInlineXml(xmlWriter, modActiveField(itemMod, 4));
-                                xmlWriter.writeEndElement();
-                                xmlWriter.writeStartElement("DetuneDirection");
-                                    writeInlineXml(xmlWriter, modActiveField(itemMod, 5));
-                                xmlWriter.writeEndElement();
-                                xmlWriter.writeStartElement("DetuneVelocity");
-                                    writeInlineXml(xmlWriter, modActiveField(itemMod, 6));
-                                xmlWriter.writeEndElement();
-                                xmlWriter.writeStartElement("GroupName");
-                                    writeInlineXml(xmlWriter, itemMod.group_name);
-                                xmlWriter.writeEndElement();
-                                xmlWriter.writeStartElement("PartialResultString");
-                                    writeInlineXml(xmlWriter, itemMod.applyhow_flag ? itemMod.partialresult_string : QString{});
-                                xmlWriter.writeEndElement();
-                            xmlWriter.writeEndElement();
-                        }
-                        xmlWriter.writeEndElement();
-                    xmlWriter.writeEndElement(); 
+                    ProjectXmlWriter::writeBottomExtraInfo(xmlWriter, item.extra_info);
               xmlWriter.writeEndElement();  
             }
 

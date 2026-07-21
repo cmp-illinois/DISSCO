@@ -27,6 +27,7 @@
 #include "Bottom.h"
 #include "Random.h"
 #include "Output.h"
+#include <cmath>
 static int test=0;
 
 
@@ -56,6 +57,7 @@ Bottom::Bottom(pugi::xml_node _element,
       <FrequencyEntry2/>
     </FrequencyInfo>
     <Loudness>4</Loudness>
+    <Phase>0</Phase>
     <Spatialization>5</Spatialization>
     <Reverb>6</Reverb>
     <Filter>f</Filter>
@@ -65,33 +67,36 @@ Bottom::Bottom(pugi::xml_node _element,
   </ExtraInfo>
   */
 
-  frequencyElement = GFEC(extraInfo);
-  loudnessElement = GNES(frequencyElement);
+  // ExtraInfo used to be parsed by sibling position.  Phase is optional for
+  // backward compatibility, so resolve every field by name instead: otherwise
+  // inserting <Phase> would shift Spatialization/Reverb/Filter/Modifiers.
+  frequencyElement = extraInfo.child("FrequencyInfo");
+  loudnessElement = extraInfo.child("Loudness");
+  phaseElement = extraInfo.child("Phase");
   if (_ancestorSpa != NULL){
     spatializationElement = _ancestorSpa;
   }
   else {
-    spatializationElement = GNES(loudnessElement);
+    spatializationElement = extraInfo.child("Spatialization");
   }
 
   if (_ancestorRev != NULL){
     reverberationElement = _ancestorRev;
   }
   else {
-    reverberationElement = GNES(GNES(loudnessElement));
+    reverberationElement = extraInfo.child("Reverb");
   }
 
   if (_ancestorFil != NULL){
     filterElement = _ancestorFil;
   }
   else {
-    filterElement = GNES(GNES(GNES(loudnessElement)));
+    filterElement = extraInfo.child("Filter");
   }
 
   /* ZIYUAN CHEN, July 2023 */
-  modifierGroupElement = GNES(GNES(GNES(GNES(loudnessElement))));
-
-  modifiersElement = GNES(GNES(GNES(GNES(GNES(loudnessElement)))));
+  modifierGroupElement = extraInfo.child("ModifierGroup");
+  modifiersElement = extraInfo.child("Modifiers");
 
 }
 
@@ -238,6 +243,12 @@ void Bottom::buildSound(SoundAndNoteWrapper* _soundNoteWrapper) {
   newSound->setParam(LOUDNESS, loudSones);
   if (utilities->getOutputParticel())Output::addProperty("Loudness", loudSones, "sones");
 
+  // Fixed initial phase offset.  LASS represents oscillator phase in cycles,
+  // so no degree/radian conversion is needed here.
+  float carrierPhase = computeCarrierPhase();
+  if (utilities->getOutputParticel())
+    Output::addProperty("Carrier Phase", carrierPhase, "cycle");
+
   int numPartials = computeNumPartials( baseFrequency ,_soundNoteWrapper->element );
 
  //Element for GenSpectrum
@@ -293,6 +304,14 @@ void Bottom::buildSound(SoundAndNoteWrapper* _soundNoteWrapper) {
 
       }
    }
+
+  // Apply after either partial-creation path so generated-spectrum partials
+  // receive the same carrier offset as explicitly configured partials.
+  newSound->setPartialParam(CARRIER_PHASE, carrierPhase);
+
+  // Generated spectra currently create a fixed number of partials.  Use the
+  // actual Sound size for all subsequent per-partial operations.
+  numPartials = newSound->size();
 
   if (utilities->getOutputParticel())Output::endSubLevel();
 
@@ -457,6 +476,36 @@ float Bottom::computeLoudness() {
   // cout << "bottom loudness: " << loudval << endl;
   // cout << "bottom expval: " << expVal << endl;
   return loudval;
+}
+
+//----------------------------------------------------------------------------//
+
+float Bottom::computeCarrierPhase() {
+  const string phaseExpression = XMLTC(phaseElement);
+  if (phaseExpression.empty()) {
+    return 0.0f;
+  }
+
+  float phase = utilities->evaluate(phaseExpression, (void*)this);
+  if (!std::isfinite(phase)) {
+    cerr << "WARNING: Carrier Phase for Bottom " << name
+         << " is not finite; using 0 cycle." << endl;
+    return 0.0f;
+  }
+
+  // One full cycle is equivalent to zero.  Wrapping also gives a defined,
+  // periodic result for expressions that evaluate outside the UI's 0..1 range.
+  if (phase < 0.0f || phase >= 1.0f) {
+    const float originalPhase = phase;
+    phase = std::fmod(phase, 1.0f);
+    if (phase < 0.0f) phase += 1.0f;
+    if (originalPhase != 1.0f) {
+      cerr << "WARNING: Carrier Phase should be between 0 and 1 cycle; wrapping "
+           << originalPhase << " to " << phase << " in Bottom " << name << "." << endl;
+    }
+  }
+
+  return phase;
 }
 
 //----------------------------------------------------------------------------//
@@ -1238,8 +1287,12 @@ void Bottom::applyModifiers(Sound *s, int numPartials) {
 
 
   pugi::xml_document mergedModifiersDoc;
-  pugi::xml_node modifiersIncludingAncestorsElement =
-      mergedModifiersDoc.append_copy(modifiersElement);
+  pugi::xml_node modifiersIncludingAncestorsElement;
+  if (modifiersElement) {
+    modifiersIncludingAncestorsElement = mergedModifiersDoc.append_copy(modifiersElement);
+  } else {
+    modifiersIncludingAncestorsElement = mergedModifiersDoc.append_child("Modifiers");
+  }
   if (ancestorModifiersElement) {
     for (auto a = GFEC(ancestorModifiersElement); a; a = GNES(a)) {
       modifiersIncludingAncestorsElement.append_copy(a);
@@ -1269,7 +1322,8 @@ void Bottom::applyModifiers(Sound *s, int numPartials) {
 
     pugi::xml_node arg = GFEC(modifierElement);
     string modType;
-    switch ((int)utilities->evaluate(XMLTC(arg), this)){
+    const int modTypeCode = (int)utilities->evaluate(XMLTC(arg), this);
+    switch (modTypeCode){
       case 0: modType = "TREMOLO"; break;
       case 1: modType = "VIBRATO"; break;
       case 2: modType = "GLISSANDO"; break;
@@ -1278,6 +1332,12 @@ void Bottom::applyModifiers(Sound *s, int numPartials) {
       case 4: modType = "AMPTRANS"; break;
       case 5: modType = "FREQTRANS"; break;
       case 6: modType = "WAVE_TYPE"; break;
+      case 7: modType = "PHASE_MOD"; break;
+      default:
+        cerr << "WARNING: Ignoring unknown Bottom modifier type "
+             << modTypeCode << " in " << name << "." << endl;
+        modifierElement = GNES(modifierElement);
+        continue;
     }
     //cout<<"Mod Type: "<<modType<<endl;
     arg = GNES(arg);
@@ -1292,8 +1352,10 @@ void Bottom::applyModifiers(Sound *s, int numPartials) {
 
     // Only evaluate the envelope if we apply by SOUND. Otherwise, may segfault on empty probability envelopes.
     if (applyHow == "SOUND") {
-      probEnv = (Envelope*)utilities->evaluateObject(XMLTC(arg), this, eventEnv);
       probStr = XMLTC(arg);
+      if (!probStr.empty()) {
+        probEnv = (Envelope*)utilities->evaluateObject(probStr, this, eventEnv);
+      }
     }
 
     ampElement = GNES(arg);
@@ -1378,9 +1440,11 @@ float vel;
           << " Correct partial number is   " << numPartials << endl;
           return;
         }
-        Envelope* probEnv = (Envelope*)utilities->evaluateObject(XMLTC(envelopeElement), this, eventEnv);
-        
         probStr = XMLTC(envelopeElement);
+        Envelope* probEnv = NULL;
+        if (!probStr.empty() && probStr != "N/A") {
+          probEnv = (Envelope*)utilities->evaluateObject(probStr, this, eventEnv);
+        }
 
        
    
@@ -1398,7 +1462,10 @@ float vel;
           newPartialMod.addValueEnv(env);
           delete env;
         }
-        if (widthStr!="" && widthStr!="N/A"){
+        // PHASE_MOD consumes magnitude and rate only.  PartialResultString
+        // retains the shared width placeholder, but it must not enter the PM
+        // envelope queue and displace the rate envelope.
+        if (modType != "PHASE_MOD" && widthStr!="" && widthStr!="N/A"){
            Envelope* env =  (Envelope*)utilities->evaluateObject(widthStr, this, eventEnv );
            newPartialMod.addValueEnv(env);
            delete env;
@@ -1420,6 +1487,7 @@ float vel;
           groupName.erase(groupName.find_last_not_of(' ') + 1);
           modGroups[groupName].push_back(newPartialMod);
         }
+        delete probEnv;
         envelopeElement = GNES(envelopeElement);
       }
     }
@@ -1469,7 +1537,14 @@ float vel;
   if (modGroups.find(targetModGroupName) != modGroups.end()) {
     vector<Modifier> modGroup = modGroups[targetModGroupName];
     for (unsigned i = 0; i < modGroup.size(); i++) {
-      modGroup[i].applyModifier(s);
+      // PHASE_MOD is new, so its probability can use the intended modifier
+      // mechanism without changing how existing project modifiers render.
+      // The other Bottom modifier types historically apply unconditionally in
+      // this path; preserve that behavior for old-project audio compatibility.
+      if (modGroup[i].getModName() != "PHASE_MOD" ||
+          modGroup[i].willOccur(checkPoint)) {
+        modGroup[i].applyModifier(s);
+      }
     }
   } else {
     cerr << "WARNING: Specified modifier group " << targetModGroupName << " not found!" << endl;

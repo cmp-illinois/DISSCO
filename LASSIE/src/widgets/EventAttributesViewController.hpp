@@ -42,6 +42,7 @@ typedef enum {
     attributesFilFunButton,
     attributesFilBuilderFunButton,
     BSLoudnessFunButton,
+    BSPhaseFunButton,
     BSModGroupFunButton,
     BSWellTemperedFunButton,
     BSFunFreq1FunButton,
@@ -132,6 +133,7 @@ private slots:
     void attributesFilBuilderButtonClicked();
     void attributesStandardSpaButtonClicked();
     void BSLoudnessButtonClicked();
+    void BSPhaseButtonClicked();
     // void BSSpatializationButtonClicked();
     // void BSReverbButtonClicked();
     // void BSFilterButtonClicked();

@@ -1840,6 +1840,9 @@ pugi::xml_node Utilities::getSpectrum(string _functionString, void* _object){;
       _docPtr->load_string(_functionString.c_str());
       pugi::xml_node _functionElement = _docPtr->document_element();
 
+  // pugi::xml_node is a non-owning handle. Keep the parsed document alive on
+  // the Event, just like the SPA/REV/FIL evaluators do for temporary XML.
+  ((Event*)_object)->addTemporaryXMLDocument(std::move(_docPtr));
   return GNES(GFEC(_functionElement));
   }
 

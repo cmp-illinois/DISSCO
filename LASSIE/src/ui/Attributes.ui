@@ -803,6 +803,33 @@
                           </widget>
                         </item>
                         <item>
+                        <widget class="QWidget" name="phaseContainer">
+                        <property name="toolTip">
+                            <string>Initial carrier phase as a normalized cycle: 0 = 0 degrees, 0.25 = 90 degrees, and 1 = 360 degrees.</string>
+                        </property>
+                        <layout class="QHBoxLayout" name="phaseLayout">
+                            <item>
+                                <widget class="QLabel" name="phaseLabel">
+                                <property name="text"><string>Carrier Phase (cycle, 0-1):</string></property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLineEdit" name="phaseEntry">
+                                <property name="text"><string>0</string></property>
+                                <property name="placeholderText"><string>0-1 normalized cycle</string></property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QPushButton" name="BSPhaseButton">
+                                <property name="text">
+                                    <string>Insert Function</string>
+                                </property>
+                                </widget>
+                            </item>
+                        </layout>
+                        </widget>
+                        </item>
+                        <item>
                         <widget class="QWidget" name="loudnessContainer">
                         <layout class="QHBoxLayout" name="loudnessLayout">
                             <item>

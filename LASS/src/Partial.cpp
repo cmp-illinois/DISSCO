@@ -43,6 +43,9 @@ Partial::Partial()
     setParam(WAVE_SHAPE, 1.0);
     setParam(FREQUENCY, 440.0);
     setParam(LOUDNESS_SCALAR, 1.0);
+    setParam(CARRIER_PHASE, 0.0);
+    setParam(PHASE_AMP_ENV, 0.0);
+    setParam(PHASE_RATE_ENV, 0.0);
     //setParam(GLISSANDO_ENV, 1.0); // (no gliss)
     setParam(FREQ_ENV, 1.0);  // nothing applied to change frequency
       setParam(DETUNING_ENV, 1.0); // (no detuning)            yes detuning ??
@@ -94,6 +97,8 @@ MultiTrack* Partial::render(int numChannels,
     getParam(VIBRATO_AMP).setDuration(duration);
     getParam(VIBRATO_RATE).setDuration(duration);
     getParam(PHASE).setDuration(duration);
+    getParam(PHASE_AMP_ENV).setDuration(duration);
+    getParam(PHASE_RATE_ENV).setDuration(duration);
     getParam(LOUDNESS_SCALAR).setDuration(duration);
     //getParam(FREQUENCY_DEVIATION).setDuration(duration);
     //getParam(GLISSANDO_ENV).setDuration(duration);
@@ -110,6 +115,8 @@ MultiTrack* Partial::render(int numChannels,
     getParam(VIBRATO_AMP).setSamplingRate(samplingRate);
     getParam(VIBRATO_RATE).setSamplingRate(samplingRate);
     getParam(PHASE).setSamplingRate(samplingRate);
+    getParam(PHASE_AMP_ENV).setSamplingRate(samplingRate);
+    getParam(PHASE_RATE_ENV).setSamplingRate(samplingRate);
     getParam(LOUDNESS_SCALAR).setSamplingRate(samplingRate);
     //getParam(FREQUENCY_DEVIATION).setSamplingRate(samplingRate);
     //getParam(GLISSANDO_ENV).setSamplingRate(samplingRate);
@@ -168,6 +175,8 @@ MultiTrack* Partial::render(int numChannels,
     ValIter vibrato_amp_it = getParam(VIBRATO_AMP).valueIterator();
     ValIter vibrato_rate_it = getParam(VIBRATO_RATE).valueIterator();
     ValIter phase_it = getParam(PHASE).valueIterator();
+    ValIter phase_amp_it = getParam(PHASE_AMP_ENV).valueIterator();
+    ValIter phase_rate_it = getParam(PHASE_RATE_ENV).valueIterator();
     ValIter loudnes_scalar_it = getParam(LOUDNESS_SCALAR).valueIterator();
     ValIter amptrans_width_it = getParam(AMPTRANS_WIDTH).valueIterator();
     ValIter freqtrans_width_it = getParam(FREQTRANS_WIDTH).valueIterator();
@@ -183,6 +192,7 @@ MultiTrack* Partial::render(int numChannels,
     // Phase values start off at zero for now:
     m_value_type tremolo_phase = 0.0;
     m_value_type vibrato_phase = 0.0;
+    m_value_type phase_mod_phase = 0.0;
     m_value_type freq_phase = 0.0;
 
     // values used in the loop:
@@ -339,6 +349,19 @@ MultiTrack* Partial::render(int numChannels,
         // they dynamic variable phase (phase offset)
         phase = freq_phase + phase_it.next();
 
+        // Apply sinusoidal phase modulation.  The modulation depth and all
+        // phase values remain in normalized cycles; conversion to radians is
+        // deferred to the sine call below.  Preserve the legacy phase
+        // expression exactly whenever the modulation depth is zero.
+        m_value_type phase_mod_depth = phase_amp_it.next();
+        if (phase_mod_depth != 0.0)
+            phase += phase_mod_depth * sin(2.0 * M_PI * phase_mod_phase);
+
+        // Advance the PM oscillator even while its depth is zero so that a
+        // time-varying depth envelope can enter with continuous LFO phase.
+        phase_mod_phase = pmod(
+            phase_mod_phase + (phase_rate_it.next() / samplingRate));
+
 
         // SAMPLE:
 
@@ -488,6 +511,14 @@ void Partial::xml_print( ofstream& xmlOutput, list<Reverb*>& revObjs, list<Dynam
 	getParam(PHASE).xml_print( xmlOutput, dynObjs );
 	xmlOutput << "\t\t\t</phase>" << endl;
 
+	xmlOutput << "\t\t\t<phase_amp_env>" << endl;
+	getParam(PHASE_AMP_ENV).xml_print( xmlOutput, dynObjs );
+	xmlOutput << "\t\t\t</phase_amp_env>" << endl;
+
+	xmlOutput << "\t\t\t<phase_rate_env>" << endl;
+	getParam(PHASE_RATE_ENV).xml_print( xmlOutput, dynObjs );
+	xmlOutput << "\t\t\t</phase_rate_env>" << endl;
+
 	//xmlOutput << "\t\t\t<frequency_deviation>" << endl;
 	//getParam(FREQUENCY_DEVIATION).xml_print( xmlOutput, dynObjs );
 	//xmlOutput << "\t\t\t</frequency_deviation>" << endl;
@@ -563,6 +594,10 @@ void Partial::xml_read(XmlReader::xmltag* partialtag, DISSCO_HASHMAP<long, Rever
 			auxLoadParam(VIBRATO_RATE,dvtag,dvHash);
 		else if(strcmp(dvtag->name,"phase") == 0)
 			auxLoadParam(PHASE,dvtag,dvHash);
+		else if(strcmp(dvtag->name,"phase_amp_env") == 0)
+			auxLoadParam(PHASE_AMP_ENV,dvtag,dvHash);
+		else if(strcmp(dvtag->name,"phase_rate_env") == 0)
+			auxLoadParam(PHASE_RATE_ENV,dvtag,dvHash);
 		//else if(strcmp(dvtag->name,"frequency_deviation") == 0)
 		//auxLoadParam(FREQUENCY_DEVIATION,dvtag,dvHash);
 		//else if(strcmp(dvtag->name,"glissando_env") == 0)

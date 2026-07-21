@@ -114,7 +114,8 @@ namespace QtParser {
     inline Modifier parseModifier(QXmlStreamReader& r) {
         Modifier modifier;
         modifier.type                  = nextChildInner(r).toUInt();
-        modifier.applyhow_flag         = (nextChildInner(r) == "0");
+        // On disk: 0 == SOUND, 1 == PARTIAL. In memory, true == PARTIAL.
+        modifier.applyhow_flag         = (nextChildInner(r).trimmed() != "0");
         modifier.probability           = nextChildInner(r);
         modifier.amplitude             = nextChildInner(r);
         modifier.rate                  = nextChildInner(r);
@@ -201,21 +202,38 @@ namespace QtParser {
     }
 
     inline void parseExtraInfo(QXmlStreamReader& r, ExtraInfo& info) {
-        if (r.readNextStartElement()) { // <FreqInfo>
-            info.freq_info.freq_flag      = nextChildInner(r).toUInt();
-            info.freq_info.continuum_flag = nextChildInner(r).toUInt();
-            info.freq_info.entry_1        = nextChildInner(r);
-            info.freq_info.entry_2        = nextChildInner(r);
-            consumeRest(r);
+        // Phase was added after Loudness. Parse by tag rather than position so
+        // projects written before <Phase> existed keep all following fields
+        // aligned. Unknown future fields are ignored safely as well.
+        info.phase = QStringLiteral("0");
+        while (r.readNextStartElement()) {
+            const QString tag = r.name().toString();
+
+            if (tag == QStringLiteral("FrequencyInfo")) {
+                info.freq_info.freq_flag      = nextChildInner(r).toUInt();
+                info.freq_info.continuum_flag = nextChildInner(r).toUInt();
+                info.freq_info.entry_1        = nextChildInner(r);
+                info.freq_info.entry_2        = nextChildInner(r);
+                consumeRest(r);
+            } else if (tag == QStringLiteral("Loudness")) {
+                info.loudness = readInner(r);
+            } else if (tag == QStringLiteral("Phase")) {
+                const QString phase = readInner(r);
+                info.phase = phase.trimmed().isEmpty() ? QStringLiteral("0") : phase;
+            } else if (tag == QStringLiteral("Spatialization")) {
+                info.spa = readInner(r);
+            } else if (tag == QStringLiteral("Reverb")) {
+                info.reverb = readInner(r);
+            } else if (tag == QStringLiteral("Filter")) {
+                info.filter = readInner(r);
+            } else if (tag == QStringLiteral("ModifierGroup")) {
+                info.modifier_group = readInner(r);
+            } else if (tag == QStringLiteral("Modifiers")) {
+                parseModifiers(r, info.modifiers);
+            } else {
+                r.skipCurrentElement();
+            }
         }
-        info.loudness        = nextChildInner(r);
-        info.spa             = nextChildInner(r);
-        info.reverb          = nextChildInner(r);
-        info.filter          = nextChildInner(r);
-        info.modifier_group  = nextChildInner(r);
-        if (r.readNextStartElement()) // <Modifiers>
-            parseModifiers(r, info.modifiers);
-        consumeRest(r);
     }
 
     inline void parseBottomEventChildren(QXmlStreamReader& r, BottomEvent& bev) {

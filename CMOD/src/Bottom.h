@@ -82,6 +82,8 @@ class Bottom : public Event {
 
     pugi::xml_node frequencyElement;
     pugi::xml_node loudnessElement;
+    /** Fixed carrier phase offset, expressed in normalized cycles. */
+    pugi::xml_node phaseElement;
     pugi::xml_node modifiersElement;
     /* ZIYUAN CHEN, July 2023 - The "Modifier Group" is only present
        in Bottom events, so this element doesn't appear in Event.h */
@@ -232,6 +234,12 @@ class Bottom : public Event {
      *  Computes a loudness value for the bottom event
      **/
     float computeLoudness();
+
+    /**
+     * Computes the fixed carrier phase offset in normalized cycles.
+     * Missing values default to zero; values outside one cycle are wrapped.
+     **/
+    float computeCarrierPhase();
 
     /**
      *  Computes the number of partials to create
