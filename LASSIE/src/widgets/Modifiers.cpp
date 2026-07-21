@@ -10,12 +10,14 @@
 #include <QTextEdit>
 #include <QDialogButtonBox>
 #include <QDialog>
+#include <QSizePolicy>
 
 #include <string>
 
 #include "../ui/ui_Attributes.h"
 #include "../inst.hpp"
 #include "../dialogs/FunctionGenerator.hpp"
+#include "../dialogs/PartialModifierDialog.hpp"
 
 using enum FunctionReturnType;
 
@@ -27,8 +29,8 @@ Modifiers::Modifiers(Eventtype eventType, unsigned eventIndex, int modifierIndex
       m_modifierIndex(modifierIndex)
 {
     ui->setupUi(this);
-    this->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    this->setMinimumHeight(480);
+    this->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
+    this->setMinimumHeight(0);
 
     setupUi();
     ui->modifierSpreadLabel->adjustSize();
@@ -40,6 +42,43 @@ Modifiers::Modifiers(Eventtype eventType, unsigned eventIndex, int modifierIndex
     // Populate UI from backend; setModifierData calls updateModState at the end
     Modifier& modData = getBackendLayer();
     setModifierData(modData);
+}
+
+int Modifiers::maxPartialCountForCurrentBottom() const
+{
+    if (m_eventType != bottom) {
+        return 0;
+    }
+
+    ProjectManager* pm = Inst::get_project_manager();
+    if (!pm || m_eventIndex >= static_cast<unsigned>(pm->bottomevents().size())) {
+        return 0;
+    }
+
+    const HEvent& bottomEvent = pm->bottomevents()[m_eventIndex].event;
+    const QList<SpectrumEvent>& spectra = pm->spectrumevents();
+
+    int maxCount = 0;
+
+    for (const Layer& layer : bottomEvent.event_layers) {
+        for (const Package& package : layer.discrete_packages) {
+            bool ok = false;
+            const int packageType = package.event_type.toInt(&ok);
+
+            if (!ok || packageType != sound) {
+                continue;
+            }
+
+            for (const SpectrumEvent& spectrumEvent : spectra) {
+                if (spectrumEvent.name == package.event_name) {
+                    maxCount = qMax(maxCount, spectrumEvent.spectrum.partials.size());
+                    break;
+                }
+            }
+        }
+    }
+
+    return maxCount;
 }
 
 Modifier& Modifiers::getBackendLayer() {
@@ -144,13 +183,126 @@ void Modifiers::setupUi() {
     connect(ui->modifierType, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [this](int index) {
                 getBackendLayer().type = index;
+                updateApplyOptionsForModifierType();
+
+                updateFieldsForApplyMode();
                 updateModState();
             });
     connect(ui->modifierApply, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [this](int index) {
-                getBackendLayer().applyhow_flag = index;
+                getBackendLayer().applyhow_flag = (index == 1);
+                updateFieldsForApplyMode();
                 updateModState();
             });
+    //set spacing
+    ui->modifierGroupLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierGroupLayout->setSpacing(0);
+
+    ui->modifierLayout->setContentsMargins(8, 8, 8, 8);
+    ui->modifierLayout->setSpacing(4);
+
+    ui->modifierRemoveLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierRemoveLayout->setSpacing(6);
+
+    ui->modifierNameLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierNameLayout->setSpacing(6);
+
+    ui->modifierProbLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierProbLayout->setSpacing(6);
+
+    ui->modifierMagLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierMagLayout->setSpacing(6);
+
+    ui->modifierRateLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierRateLayout->setSpacing(6);
+
+    ui->modifierWidthLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierWidthLayout->setSpacing(6);
+
+    ui->modifierDetuneLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierDetuneLayout->setSpacing(6);
+
+    ui->modifierResLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierResLayout->setSpacing(6);
+}
+
+
+// 3 Helper Functions
+void Modifiers::setSoundFieldsFromBackend() {
+    Modifier& mod = getBackendLayer();
+
+    ui->modifierProbEdit->blockSignals(true);
+    ui->modifierProbEdit->setText(mod.probability);
+    ui->modifierProbEdit->blockSignals(false);
+
+    ui->modifierMagEdit->blockSignals(true);
+    ui->modifierMagEdit->setText(mod.amplitude);
+    ui->modifierMagEdit->blockSignals(false);
+
+    ui->modifierRateEdit->blockSignals(true);
+    ui->modifierRateEdit->setText(mod.rate);
+    ui->modifierRateEdit->blockSignals(false);
+
+    ui->modifierWidthEdit->blockSignals(true);
+    ui->modifierWidthEdit->setText(mod.width);
+    ui->modifierWidthEdit->blockSignals(false);
+
+    ui->modifierSpreadEdit->blockSignals(true);
+    ui->modifierSpreadEdit->setText(mod.detune_spread);
+    ui->modifierSpreadEdit->blockSignals(false);
+
+    ui->modifierDirEdit->blockSignals(true);
+    ui->modifierDirEdit->setText(mod.detune_direction);
+    ui->modifierDirEdit->blockSignals(false);
+
+    ui->modifierVelEdit->blockSignals(true);
+    ui->modifierVelEdit->setText(mod.detune_velocity);
+    ui->modifierVelEdit->blockSignals(false);
+}
+
+void Modifiers::clearSoundFieldsForPartialMode() {
+    ui->modifierProbEdit->blockSignals(true);
+    ui->modifierProbEdit->clear();
+    ui->modifierProbEdit->blockSignals(false);
+
+    ui->modifierMagEdit->blockSignals(true);
+    ui->modifierMagEdit->clear();
+    ui->modifierMagEdit->blockSignals(false);
+
+    ui->modifierRateEdit->blockSignals(true);
+    ui->modifierRateEdit->clear();
+    ui->modifierRateEdit->blockSignals(false);
+
+    ui->modifierWidthEdit->blockSignals(true);
+    ui->modifierWidthEdit->clear();
+    ui->modifierWidthEdit->blockSignals(false);
+
+    ui->modifierSpreadEdit->blockSignals(true);
+    ui->modifierSpreadEdit->clear();
+    ui->modifierSpreadEdit->blockSignals(false);
+
+    ui->modifierDirEdit->blockSignals(true);
+    ui->modifierDirEdit->clear();
+    ui->modifierDirEdit->blockSignals(false);
+
+    ui->modifierVelEdit->blockSignals(true);
+    ui->modifierVelEdit->clear();
+    ui->modifierVelEdit->blockSignals(false);
+}
+
+void Modifiers::updateFieldsForApplyMode() {
+    const bool isPartial = (ui->modifierApply->currentIndex() == 1);
+
+    if (isPartial) {
+        clearSoundFieldsForPartialMode();
+    } else {
+        setSoundFieldsFromBackend();
+    }
+
+    Modifier& mod = getBackendLayer();
+    ui->modifierResEdit->blockSignals(true);
+    ui->modifierResEdit->setText(isPartial ? mod.partialresult_string : "");
+    ui->modifierResEdit->blockSignals(false);
 }
 
 void Modifiers::updateModState() {
@@ -195,14 +347,54 @@ void Modifiers::updateModState() {
     };
 
     bool enabled[8];
-    for (int i = 0; i < 7; i++) enabled[i] = table[typeIndex][i];
-    enabled[7] = isPartial;
+
+    if (isPartial) {
+    // In PARTIAL mode, only Group Name and Partial Result String are editable.
+    for (int i = 0; i < 7; i++) {
+        enabled[i] = false;
+    }
+    enabled[7] = true;
+    } else {
+    // In SOUND mode, field availability depends on the modifier type.
+    for (int i = 0; i < 7; i++) {
+        enabled[i] = table[typeIndex][i];
+    }
+    enabled[7] = false;
+    }
 
     for (int i = 0; i < 8; i++) {
         rows[i].label->setEnabled(enabled[i]);
         rows[i].edit->setEnabled(enabled[i]);
         rows[i].btn->setEnabled(enabled[i]);
     }
+
+    ui->modifierNameLabel->setEnabled(true);
+    ui->modifierNameEdit->setEnabled(true);
+}
+
+
+void Modifiers::updateApplyOptionsForModifierType()
+{
+    const int typeIndex = ui->modifierType->currentIndex();
+    const bool isDetune = (typeIndex == 3);
+
+    Modifier& mod = getBackendLayer();
+
+    const bool shouldUsePartial = (!isDetune && mod.applyhow_flag);
+
+    ui->modifierApply->blockSignals(true);
+
+    ui->modifierApply->clear();
+    ui->modifierApply->addItem("SOUND");
+
+    if (!isDetune) {
+        ui->modifierApply->addItem("PARTIAL");
+    }
+
+    ui->modifierApply->setCurrentIndex(shouldUsePartial ? 1 : 0);
+    mod.applyhow_flag = shouldUsePartial;
+
+    ui->modifierApply->blockSignals(false);
 }
 
 void Modifiers::modTextChanged(ModChanged type) {
@@ -279,6 +471,29 @@ void Modifiers::modFunctionButtonClicked(ModChanged type) {
 
     if (!target) return;
 
+    if (type == modPartialChanged
+        && ui->modifierApply->currentIndex() == 1
+        && ui->modifierType->currentIndex() != 3) {
+
+        const int maxPartialCount = maxPartialCountForCurrentBottom();
+
+        PartialModifierDialog dialog(
+            ui->modifierType->currentIndex(),
+            maxPartialCount,
+            target->text(),
+            this
+        );
+
+        if (dialog.exec() == QDialog::Accepted) {
+            const QString result = dialog.getResultString();
+            if (!result.isEmpty()) {
+                target->setText(result);
+            }
+        }
+
+        return;
+    }
+
     gen = new FunctionGenerator(nullptr, functionReturnENV, target->text());
     if (gen) {
         if (gen->exec() == QDialog::Accepted && !gen->getResultString().isEmpty())
@@ -288,18 +503,28 @@ void Modifiers::modFunctionButtonClicked(ModChanged type) {
 }
 
 void Modifiers::saveModifierToBackend() {
-    getBackendLayer().type = ui->modifierType->currentIndex();
-    getBackendLayer().applyhow_flag = ui->modifierApply->currentIndex();
-    modTextChanged(modNameChanged);
-    modTextChanged(modProbabilityChanged);
-    modTextChanged(modMagnitudeChanged);
-    modTextChanged(modRateChanged);
-    modTextChanged(modWidthChanged);
-    modTextChanged(modPartialChanged);
-    modTextChanged(modSpreadChanged);
-    modTextChanged(modDirChanged);
-    modTextChanged(modVelChanged);
+    Modifier& mod = getBackendLayer();
 
+    mod.type = ui->modifierType->currentIndex();
+    mod.applyhow_flag = (ui->modifierApply->currentIndex() == 1);
+
+    modTextChanged(modNameChanged);
+
+    if (mod.applyhow_flag == 1) {
+        // PARTIAL mode: sound-related fields are visually cleared and disabled,
+        // so only save the partial result string.
+        modTextChanged(modPartialChanged);
+    } else {
+        // SOUND mode: partial result string is hidden/disabled,
+        // so only save sound-related fields.
+        modTextChanged(modProbabilityChanged);
+        modTextChanged(modMagnitudeChanged);
+        modTextChanged(modRateChanged);
+        modTextChanged(modWidthChanged);
+        modTextChanged(modSpreadChanged);
+        modTextChanged(modDirChanged);
+        modTextChanged(modVelChanged);
+    }
 }
 
 void Modifiers::setModifierData(Modifier& modData) {
@@ -307,8 +532,20 @@ void Modifiers::setModifierData(Modifier& modData) {
     ui->modifierType->setCurrentIndex(modData.type);
     ui->modifierType->blockSignals(false);
 
+    // Rebuild Apply options after setting modifier type.
+    // DETUNE should only have SOUND.
+    updateApplyOptionsForModifierType();
+
     ui->modifierApply->blockSignals(true);
-    ui->modifierApply->setCurrentIndex(modData.applyhow_flag);
+
+    if (ui->modifierType->currentIndex() == 3) {
+        // DETUNE does not support PARTIAL mode.
+        ui->modifierApply->setCurrentIndex(0);
+        modData.applyhow_flag = false;
+    } else {
+        ui->modifierApply->setCurrentIndex(modData.applyhow_flag ? 1 : 0);
+    }
+
     ui->modifierApply->blockSignals(false);
 
     ui->modifierProbEdit->blockSignals(true);
@@ -347,6 +584,7 @@ void Modifiers::setModifierData(Modifier& modData) {
     ui->modifierResEdit->setText(modData.partialresult_string);
     ui->modifierResEdit->blockSignals(false);
 
+    updateFieldsForApplyMode();
     updateModState();
 }
 
@@ -354,5 +592,3 @@ Modifiers::~Modifiers()
 {
     delete ui;
 }
-
-

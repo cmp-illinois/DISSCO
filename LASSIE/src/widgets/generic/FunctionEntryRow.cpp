@@ -18,7 +18,7 @@ FunctionEntryRow::FunctionEntryRow(const QString& labelText,
     // Set spacing between spectrum partial rows
     m_hBox->setContentsMargins(0, 0, 0, 0);
     m_hBox->setSpacing(4);
-
+    
     m_label   = new QLabel(labelText);
     m_entry   = new QLineEdit;
     if(fnVisible) { m_fnButton = new QPushButton("fn"); }
