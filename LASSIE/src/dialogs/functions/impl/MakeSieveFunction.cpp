@@ -30,7 +30,9 @@ MakeSieveFunction::MakeSieveFunction(QWidget* parent)
     : FunctionWidget(parent)
 {
     auto* layout = new QVBoxLayout(this);
-
+    layout->setContentsMargins(0, 0, 0, 0);
+    layout->setSpacing(2);
+    layout->setAlignment(Qt::AlignTop);
     // Low/High bounds. Legacy uses ENV-returning dialogs here (matching).
     m_lowRow  = new FunctionEntryRow(tr("Low Bound:"),  0,
                                      FunctionReturnType::functionReturnENV,
