@@ -11,6 +11,7 @@
 #include <QDialogButtonBox>
 #include <QDialog>
 #include <QSizePolicy>
+
 #include <string>
 
 #include "../ui/ui_Attributes.h"
@@ -43,7 +44,6 @@ Modifiers::Modifiers(Eventtype eventType, unsigned eventIndex, int modifierIndex
     setModifierData(modData);
 }
 
-////
 int Modifiers::maxPartialCountForCurrentBottom() const
 {
     if (m_eventType != bottom) {
@@ -80,7 +80,6 @@ int Modifiers::maxPartialCountForCurrentBottom() const
 
     return maxCount;
 }
-////
 
 Modifier& Modifiers::getBackendLayer() {
     ProjectManager* pm = Inst::get_project_manager();
@@ -305,8 +304,6 @@ void Modifiers::updateFieldsForApplyMode() {
     ui->modifierResEdit->setText(isPartial ? mod.partialresult_string : "");
     ui->modifierResEdit->blockSignals(false);
 }
-////
-
 
 void Modifiers::updateModState() {
     int typeIndex = ui->modifierType->currentIndex();
@@ -350,15 +347,7 @@ void Modifiers::updateModState() {
     };
 
     bool enabled[8];
-    // ISSUE#123:
-    // for (int i = 0; i < 7; i++) enabled[i] = table[typeIndex][i];
-    // enabled[7] = isPartial;
 
-    // for (int i = 0; i < 8; i++) {
-    //     rows[i].label->setEnabled(enabled[i]);
-    //     rows[i].edit->setEnabled(enabled[i]);
-    //     rows[i].btn->setEnabled(enabled[i]);
-    // }
     if (isPartial) {
     // In PARTIAL mode, only Group Name and Partial Result String are editable.
     for (int i = 0; i < 7; i++) {
@@ -537,7 +526,6 @@ void Modifiers::saveModifierToBackend() {
         modTextChanged(modVelChanged);
     }
 }
-////
 
 void Modifiers::setModifierData(Modifier& modData) {
     ui->modifierType->blockSignals(true);
@@ -598,8 +586,6 @@ void Modifiers::setModifierData(Modifier& modData) {
 
     updateFieldsForApplyMode();
     updateModState();
-
-
 }
 
 Modifiers::~Modifiers()

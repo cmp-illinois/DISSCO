@@ -8,7 +8,6 @@ Partials::Partials(unsigned eventIndex, int partialIndex, QWidget* parent)
       m_eventIndex(eventIndex),
       m_partialIndex(partialIndex)
 {
-
     m_mainLayout = new QVBoxLayout(this);
     m_mainLayout->setContentsMargins(0, 0, 0, 0);
     m_mainLayout->setSpacing(0);
@@ -32,9 +31,8 @@ Partials::Partials(unsigned eventIndex, int partialIndex, QWidget* parent)
            
     m_mainLayout->addWidget(m_row);
     setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    //// Issue #40
+    // Set spacing between spectrum partial rows.
     setFixedHeight(28);
-    ////
 }
 
 

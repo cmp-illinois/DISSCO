@@ -19,7 +19,6 @@
 
 #include <functional>
 
-
 using enum FunctionReturnType;
 
 // EventAttributesViewController::EventAttributesViewController(SharedPointers* sharedPointers,
@@ -188,14 +187,10 @@ void EventAttributesViewController::fixStackedWidgetLayout(QWidget* currPage) {
     currPage->adjustSize();
 
     if (currPage == ui->soundPage && ui->soundPage->layout()) {
-        //// Issue #40: keep spectrum partial rows tightly packed.
-        //// ui->soundPage->layout()->setSpacing(10);
-        //// ui->partialsLayout->setSpacing(0);
-
+        // Set spacing between spectrum partial rows.
         ui->soundPage->layout()->setSpacing(0);
         ui->partialsLayout->setContentsMargins(0, 0, 0, 0);
         ui->partialsLayout->setAlignment(Qt::AlignTop);
-        ////
     }
     if (currPage == ui->standardPage && ui->standardPage->layout()) {
         ui->standardPage->layout()->setSpacing(10);
@@ -460,19 +455,12 @@ void EventAttributesViewController::saveCurrentShownEventData() {
             event.filter = ui->filEntry->text();
         }
 
-        // // save modifiers
-        // for (Modifiers* mod : m_modifiers) {
-        //     mod->saveModifierToBackend();
-        // }
-
-        // ISSUE#123:
         // Modifiers are only editable for Bottom events.
         if (type == bottom) {
             for (Modifiers* mod : m_modifiers) {
                 mod->saveModifierToBackend();
             }
         }
-        ////
 
         // save layer weights
         for (LayerBox* box : m_layerBoxes) {
@@ -580,7 +568,6 @@ void EventAttributesViewController::showCurrentEventData() {
         case bottom: {
             ui->stackedWidget->setCurrentWidget(ui->standardPage);
 
-            // ISSUE#123
             const bool showBottomOnlyControls = (type == bottom);
 
             ui->frequencyContainer->setVisible(showBottomOnlyControls);
@@ -589,7 +576,7 @@ void EventAttributesViewController::showCurrentEventData() {
 
             ui->addModifierButton->setVisible(showBottomOnlyControls);
             ui->modifiersLabel->setVisible(showBottomOnlyControls);
-            ////
+
             fixStackedWidgetLayout(ui->standardPage);
             break;
         }
@@ -638,7 +625,6 @@ void EventAttributesViewController::showCurrentEventData() {
     // ui->nameEntry->setText(QString::fromStdString(m_currentlyShownEvent->getEventName()));
     HEvent event;
     if(type <= bottom){
-    //// ISSUE#123:
     // Clear existing modifier widgets whenever switching standard-page events.
     // Modifiers should only be shown for Bottom events.
     for (Modifiers* mod : m_modifiers) {
@@ -646,7 +632,7 @@ void EventAttributesViewController::showCurrentEventData() {
         mod->deleteLater();
     }
     m_modifiers.clear();
-    ////
+
         if(type == bottom){
             const BottomEvent& bottom_event = pm->bottomevents()[m_curreventindex];
             ExtraInfo extra_info = bottom_event.extra_info;
@@ -760,26 +746,6 @@ void EventAttributesViewController::showCurrentEventData() {
         ui->durationTypePercentRadio->setChecked(dt_flag == 0);
         ui->durationTypeUnitsRadio->setChecked(dt_flag == 1);
         ui->durationTypeSecondsRadio->setChecked(dt_flag == 2);
-
-        // ISSUE#123: DELETE //
-        //// clear and rebuild hevent modifier widgets
-        //if (type != bottom) {
-            //// clear existing Modifiers widgets
-            //for (Modifiers* mod : m_modifiers) {
-                //ui->modifiersLayout->removeWidget(mod);
-                //mod->deleteLater();
-            //}
-            //m_modifiers.clear();
-
-            ///// rebuild Modifiers
-            //for (int i = 0; i < event.modifiers.size(); ++i) {
-                //addModifiersUI(i);
-                //m_modifiers[i]->setModifierData(event.modifiers[i]);
-            //}
- 
-        //}
-        /////
-
 
         // environment
         if (type != bottom) {
@@ -1307,7 +1273,6 @@ void EventAttributesViewController::addModifiersUI(int modifierIndex) {
     
 }
 
-// ISSUE#123:
 void EventAttributesViewController::addModifierButtonClicked() {
     qDebug("add new modifier button clicked");
 
@@ -1321,7 +1286,6 @@ void EventAttributesViewController::addModifierButtonClicked() {
     bevent->modifiers.append(Modifier());
     addModifiersUI(bevent->modifiers.size() - 1);
 }
-////
 
 void EventAttributesViewController::tempoAsNoteValueButtonClicked() {
     ui->tempoSecondaryStack->setCurrentWidget(ui->tempoValuePage);
