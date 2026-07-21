@@ -9,7 +9,9 @@
 class QVBoxLayout;
 class QPushButton;
 class QLineEdit;
-
+class QLabel;
+class QWidget;
+class QPlainTextEdit;
 
 class PartialModifierDialog : public QDialog
 {
@@ -26,16 +28,34 @@ public:
 
 private:
     struct PartialRow {
+        QWidget* container = nullptr;
+        QLabel* partialLabel = nullptr;
+
+        QLabel* probabilityLabel = nullptr;
+        QLabel* magnitudeLabel = nullptr;
+        QLabel* widthLabel = nullptr;
+        QLabel* rateLabel = nullptr;
+
         QLineEdit* probability = nullptr;
         QLineEdit* magnitude = nullptr;
         QLineEdit* width = nullptr;
         QLineEdit* rate = nullptr;
-        QLineEdit* spread = nullptr;
-        QLineEdit* direction = nullptr;
-        QLineEdit* velocity = nullptr;
     };
 
+    struct EnvelopeEnabled {
+        bool probability = true;
+        bool magnitude = true;
+        bool width = true;
+        bool rate = true;
+    };    
+
     QVector<PartialRow> m_rows;
+
+    EnvelopeEnabled enabledEnvelopeFields() const;
+    void applyRowEnabledState(const PartialRow& row) const;
+
+    void removeNode(QWidget* rowContainer);
+    void renumberRows();
 
     QString buildPartialResultString() const;
     static QString envelopeOrNA(QLineEdit* edit);
@@ -49,6 +69,8 @@ private:
     QPushButton* m_okButton = nullptr;
     QPushButton* m_cancelButton = nullptr;
 
+    QPlainTextEdit* m_resultPreview = nullptr;
+
     int m_nodeCount = 0;
     int m_modifierType = 0;
     int m_maxPartialCount = 0;
@@ -57,6 +79,7 @@ private:
     void trackFocusedEdit(QLineEdit* edit);
     void populateFromResultString(const QString& resultString);
     static QStringList extractEnvelopeValues(const QString& resultString);
+    void updateResultPreview();
 
 private slots:
     void addNode();

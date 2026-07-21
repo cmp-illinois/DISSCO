@@ -5,16 +5,13 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QMessageBox>
-
 #include <QLineEdit>
 #include <QStringList>
 #include "FunctionGenerator.hpp"
 #include <QRegularExpression>
+#include <QPlainTextEdit>
 
 using enum FunctionReturnType;
-
-
-
 
 PartialModifierDialog::PartialModifierDialog(
     int modifierType,
@@ -26,14 +23,22 @@ PartialModifierDialog::PartialModifierDialog(
       m_modifierType(modifierType),
       m_maxPartialCount(maxPartialCount)
 {
-    setWindowTitle("Partial Modifier");
-    resize(700, 400);
+    setWindowTitle("Customize Partials");
+    resize(950, 500);
 
     m_mainLayout = new QVBoxLayout(this);
     m_rowsLayout = new QVBoxLayout();
 
     m_mainLayout->addLayout(m_rowsLayout);
     m_mainLayout->addStretch();
+
+    QLabel* resultLabel = new QLabel("Result String", this);
+    m_resultPreview = new QPlainTextEdit(this);
+    m_resultPreview->setReadOnly(true);
+    m_resultPreview->setMinimumHeight(55);
+
+    m_mainLayout->addWidget(resultLabel);
+    m_mainLayout->addWidget(m_resultPreview);
 
     QHBoxLayout* buttonLayout = new QHBoxLayout();
 
@@ -66,6 +71,7 @@ PartialModifierDialog::PartialModifierDialog(
             this, &QDialog::reject);
 
     populateFromResultString(existingResultString);
+    updateResultPreview();
 }
 
 
@@ -91,49 +97,96 @@ void PartialModifierDialog::addNode()
 
     ++m_nodeCount;
 
-    QHBoxLayout* rowLayout = new QHBoxLayout();
+    QWidget* rowContainer = new QWidget(this);
+    QHBoxLayout* rowLayout = new QHBoxLayout(rowContainer);
+    rowLayout->setContentsMargins(0, 0, 0, 0);
 
     QLabel* partialLabel = new QLabel(
-        "Partial " + QString::number(m_nodeCount) + ":", this);
+        "Partial #" + QString::number(m_nodeCount), this);
     rowLayout->addWidget(partialLabel);
 
-    const QStringList fields = enabledFieldLabels();
-
     PartialRow row;
+    row.container = rowContainer;
+    row.partialLabel = partialLabel;
 
-    for (const QString& fieldLabel : fields) {
-        QLabel* label = new QLabel(fieldLabel, this);
-        QLineEdit* edit = new QLineEdit(this);
+    const EnvelopeEnabled enabled = enabledEnvelopeFields();
 
-        edit->setMinimumWidth(120);
+    row.probabilityLabel = new QLabel("Probability:", this);
+    row.probability = new QLineEdit(this);
+    row.probability->setText(enabled.probability ? "PROB" : "");
+    row.probability->setMinimumWidth(120);
 
-        connect(edit, &QLineEdit::cursorPositionChanged,
-                this, [this, edit]() {
-                    trackFocusedEdit(edit);
-                });
+    row.magnitudeLabel = new QLabel("Magnitude:", this);
+    row.magnitude = new QLineEdit(this);
+    row.magnitude->setText(enabled.magnitude ? "AMP" : "");
+    row.magnitude->setMinimumWidth(120);
 
-        if (fieldLabel == "Probability Envelope:") {
-            row.probability = edit;
-        } else if (fieldLabel == "Magnitude Envelope:") {
-            row.magnitude = edit;
-        } else if (fieldLabel == "Rate Value Envelope:") {
-            row.rate = edit;
-        } else if (fieldLabel == "Width Envelope:") {
-            row.width = edit;
-        } else if (fieldLabel == "Detune Spread:") {
-            row.spread = edit;
-        } else if (fieldLabel == "Detune Direction:") {
-            row.direction = edit;
-        } else if (fieldLabel == "Detune Velocity:") {
-            row.velocity = edit;
-        }
+    row.widthLabel = new QLabel("Width:", this);
+    row.width = new QLineEdit(this);
+    row.width->setText(enabled.width ? "WIDTH" : "");
+    row.width->setMinimumWidth(120);
 
-        rowLayout->addWidget(label);
-        rowLayout->addWidget(edit);
-    }
+    row.rateLabel = new QLabel("Rate Value:", this);
+    row.rate = new QLineEdit(this);
+    row.rate->setText(enabled.rate ? "RATE" : "");
+    row.rate->setMinimumWidth(120);
+
+    connect(row.probability, &QLineEdit::cursorPositionChanged,
+            this, [this, row]() {
+                trackFocusedEdit(row.probability);
+            });
+
+    connect(row.magnitude, &QLineEdit::cursorPositionChanged,
+            this, [this, row]() {
+                trackFocusedEdit(row.magnitude);
+            });
+
+    connect(row.width, &QLineEdit::cursorPositionChanged,
+            this, [this, row]() {
+                trackFocusedEdit(row.width);
+            });
+
+    connect(row.rate, &QLineEdit::cursorPositionChanged,
+            this, [this, row]() {
+                trackFocusedEdit(row.rate);
+            });
+    connect(row.probability, &QLineEdit::textChanged,
+        this, &PartialModifierDialog::updateResultPreview);
+
+    connect(row.magnitude, &QLineEdit::textChanged,
+            this, &PartialModifierDialog::updateResultPreview);
+
+    connect(row.width, &QLineEdit::textChanged,
+            this, &PartialModifierDialog::updateResultPreview);
+
+    connect(row.rate, &QLineEdit::textChanged,
+            this, &PartialModifierDialog::updateResultPreview);
+    
+    rowLayout->addWidget(row.probabilityLabel);
+    rowLayout->addWidget(row.probability);
+
+    rowLayout->addWidget(row.magnitudeLabel);
+    rowLayout->addWidget(row.magnitude);
+
+    rowLayout->addWidget(row.widthLabel);
+    rowLayout->addWidget(row.width);
+
+    rowLayout->addWidget(row.rateLabel);
+    rowLayout->addWidget(row.rate);
+
+    QPushButton* removeButton = new QPushButton("Remove Node", this);
+    connect(removeButton, &QPushButton::clicked,
+        this, [this, rowContainer]() {
+            removeNode(rowContainer);
+        });
+
+    rowLayout->addWidget(removeButton);
+
+    applyRowEnabledState(row);
 
     m_rows.append(row);
-    m_rowsLayout->addLayout(rowLayout);
+    m_rowsLayout->addWidget(rowContainer);
+    updateResultPreview();
 }
 
 
@@ -208,18 +261,18 @@ void PartialModifierDialog::trackFocusedEdit(QLineEdit* edit)
 
 QString PartialModifierDialog::envelopeOrNA(QLineEdit* edit)
 {
-    if (!edit || edit->text().trimmed().isEmpty()) {
-        return "N/A";
+    if (!edit) {
+        return "";
     }
+
     return edit->text();
 }
+
 QString PartialModifierDialog::buildPartialResultString() const
 {
-    QString result = "<Fun><Name>PartialResult</Name><Envelopes>";
+    QString result = "<Fun><Name>Partials</Name><Envelopes>";
 
     for (const PartialRow& row : m_rows) {
-        // CMOD currently reads four envelopes per partial in this fixed order:
-        // probability, magnitude/amplitude, width, rate.
         result += "<Envelope>" + envelopeOrNA(row.probability) + "</Envelope>";
         result += "<Envelope>" + envelopeOrNA(row.magnitude) + "</Envelope>";
         result += "<Envelope>" + envelopeOrNA(row.width) + "</Envelope>";
@@ -278,24 +331,152 @@ void PartialModifierDialog::populateFromResultString(const QString& resultString
         const QString width       = envelopes[i * valuesPerPartial + 2];
         const QString rate        = envelopes[i * valuesPerPartial + 3];
 
-        if (row.probability && probability != "N/A") {
+        if (row.probability) {
             row.probability->setText(probability);
         }
 
-        if (row.magnitude && magnitude != "N/A") {
+        if (row.magnitude) {
             row.magnitude->setText(magnitude);
         }
 
-        if (row.width && width != "N/A") {
+        if (row.width) {
             row.width->setText(width);
         }
 
-        if (row.rate && rate != "N/A") {
+        if (row.rate) {
             row.rate->setText(rate);
+        }
+
+        applyRowEnabledState(row);
+    }
+}
+
+PartialModifierDialog::EnvelopeEnabled PartialModifierDialog::enabledEnvelopeFields() const
+{
+    EnvelopeEnabled enabled;
+
+    switch (m_modifierType) {
+        case 0: // TREMOLO
+            enabled.probability = true;
+            enabled.magnitude = true;
+            enabled.width = false;
+            enabled.rate = true;
+            break;
+
+        case 1: // VIBRATO
+            enabled.probability = true;
+            enabled.magnitude = true;
+            enabled.width = false;
+            enabled.rate = true;
+            break;
+
+        case 2: // GLISSANDO
+            enabled.probability = true;
+            enabled.magnitude = true;
+            enabled.width = false;
+            enabled.rate = false;
+            break;
+
+        case 4: // AMPTRANS
+            enabled.probability = true;
+            enabled.magnitude = true;
+            enabled.width = true;
+            enabled.rate = true;
+            break;
+
+        case 5: // FREQTRANS
+            enabled.probability = true;
+            enabled.magnitude = true;
+            enabled.width = true;
+            enabled.rate = true;
+            break;
+
+        case 6: // WAVE_TYPE
+            enabled.probability = true;
+            enabled.magnitude = true;
+            enabled.width = false;
+            enabled.rate = true;
+            break;
+
+        default:
+            enabled.probability = true;
+            enabled.magnitude = true;
+            enabled.width = true;
+            enabled.rate = true;
+            break;
+    }
+
+    return enabled;
+}
+
+void PartialModifierDialog::applyRowEnabledState(const PartialRow& row) const
+{
+    const EnvelopeEnabled enabled = enabledEnvelopeFields();
+
+    auto apply = [](QLabel* label, QLineEdit* edit, bool isEnabled) {
+        if (label) {
+            label->setEnabled(isEnabled);
+        }
+
+        if (edit) {
+            edit->setEnabled(isEnabled);
+
+            if (!isEnabled) {
+                edit->clear();
+            }
+        }
+    };
+
+    apply(row.probabilityLabel, row.probability, enabled.probability);
+    apply(row.magnitudeLabel, row.magnitude, enabled.magnitude);
+    apply(row.widthLabel, row.width, enabled.width);
+    apply(row.rateLabel, row.rate, enabled.rate);
+}
+
+void PartialModifierDialog::removeNode(QWidget* rowContainer)
+{
+    if (!rowContainer) {
+        return;
+    }
+
+    for (int i = 0; i < m_rows.size(); ++i) {
+        if (m_rows[i].container == rowContainer) {
+            m_rows.removeAt(i);
+            break;
+        }
+    }
+
+    if (m_lastFocusedEdit && rowContainer->isAncestorOf(m_lastFocusedEdit)) {
+        m_lastFocusedEdit = nullptr;
+    }
+
+    m_rowsLayout->removeWidget(rowContainer);
+    rowContainer->deleteLater();
+
+    m_nodeCount = m_rows.size();
+    renumberRows();
+    updateResultPreview();
+}
+
+void PartialModifierDialog::renumberRows()
+{
+    for (int i = 0; i < m_rows.size(); ++i) {
+        if (m_rows[i].partialLabel) {
+            m_rows[i].partialLabel->setText(
+                "Partial #" + QString::number(i + 1)
+            );
         }
     }
 }
 
+void PartialModifierDialog::updateResultPreview()
+{
+    if (!m_resultPreview) {
+        return;
+    }
+
+    m_resultPreview->setPlainText(buildPartialResultString());
+}
 
 QString PartialModifierDialog::getResultString() const
 {

@@ -10,7 +10,7 @@
 #include <QTextEdit>
 #include <QDialogButtonBox>
 #include <QDialog>
-
+#include <QSizePolicy>
 #include <string>
 
 #include "../ui/ui_Attributes.h"
@@ -28,8 +28,8 @@ Modifiers::Modifiers(Eventtype eventType, unsigned eventIndex, int modifierIndex
       m_modifierIndex(modifierIndex)
 {
     ui->setupUi(this);
-    this->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    this->setMinimumHeight(480);
+    this->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
+    this->setMinimumHeight(0);
 
     setupUi();
     ui->modifierSpreadLabel->adjustSize();
@@ -195,6 +195,36 @@ void Modifiers::setupUi() {
                 updateFieldsForApplyMode();
                 updateModState();
             });
+    //set spacing
+    ui->modifierGroupLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierGroupLayout->setSpacing(0);
+
+    ui->modifierLayout->setContentsMargins(8, 8, 8, 8);
+    ui->modifierLayout->setSpacing(4);
+
+    ui->modifierRemoveLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierRemoveLayout->setSpacing(6);
+
+    ui->modifierNameLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierNameLayout->setSpacing(6);
+
+    ui->modifierProbLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierProbLayout->setSpacing(6);
+
+    ui->modifierMagLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierMagLayout->setSpacing(6);
+
+    ui->modifierRateLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierRateLayout->setSpacing(6);
+
+    ui->modifierWidthLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierWidthLayout->setSpacing(6);
+
+    ui->modifierDetuneLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierDetuneLayout->setSpacing(6);
+
+    ui->modifierResLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierResLayout->setSpacing(6);
 }
 
 
@@ -342,7 +372,7 @@ void Modifiers::updateModState() {
     }
     enabled[7] = false;
     }
-    ////
+
     for (int i = 0; i < 8; i++) {
         rows[i].label->setEnabled(enabled[i]);
         rows[i].edit->setEnabled(enabled[i]);
@@ -357,9 +387,11 @@ void Modifiers::updateModState() {
 void Modifiers::updateApplyOptionsForModifierType()
 {
     const int typeIndex = ui->modifierType->currentIndex();
-
-    // DETUNE is index 3 in the modifier type combo.
     const bool isDetune = (typeIndex == 3);
+
+    Modifier& mod = getBackendLayer();
+
+    const bool shouldUsePartial = (!isDetune && mod.applyhow_flag);
 
     ui->modifierApply->blockSignals(true);
 
@@ -370,12 +402,8 @@ void Modifiers::updateApplyOptionsForModifierType()
         ui->modifierApply->addItem("PARTIAL");
     }
 
-    if (isDetune) {
-        ui->modifierApply->setCurrentIndex(0);
-        getBackendLayer().applyhow_flag = false;
-    } else {
-        getBackendLayer().applyhow_flag = (ui->modifierApply->currentIndex() == 1);
-    }
+    ui->modifierApply->setCurrentIndex(shouldUsePartial ? 1 : 0);
+    mod.applyhow_flag = shouldUsePartial;
 
     ui->modifierApply->blockSignals(false);
 }
@@ -453,7 +481,7 @@ void Modifiers::modFunctionButtonClicked(ModChanged type) {
     }
 
     if (!target) return;
-////
+
     if (type == modPartialChanged
         && ui->modifierApply->currentIndex() == 1
         && ui->modifierType->currentIndex() != 3) {
@@ -476,7 +504,7 @@ void Modifiers::modFunctionButtonClicked(ModChanged type) {
 
         return;
     }
-////
+
     gen = new FunctionGenerator(nullptr, functionReturnENV, target->text());
     if (gen) {
         if (gen->exec() == QDialog::Accepted && !gen->getResultString().isEmpty())
@@ -485,13 +513,11 @@ void Modifiers::modFunctionButtonClicked(ModChanged type) {
     }
 }
 
-
-// ISSUE#123:
 void Modifiers::saveModifierToBackend() {
     Modifier& mod = getBackendLayer();
 
     mod.type = ui->modifierType->currentIndex();
-    mod.applyhow_flag = ui->modifierApply->currentIndex();
+    mod.applyhow_flag = (ui->modifierApply->currentIndex() == 1);
 
     modTextChanged(modNameChanged);
 
@@ -580,5 +606,3 @@ Modifiers::~Modifiers()
 {
     delete ui;
 }
-
-
