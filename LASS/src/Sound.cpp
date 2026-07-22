@@ -311,47 +311,45 @@ MultiTrack* Sound::render(
       cout << "\t Applying Reverb..." << endl;
       MultiTrack &reverbedTrack = reverbObj->do_reverb_MultiTrack(*composite);
       delete composite;
+      composite = &reverbedTrack;
+    }
 
-	//------------------
-	// spatialize the sound into a MultiTrack object
-	//------------------
+    //------------------
+    // spatialize the sound into a MultiTrack object
+    //------------------
 
-  /* ZIYUAN CHEN, July 2023: On the default behavior of spatialization (Sound side)
-   *   If a non-placeholder subclass of Spatializer (Pan/MultiPan) is set in the partials,
-   *     "spatializer_" in the sound will be a placeholder and should be IGNORED.
-   *   Otherwise, (indirectly) calling Spatializer::spatialize_Track() will cause each
-   *     track to be averaged across all channels (default placeholder behavior) and
-   *     OVERWRITE any spatialization performed by the partials!
+  /* Spatialization is applied at exactly one level -- this sound or its
+   *   partials, never both (the other level holds a placeholder).
+   *   If the partials carried the real Pan/MultiPan they already produced
+   *     numChannels tracks; re-running a sound-level spatializer would average
+   *     them together and destroy that per-partial spatialization, so we skip
+   *     it (guarded by spa_modified_ below).
+   *   If the partials used placeholders they returned single (mono) tracks, and
+   *     the deferred fan-out below promotes the composite to numChannels using
+   *     this sound's spatializer -- a real Pan/MultiPan if one was set, else the
+   *     placeholder that averages evenly across channels.
    *   Compare Partial::render().
    */
-	cout << "\t Spatializing..." << endl;
 
-	if (!spa_modified_)
-		return &reverbedTrack;
+    // When the partials used placeholder spatializers, Partial::render() returned
+    // single-track (mono) MultiTracks, so "composite" has fewer than numChannels
+    // tracks. Perform the deferred composite spatialization here.
+    if (composite->size() < numChannels) {
+      cout << "\t Spatializing..." << endl;
+      MultiTrack* mt = spatializer_->spatialize_MultiTrack(*composite, numChannels, sampleCount, samplingRate);
+      delete composite;
+      return mt;
+    }
 
-	MultiTrack* mt = spatializer_->spatialize_MultiTrack(reverbedTrack, numChannels, sampleCount, samplingRate);
+    // Otherwise the partials already produced numChannels tracks (real per-partial
+    // spatialization), so a sound-level spatializer would only overwrite them.
+    if (!spa_modified_)
+      return composite;
 
-	// delete the temporary track object that held the unspatialized reverbed sound
-	delete &reverbedTrack;
-
-	return mt;
-     }
-       else
-     {
-	//------------------
-	// spatialize the sound into a MultiTrack object
-	//------------------
-
-  /* ZIYUAN CHEN, July 2023 - See above */
-	cout << "\t Spatializing..." << endl;
-
-	if (!spa_modified_)
-		return composite;
-
-	MultiTrack* mt = spatializer_->spatialize_MultiTrack(*composite, numChannels, sampleCount, samplingRate);
-	delete composite;
-	return mt;
-      }
+    cout << "\t Spatializing..." << endl;
+    MultiTrack* mt = spatializer_->spatialize_MultiTrack(*composite, numChannels, sampleCount, samplingRate);
+    delete composite;
+    return mt;
 }
 
 //----------------------------------------------------------------------------//
