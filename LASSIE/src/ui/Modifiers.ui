@@ -14,10 +14,10 @@
                     <item><property name="text"><string>VIBRATO</string></property></item>
                     <item><property name="text"><string>GLISSANDO</string></property></item>
                     <item><property name="text"><string>DETUNE</string></property></item>
+                    <item><property name="text"><string>PHASE_MOD</string></property></item>
                     <item><property name="text"><string>AMPTRANS</string></property></item>
                     <item><property name="text"><string>FREQTRANS</string></property></item>
                     <item><property name="text"><string>WAVE_TYPE</string></property></item>
-                    <item><property name="text"><string>PHASE_MOD</string></property></item>
                 </widget>
             </item>
             <item>
