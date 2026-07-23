@@ -316,9 +316,25 @@ Piece::Piece(string _workingPath, string _projectTitle){
     cin>>seed;
   }
 
+  // Run multiple consecutive builds from a single seed.
+  int numRuns = 1;
+  cout<<"Please key in how many times you want to run (1-10):"<<endl;
+  if (!(cin>>numRuns)) {
+    cerr<<"Invalid number of runs; defaulting to 1."<<endl;
+    cin.clear();
+    numRuns = 1;
+  }
+
+  if (numRuns < 1) { numRuns = 1; }
+  if (numRuns > 10) { numRuns = 10; }
+
   //Convert seed string to seed number and seed the random number generator
   int seedNumber = PieceHelper::getSeedNumber(seed);
   Random::Seed((unsigned int)seedNumber);
+
+  // Seed only once so each run continues the same random sequence.
+  for (int run = 0; run < numRuns; run++) {
+  cout<<"RUN NUMBER #" << run + 1 <<endl;
 
   //construct the utilities object
   utilities = new Utilities(root,
@@ -451,6 +467,8 @@ Piece::Piece(string _workingPath, string _projectTitle){
   //clean up
   delete utilities;
   delete topEvent; //wait till the thread join
+
+  }
 
 }
 
