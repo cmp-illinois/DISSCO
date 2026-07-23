@@ -42,10 +42,11 @@ LayerBox::LayerBox(Eventtype eventType, int eventIndex, int layerIndex, QWidget*
     m_model->setHorizontalHeaderLabels({"Child Type", "Class", "Name",
         "Weight", "Attack Env.", "A. Env. Scaler", "Duration Env.", "D. Env. Scaler"});
 
-    m_treeView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
-    m_treeView->header()->setStretchLastSection(false);
-
+    m_treeView->header()->setSectionResizeMode(QHeaderView::Stretch);
+    m_treeView->header()->setStretchLastSection(true);
+    m_treeView->header()->setDefaultAlignment(Qt::AlignCenter);
     m_treeView->setModel(m_model);
+
     m_treeView->setSelectionBehavior(QAbstractItemView::SelectRows);
     m_treeView->setSelectionMode(QAbstractItemView::ExtendedSelection);
     m_treeView->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::SelectedClicked);
