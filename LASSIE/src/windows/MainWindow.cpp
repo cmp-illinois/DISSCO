@@ -346,6 +346,11 @@ void MainWindow::runProject()
     pm->seed() = seed;
     pm->writeSeedEntry(seed);
 
+    const int numRuns = QInputDialog::getInt(this, tr("Number of runs"),
+                                             tr("Enter the number of runs:"),
+                                             1, 1, 10, 1, &ok);
+    if(!ok) return;
+
     using namespace Qt::StringLiterals;
 
     const auto cmod = new QProcess(this);
@@ -355,6 +360,10 @@ void MainWindow::runProject()
                 statusBar()->showMessage(tr("CMOD exited with code %1").arg(exit_code)); 
             }
         );
+    connect(cmod, &QProcess::started, cmod, [cmod, numRuns] {
+        cmod->write(QByteArray::number(numRuns) + '\n');
+        cmod->closeWriteChannel();
+    });
     const QString cmodBinary = resolveCmodBinary();
     qDebug() << "Project run with string:" << cmodBinary + " " + pm->fileinfo().canonicalFilePath();
 
