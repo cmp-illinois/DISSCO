@@ -350,3 +350,40 @@ rmdir /s /q build
 ```
 
 Then rerun the CMake configure command and build again.
+
+Create a Portable Package
+-------------------------
+
+After configuring the `build` directory once, double-click:
+
+```text
+Make-Portable-for-Windows.bat
+```
+
+The script automatically:
+
+- loads the x64 Visual Studio build environment
+- finds CMake and Qt from `build/CMakeCache.txt`
+- finds LilyPond from `PATH`, a previous portable package, or its standard
+  installation directory
+- builds the current Release binaries and runs the tests
+- bundles Qt, CMOD, LilyPond, libsndfile, and app-local MSVC runtime DLLs
+- validates the package with developer tool paths removed
+- creates `dist/DISSCO-Windows-x64/` and
+  `dist/DISSCO-Windows-x64.zip`
+
+The target computer only needs 64-bit Windows 10 or Windows 11. It does not
+need Qt, LilyPond, Visual Studio, the Visual C++ Redistributable, or
+administrator access. Extract the complete ZIP and double-click `LASSIE.exe`;
+`Run-DISSCO.bat` remains available as a compatibility launcher.
+
+For non-default paths or automation, run the PowerShell entry point directly:
+
+```powershell
+.\make-portable.ps1 `
+  -BuildDirectory build `
+  -QtBin "C:\Qt\6.11.1\msvc2022_64\bin" `
+  -LilyPondRoot "C:\Program Files\LilyPond"
+```
+
+Use `Get-Help .\Make-Portable-for-Windows.ps1 -Detailed` to view the accepted switches.
