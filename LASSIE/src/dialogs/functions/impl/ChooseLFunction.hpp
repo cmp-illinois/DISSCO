@@ -21,6 +21,7 @@ public:
             FunctionReturnType::functionReturnInt,
             FunctionReturnType::functionReturnFloat,
             FunctionReturnType::functionReturnMakeListFun,
+            FunctionReturnType::functionReturnPartialNum,
         };
     }
 };

@@ -1074,7 +1074,7 @@ void EventAttributesViewController::insertFunctionString(FunctionButton button) 
     //     break;
     case numOfChildFunButton1:
         target = ui->childCountEntry1;
-        gen = new FunctionGenerator(nullptr, functionReturnInt, target->text());
+        gen = new FunctionGenerator(nullptr, functionReturnNumOfChildren, target->text());
         break;
     case numOfChildFunButton2:
         target = ui->childCountEntry2;
@@ -1150,7 +1150,7 @@ void EventAttributesViewController::insertFunctionString(FunctionButton button) 
         break;
     case BSFunFreq2FunButton:
         target = ui->funFreqEntry2;
-        gen = new FunctionGenerator(nullptr, functionReturnSPE, target->text());
+        gen = new FunctionGenerator(nullptr, functionReturnPartialNum, target->text());
         break;
     case BSContinuumFunButton:
         target = ui->continuumFreqEntry;
