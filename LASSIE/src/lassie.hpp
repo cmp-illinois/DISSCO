@@ -36,7 +36,9 @@ enum class FunctionReturnType {
   functionReturnEnvelopeList,
   functionReturnString, //used to parse FileValue
   functionReturnList,
-  functionReturnMakeListFun
+  functionReturnMakeListFun,
+  functionReturnPartialNum,
+  functionReturnNumOfChildren
 };
 
 /**

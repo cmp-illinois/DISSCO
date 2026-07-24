@@ -43,6 +43,8 @@ public:
             FunctionReturnType::functionReturnFIL,
             FunctionReturnType::functionReturnMGP,
             FunctionReturnType::functionReturnMakeListFun,
+            FunctionReturnType::functionReturnPartialNum,
+            FunctionReturnType::functionReturnNumOfChildren,
         };
     }
 
