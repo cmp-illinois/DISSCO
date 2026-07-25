@@ -54,7 +54,7 @@ var searchData=
   ['modifierfreqtrans_51',['modifierFreqtrans',['../lassie_8hpp.html#a96ba018ea46fb28e626c3b573aca5435af2bc99b085da1e179edc68181f51531a',1,'lassie.hpp']]],
   ['modifierglissando_52',['modifierGlissando',['../lassie_8hpp.html#a96ba018ea46fb28e626c3b573aca5435a91f0e04f4be8f5a11f2bcd1f4e3fcdfb',1,'lassie.hpp']]],
   ['modifierphasemod_53',['modifierPhaseMod',['../lassie_8hpp.html#a96ba018ea46fb28e626c3b573aca5435ac220d63fd9837a11baeceba0cf9fe2ec',1,'lassie.hpp']]],
-  ['modifiers_54',['modifiers',['../structNoteInfo.html#ac3ce3725dcbbeef41f79c85f6b7e3ccc',1,'NoteInfo::modifiers'],['../structHEvent.html#a2941077b07a525f8c7dac50691527bf5',1,'HEvent::modifiers'],['../structExtraInfo.html#a0b709d346b57056d4dc4157cfe64dccb',1,'ExtraInfo::modifiers'],['../classModifiers.html#a2d7a9c312eed8f9e9818c26bbbcff0a4',1,'Modifiers::Modifiers()'],['../classModifiers.html',1,'Modifiers']]],
+  ['modifiers_54',['modifiers',['../classModifiers.html#a2d7a9c312eed8f9e9818c26bbbcff0a4',1,'Modifiers::Modifiers()'],['../structNoteInfo.html#ac3ce3725dcbbeef41f79c85f6b7e3ccc',1,'NoteInfo::modifiers'],['../structHEvent.html#a2941077b07a525f8c7dac50691527bf5',1,'HEvent::modifiers'],['../structExtraInfo.html#a0b709d346b57056d4dc4157cfe64dccb',1,'ExtraInfo::modifiers'],['../classModifiers.html',1,'Modifiers']]],
   ['modifiers_2ecpp_55',['Modifiers.cpp',['../Modifiers_8cpp.html',1,'']]],
   ['modifiers_2ehpp_56',['Modifiers.hpp',['../Modifiers_8hpp.html',1,'']]],
   ['modifiertremolo_57',['modifierTremolo',['../lassie_8hpp.html#a96ba018ea46fb28e626c3b573aca5435ab346e2533e34169a1aca13e51b67b352',1,'lassie.hpp']]],

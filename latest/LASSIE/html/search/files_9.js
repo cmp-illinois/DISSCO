@@ -1,14 +1,21 @@
 var searchData=
 [
-  ['randomdensityfunction_2ehpp_0',['RandomDensityFunction.hpp',['../RandomDensityFunction_8hpp.html',1,'']]],
-  ['randomfunction_2ehpp_1',['RandomFunction.hpp',['../RandomFunction_8hpp.html',1,'']]],
-  ['randomintfunction_2ehpp_2',['RandomIntFunction.hpp',['../RandomIntFunction_8hpp.html',1,'']]],
-  ['randomizerfunction_2ehpp_3',['RandomizerFunction.hpp',['../RandomizerFunction_8hpp.html',1,'']]],
-  ['randomorderintfunction_2ehpp_4',['RandomOrderIntFunction.hpp',['../RandomOrderIntFunction_8hpp.html',1,'']]],
-  ['readfilefunctions_2ehpp_5',['ReadFileFunctions.hpp',['../ReadFileFunctions_8hpp.html',1,'']]],
-  ['revchannel_2ecpp_6',['REVChannel.cpp',['../REVChannel_8cpp.html',1,'']]],
-  ['revchannel_2ehpp_7',['REVChannel.hpp',['../REVChannel_8hpp.html',1,'']]],
-  ['revfunctionbase_2ecpp_8',['RevFunctionBase.cpp',['../RevFunctionBase_8cpp.html',1,'']]],
-  ['revfunctionbase_2ehpp_9',['RevFunctionBase.hpp',['../RevFunctionBase_8hpp.html',1,'']]],
-  ['revfunctions_2ehpp_10',['RevFunctions.hpp',['../RevFunctions_8hpp.html',1,'']]]
+  ['paletteviewcontroller_2ecpp_0',['PaletteViewController.cpp',['../PaletteViewController_8cpp.html',1,'']]],
+  ['paletteviewcontroller_2ehpp_1',['PaletteViewController.hpp',['../PaletteViewController_8hpp.html',1,'']]],
+  ['partialmodifierdialog_2ecpp_2',['PartialModifierDialog.cpp',['../PartialModifierDialog_8cpp.html',1,'']]],
+  ['partialmodifierdialog_2ehpp_3',['PartialModifierDialog.hpp',['../PartialModifierDialog_8hpp.html',1,'']]],
+  ['partialmodifierformat_2ecpp_4',['PartialModifierFormat.cpp',['../PartialModifierFormat_8cpp.html',1,'']]],
+  ['partialmodifierformat_2ehpp_5',['PartialModifierFormat.hpp',['../PartialModifierFormat_8hpp.html',1,'']]],
+  ['partials_2ecpp_6',['Partials.cpp',['../Partials_8cpp.html',1,'']]],
+  ['partials_2ehpp_7',['Partials.hpp',['../Partials_8hpp.html',1,'']]],
+  ['postwindow_2ecpp_8',['PostWindow.cpp',['../PostWindow_8cpp.html',1,'']]],
+  ['postwindow_2ehpp_9',['PostWindow.hpp',['../PostWindow_8hpp.html',1,'']]],
+  ['project_5fstruct_2ecpp_10',['project_struct.cpp',['../project__struct_8cpp.html',1,'']]],
+  ['project_5fstruct_2ehpp_11',['project_struct.hpp',['../project__struct_8hpp.html',1,'']]],
+  ['projectpropertiesdialog_2ecpp_12',['ProjectPropertiesDialog.cpp',['../ProjectPropertiesDialog_8cpp.html',1,'']]],
+  ['projectpropertiesdialog_2ehpp_13',['ProjectPropertiesDialog.hpp',['../ProjectPropertiesDialog_8hpp.html',1,'']]],
+  ['projectviewcontroller_2ecpp_14',['ProjectViewController.cpp',['../ProjectViewController_8cpp.html',1,'']]],
+  ['projectviewcontroller_2ehpp_15',['ProjectViewController.hpp',['../ProjectViewController_8hpp.html',1,'']]],
+  ['projectxmlwriter_2ecpp_16',['ProjectXmlWriter.cpp',['../ProjectXmlWriter_8cpp.html',1,'']]],
+  ['projectxmlwriter_2ehpp_17',['ProjectXmlWriter.hpp',['../ProjectXmlWriter_8hpp.html',1,'']]]
 ];

@@ -27,13 +27,14 @@ var searchData=
   ['choosel_24',['ChooseL',['../classSieve.html#a658ce35fb5337b62508d155abf9e0d4d',1,'Sieve']]],
   ['choosesweep_25',['chooseSweep',['../classMatrix.html#aaa7d4921250359bd14dcd38cdca7cf47',1,'Matrix']]],
   ['cmod_2eh_26',['CMOD.h',['../CMOD_8h.html',1,'']]],
-  ['constructchild_27',['constructchild',['../classBottom.html#a12bda6f7a74c8368968da6a97ac13455',1,'Bottom::constructChild(TimeSpan ts, int type, string name, Tempo tempo)'],['../classBottom.html#ad5249403159b27ec898f289b15c93915',1,'Bottom::constructChild(SoundAndNoteWrapper *_SoundNoteWrapper)']]],
-  ['constructtupletnames_28',['ConstructTupletNames',['../structTimeSignature.html#aa5b16f0fa1d1c88ae9b58971512bb195',1,'TimeSignature']]],
-  ['continuum_29',['CONTINUUM',['../Utilities_8h.html#a4fed1bb5ccc48ab925c9f393d6013007',1,'Utilities.h']]],
-  ['convertsecondstoedus_30',['convertSecondsToEDUs',['../classTempo.html#a3122d6fb16d6e52a94564b27c96d505e',1,'Tempo']]],
-  ['createscorefilesdirectory_31',['createScoreFilesDirectory',['../structPieceHelper.html#a83d099d9ffdc29cf83935b927d172aa0',1,'PieceHelper']]],
-  ['createsoundfilesdirectory_32',['createSoundFilesDirectory',['../structPieceHelper.html#abfe0ff1bd5655dfcdd27a11bba4248eb',1,'PieceHelper']]],
-  ['crossovermutation_33',['crossoverMutation',['../classPiece.html#a2095ac0c2cea8c497b51fa597025dd54',1,'Piece']]],
-  ['currchild_34',['currChild',['../classUtilities.html#a69326515bca62c750246fc0aba8ac2ed',1,'Utilities']]],
-  ['currchildnum_35',['currChildNum',['../classEvent.html#a5696dff33faf555301e9677f2c368629',1,'Event']]]
+  ['completedsuccessfully_27',['completedSuccessfully',['../classPiece.html#a52ff172407f4e86988294acdb983c10b',1,'Piece']]],
+  ['constructchild_28',['constructchild',['../classBottom.html#a12bda6f7a74c8368968da6a97ac13455',1,'Bottom::constructChild(TimeSpan ts, int type, string name, Tempo tempo)'],['../classBottom.html#ad5249403159b27ec898f289b15c93915',1,'Bottom::constructChild(SoundAndNoteWrapper *_SoundNoteWrapper)']]],
+  ['constructtupletnames_29',['ConstructTupletNames',['../structTimeSignature.html#aa5b16f0fa1d1c88ae9b58971512bb195',1,'TimeSignature']]],
+  ['continuum_30',['CONTINUUM',['../Utilities_8h.html#a4fed1bb5ccc48ab925c9f393d6013007',1,'Utilities.h']]],
+  ['convertsecondstoedus_31',['convertSecondsToEDUs',['../classTempo.html#a3122d6fb16d6e52a94564b27c96d505e',1,'Tempo']]],
+  ['createscorefilesdirectory_32',['createScoreFilesDirectory',['../structPieceHelper.html#a83d099d9ffdc29cf83935b927d172aa0',1,'PieceHelper']]],
+  ['createsoundfilesdirectory_33',['createSoundFilesDirectory',['../structPieceHelper.html#abfe0ff1bd5655dfcdd27a11bba4248eb',1,'PieceHelper']]],
+  ['crossovermutation_34',['crossoverMutation',['../classPiece.html#a2095ac0c2cea8c497b51fa597025dd54',1,'Piece']]],
+  ['currchild_35',['currChild',['../classUtilities.html#a69326515bca62c750246fc0aba8ac2ed',1,'Utilities']]],
+  ['currchildnum_36',['currChildNum',['../classEvent.html#a5696dff33faf555301e9677f2c368629',1,'Event']]]
 ];

@@ -155,77 +155,81 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  <a class="code hl_function" href="classPiece.html#a5d7a4f6bade94cb33b6f634de8aa7918">~Piece</a>();</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classPiece.html#a771d0080316cc04a12286560bb697355">Print</a>();</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  <span class="keywordtype">string</span> <a class="code hl_function" href="classPiece.html#a246df0480298dd8da7a13bf184d0dd6a">getNextSoundFile</a>();</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="classPiece.html#a52ff172407f4e86988294acdb983c10b">  119</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classPiece.html#a52ff172407f4e86988294acdb983c10b">completedSuccessfully</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> buildSucceeded; }</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classPiece.html#a771d0080316cc04a12286560bb697355">Print</a>();</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  <span class="comment">//Modifies the Piece by writing to the DOMDocument. Returns vector of its children.</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  <span class="comment">// Experimental</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  vector&lt;pugi::xml_node&gt; <a class="code hl_function" href="classPiece.html#a87fed60350b1f71bf8c4524dc17ed2b3">modifyPiece</a>(pugi::xml_node eventElement);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="comment">//Identifies function and modifies their numbers. Experimental</span></div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classPiece.html#a9df7abc80d5898487fc10003801c7ddd">functionModifier</a>(pugi::xml_node functionElement, <span class="keywordtype">int</span> maxValue);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  <span class="keywordtype">string</span> <a class="code hl_function" href="classPiece.html#a246df0480298dd8da7a13bf184d0dd6a">getNextSoundFile</a>();</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="comment">//Modifies the Piece by writing to the DOMDocument. Returns vector of its children.</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="comment">// Experimental</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  vector&lt;pugi::xml_node&gt; <a class="code hl_function" href="classPiece.html#a87fed60350b1f71bf8c4524dc17ed2b3">modifyPiece</a>(pugi::xml_node eventElement);</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>  <span class="comment">//Calculates Aesthetic value for every event. Returns vector of events children.</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>  <span class="comment">//Experimental</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>  vector&lt;pugi::xml_node&gt; <a class="code hl_function" href="classPiece.html#ac9c19fe18ece76a1575fdd6cebc41dce">calculateAesthetic</a>(pugi::xml_node eventElement);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>  <span class="comment">//Calculates Shannon Entropy ratio based on sampled values</span></div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  <span class="keywordtype">double</span> <a class="code hl_function" href="classPiece.html#a54132f9777131890a34372be4f2cf6e1">calculateEntropyRatio</a>(vector&lt;double&gt; sampleData, <span class="keywordtype">string</span> partitionMethod,</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                                <span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max);</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>  <span class="comment">// Genetic Evolution Algorithm.</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classPiece.html#a9ab6a57f7b5a4fce90402c2faf2156b4">geneticOptimization</a>(<span class="keywordtype">string</span> fitnessFunction, <span class="keywordtype">double</span> optimum);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>  <span class="comment">//Identifies function and modifies their numbers. Experimental</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classPiece.html#a9df7abc80d5898487fc10003801c7ddd">functionModifier</a>(pugi::xml_node functionElement, <span class="keywordtype">int</span> maxValue);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>  <span class="comment">//Calculates Aesthetic value for every event. Returns vector of events children.</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>  <span class="comment">//Experimental</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  vector&lt;pugi::xml_node&gt; <a class="code hl_function" href="classPiece.html#ac9c19fe18ece76a1575fdd6cebc41dce">calculateAesthetic</a>(pugi::xml_node eventElement);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  <span class="comment">//Calculates Shannon Entropy ratio based on sampled values</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>  <span class="keywordtype">double</span> <a class="code hl_function" href="classPiece.html#a54132f9777131890a34372be4f2cf6e1">calculateEntropyRatio</a>(vector&lt;double&gt; sampleData, <span class="keywordtype">string</span> partitionMethod,</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>                                <span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max);</div>
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>  <span class="comment">// Crossover and Mutation Function</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classPiece.html#a2095ac0c2cea8c497b51fa597025dd54">crossoverMutation</a>(pugi::xml_node parent1, pugi::xml_node parent2, pugi::xml_node child,</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                         <span class="keywordtype">double</span> mutationProb);</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  <span class="comment">// Experiment 2: Calculate M val for an event</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>  vector&lt;pugi::xml_node&gt; <a class="code hl_function" href="classPiece.html#a00502c974f9dd9fb883ab335d395f537">calcEventM</a>(pugi::xml_node eventElement);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>  <span class="comment">// Genetic Evolution Algorithm.</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classPiece.html#a9ab6a57f7b5a4fce90402c2faf2156b4">geneticOptimization</a>(<span class="keywordtype">string</span> fitnessFunction, <span class="keywordtype">double</span> optimum);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  <span class="comment">// Crossover and Mutation Function</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classPiece.html#a2095ac0c2cea8c497b51fa597025dd54">crossoverMutation</a>(pugi::xml_node parent1, pugi::xml_node parent2, pugi::xml_node child,</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>                         <span class="keywordtype">double</span> mutationProb);</div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  <span class="comment">// Exp 2: List</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>  <span class="keywordtype">string</span> path;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  <span class="keywordtype">string</span> projectName;</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  <span class="keywordtype">string</span> title;</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  <span class="keywordtype">string</span> fileFlags;</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  <span class="keywordtype">string</span> fileList;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  <span class="keywordtype">string</span> pieceStartTime;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  <span class="keywordtype">string</span> pieceDuration;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  <a class="code hl_class" href="classUtilities.html">Utilities</a>* utilities;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>  <span class="keywordtype">bool</span> soundSynthesis;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>  <span class="keywordtype">bool</span> scorePrinting;</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>  <span class="keywordtype">bool</span> grandStaff;</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  <span class="keywordtype">int</span> numberOfStaff;</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  <span class="keywordtype">int</span> numChannels;</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  <span class="keywordtype">int</span> sampleRate;</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  <span class="keywordtype">int</span> sampleSize;</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="keywordtype">int</span> numThreads;</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>};</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  <span class="comment">// Experiment 2: Calculate M val for an event</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  vector&lt;pugi::xml_node&gt; <a class="code hl_function" href="classPiece.html#a00502c974f9dd9fb883ab335d395f537">calcEventM</a>(pugi::xml_node eventElement);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>  <span class="comment">// Exp 2: List</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  <span class="keywordtype">string</span> path;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  <span class="keywordtype">string</span> projectName;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  <span class="keywordtype">string</span> title;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  <span class="keywordtype">string</span> fileFlags;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  <span class="keywordtype">string</span> fileList;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  <span class="keywordtype">string</span> pieceStartTime;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  <span class="keywordtype">string</span> pieceDuration;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>  <a class="code hl_class" href="classUtilities.html">Utilities</a>* utilities;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  <span class="keywordtype">bool</span> soundSynthesis;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  <span class="keywordtype">bool</span> scorePrinting;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  <span class="keywordtype">bool</span> grandStaff;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  <span class="keywordtype">int</span> numberOfStaff;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="keywordtype">int</span> numChannels;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  <span class="keywordtype">int</span> sampleRate;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  <span class="keywordtype">int</span> sampleSize;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  <span class="keywordtype">int</span> numThreads;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>  <span class="keywordtype">bool</span> buildSucceeded = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>};</div>
 </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aCMOD_8h_html"><div class="ttname"><a href="CMOD_8h.html">CMOD.h</a></div><div class="ttdoc">Umbrella header for the Composition Module (CMOD).</div></div>
 <div class="ttc" id="aLibraries_8h_html"><div class="ttname"><a href="Libraries_8h.html">Libraries.h</a></div><div class="ttdoc">Central include hub for CMOD.</div></div>
 <div class="ttc" id="aNote_8h_html"><div class="ttname"><a href="Note_8h.html">Note.h</a></div><div class="ttdoc">Notated-score representation of a single musical event.</div></div>
 <div class="ttc" id="aclassPiece_html"><div class="ttname"><a href="classPiece.html">Piece</a></div><div class="ttdoc">Root model of a DISSCO composition.</div><div class="ttdef"><b>Definition</b> <a href="Piece_8h_source.html#l00103">Piece.h:103</a></div></div>
-<div class="ttc" id="aclassPiece_html_a00502c974f9dd9fb883ab335d395f537"><div class="ttname"><a href="classPiece.html#a00502c974f9dd9fb883ab335d395f537">Piece::calcEventM</a></div><div class="ttdeci">vector&lt; pugi::xml_node &gt; calcEventM(pugi::xml_node eventElement)</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00480">piece-experimental.cpp:480</a></div></div>
-<div class="ttc" id="aclassPiece_html_a2095ac0c2cea8c497b51fa597025dd54"><div class="ttname"><a href="classPiece.html#a2095ac0c2cea8c497b51fa597025dd54">Piece::crossoverMutation</a></div><div class="ttdeci">void crossoverMutation(pugi::xml_node parent1, pugi::xml_node parent2, pugi::xml_node child, double mutationProb)</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00793">piece-experimental.cpp:793</a></div></div>
+<div class="ttc" id="aclassPiece_html_a00502c974f9dd9fb883ab335d395f537"><div class="ttname"><a href="classPiece.html#a00502c974f9dd9fb883ab335d395f537">Piece::calcEventM</a></div><div class="ttdeci">vector&lt; pugi::xml_node &gt; calcEventM(pugi::xml_node eventElement)</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00482">piece-experimental.cpp:482</a></div></div>
+<div class="ttc" id="aclassPiece_html_a2095ac0c2cea8c497b51fa597025dd54"><div class="ttname"><a href="classPiece.html#a2095ac0c2cea8c497b51fa597025dd54">Piece::crossoverMutation</a></div><div class="ttdeci">void crossoverMutation(pugi::xml_node parent1, pugi::xml_node parent2, pugi::xml_node child, double mutationProb)</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00795">piece-experimental.cpp:795</a></div></div>
 <div class="ttc" id="aclassPiece_html_a246df0480298dd8da7a13bf184d0dd6a"><div class="ttname"><a href="classPiece.html#a246df0480298dd8da7a13bf184d0dd6a">Piece::getNextSoundFile</a></div><div class="ttdeci">string getNextSoundFile()</div><div class="ttdoc">Gets the next available sound file.</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00202">piece-experimental.cpp:202</a></div></div>
-<div class="ttc" id="aclassPiece_html_a54132f9777131890a34372be4f2cf6e1"><div class="ttname"><a href="classPiece.html#a54132f9777131890a34372be4f2cf6e1">Piece::calculateEntropyRatio</a></div><div class="ttdeci">double calculateEntropyRatio(vector&lt; double &gt; sampleData, string partitionMethod, double min, double max)</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l01443">piece-experimental.cpp:1443</a></div></div>
-<div class="ttc" id="aclassPiece_html_a5d7a4f6bade94cb33b6f634de8aa7918"><div class="ttname"><a href="classPiece.html#a5d7a4f6bade94cb33b6f634de8aa7918">Piece::~Piece</a></div><div class="ttdeci">~Piece()</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00475">piece-experimental.cpp:475</a></div></div>
+<div class="ttc" id="aclassPiece_html_a52ff172407f4e86988294acdb983c10b"><div class="ttname"><a href="classPiece.html#a52ff172407f4e86988294acdb983c10b">Piece::completedSuccessfully</a></div><div class="ttdeci">bool completedSuccessfully() const</div><div class="ttdoc">Returns false when an external score-generation step failed.</div><div class="ttdef"><b>Definition</b> <a href="Piece_8h_source.html#l00119">Piece.h:119</a></div></div>
+<div class="ttc" id="aclassPiece_html_a54132f9777131890a34372be4f2cf6e1"><div class="ttname"><a href="classPiece.html#a54132f9777131890a34372be4f2cf6e1">Piece::calculateEntropyRatio</a></div><div class="ttdeci">double calculateEntropyRatio(vector&lt; double &gt; sampleData, string partitionMethod, double min, double max)</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l01445">piece-experimental.cpp:1445</a></div></div>
+<div class="ttc" id="aclassPiece_html_a5d7a4f6bade94cb33b6f634de8aa7918"><div class="ttname"><a href="classPiece.html#a5d7a4f6bade94cb33b6f634de8aa7918">Piece::~Piece</a></div><div class="ttdeci">~Piece()</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00477">piece-experimental.cpp:477</a></div></div>
 <div class="ttc" id="aclassPiece_html_a771d0080316cc04a12286560bb697355"><div class="ttname"><a href="classPiece.html#a771d0080316cc04a12286560bb697355">Piece::Print</a></div><div class="ttdeci">void Print()</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00222">piece-experimental.cpp:222</a></div></div>
-<div class="ttc" id="aclassPiece_html_a87fed60350b1f71bf8c4524dc17ed2b3"><div class="ttname"><a href="classPiece.html#a87fed60350b1f71bf8c4524dc17ed2b3">Piece::modifyPiece</a></div><div class="ttdeci">vector&lt; pugi::xml_node &gt; modifyPiece(pugi::xml_node eventElement)</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00857">piece-experimental.cpp:857</a></div></div>
-<div class="ttc" id="aclassPiece_html_a9ab6a57f7b5a4fce90402c2faf2156b4"><div class="ttname"><a href="classPiece.html#a9ab6a57f7b5a4fce90402c2faf2156b4">Piece::geneticOptimization</a></div><div class="ttdeci">void geneticOptimization(string fitnessFunction, double optimum)</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00641">piece-experimental.cpp:641</a></div></div>
-<div class="ttc" id="aclassPiece_html_a9df7abc80d5898487fc10003801c7ddd"><div class="ttname"><a href="classPiece.html#a9df7abc80d5898487fc10003801c7ddd">Piece::functionModifier</a></div><div class="ttdeci">void functionModifier(pugi::xml_node functionElement, int maxValue)</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l01025">piece-experimental.cpp:1025</a></div></div>
-<div class="ttc" id="aclassPiece_html_ac9c19fe18ece76a1575fdd6cebc41dce"><div class="ttname"><a href="classPiece.html#ac9c19fe18ece76a1575fdd6cebc41dce">Piece::calculateAesthetic</a></div><div class="ttdeci">vector&lt; pugi::xml_node &gt; calculateAesthetic(pugi::xml_node eventElement)</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l01214">piece-experimental.cpp:1214</a></div></div>
+<div class="ttc" id="aclassPiece_html_a87fed60350b1f71bf8c4524dc17ed2b3"><div class="ttname"><a href="classPiece.html#a87fed60350b1f71bf8c4524dc17ed2b3">Piece::modifyPiece</a></div><div class="ttdeci">vector&lt; pugi::xml_node &gt; modifyPiece(pugi::xml_node eventElement)</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00859">piece-experimental.cpp:859</a></div></div>
+<div class="ttc" id="aclassPiece_html_a9ab6a57f7b5a4fce90402c2faf2156b4"><div class="ttname"><a href="classPiece.html#a9ab6a57f7b5a4fce90402c2faf2156b4">Piece::geneticOptimization</a></div><div class="ttdeci">void geneticOptimization(string fitnessFunction, double optimum)</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00643">piece-experimental.cpp:643</a></div></div>
+<div class="ttc" id="aclassPiece_html_a9df7abc80d5898487fc10003801c7ddd"><div class="ttname"><a href="classPiece.html#a9df7abc80d5898487fc10003801c7ddd">Piece::functionModifier</a></div><div class="ttdeci">void functionModifier(pugi::xml_node functionElement, int maxValue)</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l01027">piece-experimental.cpp:1027</a></div></div>
+<div class="ttc" id="aclassPiece_html_ac9c19fe18ece76a1575fdd6cebc41dce"><div class="ttname"><a href="classPiece.html#ac9c19fe18ece76a1575fdd6cebc41dce">Piece::calculateAesthetic</a></div><div class="ttdeci">vector&lt; pugi::xml_node &gt; calculateAesthetic(pugi::xml_node eventElement)</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l01216">piece-experimental.cpp:1216</a></div></div>
 <div class="ttc" id="aclassUtilities_html"><div class="ttname"><a href="classUtilities.html">Utilities</a></div><div class="ttdoc">Project-wide evaluator + CMOD-to-LASS adapter.</div><div class="ttdef"><b>Definition</b> <a href="Utilities_8h_source.html#l00072">Utilities.h:72</a></div></div>
 <div class="ttc" id="astructPieceHelper_html"><div class="ttname"><a href="structPieceHelper.html">PieceHelper</a></div><div class="ttdoc">Stateless filesystem helpers used while rendering a Piece.</div><div class="ttdef"><b>Definition</b> <a href="Piece_8h_source.html#l00058">Piece.h:58</a></div></div>
 <div class="ttc" id="astructPieceHelper_html_a28358171bf3acd8d2dbee00838a6b5ae"><div class="ttname"><a href="structPieceHelper.html#a28358171bf3acd8d2dbee00838a6b5ae">PieceHelper::getDirectoryList</a></div><div class="ttdeci">static int getDirectoryList(string dir, vector&lt; string &gt; &amp;files)</div><div class="ttdoc">Lists contents of directory.</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00047">piece-experimental.cpp:47</a></div></div>

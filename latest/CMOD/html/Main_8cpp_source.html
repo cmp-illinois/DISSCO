@@ -169,22 +169,23 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  <span class="comment">//Create the piece!</span></div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <a class="code hl_class" href="classPiece.html">Piece</a>* piece = <span class="keyword">new</span> <a class="code hl_class" href="classPiece.html">Piece</a>(workingPath, projectName);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  <span class="keyword">delete</span> piece;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  <span class="comment">//delete outputFile;    //Sever</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  time_t endTime;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  time(&amp;endTime);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="keywordtype">int</span> seconds = difftime(endTime, startTime);</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  <span class="keywordtype">int</span> hr = seconds / 3600;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  <span class="keywordtype">int</span> min = (seconds % 3600) / 60;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  <span class="keywordtype">int</span> sec = seconds % 60;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  printf(<span class="stringliteral">&quot;Computation Time: %02d:%02d:%02d.\n&quot;</span>, hr, min, sec);</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  <span class="keyword">const</span> <span class="keywordtype">bool</span> buildSucceeded = piece-&gt;<a class="code hl_function" href="classPiece.html#a52ff172407f4e86988294acdb983c10b">completedSuccessfully</a>();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  <span class="keyword">delete</span> piece;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  <span class="comment">//delete outputFile;    //Sever</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  time_t endTime;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  time(&amp;endTime);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  <span class="keywordtype">int</span> seconds = difftime(endTime, startTime);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  <span class="keywordtype">int</span> hr = seconds / 3600;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  <span class="keywordtype">int</span> min = (seconds % 3600) / 60;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  <span class="keywordtype">int</span> sec = seconds % 60;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  printf(<span class="stringliteral">&quot;Computation Time: %02d:%02d:%02d.\n&quot;</span>, hr, min, sec);</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>}</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  <span class="keywordflow">return</span> buildSucceeded ? 0 : 1;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>}</div>
 </div>
 <div class="ttc" id="aMain_8cpp_html_ad7fad620c08fb93cc7f4b5ebe35b9368"><div class="ttname"><a href="Main_8cpp.html#ad7fad620c08fb93cc7f4b5ebe35b9368">main</a></div><div class="ttdeci">int main(int parameterCount, char **parameterList)</div><div class="ttdef"><b>Definition</b> <a href="Main_8cpp_source.html#l00055">Main.cpp:55</a></div></div>
 <div class="ttc" id="aNote_8h_html"><div class="ttname"><a href="Note_8h.html">Note.h</a></div><div class="ttdoc">Notated-score representation of a single musical event.</div></div>
@@ -192,6 +193,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aSignalHandlers_8cpp_html_ae7aa0f0897500b3fafae9f011afb0d4d"><div class="ttname"><a href="SignalHandlers_8cpp.html#ae7aa0f0897500b3fafae9f011afb0d4d">segfaultHandler</a></div><div class="ttdeci">void segfaultHandler(int signal)</div><div class="ttdef"><b>Definition</b> <a href="SignalHandlers_8cpp_source.html#l00003">SignalHandlers.cpp:3</a></div></div>
 <div class="ttc" id="aSignalHandlers_8h_html"><div class="ttname"><a href="SignalHandlers_8h.html">SignalHandlers.h</a></div><div class="ttdoc">Custom POSIX signal handlers for CMOD (Rubin Du, 2024).</div></div>
 <div class="ttc" id="aclassPiece_html"><div class="ttname"><a href="classPiece.html">Piece</a></div><div class="ttdoc">Root model of a DISSCO composition.</div><div class="ttdef"><b>Definition</b> <a href="Piece_8h_source.html#l00103">Piece.h:103</a></div></div>
+<div class="ttc" id="aclassPiece_html_a52ff172407f4e86988294acdb983c10b"><div class="ttname"><a href="classPiece.html#a52ff172407f4e86988294acdb983c10b">Piece::completedSuccessfully</a></div><div class="ttdeci">bool completedSuccessfully() const</div><div class="ttdoc">Returns false when an external score-generation step failed.</div><div class="ttdef"><b>Definition</b> <a href="Piece_8h_source.html#l00119">Piece.h:119</a></div></div>
 <div class="ttc" id="astructPieceHelper_html_a83d099d9ffdc29cf83935b927d172aa0"><div class="ttname"><a href="structPieceHelper.html#a83d099d9ffdc29cf83935b927d172aa0">PieceHelper::createScoreFilesDirectory</a></div><div class="ttdeci">static void createScoreFilesDirectory(string path)</div><div class="ttdoc">Creates the score files directory if it does not exist.</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00162">piece-experimental.cpp:162</a></div></div>
 <div class="ttc" id="astructPieceHelper_html_abfe0ff1bd5655dfcdd27a11bba4248eb"><div class="ttname"><a href="structPieceHelper.html#abfe0ff1bd5655dfcdd27a11bba4248eb">PieceHelper::createSoundFilesDirectory</a></div><div class="ttdeci">static void createSoundFilesDirectory(string path)</div><div class="ttdoc">Creates the sound files directory if it does not exist.</div><div class="ttdef"><b>Definition</b> <a href="piece-experimental_8cpp_source.html#l00155">piece-experimental.cpp:155</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

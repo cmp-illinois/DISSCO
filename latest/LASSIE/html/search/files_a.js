@@ -1,17 +1,14 @@
 var searchData=
 [
-  ['select_2ecpp_0',['Select.cpp',['../Select_8cpp.html',1,'']]],
-  ['select_2ehpp_1',['Select.hpp',['../Select_8hpp.html',1,'']]],
-  ['selectfunction_2ecpp_2',['SelectFunction.cpp',['../SelectFunction_8cpp.html',1,'']]],
-  ['selectfunction_2ehpp_3',['SelectFunction.hpp',['../SelectFunction_8hpp.html',1,'']]],
-  ['spachannel_2ecpp_4',['SPAChannel.cpp',['../SPAChannel_8cpp.html',1,'']]],
-  ['spachannel_2ehpp_5',['SPAChannel.hpp',['../SPAChannel_8hpp.html',1,'']]],
-  ['spafunction_2ecpp_6',['SPAFunction.cpp',['../SPAFunction_8cpp.html',1,'']]],
-  ['spafunction_2ehpp_7',['SPAFunction.hpp',['../SPAFunction_8hpp.html',1,'']]],
-  ['spectrumgenfunction_2ehpp_8',['SpectrumGenFunction.hpp',['../SpectrumGenFunction_8hpp.html',1,'']]],
-  ['staticconstantfunctions_2ehpp_9',['StaticConstantFunctions.hpp',['../StaticConstantFunctions_8hpp.html',1,'']]],
-  ['stochos_2ecpp_10',['Stochos.cpp',['../Stochos_8cpp.html',1,'']]],
-  ['stochos_2ehpp_11',['Stochos.hpp',['../Stochos_8hpp.html',1,'']]],
-  ['stochosfunction_2ecpp_12',['StochosFunction.cpp',['../StochosFunction_8cpp.html',1,'']]],
-  ['stochosfunction_2ehpp_13',['StochosFunction.hpp',['../StochosFunction_8hpp.html',1,'']]]
+  ['randomdensityfunction_2ehpp_0',['RandomDensityFunction.hpp',['../RandomDensityFunction_8hpp.html',1,'']]],
+  ['randomfunction_2ehpp_1',['RandomFunction.hpp',['../RandomFunction_8hpp.html',1,'']]],
+  ['randomintfunction_2ehpp_2',['RandomIntFunction.hpp',['../RandomIntFunction_8hpp.html',1,'']]],
+  ['randomizerfunction_2ehpp_3',['RandomizerFunction.hpp',['../RandomizerFunction_8hpp.html',1,'']]],
+  ['randomorderintfunction_2ehpp_4',['RandomOrderIntFunction.hpp',['../RandomOrderIntFunction_8hpp.html',1,'']]],
+  ['readfilefunctions_2ehpp_5',['ReadFileFunctions.hpp',['../ReadFileFunctions_8hpp.html',1,'']]],
+  ['revchannel_2ecpp_6',['REVChannel.cpp',['../REVChannel_8cpp.html',1,'']]],
+  ['revchannel_2ehpp_7',['REVChannel.hpp',['../REVChannel_8hpp.html',1,'']]],
+  ['revfunctionbase_2ecpp_8',['RevFunctionBase.cpp',['../RevFunctionBase_8cpp.html',1,'']]],
+  ['revfunctionbase_2ehpp_9',['RevFunctionBase.hpp',['../RevFunctionBase_8hpp.html',1,'']]],
+  ['revfunctions_2ehpp_10',['RevFunctions.hpp',['../RevFunctions_8hpp.html',1,'']]]
 ];
