@@ -53,6 +53,11 @@ private:
     void setupUi();
     void updateModState();
 
+    void updateFieldsForApplyMode();
+    void setSoundFieldsFromBackend();
+    void clearSoundFieldsForPartialMode();
+    void updateApplyOptionsForModifierType();
+
     Modifier& getBackendLayer();
 
     Eventtype m_eventType;

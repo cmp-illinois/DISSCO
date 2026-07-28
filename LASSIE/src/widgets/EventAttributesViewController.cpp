@@ -467,9 +467,11 @@ void EventAttributesViewController::saveCurrentShownEventData() {
             event.filter = ui->filEntry->text();
         }
 
-        // save modifiers
-        for (Modifiers* mod : m_modifiers) {
-            mod->saveModifierToBackend();
+        // Modifiers are only editable for Bottom events.
+        if (type == bottom) {
+            for (Modifiers* mod : m_modifiers) {
+                mod->saveModifierToBackend();
+            }
         }
 
         // save layer weights
@@ -579,21 +581,21 @@ void EventAttributesViewController::showCurrentEventData() {
         case high: 
         case mid: 
         case low: 
-        case bottom:
+        case bottom: {
             ui->stackedWidget->setCurrentWidget(ui->standardPage);
-            if (type == bottom) {  
-                ui->frequencyContainer->setVisible(true);
-                ui->loudnessContainer->setVisible(true);
-                ui->phaseContainer->setVisible(true);
-                ui->modGroupContainer->setVisible(true);
-            } else {
-                ui->frequencyContainer->setVisible(false);
-                ui->loudnessContainer->setVisible(false);
-                ui->phaseContainer->setVisible(false);
-                ui->modGroupContainer->setVisible(false);
-            }
+
+            const bool showBottomOnlyControls = (type == bottom);
+
+            ui->frequencyContainer->setVisible(showBottomOnlyControls);
+            ui->loudnessContainer->setVisible(showBottomOnlyControls);
+            ui->modGroupContainer->setVisible(showBottomOnlyControls);
+
+            ui->addModifierButton->setVisible(showBottomOnlyControls);
+            ui->modifiersLabel->setVisible(showBottomOnlyControls);
+
             fixStackedWidgetLayout(ui->standardPage);
             break;
+        }
         case sound:
             ui->stackedWidget->setCurrentWidget(ui->soundPage);
             break;
@@ -639,6 +641,14 @@ void EventAttributesViewController::showCurrentEventData() {
     // ui->nameEntry->setText(QString::fromStdString(m_currentlyShownEvent->getEventName()));
     HEvent event;
     if(type <= bottom){
+    // Clear existing modifier widgets whenever switching standard-page events.
+    // Modifiers should only be shown for Bottom events.
+    for (Modifiers* mod : m_modifiers) {
+        ui->modifiersLayout->removeWidget(mod);
+        mod->deleteLater();
+    }
+    m_modifiers.clear();
+
         if(type == bottom){
             const BottomEvent& bottom_event = pm->bottomevents()[m_curreventindex];
             ExtraInfo extra_info = bottom_event.extra_info;
@@ -658,18 +668,11 @@ void EventAttributesViewController::showCurrentEventData() {
             ui->powerOfTwoRadio->setChecked(freq_info.continuum_flag == 1);
 
             ui->loudnessEntry->setText(extra_info.loudness);
-            ui->phaseEntry->setText(extra_info.phase);
             ui->spaEntry->setText(extra_info.spa);
             ui->revEntry->setText(extra_info.reverb);
             ui->filEntry->setText(extra_info.filter);
             ui->modifierGroupEntry->setText(extra_info.modifier_group);
 
-            // clear existing Modifiers widgets
-            for (Modifiers* mod : m_modifiers) {
-                ui->modifiersLayout->removeWidget(mod);
-                mod->deleteLater();
-            }
-            m_modifiers.clear();
 
             // rebuild buttom Modifiers
             for (int i = 0; i < extra_info.modifiers.size(); ++i) {
@@ -760,22 +763,6 @@ void EventAttributesViewController::showCurrentEventData() {
         ui->durationTypeUnitsRadio->setChecked(dt_flag == 1);
         ui->durationTypeSecondsRadio->setChecked(dt_flag == 2);
 
-        // clear and rebuild hevent modifier widgets
-        if (type != bottom) {
-            // clear existing Modifiers widgets
-            for (Modifiers* mod : m_modifiers) {
-                ui->modifiersLayout->removeWidget(mod);
-                mod->deleteLater();
-            }
-            m_modifiers.clear();
-
-            // rebuild Modifiers
-            for (int i = 0; i < event.modifiers.size(); ++i) {
-                addModifiersUI(i);
-                m_modifiers[i]->setModifierData(event.modifiers[i]);
-            }
- 
-        }
         // environment
         if (type != bottom) {
             ui->spaEntry->setText(event.spa);
@@ -839,9 +826,6 @@ void EventAttributesViewController::showCurrentEventData() {
             ui->noteNameEntry->setText(event.name);
             ui->noteNameEntry->setEnabled(false);
             ui->staffNumberEntry->setText(event.note_info.staffs);
-            NoteModifierSelection::load(
-                event.note_info.modifiers,
-                ui->notePage->findChildren<QCheckBox*>());
         }else if(type == filter){
             const FilterEvent& event = pm->filterevents()[m_curreventindex];
             ui->filNameEntry->setText(event.name);

@@ -20,6 +20,7 @@ qt_add_executable(LASSIE
     src/core/EnvelopeLibraryEntry.cpp src/core/EnvelopeLibraryEntry.hpp
     src/core/ProjectXmlWriter.cpp src/core/ProjectXmlWriter.hpp
     src/dialogs/FunctionGenerator.cpp src/dialogs/FunctionGenerator.hpp src/ui/FunctionGenerator.ui
+    src/dialogs/GeneralPartialModifierDialog.cpp src/dialogs/GeneralPartialModifierDialog.hpp
     src/dialogs/PartialModifierDialog.cpp src/dialogs/PartialModifierDialog.hpp
     src/dialogs/PartialModifierFormat.cpp src/dialogs/PartialModifierFormat.hpp
     src/dialogs/functions/FunctionWidget.cpp src/dialogs/functions/FunctionWidget.hpp

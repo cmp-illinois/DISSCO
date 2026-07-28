@@ -10,6 +10,7 @@
 #include <QTextEdit>
 #include <QDialogButtonBox>
 #include <QDialog>
+#include <QSizePolicy>
 
 #include <algorithm>
 #include <string>
@@ -18,12 +19,15 @@
 #include "../inst.hpp"
 #include "../dialogs/FunctionGenerator.hpp"
 #include "../dialogs/PartialModifierDialog.hpp"
+#include "../dialogs/GeneralPartialModifierDialog.hpp"
 #include "ModifierUiPolicy.hpp"
+
 
 using enum FunctionReturnType;
 
 namespace {
 constexpr int phaseModType = 7;
+constexpr int detuneType = 3;
 
 // The combo box is ordered for display, while these values must retain the
 // stable modifier IDs serialized in project files and consumed by CMOD.
@@ -57,8 +61,8 @@ Modifiers::Modifiers(Eventtype eventType, unsigned eventIndex, int modifierIndex
     for (int index = 0; index < modifierTypeCount; ++index)
         ui->modifierType->setItemData(index, modifierTypesByDisplayOrder[index]);
 
-    this->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    this->setMinimumHeight(480);
+    this->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
+    this->setMinimumHeight(0);
 
     setupUi();
     ui->modifierSpreadLabel->adjustSize();
@@ -174,13 +178,154 @@ void Modifiers::setupUi() {
     connect(ui->modifierType, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [this](int) {
                 saveCurrentModifierType(ui->modifierType, getBackendLayer());
+                updateApplyOptionsForModifierType();
+                updateFieldsForApplyMode();
                 updateModState();
             });
     connect(ui->modifierApply, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [this](int index) {
-                getBackendLayer().applyhow_flag = index;
+                getBackendLayer().applyhow_flag = (index == 1);
+                updateFieldsForApplyMode();
                 updateModState();
             });
+    // Reduce spacing between modifier rows.
+    ui->modifierGroupLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierGroupLayout->setSpacing(0);
+
+    ui->modifierLayout->setContentsMargins(8, 8, 8, 8);
+    ui->modifierLayout->setSpacing(4);
+
+    ui->modifierRemoveLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierRemoveLayout->setSpacing(6);
+
+    ui->modifierNameLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierNameLayout->setSpacing(6);
+
+    ui->modifierProbLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierProbLayout->setSpacing(6);
+
+    ui->modifierMagLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierMagLayout->setSpacing(6);
+
+    ui->modifierRateLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierRateLayout->setSpacing(6);
+
+    ui->modifierWidthLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierWidthLayout->setSpacing(6);
+
+    ui->modifierDetuneLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierDetuneLayout->setSpacing(6);
+
+    ui->modifierResLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierResLayout->setSpacing(6);
+}
+
+
+// 3 Helpers for switching modifier fields between SOUND and PARTIAL modes
+// without accidentally overwriting backend values.
+void Modifiers::setSoundFieldsFromBackend()
+{
+    Modifier& mod = getBackendLayer();
+
+    ui->modifierProbEdit->blockSignals(true);
+    ui->modifierProbEdit->setText(mod.probability);
+    ui->modifierProbEdit->blockSignals(false);
+
+    ui->modifierMagEdit->blockSignals(true);
+    ui->modifierMagEdit->setText(mod.amplitude);
+    ui->modifierMagEdit->blockSignals(false);
+
+    ui->modifierRateEdit->blockSignals(true);
+    ui->modifierRateEdit->setText(mod.rate);
+    ui->modifierRateEdit->blockSignals(false);
+
+    ui->modifierWidthEdit->blockSignals(true);
+    ui->modifierWidthEdit->setText(mod.width);
+    ui->modifierWidthEdit->blockSignals(false);
+
+    ui->modifierSpreadEdit->blockSignals(true);
+    ui->modifierSpreadEdit->setText(mod.detune_spread);
+    ui->modifierSpreadEdit->blockSignals(false);
+
+    ui->modifierDirEdit->blockSignals(true);
+    ui->modifierDirEdit->setText(mod.detune_direction);
+    ui->modifierDirEdit->blockSignals(false);
+
+    ui->modifierVelEdit->blockSignals(true);
+    ui->modifierVelEdit->setText(mod.detune_velocity);
+    ui->modifierVelEdit->blockSignals(false);
+}
+
+void Modifiers::clearSoundFieldsForPartialMode()
+{
+    ui->modifierProbEdit->blockSignals(true);
+    ui->modifierProbEdit->clear();
+    ui->modifierProbEdit->blockSignals(false);
+
+    ui->modifierMagEdit->blockSignals(true);
+    ui->modifierMagEdit->clear();
+    ui->modifierMagEdit->blockSignals(false);
+
+    ui->modifierRateEdit->blockSignals(true);
+    ui->modifierRateEdit->clear();
+    ui->modifierRateEdit->blockSignals(false);
+
+    ui->modifierWidthEdit->blockSignals(true);
+    ui->modifierWidthEdit->clear();
+    ui->modifierWidthEdit->blockSignals(false);
+
+    ui->modifierSpreadEdit->blockSignals(true);
+    ui->modifierSpreadEdit->clear();
+    ui->modifierSpreadEdit->blockSignals(false);
+
+    ui->modifierDirEdit->blockSignals(true);
+    ui->modifierDirEdit->clear();
+    ui->modifierDirEdit->blockSignals(false);
+
+    ui->modifierVelEdit->blockSignals(true);
+    ui->modifierVelEdit->clear();
+    ui->modifierVelEdit->blockSignals(false);
+}
+
+void Modifiers::updateFieldsForApplyMode()
+{
+    const bool isPartial = (ui->modifierApply->currentIndex() == 1);
+    Modifier& mod = getBackendLayer();
+
+    if (isPartial) {
+        clearSoundFieldsForPartialMode();
+    } else {
+        setSoundFieldsFromBackend();
+    }
+
+    ui->modifierResEdit->blockSignals(true);
+    ui->modifierResEdit->setText(isPartial ? mod.partialresult_string : "");
+    ui->modifierResEdit->blockSignals(false);
+}
+
+// Keep the Apply combo box valid for the selected modifier type.
+// DETUNE only supports SOUND, while other modifier types may use PARTIAL.
+// This also preserves an existing PARTIAL choice when it is still allowed.
+void Modifiers::updateApplyOptionsForModifierType()
+{
+    const int modifierType = currentModifierType(ui->modifierType);
+    const bool isDetune = (modifierType == detuneType);
+
+    Modifier& mod = getBackendLayer();
+    const bool shouldUsePartial = (!isDetune && mod.applyhow_flag);
+
+    ui->modifierApply->blockSignals(true);
+    ui->modifierApply->clear();
+    ui->modifierApply->addItem("SOUND");
+
+    if (!isDetune) {
+        ui->modifierApply->addItem("PARTIAL");
+    }
+
+    ui->modifierApply->setCurrentIndex(shouldUsePartial ? 1 : 0);
+    ui->modifierApply->blockSignals(false);
+
+    mod.applyhow_flag = shouldUsePartial;
 }
 
 void Modifiers::updateModState() {
@@ -315,38 +460,65 @@ void Modifiers::modFunctionButtonClicked(ModChanged type) {
 
     if (!target) return;
 
-    // The structured editor is deliberately PHASE_MOD-only. Other modifier
-    // types retain their legacy FunctionGenerator path and wire semantics.
-    if (type == modPartialChanged
-        && currentModifierType(ui->modifierType) == phaseModType) {
-        ProjectManager* pm = Inst::get_project_manager();
-        int spectrumPartialCount = 0;
-        constexpr int generatedSpectrumPartialCount = 20;
-        if (pm->get_curr_project()) {
-            for (const SpectrumEvent& spectrum : pm->spectrumevents()) {
-                spectrumPartialCount = std::max(
-                    spectrumPartialCount,
-                    static_cast<int>(spectrum.spectrum.partials.size()));
+// In PARTIAL mode, open a structured partial editor instead of the
+// legacy FunctionGenerator path. PHASE_MOD uses its specialized editor;
+// other non-DETUNE modifiers use the general partial editor.
+const int modifierType = currentModifierType(ui->modifierType);
+const bool applyByPartial = (ui->modifierApply->currentIndex() == 1);
 
-                bool isInteger = false;
-                const int declaredCount = spectrum.num_partials.toInt(&isInteger);
-                if (isInteger)
-                    spectrumPartialCount = std::max(spectrumPartialCount, declaredCount);
+if (type == modPartialChanged && applyByPartial) {
+    ProjectManager* pm = Inst::get_project_manager();
+    int spectrumPartialCount = 0;
+    constexpr int generatedSpectrumPartialCount = 20;
 
-                // CMOD's generated-spectrum path currently creates 20 partials.
-                if (!spectrum.generate_spectrum.trimmed().isEmpty())
-                    spectrumPartialCount = std::max(spectrumPartialCount,
-                                                    generatedSpectrumPartialCount);
+    if (pm->get_curr_project()) {
+        for (const SpectrumEvent& spectrum : pm->spectrumevents()) {
+            spectrumPartialCount = std::max(
+                spectrumPartialCount,
+                static_cast<int>(spectrum.spectrum.partials.size()));
+
+            bool isInteger = false;
+            const int declaredCount = spectrum.num_partials.toInt(&isInteger);
+            if (isInteger) {
+                spectrumPartialCount = std::max(spectrumPartialCount, declaredCount);
+            }
+
+            // CMOD's generated-spectrum path currently creates 20 partials.
+            if (!spectrum.generate_spectrum.trimmed().isEmpty()) {
+                spectrumPartialCount = std::max(spectrumPartialCount,
+                                                generatedSpectrumPartialCount);
             }
         }
+    }
 
+    if (modifierType == phaseModType) {
         PartialModifierDialog dialog(this,
                                      std::max(1, spectrumPartialCount),
                                      target->text());
-        if (dialog.exec() == QDialog::Accepted)
+
+        if (dialog.exec() == QDialog::Accepted) {
             target->setText(dialog.resultString());
+        }
+
         return;
     }
+
+    if (modifierType != 3) { // DETUNE does not support PARTIAL mode.
+        GeneralPartialModifierDialog dialog(modifierType,
+                                            spectrumPartialCount,
+                                            target->text(),
+                                            this);
+
+        if (dialog.exec() == QDialog::Accepted) {
+            const QString result = dialog.getResultString();
+            if (!result.isEmpty()) {
+                target->setText(result);
+            }
+        }
+
+        return;
+    }
+}
 
     gen = new FunctionGenerator(nullptr, functionReturnENV, target->text());
     if (gen) {
@@ -356,19 +528,27 @@ void Modifiers::modFunctionButtonClicked(ModChanged type) {
     }
 }
 
-void Modifiers::saveModifierToBackend() {
-    saveCurrentModifierType(ui->modifierType, getBackendLayer());
-    getBackendLayer().applyhow_flag = ui->modifierApply->currentIndex();
+// Save modifier data according to the selected apply mode.
+// This prevents PARTIAL mode from overwriting SOUND fields with visually cleared values.
+void Modifiers::saveModifierToBackend(){
+    Modifier& mod = getBackendLayer();
+    saveCurrentModifierType(ui->modifierType, mod);
+    mod.applyhow_flag = (ui->modifierApply->currentIndex() == 1);
     modTextChanged(modNameChanged);
-    modTextChanged(modProbabilityChanged);
-    modTextChanged(modMagnitudeChanged);
-    modTextChanged(modRateChanged);
-    modTextChanged(modWidthChanged);
-    modTextChanged(modPartialChanged);
-    modTextChanged(modSpreadChanged);
-    modTextChanged(modDirChanged);
-    modTextChanged(modVelChanged);
 
+    if (mod.applyhow_flag) {
+        // PARTIAL mode: only PartialResultString is used.
+        modTextChanged(modPartialChanged);
+    } else {
+        // SOUND mode: only top-level sound fields are used.
+        modTextChanged(modProbabilityChanged);
+        modTextChanged(modMagnitudeChanged);
+        modTextChanged(modRateChanged);
+        modTextChanged(modWidthChanged);
+        modTextChanged(modSpreadChanged);
+        modTextChanged(modDirChanged);
+        modTextChanged(modVelChanged);
+    }
 }
 
 void Modifiers::setModifierData(Modifier& modData) {
@@ -417,6 +597,8 @@ void Modifiers::setModifierData(Modifier& modData) {
     ui->modifierResEdit->setText(modData.partialresult_string);
     ui->modifierResEdit->blockSignals(false);
 
+    updateApplyOptionsForModifierType();
+    updateFieldsForApplyMode();
     updateModState();
 }
 

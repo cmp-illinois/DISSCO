@@ -21,12 +21,13 @@ inline bool fieldEnabled(int modifierType, int field, bool applyByPartial)
     };
     if (modifierType < 0 || modifierType >= 8 || field < 0 || field >= fieldCount)
         return false;
-    // In PARTIAL mode CMOD reads these values exclusively from
-    // PartialResultString. Leaving the top-level PM controls enabled would
-    // make edits appear effective even though CMOD ignores them.
-    if (modifierType == 7 && applyByPartial)
+    // In PARTIAL mode, CMOD reads modifier envelopes from PartialResultString.
+    // Keep only that field editable so the top-level SOUND fields do not look active.
+    if (applyByPartial) {
         return field == 7;
-    return field == 7 ? applyByPartial : fields[modifierType][field];
+    }
+    // In SOUND mode, PartialResultString is not used.
+    return field == 7 ? false : fields[modifierType][field];
 }
 
 } // namespace ModifierUiPolicy
