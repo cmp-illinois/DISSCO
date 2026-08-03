@@ -10,6 +10,7 @@
 #include <QTextEdit>
 #include <QDialogButtonBox>
 #include <QDialog>
+#include <QSizePolicy>
 
 #include <algorithm>
 #include <string>
@@ -57,8 +58,8 @@ Modifiers::Modifiers(Eventtype eventType, unsigned eventIndex, int modifierIndex
     for (int index = 0; index < modifierTypeCount; ++index)
         ui->modifierType->setItemData(index, modifierTypesByDisplayOrder[index]);
 
-    this->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    this->setMinimumHeight(480);
+    this->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
+    this->setMinimumHeight(0);
 
     setupUi();
     ui->modifierSpreadLabel->adjustSize();
@@ -181,6 +182,37 @@ void Modifiers::setupUi() {
                 getBackendLayer().applyhow_flag = index;
                 updateModState();
             });
+
+    // Reduce spacing between modifier rows.
+    ui->modifierGroupLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierGroupLayout->setSpacing(0);
+
+    ui->modifierLayout->setContentsMargins(8, 8, 8, 8);
+    ui->modifierLayout->setSpacing(4);
+
+    ui->modifierRemoveLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierRemoveLayout->setSpacing(6);
+
+    ui->modifierNameLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierNameLayout->setSpacing(6);
+
+    ui->modifierProbLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierProbLayout->setSpacing(6);
+
+    ui->modifierMagLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierMagLayout->setSpacing(6);
+
+    ui->modifierRateLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierRateLayout->setSpacing(6);
+
+    ui->modifierWidthLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierWidthLayout->setSpacing(6);
+
+    ui->modifierDetuneLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierDetuneLayout->setSpacing(6);
+
+    ui->modifierResLayout->setContentsMargins(0, 0, 0, 0);
+    ui->modifierResLayout->setSpacing(6);
 }
 
 void Modifiers::updateModState() {
