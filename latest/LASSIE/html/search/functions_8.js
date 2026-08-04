@@ -10,5 +10,6 @@ var searchData=
   ['insertrequested_7',['insertrequested',['../classFunctionEntryRow.html#a40173e0d79d52fc2e1e289873527f9d6',1,'FunctionEntryRow::insertRequested()'],['../classMakeEnvelopeRow.html#a17244bc7f8be1ff075a7bf77838aec3f',1,'MakeEnvelopeRow::insertRequested()']]],
   ['instance_8',['instance',['../classFunctionRegistry.html#a2533dd10f3042e64520beaad70002952',1,'FunctionRegistry::instance()'],['../classInst.html#a381828beaa899ba49afd23d835ac514f',1,'Inst::instance()'],['../classMainWindow.html#ab43b7a45b545abf4d62ae4a1cd38e715',1,'MainWindow::instance()']]],
   ['inversefunction_9',['InverseFunction',['../classInverseFunction.html#a9171cb8b44237fb7093dfc5f02a83c5d',1,'InverseFunction']]],
-  ['isregistered_10',['isRegistered',['../classFunctionRegistry.html#ac66cdead7f70ffdd3432d408fe64ad29',1,'FunctionRegistry']]]
+  ['isregistered_10',['isRegistered',['../classFunctionRegistry.html#ac66cdead7f70ffdd3432d408fe64ad29',1,'FunctionRegistry']]],
+  ['isvalid_11',['isValid',['../structModifierUsageAnalysis.html#a97b25475e9185698205e991eb92e27e1',1,'ModifierUsageAnalysis']]]
 ];

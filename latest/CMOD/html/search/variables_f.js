@@ -1,19 +1,15 @@
 var searchData=
 [
-  ['tempo_0',['tempo',['../classEvent.html#aa3e83358d1fb2c3574211cc999eee15f',1,'Event::tempo'],['../classSoundAndNoteWrapper.html#a5b2e5664d0fc858838a7df618df94c6e',1,'SoundAndNoteWrapper::tempo']]],
-  ['tempo_5f_1',['tempo_',['../structTimeSignature.html#a09fef22efe83f296bcf211818fb39b89',1,'TimeSignature']]],
-  ['temporarychildevents_2',['temporaryChildEvents',['../classEvent.html#a2f9101939640b1e44073a5e7cca0e077',1,'Event']]],
-  ['temporaryxmldocuments_3',['temporaryXMLDocuments',['../classEvent.html#aae074e1205fe23a2c8e094f7d4f19109',1,'Event']]],
-  ['time_5fsignature_5f_4',['time_signature_',['../structTimeSignature.html#a8ecd7da260ff2d8b39699e1445ad8429',1,'TimeSignature']]],
-  ['topeventnames_5',['topEventnames',['../classUtilities.html#af8481d606a9bd331c433c5d400769b74',1,'Utilities']]],
-  ['topeventvalues_6',['topEventValues',['../classUtilities.html#a49130e9fde5cdd9f431f1b8bef6e7ccb',1,'Utilities']]],
-  ['ts_7',['ts',['../classSoundAndNoteWrapper.html#acdebe83700a38d71eb389b0c06eb4318',1,'SoundAndNoteWrapper::ts'],['../classEvent.html#aca5119157ca9b037b946edf39ab8fedb',1,'Event::ts']]],
-  ['tschild_8',['tsChild',['../classEvent.html#a5302d6bdaba9395a9c92c76aeead0d64',1,'Event']]],
-  ['tsprevious_9',['tsPrevious',['../classEvent.html#aa5f51744bb50ea847ec2414374630c31',1,'Event']]],
-  ['tuplet_5flimit_5f_10',['tuplet_limit_',['../structTimeSignature.html#a03a141c1500c2b9f3be44852eebc853f',1,'TimeSignature']]],
-  ['tuplet_5fnames_11',['tuplet_names',['../tables_8cpp.html#ad4d5ea265d8a9a9191b6ec03edc7e2f5',1,'tuplet_names:&#160;tables.cpp'],['../tables_8h.html#ad4d5ea265d8a9a9191b6ec03edc7e2f5',1,'tuplet_names:&#160;tables.cpp']]],
-  ['tuplet_5ftypes_5f_12',['tuplet_types_',['../structTimeSignature.html#a38270bc43107a0e6cd80513a9a6f35be',1,'TimeSignature']]],
-  ['type_13',['type',['../classSoundAndNoteWrapper.html#a7f8f15b14021ebd6839c85e3938c0995',1,'SoundAndNoteWrapper::type'],['../classEvent.html#aa8f27a09d800e0c1bf573877130d5038',1,'Event::type'],['../structMatPoint.html#a6fc6389322e0ccc9bcecb342167a938b',1,'MatPoint::type']]],
-  ['types_14',['types',['../tables_8cpp.html#a67859543a158addd11afa10dbde40c07',1,'types:&#160;tables.cpp'],['../tables_8h.html#a67859543a158addd11afa10dbde40c07',1,'types:&#160;tables.cpp']]],
-  ['typevect_15',['typeVect',['../classEvent.html#affbce601937c529756b935a66ebe773b',1,'Event']]]
+  ['scope_0',['scope',['../structdissco_1_1modifier__usage_1_1Program_1_1Impl.html#a9d08cc5edc8a60c05496f1849e0628d8',1,'dissco::modifier_usage::Program::Impl::scope'],['../structdissco_1_1modifier__usage_1_1Config.html#a274fe9f1e6cd4a4fe9312112f9ba127d',1,'dissco::modifier_usage::Config::scope']]],
+  ['sievealigned_1',['sieveAligned',['../classEvent.html#a203c45a8b0f064a8f1537a2312cf9248',1,'Event']]],
+  ['sieveeventnames_2',['sieveEventnames',['../classUtilities.html#aa3cf3cde3623bde8f028cb2f68caa32a',1,'Utilities']]],
+  ['spatializationelement_3',['spatializationElement',['../classEvent.html#a59ce688d3e31812a12ef8a899ef9efb0',1,'Event']]],
+  ['spatializationeventnames_4',['spatializationEventnames',['../classUtilities.html#a6960b97ca19a9f4d80593a60985fa867',1,'Utilities']]],
+  ['spectrumeventnames_5',['spectrumEventnames',['../classUtilities.html#a094351786c9f2236d4cbde9c6aa887fd',1,'Utilities']]],
+  ['start_6',['start',['../structTimeSpan.html#a2fc8d33336a99eb1016864c6b62cc6aa',1,'TimeSpan']]],
+  ['start_5ftime_5fglobal_5f_7',['start_time_global_',['../structTimeSignature.html#ada79a8c1e4868f93d6f7d6d6246e0749',1,'TimeSignature']]],
+  ['startedu_8',['startEDU',['../structTimeSpan.html#a14c330b46be7a6b78954424f2e15da4e',1,'TimeSpan']]],
+  ['starteduabsolute_9',['startEDUAbsolute',['../structTimeSpan.html#aa7c4106bc32d094be7b3a8df1d900140',1,'TimeSpan']]],
+  ['stime_10',['stime',['../structMatPoint.html#ac19678ff78930e160c61ad2d886e399b',1,'MatPoint']]],
+  ['subnodes_11',['subNodes',['../structOutputNode.html#a724eb5ae45e1ad1853732ed93cb1829f',1,'OutputNode']]]
 ];

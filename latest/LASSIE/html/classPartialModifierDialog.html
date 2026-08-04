@@ -73,6 +73,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classPartialModifierDialog-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">PartialModifierDialog Class Reference</div></div>
 </div><!--header-->
@@ -102,19 +103,24 @@ Collaboration diagram for PartialModifierDialog:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a383112cfd4f52e2bb3c53055f4ac2bba" id="r_a383112cfd4f52e2bb3c53055f4ac2bba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartialModifierDialog.html#a383112cfd4f52e2bb3c53055f4ac2bba">PartialModifierDialog</a> (QWidget *parent, int spectrumPartialCount, const QString &amp;originalString=QString())</td></tr>
-<tr class="separator:a383112cfd4f52e2bb3c53055f4ac2bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae80b4953d153710cbfcc7dac06ac7c6c" id="r_ae80b4953d153710cbfcc7dac06ac7c6c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartialModifierDialog.html#ae80b4953d153710cbfcc7dac06ac7c6c">PartialModifierDialog</a> (QWidget *parent, int modifierType, const <a class="el" href="structModifierUiPolicy_1_1PartialRowConstraint.html">ModifierUiPolicy::PartialRowConstraint</a> &amp;constraint, const QString &amp;originalString=QString())</td></tr>
+<tr class="separator:ae80b4953d153710cbfcc7dac06ac7c6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70398f166d240f00994c93b6067862b0" id="r_a70398f166d240f00994c93b6067862b0"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartialModifierDialog.html#a70398f166d240f00994c93b6067862b0">resultString</a> () const</td></tr>
 <tr class="separator:a70398f166d240f00994c93b6067862b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a6801ac2b6604549367ef67c94381c147" id="r_a6801ac2b6604549367ef67c94381c147"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartialModifierDialog.html#a6801ac2b6604549367ef67c94381c147">accept</a> () override</td></tr>
+<tr class="separator:a6801ac2b6604549367ef67c94381c147"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Structured editor for a Bottom PHASE_MOD modifier applied by PARTIAL.</p>
-<p>CMOD's legacy format stores four adjacent &lt;Envelope&gt; elements for every partial, in probability/magnitude/width/rate order. This dialog deliberately keeps that wire format while presenting the values as normal ENV function entries instead of asking users to hand-author the XML wrapper. </p>
+<div class="textblock"><p>Structured editor for any Bottom modifier applied by PARTIAL.</p>
+<p>CMOD's legacy format stores four adjacent &lt;Envelope&gt; elements for every partial, in probability/magnitude/width/rate order. This dialog deliberately keeps that wire format while showing only the parameters consumed by the selected modifier type. </p>
 
-<p class="definition">Definition at line <a class="el" href="PartialModifierDialog_8hpp_source.html#l00024">24</a> of file <a class="el" href="PartialModifierDialog_8hpp_source.html">PartialModifierDialog.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PartialModifierDialog_8hpp_source.html#l00028">28</a> of file <a class="el" href="PartialModifierDialog_8hpp_source.html">PartialModifierDialog.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a383112cfd4f52e2bb3c53055f4ac2bba" name="a383112cfd4f52e2bb3c53055f4ac2bba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a383112cfd4f52e2bb3c53055f4ac2bba">&#9670;&#160;</a></span>PartialModifierDialog()</h2>
+<a id="ae80b4953d153710cbfcc7dac06ac7c6c" name="ae80b4953d153710cbfcc7dac06ac7c6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae80b4953d153710cbfcc7dac06ac7c6c">&#9670;&#160;</a></span>PartialModifierDialog()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -132,7 +138,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>spectrumPartialCount</em>, </td>
+          <td class="paramname"><em>modifierType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structModifierUiPolicy_1_1PartialRowConstraint.html">ModifierUiPolicy::PartialRowConstraint</a> &amp;&#160;</td>
+          <td class="paramname"><em>constraint</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -153,21 +165,93 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PartialModifierDialog_8cpp_source.html#l00017">17</a> of file <a class="el" href="PartialModifierDialog_8cpp_source.html">PartialModifierDialog.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PartialModifierDialog_8cpp_source.html#l00069">69</a> of file <a class="el" href="PartialModifierDialog_8cpp_source.html">PartialModifierDialog.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classPartialModifierDialog_a383112cfd4f52e2bb3c53055f4ac2bba_cgraph.png" border="0" usemap="#aclassPartialModifierDialog_a383112cfd4f52e2bb3c53055f4ac2bba_cgraph" alt=""/></div>
-<map name="aclassPartialModifierDialog_a383112cfd4f52e2bb3c53055f4ac2bba_cgraph" id="aclassPartialModifierDialog_a383112cfd4f52e2bb3c53055f4ac2bba_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,172,45"/>
-<area shape="rect" href="namespacePartialModifierFormat.html#a926e66a7fa597d21cf05cc79b4a8939a" title=" " alt="" coords="220,5,383,45"/>
-<area shape="poly" title=" " alt="" coords="172,23,206,23,206,28,172,28"/>
+<div class="center"><img src="classPartialModifierDialog_ae80b4953d153710cbfcc7dac06ac7c6c_cgraph.png" border="0" usemap="#aclassPartialModifierDialog_ae80b4953d153710cbfcc7dac06ac7c6c_cgraph" alt=""/></div>
+<map name="aclassPartialModifierDialog_ae80b4953d153710cbfcc7dac06ac7c6c_cgraph" id="aclassPartialModifierDialog_ae80b4953d153710cbfcc7dac06ac7c6c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,191,172,231"/>
+<area shape="rect" href="classPartialModifierDialog.html#a6801ac2b6604549367ef67c94381c147" title=" " alt="" coords="227,101,386,141"/>
+<area shape="poly" title=" " alt="" coords="137,188,243,144,245,149,139,193"/>
+<area shape="rect" href="namespacePartialModifierFormat.html#a926e66a7fa597d21cf05cc79b4a8939a" title=" " alt="" coords="687,161,849,201"/>
+<area shape="poly" title=" " alt="" coords="172,204,673,183,673,188,172,210"/>
+<area shape="rect" href="namespaceModifierUiPolicy.html#a5606150df80372e2b78702ffbfd48945" title=" " alt="" coords="220,248,393,288"/>
+<area shape="poly" title=" " alt="" coords="166,228,218,242,216,247,165,233"/>
+<area shape="rect" href="classPartialModifierDialog.html#a70398f166d240f00994c93b6067862b0" title=" " alt="" coords="461,5,619,45"/>
+<area shape="poly" title=" " alt="" coords="345,99,440,55,460,47,462,52,442,60,348,104"/>
+<area shape="rect" href="namespaceModifierUiPolicy.html#a827b6b091388dc725421a60e09debe05" title=" " alt="" coords="441,69,639,109"/>
+<area shape="poly" title=" " alt="" coords="386,108,427,102,428,107,386,113"/>
+<area shape="rect" href="namespacePartialModifierFormat.html#a6cca1105fafae66b2760b8f3217b7236" title=" " alt="" coords="459,133,621,173"/>
+<area shape="poly" title=" " alt="" coords="386,130,445,138,445,143,386,135"/>
+<area shape="rect" href="namespacePartialModifierFormat.html#aa02a0fadc4d5fec127e31c7b3dddab97" title=" " alt="" coords="687,5,849,45"/>
+<area shape="poly" title=" " alt="" coords="620,23,673,23,673,28,620,28"/>
+<area shape="rect" href="namespacePartialModifierFormat.html#a0cf3ac75b346cd1db0fbbfdfb1621ee4" title=" " alt="" coords="897,5,1060,45"/>
+<area shape="poly" title=" " alt="" coords="850,23,884,23,884,28,850,28"/>
+<area shape="poly" title=" " alt="" coords="622,161,673,167,673,172,621,166"/>
 </map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6801ac2b6604549367ef67c94381c147" name="a6801ac2b6604549367ef67c94381c147"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6801ac2b6604549367ef67c94381c147">&#9670;&#160;</a></span>accept()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PartialModifierDialog::accept </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="PartialModifierDialog_8cpp_source.html#l00312">312</a> of file <a class="el" href="PartialModifierDialog_8cpp_source.html">PartialModifierDialog.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPartialModifierDialog_a6801ac2b6604549367ef67c94381c147_cgraph.png" border="0" usemap="#aclassPartialModifierDialog_a6801ac2b6604549367ef67c94381c147_cgraph" alt=""/></div>
+<map name="aclassPartialModifierDialog_a6801ac2b6604549367ef67c94381c147_cgraph" id="aclassPartialModifierDialog_a6801ac2b6604549367ef67c94381c147_cgraph">
+<area shape="rect" title=" " alt="" coords="5,69,164,109"/>
+<area shape="rect" href="classPartialModifierDialog.html#a70398f166d240f00994c93b6067862b0" title=" " alt="" coords="231,5,390,45"/>
+<area shape="poly" title=" " alt="" coords="155,67,225,47,227,52,157,72"/>
+<area shape="rect" href="namespaceModifierUiPolicy.html#a827b6b091388dc725421a60e09debe05" title=" " alt="" coords="212,69,409,109"/>
+<area shape="poly" title=" " alt="" coords="164,87,198,87,198,92,164,92"/>
+<area shape="rect" href="namespacePartialModifierFormat.html#a6cca1105fafae66b2760b8f3217b7236" title=" " alt="" coords="229,133,392,173"/>
+<area shape="poly" title=" " alt="" coords="157,107,227,127,225,132,155,112"/>
+<area shape="rect" href="namespacePartialModifierFormat.html#aa02a0fadc4d5fec127e31c7b3dddab97" title=" " alt="" coords="457,5,620,45"/>
+<area shape="poly" title=" " alt="" coords="390,23,444,23,444,28,390,28"/>
+<area shape="rect" href="namespacePartialModifierFormat.html#a0cf3ac75b346cd1db0fbbfdfb1621ee4" title=" " alt="" coords="668,5,831,45"/>
+<area shape="poly" title=" " alt="" coords="620,23,654,23,654,28,620,28"/>
+<area shape="rect" href="namespacePartialModifierFormat.html#a926e66a7fa597d21cf05cc79b4a8939a" title=" " alt="" coords="457,133,620,173"/>
+<area shape="poly" title=" " alt="" coords="392,151,444,151,444,156,392,156"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPartialModifierDialog_a6801ac2b6604549367ef67c94381c147_icgraph.png" border="0" usemap="#aclassPartialModifierDialog_a6801ac2b6604549367ef67c94381c147_icgraph" alt=""/></div>
+<map name="aclassPartialModifierDialog_a6801ac2b6604549367ef67c94381c147_icgraph" id="aclassPartialModifierDialog_a6801ac2b6604549367ef67c94381c147_icgraph">
+<area shape="rect" title=" " alt="" coords="220,5,379,45"/>
+<area shape="rect" href="classPartialModifierDialog.html#ae80b4953d153710cbfcc7dac06ac7c6c" title=" " alt="" coords="5,5,172,45"/>
+<area shape="poly" title=" " alt="" coords="206,28,172,28,172,23,206,23"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a70398f166d240f00994c93b6067862b0" name="a70398f166d240f00994c93b6067862b0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a70398f166d240f00994c93b6067862b0">&#9670;&#160;</a></span>resultString()</h2>
 
@@ -183,7 +267,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PartialModifierDialog_8cpp_source.html#l00148">148</a> of file <a class="el" href="PartialModifierDialog_8cpp_source.html">PartialModifierDialog.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PartialModifierDialog_8cpp_source.html#l00296">296</a> of file <a class="el" href="PartialModifierDialog_8cpp_source.html">PartialModifierDialog.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -194,6 +278,18 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="164,23,198,23,198,28,164,28"/>
 <area shape="rect" href="namespacePartialModifierFormat.html#a0cf3ac75b346cd1db0fbbfdfb1621ee4" title=" " alt="" coords="423,5,585,45"/>
 <area shape="poly" title=" " alt="" coords="375,23,409,23,409,28,375,28"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPartialModifierDialog_a70398f166d240f00994c93b6067862b0_icgraph.png" border="0" usemap="#aclassPartialModifierDialog_a70398f166d240f00994c93b6067862b0_icgraph" alt=""/></div>
+<map name="aclassPartialModifierDialog_a70398f166d240f00994c93b6067862b0_icgraph" id="aclassPartialModifierDialog_a70398f166d240f00994c93b6067862b0_icgraph">
+<area shape="rect" title=" " alt="" coords="427,5,585,45"/>
+<area shape="rect" href="classPartialModifierDialog.html#a6801ac2b6604549367ef67c94381c147" title=" " alt="" coords="220,5,379,45"/>
+<area shape="poly" title=" " alt="" coords="413,28,379,28,379,23,413,23"/>
+<area shape="rect" href="classPartialModifierDialog.html#ae80b4953d153710cbfcc7dac06ac7c6c" title=" " alt="" coords="5,5,172,45"/>
+<area shape="poly" title=" " alt="" coords="206,28,172,28,172,23,206,23"/>
 </map>
 </div>
 

@@ -1,7 +1,11 @@
 <map id="PartialModifierFormat::normalizedValue" name="PartialModifierFormat::normalizedValue">
-<area shape="rect" id="Node000001" title=" " alt="" coords="423,5,585,45"/>
-<area shape="rect" id="Node000002" href="$namespacePartialModifierFormat.html#aa02a0fadc4d5fec127e31c7b3dddab97" title=" " alt="" coords="212,5,375,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="409,28,375,28,375,23,409,23"/>
-<area shape="rect" id="Node000003" href="$classPartialModifierDialog.html#a70398f166d240f00994c93b6067862b0" title=" " alt="" coords="5,5,164,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="198,28,164,28,164,23,198,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="844,5,1007,45"/>
+<area shape="rect" id="Node000002" href="$namespacePartialModifierFormat.html#aa02a0fadc4d5fec127e31c7b3dddab97" title=" " alt="" coords="633,5,796,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="830,28,796,28,796,23,830,23"/>
+<area shape="rect" id="Node000003" href="$classPartialModifierDialog.html#a70398f166d240f00994c93b6067862b0" title=" " alt="" coords="427,5,585,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="619,28,586,28,586,23,619,23"/>
+<area shape="rect" id="Node000004" href="$classPartialModifierDialog.html#a6801ac2b6604549367ef67c94381c147" title=" " alt="" coords="220,5,379,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="413,28,379,28,379,23,413,23"/>
+<area shape="rect" id="Node000005" href="$classPartialModifierDialog.html#ae80b4953d153710cbfcc7dac06ac7c6c" title=" " alt="" coords="5,5,172,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="206,28,172,28,172,23,206,23"/>
 </map>

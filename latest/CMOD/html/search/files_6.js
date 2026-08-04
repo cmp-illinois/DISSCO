@@ -5,6 +5,8 @@ var searchData=
   ['matrix_2eh_2',['Matrix.h',['../Matrix_8h.html',1,'']]],
   ['modifier_2ecpp_3',['Modifier.cpp',['../Modifier_8cpp.html',1,'']]],
   ['modifier_2eh_4',['Modifier.h',['../Modifier_8h.html',1,'']]],
-  ['modparser_2ecpp_5',['ModParser.cpp',['../ModParser_8cpp.html',1,'']]],
-  ['modparser_2eh_6',['ModParser.h',['../ModParser_8h.html',1,'']]]
+  ['modifierusage_2ecpp_5',['ModifierUsage.cpp',['../ModifierUsage_8cpp.html',1,'']]],
+  ['modifierusage_2ehpp_6',['ModifierUsage.hpp',['../ModifierUsage_8hpp.html',1,'']]],
+  ['modparser_2ecpp_7',['ModParser.cpp',['../ModParser_8cpp.html',1,'']]],
+  ['modparser_2eh_8',['ModParser.h',['../ModParser_8h.html',1,'']]]
 ];

@@ -1,11 +1,14 @@
 var searchData=
 [
-  ['ratios_0',['ratios',['../tables_8cpp.html#a8fc633a00067cc4869b62998bde0ac11',1,'ratios:&#160;tables.cpp'],['../tables_8h.html#a8fc633a00067cc4869b62998bde0ac11',1,'ratios:&#160;tables.cpp']]],
-  ['rest_5fratios_1',['rest_ratios',['../tables_8cpp.html#a06373c9ee04509a2f9ec87954a57aa20',1,'rest_ratios:&#160;tables.cpp'],['../tables_8h.html#a06373c9ee04509a2f9ec87954a57aa20',1,'rest_ratios:&#160;tables.cpp']]],
-  ['rest_5fsigns_2',['rest_signs',['../tables_8cpp.html#abb91e7617a452e0cf7188a4fd527f4e3',1,'rest_signs:&#160;tables.cpp'],['../tables_8h.html#abb91e7617a452e0cf7188a4fd527f4e3',1,'rest_signs:&#160;tables.cpp']]],
-  ['restartsallowedwithfewerchildren_3',['restartsAllowedWithFewerChildren',['../classEvent.html#a3eb4a40b9a37a96c283adb613afe5b67',1,'Event']]],
-  ['restartsnormallyallowed_4',['restartsNormallyAllowed',['../classEvent.html#a591bafbb334be84abd62858c55f5305d',1,'Event']]],
-  ['restartsremaining_5',['restartsRemaining',['../classEvent.html#afc44d7912e4f7026f999477d2af21204',1,'Event']]],
-  ['reverberationelement_6',['reverberationElement',['../classEvent.html#ab8770f73ab1c2991259f0f58a6b790e5',1,'Event']]],
-  ['reverbeventnames_7',['reverbEventnames',['../classUtilities.html#a1a80fa9c42cf4d2253734f9b75b81af9',1,'Utilities']]]
+  ['pattern_0',['pattern',['../classPatternPair.html#a808f7aad042df96751f3ac39532d80bb',1,'PatternPair']]],
+  ['patterneventnames_1',['patternEventnames',['../classUtilities.html#a170a7fd0e693c4dfa4f3a4a48672b020',1,'Utilities']]],
+  ['patternstorage_2',['patternStorage',['../classEvent.html#a142633153dfd258351524e17bc3e16e1',1,'Event']]],
+  ['perbottomselection_3',['perBottomSelection',['../structdissco_1_1modifier__usage_1_1Program_1_1Impl.html#a1cc8f607dc39ccc5dae8f8a7db1b3a39',1,'dissco::modifier_usage::Program::Impl']]],
+  ['pitchnames_4',['pitchnames',['../tables_8cpp.html#aa0896c1939aeeb20f5e3a2c6b1b60db9',1,'pitchNames:&#160;tables.cpp'],['../tables_8h.html#aa0896c1939aeeb20f5e3a2c6b1b60db9',1,'pitchNames:&#160;tables.cpp']]],
+  ['pow_5fof_5f2_5',['pow_of_2',['../tables_8cpp.html#a25ac721d77b389a4a03d29d20286f4f9',1,'pow_of_2:&#160;tables.cpp'],['../tables_8h.html#a25ac721d77b389a4a03d29d20286f4f9',1,'pow_of_2:&#160;tables.cpp']]],
+  ['previouschildendtime_6',['previousChildEndTime',['../classEvent.html#a52f00124d1d01ac5bdbd3dd3cbac597f',1,'Event']]],
+  ['program_7',['program',['../structBottom_1_1ModifierUsageRuntime.html#a7aa2e70727dda10f3e0712f7beecd05b',1,'Bottom::ModifierUsageRuntime::program'],['../structdissco_1_1modifier__usage_1_1CompileResult.html#a2b33f8bd28828bc491515f8a8e0c703a',1,'dissco::modifier_usage::CompileResult::program']]],
+  ['propertynames_8',['propertyNames',['../structOutputNode.html#ab2d20c55db5536d6d7a7549dfe6e195f',1,'OutputNode']]],
+  ['propertyunits_9',['propertyUnits',['../structOutputNode.html#aae376bf06ca30d7554cff5e6376fe343',1,'OutputNode']]],
+  ['propertyvalues_10',['propertyValues',['../structOutputNode.html#a36c24db930134b61ed0b6bcdd125aad4',1,'OutputNode']]]
 ];

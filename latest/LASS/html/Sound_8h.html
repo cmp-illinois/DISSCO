@@ -314,7 +314,7 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <p>Defines the DynamicParameters that can be set for a <a class="el" href="classSound.html">Sound</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="Sound_8h_source.html#l00126">126</a> of file <a class="el" href="Sound_8h_source.html">Sound.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Sound_8h_source.html#l00127">127</a> of file <a class="el" href="Sound_8h_source.html">Sound.h</a>.</p>
 
 </div>
 </div>
@@ -357,12 +357,13 @@ Enumerations</h2></td></tr>
 </ul>
 </td></tr>
 <tr><td class="fieldname"><a id="a53659c963f5fce879f7cdfa711096e4babacf9a9f24b9050afb20f1dd771578da" name="a53659c963f5fce879f7cdfa711096e4babacf9a9f24b9050afb20f1dd771578da"></a>DETUNE_DIRECTION&#160;</td><td class="fielddoc"><ul>
-<li>-1.0 means do detuning (divergence)</li>
-<li>+1.0 means do tuning (convergence) </li>
+<li>Negative values mean detuning (divergence)</li>
+<li>Positive values mean tuning (convergence)</li>
+<li><a class="el" href="classSound.html#ac6f4c83fd0c489af6c8e5f8ace846afc">Sound::setDetune()</a> stores the direction canonically as -1.0 or +1.0 </li>
 </ul>
 </td></tr>
 <tr><td class="fieldname"><a id="a53659c963f5fce879f7cdfa711096e4ba596e07df58a36791398a5d3b97c7d85c" name="a53659c963f5fce879f7cdfa711096e4ba596e07df58a36791398a5d3b97c7d85c"></a>DETUNE_VELOCITY&#160;</td><td class="fielddoc"><ul>
-<li>Values over [0.0, 1.0]</li>
+<li>Values over [-1.0, 1.0]</li>
 <li>For VELOCITY=0.5, the transition will be linear from start to end. For any other value, the transition will be exponentially interpolated. </li>
 </ul>
 </td></tr>
@@ -373,7 +374,7 @@ Enumerations</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="Sound_8h_source.html#l00110">110</a> of file <a class="el" href="Sound_8h_source.html">Sound.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Sound_8h_source.html#l00111">111</a> of file <a class="el" href="Sound_8h_source.html">Sound.h</a>.</p>
 
 </div>
 </div>

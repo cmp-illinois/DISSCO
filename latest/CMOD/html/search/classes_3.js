@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['notationscore_0',['NotationScore',['../classNotationScore.html',1,'']]],
-  ['note_1',['Note',['../classNote.html',1,'']]],
-  ['notetype_2',['NoteType',['../structNoteType.html',1,'']]]
+  ['entry_0',['Entry',['../structdissco_1_1modifier__usage_1_1Entry.html',1,'dissco::modifier_usage']]],
+  ['event_1',['Event',['../classEvent.html',1,'']]]
 ];

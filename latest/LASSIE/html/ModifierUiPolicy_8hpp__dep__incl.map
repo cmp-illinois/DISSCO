@@ -1,5 +1,16 @@
 <map id="LASSIE/src/widgets/ModifierUiPolicy.hpp" name="LASSIE/src/widgets/ModifierUiPolicy.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,164,45"/>
-<area shape="rect" id="Node000002" href="$Modifiers_8cpp.html" title=" " alt="" coords="12,93,157,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,59,87,93,82,93,82,59"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="302,5,461,45"/>
+<area shape="rect" id="Node000002" href="$ModifierDetailsDialog_8cpp.html" title=" " alt="" coords="5,181,200,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="289,36,223,44,157,56,101,73,81,84,68,95,60,115,64,138,75,160,88,180,84,183,70,163,58,139,54,115,63,92,78,79,99,68,155,51,222,39,288,31"/>
+<area shape="rect" id="Node000003" href="$ModifierRulesDialog_8cpp.html" title=" " alt="" coords="77,93,261,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="323,53,217,96,215,91,321,48"/>
+<area shape="rect" id="Node000004" href="$PartialModifierDialog_8hpp.html" title=" " alt="" coords="286,93,477,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="384,59,384,93,379,93,379,59"/>
+<area shape="rect" id="Node000006" href="$EventAttributesViewController_8cpp.html" title=" " alt="" coords="501,93,750,133"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="449,47,573,91,571,96,447,52"/>
+<area shape="rect" id="Node000007" href="$Modifiers_8cpp.html" title=" " alt="" coords="774,93,919,133"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="475,39,763,91,774,93,773,98,762,96,474,44"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="308,140,164,184,163,179,306,135"/>
+<area shape="rect" id="Node000005" href="$PartialModifierDialog_8cpp.html" title=" " alt="" coords="287,181,476,221"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="384,147,384,181,379,181,379,147"/>
 </map>

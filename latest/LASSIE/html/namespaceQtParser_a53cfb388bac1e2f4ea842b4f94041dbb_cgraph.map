@@ -1,0 +1,9 @@
+<map id="QtParser::parseModifierUsage" name="QtParser::parseModifierUsage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,42,220,67"/>
+<area shape="rect" id="Node000002" href="$namespaceModifierUsageImportPolicy.html#a1dd2cf0b505e0296f7c223526678790b" title=" " alt="" coords="288,5,487,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,41,274,35,275,40,221,46"/>
+<area shape="rect" id="Node000003" href="$namespaceQtParser.html#abdf08e73a7103831369cd249c5e41d11" title=" " alt="" coords="268,70,507,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,63,255,66,254,72,220,68"/>
+<area shape="rect" id="Node000004" href="$namespaceQtParser.html#af29915f8225de418d99395fca9bc08e5" title=" " alt="" coords="555,70,763,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="507,80,541,80,541,85,507,85"/>
+</map>

@@ -17,9 +17,13 @@ var searchData=
   ['midevents_14',['midevents',['../classProjectManager.html#ab368d43e6d98ea7a117b09dccdf973cb',1,'ProjectManager']]],
   ['mode_15',['mode',['../classRevFunctionBase.html#a3d834f3a15364f380a4f247684fbf905',1,'RevFunctionBase']]],
   ['modified_16',['modified',['../classProjectManager.html#a1014c842e39ed515518afe24b27c394c',1,'ProjectManager::modified()'],['../namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160',1,'MUtilities::modified()']]],
-  ['modifiers_17',['Modifiers',['../classModifiers.html#a2d7a9c312eed8f9e9818c26bbbcff0a4',1,'Modifiers']]],
-  ['mousemoveevent_18',['mouseMoveEvent',['../classEnvLibDrawingArea.html#a720fca5e8faaf07a750fb2876581913b',1,'EnvLibDrawingArea']]],
-  ['mousepressevent_19',['mousePressEvent',['../classEnvLibDrawingArea.html#aca692664dc8aa19535b80bab00102141',1,'EnvLibDrawingArea']]],
-  ['mousereleaseevent_20',['mouseReleaseEvent',['../classEnvLibDrawingArea.html#a86b78447c41ef939d691e041ab6f6ed2',1,'EnvLibDrawingArea']]],
-  ['multientryfunction_21',['MultiEntryFunction',['../classMultiEntryFunction.html#a192f702ddc83a30ad117252068513f24',1,'MultiEntryFunction']]]
+  ['modifierdetailsdialog_17',['ModifierDetailsDialog',['../classModifierDetailsDialog.html#a7d9f6d03575c98e03fcf0e80d10c3b2c',1,'ModifierDetailsDialog']]],
+  ['modifierrulesdialog_18',['ModifierRulesDialog',['../classModifierRulesDialog.html#af5e00336cb36dbd5403837736a30c95e',1,'ModifierRulesDialog']]],
+  ['modifiers_19',['Modifiers',['../classModifiers.html#a2d7a9c312eed8f9e9818c26bbbcff0a4',1,'Modifiers']]],
+  ['mousemoveevent_20',['mouseMoveEvent',['../classEnvLibDrawingArea.html#a720fca5e8faaf07a750fb2876581913b',1,'EnvLibDrawingArea']]],
+  ['mousepressevent_21',['mousePressEvent',['../classEnvLibDrawingArea.html#aca692664dc8aa19535b80bab00102141',1,'EnvLibDrawingArea']]],
+  ['mousereleaseevent_22',['mouseReleaseEvent',['../classEnvLibDrawingArea.html#a86b78447c41ef939d691e041ab6f6ed2',1,'EnvLibDrawingArea']]],
+  ['movedownrequested_23',['moveDownRequested',['../classModifiers.html#a2142be08c59a0ab1e6a7bd9f6be1ba50',1,'Modifiers']]],
+  ['moveuprequested_24',['moveUpRequested',['../classModifiers.html#aedecbe6286f9cb96eaf1f4c41b57811d',1,'Modifiers']]],
+  ['multientryfunction_25',['MultiEntryFunction',['../classMultiEntryFunction.html#a192f702ddc83a30ad117252068513f24',1,'MultiEntryFunction']]]
 ];

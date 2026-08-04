@@ -73,7 +73,6 @@ $(function() {
   <div class="summary">
 <a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classModifiers-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Modifiers Class Reference</div></div>
 </div><!--header-->
@@ -105,6 +104,12 @@ Collaboration diagram for Modifiers:</div>
 Signals</h2></td></tr>
 <tr class="memitem:aea234c34a2fc90c847fefc2ab16274a8" id="r_aea234c34a2fc90c847fefc2ab16274a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifiers.html#aea234c34a2fc90c847fefc2ab16274a8">deleteRequested</a> (<a class="el" href="classModifiers.html">Modifiers</a> *self)</td></tr>
 <tr class="separator:aea234c34a2fc90c847fefc2ab16274a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedecbe6286f9cb96eaf1f4c41b57811d" id="r_aedecbe6286f9cb96eaf1f4c41b57811d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifiers.html#aedecbe6286f9cb96eaf1f4c41b57811d">moveUpRequested</a> (<a class="el" href="classModifiers.html">Modifiers</a> *self)</td></tr>
+<tr class="separator:aedecbe6286f9cb96eaf1f4c41b57811d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2142be08c59a0ab1e6a7bd9f6be1ba50" id="r_a2142be08c59a0ab1e6a7bd9f6be1ba50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifiers.html#a2142be08c59a0ab1e6a7bd9f6be1ba50">moveDownRequested</a> (<a class="el" href="classModifiers.html">Modifiers</a> *self)</td></tr>
+<tr class="separator:a2142be08c59a0ab1e6a7bd9f6be1ba50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6799ccd3dbd1981d5db0a24105c6d352" id="r_a6799ccd3dbd1981d5db0a24105c6d352"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifiers.html#a6799ccd3dbd1981d5db0a24105c6d352">dataChanged</a> ()</td></tr>
+<tr class="separator:a6799ccd3dbd1981d5db0a24105c6d352"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -116,17 +121,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aef599aec7ea255ca3923b6ba13eb41db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a236532091cbc41fd513c6e22106eea26" id="r_a236532091cbc41fd513c6e22106eea26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifiers.html#a236532091cbc41fd513c6e22106eea26">saveModifierToBackend</a> ()</td></tr>
 <tr class="separator:a236532091cbc41fd513c6e22106eea26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e9002da63967b82970bf211ad7d4d5c" id="r_a0e9002da63967b82970bf211ad7d4d5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifiers.html#a0e9002da63967b82970bf211ad7d4d5c">setModifierData</a> (<a class="el" href="structModifier.html">Modifier</a> &amp;modData)</td></tr>
-<tr class="separator:a0e9002da63967b82970bf211ad7d4d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a32053cb2bf44048faad4fe0896c1c459" id="r_a32053cb2bf44048faad4fe0896c1c459"><td class="memItemLeft" align="right" valign="top">Ui::Modifiers *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModifiers.html#a32053cb2bf44048faad4fe0896c1c459">ui</a></td></tr>
-<tr class="separator:a32053cb2bf44048faad4fe0896c1c459"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="Modifiers_8hpp_source.html#l00029">29</a> of file <a class="el" href="Modifiers_8hpp_source.html">Modifiers.hpp</a>.</p>
+<div class="textblock"><p>Compact ordered row for one configured <a class="el" href="structModifier.html">Modifier</a> instance.</p>
+<p>Activation settings stay visible in the list. Detailed synthesis fields and conditional exceptions are edited atomically in dialogs. </p>
+
+<p class="definition">Definition at line <a class="el" href="Modifiers_8hpp_source.html#l00018">18</a> of file <a class="el" href="Modifiers_8hpp_source.html">Modifiers.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2d7a9c312eed8f9e9818c26bbbcff0a4" name="a2d7a9c312eed8f9e9818c26bbbcff0a4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2d7a9c312eed8f9e9818c26bbbcff0a4">&#9670;&#160;</a></span>Modifiers()</h2>
@@ -166,17 +166,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Modifiers_8cpp_source.html#l00049">49</a> of file <a class="el" href="Modifiers_8cpp_source.html">Modifiers.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classModifiers_a2d7a9c312eed8f9e9818c26bbbcff0a4_cgraph.png" border="0" usemap="#aclassModifiers_a2d7a9c312eed8f9e9818c26bbbcff0a4_cgraph" alt=""/></div>
-<map name="aclassModifiers_a2d7a9c312eed8f9e9818c26bbbcff0a4_cgraph" id="aclassModifiers_a2d7a9c312eed8f9e9818c26bbbcff0a4_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,156,31"/>
-<area shape="rect" href="classModifiers.html#a0e9002da63967b82970bf211ad7d4d5c" title=" " alt="" coords="204,5,399,31"/>
-<area shape="poly" title=" " alt="" coords="156,15,190,15,190,21,156,21"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="Modifiers_8cpp_source.html#l00029">29</a> of file <a class="el" href="Modifiers_8cpp_source.html">Modifiers.cpp</a>.</p>
 
 </div>
 </div>
@@ -203,11 +193,36 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Modifiers_8cpp_source.html#l00423">423</a> of file <a class="el" href="Modifiers_8cpp_source.html">Modifiers.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Modifiers_8cpp_source.html#l00190">190</a> of file <a class="el" href="Modifiers_8cpp_source.html">Modifiers.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6799ccd3dbd1981d5db0a24105c6d352" name="a6799ccd3dbd1981d5db0a24105c6d352"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6799ccd3dbd1981d5db0a24105c6d352">&#9670;&#160;</a></span>dataChanged</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Modifiers::dataChanged </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aea234c34a2fc90c847fefc2ab16274a8" name="aea234c34a2fc90c847fefc2ab16274a8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aea234c34a2fc90c847fefc2ab16274a8">&#9670;&#160;</a></span>deleteRequested</h2>
 
@@ -219,6 +234,58 @@ Here is the call graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname">void Modifiers::deleteRequested </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classModifiers.html">Modifiers</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2142be08c59a0ab1e6a7bd9f6be1ba50" name="a2142be08c59a0ab1e6a7bd9f6be1ba50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2142be08c59a0ab1e6a7bd9f6be1ba50">&#9670;&#160;</a></span>moveDownRequested</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Modifiers::moveDownRequested </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classModifiers.html">Modifiers</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aedecbe6286f9cb96eaf1f4c41b57811d" name="aedecbe6286f9cb96eaf1f4c41b57811d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedecbe6286f9cb96eaf1f4c41b57811d">&#9670;&#160;</a></span>moveUpRequested</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Modifiers::moveUpRequested </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classModifiers.html">Modifiers</a> *&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -249,37 +316,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Modifiers_8cpp_source.html#l00359">359</a> of file <a class="el" href="Modifiers_8cpp_source.html">Modifiers.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a0e9002da63967b82970bf211ad7d4d5c" name="a0e9002da63967b82970bf211ad7d4d5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e9002da63967b82970bf211ad7d4d5c">&#9670;&#160;</a></span>setModifierData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Modifiers::setModifierData </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structModifier.html">Modifier</a> &amp;&#160;</td>
-          <td class="paramname"><em>modData</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Modifiers_8cpp_source.html#l00374">374</a> of file <a class="el" href="Modifiers_8cpp_source.html">Modifiers.cpp</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classModifiers_a0e9002da63967b82970bf211ad7d4d5c_icgraph.png" border="0" usemap="#aclassModifiers_a0e9002da63967b82970bf211ad7d4d5c_icgraph" alt=""/></div>
-<map name="aclassModifiers_a0e9002da63967b82970bf211ad7d4d5c_icgraph" id="aclassModifiers_a0e9002da63967b82970bf211ad7d4d5c_icgraph">
-<area shape="rect" title=" " alt="" coords="204,5,399,31"/>
-<area shape="rect" href="classModifiers.html#a2d7a9c312eed8f9e9818c26bbbcff0a4" title=" " alt="" coords="5,5,156,31"/>
-<area shape="poly" title=" " alt="" coords="190,21,156,21,156,15,190,15"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="Modifiers_8cpp_source.html#l00113">113</a> of file <a class="el" href="Modifiers_8cpp_source.html">Modifiers.cpp</a>.</p>
 
 </div>
 </div>
@@ -288,9 +325,6 @@ Here is the caller graph for this function:</div>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Modifiers::setModifierIndex </td>
@@ -300,31 +334,9 @@ Here is the caller graph for this function:</div>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Modifiers_8hpp_source.html#l00038">38</a> of file <a class="el" href="Modifiers_8hpp_source.html">Modifiers.hpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a32053cb2bf44048faad4fe0896c1c459" name="a32053cb2bf44048faad4fe0896c1c459"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32053cb2bf44048faad4fe0896c1c459">&#9670;&#160;</a></span>ui</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Ui::Modifiers* Modifiers::ui</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Modifiers_8hpp_source.html#l00042">42</a> of file <a class="el" href="Modifiers_8hpp_source.html">Modifiers.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Modifiers_8cpp_source.html#l00107">107</a> of file <a class="el" href="Modifiers_8cpp_source.html">Modifiers.cpp</a>.</p>
 
 </div>
 </div>

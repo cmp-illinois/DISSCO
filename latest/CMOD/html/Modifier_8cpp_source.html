@@ -306,132 +306,140 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
 <div class="foldopen" id="foldopen00196" data-start="{" data-end="}">
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno"><a class="line" href="classModifier.html#a639c69b69fade3d47bfe19eec79ee81e">  196</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classModifier.html#a639c69b69fade3d47bfe19eec79ee81e">Modifier::applyModifier</a>(Sound* snd) {</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  <span class="keywordflow">if</span> (applyHow == <span class="stringliteral">&quot;SOUND&quot;</span>) {</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    applyModSound(snd);</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (applyHow == <span class="stringliteral">&quot;PARTIAL&quot;</span>) {</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    applyModPartial(snd);</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  }</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>}</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno"><a class="line" href="classModifier.html#aa002bd3cbcadf45a204ef002c4ebb236">  196</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classModifier.html#aa002bd3cbcadf45a204ef002c4ebb236">Modifier::setCheckPoint</a>(<span class="keywordtype">double</span> checkPoint) {</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  checkPt = checkPoint;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>}</div>
 </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="keywordtype">void</span> Modifier::applyModSound(Sound* snd) {</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>  <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;FREQUENCY&quot;</span> || type == <span class="stringliteral">&quot;GLISSANDO&quot;</span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>      || type == <span class="stringliteral">&quot;BEND&quot;</span>) {</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    snd-&gt;setPartialParam(FREQ_ENV, *(env_values[0]));</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;TREMOLO&quot;</span>) {</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    snd-&gt;setPartialParam(TREMOLO_AMP, *(env_values[0]));</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    snd-&gt;setPartialParam(TREMOLO_RATE, *(env_values[1]));</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;VIBRATO&quot;</span>) {</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    snd-&gt;setPartialParam(VIBRATO_AMP, *(env_values[0]));</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    snd-&gt;setPartialParam(VIBRATO_RATE, *(env_values[1]));</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;PHASE_MOD&quot;</span>) {</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keywordflow">if</span> (env_values.size() &lt; 2 || env_values[0] == NULL || env_values[1] == NULL) {</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>      cerr &lt;&lt; <span class="stringliteral">&quot;WARNING: PHASE_MOD requires magnitude and rate envelopes; modifier skipped.&quot;</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>           &lt;&lt; endl;</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>      <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    }</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    snd-&gt;setPartialParam(PHASE_AMP_ENV, *(env_values[0]));</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    snd-&gt;setPartialParam(PHASE_RATE_ENV, *(env_values[1]));</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;PHASE&quot;</span>) {</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="comment">// Legacy single-envelope phase modifier: retain source compatibility,</span></div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="comment">// but treat it as the fixed carrier offset rather than PM.</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    snd-&gt;setPartialParam(CARRIER_PHASE, *(env_values[0]));</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;AMPTRANS&quot;</span>) {</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    snd-&gt;setPartialParam(AMPTRANS_AMP_ENV, *(env_values[0]));</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    snd-&gt;setPartialParam(AMPTRANS_RATE_ENV, *(env_values[1]));</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    snd-&gt;setPartialParam(AMPTRANS_WIDTH, *(env_values[2]));</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;FREQTRANS&quot;</span>) {</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    snd-&gt;setPartialParam(FREQTRANS_AMP_ENV, *(env_values[0]));</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    snd-&gt;setPartialParam(FREQTRANS_RATE_ENV, *(env_values[1]));</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    snd-&gt;setPartialParam(FREQTRANS_WIDTH, *(env_values[2]));</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;WAVE_TYPE&quot;</span>) {</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    snd-&gt;setPartialParam(WAVE_TYPE, env_values[0]-&gt;getValue(checkPt, 1));</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;DETUNE&quot;</span>){</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    snd-&gt;setDetune(direction, spread, velocity);</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>  }<span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    cerr &lt;&lt; <span class="stringliteral">&quot;ERROR: Modifier given an invalid type: &quot;</span> &lt;&lt; type &lt;&lt; endl;</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    exit(1);</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>  }</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>}</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span> </div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="keywordtype">void</span> Modifier::applyModPartial(Sound* snd) {</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>  <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;FREQUENCY&quot;</span> || type == <span class="stringliteral">&quot;GLISSANDO&quot;</span> || type == <span class="stringliteral">&quot;BEND&quot;</span>) {</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="comment">//      || type == &quot;DETUNE&quot; || type == &quot;BEND&quot;) {</span></div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    snd-&gt;get(partialNum).setParam(FREQ_ENV, *(env_values.front()));</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <span class="keyword">delete</span> env_values.front();</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="comment">//    -----------------------added by Sever 2/4/23</span></div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;DETUNE&quot;</span>) {</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    snd-&gt;get(partialNum).setParam(DETUNING_ENV, *(env_values.front()));</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    <span class="keyword">delete</span> env_values.front();</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="comment">//  ----------------------------------------------------</span></div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;TREMOLO&quot;</span>) {</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    snd-&gt;get(partialNum).setParam(TREMOLO_AMP, *(env_values.front()));</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    <span class="keyword">delete</span> env_values.front();</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    snd-&gt;get(partialNum).setParam(TREMOLO_RATE, *(env_values.front()));</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    <span class="keyword">delete</span> env_values.front();</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;VIBRATO&quot;</span>) {</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    snd-&gt;get(partialNum).setParam(VIBRATO_AMP, *(env_values.front()));</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    <span class="keyword">delete</span> env_values.front();</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    snd-&gt;get(partialNum).setParam(VIBRATO_RATE, *(env_values.front()));</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    <span class="keyword">delete</span> env_values.front();</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;PHASE_MOD&quot;</span>) {</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    <span class="keywordflow">if</span> (env_values.size() &lt; 2 || env_values[0] == NULL || env_values[1] == NULL) {</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>      cerr &lt;&lt; <span class="stringliteral">&quot;WARNING: PHASE_MOD requires magnitude and rate envelopes; modifier skipped.&quot;</span></div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>           &lt;&lt; endl;</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>      <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    }</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    snd-&gt;get(partialNum).setParam(PHASE_AMP_ENV, *(env_values.front()));</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <span class="keyword">delete</span> env_values.front();</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    snd-&gt;get(partialNum).setParam(PHASE_RATE_ENV, *(env_values.front()));</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    <span class="keyword">delete</span> env_values.front();</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;PHASE&quot;</span>) {</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    snd-&gt;get(partialNum).setParam(CARRIER_PHASE, *(env_values.front()));</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    <span class="keyword">delete</span> env_values.front();</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;AMPTRANS&quot;</span>) {</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    snd-&gt;get(partialNum).setParam(AMPTRANS_AMP_ENV, *(env_values.front()));</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    <span class="keyword">delete</span> env_values.front();</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    snd-&gt;get(partialNum).setParam(AMPTRANS_RATE_ENV, *(env_values.front()));</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    <span class="keyword">delete</span> env_values.front();</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    snd-&gt;get(partialNum).setParam(AMPTRANS_WIDTH, *(env_values.front()));</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="foldopen" id="foldopen00202" data-start="{" data-end="}">
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno"><a class="line" href="classModifier.html#a639c69b69fade3d47bfe19eec79ee81e">  202</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classModifier.html#a639c69b69fade3d47bfe19eec79ee81e">Modifier::applyModifier</a>(Sound* snd) {</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  <span class="keywordflow">if</span> (applyHow == <span class="stringliteral">&quot;SOUND&quot;</span>) {</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    applyModSound(snd);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (applyHow == <span class="stringliteral">&quot;PARTIAL&quot;</span>) {</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    applyModPartial(snd);</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>  }</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>}</div>
+</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="keywordtype">void</span> Modifier::applyModSound(Sound* snd) {</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;FREQUENCY&quot;</span> || type == <span class="stringliteral">&quot;GLISSANDO&quot;</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>      || type == <span class="stringliteral">&quot;BEND&quot;</span>) {</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    snd-&gt;setPartialParam(FREQ_ENV, *(env_values[0]));</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;TREMOLO&quot;</span>) {</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    snd-&gt;setPartialParam(TREMOLO_AMP, *(env_values[0]));</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    snd-&gt;setPartialParam(TREMOLO_RATE, *(env_values[1]));</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;VIBRATO&quot;</span>) {</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    snd-&gt;setPartialParam(VIBRATO_AMP, *(env_values[0]));</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    snd-&gt;setPartialParam(VIBRATO_RATE, *(env_values[1]));</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;PHASE_MOD&quot;</span>) {</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keywordflow">if</span> (env_values.size() &lt; 2 || env_values[0] == NULL || env_values[1] == NULL) {</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>      cerr &lt;&lt; <span class="stringliteral">&quot;WARNING: PHASE_MOD requires magnitude and rate envelopes; modifier skipped.&quot;</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>           &lt;&lt; endl;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>      <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    }</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    snd-&gt;setPartialParam(PHASE_AMP_ENV, *(env_values[0]));</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    snd-&gt;setPartialParam(PHASE_RATE_ENV, *(env_values[1]));</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;PHASE&quot;</span>) {</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    <span class="comment">// Legacy single-envelope phase modifier: retain source compatibility,</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="comment">// but treat it as the fixed carrier offset rather than PM.</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    snd-&gt;setPartialParam(CARRIER_PHASE, *(env_values[0]));</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;AMPTRANS&quot;</span>) {</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    snd-&gt;setPartialParam(AMPTRANS_AMP_ENV, *(env_values[0]));</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    snd-&gt;setPartialParam(AMPTRANS_RATE_ENV, *(env_values[1]));</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    snd-&gt;setPartialParam(AMPTRANS_WIDTH, *(env_values[2]));</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;FREQTRANS&quot;</span>) {</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    snd-&gt;setPartialParam(FREQTRANS_AMP_ENV, *(env_values[0]));</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    snd-&gt;setPartialParam(FREQTRANS_RATE_ENV, *(env_values[1]));</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    snd-&gt;setPartialParam(FREQTRANS_WIDTH, *(env_values[2]));</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;WAVE_TYPE&quot;</span>) {</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    snd-&gt;setPartialParam(WAVE_TYPE, env_values[0]-&gt;getValue(checkPt, 1));</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;DETUNE&quot;</span>){</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    snd-&gt;setDetune(direction, spread, velocity);</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>  }<span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    cerr &lt;&lt; <span class="stringliteral">&quot;ERROR: Modifier given an invalid type: &quot;</span> &lt;&lt; type &lt;&lt; endl;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    exit(1);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>  }</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>}</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="keywordtype">void</span> Modifier::applyModPartial(Sound* snd) {</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>  <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;FREQUENCY&quot;</span> || type == <span class="stringliteral">&quot;GLISSANDO&quot;</span> || type == <span class="stringliteral">&quot;BEND&quot;</span>) {</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="comment">//      || type == &quot;DETUNE&quot; || type == &quot;BEND&quot;) {</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    snd-&gt;get(partialNum).setParam(FREQ_ENV, *(env_values.front()));</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <span class="keyword">delete</span> env_values.front();</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    env_values.pop_front();</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="comment">//    -----------------------added by Sever 2/4/23</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;DETUNE&quot;</span>) {</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    snd-&gt;get(partialNum).setParam(DETUNING_ENV, *(env_values.front()));</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    <span class="keyword">delete</span> env_values.front();</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    env_values.pop_front();</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="comment">//  ----------------------------------------------------</span></div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;TREMOLO&quot;</span>) {</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    snd-&gt;get(partialNum).setParam(TREMOLO_AMP, *(env_values.front()));</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    <span class="keyword">delete</span> env_values.front();</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    env_values.pop_front();</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    snd-&gt;get(partialNum).setParam(TREMOLO_RATE, *(env_values.front()));</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    <span class="keyword">delete</span> env_values.front();</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    env_values.pop_front();</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;VIBRATO&quot;</span>) {</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    snd-&gt;get(partialNum).setParam(VIBRATO_AMP, *(env_values.front()));</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    <span class="keyword">delete</span> env_values.front();</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    env_values.pop_front();</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    snd-&gt;get(partialNum).setParam(VIBRATO_RATE, *(env_values.front()));</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    <span class="keyword">delete</span> env_values.front();</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    env_values.pop_front();</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;PHASE_MOD&quot;</span>) {</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <span class="keywordflow">if</span> (env_values.size() &lt; 2 || env_values[0] == NULL || env_values[1] == NULL) {</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>      cerr &lt;&lt; <span class="stringliteral">&quot;WARNING: PHASE_MOD requires magnitude and rate envelopes; modifier skipped.&quot;</span></div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>           &lt;&lt; endl;</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>      <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    }</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    snd-&gt;get(partialNum).setParam(PHASE_AMP_ENV, *(env_values.front()));</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <span class="keyword">delete</span> env_values.front();</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    env_values.pop_front();</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    snd-&gt;get(partialNum).setParam(PHASE_RATE_ENV, *(env_values.front()));</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    <span class="keyword">delete</span> env_values.front();</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    env_values.pop_front();</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;PHASE&quot;</span>) {</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    snd-&gt;get(partialNum).setParam(CARRIER_PHASE, *(env_values.front()));</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    <span class="keyword">delete</span> env_values.front();</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    env_values.pop_front();</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;AMPTRANS&quot;</span>) {</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    snd-&gt;get(partialNum).setParam(AMPTRANS_AMP_ENV, *(env_values.front()));</div>
 <div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    <span class="keyword">delete</span> env_values.front();</div>
 <div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;FREQTRANS&quot;</span>) {</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    snd-&gt;get(partialNum).setParam(FREQTRANS_AMP_ENV, *(env_values.front()));</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    <span class="keyword">delete</span> env_values.front();</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    snd-&gt;get(partialNum).setParam(FREQTRANS_RATE_ENV, *(env_values.front()));</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <span class="keyword">delete</span> env_values.front();</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    snd-&gt;get(partialNum).setParam(FREQTRANS_WIDTH, *(env_values.front()));</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    snd-&gt;get(partialNum).setParam(AMPTRANS_RATE_ENV, *(env_values.front()));</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <span class="keyword">delete</span> env_values.front();</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    env_values.pop_front();</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    snd-&gt;get(partialNum).setParam(AMPTRANS_WIDTH, *(env_values.front()));</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    <span class="keyword">delete</span> env_values.front();</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    env_values.pop_front();</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;FREQTRANS&quot;</span>) {</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    snd-&gt;get(partialNum).setParam(FREQTRANS_AMP_ENV, *(env_values.front()));</div>
 <div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    <span class="keyword">delete</span> env_values.front();</div>
 <div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;WAVE_TYPE&quot;</span>) {</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    snd-&gt;get(partialNum).setParam(WAVE_TYPE, env_values.front()-&gt;getValue(checkPt, 1));</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    <span class="keyword">delete</span> env_values.front();</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    env_values.pop_front();</div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>  } <span class="keywordflow">else</span>  {</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    cerr &lt;&lt; <span class="stringliteral">&quot;ERROR: Modifier given an invalid type: &quot;</span> &lt;&lt; type &lt;&lt; endl;</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    exit(1);</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>  }</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>}</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span> </div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    snd-&gt;get(partialNum).setParam(FREQTRANS_RATE_ENV, *(env_values.front()));</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    <span class="keyword">delete</span> env_values.front();</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    env_values.pop_front();</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    snd-&gt;get(partialNum).setParam(FREQTRANS_WIDTH, *(env_values.front()));</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <span class="keyword">delete</span> env_values.front();</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    env_values.pop_front();</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;WAVE_TYPE&quot;</span>) {</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    snd-&gt;get(partialNum).setParam(WAVE_TYPE, env_values.front()-&gt;getValue(checkPt, 1));</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    <span class="keyword">delete</span> env_values.front();</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    env_values.pop_front();</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>  } <span class="keywordflow">else</span>  {</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    cerr &lt;&lt; <span class="stringliteral">&quot;ERROR: Modifier given an invalid type: &quot;</span> &lt;&lt; type &lt;&lt; endl;</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    exit(1);</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>  }</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>}</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span> </div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
 <div class="ttc" id="aModifier_8h_html"><div class="ttname"><a href="Modifier_8h.html">Modifier.h</a></div><div class="ttdoc">Per-note synthesis modifier (tremolo, vibrato, bend, etc.).</div></div>
 <div class="ttc" id="aRandom_8h_html"><div class="ttname"><a href="Random_8h.html">Random.h</a></div></div>
 <div class="ttc" id="aclassModifier_html"><div class="ttname"><a href="classModifier.html">Modifier</a></div><div class="ttdoc">One configured modifier instance attached to a Bottom event.</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8h_source.html#l00046">Modifier.h:46</a></div></div>
@@ -442,10 +450,11 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aclassModifier_html_a496a85e9f5f36bd31557eeae2bc95110"><div class="ttname"><a href="classModifier.html#a496a85e9f5f36bd31557eeae2bc95110">Modifier::getModName</a></div><div class="ttdeci">string getModName()</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00166">Modifier.cpp:166</a></div></div>
 <div class="ttc" id="aclassModifier_html_a4b8f5878368ce80c9af84789ad62f0d0"><div class="ttname"><a href="classModifier.html#a4b8f5878368ce80c9af84789ad62f0d0">Modifier::addVelocity</a></div><div class="ttdeci">void addVelocity(double vel)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00143">Modifier.cpp:143</a></div></div>
 <div class="ttc" id="aclassModifier_html_a556b2483c0d0a9cc4859c61684316197"><div class="ttname"><a href="classModifier.html#a556b2483c0d0a9cc4859c61684316197">Modifier::willOccur</a></div><div class="ttdeci">bool willOccur(double checkPoint)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00184">Modifier.cpp:184</a></div></div>
-<div class="ttc" id="aclassModifier_html_a639c69b69fade3d47bfe19eec79ee81e"><div class="ttname"><a href="classModifier.html#a639c69b69fade3d47bfe19eec79ee81e">Modifier::applyModifier</a></div><div class="ttdeci">void applyModifier(Sound *snd)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00196">Modifier.cpp:196</a></div></div>
+<div class="ttc" id="aclassModifier_html_a639c69b69fade3d47bfe19eec79ee81e"><div class="ttname"><a href="classModifier.html#a639c69b69fade3d47bfe19eec79ee81e">Modifier::applyModifier</a></div><div class="ttdeci">void applyModifier(Sound *snd)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00202">Modifier.cpp:202</a></div></div>
 <div class="ttc" id="aclassModifier_html_a6c950c5dec34e76759c83a1f0cd98919"><div class="ttname"><a href="classModifier.html#a6c950c5dec34e76759c83a1f0cd98919">Modifier::getPartialResultString</a></div><div class="ttdeci">string getPartialResultString()</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00178">Modifier.cpp:178</a></div></div>
 <div class="ttc" id="aclassModifier_html_a73e8a403e2018624def323f29cd3263f"><div class="ttname"><a href="classModifier.html#a73e8a403e2018624def323f29cd3263f">Modifier::getProbability</a></div><div class="ttdeci">float getProbability(double checkPoint)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00149">Modifier.cpp:149</a></div></div>
 <div class="ttc" id="aclassModifier_html_a9567ec680c7f8842c327cde6dfc40368"><div class="ttname"><a href="classModifier.html#a9567ec680c7f8842c327cde6dfc40368">Modifier::addValueEnv</a></div><div class="ttdeci">void addValueEnv(Envelope *env)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00123">Modifier.cpp:123</a></div></div>
+<div class="ttc" id="aclassModifier_html_aa002bd3cbcadf45a204ef002c4ebb236"><div class="ttname"><a href="classModifier.html#aa002bd3cbcadf45a204ef002c4ebb236">Modifier::setCheckPoint</a></div><div class="ttdeci">void setCheckPoint(double checkPoint)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00196">Modifier.cpp:196</a></div></div>
 <div class="ttc" id="aclassModifier_html_abebe25a1374e1dffa0ca7115e4708465"><div class="ttname"><a href="classModifier.html#abebe25a1374e1dffa0ca7115e4708465">Modifier::addSpread</a></div><div class="ttdeci">void addSpread(double spread_)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00131">Modifier.cpp:131</a></div></div>
 <div class="ttc" id="aclassModifier_html_ae39c70db257de0c0945db9f54178db8f"><div class="ttname"><a href="classModifier.html#ae39c70db257de0c0945db9f54178db8f">Modifier::addDirection</a></div><div class="ttdeci">void addDirection(double dir_)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00137">Modifier.cpp:137</a></div></div>
 <div class="ttc" id="aclassRandom_html_a79954f12ada797389d4798c6f26c5914"><div class="ttname"><a href="classRandom.html#a79954f12ada797389d4798c6f26c5914">Random::Rand</a></div><div class="ttdeci">static double Rand()</div><div class="ttdef"><b>Definition</b> <a href="Random_8cpp_source.html#l00052">Random.cpp:52</a></div></div>

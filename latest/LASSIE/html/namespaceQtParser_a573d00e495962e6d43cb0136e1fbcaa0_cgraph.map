@@ -1,9 +1,13 @@
 <map id="QtParser::parseModifier" name="QtParser::parseModifier">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,180,56"/>
-<area shape="rect" id="Node000002" href="$namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="231,5,405,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,31,217,27,218,32,180,36"/>
-<area shape="rect" id="Node000003" href="$namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="228,55,408,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,50,215,54,214,59,180,55"/>
-<area shape="rect" id="Node000004" href="$namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="456,55,603,80"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="408,65,442,65,442,70,408,70"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,67,180,93"/>
+<area shape="rect" id="Node000002" href="$namespaceQtParser.html#a53cfb388bac1e2f4ea842b4f94041dbb" title=" " alt="" coords="228,42,443,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,68,214,65,215,70,181,74"/>
+<area shape="rect" id="Node000006" href="$namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="262,91,409,117"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="181,86,249,93,248,98,180,91"/>
+<area shape="rect" id="Node000003" href="$namespaceModifierUsageImportPolicy.html#a1dd2cf0b505e0296f7c223526678790b" title=" " alt="" coords="511,5,709,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="443,41,497,35,497,40,443,46"/>
+<area shape="rect" id="Node000004" href="$namespaceQtParser.html#abdf08e73a7103831369cd249c5e41d11" title=" " alt="" coords="491,70,729,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="443,63,477,66,477,72,443,68"/>
+<area shape="rect" id="Node000005" href="$namespaceQtParser.html#af29915f8225de418d99395fca9bc08e5" title=" " alt="" coords="777,70,985,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="730,80,764,80,764,85,730,85"/>
 </map>

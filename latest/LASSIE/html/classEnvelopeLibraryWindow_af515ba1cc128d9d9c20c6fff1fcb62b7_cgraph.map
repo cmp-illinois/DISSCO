@@ -1,6 +1,6 @@
 <map id="EnvelopeLibraryWindow::fileSave" name="EnvelopeLibraryWindow::fileSave">
 <area shape="rect" id="Node000001" title="Save via project controller (e.g. Ctrl+S)" alt="" coords="5,965,184,1005"/>
-<area shape="rect" id="Node000002" href="$classProjectView.html#afaf5d493238b46179b5f700819c63a11" title=" " alt="" coords="232,972,369,997"/>
+<area shape="rect" id="Node000002" href="$classProjectView.html#a2ccc2bcbd3fa20e55c9322e347da55e2" title=" " alt="" coords="232,972,369,997"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,982,218,982,218,987,184,987"/>
 <area shape="rect" id="Node000003" href="$classProjectManager.html#a48bad9d94ff6de5ff8bc8c473db36639" title=" " alt="" coords="441,5,664,31"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="300,972,311,791,334,494,351,340,369,203,391,99,403,63,415,42,428,31,431,35,419,45,408,65,396,100,375,204,356,340,340,494,316,791,305,972"/>

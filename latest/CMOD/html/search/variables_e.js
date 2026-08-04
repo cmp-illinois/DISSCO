@@ -1,14 +1,13 @@
 var searchData=
 [
-  ['sievealigned_0',['sieveAligned',['../classEvent.html#a203c45a8b0f064a8f1537a2312cf9248',1,'Event']]],
-  ['sieveeventnames_1',['sieveEventnames',['../classUtilities.html#aa3cf3cde3623bde8f028cb2f68caa32a',1,'Utilities']]],
-  ['spatializationelement_2',['spatializationElement',['../classEvent.html#a59ce688d3e31812a12ef8a899ef9efb0',1,'Event']]],
-  ['spatializationeventnames_3',['spatializationEventnames',['../classUtilities.html#a6960b97ca19a9f4d80593a60985fa867',1,'Utilities']]],
-  ['spectrumeventnames_4',['spectrumEventnames',['../classUtilities.html#a094351786c9f2236d4cbde9c6aa887fd',1,'Utilities']]],
-  ['start_5',['start',['../structTimeSpan.html#a2fc8d33336a99eb1016864c6b62cc6aa',1,'TimeSpan']]],
-  ['start_5ftime_5fglobal_5f_6',['start_time_global_',['../structTimeSignature.html#ada79a8c1e4868f93d6f7d6d6246e0749',1,'TimeSignature']]],
-  ['startedu_7',['startEDU',['../structTimeSpan.html#a14c330b46be7a6b78954424f2e15da4e',1,'TimeSpan']]],
-  ['starteduabsolute_8',['startEDUAbsolute',['../structTimeSpan.html#aa7c4106bc32d094be7b3a8df1d900140',1,'TimeSpan']]],
-  ['stime_9',['stime',['../structMatPoint.html#ac19678ff78930e160c61ad2d886e399b',1,'MatPoint']]],
-  ['subnodes_10',['subNodes',['../structOutputNode.html#a724eb5ae45e1ad1853732ed93cb1829f',1,'OutputNode']]]
+  ['ratios_0',['ratios',['../tables_8cpp.html#a8fc633a00067cc4869b62998bde0ac11',1,'ratios:&#160;tables.cpp'],['../tables_8h.html#a8fc633a00067cc4869b62998bde0ac11',1,'ratios:&#160;tables.cpp']]],
+  ['requiredon_1',['requiredon',['../structdissco_1_1modifier__usage_1_1Predicate.html#a895e5892cba350c62984ac265e0a8038',1,'dissco::modifier_usage::Predicate::requiredOn'],['../ModifierUsage_8cpp.html#a52f737f23c73e28ca3bb75a794947a9c',1,'requiredOn:&#160;ModifierUsage.cpp']]],
+  ['rest_5fratios_2',['rest_ratios',['../tables_8cpp.html#a06373c9ee04509a2f9ec87954a57aa20',1,'rest_ratios:&#160;tables.cpp'],['../tables_8h.html#a06373c9ee04509a2f9ec87954a57aa20',1,'rest_ratios:&#160;tables.cpp']]],
+  ['rest_5fsigns_3',['rest_signs',['../tables_8cpp.html#abb91e7617a452e0cf7188a4fd527f4e3',1,'rest_signs:&#160;tables.cpp'],['../tables_8h.html#abb91e7617a452e0cf7188a4fd527f4e3',1,'rest_signs:&#160;tables.cpp']]],
+  ['restartsallowedwithfewerchildren_4',['restartsAllowedWithFewerChildren',['../classEvent.html#a3eb4a40b9a37a96c283adb613afe5b67',1,'Event']]],
+  ['restartsnormallyallowed_5',['restartsNormallyAllowed',['../classEvent.html#a591bafbb334be84abd62858c55f5305d',1,'Event']]],
+  ['restartsremaining_6',['restartsRemaining',['../classEvent.html#afc44d7912e4f7026f999477d2af21204',1,'Event']]],
+  ['reverberationelement_7',['reverberationElement',['../classEvent.html#ab8770f73ab1c2991259f0f58a6b790e5',1,'Event']]],
+  ['reverbeventnames_8',['reverbEventnames',['../classUtilities.html#a1a80fa9c42cf4d2253734f9b75b81af9',1,'Utilities']]],
+  ['rules_9',['rules',['../structdissco_1_1modifier__usage_1_1Entry.html#a0954490d15d998bd8020e3f0e1f26f87',1,'dissco::modifier_usage::Entry::rules'],['../ModifierUsage_8cpp.html#ab69b4500a257da43db4d3021ccec1307',1,'rules:&#160;ModifierUsage.cpp']]]
 ];

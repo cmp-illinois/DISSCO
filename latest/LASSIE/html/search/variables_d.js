@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['partialresult_5fstring_0',['partialresult_string',['../structModifier.html#ab9c87e79fa62739a970f1381db57fa11',1,'Modifier']]],
-  ['partials_1',['partials',['../structSpectrum.html#a213ae845ff07f22b4511db82be225b73',1,'Spectrum']]],
-  ['pattern_5fbuilder_2',['pattern_builder',['../structPatternEvent.html#ac688a6ad737019a6908e462047e127e9',1,'PatternEvent']]],
-  ['phase_3',['phase',['../structExtraInfo.html#abd200c3acecbaaea744709c18109b8e4',1,'ExtraInfo']]],
-  ['prefix_4',['prefix',['../structTempo.html#a48e331f8f991f5308edeb250e177fedf',1,'Tempo']]],
-  ['prev_5',['prev',['../classEnvelopeLibraryEntry.html#ab6e47eb2c9d70100c273f38c48c0b985',1,'EnvelopeLibraryEntry']]],
-  ['probability_6',['probability',['../structModifier.html#a5bd705fd02e349ab87046f604fd6885b',1,'Modifier::probability'],['../structPartialModifierFormat_1_1Values.html#a34fcceaa6beca79fba4542da736a4605',1,'PartialModifierFormat::Values::probability']]]
+  ['on_5fchance_0',['on_chance',['../structModifierChanceRule.html#a498576d7b20423670f0b36df6f0b5e64',1,'ModifierChanceRule']]],
+  ['orderinpalette_1',['orderinpalette',['../structHEvent.html#a8f702d5bccb437087199b08f58f8d85b',1,'HEvent::orderinpalette'],['../structSpectrumEvent.html#a22c39ff7364a5f670e797e55927af7e4',1,'SpectrumEvent::orderinpalette'],['../structNoteEvent.html#a07272999ffd61a77fcf490bcc2e86c00',1,'NoteEvent::orderinpalette'],['../structEnvelopeEvent.html#a6a37b9b2cfaf019d3051841ad879b419',1,'EnvelopeEvent::orderinpalette'],['../structSieveEvent.html#a7521c5d038837ab601ab6c1b489c5885',1,'SieveEvent::orderinpalette'],['../structSpaEvent.html#a8ad567baa59aa88e781082a161951ba1',1,'SpaEvent::orderinpalette'],['../structPatternEvent.html#a5c3894ee502a0e2a691a0c43658fc1b1',1,'PatternEvent::orderinpalette'],['../structReverbEvent.html#af5bec144e82c7694ca7feec8cccf1a05',1,'ReverbEvent::orderinpalette'],['../structFilterEvent.html#ab01ad168ad26d76d616d7ded22451532',1,'FilterEvent::orderinpalette']]],
+  ['overall_5fon_5fchances_2',['overall_on_chances',['../structModifierUsageAnalysis.html#a837132165ca8361ab0f43c53d1967161',1,'ModifierUsageAnalysis']]],
+  ['overall_5fusage_5favailable_3',['overall_usage_available',['../structModifierUsageAnalysis.html#a42190021492e652f7f3cb3e113e97b35',1,'ModifierUsageAnalysis']]],
+  ['ownerindex_4',['ownerIndex',['../structLayerRefs_1_1OwnerKey.html#aafa82075da099c3374afa65b7c7001b1',1,'LayerRefs::OwnerKey']]],
+  ['ownertype_5',['ownerType',['../structLayerRefs_1_1OwnerKey.html#a87450ec7fad3256d39aa7d7d95680aa0',1,'LayerRefs::OwnerKey']]]
 ];

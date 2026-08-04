@@ -1,5 +1,7 @@
 <map id="ProjectManager::writeSeedEntry" name="ProjectManager::writeSeedEntry">
-<area shape="rect" id="Node000001" title="Persist the user&#45;supplied PRNG seed for the active project to disk." alt="" coords="5,5,203,45"/>
-<area shape="rect" id="Node000002" href="$classProjectManager.html#a1024edbdc1e9964734d8a13cbe94f21d" title=" " alt="" coords="251,13,413,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,23,237,23,237,28,203,28"/>
+<area shape="rect" id="Node000001" title="Persist the user&#45;supplied PRNG seed for the active project to disk." alt="" coords="5,27,203,67"/>
+<area shape="rect" id="Node000002" href="$classProjectManager.html#a1024edbdc1e9964734d8a13cbe94f21d" title=" " alt="" coords="263,5,425,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,33,248,27,249,32,203,38"/>
+<area shape="rect" id="Node000003" href="$namespaceProjectXmlWriter.html#a755ec56bc879e5e1e50195bae958ee52" title=" " alt="" coords="251,55,437,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,56,237,60,237,66,203,61"/>
 </map>

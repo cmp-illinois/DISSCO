@@ -1,0 +1,16 @@
+<map id="LASSIE/src/dialogs/ModifierRulesDialog.hpp" name="LASSIE/src/dialogs/ModifierRulesDialog.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="25,5,210,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,80,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,47,65,85,61,81,97,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="90,167,145,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="120,46,120,153,115,153,115,46"/>
+<area shape="rect" id="Node000004" href="$event__struct_8hpp.html" title=" " alt="" coords="155,93,330,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="149,43,214,84,211,88,146,48"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="224,121,151,162,148,157,221,116"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="169,167,239,192"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="239,120,219,156,214,153,234,118"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="263,167,326,192"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="253,117,280,154,276,157,249,121"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="350,167,413,192"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="266,116,348,158,345,163,264,121"/>
+</map>

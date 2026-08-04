@@ -11,6 +11,11 @@ var searchData=
   ['markovmodel_8',['MarkovModel',['../classMarkovModel.html',1,'']]],
   ['markovmodellibrarywindow_9',['MarkovModelLibraryWindow',['../classMarkovModelLibraryWindow.html',1,'']]],
   ['modifier_10',['Modifier',['../structModifier.html',1,'']]],
-  ['modifiers_11',['Modifiers',['../classModifiers.html',1,'']]],
-  ['multientryfunction_12',['MultiEntryFunction',['../classMultiEntryFunction.html',1,'']]]
+  ['modifierchancerule_11',['ModifierChanceRule',['../structModifierChanceRule.html',1,'']]],
+  ['modifiercondition_12',['ModifierCondition',['../structModifierCondition.html',1,'']]],
+  ['modifierdetailsdialog_13',['ModifierDetailsDialog',['../classModifierDetailsDialog.html',1,'']]],
+  ['modifierrulesdialog_14',['ModifierRulesDialog',['../classModifierRulesDialog.html',1,'']]],
+  ['modifiers_15',['Modifiers',['../classModifiers.html',1,'']]],
+  ['modifierusageanalysis_16',['ModifierUsageAnalysis',['../structModifierUsageAnalysis.html',1,'']]],
+  ['multientryfunction_17',['MultiEntryFunction',['../classMultiEntryFunction.html',1,'']]]
 ];

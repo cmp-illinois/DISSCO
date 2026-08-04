@@ -8,7 +8,8 @@ var searchData=
   ['_7epatter_5',['~Patter',['../classPatter.html#a65fef517e86413d5bc84e3e5f438637c',1,'Patter']]],
   ['_7epatternpair_6',['~PatternPair',['../classPatternPair.html#a99ed24a144d40ae84a05cdbd308e425c',1,'PatternPair']]],
   ['_7epiece_7',['~Piece',['../classPiece.html#a5d7a4f6bade94cb33b6f634de8aa7918',1,'Piece']]],
-  ['_7esection_8',['~Section',['../classSection.html#ae2582a77c7ecb8cbd4a1b58e7ad3296e',1,'Section']]],
-  ['_7esieve_9',['~Sieve',['../classSieve.html#a0f8b8f56d292e6f46e1085fb1a9c4479',1,'Sieve']]],
-  ['_7eutilities_10',['~Utilities',['../classUtilities.html#a4528eb392f63157354077bedabb9663d',1,'Utilities']]]
+  ['_7eprogram_8',['~Program',['../classdissco_1_1modifier__usage_1_1Program.html#a626bc643b5e7b7c94b3300851dbff2a3',1,'dissco::modifier_usage::Program']]],
+  ['_7esection_9',['~Section',['../classSection.html#ae2582a77c7ecb8cbd4a1b58e7ad3296e',1,'Section']]],
+  ['_7esieve_10',['~Sieve',['../classSieve.html#a0f8b8f56d292e6f46e1085fb1a9c4479',1,'Sieve']]],
+  ['_7eutilities_11',['~Utilities',['../classUtilities.html#a4528eb392f63157354077bedabb9663d',1,'Utilities']]]
 ];

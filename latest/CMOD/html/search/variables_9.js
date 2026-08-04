@@ -1,12 +1,10 @@
 var searchData=
 [
-  ['matrix_0',['matrix',['../classEvent.html#aef30ab1b612f04183116d3cad019989c',1,'Event']]],
-  ['maxchilddur_1',['maxChildDur',['../classEvent.html#a5e7f6e3576084c031fc6822ec4a7ee32',1,'Event']]],
-  ['methodflagelement_2',['methodFlagElement',['../classEvent.html#a35d5dc80e6b273fcf2e5cb6eed420156',1,'Event']]],
-  ['mideventnames_3',['midEventnames',['../classUtilities.html#ae398afe08b819e4e7ec8781e44e53a31',1,'Utilities']]],
-  ['mideventvalues_4',['midEventValues',['../classUtilities.html#ad6895ccb1881aa7d91eab220aad53dcc',1,'Utilities']]],
-  ['modifiers_5',['modifiers',['../tables_8cpp.html#a79f43620a5c6672a1f0eed95afc055d8',1,'modifiers:&#160;tables.cpp'],['../tables_8h.html#a79f43620a5c6672a1f0eed95afc055d8',1,'modifiers:&#160;tables.cpp']]],
-  ['modifiersdoc_6',['modifiersDoc',['../classEvent.html#affa7588ab058cfbefbd35cd65b0e66e4',1,'Event']]],
-  ['modifierselement_7',['modifiersElement',['../classEvent.html#a97fe9219dd3a074767021a0cc1133f02',1,'Event']]],
-  ['modifiersincludingancestorselement_8',['modifiersIncludingAncestorsElement',['../classEvent.html#afcedbbf6ca5df7fd02858c8e2ff75489',1,'Event']]]
+  ['layerdensity_0',['layerDensity',['../classEvent.html#a74d817afdacad405751798277d7dba42',1,'Event']]],
+  ['layerelements_1',['layerElements',['../classEvent.html#a1f180e9b3e79a4ebd8536b9a2200b8ac',1,'Event']]],
+  ['layernumchildren_2',['layerNumChildren',['../classEvent.html#a4df3fb0c18b8df8905790f711d403f04',1,'Event']]],
+  ['layerremainingchildren_3',['layerRemainingChildren',['../classEvent.html#a2dc8b8de85198bfd394dbebe38e93534',1,'Event']]],
+  ['layervect_4',['layerVect',['../classEvent.html#a30b55db74b0b025c58b4ae342943fa93',1,'Event']]],
+  ['loweventnames_5',['lowEventnames',['../classUtilities.html#a3e874e71823ec4f651329b25310e3fce',1,'Utilities']]],
+  ['loweventvalues_6',['lowEventValues',['../classUtilities.html#a3e935f2f0c54a11090d16cb94657d958',1,'Utilities']]]
 ];

@@ -14,11 +14,12 @@ var searchData=
   ['choosefromprob_11',['ChooseFromProb',['../classRandom.html#a3de870e22156a1403b6c9ef294082919',1,'Random']]],
   ['choosel_12',['ChooseL',['../classSieve.html#a658ce35fb5337b62508d155abf9e0d4d',1,'Sieve']]],
   ['choosesweep_13',['chooseSweep',['../classMatrix.html#aaa7d4921250359bd14dcd38cdca7cf47',1,'Matrix']]],
-  ['completedsuccessfully_14',['completedSuccessfully',['../classPiece.html#a52ff172407f4e86988294acdb983c10b',1,'Piece']]],
-  ['constructchild_15',['constructchild',['../classBottom.html#ad5249403159b27ec898f289b15c93915',1,'Bottom::constructChild(SoundAndNoteWrapper *_SoundNoteWrapper)'],['../classBottom.html#a12bda6f7a74c8368968da6a97ac13455',1,'Bottom::constructChild(TimeSpan ts, int type, string name, Tempo tempo)']]],
-  ['constructtupletnames_16',['ConstructTupletNames',['../structTimeSignature.html#aa5b16f0fa1d1c88ae9b58971512bb195',1,'TimeSignature']]],
-  ['convertsecondstoedus_17',['convertSecondsToEDUs',['../classTempo.html#a3122d6fb16d6e52a94564b27c96d505e',1,'Tempo']]],
-  ['createscorefilesdirectory_18',['createScoreFilesDirectory',['../structPieceHelper.html#a83d099d9ffdc29cf83935b927d172aa0',1,'PieceHelper']]],
-  ['createsoundfilesdirectory_19',['createSoundFilesDirectory',['../structPieceHelper.html#abfe0ff1bd5655dfcdd27a11bba4248eb',1,'PieceHelper']]],
-  ['crossovermutation_20',['crossoverMutation',['../classPiece.html#a2095ac0c2cea8c497b51fa597025dd54',1,'Piece']]]
+  ['compile_14',['compile',['../namespacedissco_1_1modifier__usage.html#a16c4bc2d8b142caea55641d2e2e27078',1,'dissco::modifier_usage']]],
+  ['completedsuccessfully_15',['completedSuccessfully',['../classPiece.html#a52ff172407f4e86988294acdb983c10b',1,'Piece']]],
+  ['constructchild_16',['constructchild',['../classBottom.html#ad5249403159b27ec898f289b15c93915',1,'Bottom::constructChild(SoundAndNoteWrapper *_SoundNoteWrapper)'],['../classBottom.html#a12bda6f7a74c8368968da6a97ac13455',1,'Bottom::constructChild(TimeSpan ts, int type, string name, Tempo tempo)']]],
+  ['constructtupletnames_17',['ConstructTupletNames',['../structTimeSignature.html#aa5b16f0fa1d1c88ae9b58971512bb195',1,'TimeSignature']]],
+  ['convertsecondstoedus_18',['convertSecondsToEDUs',['../classTempo.html#a3122d6fb16d6e52a94564b27c96d505e',1,'Tempo']]],
+  ['createscorefilesdirectory_19',['createScoreFilesDirectory',['../structPieceHelper.html#a83d099d9ffdc29cf83935b927d172aa0',1,'PieceHelper']]],
+  ['createsoundfilesdirectory_20',['createSoundFilesDirectory',['../structPieceHelper.html#abfe0ff1bd5655dfcdd27a11bba4248eb',1,'PieceHelper']]],
+  ['crossovermutation_21',['crossoverMutation',['../classPiece.html#a2095ac0c2cea8c497b51fa597025dd54',1,'Piece']]]
 ];

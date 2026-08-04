@@ -11,7 +11,9 @@ var searchData=
   ['inst_8',['Inst',['../classInst.html',1,'']]],
   ['inst_2ehpp_9',['inst.hpp',['../inst_8hpp.html',1,'']]],
   ['instance_10',['instance',['../classFunctionRegistry.html#a2533dd10f3042e64520beaad70002952',1,'FunctionRegistry::instance()'],['../classInst.html#a381828beaa899ba49afd23d835ac514f',1,'Inst::instance()'],['../classMainWindow.html#ab43b7a45b545abf4d62ae4a1cd38e715',1,'MainWindow::instance()']]],
-  ['inversefunction_11',['inversefunction',['../classInverseFunction.html#a9171cb8b44237fb7093dfc5f02a83c5d',1,'InverseFunction::InverseFunction()'],['../classInverseFunction.html',1,'InverseFunction']]],
-  ['inversefunction_2ehpp_12',['InverseFunction.hpp',['../InverseFunction_8hpp.html',1,'']]],
-  ['isregistered_13',['isRegistered',['../classFunctionRegistry.html#ac66cdead7f70ffdd3432d408fe64ad29',1,'FunctionRegistry']]]
+  ['instance_5fid_11',['instance_id',['../structModifier.html#a4d90ccd5cb9e09ddb23e287c9fd9f078',1,'Modifier']]],
+  ['inversefunction_12',['inversefunction',['../classInverseFunction.html#a9171cb8b44237fb7093dfc5f02a83c5d',1,'InverseFunction::InverseFunction()'],['../classInverseFunction.html',1,'InverseFunction']]],
+  ['inversefunction_2ehpp_13',['InverseFunction.hpp',['../InverseFunction_8hpp.html',1,'']]],
+  ['isregistered_14',['isRegistered',['../classFunctionRegistry.html#ac66cdead7f70ffdd3432d408fe64ad29',1,'FunctionRegistry']]],
+  ['isvalid_15',['isValid',['../structModifierUsageAnalysis.html#a97b25475e9185698205e991eb92e27e1',1,'ModifierUsageAnalysis']]]
 ];
