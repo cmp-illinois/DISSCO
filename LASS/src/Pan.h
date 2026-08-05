@@ -82,7 +82,9 @@ public:
     **/
     MultiTrack* spatialize_Track(Track& t, int numTracks);
 
-	/** 
+    bool isPlaceholder() const { return false; }
+
+	/**
 	* \deprecated
 	**/
 	void xml_print( ofstream& xmlOutput );
