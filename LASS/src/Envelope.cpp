@@ -230,9 +230,32 @@ m_value_type Envelope::getValue(m_value_type x, m_value_type totalLength)
 	    current -= generatedSegmentLengths_->at(x_Index);
 	}
 
+    // We know that this segment interpolates between xy point
+    // x_Index and x_Index+1
+    xy_point left, right;
+    left = getPoint(x_Index);
+    right = getPoint(x_Index + 1);
+
+    // Figure out which sample we want from the interpolator.
+    // This is done by taking the percentage we have to iterate thru
+    // the interpolator, and then multiplying that by the number of samples
+    int sample = (int) (round(((x - current) / generatedSegmentLengths_->at(x_Index)) * 100.0));
+
+    interpolation_type segType = getSegmentInterpolationType(x_Index);
+
+    // Fast path for linear segments.  Spinning up a 100-sample interpolator
+    // iterator and stepping it just to read one value is equivalent to the
+    // closed form below: the LinearInterpolatorIterator advances by
+    // delta = (right.y - left.y) / 100 each step and saturates once it runs
+    // out of steps (step 99), so clamp to reproduce that behavior exactly.
+    if (segType != EXPONENTIAL && segType != CUBIC_SPLINE) {
+        if (sample > 99) sample = 99;
+        return left.y + sample * (right.y - left.y) / 100.0;
+    }
+
     //Spawn an interpolator of the proper type
     Interpolator *interp;
-    switch (getSegmentInterpolationType(x_Index)) {
+    switch (segType) {
 	  case EXPONENTIAL:
 	      interp = new ExponentialInterpolator();
 	      break;
@@ -252,20 +275,9 @@ m_value_type Envelope::getValue(m_value_type x, m_value_type totalLength)
     // set interpolator duration to one second to make it easy
     interp->setDuration(1.0);
 
-    // We know that this segment interpolates between xy point
-    // x_Index and x_Index+1
-    xy_point left, right;
-    left = getPoint(x_Index);
-    right = getPoint(x_Index + 1);
-
     // Now tell the interpolator what values we are going between
     interp->addEntry(0, left.y);
     interp->addEntry(1, right.y);
-
-    // Figure out which sample we want from the interpolator.
-    // This is done by taking the percentage we have to iterate thru
-    // the interpolator, and then multiplying that by the number of samples
-    int sample = (int) (round(((x - current) / generatedSegmentLengths_->at(x_Index)) * 100.0));
 
     // Create a value iterator to get values from the interpolator
     Iterator < m_value_type > tempIterator = interp->valueIterator();
