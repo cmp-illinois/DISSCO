@@ -396,7 +396,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span><span class="keywordtype">void</span> Updater::launchInstaller(<span class="keyword">const</span> QString &amp;localPath) {</div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span><span class="preprocessor">#if defined(Q_OS_MACOS)</span></div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    <span class="comment">// Mount the DMG in Finder; user drags LASSIE.app into Applications.</span></div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    <span class="comment">// Mount the DMG in Finder; user drags lassie.app into Applications.</span></div>
 <div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    <span class="keywordflow">if</span> (!QDesktopServices::openUrl(QUrl::fromLocalFile(localPath))) {</div>
 <div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        reportError(tr(<span class="stringliteral">&quot;Couldn&#39;t open downloaded installer at %1&quot;</span>).arg(localPath));</div>
 <div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        <span class="keywordflow">return</span>;</div>
@@ -407,7 +407,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
 <div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span><span class="preprocessor">#elif defined(Q_OS_WIN)</span></div>
 <div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    <span class="comment">// Launch the NSIS installer; it&#39;ll elevate, uninstall the current</span></div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <span class="comment">// version, and install the new one. We quit so it can replace LASSIE.exe.</span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <span class="comment">// version, and install the new one. We quit so it can replace lassie.exe.</span></div>
 <div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    <span class="keywordflow">if</span> (!QDesktopServices::openUrl(QUrl::fromLocalFile(localPath))) {</div>
 <div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>        reportError(tr(<span class="stringliteral">&quot;Couldn&#39;t launch installer at %1&quot;</span>).arg(localPath));</div>
 <div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>        <span class="keywordflow">return</span>;</div>
