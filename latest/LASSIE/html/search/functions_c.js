@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['nextchildinner_0',['nextchildinner',['../classFunctionWidget.html#a7081ba54096387d4537dc54271e7febf',1,'FunctionWidget::nextChildInner()'],['../namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4',1,'QtParser::nextChildInner()']]],
-  ['nodetextchanged_1',['nodetextchanged',['../classSelect.html#a81e4b460a528c9253f47e3ad1a733919',1,'Select::nodeTextChanged()'],['../classStochos.html#ac71e4b22ed1b5461d10781d5d869f7bf',1,'Stochos::nodeTextChanged()']]],
-  ['normalizedvalue_2',['normalizedValue',['../namespacePartialModifierFormat.html#a0cf3ac75b346cd1db0fbbfdfb1621ee4',1,'PartialModifierFormat']]],
-  ['noteevents_3',['noteevents',['../classProjectManager.html#a0778050629a1d8033fc6ee1b603cca94',1,'ProjectManager']]],
-  ['numchannels_4',['numchannels',['../classProjectManager.html#a0f75f59df52a8eb7de0fb366f1f00f17',1,'ProjectManager']]],
-  ['numstaffs_5',['numstaffs',['../classProjectManager.html#afea46455774aa6a4ba7952783c2b2115',1,'ProjectManager']]],
-  ['numthreads_6',['numthreads',['../classProjectManager.html#a75ca506e0d1f25c02179051f3cd0fa7e',1,'ProjectManager']]]
+  ['nextchildinner_0',['nextchildinner',['../classFunctionWidget.html#a7081ba54096387d4537dc54271e7febf',1,'FunctionWidget::nextChildInner()'],['../namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4',1,'QtParser::nextChildInner(QXmlStreamReader &amp;r)']]],
+  ['nextrequiredchildinner_1',['nextRequiredChildInner',['../namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68',1,'QtParser']]],
+  ['nodetextchanged_2',['nodetextchanged',['../classSelect.html#a81e4b460a528c9253f47e3ad1a733919',1,'Select::nodeTextChanged()'],['../classStochos.html#ac71e4b22ed1b5461d10781d5d869f7bf',1,'Stochos::nodeTextChanged()']]],
+  ['normalizedvalue_3',['normalizedValue',['../namespacePartialModifierFormat.html#a0cf3ac75b346cd1db0fbbfdfb1621ee4',1,'PartialModifierFormat']]],
+  ['noteevents_4',['noteevents',['../classProjectManager.html#a0778050629a1d8033fc6ee1b603cca94',1,'ProjectManager']]],
+  ['numchannels_5',['numchannels',['../classProjectManager.html#a0f75f59df52a8eb7de0fb366f1f00f17',1,'ProjectManager']]],
+  ['numstaffs_6',['numstaffs',['../classProjectManager.html#afea46455774aa6a4ba7952783c2b2115',1,'ProjectManager']]],
+  ['numthreads_7',['numthreads',['../classProjectManager.html#a75ca506e0d1f25c02179051f3cd0fa7e',1,'ProjectManager']]]
 ];

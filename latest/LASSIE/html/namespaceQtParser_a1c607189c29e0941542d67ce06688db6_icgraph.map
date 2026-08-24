@@ -1,6 +1,6 @@
 <map id="QtParser::consumeRest" name="QtParser::consumeRest">
 <area shape="rect" id="Node000001" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="1053,309,1227,335"/>
-<area shape="rect" id="Node000002" href="$classProjectManager.html#a161c5f3af2bd19f99e6461fb264f4207" title="Populate p from the XML found in the file at filepath." alt="" coords="811,5,979,31"/>
+<area shape="rect" id="Node000002" href="$classProjectManager.html#ae02e10c5bae67bbc3fe488cce43c3841" title=" " alt="" coords="811,5,979,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1131,296,1116,244,1092,179,1055,110,1031,79,1004,52,969,33,972,28,1007,48,1035,76,1059,107,1097,176,1122,243,1136,295"/>
 <area shape="rect" id="Node000004" href="$namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,99,220,139"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1129,297,1113,254,1087,202,1051,151,1029,129,1004,111,975,97,940,86,855,72,756,67,649,68,439,81,276,97,220,103,220,98,276,91,438,76,649,62,756,61,856,67,941,81,977,92,1007,106,1032,125,1055,148,1092,200,1118,252,1134,295"/>
@@ -26,9 +26,9 @@
 <area shape="poly" id="edge21_Node000001_Node000015" title=" " alt="" coords="1118,346,1069,386,1039,406,1006,422,931,445,852,459,778,467,712,469,712,464,777,461,852,454,929,440,1004,417,1036,401,1066,382,1115,342"/>
 <area shape="rect" id="Node000016" href="$namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="808,157,983,183"/>
 <area shape="poly" id="edge23_Node000001_Node000016" title=" " alt="" coords="1117,301,1069,252,1038,226,1004,204,956,185,958,180,1007,200,1041,222,1072,248,1121,297"/>
-<area shape="rect" id="Node000003" href="$classProjectManager.html#a32b50ef108bb47f186339acbea876054" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="548,5,712,31"/>
+<area shape="rect" id="Node000003" href="$classProjectManager.html#ace67fedabf8ab2f225f83deeb01dd9e7" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="548,5,712,31"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="798,21,712,21,712,15,798,15"/>
-<area shape="rect" id="Node000006" href="$namespaceQtParser.html#a5b9c410d2a1c71aacb32d9fcfd27b087" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,309,475,335"/>
+<area shape="rect" id="Node000006" href="$namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,309,475,335"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="594,547,558,522,521,492,478,450,439,406,384,336,388,333,443,402,482,446,524,488,561,518,597,542"/>
 <area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="346,303,142,142,145,137,349,299"/>
 <area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="343,344,140,470,137,466,341,340"/>

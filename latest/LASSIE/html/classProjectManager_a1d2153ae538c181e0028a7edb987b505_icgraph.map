@@ -8,7 +8,7 @@
 <area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="715,139,622,160,620,155,714,134"/>
 <area shape="rect" id="Node000003" href="$classProjectManager.html#a4ba00e49d5de11660bcf0811d7e7ad88" title="Build a Project from an arbitrary file path (e.g. import path)." alt="" coords="247,5,411,31"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="488,54,390,33,391,28,489,49"/>
-<area shape="rect" id="Node000004" href="$classProjectManager.html#a32b50ef108bb47f186339acbea876054" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="247,55,411,80"/>
+<area shape="rect" id="Node000004" href="$classProjectManager.html#ace67fedabf8ab2f225f83deeb01dd9e7" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="247,55,411,80"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="462,70,412,70,412,65,462,65"/>
 <area shape="rect" id="Node000006" href="$classEnvelopeLibraryWindow.html#af515ba1cc128d9d9c20c6fff1fcb62b7" title="Save via project controller (e.g. Ctrl+S)" alt="" coords="240,105,419,145"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="480,125,419,126,419,120,480,119"/>

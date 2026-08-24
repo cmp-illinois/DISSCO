@@ -115,15 +115,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a08f7b64b62717be7682a178f35227fd0" id="r_a08f7b64b62717be7682a178f35227fd0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProject.html">Project</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectManager.html#a08f7b64b62717be7682a178f35227fd0">create</a> (const QString &amp;<a class="el" href="classProjectManager.html#a1d2153ae538c181e0028a7edb987b505">title</a>=QString(), const QByteArray &amp;id=QByteArray())</td></tr>
 <tr class="memdesc:a08f7b64b62717be7682a178f35227fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a fresh in-memory <a class="el" href="classProject.html" title="Aggregate state for a single open DISSCO project.">Project</a>; not yet bound to a file on disk.  <br /></td></tr>
 <tr class="separator:a08f7b64b62717be7682a178f35227fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32b50ef108bb47f186339acbea876054" id="r_a32b50ef108bb47f186339acbea876054"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProject.html">Project</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectManager.html#a32b50ef108bb47f186339acbea876054">open</a> (const QString &amp;filepath, const QByteArray &amp;id=QByteArray())</td></tr>
-<tr class="memdesc:a32b50ef108bb47f186339acbea876054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate and open a <code>.dissco</code> file from disk, returning a new <a class="el" href="classProject.html" title="Aggregate state for a single open DISSCO project.">Project</a>.  <br /></td></tr>
-<tr class="separator:a32b50ef108bb47f186339acbea876054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace67fedabf8ab2f225f83deeb01dd9e7" id="r_ace67fedabf8ab2f225f83deeb01dd9e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProject.html">Project</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectManager.html#ace67fedabf8ab2f225f83deeb01dd9e7">open</a> (const QString &amp;filepath, const QByteArray &amp;id=QByteArray(), QString *errorMessage=nullptr, bool makeCurrent=true)</td></tr>
+<tr class="memdesc:ace67fedabf8ab2f225f83deeb01dd9e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate and open a <code>.dissco</code> file from disk, returning a new <a class="el" href="classProject.html" title="Aggregate state for a single open DISSCO project.">Project</a>.  <br /></td></tr>
+<tr class="separator:ace67fedabf8ab2f225f83deeb01dd9e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ba00e49d5de11660bcf0811d7e7ad88" id="r_a4ba00e49d5de11660bcf0811d7e7ad88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProject.html">Project</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectManager.html#a4ba00e49d5de11660bcf0811d7e7ad88">build</a> (const QString &amp;filepath, const QByteArray &amp;id=QByteArray())</td></tr>
 <tr class="memdesc:a4ba00e49d5de11660bcf0811d7e7ad88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a <a class="el" href="classProject.html" title="Aggregate state for a single open DISSCO project.">Project</a> from an arbitrary file path (e.g. import path).  <br /></td></tr>
 <tr class="separator:a4ba00e49d5de11660bcf0811d7e7ad88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a161c5f3af2bd19f99e6461fb264f4207" id="r_a161c5f3af2bd19f99e6461fb264f4207"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectManager.html#a161c5f3af2bd19f99e6461fb264f4207">parse</a> (<a class="el" href="classProject.html">Project</a> *, const QString &amp;)</td></tr>
-<tr class="memdesc:a161c5f3af2bd19f99e6461fb264f4207"><td class="mdescLeft">&#160;</td><td class="mdescRight">Populate <code>p</code> from the XML found in the file at <code>filepath</code>.  <br /></td></tr>
-<tr class="separator:a161c5f3af2bd19f99e6461fb264f4207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae02e10c5bae67bbc3fe488cce43c3841" id="r_ae02e10c5bae67bbc3fe488cce43c3841"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectManager.html#ae02e10c5bae67bbc3fe488cce43c3841">parse</a> (<a class="el" href="classProject.html">Project</a> *, const QString &amp;, QString *errorMessage=nullptr)</td></tr>
+<tr class="separator:ae02e10c5bae67bbc3fe488cce43c3841"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf71031960a8803ca9a3a15811cec5fc" id="r_acf71031960a8803ca9a3a15811cec5fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectManager.html#acf71031960a8803ca9a3a15811cec5fc">close</a> (<a class="el" href="classProject.html">Project</a> *)</td></tr>
 <tr class="memdesc:acf71031960a8803ca9a3a15811cec5fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tear down <code>p</code> and free its resources.  <br /></td></tr>
 <tr class="separator:acf71031960a8803ca9a3a15811cec5fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -286,7 +285,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00795">795</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l01056">1056</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -357,7 +356,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00206">206</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00208">208</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -441,7 +440,7 @@ Here is the caller graph for this function:</div>
 
 <p>Build a <a class="el" href="classProject.html" title="Aggregate state for a single open DISSCO project.">Project</a> from an arbitrary file path (e.g. import path). </p>
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00766">766</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l01027">1027</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -479,7 +478,7 @@ Here is the call graph for this function:</div>
 
 <p>Tear down <code>p</code> and free its resources. </p>
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00789">789</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l01050">1050</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 
 </div>
 </div>
@@ -511,7 +510,7 @@ Here is the call graph for this function:</div>
 
 <p>Create a fresh in-memory <a class="el" href="classProject.html" title="Aggregate state for a single open DISSCO project.">Project</a>; not yet bound to a file on disk. </p>
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00740">740</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00993">993</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -530,7 +529,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title="Create a fresh in&#45;memory Project; not yet bound to a file on disk." alt="" coords="217,31,391,56"/>
 <area shape="rect" href="classProjectManager.html#a4ba00e49d5de11660bcf0811d7e7ad88" title="Build a Project from an arbitrary file path (e.g. import path)." alt="" coords="5,5,169,31"/>
 <area shape="poly" title=" " alt="" coords="203,34,169,30,170,25,204,29"/>
-<area shape="rect" href="classProjectManager.html#a32b50ef108bb47f186339acbea876054" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="5,55,169,80"/>
+<area shape="rect" href="classProjectManager.html#ace67fedabf8ab2f225f83deeb01dd9e7" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="5,55,169,80"/>
 <area shape="poly" title=" " alt="" coords="204,57,170,61,169,56,203,52"/>
 </map>
 </div>
@@ -560,7 +559,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00219">219</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00221">221</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -673,7 +672,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00186">186</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00188">188</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -718,7 +717,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00200">200</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00202">202</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 
 </div>
 </div>
@@ -745,7 +744,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00209">209</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00211">211</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -811,7 +810,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00216">216</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00218">218</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -859,7 +858,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00184">184</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00186">186</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -904,7 +903,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00181">181</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00183">183</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -913,7 +912,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="707,80,884,105"/>
 <area shape="rect" href="classProjectManager.html#a4ba00e49d5de11660bcf0811d7e7ad88" title="Build a Project from an arbitrary file path (e.g. import path)." alt="" coords="481,5,645,31"/>
 <area shape="poly" title=" " alt="" coords="749,77,658,45,618,33,619,28,659,39,751,72"/>
-<area shape="rect" href="classProjectManager.html#a32b50ef108bb47f186339acbea876054" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="481,55,645,80"/>
+<area shape="rect" href="classProjectManager.html#ace67fedabf8ab2f225f83deeb01dd9e7" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="481,55,645,80"/>
 <area shape="poly" title=" " alt="" coords="693,84,645,79,645,74,693,79"/>
 <area shape="rect" href="classProjectView.html#a2ccc2bcbd3fa20e55c9322e347da55e2" title=" " alt="" coords="494,104,631,129"/>
 <area shape="poly" title=" " alt="" coords="693,106,632,112,631,107,693,101"/>
@@ -953,7 +952,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00214">214</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00216">216</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1019,7 +1018,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00179">179</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00181">181</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1064,7 +1063,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00196">196</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00198">198</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1109,7 +1108,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00203">203</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00205">205</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1188,7 +1187,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00205">205</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00207">207</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1261,7 +1260,7 @@ Here is the caller graph for this function:</div>
 
 <p>Mark the current project as having unsaved changes and emit <a class="el" href="classProjectManager.html#ac3696b7040a19b457dc4e4d2dcbe3c11">dataModified()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00906">906</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l01167">1167</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1339,7 +1338,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00217">217</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00219">219</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1390,7 +1389,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00193">193</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00195">195</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 
 </div>
 </div>
@@ -1417,7 +1416,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00204">204</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00206">206</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1496,7 +1495,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00195">195</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00197">197</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 
 </div>
 </div>
@@ -1523,7 +1522,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00208">208</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00210">210</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1589,7 +1588,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00187">187</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00189">189</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1634,7 +1633,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00191">191</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00193">193</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1679,7 +1678,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00190">190</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00192">192</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1701,8 +1700,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a32b50ef108bb47f186339acbea876054" name="a32b50ef108bb47f186339acbea876054"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32b50ef108bb47f186339acbea876054">&#9670;&#160;</a></span>open()</h2>
+<a id="ace67fedabf8ab2f225f83deeb01dd9e7" name="ace67fedabf8ab2f225f83deeb01dd9e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace67fedabf8ab2f225f83deeb01dd9e7">&#9670;&#160;</a></span>open()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1717,7 +1716,19 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const QByteArray &amp;&#160;</td>
-          <td class="paramname"><em>id</em> = <code>QByteArray()</code>&#160;</td>
+          <td class="paramname"><em>id</em> = <code>QByteArray()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString *&#160;</td>
+          <td class="paramname"><em>errorMessage</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>makeCurrent</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1729,28 +1740,25 @@ Here is the caller graph for this function:</div>
 
 <p>Validate and open a <code>.dissco</code> file from disk, returning a new <a class="el" href="classProject.html" title="Aggregate state for a single open DISSCO project.">Project</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00749">749</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l01002">1002</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classProjectManager_a32b50ef108bb47f186339acbea876054_cgraph.png" border="0" usemap="#aclassProjectManager_a32b50ef108bb47f186339acbea876054_cgraph" alt=""/></div>
-<map name="aclassProjectManager_a32b50ef108bb47f186339acbea876054_cgraph" id="aclassProjectManager_a32b50ef108bb47f186339acbea876054_cgraph">
+<div class="center"><img src="classProjectManager_ace67fedabf8ab2f225f83deeb01dd9e7_cgraph.png" border="0" usemap="#aclassProjectManager_ace67fedabf8ab2f225f83deeb01dd9e7_cgraph" alt=""/></div>
+<map name="aclassProjectManager_ace67fedabf8ab2f225f83deeb01dd9e7_cgraph" id="aclassProjectManager_ace67fedabf8ab2f225f83deeb01dd9e7_cgraph">
 <area shape="rect" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="5,55,169,80"/>
 <area shape="rect" href="classProjectManager.html#a08f7b64b62717be7682a178f35227fd0" title="Create a fresh in&#45;memory Project; not yet bound to a file on disk." alt="" coords="219,5,393,31"/>
 <area shape="poly" title=" " alt="" coords="144,52,235,31,236,36,145,57"/>
 <area shape="rect" href="classProjectManager.html#a4b7722dcadc8376741ba4de1e92396a7" title=" " alt="" coords="217,55,395,80"/>
 <area shape="poly" title=" " alt="" coords="170,65,203,65,203,70,170,70"/>
-<area shape="rect" href="classProjectManager.html#a161c5f3af2bd19f99e6461fb264f4207" title="Populate p from the XML found in the file at filepath." alt="" coords="222,104,390,129"/>
+<area shape="rect" href="classProjectManager.html#ae02e10c5bae67bbc3fe488cce43c3841" title=" " alt="" coords="222,104,390,129"/>
 <area shape="poly" title=" " alt="" coords="145,77,236,98,235,104,144,83"/>
-<area shape="rect" href="classProjectManager.html#a1d2153ae538c181e0028a7edb987b505" title=" " alt="" coords="453,5,612,31"/>
-<area shape="poly" title=" " alt="" coords="393,15,440,15,440,21,393,21"/>
-<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="446,55,619,80"/>
-<area shape="poly" title=" " alt="" coords="364,101,460,80,461,86,366,107"/>
-<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="443,104,623,129"/>
-<area shape="poly" title=" " alt="" coords="390,114,429,114,429,119,390,119"/>
-<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="671,129,817,155"/>
-<area shape="poly" title=" " alt="" coords="363,127,443,139,554,145,657,144,657,149,554,150,442,145,362,132"/>
-<area shape="poly" title=" " alt="" coords="623,125,657,129,657,134,623,130"/>
+<area shape="rect" href="classProjectManager.html#a1d2153ae538c181e0028a7edb987b505" title=" " alt="" coords="450,5,609,31"/>
+<area shape="poly" title=" " alt="" coords="393,15,436,15,436,21,393,21"/>
+<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="443,79,616,104"/>
+<area shape="poly" title=" " alt="" coords="390,105,429,100,429,105,390,110"/>
+<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="456,128,603,153"/>
+<area shape="poly" title=" " alt="" coords="390,123,443,129,442,134,390,128"/>
 </map>
 </div>
 
@@ -1779,7 +1787,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00199">199</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00201">201</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1801,14 +1809,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a161c5f3af2bd19f99e6461fb264f4207" name="a161c5f3af2bd19f99e6461fb264f4207"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a161c5f3af2bd19f99e6461fb264f4207">&#9670;&#160;</a></span>parse()</h2>
+<a id="ae02e10c5bae67bbc3fe488cce43c3841" name="ae02e10c5bae67bbc3fe488cce43c3841"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae02e10c5bae67bbc3fe488cce43c3841">&#9670;&#160;</a></span>parse()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ProjectManager::parse </td>
+          <td class="memname">bool ProjectManager::parse </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classProject.html">Project</a> *&#160;</td>
           <td class="paramname"><em>p</em>, </td>
@@ -1817,7 +1825,13 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const QString &amp;&#160;</td>
-          <td class="paramname"><em>filepath</em>&#160;</td>
+          <td class="paramname"><em>filepath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString *&#160;</td>
+          <td class="paramname"><em>errorMessage</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1826,32 +1840,28 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Populate <code>p</code> from the XML found in the file at <code>filepath</code>. Returns false and describes the parse/structure error in <code>errorMessage</code>. </p>
 
-<p>Populate <code>p</code> from the XML found in the file at <code>filepath</code>. </p>
-
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00564">564</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00705">705</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classProjectManager_a161c5f3af2bd19f99e6461fb264f4207_cgraph.png" border="0" usemap="#aclassProjectManager_a161c5f3af2bd19f99e6461fb264f4207_cgraph" alt=""/></div>
-<map name="aclassProjectManager_a161c5f3af2bd19f99e6461fb264f4207_cgraph" id="aclassProjectManager_a161c5f3af2bd19f99e6461fb264f4207_cgraph">
-<area shape="rect" title="Populate p from the XML found in the file at filepath." alt="" coords="5,55,173,80"/>
-<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="225,5,398,31"/>
-<area shape="poly" title=" " alt="" coords="147,52,239,31,241,36,148,57"/>
-<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="221,55,401,80"/>
-<area shape="poly" title=" " alt="" coords="174,65,208,65,208,70,174,70"/>
-<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="449,80,596,105"/>
-<area shape="poly" title=" " alt="" coords="148,77,222,89,333,94,435,94,435,99,333,100,221,94,147,83"/>
-<area shape="poly" title=" " alt="" coords="402,76,436,80,435,85,401,81"/>
+<div class="center"><img src="classProjectManager_ae02e10c5bae67bbc3fe488cce43c3841_cgraph.png" border="0" usemap="#aclassProjectManager_ae02e10c5bae67bbc3fe488cce43c3841_cgraph" alt=""/></div>
+<map name="aclassProjectManager_ae02e10c5bae67bbc3fe488cce43c3841_cgraph" id="aclassProjectManager_ae02e10c5bae67bbc3fe488cce43c3841_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,173,56"/>
+<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="221,5,395,31"/>
+<area shape="poly" title=" " alt="" coords="173,31,207,27,208,32,174,36"/>
+<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="235,55,381,80"/>
+<area shape="poly" title=" " alt="" coords="174,50,221,55,221,60,173,55"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classProjectManager_a161c5f3af2bd19f99e6461fb264f4207_icgraph.png" border="0" usemap="#aclassProjectManager_a161c5f3af2bd19f99e6461fb264f4207_icgraph" alt=""/></div>
-<map name="aclassProjectManager_a161c5f3af2bd19f99e6461fb264f4207_icgraph" id="aclassProjectManager_a161c5f3af2bd19f99e6461fb264f4207_icgraph">
-<area shape="rect" title="Populate p from the XML found in the file at filepath." alt="" coords="217,5,385,31"/>
-<area shape="rect" href="classProjectManager.html#a32b50ef108bb47f186339acbea876054" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="5,5,169,31"/>
+<div class="center"><img src="classProjectManager_ae02e10c5bae67bbc3fe488cce43c3841_icgraph.png" border="0" usemap="#aclassProjectManager_ae02e10c5bae67bbc3fe488cce43c3841_icgraph" alt=""/></div>
+<map name="aclassProjectManager_ae02e10c5bae67bbc3fe488cce43c3841_icgraph" id="aclassProjectManager_ae02e10c5bae67bbc3fe488cce43c3841_icgraph">
+<area shape="rect" title=" " alt="" coords="217,5,385,31"/>
+<area shape="rect" href="classProjectManager.html#ace67fedabf8ab2f225f83deeb01dd9e7" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="5,5,169,31"/>
 <area shape="poly" title=" " alt="" coords="203,21,170,21,170,15,203,15"/>
 </map>
 </div>
@@ -1881,7 +1891,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00212">212</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00214">214</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1947,7 +1957,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00213">213</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00215">215</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2013,7 +2023,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00188">188</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00190">190</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2058,7 +2068,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00189">189</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00191">191</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2143,7 +2153,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00197">197</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00199">199</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2188,7 +2198,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00192">192</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00194">194</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2234,7 +2244,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00178">178</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00180">180</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 
 </div>
 </div>
@@ -2261,7 +2271,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00210">210</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00212">212</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2327,7 +2337,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00211">211</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00213">213</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2393,7 +2403,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00207">207</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00209">209</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2459,7 +2469,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00185">185</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00187">187</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2502,7 +2512,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00198">198</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00200">200</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2547,7 +2557,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00183">183</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00185">185</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2562,7 +2572,7 @@ Here is the caller graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="715,139,622,160,620,155,714,134"/>
 <area shape="rect" href="classProjectManager.html#a4ba00e49d5de11660bcf0811d7e7ad88" title="Build a Project from an arbitrary file path (e.g. import path)." alt="" coords="247,5,411,31"/>
 <area shape="poly" title=" " alt="" coords="488,54,390,33,391,28,489,49"/>
-<area shape="rect" href="classProjectManager.html#a32b50ef108bb47f186339acbea876054" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="247,55,411,80"/>
+<area shape="rect" href="classProjectManager.html#ace67fedabf8ab2f225f83deeb01dd9e7" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="247,55,411,80"/>
 <area shape="poly" title=" " alt="" coords="462,70,412,70,412,65,462,65"/>
 <area shape="rect" href="classEnvelopeLibraryWindow.html#af515ba1cc128d9d9c20c6fff1fcb62b7" title="Save via project controller (e.g. Ctrl+S)" alt="" coords="240,105,419,145"/>
 <area shape="poly" title=" " alt="" coords="480,125,419,126,419,120,480,119"/>
@@ -2598,7 +2608,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00202">202</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8hpp_source.html#l00204">204</a> of file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2661,7 +2671,7 @@ Here is the caller graph for this function:</div>
 
 <p>Persist the user-supplied PRNG seed for the active project to disk. </p>
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00901">901</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l01162">1162</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

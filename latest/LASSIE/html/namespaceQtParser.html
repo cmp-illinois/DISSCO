@@ -84,9 +84,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a372f5d21adb222d0915eb0e1ed6467c4" id="r_a372f5d21adb222d0915eb0e1ed6467c4"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4">nextChildInner</a> (QXmlStreamReader &amp;r)</td></tr>
 <tr class="memdesc:a372f5d21adb222d0915eb0e1ed6467c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advance to the next child StartElement and return its inner content. Returns an empty QString if no further child element exists in the current scope (and leaves r at the parent EndElement).  <br /></td></tr>
 <tr class="separator:a372f5d21adb222d0915eb0e1ed6467c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bd311787418e867c53dc77117fc3db9" id="r_a2bd311787418e867c53dc77117fc3db9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9">readNextRequiredChild</a> (QXmlStreamReader &amp;r, QStringView expectedName)</td></tr>
+<tr class="separator:a2bd311787418e867c53dc77117fc3db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a387efee55ea44adf6780ea1bffc18d68" id="r_a387efee55ea44adf6780ea1bffc18d68"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68">nextRequiredChildInner</a> (QXmlStreamReader &amp;r, QStringView expectedName)</td></tr>
+<tr class="separator:a387efee55ea44adf6780ea1bffc18d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c607189c29e0941542d67ce06688db6" id="r_a1c607189c29e0941542d67ce06688db6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6">consumeRest</a> (QXmlStreamReader &amp;r)</td></tr>
 <tr class="memdesc:a1c607189c29e0941542d67ce06688db6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consume any remaining children of the element currently being read, advancing to its EndElement.  <br /></td></tr>
 <tr class="separator:a1c607189c29e0941542d67ce06688db6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ec54c5917153b232a8887b4893d4a03" id="r_a2ec54c5917153b232a8887b4893d4a03"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceQtParser.html#a2ec54c5917153b232a8887b4893d4a03">hasValidEventName</a> (QXmlStreamReader &amp;r, const QString &amp;name)</td></tr>
+<tr class="separator:a2ec54c5917153b232a8887b4893d4a03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4986866630aa6d8569d6d6361a012b3" id="r_aa4986866630aa6d8569d6d6361a012b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPackage.html">Package</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3">parsePackage</a> (QXmlStreamReader &amp;r)</td></tr>
 <tr class="separator:aa4986866630aa6d8569d6d6361a012b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02b3427c7ac51e304c8a6e46e98576b3" id="r_a02b3427c7ac51e304c8a6e46e98576b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLayer.html">Layer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3">parseLayer</a> (QXmlStreamReader &amp;r)</td></tr>
@@ -109,9 +115,9 @@ Functions</h2></td></tr>
 <tr class="separator:ad31f75c47a3863aa051c67b45a2350b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56ec96ed6c93fec2529fa92dcdb5f351" id="r_a56ec96ed6c93fec2529fa92dcdb5f351"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceQtParser.html#a56ec96ed6c93fec2529fa92dcdb5f351">parseModifiers</a> (QXmlStreamReader &amp;r, QList&lt; <a class="el" href="structModifier.html">Modifier</a> &gt; &amp;out)</td></tr>
 <tr class="separator:a56ec96ed6c93fec2529fa92dcdb5f351"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b9c410d2a1c71aacb32d9fcfd27b087" id="r_a5b9c410d2a1c71aacb32d9fcfd27b087"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceQtParser.html#a5b9c410d2a1c71aacb32d9fcfd27b087">parseHEventCore</a> (QXmlStreamReader &amp;r, <a class="el" href="structHEvent.html">HEvent</a> &amp;event)</td></tr>
-<tr class="memdesc:a5b9c410d2a1c71aacb32d9fcfd27b087"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the shared "HEvent core" children of <code>&lt;Event&gt;</code>: from <code>&lt;EventName&gt;</code> through <code>&lt;Filter&gt;</code>. The <code>&lt;EventType&gt;</code> child must already have been consumed by the caller. Stops at <code>&lt;Filter&gt;</code> so callers can read the differing trailing siblings (<a class="el" href="structHEvent.html">HEvent</a>: <code>&lt;<a class="el" href="classModifiers.html">Modifiers</a>&gt;</code>; <a class="el" href="structBottomEvent.html">BottomEvent</a>: <code>&lt;<a class="el" href="structExtraInfo.html">ExtraInfo</a>&gt;</code>).  <br /></td></tr>
-<tr class="separator:a5b9c410d2a1c71aacb32d9fcfd27b087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcec34232af90241661ab2c936d01aed" id="r_abcec34232af90241661ab2c936d01aed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceQtParser.html#abcec34232af90241661ab2c936d01aed">parseHEventCore</a> (QXmlStreamReader &amp;r, <a class="el" href="structHEvent.html">HEvent</a> &amp;event)</td></tr>
+<tr class="memdesc:abcec34232af90241661ab2c936d01aed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the shared "HEvent core" children of <code>&lt;Event&gt;</code>: from <code>&lt;EventName&gt;</code> through <code>&lt;Filter&gt;</code>. The <code>&lt;EventType&gt;</code> child must already have been consumed by the caller. Stops at <code>&lt;Filter&gt;</code> so callers can read the differing trailing siblings (<a class="el" href="structHEvent.html">HEvent</a>: <code>&lt;<a class="el" href="classModifiers.html">Modifiers</a>&gt;</code>; <a class="el" href="structBottomEvent.html">BottomEvent</a>: <code>&lt;<a class="el" href="structExtraInfo.html">ExtraInfo</a>&gt;</code>).  <br /></td></tr>
+<tr class="separator:abcec34232af90241661ab2c936d01aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a424656e1d022f7799c5edc1e51e8e8b9" id="r_a424656e1d022f7799c5edc1e51e8e8b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceQtParser.html#a424656e1d022f7799c5edc1e51e8e8b9">parseHEventChildren</a> (QXmlStreamReader &amp;r, <a class="el" href="structHEvent.html">HEvent</a> &amp;event)</td></tr>
 <tr class="separator:a424656e1d022f7799c5edc1e51e8e8b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a571d780a01c558d8bdb88e943c240925" id="r_a571d780a01c558d8bdb88e943c240925"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceQtParser.html#a571d780a01c558d8bdb88e943c240925">parseExtraInfo</a> (QXmlStreamReader &amp;r, <a class="el" href="structExtraInfo.html">ExtraInfo</a> &amp;info)</td></tr>
@@ -154,14 +160,14 @@ Functions</h2></td></tr>
 
 <p>Consume any remaining children of the element currently being read, advancing to its EndElement. </p>
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00080">80</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00105">105</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceQtParser_a1c607189c29e0941542d67ce06688db6_icgraph.png" border="0" usemap="#anamespaceQtParser_a1c607189c29e0941542d67ce06688db6_icgraph" alt=""/></div>
 <map name="anamespaceQtParser_a1c607189c29e0941542d67ce06688db6_icgraph" id="anamespaceQtParser_a1c607189c29e0941542d67ce06688db6_icgraph">
 <area shape="rect" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="1053,309,1227,335"/>
-<area shape="rect" href="classProjectManager.html#a161c5f3af2bd19f99e6461fb264f4207" title="Populate p from the XML found in the file at filepath." alt="" coords="811,5,979,31"/>
+<area shape="rect" href="classProjectManager.html#ae02e10c5bae67bbc3fe488cce43c3841" title=" " alt="" coords="811,5,979,31"/>
 <area shape="poly" title=" " alt="" coords="1131,296,1116,244,1092,179,1055,110,1031,79,1004,52,969,33,972,28,1007,48,1035,76,1059,107,1097,176,1122,243,1136,295"/>
 <area shape="rect" href="namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,99,220,139"/>
 <area shape="poly" title=" " alt="" coords="1129,297,1113,254,1087,202,1051,151,1029,129,1004,111,975,97,940,86,855,72,756,67,649,68,439,81,276,97,220,103,220,98,276,91,438,76,649,62,756,61,856,67,941,81,977,92,1007,106,1032,125,1055,148,1092,200,1118,252,1134,295"/>
@@ -187,9 +193,9 @@ Here is the caller graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="1118,346,1069,386,1039,406,1006,422,931,445,852,459,778,467,712,469,712,464,777,461,852,454,929,440,1004,417,1036,401,1066,382,1115,342"/>
 <area shape="rect" href="namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="808,157,983,183"/>
 <area shape="poly" title=" " alt="" coords="1117,301,1069,252,1038,226,1004,204,956,185,958,180,1007,200,1041,222,1072,248,1121,297"/>
-<area shape="rect" href="classProjectManager.html#a32b50ef108bb47f186339acbea876054" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="548,5,712,31"/>
+<area shape="rect" href="classProjectManager.html#ace67fedabf8ab2f225f83deeb01dd9e7" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="548,5,712,31"/>
 <area shape="poly" title=" " alt="" coords="798,21,712,21,712,15,798,15"/>
-<area shape="rect" href="namespaceQtParser.html#a5b9c410d2a1c71aacb32d9fcfd27b087" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,309,475,335"/>
+<area shape="rect" href="namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,309,475,335"/>
 <area shape="poly" title=" " alt="" coords="594,547,558,522,521,492,478,450,439,406,384,336,388,333,443,402,482,446,524,488,561,518,597,542"/>
 <area shape="poly" title=" " alt="" coords="346,303,142,142,145,137,349,299"/>
 <area shape="poly" title=" " alt="" coords="343,344,140,470,137,466,341,340"/>
@@ -202,6 +208,44 @@ Here is the caller graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="795,185,664,209,593,227,524,248,453,280,398,312,395,307,451,275,522,244,591,222,663,204,794,180"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="a2ec54c5917153b232a8887b4893d4a03" name="a2ec54c5917153b232a8887b4893d4a03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ec54c5917153b232a8887b4893d4a03">&#9670;&#160;</a></span>hasValidEventName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool QtParser::hasValidEventName </td>
+          <td>(</td>
+          <td class="paramtype">QXmlStreamReader &amp;&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00109">109</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 
 </div>
 </div>
@@ -231,7 +275,7 @@ Here is the caller graph for this function:</div>
 
 <p>Advance to the next child StartElement and return its inner content. Returns an empty QString if no further child element exists in the current scope (and leaves r at the parent EndElement). </p>
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00073">73</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00074">74</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -247,44 +291,103 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceQtParser_a372f5d21adb222d0915eb0e1ed6467c4_icgraph.png" border="0" usemap="#anamespaceQtParser_a372f5d21adb222d0915eb0e1ed6467c4_icgraph" alt=""/></div>
 <map name="anamespaceQtParser_a372f5d21adb222d0915eb0e1ed6467c4_icgraph" id="anamespaceQtParser_a372f5d21adb222d0915eb0e1ed6467c4_icgraph">
-<area shape="rect" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="1053,259,1233,284"/>
-<area shape="rect" href="classProjectManager.html#a161c5f3af2bd19f99e6461fb264f4207" title="Populate p from the XML found in the file at filepath." alt="" coords="811,5,979,31"/>
-<area shape="poly" title=" " alt="" coords="1131,246,1113,204,1086,151,1050,98,1028,73,1004,52,966,33,969,28,1007,48,1032,70,1054,94,1091,149,1118,202,1136,244"/>
-<area shape="rect" href="namespaceQtParser.html#ad31f75c47a3863aa051c67b45a2350b4" title=" " alt="" coords="523,309,737,335"/>
-<area shape="poly" title=" " alt="" coords="1040,284,738,314,737,309,1039,279"/>
-<area shape="rect" href="namespaceQtParser.html#a5b9c410d2a1c71aacb32d9fcfd27b087" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,309,475,335"/>
-<area shape="poly" title=" " alt="" coords="1090,291,1006,313,872,340,766,355,659,358,522,350,436,337,436,332,523,345,659,353,765,350,871,334,1005,307,1089,285"/>
-<area shape="rect" href="namespaceQtParser.html#a571d780a01c558d8bdb88e943c240925" title=" " alt="" coords="285,105,465,131"/>
-<area shape="poly" title=" " alt="" coords="1129,247,1111,211,1084,168,1048,127,1027,110,1004,96,965,80,925,67,840,51,755,47,670,52,591,63,520,78,414,108,412,103,518,73,590,58,670,47,755,42,841,46,926,62,967,75,1007,92,1030,106,1052,124,1088,165,1115,208,1134,245"/>
-<area shape="rect" href="namespaceQtParser.html#a4993d99e86d743ad600a811d34d73e5c" title=" " alt="" coords="535,235,725,275"/>
-<area shape="poly" title=" " alt="" coords="1039,271,725,261,725,256,1039,265"/>
-<area shape="rect" href="namespaceQtParser.html#a848d9d71f91762671fc64377a7fadb58" title=" " alt="" coords="807,208,984,233"/>
-<area shape="poly" title=" " alt="" coords="1066,258,958,236,959,231,1067,253"/>
-<area shape="rect" href="namespaceQtParser.html#af0cdf6c8d3bf375e76aa058dbd5690d1" title=" " alt="" coords="527,509,733,535"/>
-<area shape="poly" title=" " alt="" coords="1139,299,1124,348,1098,408,1081,439,1060,468,1035,494,1007,515,966,534,922,547,877,554,832,556,747,550,679,537,680,532,748,545,832,551,877,549,921,542,964,529,1004,510,1032,490,1056,464,1076,436,1094,406,1119,346,1134,297"/>
-<area shape="rect" href="namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3" title=" " alt="" coords="808,107,983,132"/>
-<area shape="poly" title=" " alt="" coords="1120,250,1070,201,1038,176,1004,154,956,135,958,130,1007,149,1041,171,1074,197,1124,246"/>
-<area shape="rect" href="namespaceQtParser.html#a419a4afb165fe261129f9fedf93d5d21" title=" " alt="" coords="785,410,1005,450"/>
-<area shape="poly" title=" " alt="" coords="1123,296,1073,345,1041,371,1007,394,967,412,965,407,1004,389,1038,366,1069,341,1119,292"/>
-<area shape="rect" href="namespaceQtParser.html#a8be54a861c2c957a4a887f266ffea752" title=" " alt="" coords="548,176,712,201"/>
-<area shape="poly" title=" " alt="" coords="1113,253,1064,223,1035,208,1005,198,928,183,851,177,777,178,712,182,712,176,776,172,851,172,929,178,1006,193,1037,204,1067,218,1116,248"/>
-<area shape="rect" href="namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="808,475,983,500"/>
-<area shape="poly" title=" " alt="" coords="1133,298,1115,336,1087,381,1051,426,1007,464,981,477,979,472,1004,460,1047,422,1082,378,1110,333,1129,296"/>
-<area shape="rect" href="classProjectManager.html#a32b50ef108bb47f186339acbea876054" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="548,5,712,31"/>
-<area shape="poly" title=" " alt="" coords="798,21,712,21,712,15,798,15"/>
-<area shape="poly" title=" " alt="" coords="509,325,475,325,475,319,509,319"/>
-<area shape="rect" href="namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,147,220,187"/>
-<area shape="poly" title=" " alt="" coords="340,304,150,190,153,185,343,300"/>
-<area shape="rect" href="namespaceQtParser.html#a424656e1d022f7799c5edc1e51e8e8b9" title=" " alt="" coords="5,309,228,335"/>
-<area shape="poly" title=" " alt="" coords="262,325,228,325,228,319,262,319"/>
-<area shape="poly" title=" " alt="" coords="295,136,221,150,220,145,294,131"/>
-<area shape="poly" title=" " alt="" coords="793,237,725,246,724,240,792,231"/>
-<area shape="poly" title=" " alt="" coords="591,505,521,460,443,393,387,337,391,333,446,389,524,456,594,500"/>
-<area shape="rect" href="namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3" title=" " alt="" coords="551,107,709,132"/>
-<area shape="poly" title=" " alt="" coords="794,122,709,122,709,117,794,117"/>
-<area shape="poly" title=" " alt="" coords="575,139,524,166,480,202,441,243,388,311,383,307,437,240,476,198,521,161,572,135"/>
-<area shape="poly" title=" " alt="" coords="568,208,524,226,450,270,394,311,391,307,447,266,521,221,566,203"/>
-<area shape="poly" title=" " alt="" coords="824,474,785,465,652,434,594,418,522,394,454,365,399,337,402,333,457,360,524,389,596,413,653,429,786,459,825,469"/>
+<area shape="rect" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="951,42,1131,67"/>
+<area shape="rect" href="namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3" title=" " alt="" coords="728,42,903,67"/>
+<area shape="poly" title=" " alt="" coords="936,57,903,57,903,52,936,52"/>
+<area shape="rect" href="namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3" title=" " alt="" coords="523,42,680,67"/>
+<area shape="poly" title=" " alt="" coords="714,57,680,57,680,52,714,52"/>
+<area shape="rect" href="namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
+<area shape="poly" title=" " alt="" coords="509,57,475,57,475,52,509,52"/>
+<area shape="rect" href="namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,5,220,45"/>
+<area shape="poly" title=" " alt="" coords="262,45,220,40,221,34,263,39"/>
+<area shape="rect" href="namespaceQtParser.html#a424656e1d022f7799c5edc1e51e8e8b9" title=" " alt="" coords="5,70,228,95"/>
+<area shape="poly" title=" " alt="" coords="262,70,229,73,228,68,262,64"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a387efee55ea44adf6780ea1bffc18d68" name="a387efee55ea44adf6780ea1bffc18d68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a387efee55ea44adf6780ea1bffc18d68">&#9670;&#160;</a></span>nextRequiredChildInner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString QtParser::nextRequiredChildInner </td>
+          <td>(</td>
+          <td class="paramtype">QXmlStreamReader &amp;&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QStringView&#160;</td>
+          <td class="paramname"><em>expectedName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00096">96</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceQtParser_a387efee55ea44adf6780ea1bffc18d68_cgraph.png" border="0" usemap="#anamespaceQtParser_a387efee55ea44adf6780ea1bffc18d68_cgraph" alt=""/></div>
+<map name="anamespaceQtParser_a387efee55ea44adf6780ea1bffc18d68_cgraph" id="anamespaceQtParser_a387efee55ea44adf6780ea1bffc18d68_cgraph">
+<area shape="rect" title=" " alt="" coords="5,27,211,67"/>
+<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="287,5,433,31"/>
+<area shape="poly" title=" " alt="" coords="210,33,272,25,273,31,211,38"/>
+<area shape="rect" href="namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="259,55,461,95"/>
+<area shape="poly" title=" " alt="" coords="211,56,245,60,245,65,210,61"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceQtParser_a387efee55ea44adf6780ea1bffc18d68_icgraph.png" border="0" usemap="#anamespaceQtParser_a387efee55ea44adf6780ea1bffc18d68_icgraph" alt=""/></div>
+<map name="anamespaceQtParser_a387efee55ea44adf6780ea1bffc18d68_icgraph" id="anamespaceQtParser_a387efee55ea44adf6780ea1bffc18d68_icgraph">
+<area shape="rect" title=" " alt="" coords="791,186,996,226"/>
+<area shape="rect" href="namespaceQtParser.html#ad31f75c47a3863aa051c67b45a2350b4" title=" " alt="" coords="525,193,740,218"/>
+<area shape="poly" title=" " alt="" coords="777,208,740,208,740,203,777,203"/>
+<area shape="rect" href="namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,120,475,145"/>
+<area shape="poly" title=" " alt="" coords="873,174,852,139,822,100,785,63,741,35,683,14,634,9,585,17,524,35,483,52,445,76,391,122,388,117,442,72,480,48,522,30,583,12,634,3,685,8,744,30,788,58,826,96,856,136,878,172"/>
+<area shape="rect" href="namespaceQtParser.html#a571d780a01c558d8bdb88e943c240925" title=" " alt="" coords="285,233,465,258"/>
+<area shape="poly" title=" " alt="" coords="777,228,743,232,597,243,466,247,466,242,596,237,742,227,777,223"/>
+<area shape="rect" href="namespaceQtParser.html#a4993d99e86d743ad600a811d34d73e5c" title=" " alt="" coords="281,376,470,416"/>
+<area shape="poly" title=" " alt="" coords="880,240,859,279,829,324,791,366,768,384,744,399,709,413,672,422,597,430,525,428,460,419,461,414,525,422,597,425,672,417,707,408,741,394,765,380,787,362,825,320,855,276,875,237"/>
+<area shape="rect" href="namespaceQtParser.html#a848d9d71f91762671fc64377a7fadb58" title=" " alt="" coords="544,358,721,384"/>
+<area shape="poly" title=" " alt="" coords="870,238,816,295,782,324,744,348,712,361,710,356,741,343,778,319,812,291,866,234"/>
+<area shape="rect" href="namespaceQtParser.html#af0cdf6c8d3bf375e76aa058dbd5690d1" title=" " alt="" coords="529,45,736,70"/>
+<area shape="poly" title=" " alt="" coords="863,177,809,129,777,104,742,84,712,73,714,68,744,79,779,100,813,125,866,174"/>
+<area shape="rect" href="namespaceQtParser.html#a419a4afb165fe261129f9fedf93d5d21" title=" " alt="" coords="523,294,743,334"/>
+<area shape="poly" title=" " alt="" coords="840,234,744,277,695,296,693,291,742,272,838,229"/>
+<area shape="rect" href="namespaceQtParser.html#a8be54a861c2c957a4a887f266ffea752" title=" " alt="" coords="551,94,715,120"/>
+<area shape="poly" title=" " alt="" coords="845,181,796,156,742,133,703,122,704,117,744,128,798,151,848,177"/>
+<area shape="rect" href="namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="545,144,720,169"/>
+<area shape="poly" title=" " alt="" coords="777,186,700,172,701,166,778,181"/>
+<area shape="poly" title=" " alt="" coords="559,192,522,183,412,147,413,142,523,178,560,187"/>
+<area shape="rect" href="namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,191,220,231"/>
+<area shape="poly" title=" " alt="" coords="320,152,184,193,182,188,319,146"/>
+<area shape="rect" href="namespaceQtParser.html#a424656e1d022f7799c5edc1e51e8e8b9" title=" " alt="" coords="5,120,228,145"/>
+<area shape="poly" title=" " alt="" coords="262,135,228,135,228,130,262,130"/>
+<area shape="poly" title=" " alt="" coords="271,234,220,227,221,222,272,229"/>
+<area shape="poly" title=" " alt="" coords="530,384,470,390,470,384,530,378"/>
+<area shape="poly" title=" " alt="" coords="555,76,523,84,411,122,409,117,522,79,554,71"/>
+<area shape="poly" title=" " alt="" coords="537,119,475,125,475,120,536,114"/>
+<area shape="poly" title=" " alt="" coords="531,149,475,144,475,139,532,144"/>
 </map>
 </div>
 
@@ -324,65 +427,71 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00394">394</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00474">474</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceQtParser_a2e0c1dee02c31335a748652b2b6aeedc_cgraph.png" border="0" usemap="#anamespaceQtParser_a2e0c1dee02c31335a748652b2b6aeedc_cgraph" alt=""/></div>
 <map name="anamespaceQtParser_a2e0c1dee02c31335a748652b2b6aeedc_cgraph" id="anamespaceQtParser_a2e0c1dee02c31335a748652b2b6aeedc_cgraph">
-<area shape="rect" title=" " alt="" coords="5,363,212,403"/>
-<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="1004,418,1177,443"/>
-<area shape="poly" title=" " alt="" coords="147,400,212,435,300,478,402,520,507,555,570,569,620,574,735,579,797,587,846,597,869,599,893,597,919,591,948,579,965,567,974,552,982,535,995,516,1062,451,1066,454,999,519,987,538,979,555,969,570,951,584,920,596,894,603,869,604,845,602,796,592,734,584,619,580,569,574,506,560,400,525,298,483,209,440,144,405"/>
-<area shape="rect" href="namespaceQtParser.html#a571d780a01c558d8bdb88e943c240925" title=" " alt="" coords="507,142,687,167"/>
-<area shape="poly" title=" " alt="" coords="152,360,555,171,557,176,154,365"/>
-<area shape="rect" href="namespaceQtParser.html#a5b9c410d2a1c71aacb32d9fcfd27b087" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="260,370,459,395"/>
-<area shape="poly" title=" " alt="" coords="212,380,246,380,246,385,212,385"/>
-<area shape="poly" title=" " alt="" coords="645,165,810,217,894,249,951,281,968,299,977,316,985,334,999,354,1030,383,1061,408,1058,412,1026,387,995,358,981,337,973,319,964,302,948,285,892,254,809,222,643,170"/>
-<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="1001,318,1181,343"/>
-<area shape="poly" title=" " alt="" coords="687,144,748,143,815,148,885,161,951,184,991,210,1026,242,1055,276,1076,305,1072,308,1051,279,1022,246,988,214,948,189,883,166,814,153,747,148,687,149"/>
-<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="1266,193,1413,218"/>
-<area shape="poly" title=" " alt="" coords="687,146,735,144,842,140,950,144,1117,163,1261,187,1260,193,1116,169,949,149,842,146,735,149,687,151"/>
-<area shape="rect" href="namespaceQtParser.html#a56ec96ed6c93fec2529fa92dcdb5f351" title=" " alt="" coords="751,41,933,66"/>
-<area shape="poly" title=" " alt="" coords="619,140,671,112,734,83,778,67,780,73,736,88,673,117,621,144"/>
-<area shape="poly" title=" " alt="" coords="1116,316,1300,222,1302,227,1118,320"/>
-<area shape="rect" href="namespaceQtParser.html#a573d00e495962e6d43cb0136e1fbcaa0" title=" " alt="" coords="1003,41,1178,66"/>
-<area shape="poly" title=" " alt="" coords="933,51,990,51,990,56,933,56"/>
-<area shape="poly" title=" " alt="" coords="1139,64,1185,83,1223,106,1259,133,1317,181,1313,185,1256,137,1220,111,1183,88,1137,69"/>
-<area shape="rect" href="namespaceQtParser.html#a53cfb388bac1e2f4ea842b4f94041dbb" title=" " alt="" coords="1232,41,1447,66"/>
-<area shape="poly" title=" " alt="" coords="1178,51,1218,51,1218,56,1178,56"/>
-<area shape="rect" href="namespaceModifierUsageImportPolicy.html#a1dd2cf0b505e0296f7c223526678790b" title=" " alt="" coords="1515,5,1713,45"/>
-<area shape="poly" title=" " alt="" coords="1447,40,1501,34,1501,39,1447,45"/>
-<area shape="rect" href="namespaceQtParser.html#abdf08e73a7103831369cd249c5e41d11" title=" " alt="" coords="1495,70,1733,95"/>
-<area shape="poly" title=" " alt="" coords="1447,62,1482,66,1481,71,1447,67"/>
-<area shape="rect" href="namespaceQtParser.html#af29915f8225de418d99395fca9bc08e5" title=" " alt="" coords="1781,70,1989,95"/>
-<area shape="poly" title=" " alt="" coords="1734,80,1768,80,1768,85,1734,85"/>
-<area shape="poly" title=" " alt="" coords="384,367,439,341,506,316,628,282,726,265,774,263,825,264,950,280,1002,293,1049,310,1048,315,1001,298,949,285,824,269,774,268,726,270,629,288,507,321,441,346,386,372"/>
-<area shape="rect" href="namespaceQtParser.html#ad31f75c47a3863aa051c67b45a2350b4" title=" " alt="" coords="735,442,949,467"/>
-<area shape="poly" title=" " alt="" coords="446,393,743,437,742,443,445,398"/>
-<area shape="rect" href="namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3" title=" " alt="" coords="518,519,675,545"/>
-<area shape="poly" title=" " alt="" coords="381,393,508,475,564,510,562,515,505,480,378,398"/>
-<area shape="rect" href="namespaceQtParser.html#af0cdf6c8d3bf375e76aa058dbd5690d1" title=" " alt="" coords="739,343,945,369"/>
-<area shape="poly" title=" " alt="" coords="459,375,725,360,725,365,459,380"/>
-<area shape="rect" href="namespaceQtParser.html#a8be54a861c2c957a4a887f266ffea752" title=" " alt="" coords="760,294,924,319"/>
-<area shape="poly" title=" " alt="" coords="413,367,506,348,631,329,746,314,747,320,632,334,507,353,414,373"/>
-<area shape="rect" href="namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="755,393,929,418"/>
-<area shape="poly" title=" " alt="" coords="459,385,741,398,741,403,459,390"/>
-<area shape="poly" title=" " alt="" coords="949,442,990,438,991,443,950,447"/>
-<area shape="poly" title=" " alt="" coords="916,439,948,428,981,411,1013,391,1064,350,1067,355,1016,395,984,416,950,433,918,445"/>
-<area shape="poly" title=" " alt="" coords="675,522,804,506,949,477,1045,446,1047,451,950,483,805,511,676,527"/>
-<area shape="poly" title=" " alt="" coords="625,542,724,582,793,604,869,622,950,632,1032,630,1072,624,1110,614,1147,599,1182,579,1223,544,1256,501,1282,452,1301,402,1315,351,1325,304,1334,231,1339,232,1330,305,1321,353,1306,403,1287,455,1261,504,1227,548,1186,584,1150,604,1112,619,1073,629,1032,636,950,637,868,627,791,609,722,587,623,547"/>
-<area shape="rect" href="namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3" title=" " alt="" coords="755,543,929,569"/>
-<area shape="poly" title=" " alt="" coords="676,537,741,543,741,549,675,542"/>
-<area shape="poly" title=" " alt="" coords="896,541,948,522,1010,486,1061,450,1064,454,1013,490,950,526,898,546"/>
-<area shape="poly" title=" " alt="" coords="864,541,905,514,947,478,962,459,971,442,980,425,995,405,1027,375,1058,350,1061,354,1030,379,999,408,985,428,976,445,967,462,951,482,908,519,867,545"/>
-<area shape="rect" href="event__struct_8hpp.html#a1eb2b768082eec56a45815689a721cd3" title="Convert a display string (e.g. &quot;Top&quot;, &quot;High&quot;) to the integer enum value as a string." alt="" coords="997,529,1184,569"/>
-<area shape="poly" title=" " alt="" coords="929,551,983,550,983,555,929,556"/>
-<area shape="poly" title=" " alt="" coords="902,366,950,379,1044,411,1043,416,949,384,901,371"/>
-<area shape="poly" title=" " alt="" coords="945,343,987,339,987,344,946,348"/>
-<area shape="poly" title=" " alt="" coords="914,317,950,330,1015,367,1066,407,1063,411,1012,372,948,334,913,322"/>
-<area shape="poly" title=" " alt="" coords="924,312,987,318,986,323,924,317"/>
-<area shape="poly" title=" " alt="" coords="930,412,990,418,990,423,929,417"/>
-<area shape="poly" title=" " alt="" coords="905,390,949,379,1044,346,1046,351,950,384,906,395"/>
+<area shape="rect" title=" " alt="" coords="5,392,212,432"/>
+<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="1037,370,1211,395"/>
+<area shape="poly" title=" " alt="" coords="212,403,507,387,741,376,975,376,1023,377,1023,382,975,381,741,382,507,392,212,408"/>
+<area shape="rect" href="namespaceQtParser.html#a571d780a01c558d8bdb88e943c240925" title=" " alt="" coords="524,243,704,269"/>
+<area shape="poly" title=" " alt="" coords="144,390,197,362,259,336,397,296,523,269,524,274,398,301,261,341,200,367,147,394"/>
+<area shape="rect" href="namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="1023,655,1225,695"/>
+<area shape="poly" title=" " alt="" coords="131,430,189,487,277,562,329,601,386,638,446,670,508,695,576,713,647,724,719,728,790,728,923,715,1031,695,1032,700,923,720,790,733,719,734,646,729,575,718,506,700,444,674,383,642,326,605,273,566,185,491,127,434"/>
+<area shape="rect" href="namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="260,475,459,501"/>
+<area shape="poly" title=" " alt="" coords="177,430,304,469,302,474,175,435"/>
+<area shape="poly" title=" " alt="" coords="705,258,834,273,906,287,976,305,1039,332,1092,361,1090,365,1037,336,974,311,904,292,833,279,704,264"/>
+<area shape="rect" href="namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="769,547,975,587"/>
+<area shape="poly" title=" " alt="" coords="701,267,723,279,753,307,779,338,820,408,848,477,865,532,860,534,843,479,815,410,775,341,749,310,720,283,698,271"/>
+<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="1307,142,1454,167"/>
+<area shape="poly" title=" " alt="" coords="624,241,681,186,722,156,768,134,843,114,920,102,997,99,1073,100,1212,116,1318,136,1317,141,1211,121,1073,106,997,104,920,108,844,119,770,138,725,161,684,190,628,245"/>
+<area shape="rect" href="namespaceQtParser.html#a56ec96ed6c93fec2529fa92dcdb5f351" title=" " alt="" coords="781,41,963,66"/>
+<area shape="poly" title=" " alt="" coords="621,242,676,167,719,122,768,83,798,68,800,73,771,88,722,126,680,171,625,245"/>
+<area shape="poly" title=" " alt="" coords="949,544,1013,523,1085,493,1158,454,1224,406,1250,380,1274,350,1316,287,1347,227,1367,179,1372,182,1352,229,1320,290,1279,353,1254,383,1227,410,1161,459,1087,498,1015,528,951,549"/>
+<area shape="poly" title=" " alt="" coords="921,584,1065,647,1063,652,919,589"/>
+<area shape="rect" href="namespaceQtParser.html#a573d00e495962e6d43cb0136e1fbcaa0" title=" " alt="" coords="1037,41,1211,66"/>
+<area shape="poly" title=" " alt="" coords="963,51,1023,51,1023,56,963,56"/>
+<area shape="poly" title=" " alt="" coords="1170,64,1226,83,1342,134,1340,139,1224,88,1168,69"/>
+<area shape="rect" href="namespaceQtParser.html#a53cfb388bac1e2f4ea842b4f94041dbb" title=" " alt="" coords="1273,41,1488,66"/>
+<area shape="poly" title=" " alt="" coords="1212,51,1259,51,1259,56,1212,56"/>
+<area shape="rect" href="namespaceModifierUsageImportPolicy.html#a1dd2cf0b505e0296f7c223526678790b" title=" " alt="" coords="1556,5,1755,45"/>
+<area shape="poly" title=" " alt="" coords="1488,40,1542,34,1543,39,1489,45"/>
+<area shape="rect" href="namespaceQtParser.html#abdf08e73a7103831369cd249c5e41d11" title=" " alt="" coords="1536,70,1775,95"/>
+<area shape="poly" title=" " alt="" coords="1489,62,1523,66,1523,71,1488,67"/>
+<area shape="rect" href="namespaceQtParser.html#af29915f8225de418d99395fca9bc08e5" title=" " alt="" coords="1823,70,2031,95"/>
+<area shape="poly" title=" " alt="" coords="1775,80,1809,80,1809,85,1775,85"/>
+<area shape="poly" title=" " alt="" coords="392,498,445,518,507,535,635,554,756,562,755,567,635,559,506,540,444,523,390,503"/>
+<area shape="poly" title=" " alt="" coords="370,499,390,529,421,568,461,606,508,636,570,660,636,678,703,689,771,696,899,697,1009,689,1009,694,899,703,771,701,703,695,635,683,569,665,505,641,458,610,417,571,386,532,366,502"/>
+<area shape="rect" href="namespaceQtParser.html#ad31f75c47a3863aa051c67b45a2350b4" title=" " alt="" coords="507,601,721,626"/>
+<area shape="poly" title=" " alt="" coords="379,499,434,538,508,579,548,594,546,599,506,584,432,542,376,503"/>
+<area shape="rect" href="namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3" title=" " alt="" coords="535,294,693,319"/>
+<area shape="poly" title=" " alt="" coords="377,473,583,325,586,329,380,477"/>
+<area shape="rect" href="namespaceQtParser.html#af0cdf6c8d3bf375e76aa058dbd5690d1" title=" " alt="" coords="511,499,717,525"/>
+<area shape="poly" title=" " alt="" coords="459,495,498,498,497,504,459,500"/>
+<area shape="rect" href="namespaceQtParser.html#a8be54a861c2c957a4a887f266ffea752" title=" " alt="" coords="532,401,696,426"/>
+<area shape="poly" title=" " alt="" coords="395,473,506,436,541,427,543,432,507,441,397,478"/>
+<area shape="rect" href="namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="527,450,701,475"/>
+<area shape="poly" title=" " alt="" coords="459,475,513,470,513,475,459,481"/>
+<area shape="poly" title=" " alt="" coords="674,623,739,632,817,634,857,631,898,624,937,613,973,596,1000,578,1024,556,1064,504,1093,451,1111,407,1116,409,1098,453,1069,507,1028,560,1004,582,976,601,939,618,899,630,858,636,817,640,739,637,673,629"/>
+<area shape="poly" title=" " alt="" coords="684,598,755,585,756,590,685,603"/>
+<area shape="poly" title=" " alt="" coords="693,306,825,316,975,336,1075,363,1074,368,974,341,825,321,693,312"/>
+<area shape="poly" title=" " alt="" coords="691,293,720,278,730,266,737,254,742,228,747,202,755,189,768,178,809,160,866,148,933,140,1008,137,1162,138,1294,145,1294,150,1161,143,1008,142,934,145,866,153,811,165,771,182,759,193,752,204,747,229,742,256,735,269,723,282,694,298"/>
+<area shape="rect" href="namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3" title=" " alt="" coords="785,193,959,218"/>
+<area shape="poly" title=" " alt="" coords="675,291,720,277,783,250,836,222,839,227,785,255,722,283,676,297"/>
+<area shape="poly" title=" " alt="" coords="934,216,976,235,992,249,1002,262,1025,292,1098,359,1095,363,1021,295,998,265,989,252,973,240,932,220"/>
+<area shape="rect" href="event__struct_8hpp.html#a1eb2b768082eec56a45815689a721cd3" title="Convert a display string (e.g. &quot;Top&quot;, &quot;High&quot;) to the integer enum value as a string." alt="" coords="1031,192,1217,232"/>
+<area shape="poly" title=" " alt="" coords="960,205,1017,207,1017,212,959,210"/>
+<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="1034,257,1214,282"/>
+<area shape="poly" title=" " alt="" coords="923,215,1023,241,1060,251,1059,256,1022,247,921,221"/>
+<area shape="poly" title=" " alt="" coords="1186,254,1224,242,1292,208,1349,173,1351,177,1295,212,1226,246,1188,259"/>
+<area shape="poly" title=" " alt="" coords="711,497,837,475,974,441,1032,421,1083,399,1085,404,1034,426,975,447,838,480,712,502"/>
+<area shape="poly" title=" " alt="" coords="675,522,764,541,763,546,674,527"/>
+<area shape="poly" title=" " alt="" coords="696,406,1023,386,1023,391,696,411"/>
+<area shape="poly" title=" " alt="" coords="690,424,723,436,758,458,792,484,845,534,842,538,789,488,755,462,720,441,688,429"/>
+<area shape="poly" title=" " alt="" coords="701,447,974,405,1036,395,1037,400,975,411,702,453"/>
+<area shape="poly" title=" " alt="" coords="681,473,722,486,778,510,827,537,825,542,775,515,720,490,679,478"/>
 </map>
 </div>
 
@@ -422,19 +531,21 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00283">283</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00321">321</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceQtParser_ad31f75c47a3863aa051c67b45a2350b4_cgraph.png" border="0" usemap="#anamespaceQtParser_ad31f75c47a3863aa051c67b45a2350b4_cgraph" alt=""/></div>
 <map name="anamespaceQtParser_ad31f75c47a3863aa051c67b45a2350b4_cgraph" id="anamespaceQtParser_ad31f75c47a3863aa051c67b45a2350b4_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,220,56"/>
-<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="271,5,445,31"/>
-<area shape="poly" title=" " alt="" coords="220,30,258,26,258,31,220,35"/>
-<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="268,55,448,80"/>
-<area shape="poly" title=" " alt="" coords="220,51,254,55,254,60,220,56"/>
-<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="496,55,643,80"/>
-<area shape="poly" title=" " alt="" coords="448,65,482,65,482,70,448,70"/>
+<area shape="rect" title=" " alt="" coords="5,35,220,60"/>
+<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="284,5,457,31"/>
+<area shape="poly" title=" " alt="" coords="220,32,270,27,270,32,220,38"/>
+<area shape="rect" href="namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="268,55,473,95"/>
+<area shape="poly" title=" " alt="" coords="220,56,255,60,254,65,220,62"/>
+<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="549,33,696,59"/>
+<area shape="poly" title=" " alt="" coords="473,61,535,53,536,59,474,66"/>
+<area shape="rect" href="namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="521,83,724,123"/>
+<area shape="poly" title=" " alt="" coords="474,84,508,88,508,93,473,89"/>
 </map>
 </div>
 <div class="dynheader">
@@ -443,7 +554,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="namespaceQtParser_ad31f75c47a3863aa051c67b45a2350b4_icgraph.png" border="0" usemap="#anamespaceQtParser_ad31f75c47a3863aa051c67b45a2350b4_icgraph" alt=""/></div>
 <map name="anamespaceQtParser_ad31f75c47a3863aa051c67b45a2350b4_icgraph" id="anamespaceQtParser_ad31f75c47a3863aa051c67b45a2350b4_icgraph">
 <area shape="rect" title=" " alt="" coords="523,42,737,67"/>
-<area shape="rect" href="namespaceQtParser.html#a5b9c410d2a1c71aacb32d9fcfd27b087" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
+<area shape="rect" href="namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
 <area shape="poly" title=" " alt="" coords="509,57,475,57,475,52,509,52"/>
 <area shape="rect" href="namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,5,220,45"/>
 <area shape="poly" title=" " alt="" coords="262,45,220,40,221,34,263,39"/>
@@ -488,33 +599,35 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00335">335</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00397">397</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceQtParser_a571d780a01c558d8bdb88e943c240925_cgraph.png" border="0" usemap="#anamespaceQtParser_a571d780a01c558d8bdb88e943c240925_cgraph" alt=""/></div>
 <map name="anamespaceQtParser_a571d780a01c558d8bdb88e943c240925_cgraph" id="anamespaceQtParser_a571d780a01c558d8bdb88e943c240925_cgraph">
-<area shape="rect" title=" " alt="" coords="5,81,185,107"/>
-<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="237,5,411,31"/>
-<area shape="poly" title=" " alt="" coords="134,79,271,33,273,38,135,84"/>
-<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="463,56,643,81"/>
-<area shape="poly" title=" " alt="" coords="185,86,449,72,449,77,186,92"/>
-<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="725,107,871,132"/>
-<area shape="poly" title=" " alt="" coords="186,95,711,114,710,119,186,100"/>
-<area shape="rect" href="namespaceQtParser.html#a56ec96ed6c93fec2529fa92dcdb5f351" title=" " alt="" coords="233,157,415,183"/>
-<area shape="poly" title=" " alt="" coords="135,104,273,150,271,155,134,109"/>
-<area shape="poly" title=" " alt="" coords="616,79,723,101,722,106,615,84"/>
-<area shape="rect" href="namespaceQtParser.html#a573d00e495962e6d43cb0136e1fbcaa0" title=" " alt="" coords="465,157,640,183"/>
-<area shape="poly" title=" " alt="" coords="415,167,451,167,451,173,415,173"/>
-<area shape="poly" title=" " alt="" coords="615,155,722,132,723,137,616,160"/>
-<area shape="rect" href="namespaceQtParser.html#a53cfb388bac1e2f4ea842b4f94041dbb" title=" " alt="" coords="691,157,905,183"/>
-<area shape="poly" title=" " alt="" coords="640,167,677,167,677,173,640,173"/>
-<area shape="rect" href="namespaceModifierUsageImportPolicy.html#a1dd2cf0b505e0296f7c223526678790b" title=" " alt="" coords="973,121,1172,161"/>
-<area shape="poly" title=" " alt="" coords="905,156,959,150,960,155,906,161"/>
-<area shape="rect" href="namespaceQtParser.html#abdf08e73a7103831369cd249c5e41d11" title=" " alt="" coords="953,185,1192,211"/>
-<area shape="poly" title=" " alt="" coords="906,178,940,182,939,187,905,184"/>
-<area shape="rect" href="namespaceQtParser.html#af29915f8225de418d99395fca9bc08e5" title=" " alt="" coords="1240,185,1448,211"/>
-<area shape="poly" title=" " alt="" coords="1192,195,1226,195,1226,201,1192,201"/>
+<area shape="rect" title=" " alt="" coords="5,92,185,117"/>
+<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="249,5,423,31"/>
+<area shape="poly" title=" " alt="" coords="121,89,172,65,232,41,262,32,264,37,234,46,174,70,123,94"/>
+<area shape="rect" href="namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="233,55,439,95"/>
+<area shape="poly" title=" " alt="" coords="185,91,219,87,220,92,186,96"/>
+<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="771,120,918,145"/>
+<area shape="poly" title=" " alt="" coords="186,105,758,127,758,132,186,111"/>
+<area shape="rect" href="namespaceQtParser.html#a56ec96ed6c93fec2529fa92dcdb5f351" title=" " alt="" coords="245,171,427,196"/>
+<area shape="poly" title=" " alt="" coords="134,115,234,149,281,164,280,169,232,154,132,120"/>
+<area shape="poly" title=" " alt="" coords="405,53,466,40,538,30,615,29,653,33,690,41,727,54,762,72,819,109,816,114,759,76,725,59,689,46,652,38,614,34,538,36,467,45,406,58"/>
+<area shape="rect" href="namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="487,55,689,95"/>
+<area shape="poly" title=" " alt="" coords="439,73,473,73,473,78,439,78"/>
+<area shape="rect" href="namespaceQtParser.html#a573d00e495962e6d43cb0136e1fbcaa0" title=" " alt="" coords="501,171,675,196"/>
+<area shape="poly" title=" " alt="" coords="427,181,487,181,487,186,427,186"/>
+<area shape="poly" title=" " alt="" coords="653,168,766,145,767,151,654,173"/>
+<area shape="rect" href="namespaceQtParser.html#a53cfb388bac1e2f4ea842b4f94041dbb" title=" " alt="" coords="737,171,952,196"/>
+<area shape="poly" title=" " alt="" coords="676,181,723,181,723,186,676,186"/>
+<area shape="rect" href="namespaceModifierUsageImportPolicy.html#a1dd2cf0b505e0296f7c223526678790b" title=" " alt="" coords="1020,134,1219,174"/>
+<area shape="poly" title=" " alt="" coords="952,169,1006,163,1007,169,953,175"/>
+<area shape="rect" href="namespaceQtParser.html#abdf08e73a7103831369cd249c5e41d11" title=" " alt="" coords="1000,199,1239,224"/>
+<area shape="poly" title=" " alt="" coords="953,192,987,195,986,200,952,197"/>
+<area shape="rect" href="namespaceQtParser.html#af29915f8225de418d99395fca9bc08e5" title=" " alt="" coords="1287,199,1495,224"/>
+<area shape="poly" title=" " alt="" coords="1239,209,1273,209,1273,214,1239,214"/>
 </map>
 </div>
 <div class="dynheader">
@@ -564,67 +677,73 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00328">328</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00388">388</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceQtParser_a424656e1d022f7799c5edc1e51e8e8b9_cgraph.png" border="0" usemap="#anamespaceQtParser_a424656e1d022f7799c5edc1e51e8e8b9_cgraph" alt=""/></div>
 <map name="anamespaceQtParser_a424656e1d022f7799c5edc1e51e8e8b9_cgraph" id="anamespaceQtParser_a424656e1d022f7799c5edc1e51e8e8b9_cgraph">
-<area shape="rect" title=" " alt="" coords="5,297,228,323"/>
-<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="1041,369,1214,395"/>
-<area shape="poly" title=" " alt="" coords="142,320,206,354,298,399,408,445,523,482,585,496,633,502,746,506,808,514,857,524,880,526,903,525,929,519,959,506,975,493,983,478,991,461,1006,443,1042,417,1079,398,1082,403,1045,422,1010,447,996,464,988,481,979,497,961,511,931,524,904,530,880,531,856,529,807,519,745,511,633,507,584,501,522,487,406,450,296,404,203,359,140,325"/>
-<area shape="rect" href="namespaceQtParser.html#a5b9c410d2a1c71aacb32d9fcfd27b087" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,297,475,323"/>
-<area shape="poly" title=" " alt="" coords="228,307,262,307,262,313,228,313"/>
-<area shape="rect" href="namespaceQtParser.html#a56ec96ed6c93fec2529fa92dcdb5f351" title=" " alt="" coords="285,172,466,197"/>
-<area shape="poly" title=" " alt="" coords="143,295,334,201,337,206,145,300"/>
-<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="1037,295,1217,320"/>
-<area shape="poly" title=" " alt="" coords="400,295,455,269,522,243,643,207,741,186,788,182,839,184,895,192,961,207,1002,222,1040,242,1102,284,1099,288,1037,247,999,227,959,213,894,197,838,189,788,187,741,191,644,213,524,249,457,274,402,300"/>
-<area shape="rect" href="namespaceQtParser.html#ad31f75c47a3863aa051c67b45a2350b4" title=" " alt="" coords="745,320,960,345"/>
-<area shape="poly" title=" " alt="" coords="475,312,732,324,732,330,475,317"/>
-<area shape="rect" href="namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3" title=" " alt="" coords="531,447,689,472"/>
-<area shape="poly" title=" " alt="" coords="398,321,524,402,578,437,575,441,521,407,395,325"/>
-<area shape="rect" href="namespaceQtParser.html#af0cdf6c8d3bf375e76aa058dbd5690d1" title=" " alt="" coords="749,369,956,395"/>
-<area shape="poly" title=" " alt="" coords="461,320,754,365,754,370,460,325"/>
-<area shape="rect" href="namespaceQtParser.html#a8be54a861c2c957a4a887f266ffea752" title=" " alt="" coords="771,271,935,296"/>
-<area shape="poly" title=" " alt="" coords="475,302,757,286,757,291,475,307"/>
-<area shape="rect" href="namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="765,221,940,247"/>
-<area shape="poly" title=" " alt="" coords="429,295,522,275,751,243,752,248,523,281,430,300"/>
-<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="1325,295,1472,320"/>
-<area shape="poly" title=" " alt="" coords="1217,305,1312,305,1312,310,1217,310"/>
-<area shape="poly" title=" " alt="" coords="925,343,1043,364,1042,369,924,348"/>
-<area shape="poly" title=" " alt="" coords="960,320,1024,314,1024,320,961,325"/>
-<area shape="poly" title=" " alt="" coords="689,445,960,405,1030,394,1030,399,960,410,689,450"/>
-<area shape="poly" title=" " alt="" coords="638,470,687,490,746,506,889,537,948,550,1004,558,1058,560,1115,554,1176,536,1245,506,1272,490,1295,470,1335,422,1365,373,1385,332,1390,334,1370,376,1340,425,1299,474,1275,494,1248,511,1178,541,1116,559,1058,565,1003,563,947,555,888,542,745,511,686,495,636,474"/>
-<area shape="rect" href="namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3" title=" " alt="" coords="765,471,940,496"/>
-<area shape="poly" title=" " alt="" coords="690,464,752,471,751,476,689,470"/>
-<area shape="poly" title=" " alt="" coords="899,468,959,449,1084,398,1086,403,961,454,901,473"/>
-<area shape="poly" title=" " alt="" coords="872,468,913,441,958,405,981,380,1006,356,1039,337,1072,323,1074,327,1041,342,1010,360,985,384,962,409,916,445,875,473"/>
-<area shape="rect" href="event__struct_8hpp.html#a1eb2b768082eec56a45815689a721cd3" title="Convert a display string (e.g. &quot;Top&quot;, &quot;High&quot;) to the integer enum value as a string." alt="" coords="1034,457,1221,497"/>
-<area shape="poly" title=" " alt="" coords="940,479,1021,477,1021,482,940,484"/>
-<area shape="poly" title=" " alt="" coords="956,379,1027,379,1027,385,956,385"/>
-<area shape="poly" title=" " alt="" coords="913,367,959,355,1074,322,1075,327,961,361,914,372"/>
-<area shape="poly" title=" " alt="" coords="919,294,961,306,985,318,1009,330,1082,362,1080,367,1007,335,983,322,959,311,917,299"/>
-<area shape="poly" title=" " alt="" coords="935,288,1024,296,1023,301,935,293"/>
-<area shape="poly" title=" " alt="" coords="937,244,962,257,979,275,987,294,995,312,1010,331,1037,349,1067,362,1064,367,1034,353,1006,335,990,315,982,296,975,278,958,261,935,249"/>
-<area shape="poly" title=" " alt="" coords="910,244,961,257,1072,288,1070,293,959,262,909,249"/>
-<area shape="rect" href="namespaceQtParser.html#a573d00e495962e6d43cb0136e1fbcaa0" title=" " alt="" coords="523,120,697,145"/>
-<area shape="poly" title=" " alt="" coords="433,169,538,146,540,151,434,175"/>
-<area shape="poly" title=" " alt="" coords="698,137,823,152,961,175,1071,202,1179,233,1349,288,1348,293,1177,238,1069,207,959,181,822,157,697,143"/>
-<area shape="rect" href="namespaceQtParser.html#a53cfb388bac1e2f4ea842b4f94041dbb" title=" " alt="" coords="745,63,960,88"/>
-<area shape="poly" title=" " alt="" coords="664,117,785,89,786,94,665,123"/>
-<area shape="rect" href="namespaceModifierUsageImportPolicy.html#a1dd2cf0b505e0296f7c223526678790b" title=" " alt="" coords="1028,55,1227,95"/>
-<area shape="poly" title=" " alt="" coords="960,73,1014,73,1014,78,960,78"/>
-<area shape="rect" href="namespaceQtParser.html#abdf08e73a7103831369cd249c5e41d11" title=" " alt="" coords="1008,5,1247,31"/>
-<area shape="poly" title=" " alt="" coords="914,60,1052,31,1053,36,915,65"/>
-<area shape="rect" href="namespaceQtParser.html#af29915f8225de418d99395fca9bc08e5" title=" " alt="" coords="1295,5,1503,31"/>
-<area shape="poly" title=" " alt="" coords="1247,15,1281,15,1281,21,1247,21"/>
+<area shape="rect" title=" " alt="" coords="5,248,228,273"/>
+<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="1081,488,1254,513"/>
+<area shape="poly" title=" " alt="" coords="130,272,184,332,273,419,329,465,390,508,455,545,523,574,607,594,693,601,780,598,864,587,943,571,1014,552,1122,516,1124,521,1016,557,945,576,865,593,780,603,693,607,606,599,522,579,453,550,387,512,326,469,270,423,180,336,126,275"/>
+<area shape="rect" href="namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,352,475,377"/>
+<area shape="poly" title=" " alt="" coords="150,271,331,344,329,349,148,276"/>
+<area shape="rect" href="namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="1066,214,1269,254"/>
+<area shape="poly" title=" " alt="" coords="190,245,338,224,539,202,651,195,768,191,885,192,1000,199,1066,209,1065,214,1000,205,885,197,768,196,652,200,539,208,338,229,191,251"/>
+<area shape="rect" href="namespaceQtParser.html#a56ec96ed6c93fec2529fa92dcdb5f351" title=" " alt="" coords="285,120,466,145"/>
+<area shape="poly" title=" " alt="" coords="135,245,195,206,275,162,314,147,316,152,277,167,198,210,138,250"/>
+<area shape="rect" href="namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="790,322,995,362"/>
+<area shape="poly" title=" " alt="" coords="475,358,776,344,776,350,475,363"/>
+<area shape="poly" title=" " alt="" coords="388,350,443,305,481,281,522,262,590,243,661,229,733,219,805,214,939,212,1052,218,1052,224,939,218,805,219,734,224,662,234,592,248,524,267,483,285,446,309,391,354"/>
+<area shape="rect" href="namespaceQtParser.html#ad31f75c47a3863aa051c67b45a2350b4" title=" " alt="" coords="523,427,737,452"/>
+<area shape="poly" title=" " alt="" coords="411,375,523,413,555,421,553,426,522,418,409,380"/>
+<area shape="rect" href="namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3" title=" " alt="" coords="551,539,709,564"/>
+<area shape="poly" title=" " alt="" coords="388,376,441,440,480,478,524,512,566,532,563,536,521,516,477,482,437,444,384,379"/>
+<area shape="rect" href="namespaceQtParser.html#af0cdf6c8d3bf375e76aa058dbd5690d1" title=" " alt="" coords="527,377,733,403"/>
+<area shape="poly" title=" " alt="" coords="475,372,514,376,513,381,475,377"/>
+<area shape="rect" href="namespaceQtParser.html#a8be54a861c2c957a4a887f266ffea752" title=" " alt="" coords="548,276,712,301"/>
+<area shape="poly" title=" " alt="" coords="418,349,572,303,574,308,420,354"/>
+<area shape="rect" href="namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="543,476,717,501"/>
+<area shape="poly" title=" " alt="" coords="393,375,448,418,485,442,524,462,543,470,542,475,522,467,482,447,445,423,390,380"/>
+<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="1365,537,1512,563"/>
+<area shape="poly" title=" " alt="" coords="961,360,1112,409,1288,474,1402,528,1400,533,1286,479,1110,414,960,365"/>
+<area shape="poly" title=" " alt="" coords="944,319,1102,257,1104,262,946,324"/>
+<area shape="poly" title=" " alt="" coords="738,446,1000,473,1075,483,1075,489,1000,478,737,451"/>
+<area shape="poly" title=" " alt="" coords="697,424,736,413,792,391,842,366,844,371,794,395,738,418,699,429"/>
+<area shape="poly" title=" " alt="" coords="709,541,1067,507,1067,513,709,547"/>
+<area shape="poly" title=" " alt="" coords="644,563,666,589,699,621,740,652,786,676,859,700,923,718,981,729,1036,732,1091,729,1149,718,1213,701,1286,676,1326,655,1363,627,1417,571,1421,575,1366,631,1329,659,1288,680,1214,706,1150,724,1092,734,1036,738,981,734,922,723,858,705,784,680,737,657,696,625,662,592,640,566"/>
+<area shape="rect" href="namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3" title=" " alt="" coords="805,640,980,665"/>
+<area shape="poly" title=" " alt="" coords="665,562,847,633,845,638,663,567"/>
+<area shape="poly" title=" " alt="" coords="957,638,999,618,1014,605,1022,592,1031,577,1046,561,1083,536,1121,517,1123,521,1086,541,1050,565,1036,580,1027,594,1018,609,1001,623,959,642"/>
+<area shape="rect" href="event__struct_8hpp.html#a1eb2b768082eec56a45815689a721cd3" title="Convert a display string (e.g. &quot;Top&quot;, &quot;High&quot;) to the integer enum value as a string." alt="" coords="1074,575,1261,615"/>
+<area shape="poly" title=" " alt="" coords="954,637,1060,615,1061,620,955,643"/>
+<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="1077,640,1257,665"/>
+<area shape="poly" title=" " alt="" coords="980,650,1064,650,1064,655,980,655"/>
+<area shape="poly" title=" " alt="" coords="1242,637,1286,625,1349,597,1404,567,1406,572,1352,602,1288,630,1243,642"/>
+<area shape="poly" title=" " alt="" coords="734,398,862,415,1001,442,1065,461,1122,481,1120,486,1063,466,999,447,861,420,733,403"/>
+<area shape="poly" title=" " alt="" coords="700,375,776,361,777,366,700,380"/>
+<area shape="poly" title=" " alt="" coords="712,273,777,269,851,271,928,282,966,293,1001,308,1028,324,1054,343,1097,389,1132,435,1155,474,1151,477,1127,438,1093,392,1050,347,1025,328,999,312,964,298,927,287,851,276,777,274,712,279"/>
+<area shape="poly" title=" " alt="" coords="694,299,781,317,780,322,693,304"/>
+<area shape="poly" title=" " alt="" coords="718,488,1067,496,1067,501,718,493"/>
+<area shape="poly" title=" " alt="" coords="706,473,736,462,772,442,805,418,860,370,864,374,809,422,775,447,738,467,708,478"/>
+<area shape="rect" href="namespaceQtParser.html#a573d00e495962e6d43cb0136e1fbcaa0" title=" " alt="" coords="543,120,717,145"/>
+<area shape="poly" title=" " alt="" coords="466,130,529,130,529,135,466,135"/>
+<area shape="poly" title=" " alt="" coords="693,117,814,102,889,98,970,100,1054,108,1137,127,1216,156,1253,176,1288,200,1326,235,1356,276,1381,321,1400,368,1426,456,1437,523,1432,524,1421,458,1395,369,1376,323,1352,279,1322,238,1285,204,1251,181,1214,161,1135,132,1053,114,970,105,889,103,814,107,694,123"/>
+<area shape="rect" href="namespaceQtParser.html#a53cfb388bac1e2f4ea842b4f94041dbb" title=" " alt="" coords="785,63,1000,88"/>
+<area shape="poly" title=" " alt="" coords="688,117,820,88,821,93,690,123"/>
+<area shape="rect" href="namespaceModifierUsageImportPolicy.html#a1dd2cf0b505e0296f7c223526678790b" title=" " alt="" coords="1068,55,1267,95"/>
+<area shape="poly" title=" " alt="" coords="1000,73,1054,73,1054,78,1000,78"/>
+<area shape="rect" href="namespaceQtParser.html#abdf08e73a7103831369cd249c5e41d11" title=" " alt="" coords="1048,5,1287,31"/>
+<area shape="poly" title=" " alt="" coords="954,60,1092,31,1093,36,955,65"/>
+<area shape="rect" href="namespaceQtParser.html#af29915f8225de418d99395fca9bc08e5" title=" " alt="" coords="1335,5,1543,31"/>
+<area shape="poly" title=" " alt="" coords="1287,15,1321,15,1321,21,1287,21"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a5b9c410d2a1c71aacb32d9fcfd27b087" name="a5b9c410d2a1c71aacb32d9fcfd27b087"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b9c410d2a1c71aacb32d9fcfd27b087">&#9670;&#160;</a></span>parseHEventCore()</h2>
+<a id="abcec34232af90241661ab2c936d01aed" name="abcec34232af90241661ab2c936d01aed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcec34232af90241661ab2c936d01aed">&#9670;&#160;</a></span>parseHEventCore()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -633,7 +752,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void QtParser::parseHEventCore </td>
+          <td class="memname">bool QtParser::parseHEventCore </td>
           <td>(</td>
           <td class="paramtype">QXmlStreamReader &amp;&#160;</td>
           <td class="paramname"><em>r</em>, </td>
@@ -659,51 +778,56 @@ Here is the call graph for this function:</div>
 
 <p>Parse the shared "HEvent core" children of <code>&lt;Event&gt;</code>: from <code>&lt;EventName&gt;</code> through <code>&lt;Filter&gt;</code>. The <code>&lt;EventType&gt;</code> child must already have been consumed by the caller. Stops at <code>&lt;Filter&gt;</code> so callers can read the differing trailing siblings (<a class="el" href="structHEvent.html">HEvent</a>: <code>&lt;<a class="el" href="classModifiers.html">Modifiers</a>&gt;</code>; <a class="el" href="structBottomEvent.html">BottomEvent</a>: <code>&lt;<a class="el" href="structExtraInfo.html">ExtraInfo</a>&gt;</code>). </p>
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00308">308</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00351">351</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="namespaceQtParser_a5b9c410d2a1c71aacb32d9fcfd27b087_cgraph.png" border="0" usemap="#anamespaceQtParser_a5b9c410d2a1c71aacb32d9fcfd27b087_cgraph" alt=""/></div>
-<map name="anamespaceQtParser_a5b9c410d2a1c71aacb32d9fcfd27b087_cgraph" id="anamespaceQtParser_a5b9c410d2a1c71aacb32d9fcfd27b087_cgraph">
-<area shape="rect" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="5,119,204,144"/>
-<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="723,142,903,167"/>
-<area shape="poly" title=" " alt="" coords="128,116,218,74,282,50,354,28,433,11,514,3,595,8,634,16,673,28,712,48,746,75,797,129,793,133,743,79,709,52,671,33,633,21,594,13,514,9,433,16,356,33,284,55,220,79,131,121"/>
-<area shape="rect" href="namespaceQtParser.html#ad31f75c47a3863aa051c67b45a2350b4" title=" " alt="" coords="457,43,672,68"/>
-<area shape="poly" title=" " alt="" coords="162,116,252,98,452,67,452,73,252,103,163,121"/>
-<area shape="rect" href="namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3" title=" " alt="" coords="252,268,409,294"/>
-<area shape="poly" title=" " alt="" coords="127,142,300,258,297,263,124,146"/>
-<area shape="rect" href="namespaceQtParser.html#af0cdf6c8d3bf375e76aa058dbd5690d1" title=" " alt="" coords="461,92,668,118"/>
-<area shape="poly" title=" " alt="" coords="204,123,447,109,447,114,204,128"/>
-<area shape="rect" href="namespaceQtParser.html#a8be54a861c2c957a4a887f266ffea752" title=" " alt="" coords="483,142,647,167"/>
-<area shape="poly" title=" " alt="" coords="204,134,469,147,469,152,204,139"/>
-<area shape="rect" href="namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="477,191,652,216"/>
-<area shape="poly" title=" " alt="" coords="187,142,470,186,469,191,186,147"/>
-<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="955,243,1101,268"/>
-<area shape="poly" title=" " alt="" coords="872,164,908,177,958,204,1000,232,997,237,955,209,906,182,870,169"/>
-<area shape="poly" title=" " alt="" coords="635,66,673,77,732,104,782,132,779,136,729,108,671,82,634,71"/>
-<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="727,191,900,216"/>
-<area shape="poly" title=" " alt="" coords="655,66,674,77,686,90,693,103,699,129,704,154,711,166,722,178,728,182,725,186,718,182,706,169,699,156,694,130,688,105,681,93,670,82,652,71"/>
-<area shape="poly" title=" " alt="" coords="357,291,403,311,458,328,584,351,684,362,732,361,783,356,840,345,906,328,932,318,957,304,1000,275,1003,279,960,309,934,323,907,333,841,350,783,361,732,367,683,367,583,356,457,333,401,316,355,296"/>
-<area shape="poly" title=" " alt="" coords="409,267,672,226,730,216,731,221,672,231,410,272"/>
-<area shape="rect" href="namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3" title=" " alt="" coords="477,292,652,318"/>
-<area shape="poly" title=" " alt="" coords="410,286,464,292,463,297,409,292"/>
-<area shape="poly" title=" " alt="" coords="584,290,625,262,670,227,693,201,703,189,719,177,734,169,737,174,721,182,706,193,697,204,674,231,628,266,587,294"/>
-<area shape="poly" title=" " alt="" coords="613,290,671,270,727,245,776,220,779,225,729,250,673,275,615,295"/>
-<area shape="rect" href="event__struct_8hpp.html#a1eb2b768082eec56a45815689a721cd3" title="Convert a display string (e.g. &quot;Top&quot;, &quot;High&quot;) to the integer enum value as a string." alt="" coords="720,278,907,318"/>
-<area shape="poly" title=" " alt="" coords="652,300,706,298,706,304,652,305"/>
-<area shape="poly" title=" " alt="" coords="630,115,736,136,735,141,629,120"/>
-<area shape="poly" title=" " alt="" coords="647,115,673,127,689,139,698,153,707,165,721,177,734,183,731,188,719,182,703,169,694,156,685,143,671,131,645,120"/>
-<area shape="poly" title=" " alt="" coords="647,152,709,152,709,157,647,157"/>
-<area shape="poly" title=" " alt="" coords="630,164,736,185,735,191,629,169"/>
-<area shape="poly" title=" " alt="" coords="629,188,735,167,736,172,630,193"/>
-<area shape="poly" title=" " alt="" coords="652,201,713,201,713,206,652,206"/>
+<div class="center"><img src="namespaceQtParser_abcec34232af90241661ab2c936d01aed_cgraph.png" border="0" usemap="#anamespaceQtParser_abcec34232af90241661ab2c936d01aed_cgraph" alt=""/></div>
+<map name="anamespaceQtParser_abcec34232af90241661ab2c936d01aed_cgraph" id="anamespaceQtParser_abcec34232af90241661ab2c936d01aed_cgraph">
+<area shape="rect" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="5,121,204,147"/>
+<area shape="rect" href="namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="515,63,720,103"/>
+<area shape="poly" title=" " alt="" coords="175,119,252,107,381,95,501,86,501,92,381,100,252,113,176,124"/>
+<area shape="rect" href="namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="768,45,971,85"/>
+<area shape="poly" title=" " alt="" coords="113,119,135,93,167,61,206,30,251,6,334,3,492,5,720,11,767,22,810,37,808,42,765,28,720,17,492,10,334,8,253,11,209,34,170,65,139,97,118,123"/>
+<area shape="rect" href="namespaceQtParser.html#ad31f75c47a3863aa051c67b45a2350b4" title=" " alt="" coords="252,20,467,45"/>
+<area shape="poly" title=" " alt="" coords="129,119,184,91,251,62,297,47,298,52,253,67,187,96,131,123"/>
+<area shape="rect" href="namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3" title=" " alt="" coords="281,305,438,331"/>
+<area shape="poly" title=" " alt="" coords="121,145,177,196,254,256,322,296,319,301,250,260,174,200,118,149"/>
+<area shape="rect" href="namespaceQtParser.html#af0cdf6c8d3bf375e76aa058dbd5690d1" title=" " alt="" coords="256,121,463,147"/>
+<area shape="poly" title=" " alt="" coords="204,131,242,131,242,137,204,137"/>
+<area shape="rect" href="namespaceQtParser.html#a8be54a861c2c957a4a887f266ffea752" title=" " alt="" coords="277,171,441,196"/>
+<area shape="poly" title=" " alt="" coords="171,144,280,165,279,171,170,149"/>
+<area shape="rect" href="namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="272,220,447,245"/>
+<area shape="poly" title=" " alt="" coords="128,144,184,175,253,206,278,214,276,219,251,211,181,180,126,149"/>
+<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="1019,331,1165,356"/>
+<area shape="poly" title=" " alt="" coords="721,93,781,105,846,124,911,149,972,184,1008,214,1039,250,1080,317,1076,320,1034,254,1004,218,969,188,909,154,844,129,779,110,719,98"/>
+<area shape="poly" title=" " alt="" coords="720,73,754,70,755,76,720,78"/>
+<area shape="poly" title=" " alt="" coords="426,43,502,58,501,63,425,48"/>
+<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="783,197,956,223"/>
+<area shape="poly" title=" " alt="" coords="443,17,506,13,577,15,651,25,687,35,721,49,744,68,779,104,850,185,846,189,775,108,740,72,719,54,685,40,650,31,577,20,506,18,444,23"/>
+<area shape="poly" title=" " alt="" coords="438,318,1005,338,1005,343,438,323"/>
+<area shape="poly" title=" " alt="" coords="420,303,794,223,796,228,421,308"/>
+<area shape="rect" href="namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3" title=" " alt="" coords="530,384,705,409"/>
+<area shape="poly" title=" " alt="" coords="403,328,563,377,561,382,401,333"/>
+<area shape="poly" title=" " alt="" coords="634,382,839,228,842,233,637,386"/>
+<area shape="rect" href="event__struct_8hpp.html#a1eb2b768082eec56a45815689a721cd3" title="Convert a display string (e.g. &quot;Top&quot;, &quot;High&quot;) to the integer enum value as a string." alt="" coords="776,381,963,421"/>
+<area shape="poly" title=" " alt="" coords="705,395,762,396,762,402,705,401"/>
+<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="779,445,959,471"/>
+<area shape="poly" title=" " alt="" coords="671,407,804,439,803,445,670,412"/>
+<area shape="poly" title=" " alt="" coords="936,443,970,430,1023,398,1066,363,1069,367,1026,402,972,435,937,448"/>
+<area shape="poly" title=" " alt="" coords="425,119,501,103,502,109,426,124"/>
+<area shape="poly" title=" " alt="" coords="463,141,586,156,720,175,802,192,801,197,720,181,586,161,463,147"/>
+<area shape="poly" title=" " alt="" coords="428,168,466,157,520,133,569,108,572,113,522,138,468,162,429,173"/>
+<area shape="poly" title=" " alt="" coords="442,185,769,202,768,207,441,190"/>
+<area shape="poly" title=" " alt="" coords="437,217,466,206,501,186,533,161,587,112,590,116,537,165,504,190,468,211,438,222"/>
+<area shape="poly" title=" " alt="" coords="447,226,769,212,769,217,447,231"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="namespaceQtParser_a5b9c410d2a1c71aacb32d9fcfd27b087_icgraph.png" border="0" usemap="#anamespaceQtParser_a5b9c410d2a1c71aacb32d9fcfd27b087_icgraph" alt=""/></div>
-<map name="anamespaceQtParser_a5b9c410d2a1c71aacb32d9fcfd27b087_icgraph" id="anamespaceQtParser_a5b9c410d2a1c71aacb32d9fcfd27b087_icgraph">
+<div class="center"><img src="namespaceQtParser_abcec34232af90241661ab2c936d01aed_icgraph.png" border="0" usemap="#anamespaceQtParser_abcec34232af90241661ab2c936d01aed_icgraph" alt=""/></div>
+<map name="anamespaceQtParser_abcec34232af90241661ab2c936d01aed_icgraph" id="anamespaceQtParser_abcec34232af90241661ab2c936d01aed_icgraph">
 <area shape="rect" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
 <area shape="rect" href="namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,5,220,45"/>
 <area shape="poly" title=" " alt="" coords="262,45,220,40,221,34,263,39"/>
@@ -738,7 +862,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00102">102</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00136">136</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -765,7 +889,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="namespaceQtParser_a02b3427c7ac51e304c8a6e46e98576b3_icgraph.png" border="0" usemap="#anamespaceQtParser_a02b3427c7ac51e304c8a6e46e98576b3_icgraph" alt=""/></div>
 <map name="anamespaceQtParser_a02b3427c7ac51e304c8a6e46e98576b3_icgraph" id="anamespaceQtParser_a02b3427c7ac51e304c8a6e46e98576b3_icgraph">
 <area shape="rect" title=" " alt="" coords="523,42,680,67"/>
-<area shape="rect" href="namespaceQtParser.html#a5b9c410d2a1c71aacb32d9fcfd27b087" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
+<area shape="rect" href="namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
 <area shape="poly" title=" " alt="" coords="509,57,475,57,475,52,509,52"/>
 <area shape="rect" href="namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,5,220,45"/>
 <area shape="poly" title=" " alt="" coords="262,45,220,40,221,34,263,39"/>
@@ -800,7 +924,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00198">198</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00232">232</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -862,7 +986,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00132">132</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00166">166</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -930,7 +1054,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00295">295</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00338">338</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1002,7 +1126,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00115">115</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00149">149</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1062,7 +1186,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00165">165</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00199">199</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1132,24 +1256,28 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00436">436</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00523">523</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceQtParser_a4993d99e86d743ad600a811d34d73e5c_cgraph.png" border="0" usemap="#anamespaceQtParser_a4993d99e86d743ad600a811d34d73e5c_cgraph" alt=""/></div>
 <map name="anamespaceQtParser_a4993d99e86d743ad600a811d34d73e5c_cgraph" id="anamespaceQtParser_a4993d99e86d743ad600a811d34d73e5c_cgraph">
-<area shape="rect" title=" " alt="" coords="5,49,195,89"/>
-<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="471,5,645,31"/>
-<area shape="poly" title=" " alt="" coords="195,48,242,41,354,29,458,21,458,26,354,34,243,46,195,53"/>
-<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="468,107,648,132"/>
-<area shape="poly" title=" " alt="" coords="195,84,243,91,454,111,454,116,242,97,195,89"/>
-<area shape="rect" href="namespaceQtParser.html#a848d9d71f91762671fc64377a7fadb58" title=" " alt="" coords="243,56,420,81"/>
-<area shape="poly" title=" " alt="" coords="195,66,229,66,229,71,195,71"/>
-<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="696,81,843,107"/>
-<area shape="poly" title=" " alt="" coords="648,106,682,102,682,107,649,111"/>
-<area shape="poly" title=" " alt="" coords="389,53,487,31,488,36,390,58"/>
-<area shape="poly" title=" " alt="" coords="390,79,488,101,487,106,389,84"/>
-<area shape="poly" title=" " alt="" coords="420,71,682,86,682,92,420,76"/>
+<area shape="rect" title=" " alt="" coords="5,126,195,166"/>
+<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="484,5,657,31"/>
+<area shape="poly" title=" " alt="" coords="150,123,242,91,372,57,490,31,491,36,373,62,243,97,152,128"/>
+<area shape="rect" href="namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="468,157,673,197"/>
+<area shape="poly" title=" " alt="" coords="195,149,454,166,454,172,195,155"/>
+<area shape="rect" href="namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="721,157,924,197"/>
+<area shape="poly" title=" " alt="" coords="183,163,282,183,404,201,539,211,607,211,673,206,730,197,731,202,674,211,607,216,538,216,404,206,281,188,182,169"/>
+<area shape="rect" href="namespaceQtParser.html#a848d9d71f91762671fc64377a7fadb58" title=" " alt="" coords="243,107,420,132"/>
+<area shape="poly" title=" " alt="" coords="195,132,228,128,229,134,195,138"/>
+<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="749,81,896,107"/>
+<area shape="poly" title=" " alt="" coords="632,154,769,109,771,114,633,159"/>
+<area shape="poly" title=" " alt="" coords="673,174,708,174,708,179,673,179"/>
+<area shape="poly" title=" " alt="" coords="353,104,405,77,467,48,509,32,511,37,469,52,407,81,356,109"/>
+<area shape="poly" title=" " alt="" coords="386,129,474,151,473,156,385,135"/>
+<area shape="poly" title=" " alt="" coords="413,104,468,98,609,91,736,90,736,95,609,97,468,103,413,109"/>
+<area shape="poly" title=" " alt="" coords="420,120,541,128,674,142,725,151,724,156,673,147,540,133,420,125"/>
 </map>
 </div>
 
@@ -1179,20 +1307,23 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00425">425</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00512">512</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceQtParser_a848d9d71f91762671fc64377a7fadb58_cgraph.png" border="0" usemap="#anamespaceQtParser_a848d9d71f91762671fc64377a7fadb58_cgraph" alt=""/></div>
 <map name="anamespaceQtParser_a848d9d71f91762671fc64377a7fadb58_cgraph" id="anamespaceQtParser_a848d9d71f91762671fc64377a7fadb58_cgraph">
-<area shape="rect" title=" " alt="" coords="5,55,183,80"/>
-<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="234,5,407,31"/>
-<area shape="poly" title=" " alt="" coords="152,52,248,31,249,36,154,57"/>
-<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="231,55,411,80"/>
-<area shape="poly" title=" " alt="" coords="183,65,217,65,217,70,183,70"/>
-<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="459,80,605,105"/>
-<area shape="poly" title=" " alt="" coords="155,77,231,89,342,94,445,94,445,99,342,99,230,94,154,83"/>
-<area shape="poly" title=" " alt="" coords="411,76,445,80,445,85,411,81"/>
+<area shape="rect" title=" " alt="" coords="5,85,183,111"/>
+<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="247,5,420,31"/>
+<area shape="poly" title=" " alt="" coords="129,83,230,47,277,32,278,37,232,53,131,88"/>
+<area shape="rect" href="namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="231,106,436,146"/>
+<area shape="poly" title=" " alt="" coords="183,106,217,110,217,115,182,111"/>
+<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="512,71,659,96"/>
+<area shape="poly" title=" " alt="" coords="183,93,498,83,498,89,183,98"/>
+<area shape="rect" href="namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="484,135,687,175"/>
+<area shape="poly" title=" " alt="" coords="118,108,168,134,231,155,292,165,354,169,470,166,470,171,354,174,291,170,230,161,166,139,115,113"/>
+<area shape="poly" title=" " alt="" coords="436,106,498,95,499,101,437,111"/>
+<area shape="poly" title=" " alt="" coords="436,135,471,139,470,145,436,141"/>
 </map>
 </div>
 <div class="dynheader">
@@ -1242,19 +1373,21 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00275">275</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00312">312</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceQtParser_af0cdf6c8d3bf375e76aa058dbd5690d1_cgraph.png" border="0" usemap="#anamespaceQtParser_af0cdf6c8d3bf375e76aa058dbd5690d1_cgraph" alt=""/></div>
 <map name="anamespaceQtParser_af0cdf6c8d3bf375e76aa058dbd5690d1_cgraph" id="anamespaceQtParser_af0cdf6c8d3bf375e76aa058dbd5690d1_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,212,56"/>
-<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="263,5,437,31"/>
-<area shape="poly" title=" " alt="" coords="212,30,250,26,250,31,213,35"/>
-<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="260,55,440,80"/>
-<area shape="poly" title=" " alt="" coords="213,51,246,54,246,60,212,56"/>
-<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="488,55,635,80"/>
-<area shape="poly" title=" " alt="" coords="440,65,474,65,474,70,440,70"/>
+<area shape="rect" title=" " alt="" coords="5,35,212,60"/>
+<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="276,5,449,31"/>
+<area shape="poly" title=" " alt="" coords="212,33,262,27,262,32,213,38"/>
+<area shape="rect" href="namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="260,55,465,95"/>
+<area shape="poly" title=" " alt="" coords="213,56,247,60,246,65,212,61"/>
+<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="541,33,688,59"/>
+<area shape="poly" title=" " alt="" coords="465,61,527,53,528,59,466,66"/>
+<area shape="rect" href="namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="513,83,716,123"/>
+<area shape="poly" title=" " alt="" coords="466,84,500,88,500,93,465,89"/>
 </map>
 </div>
 <div class="dynheader">
@@ -1263,7 +1396,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="namespaceQtParser_af0cdf6c8d3bf375e76aa058dbd5690d1_icgraph.png" border="0" usemap="#anamespaceQtParser_af0cdf6c8d3bf375e76aa058dbd5690d1_icgraph" alt=""/></div>
 <map name="anamespaceQtParser_af0cdf6c8d3bf375e76aa058dbd5690d1_icgraph" id="anamespaceQtParser_af0cdf6c8d3bf375e76aa058dbd5690d1_icgraph">
 <area shape="rect" title=" " alt="" coords="523,42,729,67"/>
-<area shape="rect" href="namespaceQtParser.html#a5b9c410d2a1c71aacb32d9fcfd27b087" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
+<area shape="rect" href="namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
 <area shape="poly" title=" " alt="" coords="509,57,475,57,475,52,509,52"/>
 <area shape="rect" href="namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,5,220,45"/>
 <area shape="poly" title=" " alt="" coords="262,45,220,40,221,34,263,39"/>
@@ -1298,7 +1431,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00084">84</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00118">118</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1323,7 +1456,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="728,42,903,67"/>
 <area shape="rect" href="namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3" title=" " alt="" coords="523,42,680,67"/>
 <area shape="poly" title=" " alt="" coords="714,57,680,57,680,52,714,52"/>
-<area shape="rect" href="namespaceQtParser.html#a5b9c410d2a1c71aacb32d9fcfd27b087" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
+<area shape="rect" href="namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
 <area shape="poly" title=" " alt="" coords="509,57,475,57,475,52,509,52"/>
 <area shape="rect" href="namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,5,220,45"/>
 <area shape="poly" title=" " alt="" coords="262,45,220,40,221,34,263,39"/>
@@ -1358,7 +1491,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00406">406</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00488">488</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1416,22 +1549,25 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00415">415</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00497">497</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceQtParser_a419a4afb165fe261129f9fedf93d5d21_cgraph.png" border="0" usemap="#anamespaceQtParser_a419a4afb165fe261129f9fedf93d5d21_cgraph" alt=""/></div>
 <map name="anamespaceQtParser_a419a4afb165fe261129f9fedf93d5d21_cgraph" id="anamespaceQtParser_a419a4afb165fe261129f9fedf93d5d21_cgraph">
-<area shape="rect" title=" " alt="" coords="5,47,225,87"/>
-<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="278,5,451,31"/>
-<area shape="poly" title=" " alt="" coords="216,45,286,31,287,36,218,50"/>
-<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="275,55,455,80"/>
-<area shape="poly" title=" " alt="" coords="226,65,261,65,261,70,226,70"/>
-<area shape="rect" href="namespaceQtParser.html#a3ff4e41206adcb8b1da94304b45a0e08" title=" " alt="" coords="273,104,456,129"/>
-<area shape="poly" title=" " alt="" coords="218,85,287,99,286,104,216,90"/>
-<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="504,80,651,105"/>
-<area shape="poly" title=" " alt="" coords="455,75,491,80,490,85,455,81"/>
-<area shape="poly" title=" " alt="" coords="456,104,490,100,490,105,457,109"/>
+<area shape="rect" title=" " alt="" coords="5,77,225,117"/>
+<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="289,5,463,31"/>
+<area shape="poly" title=" " alt="" coords="169,74,273,39,303,31,304,36,274,45,171,79"/>
+<area shape="rect" href="namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="273,105,479,145"/>
+<area shape="poly" title=" " alt="" coords="226,106,260,110,259,115,225,111"/>
+<area shape="rect" href="namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="527,134,729,174"/>
+<area shape="poly" title=" " alt="" coords="158,114,212,137,274,154,335,162,397,166,513,163,513,168,396,171,334,168,273,159,210,142,156,119"/>
+<area shape="rect" href="namespaceQtParser.html#a3ff4e41206adcb8b1da94304b45a0e08" title=" " alt="" coords="285,55,467,80"/>
+<area shape="poly" title=" " alt="" coords="225,82,271,76,271,82,226,87"/>
+<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="555,69,701,95"/>
+<area shape="poly" title=" " alt="" coords="478,105,540,94,541,99,479,110"/>
+<area shape="poly" title=" " alt="" coords="479,134,513,138,513,143,478,139"/>
+<area shape="poly" title=" " alt="" coords="468,70,541,74,541,80,467,75"/>
 </map>
 </div>
 
@@ -1471,19 +1607,21 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00265">265</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00299">299</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceQtParser_a8be54a861c2c957a4a887f266ffea752_cgraph.png" border="0" usemap="#anamespaceQtParser_a8be54a861c2c957a4a887f266ffea752_cgraph" alt=""/></div>
 <map name="anamespaceQtParser_a8be54a861c2c957a4a887f266ffea752_cgraph" id="anamespaceQtParser_a8be54a861c2c957a4a887f266ffea752_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,169,56"/>
-<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="221,5,394,31"/>
-<area shape="poly" title=" " alt="" coords="169,31,207,27,207,32,170,37"/>
-<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="217,55,397,80"/>
-<area shape="poly" title=" " alt="" coords="170,50,204,53,203,59,169,55"/>
-<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="445,55,592,80"/>
-<area shape="poly" title=" " alt="" coords="398,65,432,65,432,70,398,70"/>
+<area shape="rect" title=" " alt="" coords="5,35,169,60"/>
+<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="233,5,407,31"/>
+<area shape="poly" title=" " alt="" coords="169,34,220,28,220,33,170,40"/>
+<area shape="rect" href="namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="217,55,423,95"/>
+<area shape="poly" title=" " alt="" coords="170,55,204,59,203,64,169,60"/>
+<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="499,33,645,59"/>
+<area shape="poly" title=" " alt="" coords="422,61,484,53,485,59,423,66"/>
+<area shape="rect" href="namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="471,83,673,123"/>
+<area shape="poly" title=" " alt="" coords="423,84,457,88,457,93,422,89"/>
 </map>
 </div>
 <div class="dynheader">
@@ -1492,7 +1630,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="namespaceQtParser_a8be54a861c2c957a4a887f266ffea752_icgraph.png" border="0" usemap="#anamespaceQtParser_a8be54a861c2c957a4a887f266ffea752_icgraph" alt=""/></div>
 <map name="anamespaceQtParser_a8be54a861c2c957a4a887f266ffea752_icgraph" id="anamespaceQtParser_a8be54a861c2c957a4a887f266ffea752_icgraph">
 <area shape="rect" title=" " alt="" coords="523,42,687,67"/>
-<area shape="rect" href="namespaceQtParser.html#a5b9c410d2a1c71aacb32d9fcfd27b087" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
+<area shape="rect" href="namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
 <area shape="poly" title=" " alt="" coords="509,57,475,57,475,52,509,52"/>
 <area shape="rect" href="namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,5,220,45"/>
 <area shape="poly" title=" " alt="" coords="262,45,220,40,221,34,263,39"/>
@@ -1537,19 +1675,21 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00259">259</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00293">293</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceQtParser_a0a930180da8911c655bfd3dd7e83706b_cgraph.png" border="0" usemap="#anamespaceQtParser_a0a930180da8911c655bfd3dd7e83706b_cgraph" alt=""/></div>
 <map name="anamespaceQtParser_a0a930180da8911c655bfd3dd7e83706b_cgraph" id="anamespaceQtParser_a0a930180da8911c655bfd3dd7e83706b_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,180,56"/>
-<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="231,5,405,31"/>
-<area shape="poly" title=" " alt="" coords="180,31,217,27,218,32,180,36"/>
-<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="228,55,408,80"/>
-<area shape="poly" title=" " alt="" coords="180,50,215,54,214,59,180,55"/>
-<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="456,55,603,80"/>
-<area shape="poly" title=" " alt="" coords="408,65,442,65,442,70,408,70"/>
+<area shape="rect" title=" " alt="" coords="5,35,180,60"/>
+<area shape="rect" href="namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="244,5,417,31"/>
+<area shape="poly" title=" " alt="" coords="180,34,230,28,231,33,181,39"/>
+<area shape="rect" href="namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="228,55,433,95"/>
+<area shape="poly" title=" " alt="" coords="181,55,215,59,214,64,180,60"/>
+<area shape="rect" href="namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="509,33,656,59"/>
+<area shape="poly" title=" " alt="" coords="433,61,495,53,496,59,434,66"/>
+<area shape="rect" href="namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="481,83,684,123"/>
+<area shape="poly" title=" " alt="" coords="434,84,468,88,468,93,433,89"/>
 </map>
 </div>
 <div class="dynheader">
@@ -1558,7 +1698,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="namespaceQtParser_a0a930180da8911c655bfd3dd7e83706b_icgraph.png" border="0" usemap="#anamespaceQtParser_a0a930180da8911c655bfd3dd7e83706b_icgraph" alt=""/></div>
 <map name="anamespaceQtParser_a0a930180da8911c655bfd3dd7e83706b_icgraph" id="anamespaceQtParser_a0a930180da8911c655bfd3dd7e83706b_icgraph">
 <area shape="rect" title=" " alt="" coords="523,42,697,67"/>
-<area shape="rect" href="namespaceQtParser.html#a5b9c410d2a1c71aacb32d9fcfd27b087" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
+<area shape="rect" href="namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
 <area shape="poly" title=" " alt="" coords="509,57,475,57,475,52,509,52"/>
 <area shape="rect" href="namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,5,220,45"/>
 <area shape="poly" title=" " alt="" coords="262,45,220,40,221,34,263,39"/>
@@ -1595,65 +1735,148 @@ Here is the caller graph for this function:</div>
 
 <p>Capture the inner content of the element currently at StartElement. Returns plain text for text-only elements, or serialized inner XML for elements containing nested children (e.g. <code>&lt;Fun&gt;...&lt;/Fun&gt;</code> blocks). Pre: r.tokenType() == StartElement. Post: r.tokenType() == EndElement of the same element. </p>
 
-<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00029">29</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00030">30</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceQtParser_ab06fb415401799718483a80844375996_icgraph.png" border="0" usemap="#anamespaceQtParser_ab06fb415401799718483a80844375996_icgraph" alt=""/></div>
 <map name="anamespaceQtParser_ab06fb415401799718483a80844375996_icgraph" id="anamespaceQtParser_ab06fb415401799718483a80844375996_icgraph">
-<area shape="rect" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="1284,344,1431,370"/>
-<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="1055,344,1235,370"/>
-<area shape="poly" title=" " alt="" coords="1270,360,1235,360,1235,354,1270,354"/>
-<area shape="rect" href="classProjectManager.html#a161c5f3af2bd19f99e6461fb264f4207" title="Populate p from the XML found in the file at filepath." alt="" coords="811,42,979,67"/>
-<area shape="poly" title=" " alt="" coords="1334,335,1290,287,1234,234,1126,146,1075,114,1004,81,971,70,972,65,1006,76,1077,109,1129,141,1238,230,1294,283,1338,332"/>
-<area shape="rect" href="namespaceQtParser.html#a571d780a01c558d8bdb88e943c240925" title=" " alt="" coords="540,91,720,116"/>
-<area shape="poly" title=" " alt="" coords="1344,332,1328,293,1304,245,1273,195,1234,150,1179,102,1130,71,1076,50,1005,32,943,17,893,9,845,12,787,32,772,42,763,54,754,68,739,81,709,93,707,89,736,76,750,64,759,51,768,38,784,27,844,7,894,4,944,11,1006,27,1078,45,1133,66,1182,97,1238,146,1277,192,1309,243,1333,291,1349,330"/>
-<area shape="rect" href="namespaceQtParser.html#a848d9d71f91762671fc64377a7fadb58" title=" " alt="" coords="807,546,984,571"/>
-<area shape="poly" title=" " alt="" coords="1325,379,1189,454,1099,498,1006,536,963,548,962,543,1004,531,1097,493,1186,450,1322,375"/>
-<area shape="rect" href="namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3" title=" " alt="" coords="551,510,709,535"/>
-<area shape="poly" title=" " alt="" coords="1356,384,1347,440,1328,511,1312,548,1292,583,1268,615,1238,641,1178,677,1123,700,1071,712,1020,714,967,707,911,693,784,650,737,627,696,595,663,563,640,537,644,534,666,559,700,591,740,622,786,645,913,688,968,702,1020,708,1070,707,1122,695,1176,672,1234,636,1264,611,1288,580,1307,546,1323,509,1342,439,1351,383"/>
-<area shape="rect" href="namespaceQtParser.html#a573d00e495962e6d43cb0136e1fbcaa0" title=" " alt="" coords="1057,244,1232,270"/>
-<area shape="poly" title=" " alt="" coords="1316,341,1172,272,1174,268,1318,336"/>
-<area shape="rect" href="namespaceQtParser.html#a3ff4e41206adcb8b1da94304b45a0e08" title=" " alt="" coords="1053,600,1236,626"/>
-<area shape="poly" title=" " alt="" coords="1339,382,1159,602,1154,599,1335,379"/>
-<area shape="poly" title=" " alt="" coords="1108,339,1078,314,1051,283,1038,253,1032,226,1033,175,1034,150,1031,127,1022,104,1004,80,978,65,981,60,1007,77,1027,101,1036,126,1039,150,1039,175,1037,225,1043,252,1056,280,1081,311,1112,335"/>
-<area shape="rect" href="namespaceQtParser.html#ad31f75c47a3863aa051c67b45a2350b4" title=" " alt="" coords="523,192,737,218"/>
-<area shape="poly" title=" " alt="" coords="1116,338,1066,303,1004,270,937,248,867,232,737,214,738,209,868,227,938,243,1006,265,1069,298,1119,334"/>
-<area shape="rect" href="namespaceQtParser.html#a5b9c410d2a1c71aacb32d9fcfd27b087" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,267,475,292"/>
-<area shape="poly" title=" " alt="" coords="1070,375,1006,384,869,397,761,403,709,401,654,394,593,382,522,362,484,348,448,330,393,295,395,290,451,325,486,343,523,357,594,377,655,389,710,396,761,398,868,392,1005,379,1070,370"/>
-<area shape="poly" title=" " alt="" coords="1114,338,1051,283,1029,252,1019,239,1004,226,932,186,855,156,780,134,713,119,714,114,781,129,857,151,934,181,1007,222,1023,235,1033,249,1055,279,1118,334"/>
-<area shape="rect" href="namespaceQtParser.html#a4993d99e86d743ad600a811d34d73e5c" title=" " alt="" coords="535,445,725,485"/>
-<area shape="poly" title=" " alt="" coords="1114,379,1064,406,1006,429,934,446,859,458,725,467,725,462,859,452,933,441,1005,424,1062,401,1111,375"/>
-<area shape="poly" title=" " alt="" coords="1125,382,1056,467,1035,504,1025,520,1007,535,981,548,979,543,1004,531,1021,516,1030,501,1051,464,1121,378"/>
-<area shape="rect" href="namespaceQtParser.html#af0cdf6c8d3bf375e76aa058dbd5690d1" title=" " alt="" coords="527,243,733,268"/>
-<area shape="poly" title=" " alt="" coords="1103,341,1056,323,1005,306,935,291,864,279,733,265,734,260,864,274,936,286,1006,301,1058,318,1104,336"/>
-<area shape="rect" href="namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3" title=" " alt="" coords="808,496,983,522"/>
-<area shape="poly" title=" " alt="" coords="1125,382,1074,431,1042,457,1007,480,958,499,956,494,1004,475,1039,453,1071,427,1121,378"/>
-<area shape="rect" href="namespaceQtParser.html#a419a4afb165fe261129f9fedf93d5d21" title=" " alt="" coords="785,596,1005,636"/>
-<area shape="poly" title=" " alt="" coords="1137,384,1120,428,1092,482,1055,538,1032,564,1007,586,987,598,985,593,1004,582,1028,560,1051,535,1088,480,1115,426,1132,382"/>
-<area shape="rect" href="namespaceQtParser.html#a8be54a861c2c957a4a887f266ffea752" title=" " alt="" coords="548,292,712,318"/>
-<area shape="poly" title=" " alt="" coords="1069,345,1005,334,849,319,712,311,712,306,850,314,1006,329,1070,339"/>
-<area shape="rect" href="namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="808,344,983,370"/>
-<area shape="poly" title=" " alt="" coords="1041,360,983,360,983,354,1041,354"/>
-<area shape="rect" href="classProjectManager.html#a32b50ef108bb47f186339acbea876054" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="548,42,712,67"/>
-<area shape="poly" title=" " alt="" coords="798,57,712,57,712,52,798,52"/>
-<area shape="poly" title=" " alt="" coords="559,224,523,233,413,269,411,264,522,228,557,219"/>
-<area shape="rect" href="namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,132,220,172"/>
-<area shape="poly" title=" " alt="" coords="335,263,157,174,160,170,337,258"/>
-<area shape="rect" href="namespaceQtParser.html#a424656e1d022f7799c5edc1e51e8e8b9" title=" " alt="" coords="5,220,228,246"/>
-<area shape="poly" title=" " alt="" coords="290,267,187,248,188,243,291,262"/>
-<area shape="poly" title=" " alt="" coords="527,115,276,138,221,144,220,139,276,133,526,110"/>
-<area shape="poly" title=" " alt="" coords="807,544,784,536,760,518,736,499,709,488,711,483,739,495,763,513,787,531,809,539"/>
-<area shape="poly" title=" " alt="" coords="513,269,475,273,475,268,513,264"/>
-<area shape="poly" title=" " alt="" coords="794,517,709,521,709,516,794,512"/>
-<area shape="poly" title=" " alt="" coords="537,508,521,499,493,476,467,449,426,390,396,334,379,294,384,292,401,332,430,387,471,446,496,472,524,495,540,504"/>
-<area shape="poly" title=" " alt="" coords="534,298,475,292,475,287,534,293"/>
-<area shape="poly" title=" " alt="" coords="794,359,664,352,592,344,522,332,459,315,406,295,408,290,461,310,523,327,593,338,665,346,794,354"/>
-<area shape="rect" href="namespaceQtParser.html#a56ec96ed6c93fec2529fa92dcdb5f351" title=" " alt="" coords="805,91,986,116"/>
-<area shape="poly" title=" " alt="" coords="1121,236,1071,186,1039,161,1004,138,956,119,958,114,1007,133,1042,156,1074,182,1125,232"/>
-<area shape="poly" title=" " alt="" coords="805,121,194,223,194,218,804,116"/>
-<area shape="poly" title=" " alt="" coords="791,106,720,106,720,101,791,101"/>
-<area shape="poly" title=" " alt="" coords="1040,617,1005,617,1005,612,1040,612"/>
+<area shape="rect" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="1275,323,1421,348"/>
+<area shape="rect" href="namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="1045,81,1225,107"/>
+<area shape="poly" title=" " alt="" coords="1331,312,1288,241,1258,200,1225,161,1190,132,1157,109,1160,104,1194,127,1229,157,1262,196,1292,238,1336,309"/>
+<area shape="rect" href="namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3" title=" " alt="" coords="554,5,711,31"/>
+<area shape="poly" title=" " alt="" coords="1316,317,1225,260,1094,190,990,138,883,94,742,45,701,33,703,28,743,39,884,89,992,133,1096,185,1228,256,1319,312"/>
+<area shape="rect" href="namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="791,233,996,273"/>
+<area shape="poly" title=" " alt="" coords="1304,320,1226,294,1107,273,996,261,997,256,1108,267,1227,289,1306,315"/>
+<area shape="rect" href="namespaceQtParser.html#a571d780a01c558d8bdb88e943c240925" title=" " alt="" coords="543,405,723,431"/>
+<area shape="poly" title=" " alt="" coords="1261,343,1047,360,791,390,692,408,691,403,790,385,1047,355,1261,338"/>
+<area shape="rect" href="namespaceQtParser.html#a848d9d71f91762671fc64377a7fadb58" title=" " alt="" coords="544,356,721,381"/>
+<area shape="poly" title=" " alt="" coords="1261,342,721,367,721,362,1261,337"/>
+<area shape="rect" href="classProjectManager.html#ae02e10c5bae67bbc3fe488cce43c3841" title=" " alt="" coords="1051,399,1219,424"/>
+<area shape="poly" title=" " alt="" coords="1300,355,1228,382,1174,401,1172,396,1226,377,1298,350"/>
+<area shape="rect" href="namespaceQtParser.html#a573d00e495962e6d43cb0136e1fbcaa0" title=" " alt="" coords="1048,448,1223,473"/>
+<area shape="poly" title=" " alt="" coords="1327,361,1284,401,1228,439,1200,450,1198,445,1225,434,1280,397,1323,357"/>
+<area shape="rect" href="namespaceQtParser.html#a3ff4e41206adcb8b1da94304b45a0e08" title=" " alt="" coords="1044,497,1227,523"/>
+<area shape="poly" title=" " alt="" coords="1336,361,1294,425,1264,459,1228,488,1205,500,1203,495,1225,484,1260,455,1290,422,1332,359"/>
+<area shape="rect" href="namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3" title=" " alt="" coords="806,15,981,40"/>
+<area shape="poly" title=" " alt="" coords="1075,80,940,43,941,38,1076,75"/>
+<area shape="poly" title=" " alt="" coords="792,26,711,23,712,18,792,21"/>
+<area shape="rect" href="namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,179,475,204"/>
+<area shape="poly" title=" " alt="" coords="542,36,524,44,479,76,440,114,387,180,383,177,436,111,475,72,521,40,540,31"/>
+<area shape="rect" href="namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,277,220,317"/>
+<area shape="poly" title=" " alt="" coords="332,212,168,279,166,274,329,207"/>
+<area shape="rect" href="namespaceQtParser.html#a424656e1d022f7799c5edc1e51e8e8b9" title=" " alt="" coords="5,420,228,445"/>
+<area shape="poly" title=" " alt="" coords="352,216,134,422,130,418,348,212"/>
+<area shape="poly" title=" " alt="" coords="776,242,474,206,475,200,777,236"/>
+<area shape="rect" href="namespaceQtParser.html#ad31f75c47a3863aa051c67b45a2350b4" title=" " alt="" coords="525,255,740,280"/>
+<area shape="poly" title=" " alt="" coords="777,262,740,264,740,259,777,257"/>
+<area shape="poly" title=" " alt="" coords="808,281,792,293,782,306,776,318,770,344,764,370,757,384,744,396,725,408,722,403,741,392,752,380,759,369,765,343,771,317,777,303,789,289,805,277"/>
+<area shape="rect" href="namespaceQtParser.html#a4993d99e86d743ad600a811d34d73e5c" title=" " alt="" coords="281,309,470,349"/>
+<area shape="poly" title=" " alt="" coords="814,279,743,295,600,315,470,326,470,321,600,310,742,290,813,274"/>
+<area shape="poly" title=" " alt="" coords="817,281,792,294,778,305,769,316,759,328,744,339,697,358,695,353,741,334,756,324,765,313,774,301,789,289,814,276"/>
+<area shape="rect" href="namespaceQtParser.html#af0cdf6c8d3bf375e76aa058dbd5690d1" title=" " alt="" coords="529,55,736,80"/>
+<area shape="poly" title=" " alt="" coords="828,228,807,215,789,198,772,170,766,143,760,117,753,105,741,93,723,82,726,78,744,89,757,102,765,115,771,141,777,168,793,195,810,211,831,224"/>
+<area shape="rect" href="namespaceQtParser.html#a419a4afb165fe261129f9fedf93d5d21" title=" " alt="" coords="523,455,743,495"/>
+<area shape="poly" title=" " alt="" coords="871,285,796,383,744,445,722,457,720,453,741,441,792,379,866,282"/>
+<area shape="rect" href="namespaceQtParser.html#a8be54a861c2c957a4a887f266ffea752" title=" " alt="" coords="551,104,715,129"/>
+<area shape="poly" title=" " alt="" coords="834,228,789,199,774,183,765,169,756,155,741,143,714,131,716,126,744,138,760,152,770,166,779,180,792,195,837,224"/>
+<area shape="rect" href="namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="545,153,720,179"/>
+<area shape="poly" title=" " alt="" coords="826,230,742,201,679,181,680,176,744,195,828,225"/>
+<area shape="poly" title=" " alt="" coords="574,253,522,238,418,207,420,202,523,233,576,248"/>
+<area shape="poly" title=" " alt="" coords="529,410,406,392,275,363,214,342,159,319,161,314,216,337,277,358,407,387,529,405"/>
+<area shape="poly" title=" " alt="" coords="537,356,470,346,471,341,537,351"/>
+<area shape="poly" title=" " alt="" coords="544,86,524,94,485,114,448,138,393,181,390,176,445,133,482,109,522,89,542,81"/>
+<area shape="poly" title=" " alt="" coords="555,135,523,143,411,181,409,176,522,138,554,130"/>
+<area shape="poly" title=" " alt="" coords="532,179,475,184,475,179,531,173"/>
+<area shape="rect" href="classProjectManager.html#ace67fedabf8ab2f225f83deeb01dd9e7" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="811,399,975,424"/>
+<area shape="poly" title=" " alt="" coords="1038,414,975,414,975,409,1038,409"/>
+<area shape="rect" href="namespaceQtParser.html#a56ec96ed6c93fec2529fa92dcdb5f351" title=" " alt="" coords="803,448,984,473"/>
+<area shape="poly" title=" " alt="" coords="1034,463,984,463,984,458,1034,458"/>
+<area shape="poly" title=" " alt="" coords="849,481,799,497,743,510,659,518,573,518,488,513,406,502,262,475,159,448,160,443,263,469,407,497,489,507,573,513,659,513,742,505,797,492,847,476"/>
+<area shape="poly" title=" " alt="" coords="801,448,710,433,711,428,802,443"/>
+<area shape="poly" title=" " alt="" coords="1030,505,743,486,743,480,1030,500"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2bd311787418e867c53dc77117fc3db9" name="a2bd311787418e867c53dc77117fc3db9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bd311787418e867c53dc77117fc3db9">&#9670;&#160;</a></span>readNextRequiredChild()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool QtParser::readNextRequiredChild </td>
+          <td>(</td>
+          <td class="paramtype">QXmlStreamReader &amp;&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QStringView&#160;</td>
+          <td class="paramname"><em>expectedName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="project__struct_8cpp_source.html#l00079">79</a> of file <a class="el" href="project__struct_8cpp_source.html">project_struct.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceQtParser_a2bd311787418e867c53dc77117fc3db9_icgraph.png" border="0" usemap="#anamespaceQtParser_a2bd311787418e867c53dc77117fc3db9_icgraph" alt=""/></div>
+<map name="anamespaceQtParser_a2bd311787418e867c53dc77117fc3db9_icgraph" id="anamespaceQtParser_a2bd311787418e867c53dc77117fc3db9_icgraph">
+<area shape="rect" title=" " alt="" coords="1044,256,1247,296"/>
+<area shape="rect" href="namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="791,256,996,296"/>
+<area shape="poly" title=" " alt="" coords="1030,279,996,279,996,273,1030,273"/>
+<area shape="rect" href="namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,338,475,363"/>
+<area shape="poly" title=" " alt="" coords="1125,309,1072,374,1036,408,997,437,932,474,876,494,818,506,743,517,630,538,581,536,522,517,495,503,471,484,431,441,400,398,381,365,386,362,405,395,435,438,475,480,498,498,524,512,582,531,630,533,742,512,817,501,875,489,930,469,995,432,1033,404,1068,370,1120,306"/>
+<area shape="rect" href="namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,155,220,195"/>
+<area shape="poly" title=" " alt="" coords="1110,249,1057,206,995,162,927,122,874,92,817,70,742,51,611,23,557,14,506,9,456,9,403,16,345,29,277,50,234,72,194,100,137,156,133,152,191,96,231,67,275,46,343,24,402,10,456,4,507,3,558,8,612,18,743,45,819,65,876,87,930,117,997,158,1060,201,1113,245"/>
+<area shape="rect" href="namespaceQtParser.html#a424656e1d022f7799c5edc1e51e8e8b9" title=" " alt="" coords="5,470,228,495"/>
+<area shape="poly" title=" " alt="" coords="1136,310,1118,357,1089,414,1049,469,1025,494,997,514,942,544,884,567,824,583,762,594,699,599,636,600,512,591,396,571,293,545,208,519,149,498,151,493,210,514,294,540,397,565,513,585,636,595,699,594,761,589,823,578,883,562,940,539,995,510,1021,490,1045,466,1084,411,1113,355,1131,308"/>
+<area shape="rect" href="namespaceQtParser.html#a4993d99e86d743ad600a811d34d73e5c" title=" " alt="" coords="281,60,470,100"/>
+<area shape="poly" title=" " alt="" coords="1110,249,1057,206,995,162,927,122,874,92,817,70,742,51,667,42,590,43,518,51,455,63,454,57,517,46,590,38,667,36,743,45,819,65,876,87,930,117,997,158,1060,201,1113,245"/>
+<area shape="rect" href="namespaceQtParser.html#a848d9d71f91762671fc64377a7fadb58" title=" " alt="" coords="544,61,721,86"/>
+<area shape="poly" title=" " alt="" coords="1079,253,665,89,667,84,1081,248"/>
+<area shape="rect" href="namespaceQtParser.html#a419a4afb165fe261129f9fedf93d5d21" title=" " alt="" coords="523,463,743,503"/>
+<area shape="poly" title=" " alt="" coords="1092,304,937,375,744,453,708,465,706,460,742,448,935,370,1089,299"/>
+<area shape="rect" href="namespaceQtParser.html#ad31f75c47a3863aa051c67b45a2350b4" title=" " alt="" coords="525,213,740,238"/>
+<area shape="poly" title=" " alt="" coords="777,256,698,241,699,235,778,251"/>
+<area shape="poly" title=" " alt="" coords="777,279,654,286,523,304,461,321,408,340,406,335,459,316,522,299,654,281,777,274"/>
+<area shape="rect" href="namespaceQtParser.html#a571d780a01c558d8bdb88e943c240925" title=" " alt="" coords="285,162,465,187"/>
+<area shape="poly" title=" " alt="" coords="849,251,799,224,742,203,671,187,598,178,465,174,466,168,598,173,672,182,743,197,801,219,851,246"/>
+<area shape="poly" title=" " alt="" coords="858,249,805,208,741,170,673,143,601,122,470,95,471,90,603,117,675,138,744,166,808,204,861,245"/>
+<area shape="poly" title=" " alt="" coords="862,247,789,166,767,134,757,121,741,108,699,89,702,84,744,103,761,117,771,131,793,162,866,244"/>
+<area shape="rect" href="namespaceQtParser.html#af0cdf6c8d3bf375e76aa058dbd5690d1" title=" " alt="" coords="529,314,736,339"/>
+<area shape="poly" title=" " alt="" coords="778,301,699,317,698,311,777,296"/>
+<area shape="poly" title=" " alt="" coords="866,308,793,391,771,424,761,438,744,453,722,465,720,460,741,448,757,435,767,421,789,388,862,305"/>
+<area shape="rect" href="namespaceQtParser.html#a8be54a861c2c957a4a887f266ffea752" title=" " alt="" coords="551,363,715,389"/>
+<area shape="poly" title=" " alt="" coords="847,305,798,330,744,353,700,366,699,361,742,348,796,325,844,300"/>
+<area shape="rect" href="namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="545,413,720,438"/>
+<area shape="poly" title=" " alt="" coords="866,308,813,358,780,383,744,404,714,415,712,410,742,399,777,378,809,354,863,304"/>
+<area shape="poly" title=" " alt="" coords="565,244,524,260,450,301,395,340,392,336,448,296,522,255,563,239"/>
+<area shape="poly" title=" " alt="" coords="342,332,146,197,149,193,345,328"/>
+<area shape="poly" title=" " alt="" coords="338,372,144,472,142,468,336,367"/>
+<area shape="poly" title=" " alt="" coords="272,177,220,177,220,172,272,172"/>
+<area shape="poly" title=" " alt="" coords="530,79,470,80,470,75,530,73"/>
+<area shape="poly" title=" " alt="" coords="516,340,475,344,475,339,515,335"/>
+<area shape="poly" title=" " alt="" coords="536,369,475,363,475,358,537,364"/>
+<area shape="poly" title=" " alt="" coords="554,412,522,404,409,366,411,361,523,399,555,407"/>
 </map>
 </div>
 

@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title=" " alt="" coords="707,80,884,105"/>
 <area shape="rect" id="Node000002" href="$classProjectManager.html#a4ba00e49d5de11660bcf0811d7e7ad88" title="Build a Project from an arbitrary file path (e.g. import path)." alt="" coords="481,5,645,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="749,77,658,45,618,33,619,28,659,39,751,72"/>
-<area shape="rect" id="Node000003" href="$classProjectManager.html#a32b50ef108bb47f186339acbea876054" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="481,55,645,80"/>
+<area shape="rect" id="Node000003" href="$classProjectManager.html#ace67fedabf8ab2f225f83deeb01dd9e7" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="481,55,645,80"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="693,84,645,79,645,74,693,79"/>
 <area shape="rect" id="Node000004" href="$classProjectView.html#a2ccc2bcbd3fa20e55c9322e347da55e2" title=" " alt="" coords="494,104,631,129"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="693,106,632,112,631,107,693,101"/>

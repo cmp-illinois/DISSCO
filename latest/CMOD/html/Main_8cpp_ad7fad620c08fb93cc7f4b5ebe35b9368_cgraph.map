@@ -1,6 +1,6 @@
 <map id="main" name="main">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,95,60,120"/>
-<area shape="rect" id="Node000002" href="$classPiece.html#a52ff172407f4e86988294acdb983c10b" title="Returns false when an external score&#45;generation step failed." alt="" coords="108,5,323,31"/>
+<area shape="rect" id="Node000002" href="$classPiece.html#a52ff172407f4e86988294acdb983c10b" title="Returns false when any requested output could not be generated." alt="" coords="108,5,323,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="43,93,70,66,107,41,126,33,128,37,109,46,74,70,47,96"/>
 <area shape="rect" id="Node000003" href="$structPieceHelper.html#a83d099d9ffdc29cf83935b927d172aa0" title="Creates the score files directory if it does not exist." alt="" coords="123,55,308,95"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="60,100,109,91,110,97,61,105"/>
