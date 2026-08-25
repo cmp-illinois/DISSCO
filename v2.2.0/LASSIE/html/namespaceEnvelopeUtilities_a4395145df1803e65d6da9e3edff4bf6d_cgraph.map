@@ -1,0 +1,6 @@
+<map id="EnvelopeUtilities::duplicateEnvelopeHelper" name="EnvelopeUtilities::duplicateEnvelopeHelper">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,191,69"/>
+<area shape="rect" id="Node000002" href="$classEnvelopeLibraryEntry.html#a68de4e5e1dc354afb4ed3a7bf9663016" title="Append a duplicated envelope entry after this one." alt="" coords="239,29,400,69"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,47,225,47,225,52,191,52"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="278,30,275,20,282,10,297,5,319,3,345,6,359,13,357,18,344,11,319,8,298,10,285,15,281,21,283,28"/>
+</map>

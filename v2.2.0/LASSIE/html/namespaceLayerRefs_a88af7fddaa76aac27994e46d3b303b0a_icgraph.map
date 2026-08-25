@@ -1,0 +1,14 @@
+<map id="LayerRefs::resolveOwner" name="LayerRefs::resolveOwner">
+<area shape="rect" id="Node000001" title="Dereference an OwnerKey to the actual HEvent in the project." alt="" coords="689,39,875,64"/>
+<area shape="rect" id="Node000002" href="$namespaceLayerRefs.html#a410d03c150173c0657c0336438235edd" title="Remove every package collected in refs from its owning layer." alt="" coords="461,13,636,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="675,42,636,38,637,33,676,37"/>
+<area shape="rect" id="Node000006" href="$namespaceLayerRefs.html#aa403055b505274bee957a47ea9e9c6b5" title="Rewrite the event_name field of every package collected in refs." alt="" coords="456,63,641,88"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="675,65,642,68,641,63,675,60"/>
+<area shape="rect" id="Node000003" href="$classProjectView.html#ad43e2995a5dfd91bd480246c965230ad" title=" " alt="" coords="224,5,408,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="447,25,408,24,408,19,448,20"/>
+<area shape="rect" id="Node000004" href="$classPaletteViewController.html#ad66417b58a503aac9762071d732eee92" title=" " alt="" coords="235,55,397,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="475,44,398,61,397,56,474,39"/>
+<area shape="rect" id="Node000005" href="$classPaletteViewController.html#adac8c4d6d12b2aa01a7e8a8113b09fb5" title=" " alt="" coords="5,55,176,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="221,78,176,78,176,73,221,73"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="442,78,397,78,397,73,442,73"/>
+</map>

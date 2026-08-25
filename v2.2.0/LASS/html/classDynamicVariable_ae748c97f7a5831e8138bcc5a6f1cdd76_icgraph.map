@@ -1,0 +1,25 @@
+<map id="DynamicVariable::getSamplingRate" name="DynamicVariable::getSamplingRate">
+<area shape="rect" id="Node000001" title=" " alt="" coords="492,255,745,281"/>
+<area shape="rect" id="Node000002" href="$classDynamicVariableSequence.html#a2eb46b1bbd6e97db56839f229b7bde79" title=" " alt="" coords="248,5,444,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="601,245,575,205,539,155,494,105,442,61,419,48,421,43,446,56,498,101,543,152,580,202,605,242"/>
+<area shape="rect" id="Node000003" href="$classEnvelope.html#a358cf47aba679c596f42236d8a77815c" title=" " alt="" coords="259,70,433,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="596,246,533,178,490,142,443,110,412,98,415,93,445,106,493,137,536,174,600,242"/>
+<area shape="rect" id="Node000006" href="$classLinearInterpolator.html#ab05b5ffa9ef34d14e29ee66821c47459" title=" " alt="" coords="277,120,415,160"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="584,250,520,213,443,174,413,163,414,158,445,170,523,208,587,246"/>
+<area shape="rect" id="Node000007" href="$classExponentialInterpolator.html#a110b068595a7488488b11c8e3e80219b" title=" " alt="" coords="259,184,433,224"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="549,255,431,227,433,221,551,249"/>
+<area shape="rect" id="Node000008" href="$classCubicSplineInterpolator.html#a673f6fe9856b8dc4ed2ae2cd88065d42" title=" " alt="" coords="259,248,433,288"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="478,271,434,271,434,265,478,265"/>
+<area shape="rect" id="Node000009" href="$classConstant.html#ac42a2b21601b029713de91625f25ebfa" title=" " alt="" coords="271,313,421,338"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="544,286,408,315,407,310,543,281"/>
+<area shape="rect" id="Node000010" href="$classDynamicVariableSequence.html#a3dd0d8c151051c4368f50b503b8097ca" title=" " alt="" coords="248,363,444,403"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="582,289,519,321,445,353,413,365,411,360,443,348,516,316,580,285"/>
+<area shape="rect" id="Node000011" href="$classEnvelope.html#aa5cf0ae0a88e195ebdf2d11a74cf9e3b" title=" " alt="" coords="270,427,422,453"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="599,293,535,355,492,388,445,417,413,430,411,425,443,412,489,384,531,351,595,289"/>
+<area shape="rect" id="Node000012" href="$classInterpolator.html#a4157c7c0a97c938fed4ff418ef313a58" title=" " alt="" coords="262,477,430,502"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="605,294,579,333,543,380,498,427,445,468,421,479,418,474,443,463,494,423,539,376,575,330,601,291"/>
+<area shape="rect" id="Node000004" href="$classProbabilityEnvelope.html#a87b234199241372f91d9a815b7bc274e" title=" " alt="" coords="5,31,200,71"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="245,72,200,66,201,61,245,67"/>
+<area shape="rect" id="Node000005" href="$classProbabilityEnvelope.html#a0fdd918a8252fcc03a672f2110dcbda1" title=" " alt="" coords="23,95,183,135"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="245,99,183,107,182,102,245,93"/>
+</map>

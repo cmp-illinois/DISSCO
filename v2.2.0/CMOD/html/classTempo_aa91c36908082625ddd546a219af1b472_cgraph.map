@@ -1,0 +1,7 @@
+<map id="Tempo::getTimeSignature" name="Tempo::getTimeSignature">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,195,56"/>
+<area shape="rect" id="Node000002" href="$classRational.html#ac7165b7a9ccd136b5161a79e8da9fe97" title=" " alt="" coords="245,5,355,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,29,231,24,231,29,195,34"/>
+<area shape="rect" id="Node000003" href="$classRational.html#afa8ea1d64a7227105e294e5bca4b9518" title=" " alt="" coords="243,55,357,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,52,230,56,229,62,194,57"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="QtParser::parseLayer" name="QtParser::parseLayer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,63,163,88"/>
+<area shape="rect" id="Node000002" href="$namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="440,5,613,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,60,210,47,322,33,426,23,427,28,323,38,211,53,143,65"/>
+<area shape="rect" id="Node000003" href="$namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3" title=" " alt="" coords="211,63,385,88"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="163,73,197,73,197,78,163,78"/>
+<area shape="rect" id="Node000006" href="$namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="668,145,815,171"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="126,86,262,123,347,142,434,155,549,162,654,161,654,166,548,168,433,161,346,147,260,128,125,91"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="349,60,461,31,463,37,350,65"/>
+<area shape="rect" id="Node000004" href="$event__struct_8hpp.html#a1eb2b768082eec56a45815689a721cd3" title="Convert a display string (e.g. &quot;Top&quot;, &quot;High&quot;) to the integer enum value as a string." alt="" coords="433,55,620,95"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="385,73,420,73,420,78,385,78"/>
+<area shape="rect" id="Node000005" href="$namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="437,120,617,145"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="350,85,463,114,461,119,349,91"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="617,141,655,145,654,150,616,146"/>
+</map>

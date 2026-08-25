@@ -1,0 +1,9 @@
+<map id="LayerRefs::collect" name="LayerRefs::collect">
+<area shape="rect" id="Node000001" title="Find every Package across the current project that points at an event identified by (type,..." alt="" coords="456,35,595,60"/>
+<area shape="rect" id="Node000002" href="$classProjectView.html#ad43e2995a5dfd91bd480246c965230ad" title=" " alt="" coords="224,5,408,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="442,38,407,33,407,28,443,33"/>
+<area shape="rect" id="Node000003" href="$classPaletteViewController.html#ad66417b58a503aac9762071d732eee92" title=" " alt="" coords="235,55,397,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="443,61,398,67,397,62,442,56"/>
+<area shape="rect" id="Node000004" href="$classPaletteViewController.html#adac8c4d6d12b2aa01a7e8a8113b09fb5" title=" " alt="" coords="5,55,176,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="221,78,176,78,176,73,221,73"/>
+</map>

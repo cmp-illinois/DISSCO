@@ -1,0 +1,7 @@
+<map id="Track::getAmp" name="Track::getAmp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="211,42,325,67"/>
+<area shape="rect" id="Node000002" href="$classMultiPan.html#ae814ca649cb2909bc482c9e138e049c9" title=" " alt="" coords="9,5,159,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,46,159,40,159,35,197,41"/>
+<area shape="rect" id="Node000003" href="$classPan.html#a69e820c09fd00c0c38ee415d0a5ed4e6" title=" " alt="" coords="5,70,163,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="197,68,163,73,163,68,197,63"/>
+</map>

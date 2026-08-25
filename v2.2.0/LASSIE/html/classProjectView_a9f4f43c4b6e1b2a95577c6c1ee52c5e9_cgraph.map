@@ -1,0 +1,42 @@
+<map id="ProjectView::setProperties" name="ProjectView::setProperties">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,379,197,404"/>
+<area shape="rect" id="Node000002" href="$classProjectManager.html#a7a6309c9b96253aacbdf1e48cb8c3b0c" title=" " alt="" coords="263,5,450,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,378,110,317,132,225,151,175,175,125,206,79,244,40,249,35,253,40,247,44,210,83,180,128,156,177,138,227,115,318,106,379"/>
+<area shape="rect" id="Node000003" href="$classProjectManager.html#a836ca9c67ec1d2a7869de199d32d51ec" title=" " alt="" coords="269,55,445,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="102,378,114,324,139,246,157,203,181,161,209,122,244,89,255,82,258,86,247,93,213,126,185,164,162,205,144,248,119,326,107,379"/>
+<area shape="rect" id="Node000004" href="$classProjectManager.html#a4b7722dcadc8376741ba4de1e92396a7" title=" " alt="" coords="268,104,445,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="104,378,119,334,147,271,189,204,214,173,244,147,268,132,271,137,247,151,218,177,193,207,152,274,124,336,109,379"/>
+<area shape="rect" id="Node000005" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="531,180,723,205"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="105,377,121,338,149,285,190,232,216,209,244,190,285,174,327,163,371,157,415,156,498,162,567,174,566,179,498,167,415,161,372,162,328,168,286,179,247,195,219,213,194,235,154,288,126,340,110,379"/>
+<area shape="rect" id="Node000007" href="$classProjectManager.html#acb5738bd043f7ba2884cac2e6000dde4" title=" " alt="" coords="257,205,456,231"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="109,377,160,311,199,273,244,241,261,233,263,238,247,246,203,277,164,315,113,380"/>
+<area shape="rect" id="Node000008" href="$namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160" title=" " alt="" coords="281,255,432,280"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="115,377,169,334,206,310,244,290,268,281,270,286,246,295,208,315,173,338,119,381"/>
+<area shape="rect" id="Node000011" href="$classProjectManager.html#a0f75f59df52a8eb7de0fb366f1f00f17" title=" " alt="" coords="247,304,466,329"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="136,376,245,339,281,330,282,335,246,345,137,381"/>
+<area shape="rect" id="Node000012" href="$classProjectManager.html#afea46455774aa6a4ba7952783c2b2115" title=" " alt="" coords="258,353,455,379"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="197,379,244,374,245,380,198,384"/>
+<area shape="rect" id="Node000013" href="$classProjectManager.html#a75ca506e0d1f25c02179051f3cd0fa7e" title=" " alt="" coords="251,403,462,428"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="198,398,238,402,237,407,197,403"/>
+<area shape="rect" id="Node000014" href="$classProjectManager.html#a08dd9f44d7ab6dd84b24075a80d8126a" title=" " alt="" coords="245,452,468,477"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="137,401,246,438,278,446,277,452,245,443,135,407"/>
+<area shape="rect" id="Node000015" href="$classProjectManager.html#ad5d216dc054dc2222943ca56adf6d394" title=" " alt="" coords="253,501,460,527"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="119,402,172,444,208,468,246,488,266,495,264,500,244,492,206,472,169,449,115,406"/>
+<area shape="rect" id="Node000016" href="$classProjectManager.html#a7aec9c50607113bf15792f1f3712f068" title=" " alt="" coords="253,551,460,576"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="113,402,164,468,202,505,247,537,260,544,258,548,244,542,199,510,160,471,109,406"/>
+<area shape="rect" id="Node000017" href="$classProjectManager.html#a2ed682f97711250eda5bfeb3d776ff1b" title=" " alt="" coords="273,600,440,625"/>
+<area shape="poly" id="edge17_Node000001_Node000017" title=" " alt="" coords="110,403,128,440,157,490,197,543,221,566,247,586,262,595,259,599,244,591,217,570,193,546,153,493,123,443,106,406"/>
+<area shape="rect" id="Node000018" href="$classProjectManager.html#a270c99f7ddff6713661f2ade6bdc9590" title=" " alt="" coords="259,649,454,675"/>
+<area shape="poly" id="edge18_Node000001_Node000018" title=" " alt="" coords="109,403,123,448,150,512,191,579,217,610,247,636,255,641,252,645,244,640,213,614,187,582,146,514,118,450,103,405"/>
+<area shape="rect" id="Node000019" href="$classProjectManager.html#a1d2153ae538c181e0028a7edb987b505" title=" " alt="" coords="277,699,436,724"/>
+<area shape="poly" id="edge19_Node000001_Node000019" title=" " alt="" coords="107,404,119,457,144,534,163,575,186,616,214,653,247,685,266,696,263,701,244,689,210,657,181,619,158,578,139,536,114,458,102,405"/>
+<area shape="rect" id="Node000020" href="$classProjectManager.html#aa0f7ca3b2943123ef1e497434ece1363" title=" " alt="" coords="261,748,452,773"/>
+<area shape="poly" id="edge20_Node000001_Node000020" title=" " alt="" coords="106,404,115,464,138,554,156,603,180,652,210,696,247,735,253,739,250,743,244,739,206,700,175,654,151,606,133,556,110,465,101,405"/>
+<area shape="rect" id="Node000006" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="841,180,950,205"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="723,190,827,190,827,195,723,195"/>
+<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="420,252,467,241,576,207,577,212,469,246,422,257"/>
+<area shape="rect" id="Node000009" href="$classProjectManager.html#a02c96a91da7bebdb54dfcd2ea6688d4b" title="Mark the current project as having unsaved changes and emit dataModified()." alt="" coords="516,255,739,280"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="432,265,502,265,502,270,432,270"/>
+<area shape="rect" id="Node000010" href="$classProjectManager.html#ac3696b7040a19b457dc4e4d2dcbe3c11" title=" " alt="" coords="787,255,1004,280"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="739,265,773,265,773,270,739,270"/>
+</map>

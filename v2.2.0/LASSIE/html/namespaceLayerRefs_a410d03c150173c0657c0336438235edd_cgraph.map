@@ -1,0 +1,19 @@
+<map id="LayerRefs::applyDelete" name="LayerRefs::applyDelete">
+<area shape="rect" id="Node000001" title="Remove every package collected in refs from its owning layer." alt="" coords="5,129,180,155"/>
+<area shape="rect" id="Node000002" href="$namespaceLayerRefs.html#a88af7fddaa76aac27994e46d3b303b0a" title="Dereference an OwnerKey to the actual HEvent in the project." alt="" coords="228,129,413,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,139,214,139,214,145,180,145"/>
+<area shape="rect" id="Node000003" href="$classProjectManager.html#a48bad9d94ff6de5ff8bc8c473db36639" title=" " alt="" coords="461,5,684,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="334,127,387,84,422,60,460,40,480,32,482,37,462,44,425,64,390,88,338,131"/>
+<area shape="rect" id="Node000004" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="477,55,669,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="352,127,461,89,492,81,493,86,462,94,354,132"/>
+<area shape="rect" id="Node000006" href="$classProjectManager.html#a490f88c635ce3806608462afd13fd163" title=" " alt="" coords="471,104,675,129"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="413,130,457,126,457,131,414,135"/>
+<area shape="rect" id="Node000007" href="$classProjectManager.html#ae3c228c1a19a399bf505a49e77e374d2" title=" " alt="" coords="473,153,672,179"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="414,148,460,153,459,158,413,153"/>
+<area shape="rect" id="Node000008" href="$classProjectManager.html#ab368d43e6d98ea7a117b09dccdf973cb" title=" " alt="" coords="472,203,673,228"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="357,152,462,187,499,197,497,202,461,193,355,157"/>
+<area shape="rect" id="Node000009" href="$classProjectManager.html#aa0f7ca3b2943123ef1e497434ece1363" title=" " alt="" coords="477,252,668,277"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="338,153,391,194,425,217,462,237,486,246,484,251,460,242,423,222,387,199,335,157"/>
+<area shape="rect" id="Node000005" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="732,55,841,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="669,65,718,65,718,70,669,70"/>
+</map>

@@ -1,0 +1,14 @@
+<map id="Tempo::getRootExactAncestor" name="Tempo::getRootExactAncestor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="672,79,889,104"/>
+<area shape="rect" id="Node000002" href="$classBottom.html#a8375b8cbfeebf69b5b140563422270e5" title=" " alt="" coords="459,5,601,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="728,77,623,45,582,33,583,28,625,39,729,72"/>
+<area shape="rect" id="Node000005" href="$classSection.html#a3f27dad57b70fdbf2f9d15c885264575" title=" " alt="" coords="457,79,603,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="658,94,603,94,603,89,658,89"/>
+<area shape="rect" id="Node000006" href="$classSection.html#af270c2588bad660b2b7c874095d7d931" title=" " alt="" coords="436,128,624,153"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="703,109,596,131,595,125,702,104"/>
+<area shape="rect" id="Node000003" href="$classBottom.html#ad5249403159b27ec898f289b15c93915" title=" " alt="" coords="217,5,388,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="445,21,388,21,388,15,445,15"/>
+<area shape="rect" id="Node000004" href="$classBottom.html#a32e301cf566271d4072951c1a851e88c" title=" " alt="" coords="5,5,169,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="204,21,170,21,170,15,204,15"/>
+<area shape="poly" id="edge5_Node000005_Node000005" title=" " alt="" coords="571,69,560,61,530,57,506,59,493,64,490,70,497,77,493,80,485,70,489,60,505,54,530,52,562,56,574,65"/>
+</map>

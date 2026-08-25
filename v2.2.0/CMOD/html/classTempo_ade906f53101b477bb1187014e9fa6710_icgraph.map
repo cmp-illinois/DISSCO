@@ -1,0 +1,31 @@
+<map id="Tempo::getTimeSignatureBeatDurationInSeconds" name="Tempo::getTimeSignatureBeatDurationInSeconds">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1177,73,1396,113"/>
+<area shape="rect" id="Node000002" href="$classTempo.html#a63eea3938e6da73ef5350aa0ac7da12a" title=" " alt="" coords="875,55,1129,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1163,84,1129,81,1130,76,1164,79"/>
+<area shape="rect" id="Node000003" href="$classTempo.html#a6a0807777376060e9c4d2e8f4e96ee7f" title=" " alt="" coords="880,104,1124,129"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1164,106,1125,109,1124,104,1163,100"/>
+<area shape="rect" id="Node000004" href="$classEvent.html#ada22a83088a037dcf7d1b41cece0dbbb" title=" " alt="" coords="367,5,538,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="910,104,874,94,850,83,826,73,751,54,674,41,538,26,539,20,675,36,752,49,828,67,852,78,876,89,911,98"/>
+<area shape="rect" id="Node000008" href="$classEvent.html#a0c7072f17e5a13ab0229c1113e6c0f67" title=" " alt="" coords="376,55,529,80"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="872,105,826,101,529,76,530,70,827,95,873,100"/>
+<area shape="rect" id="Node000009" href="$classEvent.html#afac83bb8750e444d149246f32400a973" title=" " alt="" coords="381,104,524,129"/>
+<area shape="poly" id="edge11_Node000003_Node000009" title=" " alt="" coords="866,119,524,119,524,114,866,114"/>
+<area shape="rect" id="Node000010" href="$classEvent.html#a88ccbb3615bae9e1177ee88053c0c32e" title=" " alt="" coords="588,155,827,180"/>
+<area shape="poly" id="edge14_Node000003_Node000010" title=" " alt="" coords="914,134,782,157,782,152,914,129"/>
+<area shape="rect" id="Node000011" href="$classEvent.html#acd7ee684016dad7977e2080df82467d1" title=" " alt="" coords="365,153,540,179"/>
+<area shape="poly" id="edge18_Node000003_Node000011" title=" " alt="" coords="968,139,905,170,866,184,827,195,740,205,651,203,571,193,506,181,507,176,572,188,652,198,739,200,826,190,865,179,902,165,966,134"/>
+<area shape="rect" id="Node000005" href="$classBottom.html#a32e301cf566271d4072951c1a851e88c" title=" " alt="" coords="153,43,317,68"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="365,36,310,45,309,40,364,30"/>
+<area shape="rect" id="Node000006" href="$classEvent.html#af43248915d08da44962951c1a4d0b4c8" title=" " alt="" coords="159,116,312,141"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="382,38,367,44,342,62,319,81,260,118,258,114,316,77,339,57,364,40,380,33"/>
+<area shape="poly" id="edge6_Node000006_Node000006" title=" " alt="" coords="267,106,258,98,235,95,216,97,207,101,205,107,210,114,206,117,199,108,203,98,215,92,235,89,260,93,270,102"/>
+<area shape="rect" id="Node000007" href="$classPiece.html#a4dc9d0d3627fc2208b7da6a36a2ca9c2" title=" " alt="" coords="5,116,105,141"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="145,131,105,131,105,126,145,126"/>
+<area shape="poly" id="edge9_Node000008_Node000005" title=" " alt="" coords="362,65,317,63,318,57,362,60"/>
+<area shape="poly" id="edge10_Node000008_Node000006" title=" " alt="" coords="393,86,366,94,281,119,279,113,365,89,392,81"/>
+<area shape="poly" id="edge12_Node000009_Node000005" title=" " alt="" coords="393,103,280,71,282,65,395,98"/>
+<area shape="poly" id="edge13_Node000009_Node000006" title=" " alt="" coords="368,124,312,127,312,122,367,119"/>
+<area shape="poly" id="edge15_Node000010_Node000011" title=" " alt="" coords="574,169,540,169,540,164,574,164"/>
+<area shape="poly" id="edge16_Node000011_Node000005" title=" " alt="" coords="376,150,364,143,348,127,339,111,331,96,316,82,294,70,297,66,319,77,335,93,344,109,352,124,367,139,379,146"/>
+<area shape="poly" id="edge17_Node000011_Node000006" title=" " alt="" coords="364,154,309,144,310,139,365,148"/>
+</map>

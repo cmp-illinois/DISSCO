@@ -1,0 +1,17 @@
+<map id="BottomEvent" name="BottomEvent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="285,181,392,207"/>
+<area shape="rect" id="Node000002" href="$structHEvent.html" title=" " alt="" coords="255,93,324,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="305,129,334,179,329,182,300,132"/>
+<area shape="rect" id="Node000003" href="$structTimeSignature.html" title=" " alt="" coords="5,5,123,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="96,35,162,67,210,83,255,95,254,100,209,88,160,72,94,40"/>
+<area shape="rect" id="Node000004" href="$structTempo.html" title=" " alt="" coords="146,5,211,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="203,38,239,67,273,91,270,95,236,71,200,42"/>
+<area shape="rect" id="Node000005" href="$structNumChildren.html" title=" " alt="" coords="236,5,343,31"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="292,45,292,93,287,93,287,45"/>
+<area shape="rect" id="Node000006" href="$structChildDef.html" title=" " alt="" coords="367,5,446,31"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="398,45,378,71,352,88,325,99,323,94,350,83,374,67,394,42"/>
+<area shape="rect" id="Node000007" href="$structExtraInfo.html" title=" " alt="" coords="426,93,507,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="440,129,358,183,355,179,437,124"/>
+<area shape="rect" id="Node000008" href="$structFreqInfo.html" title=" " alt="" coords="507,5,581,31"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="535,44,517,71,488,95,484,91,513,68,531,41"/>
+</map>

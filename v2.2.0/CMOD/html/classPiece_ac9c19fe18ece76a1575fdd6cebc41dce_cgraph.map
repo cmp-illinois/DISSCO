@@ -1,0 +1,16 @@
+<map id="Piece::calculateAesthetic" name="Piece::calculateAesthetic">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,153,191,179"/>
+<area shape="rect" id="Node000002" href="$classPiece.html#a54132f9777131890a34372be4f2cf6e1" title=" " alt="" coords="239,5,447,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,151,159,97,196,66,237,40,253,33,255,38,240,44,199,70,163,101,112,155"/>
+<area shape="rect" id="Node000003" href="$Libraries_8h.html#aa676d1eb7e542f7de9fd7d094f5b9053" title=" " alt="" coords="266,79,419,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="130,151,238,113,268,105,269,110,239,118,132,156"/>
+<area shape="rect" id="Node000004" href="$classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28" title=" " alt="" coords="273,128,412,153"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="191,154,259,147,260,152,191,159"/>
+<area shape="rect" id="Node000005" href="$classUtilities.html#ab6db39514c8879ef56f09da59a0c22bd" title=" " alt="" coords="246,177,439,203"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="191,172,232,177,232,182,191,178"/>
+<area shape="rect" id="Node000006" href="$Libraries_8h.html#ad8ae8ed9fbc892a9adb84d5f0b9051da" title=" " alt="" coords="314,227,371,252"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="134,176,239,211,301,228,300,233,238,217,133,181"/>
+<area shape="rect" id="Node000007" href="$Libraries_8h.html#a1ecb0a878309e5bd7eadcecb2f701132" title=" " alt="" coords="313,276,372,301"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="115,177,168,218,203,241,240,261,270,272,300,279,299,285,268,277,238,266,200,246,165,223,112,181"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="303,80,295,70,299,60,316,54,343,52,377,56,387,61,390,66,386,69,383,65,376,61,343,57,317,59,303,64,300,70,307,77"/>
+</map>

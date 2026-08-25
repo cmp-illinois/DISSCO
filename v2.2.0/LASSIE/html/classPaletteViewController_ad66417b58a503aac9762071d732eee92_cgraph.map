@@ -1,0 +1,61 @@
+<map id="PaletteViewController::onItemChanged" name="PaletteViewController::onItemChanged">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,512,168,552"/>
+<area shape="rect" id="Node000002" href="$namespaceLayerRefs.html#a410d03c150173c0657c0336438235edd" title="Remove every package collected in refs from its owning layer." alt="" coords="247,178,422,204"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,512,96,453,117,372,134,329,155,287,182,248,214,214,233,203,235,207,218,218,186,251,160,289,139,331,122,374,101,454,92,512"/>
+<area shape="rect" id="Node000004" href="$classProjectManager.html#a48bad9d94ff6de5ff8bc8c473db36639" title=" " alt="" coords="735,56,957,81"/>
+<area shape="poly" id="edge12_Node000001_Node000004" title=" " alt="" coords="88,512,103,420,129,291,146,225,166,166,189,118,214,86,248,63,284,44,322,29,362,18,443,5,525,4,605,10,678,21,794,49,793,54,677,26,604,15,525,9,444,11,363,23,324,34,286,49,251,67,218,90,193,120,171,168,151,226,134,292,108,421,93,513"/>
+<area shape="rect" id="Node000005" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="750,105,942,130"/>
+<area shape="poly" id="edge23_Node000001_Node000005" title=" " alt="" coords="89,511,104,426,131,308,149,248,168,195,190,152,214,124,254,105,308,92,374,86,447,84,600,89,736,102,736,107,599,95,447,89,374,91,309,98,256,110,218,128,195,154,173,197,154,250,137,309,110,427,94,512"/>
+<area shape="rect" id="Node000007" href="$classProjectManager.html#a490f88c635ce3806608462afd13fd163" title=" " alt="" coords="744,204,948,229"/>
+<area shape="poly" id="edge24_Node000001_Node000007" title=" " alt="" coords="92,511,108,472,133,421,168,370,190,347,215,327,426,286,756,229,757,234,427,291,217,332,194,351,172,373,137,424,112,474,97,513"/>
+<area shape="rect" id="Node000008" href="$classProjectManager.html#ae3c228c1a19a399bf505a49e77e374d2" title=" " alt="" coords="747,253,945,278"/>
+<area shape="poly" id="edge25_Node000001_Node000008" title=" " alt="" coords="96,510,114,479,140,441,174,403,215,373,280,342,338,326,392,320,444,321,553,325,615,321,686,307,734,288,768,279,769,284,736,294,687,312,616,326,553,330,444,326,392,325,339,331,282,347,217,377,178,407,144,444,118,482,100,513"/>
+<area shape="rect" id="Node000009" href="$classProjectManager.html#ab368d43e6d98ea7a117b09dccdf973cb" title=" " alt="" coords="745,302,947,328"/>
+<area shape="poly" id="edge26_Node000001_Node000009" title=" " alt="" coords="102,510,148,461,180,436,215,415,282,389,341,375,395,370,446,369,553,372,615,369,686,358,793,329,794,334,687,363,615,374,553,377,446,375,395,375,342,381,284,394,217,420,183,440,152,465,106,514"/>
+<area shape="rect" id="Node000011" href="$namespaceLayerRefs.html#aa403055b505274bee957a47ea9e9c6b5" title="Rewrite the event_name field of every package collected in refs." alt="" coords="242,228,427,253"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="89,512,102,463,126,397,163,329,186,298,214,270,238,256,240,260,218,274,190,301,167,332,131,399,107,464,95,513"/>
+<area shape="rect" id="Node000012" href="$namespaceLayerRefs.html#a9f3b25fa0435f2a6479bfa02222e231a" title="Find every Package across the current project that points at an event identified by (type,..." alt="" coords="525,154,663,180"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="85,512,89,443,95,396,105,346,121,294,144,245,175,200,214,164,254,142,297,128,342,121,387,121,474,130,544,148,543,153,473,136,387,126,342,127,298,133,256,147,218,168,179,204,149,247,126,296,111,347,100,397,94,443,90,512"/>
+<area shape="rect" id="Node000013" href="$event__struct_8hpp.html#a1eb2b768082eec56a45815689a721cd3" title="Convert a display string (e.g. &quot;Top&quot;, &quot;High&quot;) to the integer enum value as a string." alt="" coords="241,430,428,470"/>
+<area shape="poly" id="edge20_Node000001_Node000013" title=" " alt="" coords="136,510,215,480,245,471,246,476,217,486,138,515"/>
+<area shape="rect" id="Node000014" href="$classProjectManager.html#a8f1dd228b8a3088559203de0634f2022" title=" " alt="" coords="217,494,453,520"/>
+<area shape="poly" id="edge21_Node000001_Node000014" title=" " alt="" coords="168,521,203,518,203,523,169,527"/>
+<area shape="rect" id="Node000015" href="$classProjectManager.html#ad034eb0ddf517d732798522b12280925" title=" " alt="" coords="231,544,438,569"/>
+<area shape="poly" id="edge22_Node000001_Node000015" title=" " alt="" coords="169,538,218,542,218,548,168,543"/>
+<area shape="rect" id="Node000016" href="$classProjectManager.html#a0778050629a1d8033fc6ee1b603cca94" title=" " alt="" coords="232,593,437,618"/>
+<area shape="poly" id="edge27_Node000001_Node000016" title=" " alt="" coords="136,550,217,579,249,587,248,593,215,584,134,555"/>
+<area shape="rect" id="Node000017" href="$classProjectManager.html#a9ef0087f8445a3715883b43af249bee3" title=" " alt="" coords="223,642,446,668"/>
+<area shape="poly" id="edge28_Node000001_Node000017" title=" " alt="" coords="110,550,156,591,186,611,217,629,236,636,234,641,215,633,183,616,153,595,106,554"/>
+<area shape="rect" id="Node000018" href="$classProjectView.html#aa22870123b428488ce263023cd0f03a6" title=" " alt="" coords="235,692,435,732"/>
+<area shape="poly" id="edge29_Node000001_Node000018" title=" " alt="" coords="102,551,147,614,180,649,217,678,228,684,226,689,215,683,176,653,143,618,98,554"/>
+<area shape="rect" id="Node000019" href="$classProjectManager.html#ab0ab6ad9bc299b5d899031def05dd123" title=" " alt="" coords="225,757,444,782"/>
+<area shape="poly" id="edge30_Node000001_Node000019" title=" " alt="" coords="97,552,112,592,137,645,172,698,193,722,218,742,229,749,226,754,214,747,190,726,168,701,132,647,107,595,92,553"/>
+<area shape="rect" id="Node000020" href="$classProjectManager.html#a47b06af178c1c5c2a26b378359df53f0" title=" " alt="" coords="229,806,440,832"/>
+<area shape="poly" id="edge31_Node000001_Node000020" title=" " alt="" coords="94,552,106,602,129,668,146,702,166,736,190,767,218,793,224,798,221,802,214,797,186,770,161,739,141,705,124,670,101,603,89,553"/>
+<area shape="rect" id="Node000021" href="$classProjectManager.html#a52adba923a3551fd126a2432e50a0956" title=" " alt="" coords="235,856,434,881"/>
+<area shape="poly" id="edge32_Node000001_Node000021" title=" " alt="" coords="93,552,102,610,123,689,139,731,160,772,186,810,218,842,225,848,222,852,214,846,182,813,155,775,134,734,118,691,96,611,87,553"/>
+<area shape="rect" id="Node000022" href="$classProjectManager.html#a1aee411de09bb5de1a35ac460e8c41be" title=" " alt="" coords="216,905,453,930"/>
+<area shape="poly" id="edge33_Node000001_Node000022" title=" " alt="" coords="91,552,97,618,116,711,132,760,154,809,182,853,218,892,223,895,219,900,214,896,178,857,149,811,127,762,111,712,92,619,86,553"/>
+<area shape="rect" id="Node000023" href="$namespaceLayerRefs.html#acb76e7040d02887056a2af9f7bb2d814" title="Total number of individual package references across refs." alt="" coords="253,954,416,980"/>
+<area shape="poly" id="edge34_Node000001_Node000023" title=" " alt="" coords="90,553,94,627,100,677,110,732,126,789,148,845,179,897,218,941,241,955,238,960,214,945,174,900,143,847,121,791,105,733,94,678,88,627,85,553"/>
+<area shape="rect" id="Node000024" href="$classProjectView.html#a3503bf069cf4f6a59756c09ce9c31dc8" title=" " alt="" coords="227,1004,442,1044"/>
+<area shape="poly" id="edge35_Node000001_Node000024" title=" " alt="" coords="90,553,91,634,96,690,106,751,121,816,144,879,176,939,218,991,222,995,219,998,214,994,172,942,139,881,116,817,101,752,91,690,86,634,84,553"/>
+<area shape="rect" id="Node000003" href="$namespaceLayerRefs.html#a88af7fddaa76aac27994e46d3b303b0a" title="Dereference an OwnerKey to the actual HEvent in the project." alt="" coords="501,204,687,229"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="422,197,488,203,487,209,422,202"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="664,201,685,189,696,177,702,166,708,141,714,115,721,102,733,90,740,85,743,90,736,94,725,106,719,117,713,142,707,168,700,181,688,193,667,206"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="657,201,685,189,700,177,708,165,718,152,733,139,747,133,749,138,736,144,722,155,713,168,703,181,688,193,660,206"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="687,214,730,214,730,219,687,219"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="660,226,767,248,766,253,659,232"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="616,227,669,258,736,289,760,296,758,301,734,293,666,262,613,231"/>
+<area shape="rect" id="Node000010" href="$classProjectManager.html#aa0f7ca3b2943123ef1e497434ece1363" title=" " alt="" coords="751,154,941,180"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="659,201,766,180,767,185,660,206"/>
+<area shape="rect" id="Node000006" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="1005,105,1115,130"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="942,115,992,115,992,120,942,120"/>
+<area shape="poly" id="edge11_Node000011_Node000003" title=" " alt="" coords="427,229,487,224,488,229,428,234"/>
+<area shape="poly" id="edge14_Node000012_Node000004" title=" " alt="" coords="613,152,666,121,734,90,758,82,760,87,736,95,669,126,616,157"/>
+<area shape="poly" id="edge15_Node000012_Node000005" title=" " alt="" coords="659,152,766,130,767,136,660,157"/>
+<area shape="poly" id="edge16_Node000012_Node000007" title=" " alt="" coords="660,177,767,198,766,204,659,182"/>
+<area shape="poly" id="edge17_Node000012_Node000008" title=" " alt="" coords="663,177,688,189,704,202,713,215,721,228,736,239,749,246,746,250,733,244,718,231,708,218,700,205,685,193,661,182"/>
+<area shape="poly" id="edge18_Node000012_Node000009" title=" " alt="" coords="665,175,688,189,700,202,707,215,713,241,719,266,725,278,736,289,743,294,740,298,733,293,721,281,714,268,708,242,702,216,696,205,685,193,662,180"/>
+<area shape="poly" id="edge19_Node000012_Node000010" title=" " alt="" coords="663,164,737,164,737,170,663,170"/>
+</map>

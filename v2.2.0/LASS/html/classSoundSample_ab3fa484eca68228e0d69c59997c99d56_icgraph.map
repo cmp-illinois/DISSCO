@@ -1,0 +1,17 @@
+<map id="SoundSample::scale" name="SoundSample::scale">
+<area shape="rect" id="Node000001" title=" " alt="" coords="996,35,1149,60"/>
+<area shape="rect" id="Node000002" href="$classTrack.html#ab54ce0b0a12f52bc59fd3653a04f97d3" title=" " alt="" coords="849,35,948,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="982,50,948,50,948,45,982,45"/>
+<area shape="rect" id="Node000003" href="$classSpatializer.html#a85146a717cd374a807f13899328b6403" title=" " alt="" coords="639,27,801,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="836,50,802,50,802,45,836,45"/>
+<area shape="rect" id="Node000004" href="$classPartial.html#a6ab80d7069346d873d3811de427a53d8" title=" " alt="" coords="453,5,566,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="624,37,566,29,567,23,625,31"/>
+<area shape="rect" id="Node000005" href="$classSpatializer.html#a66c634b61bd59f6afaeeb8fd46350525" title=" " alt="" coords="428,55,591,95"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="625,63,591,67,591,62,625,57"/>
+<area shape="rect" id="Node000006" href="$classSound.html#a4f246242d337ab7ef8a646f69f2a04ae" title=" " alt="" coords="268,63,380,88"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="414,78,380,78,380,73,414,73"/>
+<area shape="rect" id="Node000007" href="$Score_8cpp.html#a39d69126a1c6f253e4f8e8dbe365ee1d" title=" " alt="" coords="156,63,220,88"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="254,78,220,78,220,73,254,73"/>
+<area shape="rect" id="Node000008" href="$classScore.html#acb0a205511c777b06c258f673f7e0d4d" title=" " alt="" coords="5,63,108,88"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="142,78,108,78,108,73,142,73"/>
+</map>

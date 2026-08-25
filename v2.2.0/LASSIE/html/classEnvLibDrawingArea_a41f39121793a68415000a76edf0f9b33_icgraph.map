@@ -1,0 +1,11 @@
+<map id="EnvLibDrawingArea::setActiveNodeCoordinate" name="EnvLibDrawingArea::setActiveNodeCoordinate">
+<area shape="rect" id="Node000001" title="Update the active node&#39;s coords from external input." alt="" coords="672,37,860,77"/>
+<area shape="rect" id="Node000002" href="$classEnvelopeLibraryWindow.html#ad1b4a1ec9a80b782cc8666d04f5a05a2" title="Called when either X or Y QLineEdit text changes." alt="" coords="445,37,624,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="658,60,624,60,624,55,658,55"/>
+<area shape="rect" id="Node000003" href="$classEnvelopeLibraryWindow.html#a0fc6921f519c11a1692c3a45a79fc900" title="Constructor: builds the UI." alt="" coords="211,5,397,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="431,46,397,41,398,36,432,40"/>
+<area shape="rect" id="Node000004" href="$classEnvelopeLibraryWindow.html#a5569ae9d30f88f6080575130f28c64cf" title="Programmatically update the X/Y entries." alt="" coords="215,69,393,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="432,74,394,80,393,74,432,69"/>
+<area shape="rect" id="Node000005" href="$classEnvLibDrawingArea.html#aca692664dc8aa19535b80bab00102141" title="Handle presses (select node, start drag, show popup)" alt="" coords="5,69,163,109"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="201,92,163,92,163,87,201,87"/>
+</map>

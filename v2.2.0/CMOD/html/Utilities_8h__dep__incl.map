@@ -1,0 +1,31 @@
+<map id="CMOD/src/Utilities.h" name="CMOD/src/Utilities.h">
+<area shape="rect" id="Node000001" title="XML evaluator and bridge between CMOD Events and the LASS Score." alt="" coords="397,5,551,31"/>
+<area shape="rect" id="Node000002" href="$Bottom_8h.html" title="Leaf event in a DISSCO composition." alt="" coords="340,152,491,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="466,45,423,153,418,151,462,43"/>
+<area shape="rect" id="Node000007" href="$Piece-experimental_8cpp.html" title=" " alt="" coords="5,372,249,397"/>
+<area shape="poly" id="edge17_Node000001_Node000007" title=" " alt="" coords="384,35,283,54,179,83,134,100,98,119,74,141,68,152,66,164,66,239,72,279,86,316,120,370,116,373,82,318,67,280,61,240,61,163,63,150,70,138,95,115,132,95,178,78,282,49,383,30"/>
+<area shape="rect" id="Node000008" href="$Utilities_8cpp.html" title=" " alt="" coords="617,372,785,397"/>
+<area shape="poly" id="edge18_Node000001_Node000008" title=" " alt="" coords="565,29,669,48,776,76,823,94,861,114,887,137,894,150,897,163,897,240,892,266,881,290,863,311,842,329,793,357,745,374,743,369,790,352,839,325,860,307,876,287,887,265,891,239,891,164,889,152,883,140,858,119,821,99,775,82,668,53,564,34"/>
+<area shape="rect" id="Node000010" href="$Event_8h.html" title="Core Event class — the common base for every layer in a DISSCO composition tree (top,..." alt="" coords="487,79,626,104"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="499,38,545,76,541,80,496,42"/>
+<area shape="rect" id="Node000003" href="$Bottom_8cpp.html" title=" " alt="" coords="101,225,266,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="366,184,222,228,220,223,364,179"/>
+<area shape="rect" id="Node000004" href="$CMOD_8h.html" title="Umbrella header for the Composition Module (CMOD)." alt="" coords="341,225,484,251"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="417,191,416,225,410,225,412,191"/>
+<area shape="rect" id="Node000009" href="$Event_8cpp.html" title=" " alt="" coords="509,225,663,251"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="457,180,559,223,557,228,454,185"/>
+<area shape="rect" id="Node000005" href="$Piece_8h.html" title="Top&#45;level composition object and supporting filesystem helpers." alt="" coords="344,299,481,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="407,264,408,298,403,299,401,265"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="372,295,351,281,333,265,323,246,326,224,338,208,353,194,384,175,387,180,356,199,342,211,331,226,328,245,337,262,354,277,375,290"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="419,285,417,251,422,251,424,285"/>
+<area shape="rect" id="Node000006" href="$Main_8cpp.html" title="CMOD command&#45;line entry point." alt="" coords="338,372,487,397"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="415,338,415,372,410,372,410,338"/>
+<area shape="poly" id="edge8_Node000005_Node000007" title=" " alt="" coords="354,330,174,374,173,369,353,325"/>
+<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="473,325,655,369,653,374,471,330"/>
+<area shape="poly" id="edge12_Node000010_Node000002" title=" " alt="" coords="523,112,440,154,437,149,521,108"/>
+<area shape="poly" id="edge13_Node000010_Node000004" title=" " alt="" coords="548,118,530,148,505,179,471,207,437,227,434,223,468,203,501,175,525,145,543,115"/>
+<area shape="poly" id="edge16_Node000010_Node000008" title=" " alt="" coords="584,111,633,159,657,190,678,224,692,265,700,307,704,372,698,372,695,308,687,267,673,226,653,193,629,162,580,115"/>
+<area shape="poly" id="edge14_Node000010_Node000009" title=" " alt="" coords="564,117,586,225,581,226,559,118"/>
+<area shape="rect" id="Node000011" href="$Note_8cpp.html" title=" " alt="" coords="708,152,856,177"/>
+<area shape="poly" id="edge15_Node000010_Node000011" title=" " alt="" coords="607,106,746,149,745,154,605,111"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classAbstractIterator.html" title=" " alt="" coords="5,47,157,87"/>
+<area shape="rect" id="Node000001" href="$classDynamicVariableSequenceIterator.html" title=" " alt="" coords="205,5,449,31"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="171,46,205,39,261,28,262,33,206,45,172,52"/>
+<area shape="rect" id="Node000002" href="$classEnvelopeIterator.html" title=" " alt="" coords="262,55,393,80"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="171,65,262,65,262,70,171,70"/>
+<area shape="rect" id="Node000003" href="$classInterpolatorIterator.html" title=" " alt="" coords="254,104,401,129"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="172,83,264,101,263,107,170,88"/>
+<area shape="rect" id="Node000004" href="$classCubicSplineInterpolatorIterator.html" title=" " alt="" coords="497,55,720,80"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="413,99,535,77,536,83,414,104"/>
+<area shape="rect" id="Node000005" href="$classExponentialInterpolatorIterator.html" title=" " alt="" coords="497,104,720,129"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="414,114,497,114,497,119,414,119"/>
+<area shape="rect" id="Node000006" href="$classLinearInterpolatorIterator.html" title=" " alt="" coords="515,153,702,179"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="414,129,536,151,535,156,413,134"/>
+</map>

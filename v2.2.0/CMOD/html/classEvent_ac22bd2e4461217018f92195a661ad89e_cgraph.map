@@ -1,0 +1,5 @@
+<map id="Event::tryToRestart" name="Event::tryToRestart">
+<area shape="rect" id="Node000001" title="Restarts the build process if necessary (for buildDiscrete)." alt="" coords="5,5,152,31"/>
+<area shape="rect" id="Node000002" href="$Event_8cpp.html#af52b36675c368b3469163a3b18847e96" title=" " alt="" coords="200,5,387,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,15,186,15,186,21,152,21"/>
+</map>

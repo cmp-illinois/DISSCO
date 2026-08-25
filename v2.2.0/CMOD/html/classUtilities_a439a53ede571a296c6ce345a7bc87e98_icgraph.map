@@ -1,0 +1,16 @@
+<map id="Utilities::XMLTranscode" name="Utilities::XMLTranscode">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1115,59,1288,84"/>
+<area shape="rect" id="Node000002" href="$classUtilities.html#a12cfad052991885b0d1b86c6dedb6b86" title=" " alt="" coords="897,22,1067,62"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1101,61,1067,56,1067,51,1101,55"/>
+<area shape="rect" id="Node000007" href="$classUtilities.html#a2a5e70cda223552a6568a71f40d50a27" title=" " alt="" coords="916,87,1048,112"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="1101,87,1049,94,1048,88,1100,82"/>
+<area shape="rect" id="Node000003" href="$classPiece.html#a9df7abc80d5898487fc10003801c7ddd" title=" " alt="" coords="679,29,849,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="883,45,850,45,850,39,883,39"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="801,20,790,11,764,8,742,10,731,15,728,20,734,28,730,31,723,21,727,11,741,5,764,3,793,6,804,15"/>
+<area shape="rect" id="Node000004" href="$classPiece.html#a87fed60350b1f71bf8c4524dc17ed2b3" title=" " alt="" coords="485,29,631,55"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="665,45,631,45,631,39,665,39"/>
+<area shape="rect" id="Node000005" href="$classPiece.html#a2095ac0c2cea8c497b51fa597025dd54" title=" " alt="" coords="251,29,437,55"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="472,45,437,45,437,39,472,39"/>
+<area shape="rect" id="Node000006" href="$classPiece.html#a9ab6a57f7b5a4fce90402c2faf2156b4" title=" " alt="" coords="5,29,203,55"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="237,45,203,45,203,39,237,39"/>
+</map>

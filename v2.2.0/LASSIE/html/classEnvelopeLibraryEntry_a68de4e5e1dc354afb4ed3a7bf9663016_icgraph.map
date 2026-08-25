@@ -1,0 +1,10 @@
+<map id="EnvelopeLibraryEntry::duplicateEnvelope" name="EnvelopeLibraryEntry::duplicateEnvelope">
+<area shape="rect" id="Node000001" title="Append a duplicated envelope entry after this one." alt="" coords="700,29,861,69"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="818,18,805,11,781,8,759,10,747,15,742,21,744,28,739,30,737,20,743,10,758,5,781,3,807,6,821,13"/>
+<area shape="rect" id="Node000002" href="$namespaceEnvelopeUtilities.html#a4395145df1803e65d6da9e3edff4bf6d" title=" " alt="" coords="467,29,652,69"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="686,52,652,52,652,47,686,47"/>
+<area shape="rect" id="Node000003" href="$classEnvelopeLibraryWindow.html#aa5ccfd6bcfce9d10dbd3706bb2645b60" title="Duplicate the selected envelope." alt="" coords="240,29,419,69"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="453,52,419,52,419,47,453,47"/>
+<area shape="rect" id="Node000004" href="$classEnvelopeLibraryWindow.html#a0fc6921f519c11a1692c3a45a79fc900" title="Constructor: builds the UI." alt="" coords="5,29,192,69"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="226,52,192,52,192,47,226,47"/>
+</map>

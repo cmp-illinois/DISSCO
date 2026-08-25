@@ -1,0 +1,12 @@
+<map id="EnvLibDrawingArea::resetFields" name="EnvLibDrawingArea::resetFields">
+<area shape="rect" id="Node000001" title="Reset all internal fields to their defaults." alt="" coords="467,69,624,109"/>
+<area shape="rect" id="Node000002" href="$classEnvelopeLibraryWindow.html#a738a0ffb4095beaeb082b01d78c9ad01" title="Delete the selected envelope." alt="" coords="240,5,419,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="463,68,397,48,398,43,464,63"/>
+<area shape="rect" id="Node000004" href="$classEnvelopeLibraryWindow.html#aa14f7e18a87521c7d42f1a4320488217" title="Called when a tree item is activated (double‐click or Enter)" alt="" coords="240,69,419,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="453,92,419,92,419,87,453,87"/>
+<area shape="rect" id="Node000005" href="$classEnvelopeLibraryWindow.html#a090e32efcf168f343d2939d056a1949c" title="Called when the selection changes in the envelope list." alt="" coords="240,133,419,173"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="464,116,398,136,397,131,463,111"/>
+<area shape="rect" id="Node000003" href="$classEnvelopeLibraryWindow.html#a0fc6921f519c11a1692c3a45a79fc900" title="Constructor: builds the UI." alt="" coords="5,37,192,77"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="227,42,192,47,192,42,226,37"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="226,78,192,73,192,68,227,72"/>
+</map>
