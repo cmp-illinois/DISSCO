@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['layerrefs_0',['LayerRefs',['../namespaceLayerRefs.html',1,'']]]
+  ['envelopeutilities_0',['EnvelopeUtilities',['../namespaceEnvelopeUtilities.html',1,'']]]
 ];

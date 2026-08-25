@@ -80,7 +80,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>In-memory model of a DISSCO project and its top-level manager.  
+<p>In-memory model of a <a class="el" href="namespaceDISSCO.html">DISSCO</a> project and its top-level manager.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;QString&gt;</code><br />
 <code>#include &lt;QList&gt;</code><br />
@@ -197,19 +197,19 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html">Project</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggregate state for a single open DISSCO project.  <a href="classProject.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggregate state for a single open <a class="el" href="namespaceDISSCO.html">DISSCO</a> project.  <a href="classProject.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProjectManager.html">ProjectManager</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Owner and broker for all open <a class="el" href="classProject.html" title="Aggregate state for a single open DISSCO project.">Project</a> instances.  <a href="classProjectManager.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>In-memory model of a DISSCO project and its top-level manager. </p>
+<div class="textblock"><p>In-memory model of a <a class="el" href="namespaceDISSCO.html">DISSCO</a> project and its top-level manager. </p>
 <p>Two classes live here:</p><ul>
 <li><a class="el" href="classProject.html" title="Aggregate state for a single open DISSCO project.">Project</a>: a value-like aggregate of everything a <code>.dissco</code> file holds — global synthesis settings, the event hierarchy (top/high/mid/low/bottom plus spectrum, envelope, sieve, spatialization, pattern, reverb, filter, note events), the envelope library, and any Markov models.</li>
 <li><a class="el" href="classProjectManager.html" title="Owner and broker for all open Project instances.">ProjectManager</a>: the single entry point that creates, opens, saves, and closes <a class="el" href="classProject.html" title="Aggregate state for a single open DISSCO project.">Project</a> instances. UI code never touches <a class="el" href="classProject.html" title="Aggregate state for a single open DISSCO project.">Project</a> members directly; it goes through <a class="el" href="classProjectManager.html" title="Owner and broker for all open Project instances.">ProjectManager</a>'s typed accessors.</li>
 </ul>
-<p><a class="el" href="classProject.html" title="Aggregate state for a single open DISSCO project.">Project</a>'s data members are private and all UI access flows through <a class="el" href="classProjectManager.html" title="Owner and broker for all open Project instances.">ProjectManager</a>. Adding a new field to a DISSCO project therefore means extending: this struct, <a class="el" href="classProjectManager.html" title="Owner and broker for all open Project instances.">ProjectManager</a>'s accessor list, the XML parser in <a class="el" href="project__struct_8cpp.html">project_struct.cpp</a>, and the save routine. </p>
+<p><a class="el" href="classProject.html" title="Aggregate state for a single open DISSCO project.">Project</a>'s data members are private and all UI access flows through <a class="el" href="classProjectManager.html" title="Owner and broker for all open Project instances.">ProjectManager</a>. Adding a new field to a <a class="el" href="namespaceDISSCO.html">DISSCO</a> project therefore means extending: this struct, <a class="el" href="classProjectManager.html" title="Owner and broker for all open Project instances.">ProjectManager</a>'s accessor list, the XML parser in <a class="el" href="project__struct_8cpp.html">project_struct.cpp</a>, and the save routine. </p>
 
 <p class="definition">Definition in file <a class="el" href="project__struct_8hpp_source.html">project_struct.hpp</a>.</p>
 </div></div><!-- contents -->

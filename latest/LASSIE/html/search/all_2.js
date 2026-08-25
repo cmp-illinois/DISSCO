@@ -32,8 +32,9 @@ var searchData=
   ['currentcommit_29',['currentCommit',['../classUpdater.html#a62dab2da3e9dc00ca25002fa1176120d',1,'Updater']]],
   ['currentlayerfunction_30',['currentlayerfunction',['../classCurrentLayerFunction.html#a43ddd2e2d6c1fcee189981aef5731637',1,'CurrentLayerFunction::CurrentLayerFunction()'],['../classCurrentLayerFunction.html',1,'CurrentLayerFunction']]],
   ['currentpartialnumfunction_31',['currentpartialnumfunction',['../classCurrentPartialNumFunction.html#a005936ecc93e3357b75b282066cb7bec',1,'CurrentPartialNumFunction::CurrentPartialNumFunction()'],['../classCurrentPartialNumFunction.html',1,'CurrentPartialNumFunction']]],
-  ['currentsegmentfunction_32',['currentsegmentfunction',['../classCurrentSegmentFunction.html#abee86bcb86a639205120bc0678987055',1,'CurrentSegmentFunction::CurrentSegmentFunction()'],['../classCurrentSegmentFunction.html',1,'CurrentSegmentFunction']]],
-  ['currenttypefunction_33',['currenttypefunction',['../classCurrentTypeFunction.html#a809171018ae29ec3a05dac62241365db',1,'CurrentTypeFunction::CurrentTypeFunction()'],['../classCurrentTypeFunction.html',1,'CurrentTypeFunction']]],
-  ['currentversion_34',['currentVersion',['../classUpdater.html#a58033bd5e379e2049aa449ee05827244',1,'Updater']]],
-  ['customnotemodifiers_35',['customnotemodifiers',['../classProjectManager.html#ad195d12d75dfff5118eb2bf36b8f7cb6',1,'ProjectManager']]]
+  ['currentplatform_32',['currentPlatform',['../namespaceDISSCO_1_1ReleaseAssets.html#a145b920ca00df90f97c03a270ca77950',1,'DISSCO::ReleaseAssets']]],
+  ['currentsegmentfunction_33',['currentsegmentfunction',['../classCurrentSegmentFunction.html#abee86bcb86a639205120bc0678987055',1,'CurrentSegmentFunction::CurrentSegmentFunction()'],['../classCurrentSegmentFunction.html',1,'CurrentSegmentFunction']]],
+  ['currenttypefunction_34',['currenttypefunction',['../classCurrentTypeFunction.html#a809171018ae29ec3a05dac62241365db',1,'CurrentTypeFunction::CurrentTypeFunction()'],['../classCurrentTypeFunction.html',1,'CurrentTypeFunction']]],
+  ['currentversion_35',['currentVersion',['../classUpdater.html#a58033bd5e379e2049aa449ee05827244',1,'Updater']]],
+  ['customnotemodifiers_36',['customnotemodifiers',['../classProjectManager.html#ad195d12d75dfff5118eb2bf36b8f7cb6',1,'ProjectManager']]]
 ];

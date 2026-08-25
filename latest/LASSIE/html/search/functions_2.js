@@ -12,14 +12,15 @@ var searchData=
   ['count_9',['count',['../classEnvelopeLibraryEntry.html#a17666c7894f7707e25d7d05fb8eee883',1,'EnvelopeLibraryEntry']]],
   ['countnumofnodes_10',['countNumOfNodes',['../classEnvLibEntryNode.html#a72ce6d6aa936005557e66c064f540b5d',1,'EnvLibEntryNode']]],
   ['create_11',['create',['../classProjectManager.html#a08f7b64b62717be7682a178f35227fd0',1,'ProjectManager::create()'],['../classFunctionRegistry.html#a6bab99d477293332677ab3399c6f17a2',1,'FunctionRegistry::create()']]],
-  ['createnewenvelope_12',['createnewenvelope',['../classEnvelopeLibraryEntry.html#ab105d968e5b39a0f6bee2731eb2e9a88',1,'EnvelopeLibraryEntry::createNewEnvelope()'],['../classEnvelopeLibraryWindow.html#a1fc39bcfac7742b40037b5e5d971217f',1,'EnvelopeLibraryWindow::createNewEnvelope()']]],
+  ['createnewenvelope_12',['createnewenvelope',['../classEnvelopeLibraryWindow.html#a1fc39bcfac7742b40037b5e5d971217f',1,'EnvelopeLibraryWindow::createNewEnvelope()'],['../classEnvelopeLibraryEntry.html#ab105d968e5b39a0f6bee2731eb2e9a88',1,'EnvelopeLibraryEntry::createNewEnvelope()']]],
   ['createnewenvelopehelper_13',['createNewEnvelopeHelper',['../namespaceEnvelopeUtilities.html#a89aa270b6266dbefc58dabcf4f0fc4d0',1,'EnvelopeUtilities']]],
   ['currentchildnumfunction_14',['CurrentChildNumFunction',['../classCurrentChildNumFunction.html#ade5bdc9ef156da505877a5eae302205b',1,'CurrentChildNumFunction']]],
   ['currentcommit_15',['currentCommit',['../classUpdater.html#a62dab2da3e9dc00ca25002fa1176120d',1,'Updater']]],
   ['currentlayerfunction_16',['CurrentLayerFunction',['../classCurrentLayerFunction.html#a43ddd2e2d6c1fcee189981aef5731637',1,'CurrentLayerFunction']]],
   ['currentpartialnumfunction_17',['CurrentPartialNumFunction',['../classCurrentPartialNumFunction.html#a005936ecc93e3357b75b282066cb7bec',1,'CurrentPartialNumFunction']]],
-  ['currentsegmentfunction_18',['CurrentSegmentFunction',['../classCurrentSegmentFunction.html#abee86bcb86a639205120bc0678987055',1,'CurrentSegmentFunction']]],
-  ['currenttypefunction_19',['CurrentTypeFunction',['../classCurrentTypeFunction.html#a809171018ae29ec3a05dac62241365db',1,'CurrentTypeFunction']]],
-  ['currentversion_20',['currentVersion',['../classUpdater.html#a58033bd5e379e2049aa449ee05827244',1,'Updater']]],
-  ['customnotemodifiers_21',['customnotemodifiers',['../classProjectManager.html#ad195d12d75dfff5118eb2bf36b8f7cb6',1,'ProjectManager']]]
+  ['currentplatform_18',['currentPlatform',['../namespaceDISSCO_1_1ReleaseAssets.html#a145b920ca00df90f97c03a270ca77950',1,'DISSCO::ReleaseAssets']]],
+  ['currentsegmentfunction_19',['CurrentSegmentFunction',['../classCurrentSegmentFunction.html#abee86bcb86a639205120bc0678987055',1,'CurrentSegmentFunction']]],
+  ['currenttypefunction_20',['CurrentTypeFunction',['../classCurrentTypeFunction.html#a809171018ae29ec3a05dac62241365db',1,'CurrentTypeFunction']]],
+  ['currentversion_21',['currentVersion',['../classUpdater.html#a58033bd5e379e2049aa449ee05827244',1,'Updater']]],
+  ['customnotemodifiers_22',['customnotemodifiers',['../classProjectManager.html#ad195d12d75dfff5118eb2bf36b8f7cb6',1,'ProjectManager']]]
 ];
