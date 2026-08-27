@@ -268,9 +268,6 @@ m_sample_type Reverb::do_reverb(m_sample_type x_t, float x_value)
 m_sample_type Reverb::do_reverb(m_sample_type x_t, float x_value, Envelope *percentReverbinput)
 {
   m_sample_type y;
-  Envelope* temp = new Envelope(*percentReverbinput);
-  delete percentReverb;
-  percentReverb = temp;
 
   // run the sample through various comb filters (for effeciency
   // reasons, I hard coded this (instead of looping from 0 to
@@ -286,8 +283,8 @@ m_sample_type Reverb::do_reverb(m_sample_type x_t, float x_value, Envelope *perc
   // after adding up the results, run it through an allpass filter
   y = apfilter->do_filter(y);
   // Mix it with the input sound
-  float durationofEnv = percentReverb->getDuration();
-  float EnvelopeValueAtx = percentReverb->getValue(x_value,durationofEnv);
+  float durationofEnv = percentReverbinput->getDuration();
+  float EnvelopeValueAtx = percentReverbinput->getValue(x_value,durationofEnv);
   y = (EnvelopeValueAtx*y) + ((1 - EnvelopeValueAtx)*x_t);
   return y;
 }
@@ -403,9 +400,22 @@ SoundSample *Reverb::do_reverb_SoundSample(SoundSample *inWave, Envelope *percen
   float* inData  = &(*inWave)[0];
   float* outData = &(*outWave)[0];
 
-  // Accumulate the 6 comb filter outputs.
-  vector<float> combSum(N, 0.0f);
-  vector<float> filterBuf(N);
+  // Reusable per-thread scratch buffers. Reverb is invoked once per partial,
+  // once per sound, and once for the whole score, so allocating and freeing
+  // four full-length buffers on every call was a significant source of churn.
+  // thread_local keeps each render thread's scratch alive (grown to the largest
+  // call it has seen) and is race-free regardless of whether a Reverb instance
+  // is shared across the worker threads. resize() reuses existing capacity.
+  thread_local vector<float> combSum, filterBuf, envVals, diff;
+  combSum.resize(N);
+  filterBuf.resize(N);
+  envVals.resize(N);
+  diff.resize(N);
+
+  // Accumulate the 6 comb filter outputs. combSum accumulates, so unlike the
+  // other scratch buffers (each fully overwritten before use) it must be
+  // re-zeroed on every call.
+  vDSP_vclr(combSum.data(), 1, (vDSP_Length)N);
   for (int f = 0; f < REVERB_NUM_COMB_FILTERS; f++) {
     lpcfilter[f]->do_filter_buffer(inData, filterBuf.data(), N);
     vDSP_vadd(combSum.data(), 1, filterBuf.data(), 1,
@@ -424,12 +434,10 @@ SoundSample *Reverb::do_reverb_SoundSample(SoundSample *inWave, Envelope *percen
   //          = env[i] * (apOut[i] - in[i]) + in[i]
   float duration = percentReverb->getDuration();
   float invN = 1.0f / (float)N;
-  vector<float> envVals(N);
   for (long i = 0; i < N; i++)
     envVals[i] = percentReverb->getValue((float)i * invN, duration);
 
   // diff[i] = apOut[i] - in[i]  (vDSP_vsub: C = B - A)
-  vector<float> diff(N);
   vDSP_vsub(inData, 1, outData, 1, diff.data(), 1, (vDSP_Length)N);
 
   // outData[i] = envVals[i] * diff[i] + in[i]
