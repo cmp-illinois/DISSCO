@@ -1,13 +1,17 @@
 <map id="Event::getTempoStringFromDOMElement" name="Event::getTempoStringFromDOMElement">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,97,208,137"/>
-<area shape="rect" id="Node000002" href="$classRational.html#ac7165b7a9ccd136b5161a79e8da9fe97" title=" " alt="" coords="270,5,381,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,94,255,40,271,33,273,38,257,44,146,99"/>
-<area shape="rect" id="Node000003" href="$classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28" title=" " alt="" coords="256,55,395,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,94,255,80,256,86,196,99"/>
-<area shape="rect" id="Node000004" href="$Libraries_8h.html#ad8ae8ed9fbc892a9adb84d5f0b9051da" title=" " alt="" coords="297,104,354,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="208,114,283,114,283,119,208,119"/>
-<area shape="rect" id="Node000005" href="$Libraries_8h.html#a1ecb0a878309e5bd7eadcecb2f701132" title=" " alt="" coords="296,153,355,179"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="196,134,283,154,282,159,195,139"/>
-<area shape="rect" id="Node000006" href="$classRational.html#afa8ea1d64a7227105e294e5bca4b9518" title=" " alt="" coords="268,203,383,228"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="147,134,257,188,276,195,274,200,255,192,145,139"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,122,208,162"/>
+<area shape="rect" id="Node000002" href="$classRational.html#ac7165b7a9ccd136b5161a79e8da9fe97" title=" " alt="" coords="288,5,399,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,119,186,79,255,40,274,32,276,37,257,44,189,84,134,124"/>
+<area shape="rect" id="Node000003" href="$classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28" title=" " alt="" coords="274,55,413,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="163,119,255,89,281,81,282,86,257,94,165,125"/>
+<area shape="rect" id="Node000005" href="$Libraries_8h.html#ad8ae8ed9fbc892a9adb84d5f0b9051da" title=" " alt="" coords="315,104,372,129"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="208,128,301,118,301,124,209,134"/>
+<area shape="rect" id="Node000006" href="$Libraries_8h.html#a1ecb0a878309e5bd7eadcecb2f701132" title=" " alt="" coords="314,153,373,179"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="209,150,301,159,300,164,208,155"/>
+<area shape="rect" id="Node000007" href="$classRational.html#afa8ea1d64a7227105e294e5bca4b9518" title=" " alt="" coords="286,203,401,228"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="170,160,257,187,286,196,284,201,255,193,168,165"/>
+<area shape="rect" id="Node000008" href="$classRational.html#ac1d70f7c36e6c1456559056eeb9e58e0" title=" " alt="" coords="256,252,431,277"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="135,160,190,199,257,237,278,245,276,250,255,242,187,203,132,164"/>
+<area shape="rect" id="Node000004" href="$classCmodError.html#a481a57955818c93a2978353cfc957b1a" title=" " alt="" coords="479,55,653,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="413,65,465,65,465,70,413,70"/>
 </map>

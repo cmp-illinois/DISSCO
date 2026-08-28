@@ -80,6 +80,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="Bottom_8h_source.html">Bottom.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="CmodError_8h_source.html">CmodError.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ModifierUsage_8hpp_source.html">ModifierUsage.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Random_8h_source.html">Random.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Output_8h_source.html">Output.h</a>&quot;</code><br />
@@ -91,6 +92,7 @@ $(function() {
 <code>#include &lt;limits&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;optional&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;unordered_map&gt;</code><br />
 <code>#include &lt;unordered_set&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
@@ -99,150 +101,153 @@ Include dependency graph for Bottom.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="Bottom_8cpp__incl.png" border="0" usemap="#aCMOD_2src_2Bottom_8cpp" alt=""/></div>
 <map name="aCMOD_2src_2Bottom_8cpp" id="aCMOD_2src_2Bottom_8cpp">
-<area shape="rect" title=" " alt="" coords="1928,5,2093,31"/>
-<area shape="rect" href="Bottom_8h.html" title="Leaf event in a DISSCO composition." alt="" coords="1147,79,1229,104"/>
-<area shape="poly" title=" " alt="" coords="1928,29,1243,88,1243,83,1927,24"/>
-<area shape="rect" title=" " alt="" coords="1703,519,1766,544"/>
-<area shape="poly" title=" " alt="" coords="1928,25,1851,35,1812,45,1775,59,1742,77,1716,100,1699,129,1693,164,1693,386,1696,419,1704,451,1725,505,1720,507,1699,453,1691,420,1688,386,1688,163,1694,127,1712,97,1739,73,1773,54,1810,40,1850,30,1927,19"/>
-<area shape="rect" title=" " alt="" coords="1790,519,1853,544"/>
-<area shape="poly" title=" " alt="" coords="1928,31,1866,46,1806,72,1781,89,1761,110,1749,134,1744,164,1744,386,1750,421,1764,454,1783,483,1802,507,1798,510,1779,487,1760,457,1745,423,1739,386,1739,163,1744,133,1757,107,1778,85,1804,67,1864,41,1927,26"/>
-<area shape="rect" href="Random_8h.html" title=" " alt="" coords="1456,225,1544,251"/>
-<area shape="poly" title=" " alt="" coords="1928,24,1870,29,1804,39,1737,56,1673,81,1625,111,1582,148,1519,216,1515,213,1578,144,1622,107,1671,76,1735,51,1803,34,1869,23,1928,18"/>
-<area shape="rect" title=" " alt="" coords="1779,152,1856,177"/>
-<area shape="poly" title=" " alt="" coords="1928,25,1898,32,1868,43,1841,58,1819,80,1813,93,1810,108,1813,138,1807,139,1805,108,1808,92,1815,77,1838,54,1866,38,1896,27,1927,20"/>
-<area shape="rect" href="ModifierUsage_8hpp.html" title=" " alt="" coords="1829,79,1973,104"/>
-<area shape="poly" title=" " alt="" coords="1995,33,1932,73,1929,69,1992,28"/>
-<area shape="rect" title=" " alt="" coords="2093,152,2168,177"/>
-<area shape="poly" title=" " alt="" coords="2014,30,2022,65,2029,84,2039,102,2064,126,2092,144,2089,148,2060,130,2035,106,2024,87,2016,66,2009,31"/>
-<area shape="rect" href="Output_8h.html" title="Side&#45;band result tree CMOD builds while expanding a Piece." alt="" coords="591,79,670,104"/>
-<area shape="poly" title=" " alt="" coords="1928,26,684,90,684,85,1928,21"/>
-<area shape="rect" title=" " alt="" coords="2049,79,2114,104"/>
-<area shape="poly" title=" " alt="" coords="2024,29,2062,67,2058,71,2020,33"/>
-<area shape="rect" title=" " alt="" coords="2138,79,2203,104"/>
-<area shape="poly" title=" " alt="" coords="2037,28,2133,71,2131,75,2035,33"/>
-<area shape="rect" title=" " alt="" coords="2227,79,2314,104"/>
-<area shape="poly" title=" " alt="" coords="2053,28,2216,72,2215,78,2052,33"/>
-<area shape="rect" title=" " alt="" coords="2339,79,2397,104"/>
-<area shape="poly" title=" " alt="" coords="2081,28,2192,48,2325,76,2324,81,2191,53,2080,33"/>
-<area shape="rect" title=" " alt="" coords="2422,79,2546,104"/>
-<area shape="poly" title=" " alt="" coords="2088,28,2409,76,2408,81,2087,33"/>
-<area shape="rect" title=" " alt="" coords="2571,79,2685,104"/>
-<area shape="poly" title=" " alt="" coords="2094,24,2300,45,2557,76,2557,81,2299,50,2093,30"/>
-<area shape="rect" title=" " alt="" coords="2710,79,2770,104"/>
-<area shape="poly" title=" " alt="" coords="2094,19,2359,35,2526,52,2697,76,2696,82,2525,57,2358,40,2094,25"/>
-<area shape="rect" href="Libraries_8h.html" title="Central include hub for CMOD." alt="" coords="888,445,979,471"/>
-<area shape="poly" title=" " alt="" coords="1230,93,1341,110,1407,126,1470,149,1548,178,1563,187,1574,199,1581,215,1584,237,1584,313,1579,335,1565,355,1542,372,1513,388,1438,412,1347,431,1250,443,1152,452,993,459,993,453,1152,446,1249,438,1347,425,1437,407,1511,383,1539,368,1561,351,1574,333,1579,312,1579,237,1576,217,1570,202,1559,191,1545,183,1468,155,1405,131,1340,115,1229,98"/>
-<area shape="rect" title=" " alt="" coords="1877,519,1936,544"/>
-<area shape="poly" title=" " alt="" coords="1230,90,1290,93,1365,102,1446,119,1486,133,1524,150,1589,188,1650,234,1706,284,1758,336,1841,434,1894,506,1889,509,1837,438,1754,340,1703,288,1646,238,1586,192,1521,154,1484,138,1445,125,1364,107,1289,98,1229,95"/>
-<area shape="rect" href="Define_8h.html" title="Project&#45;wide tuning constants and audible&#45;range limits for CMOD." alt="" coords="1153,372,1229,397"/>
-<area shape="poly" title=" " alt="" coords="1230,93,1260,99,1291,110,1321,126,1345,151,1358,181,1357,213,1345,244,1325,274,1300,302,1273,327,1222,366,1219,362,1269,323,1297,298,1321,271,1340,242,1352,212,1353,182,1340,153,1318,131,1289,115,1258,104,1229,99"/>
-<area shape="rect" href="Modifier_8h.html" title="Per&#45;note synthesis modifier (tremolo, vibrato, bend, etc.)." alt="" coords="1341,299,1427,324"/>
-<area shape="poly" title=" " alt="" coords="1230,89,1269,92,1313,102,1355,120,1373,134,1389,151,1404,184,1407,221,1403,257,1395,286,1390,285,1398,256,1402,221,1399,185,1384,153,1370,138,1352,125,1311,107,1268,98,1229,94"/>
-<area shape="rect" href="Event_8h.html" title="Core Event class — the common base for every layer in a DISSCO composition tree (top,..." alt="" coords="694,152,765,177"/>
-<area shape="poly" title=" " alt="" coords="1147,102,779,158,778,153,1146,96"/>
-<area shape="rect" href="Note_8h.html" title="Notated&#45;score representation of a single musical event." alt="" coords="547,225,613,251"/>
-<area shape="poly" title=" " alt="" coords="1147,97,907,115,776,131,723,142,684,154,660,167,637,183,601,217,597,213,634,179,657,163,682,150,722,137,775,126,906,109,1146,92"/>
-<area shape="rect" href="Tempo_8h.html" title="Tempo + time&#45;signature representation for CMOD events." alt="" coords="747,299,824,324"/>
-<area shape="poly" title=" " alt="" coords="1147,98,1051,115,996,131,944,154,900,185,860,222,803,289,799,286,856,218,896,181,941,150,994,126,1049,110,1146,93"/>
-<area shape="rect" href="TimeSpan_8h.html" title="Dual&#45;representation [start, end] interval used by every Event." alt="" coords="445,299,544,324"/>
-<area shape="poly" title=" " alt="" coords="1146,95,974,97,740,105,626,112,527,123,452,136,428,145,414,154,404,169,402,186,406,204,415,223,442,258,471,288,468,291,438,262,410,226,401,206,397,187,399,168,410,150,426,140,451,131,526,117,625,107,740,99,973,92,1146,90"/>
-<area shape="rect" href="Utilities_8h.html" title="XML evaluator and bridge between CMOD Events and the LASS Score." alt="" coords="891,225,976,251"/>
-<area shape="poly" title=" " alt="" coords="1147,95,1105,99,1057,109,1009,126,967,154,956,167,949,181,939,212,934,211,944,179,952,164,964,150,1007,121,1056,104,1104,94,1146,90"/>
-<area shape="rect" href="Patter_8h.html" title="Pattern generator that emits one value per call." alt="" coords="978,299,1049,324"/>
-<area shape="poly" title=" " alt="" coords="1147,96,1112,100,1075,110,1039,127,1012,153,1009,164,1012,177,1016,225,1017,285,1011,285,1011,225,1007,178,1004,164,1007,151,1036,123,1073,105,1111,95,1146,91"/>
-<area shape="poly" title=" " alt="" coords="1230,91,1275,96,1330,106,1386,123,1439,150,1469,179,1491,211,1486,214,1465,182,1436,154,1384,128,1328,111,1275,101,1229,97"/>
-<area shape="rect" href="Piece_8h.html" title="Top&#45;level composition object and supporting filesystem helpers." alt="" coords="1021,152,1091,177"/>
-<area shape="poly" title=" " alt="" coords="1168,106,1091,148,1088,143,1166,102"/>
-<area shape="rect" title=" " alt="" coords="1203,225,1274,251"/>
-<area shape="poly" title=" " alt="" coords="1179,106,1158,139,1153,158,1157,176,1176,199,1200,217,1197,221,1172,203,1152,178,1148,158,1153,137,1175,103"/>
-<area shape="poly" title=" " alt="" coords="1230,95,1765,155,1765,160,1229,100"/>
-<area shape="rect" title=" " alt="" coords="1166,152,1330,177"/>
-<area shape="poly" title=" " alt="" coords="1200,103,1232,140,1227,143,1196,106"/>
-<area shape="rect" title=" " alt="" coords="1499,519,1584,544"/>
-<area shape="poly" title=" " alt="" coords="979,460,1193,479,1337,495,1485,516,1485,521,1336,501,1193,485,978,465"/>
-<area shape="poly" title=" " alt="" coords="979,457,1101,461,1275,470,1479,488,1690,516,1689,521,1478,493,1274,476,1100,466,979,463"/>
-<area shape="poly" title=" " alt="" coords="979,457,1113,459,1309,468,1539,486,1659,499,1777,516,1776,521,1658,504,1538,491,1308,473,1113,465,979,462"/>
-<area shape="rect" title=" " alt="" coords="1609,519,1679,544"/>
-<area shape="poly" title=" " alt="" coords="979,459,1237,475,1413,492,1596,516,1595,522,1413,497,1237,480,979,464"/>
-<area shape="rect" title=" " alt="" coords="117,519,176,544"/>
-<area shape="poly" title=" " alt="" coords="888,465,526,491,325,508,190,522,189,516,324,502,526,486,888,460"/>
-<area shape="rect" title=" " alt="" coords="201,519,263,544"/>
-<area shape="poly" title=" " alt="" coords="888,465,588,488,414,504,277,521,276,516,413,499,588,483,888,460"/>
-<area shape="rect" title=" " alt="" coords="287,519,361,544"/>
-<area shape="poly" title=" " alt="" coords="888,465,671,483,526,500,375,521,374,516,525,494,670,478,887,460"/>
-<area shape="rect" title=" " alt="" coords="385,519,460,544"/>
-<area shape="poly" title=" " alt="" coords="888,466,711,486,474,521,473,516,710,481,888,461"/>
-<area shape="rect" title=" " alt="" coords="484,519,564,544"/>
-<area shape="poly" title=" " alt="" coords="888,469,578,521,577,516,887,464"/>
-<area shape="rect" title=" " alt="" coords="588,519,631,544"/>
-<area shape="poly" title=" " alt="" coords="888,469,781,490,644,521,643,516,780,484,887,464"/>
-<area shape="rect" title=" " alt="" coords="655,519,705,544"/>
-<area shape="poly" title=" " alt="" coords="891,473,719,521,718,516,890,468"/>
-<area shape="rect" title=" " alt="" coords="729,519,804,544"/>
-<area shape="poly" title=" " alt="" coords="908,473,807,516,805,511,906,468"/>
-<area shape="poly" title=" " alt="" coords="979,456,1125,458,1342,465,1599,483,1732,497,1864,516,1863,522,1732,503,1598,488,1342,470,1125,463,979,462"/>
-<area shape="rect" title=" " alt="" coords="828,519,871,544"/>
-<area shape="poly" title=" " alt="" coords="922,473,875,512,872,507,918,469"/>
-<area shape="rect" title=" " alt="" coords="1961,519,2023,544"/>
-<area shape="poly" title=" " alt="" coords="979,456,1136,457,1373,464,1655,482,1802,497,1947,516,1947,522,1802,502,1655,487,1373,469,1136,462,979,462"/>
-<area shape="rect" title=" " alt="" coords="895,519,959,544"/>
-<area shape="poly" title=" " alt="" coords="935,471,932,505,926,505,930,471"/>
-<area shape="rect" title=" " alt="" coords="983,519,1049,544"/>
-<area shape="poly" title=" " alt="" coords="948,469,994,507,990,512,945,473"/>
-<area shape="rect" title=" " alt="" coords="1074,519,1145,544"/>
-<area shape="poly" title=" " alt="" coords="963,468,1069,511,1067,516,961,473"/>
-<area shape="rect" href="Rational_8h.html" title="Templated exact&#45;rational arithmetic, adapted from Belle, Bonne, Sage (William Andrew Burnson,..." alt="" coords="5,519,93,544"/>
-<area shape="poly" title=" " alt="" coords="888,465,107,522,107,516,887,460"/>
-<area shape="rect" title=" " alt="" coords="1169,519,1271,544"/>
-<area shape="poly" title=" " alt="" coords="979,468,1161,513,1160,518,978,473"/>
-<area shape="rect" title=" " alt="" coords="1296,519,1363,544"/>
-<area shape="poly" title=" " alt="" coords="979,463,1112,484,1283,516,1282,521,1111,489,979,469"/>
-<area shape="rect" title=" " alt="" coords="1387,519,1474,544"/>
-<area shape="poly" title=" " alt="" coords="980,462,1149,483,1374,516,1374,521,1148,488,979,467"/>
-<area shape="poly" title=" " alt="" coords="1153,399,989,444,987,439,1151,394"/>
-<area shape="poly" title=" " alt="" coords="1370,326,1316,363,1280,383,1242,400,1177,421,1110,436,993,454,992,449,1109,431,1175,416,1240,395,1277,378,1313,358,1367,322"/>
-<area shape="poly" title=" " alt="" coords="1354,327,1236,370,1234,365,1352,322"/>
-<area shape="poly" title=" " alt="" coords="729,178,724,206,721,243,724,284,737,323,767,362,807,395,848,420,888,438,885,443,846,424,803,399,764,366,732,325,719,285,715,243,719,205,724,177"/>
-<area shape="poly" title=" " alt="" coords="694,175,602,193,491,223,440,242,398,263,370,286,363,298,360,310,360,386,352,408,332,428,303,447,266,465,184,496,107,518,106,513,182,490,264,460,300,442,329,424,348,405,355,386,355,310,358,296,366,282,395,258,438,237,490,218,601,188,693,169"/>
-<area shape="poly" title=" " alt="" coords="765,165,816,170,880,180,948,197,1015,223,1064,254,1110,291,1175,360,1171,363,1106,295,1061,258,1012,228,947,202,879,185,815,175,765,170"/>
-<area shape="poly" title=" " alt="" coords="706,180,618,222,616,217,704,175"/>
-<area shape="poly" title=" " alt="" coords="736,177,778,285,773,287,731,179"/>
-<area shape="poly" title=" " alt="" coords="694,171,658,176,616,186,574,203,536,227,515,255,503,286,498,284,511,253,533,223,572,198,615,181,657,171,694,166"/>
-<area shape="poly" title=" " alt="" coords="763,175,888,218,887,223,761,180"/>
-<area shape="poly" title=" " alt="" coords="765,167,888,186,949,202,973,212,990,223,1001,237,1008,253,1015,284,1010,285,1003,254,996,240,986,227,971,217,948,208,887,192,764,172"/>
-<area shape="poly" title=" " alt="" coords="587,250,622,328,645,369,666,395,715,424,770,441,825,451,874,455,874,460,825,456,769,447,713,428,662,399,640,372,617,330,582,252"/>
-<area shape="poly" title=" " alt="" coords="581,252,574,286,558,325,527,376,498,413,462,443,411,473,369,492,332,503,265,512,195,513,108,521,107,516,195,508,265,506,331,498,367,487,408,468,459,439,494,410,523,373,554,323,569,284,576,250"/>
-<area shape="poly" title=" " alt="" coords="614,248,740,292,738,297,612,253"/>
-<area shape="poly" title=" " alt="" coords="568,253,521,292,517,288,565,249"/>
-<area shape="poly" title=" " alt="" coords="799,323,914,434,910,438,796,326"/>
-<area shape="poly" title=" " alt="" coords="770,326,654,397,571,439,484,473,429,488,382,498,299,506,215,510,108,521,107,516,214,504,299,501,381,493,428,483,482,468,569,434,651,393,767,322"/>
-<area shape="poly" title=" " alt="" coords="825,317,1139,372,1139,377,824,322"/>
-<area shape="poly" title=" " alt="" coords="508,322,553,359,583,378,614,395,682,418,752,434,875,451,874,456,751,440,680,423,612,400,580,383,550,363,505,326"/>
-<area shape="poly" title=" " alt="" coords="487,326,448,374,429,403,418,428,403,451,378,473,342,493,310,505,280,511,250,514,186,514,107,521,106,516,186,509,250,508,279,506,308,500,340,488,374,468,399,447,413,425,425,400,443,370,482,323"/>
-<area shape="poly" title=" " alt="" coords="936,251,936,431,931,431,931,251"/>
-<area shape="poly" title=" " alt="" coords="948,249,992,288,988,292,944,253"/>
-<area shape="poly" title=" " alt="" coords="1009,326,949,435,944,432,1004,323"/>
-<area shape="poly" title=" " alt="" coords="1043,322,1150,364,1148,369,1041,326"/>
-<area shape="poly" title=" " alt="" coords="1502,251,1494,287,1486,308,1473,326,1438,351,1387,373,1324,393,1254,410,1111,436,993,453,992,447,1110,431,1253,404,1323,388,1385,368,1435,346,1469,322,1481,305,1489,286,1496,250"/>
-<area shape="poly" title=" " alt="" coords="1497,253,1477,289,1461,309,1442,326,1393,352,1340,369,1288,379,1243,384,1242,379,1287,374,1338,364,1390,347,1438,322,1457,306,1472,286,1493,250"/>
-<area shape="poly" title=" " alt="" coords="1062,177,1073,241,1073,284,1064,325,1044,361,1018,392,964,439,961,435,1014,389,1040,358,1059,323,1068,283,1068,242,1057,178"/>
-<area shape="poly" title=" " alt="" coords="1021,174,627,232,626,227,1021,169"/>
-<area shape="poly" title=" " alt="" coords="1086,175,1197,218,1195,223,1084,180"/>
-<area shape="poly" title=" " alt="" coords="1903,104,1896,237,1896,386,1899,450,1906,505,1900,505,1894,451,1891,386,1891,237,1898,104"/>
-<area shape="poly" title=" " alt="" coords="1910,103,1933,159,1943,197,1947,237,1947,386,1950,419,1959,452,1981,506,1977,508,1954,453,1945,420,1941,386,1941,237,1937,198,1927,161,1905,105"/>
-<area shape="poly" title=" " alt="" coords="1890,106,1843,145,1840,141,1886,102"/>
-<area shape="rect" title=" " alt="" coords="1982,152,2069,177"/>
-<area shape="poly" title=" " alt="" coords="1923,102,1995,143,1992,147,1920,106"/>
-<area shape="poly" title=" " alt="" coords="1939,101,2081,145,2079,150,1937,107"/>
-<area shape="poly" title=" " alt="" coords="592,99,480,118,428,134,409,143,396,154,387,161,376,164,369,165,366,170,367,183,375,211,422,323,444,366,458,381,480,395,511,408,554,419,661,435,777,446,874,452,874,457,776,451,661,441,553,424,510,413,477,400,455,385,440,369,418,325,370,213,362,184,361,168,366,161,375,159,384,156,393,150,406,139,426,129,479,113,591,94"/>
-<area shape="poly" title=" " alt="" coords="671,94,699,101,729,111,757,128,780,150,795,184,800,220,799,256,794,285,789,285,794,255,795,221,790,185,775,154,753,132,726,116,697,106,670,100"/>
-<area shape="rect" href="NotationScore_8h.html" title="Notated&#45;score model rendered out as LilyPond." alt="" coords="425,152,551,177"/>
-<area shape="poly" title=" " alt="" coords="609,106,525,148,522,143,607,102"/>
-<area shape="poly" title=" " alt="" coords="480,179,459,206,438,243,431,263,427,284,428,304,436,323,461,354,488,371,563,395,646,418,730,435,874,451,874,456,730,440,645,424,562,400,486,376,457,358,431,325,423,305,422,283,426,262,433,241,455,203,476,176"/>
-<area shape="poly" title=" " alt="" coords="447,180,394,199,340,228,295,261,252,299,173,379,110,453,67,509,63,506,105,450,169,375,248,295,292,257,337,223,392,194,445,175"/>
-<area shape="poly" title=" " alt="" coords="504,175,556,215,553,219,501,179"/>
-<area shape="poly" title=" " alt="" coords="517,175,625,223,754,290,752,294,623,228,515,180"/>
-<area shape="poly" title=" " alt="" coords="491,177,493,251,495,285,490,285,488,251,486,178"/>
+<area shape="rect" title=" " alt="" coords="1693,5,1859,31"/>
+<area shape="rect" href="Bottom_8h.html" title="Leaf event in a DISSCO composition." alt="" coords="1003,79,1085,104"/>
+<area shape="poly" title=" " alt="" coords="1693,30,1099,87,1099,82,1693,25"/>
+<area shape="rect" title=" " alt="" coords="1371,519,1434,544"/>
+<area shape="poly" title=" " alt="" coords="1693,24,1615,34,1575,44,1537,58,1503,76,1477,99,1460,128,1453,164,1453,386,1450,420,1441,453,1418,508,1413,506,1436,452,1445,419,1448,386,1448,163,1455,126,1473,96,1500,72,1535,53,1573,39,1614,29,1693,19"/>
+<area shape="rect" title=" " alt="" coords="1458,519,1521,544"/>
+<area shape="poly" title=" " alt="" coords="1694,30,1630,45,1598,56,1568,70,1542,88,1522,109,1509,134,1504,164,1504,386,1501,451,1495,505,1490,505,1496,450,1499,386,1499,163,1504,132,1518,106,1539,83,1566,65,1596,51,1628,40,1693,25"/>
+<area shape="rect" title=" " alt="" coords="1545,519,1620,544"/>
+<area shape="poly" title=" " alt="" coords="1717,33,1664,50,1611,76,1588,93,1571,113,1559,137,1555,164,1555,386,1562,451,1577,505,1572,506,1557,452,1549,386,1549,163,1554,135,1566,110,1585,89,1608,72,1662,45,1716,28"/>
+<area shape="rect" href="Random_8h.html" title=" " alt="" coords="792,225,880,251"/>
+<area shape="poly" title=" " alt="" coords="1693,21,1558,23,1382,31,1187,50,1088,64,991,81,926,90,872,96,849,101,827,112,806,129,785,153,780,169,785,185,796,200,811,215,807,218,792,204,780,187,775,169,780,151,802,125,824,107,847,96,871,90,925,85,990,76,1087,58,1186,44,1382,26,1558,18,1693,16"/>
+<area shape="rect" title=" " alt="" coords="1653,152,1731,177"/>
+<area shape="poly" title=" " alt="" coords="1749,33,1719,52,1705,65,1694,80,1687,109,1689,138,1684,139,1682,109,1690,78,1701,61,1715,48,1746,28"/>
+<area shape="rect" href="CmodError_8h.html" title=" " alt="" coords="1641,445,1743,471"/>
+<area shape="poly" title=" " alt="" coords="1750,33,1715,53,1681,81,1656,113,1644,153,1638,192,1637,232,1647,311,1665,380,1684,431,1679,433,1660,382,1642,312,1632,232,1632,191,1639,151,1652,111,1677,77,1712,48,1748,29"/>
+<area shape="rect" href="ModifierUsage_8hpp.html" title=" " alt="" coords="1704,79,1848,104"/>
+<area shape="poly" title=" " alt="" coords="1779,31,1779,65,1773,65,1773,31"/>
+<area shape="rect" title=" " alt="" coords="1969,152,2044,177"/>
+<area shape="poly" title=" " alt="" coords="1796,29,1978,142,1975,147,1793,33"/>
+<area shape="rect" href="Output_8h.html" title="Side&#45;band result tree CMOD builds while expanding a Piece." alt="" coords="317,79,395,104"/>
+<area shape="poly" title=" " alt="" coords="1693,26,410,90,410,85,1693,21"/>
+<area shape="rect" title=" " alt="" coords="1923,79,1989,104"/>
+<area shape="poly" title=" " alt="" coords="1806,28,1915,71,1913,76,1804,33"/>
+<area shape="rect" title=" " alt="" coords="2013,79,2078,104"/>
+<area shape="poly" title=" " alt="" coords="1820,28,2000,75,1998,80,1819,33"/>
+<area shape="rect" title=" " alt="" coords="2102,79,2189,104"/>
+<area shape="poly" title=" " alt="" coords="1839,28,2089,76,2088,81,1838,33"/>
+<area shape="rect" title=" " alt="" coords="2213,79,2272,104"/>
+<area shape="poly" title=" " alt="" coords="1859,25,2014,44,2200,76,2199,81,2013,50,1859,30"/>
+<area shape="rect" title=" " alt="" coords="2297,79,2421,104"/>
+<area shape="poly" title=" " alt="" coords="1859,25,2283,76,2283,81,1859,31"/>
+<area shape="rect" title=" " alt="" coords="2445,79,2560,104"/>
+<area shape="poly" title=" " alt="" coords="1859,22,2111,42,2432,76,2431,81,2110,48,1858,28"/>
+<area shape="rect" title=" " alt="" coords="2585,79,2645,104"/>
+<area shape="poly" title=" " alt="" coords="1859,18,1993,22,2169,32,2368,49,2571,76,2571,82,2367,54,2168,37,1993,27,1859,23"/>
+<area shape="rect" href="Libraries_8h.html" title="Central include hub for CMOD." alt="" coords="803,445,893,471"/>
+<area shape="poly" title=" " alt="" coords="1003,98,971,103,938,113,907,129,882,153,880,164,883,177,889,201,895,225,895,251,877,352,858,433,852,431,872,351,889,250,889,226,883,202,877,178,874,164,878,151,904,125,936,108,970,98,1002,92"/>
+<area shape="rect" title=" " alt="" coords="1756,519,1815,544"/>
+<area shape="poly" title=" " alt="" coords="1086,93,1132,98,1188,108,1247,125,1304,150,1362,187,1407,226,1441,265,1471,305,1500,346,1533,387,1575,428,1631,468,1679,490,1743,513,1741,518,1677,495,1628,473,1572,432,1529,390,1496,349,1467,308,1437,268,1403,229,1359,191,1301,154,1246,130,1187,114,1132,103,1085,98"/>
+<area shape="rect" href="Define_8h.html" title="Project&#45;wide tuning constants and audible&#45;range limits for CMOD." alt="" coords="886,372,962,397"/>
+<area shape="poly" title=" " alt="" coords="1055,103,1070,124,1081,151,1085,176,1085,201,1073,249,1052,292,1027,326,1000,350,969,368,966,364,997,346,1023,322,1047,289,1068,247,1079,200,1080,176,1076,153,1065,127,1051,106"/>
+<area shape="rect" href="Modifier_8h.html" title="Per&#45;note synthesis modifier (tremolo, vibrato, bend, etc.)." alt="" coords="1190,299,1277,324"/>
+<area shape="poly" title=" " alt="" coords="1086,89,1130,92,1181,101,1232,120,1255,133,1277,150,1297,173,1308,197,1309,223,1300,252,1285,275,1265,293,1262,289,1281,271,1295,250,1303,222,1302,198,1292,176,1273,154,1252,138,1229,124,1179,107,1129,97,1085,94"/>
+<area shape="rect" href="Event_8h.html" title="Core Event class — the common base for every layer in a DISSCO composition tree (top,..." alt="" coords="603,152,674,177"/>
+<area shape="poly" title=" " alt="" coords="1003,103,688,157,687,152,1002,97"/>
+<area shape="rect" href="Note_8h.html" title="Notated&#45;score representation of a single musical event." alt="" coords="347,225,413,251"/>
+<area shape="poly" title=" " alt="" coords="1003,97,743,114,600,131,542,142,498,154,471,167,446,184,404,217,400,213,442,179,469,163,496,150,540,137,599,126,743,109,1002,92"/>
+<area shape="rect" href="Tempo_8h.html" title="Tempo + time&#45;signature representation for CMOD events." alt="" coords="488,299,565,324"/>
+<area shape="poly" title=" " alt="" coords="1003,96,906,99,784,108,670,125,625,138,594,154,567,183,549,218,538,254,532,286,527,285,533,253,544,216,563,180,590,150,623,133,669,120,784,102,905,93,1002,90"/>
+<area shape="rect" href="TimeSpan_8h.html" title="Dual&#45;representation [start, end] interval used by every Event." alt="" coords="195,299,293,324"/>
+<area shape="poly" title=" " alt="" coords="1002,95,820,96,571,103,449,110,343,121,263,135,237,144,222,154,212,168,207,184,208,220,219,255,233,286,228,288,214,257,203,221,202,183,207,166,218,150,235,139,262,130,342,116,449,105,571,98,820,91,1002,90"/>
+<area shape="rect" href="Utilities_8h.html" title="XML evaluator and bridge between CMOD Events and the LASS Score." alt="" coords="955,225,1040,251"/>
+<area shape="poly" title=" " alt="" coords="1003,99,974,105,943,115,915,131,893,154,888,163,888,172,900,190,922,205,949,218,947,223,919,210,896,193,883,174,883,162,888,150,912,127,941,110,973,99,1002,93"/>
+<area shape="rect" href="Patter_8h.html" title="Pattern generator that emits one value per call." alt="" coords="942,299,1013,324"/>
+<area shape="poly" title=" " alt="" coords="1086,92,1124,97,1166,107,1209,124,1247,150,1270,174,1285,199,1289,225,1284,239,1275,252,1258,266,1233,277,1167,294,1093,304,1027,310,1026,305,1093,299,1166,289,1232,272,1256,261,1271,249,1279,236,1283,224,1280,201,1266,177,1244,154,1207,129,1165,112,1123,102,1085,97"/>
+<area shape="poly" title=" " alt="" coords="1003,99,947,106,885,117,830,133,810,143,797,154,791,168,794,183,815,214,811,217,789,185,786,167,792,150,807,138,828,128,883,112,946,101,1002,94"/>
+<area shape="rect" href="Piece_8h.html" title="Top&#45;level composition object and supporting filesystem helpers." alt="" coords="1141,152,1211,177"/>
+<area shape="poly" title=" " alt="" coords="1066,102,1144,143,1141,148,1064,106"/>
+<area shape="rect" title=" " alt="" coords="1190,225,1261,251"/>
+<area shape="poly" title=" " alt="" coords="1086,91,1121,96,1159,106,1195,123,1225,150,1232,165,1236,181,1234,212,1229,212,1230,182,1227,167,1221,154,1192,128,1157,111,1120,101,1085,96"/>
+<area shape="poly" title=" " alt="" coords="1086,95,1640,155,1639,160,1085,100"/>
+<area shape="rect" title=" " alt="" coords="902,152,1066,177"/>
+<area shape="poly" title=" " alt="" coords="1036,106,1005,143,1000,140,1032,103"/>
+<area shape="rect" title=" " alt="" coords="799,519,884,544"/>
+<area shape="poly" title=" " alt="" coords="850,471,846,505,841,505,844,471"/>
+<area shape="poly" title=" " alt="" coords="894,460,1091,478,1222,495,1358,516,1357,521,1221,500,1091,484,893,465"/>
+<area shape="poly" title=" " alt="" coords="894,459,1126,475,1283,492,1445,516,1444,521,1282,497,1126,480,893,464"/>
+<area shape="rect" title=" " alt="" coords="909,519,979,544"/>
+<area shape="poly" title=" " alt="" coords="865,469,919,508,916,512,862,473"/>
+<area shape="rect" title=" " alt="" coords="1004,519,1063,544"/>
+<area shape="poly" title=" " alt="" coords="879,468,992,511,990,516,877,473"/>
+<area shape="rect" title=" " alt="" coords="1087,519,1150,544"/>
+<area shape="poly" title=" " alt="" coords="892,468,1074,516,1073,521,891,473"/>
+<area shape="rect" title=" " alt="" coords="1174,519,1247,544"/>
+<area shape="poly" title=" " alt="" coords="894,465,1161,516,1160,521,893,470"/>
+<area shape="rect" title=" " alt="" coords="1272,519,1347,544"/>
+<area shape="poly" title=" " alt="" coords="894,462,1052,483,1259,516,1258,521,1051,488,894,467"/>
+<area shape="rect" title=" " alt="" coords="212,519,292,544"/>
+<area shape="poly" title=" " alt="" coords="803,465,592,484,452,501,306,521,305,516,451,495,592,479,802,460"/>
+<area shape="rect" title=" " alt="" coords="316,519,359,544"/>
+<area shape="poly" title=" " alt="" coords="803,465,618,481,498,498,373,521,372,516,497,493,617,476,802,459"/>
+<area shape="rect" title=" " alt="" coords="383,519,433,544"/>
+<area shape="poly" title=" " alt="" coords="803,466,649,486,550,501,447,521,446,516,549,496,648,480,802,461"/>
+<area shape="poly" title=" " alt="" coords="894,458,1161,475,1343,492,1532,516,1531,521,1342,497,1160,480,893,464"/>
+<area shape="poly" title=" " alt="" coords="894,456,1035,458,1243,466,1489,484,1617,498,1743,516,1742,522,1616,503,1488,489,1243,471,1035,463,894,462"/>
+<area shape="rect" title=" " alt="" coords="457,519,500,544"/>
+<area shape="poly" title=" " alt="" coords="803,468,676,487,514,521,513,516,675,482,802,462"/>
+<area shape="rect" title=" " alt="" coords="1839,519,1902,544"/>
+<area shape="poly" title=" " alt="" coords="894,456,1046,458,1275,465,1545,483,1687,498,1826,516,1825,522,1686,503,1545,488,1274,470,1046,463,894,462"/>
+<area shape="rect" title=" " alt="" coords="524,519,588,544"/>
+<area shape="poly" title=" " alt="" coords="803,473,602,521,601,516,802,467"/>
+<area shape="rect" title=" " alt="" coords="612,519,679,544"/>
+<area shape="poly" title=" " alt="" coords="816,473,692,517,690,512,815,468"/>
+<area shape="rect" title=" " alt="" coords="703,519,774,544"/>
+<area shape="poly" title=" " alt="" coords="832,473,770,513,767,509,829,468"/>
+<area shape="rect" href="Rational_8h.html" title="Templated exact&#45;rational arithmetic, adapted from Belle, Bonne, Sage (William Andrew Burnson,..." alt="" coords="100,519,188,544"/>
+<area shape="poly" title=" " alt="" coords="803,464,551,483,380,499,202,521,202,516,379,494,551,477,802,459"/>
+<area shape="rect" title=" " alt="" coords="1645,519,1731,544"/>
+<area shape="poly" title=" " alt="" coords="894,458,1199,474,1411,491,1631,516,1631,521,1411,496,1199,479,894,463"/>
+<area shape="poly" title=" " alt="" coords="914,399,872,438,869,434,910,395"/>
+<area shape="poly" title=" " alt="" coords="1231,325,1209,363,1192,383,1172,400,1123,418,1053,434,907,454,906,448,1052,428,1122,413,1169,395,1189,379,1205,359,1226,323"/>
+<area shape="poly" title=" " alt="" coords="1190,325,976,374,975,369,1189,320"/>
+<area shape="poly" title=" " alt="" coords="648,176,693,249,769,353,832,433,828,436,765,356,688,252,643,179"/>
+<area shape="poly" title=" " alt="" coords="640,178,623,245,605,287,579,326,538,367,490,402,439,433,387,459,286,497,202,521,201,516,284,492,385,454,437,428,487,398,534,363,575,322,600,285,618,244,634,177"/>
+<area shape="poly" title=" " alt="" coords="651,176,684,210,727,249,816,313,894,363,891,367,813,318,724,253,680,214,647,180"/>
+<area shape="poly" title=" " alt="" coords="604,178,427,227,426,221,603,173"/>
+<area shape="poly" title=" " alt="" coords="629,179,586,227,543,288,539,285,582,224,625,176"/>
+<area shape="poly" title=" " alt="" coords="603,169,549,173,481,183,408,200,337,228,296,257,263,290,260,286,292,253,335,223,406,195,480,178,549,168,603,164"/>
+<area shape="poly" title=" " alt="" coords="675,170,942,223,941,228,674,176"/>
+<area shape="poly" title=" " alt="" coords="656,175,710,211,781,248,858,277,929,296,928,302,857,282,779,253,708,215,653,180"/>
+<area shape="poly" title=" " alt="" coords="394,249,430,283,478,322,532,363,557,379,592,395,642,413,695,428,790,446,789,452,694,433,641,418,590,400,555,383,529,368,474,326,427,287,390,253"/>
+<area shape="poly" title=" " alt="" coords="373,253,198,472,166,510,161,506,194,469,369,249"/>
+<area shape="poly" title=" " alt="" coords="405,248,492,290,489,295,402,253"/>
+<area shape="poly" title=" " alt="" coords="359,253,279,295,277,290,357,248"/>
+<area shape="poly" title=" " alt="" coords="540,322,580,358,636,395,674,412,715,426,790,444,789,449,713,431,672,417,633,400,577,362,536,326"/>
+<area shape="poly" title=" " alt="" coords="488,320,418,338,381,353,347,374,326,398,315,422,305,447,283,473,243,499,201,517,199,512,241,494,280,469,300,444,310,420,321,395,344,370,379,348,417,333,487,315"/>
+<area shape="poly" title=" " alt="" coords="566,317,873,372,872,377,565,322"/>
+<area shape="poly" title=" " alt="" coords="284,321,434,369,466,383,498,395,576,414,655,429,789,448,789,453,654,434,575,419,497,400,464,388,432,375,282,327"/>
+<area shape="poly" title=" " alt="" coords="241,325,158,507,153,505,236,323"/>
+<area shape="poly" title=" " alt="" coords="1007,250,1019,272,1028,298,1032,328,1030,353,1019,376,999,399,979,416,955,430,908,448,906,443,953,425,976,412,995,395,1014,373,1025,352,1027,328,1023,299,1014,274,1002,252"/>
+<area shape="poly" title=" " alt="" coords="997,252,987,286,982,285,991,250"/>
+<area shape="poly" title=" " alt="" coords="983,324,987,359,985,380,977,399,963,415,946,428,908,446,905,441,943,424,959,411,972,396,980,378,982,359,978,325"/>
+<area shape="poly" title=" " alt="" coords="971,326,943,363,939,360,966,323"/>
+<area shape="poly" title=" " alt="" coords="837,251,830,314,829,355,832,397,841,432,836,433,827,398,823,355,824,313,831,251"/>
+<area shape="poly" title=" " alt="" coords="845,250,912,359,908,362,841,253"/>
+<area shape="poly" title=" " alt="" coords="1174,179,1157,220,1126,279,1083,343,1056,373,1027,399,999,418,968,432,907,450,906,445,966,427,996,413,1024,395,1052,370,1078,340,1121,277,1152,218,1169,177"/>
+<area shape="poly" title=" " alt="" coords="1141,173,1079,180,702,214,426,236,426,231,702,209,1078,175,1141,168"/>
+<area shape="poly" title=" " alt="" coords="1186,176,1212,213,1207,216,1182,179"/>
+<area shape="poly" title=" " alt="" coords="1709,469,1761,508,1758,512,1705,473"/>
+<area shape="poly" title=" " alt="" coords="1694,471,1692,505,1687,505,1689,471"/>
+<area shape="rect" title=" " alt="" coords="1926,519,2002,544"/>
+<area shape="poly" title=" " alt="" coords="1736,468,1913,514,1912,519,1735,473"/>
+<area shape="poly" title=" " alt="" coords="1779,104,1787,505,1782,505,1774,104"/>
+<area shape="poly" title=" " alt="" coords="1826,102,1869,120,1890,133,1909,150,1924,171,1932,190,1935,237,1935,386,1930,421,1919,455,1889,509,1885,506,1914,453,1925,420,1929,386,1929,237,1926,191,1919,173,1905,154,1887,138,1867,125,1824,107"/>
+<area shape="poly" title=" " alt="" coords="1764,106,1718,145,1715,141,1761,102"/>
+<area shape="rect" title=" " alt="" coords="1807,152,1894,177"/>
+<area shape="poly" title=" " alt="" coords="1790,102,1830,141,1827,144,1786,106"/>
+<area shape="poly" title=" " alt="" coords="1814,101,1957,145,1956,151,1812,107"/>
+<area shape="poly" title=" " alt="" coords="317,94,229,98,178,105,127,116,81,134,43,160,28,175,17,193,10,214,8,237,8,312,14,348,30,369,54,381,86,387,166,387,209,389,252,395,403,421,553,438,687,448,789,453,789,458,686,453,552,443,402,426,252,400,209,394,166,393,86,392,53,386,26,373,9,350,3,313,3,237,5,212,13,191,24,172,39,156,78,130,126,111,177,99,229,92,316,89"/>
+<area shape="poly" title=" " alt="" coords="367,103,511,286,507,289,363,106"/>
+<area shape="rect" href="NotationScore_8h.html" title="Notated&#45;score model rendered out as LilyPond." alt="" coords="233,152,359,177"/>
+<area shape="poly" title=" " alt="" coords="348,106,317,143,312,140,344,103"/>
+<area shape="poly" title=" " alt="" coords="278,180,240,206,200,242,186,262,177,283,176,303,185,322,201,339,225,355,288,382,368,403,457,420,642,442,789,452,789,457,641,447,457,426,366,409,286,387,222,359,198,343,180,326,171,304,172,281,181,260,197,239,237,202,275,175"/>
+<area shape="poly" title=" " alt="" coords="255,180,209,198,161,225,141,242,124,262,113,285,109,310,109,386,112,419,119,451,136,505,131,507,113,452,107,419,104,386,104,310,108,283,120,259,137,239,158,221,207,193,253,175"/>
+<area shape="poly" title=" " alt="" coords="311,175,357,214,354,218,308,179"/>
+<area shape="poly" title=" " alt="" coords="301,177,313,213,323,232,338,249,369,270,405,286,475,303,474,308,403,291,367,275,334,253,319,235,308,215,296,179"/>
+<area shape="poly" title=" " alt="" coords="282,179,260,200,242,226,237,256,240,285,235,285,232,256,238,224,256,196,278,176"/>
 </map>
 </div>
 </div>

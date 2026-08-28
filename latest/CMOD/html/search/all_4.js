@@ -40,5 +40,6 @@ var searchData=
   ['eventtype_37',['EventType',['../Libraries_8h.html#a2628ea8d12e8b2563c32f05dc7fff6fa',1,'Libraries.h']]],
   ['eventvalues_38',['eventValues',['../classUtilities.html#a97a757199f7a47784d87019ef228fd3f',1,'Utilities']]],
   ['exact_39',['Exact',['../namespacedissco_1_1modifier__usage.html#a1282e634eaa434d5473ffa071ce248dba1649aed298f99d587e2eb30c1db5946b',1,'dissco::modifier_usage']]],
-  ['expand_40',['Expand',['../classPatter.html#a38408914faaf6cf0d807d22f0ef3475b',1,'Patter']]]
+  ['exitcode_40',['exitCode',['../classCmodError.html#ac8d8d3df1ece1d9e4445dec0686c7053',1,'CmodError']]],
+  ['expand_41',['Expand',['../classPatter.html#a38408914faaf6cf0d807d22f0ef3475b',1,'Patter']]]
 ];

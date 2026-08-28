@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['overallusagemode_0',['OverallUsageMode',['../namespacedissco_1_1modifier__usage.html#a1282e634eaa434d5473ffa071ce248db',1,'dissco::modifier_usage']]]
+  ['kind_0',['Kind',['../classCmodError.html#a95049bd4f3d2e9daede92d3752248690',1,'CmodError']]]
 ];

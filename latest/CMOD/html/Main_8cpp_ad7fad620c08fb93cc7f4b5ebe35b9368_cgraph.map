@@ -1,16 +1,7 @@
 <map id="main" name="main">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,95,60,120"/>
-<area shape="rect" id="Node000002" href="$classPiece.html#a52ff172407f4e86988294acdb983c10b" title="Returns false when any requested output could not be generated." alt="" coords="108,5,323,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="43,93,70,66,107,41,126,33,128,37,109,46,74,70,47,96"/>
-<area shape="rect" id="Node000003" href="$structPieceHelper.html#a83d099d9ffdc29cf83935b927d172aa0" title="Creates the score files directory if it does not exist." alt="" coords="123,55,308,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="60,100,109,91,110,97,61,105"/>
-<area shape="rect" id="Node000006" href="$structPieceHelper.html#abfe0ff1bd5655dfcdd27a11bba4248eb" title="Creates the sound files directory if it does not exist." alt="" coords="121,119,310,159"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="61,109,107,118,106,123,60,115"/>
-<area shape="rect" id="Node000007" href="$SignalHandlers_8cpp.html#ae7aa0f0897500b3fafae9f011afb0d4d" title=" " alt="" coords="152,184,279,209"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="47,118,74,144,109,169,140,181,138,186,107,174,70,148,43,122"/>
-<area shape="rect" id="Node000004" href="$structPieceHelper.html#a28358171bf3acd8d2dbee00838a6b5ae" title="Lists contents of directory." alt="" coords="371,63,583,88"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="308,73,357,73,357,78,308,78"/>
-<area shape="rect" id="Node000005" href="$structPieceHelper.html#a4d29c17a334bec68b78518ba32e62481" title="Ensures a path has a backslash on the end." alt="" coords="381,119,572,144"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="309,93,404,113,403,118,308,98"/>
-<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="310,134,367,132,368,137,310,139"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,60,56"/>
+<area shape="rect" id="Node000002" href="$classCmodError.html#ac8d8d3df1ece1d9e4445dec0686c7053" title=" " alt="" coords="108,5,265,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,36,96,30,97,36,60,42"/>
+<area shape="rect" id="Node000003" href="$classCmodError.html#af41661891e739ebdb75149698015cef2" title=" " alt="" coords="117,55,256,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="60,45,104,52,103,57,60,50"/>
 </map>

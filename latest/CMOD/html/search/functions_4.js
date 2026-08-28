@@ -9,5 +9,6 @@ var searchData=
   ['evaluatespa_6',['evaluateSpa',['../classUtilities.html#af2a6125668cb8a5ee960b34db6dd8823',1,'Utilities']]],
   ['evaluatespectrumelement_7',['evaluateSpectrumElement',['../classUtilities.html#a5ed86bfa06e36ddb7404bb2b4c577996',1,'Utilities']]],
   ['event_8',['Event',['../classEvent.html#a4f7a2537d2729b0035ff13ee67c40377',1,'Event']]],
-  ['expand_9',['Expand',['../classPatter.html#a38408914faaf6cf0d807d22f0ef3475b',1,'Patter']]]
+  ['exitcode_9',['exitCode',['../classCmodError.html#ac8d8d3df1ece1d9e4445dec0686c7053',1,'CmodError']]],
+  ['expand_10',['Expand',['../classPatter.html#a38408914faaf6cf0d807d22f0ef3475b',1,'Patter']]]
 ];

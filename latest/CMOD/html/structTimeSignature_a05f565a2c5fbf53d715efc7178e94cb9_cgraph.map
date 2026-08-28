@@ -13,21 +13,18 @@
 <area shape="rect" id="Node000009" href="$classTempo.html#ac45512c78a773fc2ff58050dcba25614" title=" " alt="" coords="328,283,487,309"/>
 <area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="226,278,314,286,314,291,225,284"/>
 <area shape="rect" id="Node000010" href="$classTempo.html#aa91c36908082625ddd546a219af1b472" title=" " alt="" coords="313,333,502,358"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="155,282,274,317,319,327,318,333,273,323,154,287"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="153,282,274,319,314,327,313,333,273,324,152,287"/>
 <area shape="rect" id="Node000012" href="$classTempo.html#a94f456adbe3677ad512acac8386c45dc" title=" " alt="" coords="298,382,517,407"/>
-<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="134,283,194,325,233,348,274,367,303,376,301,381,272,372,231,352,191,329,131,287"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="134,283,193,325,233,349,274,368,298,376,297,381,272,373,230,353,191,330,131,287"/>
 <area shape="rect" id="Node000013" href="$classNote.html#a03026f5244abb170a163ee10e199ffdf" title=" " alt="" coords="346,431,469,457"/>
-<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="128,283,185,348,227,385,275,416,303,428,333,435,331,440,301,433,272,421,224,390,181,352,124,286"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="128,283,185,349,227,387,275,418,303,429,333,436,331,441,301,434,272,422,223,391,181,353,124,287"/>
 <area shape="rect" id="Node000014" href="$classRational.html#ac1d70f7c36e6c1456559056eeb9e58e0" title=" " alt="" coords="320,481,495,506"/>
 <area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="125,284,145,321,177,371,221,424,247,447,275,467,308,481,306,486,272,472,243,451,217,428,173,374,140,323,120,286"/>
 <area shape="rect" id="Node000004" href="$structTimeSignature.html#af05d336db1c7d494e11a1bb490f8deec" title=" " alt="" coords="589,41,776,81"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="501,77,575,70,576,75,501,83"/>
 <area shape="rect" id="Node000005" href="$classNote.html#a6e1a38b045f9de544534ebc01db170b3" title=" " alt="" coords="621,106,744,131"/>
 <area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="501,97,608,108,607,113,501,102"/>
-<area shape="poly" id="edge10_Node000010_Node000006" title=" " alt="" coords="501,330,540,318,574,300,606,279,657,237,660,241,609,283,577,305,542,322,503,335"/>
+<area shape="poly" id="edge10_Node000010_Node000006" title=" " alt="" coords="502,331,540,319,574,301,606,280,657,238,660,242,609,284,577,306,542,324,503,337"/>
 <area shape="rect" id="Node000011" href="$classRational.html#afa8ea1d64a7227105e294e5bca4b9518" title=" " alt="" coords="625,333,740,358"/>
 <area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="502,343,611,343,611,348,502,348"/>
-<area shape="rect" id="Node000015" href="$classRational.html#a977d0a0644375119c82afce254679882" title=" " alt="" coords="633,481,732,506"/>
-<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="495,491,620,491,620,496,495,496"/>
-<area shape="poly" id="edge16_Node000015_Node000015" title=" " alt="" coords="638,482,629,472,634,462,652,456,683,454,722,458,733,463,736,469,732,472,729,467,721,463,683,459,653,461,637,466,634,472,642,479"/>
 </map>

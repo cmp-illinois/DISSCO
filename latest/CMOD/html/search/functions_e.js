@@ -5,5 +5,6 @@ var searchData=
   ['randorderint_2',['RandOrderInt',['../classRandom.html#af72d7e31ae7a74477bdd17666924dbaf',1,'Random']]],
   ['rational_3',['rational',['../classRational.html#a1c451780c3a8c9d44ea4695707e21429',1,'Rational::Rational()'],['../classRational.html#ab729860f5cc473d0fd46aeba35c7f586',1,'Rational::Rational(const Rational&lt; T &gt; &amp;other)'],['../classRational.html#aed652d0b54f6608c91d73b38f28ea77c',1,'Rational::Rational(T Numerator, T Denominator)'],['../classRational.html#a3be4d00ba25e94a6b759d5976d025a42',1,'Rational::Rational(T WholeNumber)'],['../classRational.html#a2ba449725872103de6754d51a38740ba',1,'Rational::Rational(const char *str)'],['../classRational.html#a200f424c228ebac5603f9fd4a69f7215',1,'Rational::Rational(std::string str)']]],
   ['registertempo_4',['RegisterTempo',['../classNotationScore.html#a2333153794150dcb91e91a404e02b6c8',1,'NotationScore']]],
-  ['removespaces_5',['removeSpaces',['../classUtilities.html#aa81907994d4336b1e20ed669149535c2',1,'Utilities']]]
+  ['removespaces_5',['removeSpaces',['../classUtilities.html#aa81907994d4336b1e20ed669149535c2',1,'Utilities']]],
+  ['report_6',['report',['../classCmodError.html#af41661891e739ebdb75149698015cef2',1,'CmodError']]]
 ];
