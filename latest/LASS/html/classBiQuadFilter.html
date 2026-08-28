@@ -198,7 +198,11 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This is a constructor. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gain</td><td>for the 3 tap low-pass feedback gain </td></tr>
+    <tr><td class="paramname">type</td><td>The filter type: LPF, HPF, BPF, NOTCH, PEQ, LSH, or HSH </td></tr>
+    <tr><td class="paramname">dbGain</td><td>The gain in decibels for peaking and shelving filters </td></tr>
+    <tr><td class="paramname">freq</td><td>The center or cutoff frequency in Hz </td></tr>
+    <tr><td class="paramname">srate</td><td>The sampling rate in samples per second </td></tr>
+    <tr><td class="paramname">bandwidth</td><td>The bandwidth in octaves </td></tr>
   </table>
   </dd>
 </dl>

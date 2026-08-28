@@ -115,7 +115,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a0380a5ec1208dc2fff6da2659706a81a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset all internal fields to their defaults.  <br /></td></tr>
 <tr class="separator:a0380a5ec1208dc2fff6da2659706a81a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec8c2261fe1ab157a1f7323c71dabc5b" id="r_aec8c2261fe1ab157a1f7323c71dabc5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b">showGraph</a> (<a class="el" href="classEnvelopeLibraryEntry.html">EnvelopeLibraryEntry</a> *_envelope)</td></tr>
-<tr class="memdesc:aec8c2261fe1ab157a1f7323c71dabc5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trigger a redraw of the given envelope.  <br /></td></tr>
+<tr class="memdesc:aec8c2261fe1ab157a1f7323c71dabc5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trigger a redraw of the envelope library's active envelope.  <br /></td></tr>
 <tr class="separator:aec8c2261fe1ab157a1f7323c71dabc5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedec28399cefe14dd44aa9ed76613db6" id="r_aedec28399cefe14dd44aa9ed76613db6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvLibDrawingArea.html#aedec28399cefe14dd44aa9ed76613db6">clearGraph</a> ()</td></tr>
 <tr class="memdesc:aedec28399cefe14dd44aa9ed76613db6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the drawing area (background will repaint white)  <br /></td></tr>
@@ -349,7 +349,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvLibDrawingArea_8cpp_source.html#l00406">406</a> of file <a class="el" href="EnvLibDrawingArea_8cpp_source.html">EnvLibDrawingArea.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EnvLibDrawingArea_8cpp_source.html#l00405">405</a> of file <a class="el" href="EnvLibDrawingArea_8cpp_source.html">EnvLibDrawingArea.cpp</a>.</p>
 
 </div>
 </div>
@@ -385,7 +385,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvLibDrawingArea_8cpp_source.html#l00315">315</a> of file <a class="el" href="EnvLibDrawingArea_8cpp_source.html">EnvLibDrawingArea.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EnvLibDrawingArea_8cpp_source.html#l00314">314</a> of file <a class="el" href="EnvLibDrawingArea_8cpp_source.html">EnvLibDrawingArea.cpp</a>.</p>
 
 </div>
 </div>
@@ -421,7 +421,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvLibDrawingArea_8cpp_source.html#l00341">341</a> of file <a class="el" href="EnvLibDrawingArea_8cpp_source.html">EnvLibDrawingArea.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EnvLibDrawingArea_8cpp_source.html#l00340">340</a> of file <a class="el" href="EnvLibDrawingArea_8cpp_source.html">EnvLibDrawingArea.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -434,7 +434,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="163,112,886,135,886,140,163,117"/>
 <area shape="rect" href="classEnvelopeLibraryWindow.html#a5569ae9d30f88f6080575130f28c64cf" title="Programmatically update the X/Y entries." alt="" coords="211,63,389,103"/>
 <area shape="poly" title=" " alt="" coords="163,99,197,94,198,100,163,104"/>
-<area shape="rect" href="classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b" title="Trigger a redraw of the given envelope." alt="" coords="911,184,1068,224"/>
+<area shape="rect" href="classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b" title="Trigger a redraw of the envelope library&#39;s active envelope." alt="" coords="911,184,1068,224"/>
 <area shape="poly" title=" " alt="" coords="163,119,211,124,897,193,896,198,210,130,163,124"/>
 <area shape="rect" href="classEnvelopeLibraryWindow.html#ad1b4a1ec9a80b782cc8666d04f5a05a2" title="Called when either X or Y QLineEdit text changes." alt="" coords="437,63,616,103"/>
 <area shape="poly" title=" " alt="" coords="390,80,423,80,423,86,390,86"/>
@@ -490,7 +490,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvLibDrawingArea_8cpp_source.html#l00393">393</a> of file <a class="el" href="EnvLibDrawingArea_8cpp_source.html">EnvLibDrawingArea.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EnvLibDrawingArea_8cpp_source.html#l00392">392</a> of file <a class="el" href="EnvLibDrawingArea_8cpp_source.html">EnvLibDrawingArea.cpp</a>.</p>
 
 </div>
 </div>
@@ -521,13 +521,12 @@ Here is the call graph for this function:</div>
 <p>Paint the envelope graph. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">event</td><td>paint event</td></tr>
     <tr><td class="paramname">event</td><td>paint event (unused) </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="EnvLibDrawingArea_8cpp_source.html#l00176">176</a> of file <a class="el" href="EnvLibDrawingArea_8cpp_source.html">EnvLibDrawingArea.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EnvLibDrawingArea_8cpp_source.html#l00175">175</a> of file <a class="el" href="EnvLibDrawingArea_8cpp_source.html">EnvLibDrawingArea.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -629,7 +628,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="193,104,228,100,228,105,194,109"/>
 <area shape="rect" href="namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160" title=" " alt="" coords="255,134,406,159"/>
 <area shape="poly" title=" " alt="" coords="194,127,242,133,241,139,193,133"/>
-<area shape="rect" href="classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b" title="Trigger a redraw of the given envelope." alt="" coords="252,184,409,224"/>
+<area shape="rect" href="classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b" title="Trigger a redraw of the envelope library&#39;s active envelope." alt="" coords="252,184,409,224"/>
 <area shape="poly" title=" " alt="" coords="154,136,242,170,262,177,260,182,240,174,152,141"/>
 <area shape="rect" href="classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="483,110,675,135"/>
 <area shape="poly" title=" " alt="" coords="406,137,470,131,470,136,406,142"/>
@@ -676,11 +675,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Trigger a redraw of the given envelope. </p>
+<p>Trigger a redraw of the envelope library's active envelope. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_envelope</td><td>envelope to display</td></tr>
-    <tr><td class="paramname">_envelope</td><td>envelope to display (unused parameter) </td></tr>
+    <tr><td class="paramname">_envelope</td><td>unused; the active envelope is read when painting </td></tr>
   </table>
   </dd>
 </dl>
@@ -691,7 +689,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classEnvLibDrawingArea_aec8c2261fe1ab157a1f7323c71dabc5b_icgraph.png" border="0" usemap="#aclassEnvLibDrawingArea_aec8c2261fe1ab157a1f7323c71dabc5b_icgraph" alt=""/></div>
 <map name="aclassEnvLibDrawingArea_aec8c2261fe1ab157a1f7323c71dabc5b_icgraph" id="aclassEnvLibDrawingArea_aec8c2261fe1ab157a1f7323c71dabc5b_icgraph">
-<area shape="rect" title="Trigger a redraw of the given envelope." alt="" coords="908,63,1065,103"/>
+<area shape="rect" title="Trigger a redraw of the envelope library&#39;s active envelope." alt="" coords="908,63,1065,103"/>
 <area shape="rect" href="classEnvLibDrawingArea.html#aca692664dc8aa19535b80bab00102141" title="Handle presses (select node, start drag, show popup)" alt="" coords="5,44,163,84"/>
 <area shape="poly" title=" " alt="" coords="894,63,860,56,678,26,536,10,467,8,393,11,211,31,143,46,142,41,210,25,393,5,467,3,536,5,679,21,860,51,895,57"/>
 <area shape="rect" href="classEnvelopeLibraryWindow.html#aa14f7e18a87521c7d42f1a4320488217" title="Called when a tree item is activated (double‐click or Enter)" alt="" coords="445,40,624,80"/>

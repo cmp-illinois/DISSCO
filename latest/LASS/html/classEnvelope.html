@@ -715,15 +715,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This function finds the value of an envelope at a given point. The envelope is loaded first (from an <a class="el" href="classEnvelope.html">Envelope</a> library) then scaled according to a given coefficient using <a class="el" href="classEnvelope.html#a29a072ba58a7629c62ddaae46ebad128">Envelope::scale</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>This function scales this envelope in place, then finds its value at a given point using a normalized duration of 1. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">checkPoint</td><td></td></tr>
-    <tr><td class="paramname">envNum</td><td>The envelope number in the library </td></tr>
+    <tr><td class="paramname">checkPoint</td><td>The position in the envelope, from 0.0 to 1.0 </td></tr>
     <tr><td class="paramname">coef</td><td>The coefficient by which to scale the envelope </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The value of an envelope at a given point </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The value at checkPoint after scaling </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>This used to be in CMOD/utility.cpp </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Envelope_8cpp_source.html#l00860">860</a> of file <a class="el" href="Envelope_8cpp_source.html">Envelope.cpp</a>.</p>
@@ -1542,16 +1541,14 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This function computes an envelope number from the parameters, loads the envelope from the library, scales it, and returns the scaled envelope. </p><dl class="params"><dt>Parameters</dt><dd>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000013">Deprecated:</a></b></dt><dd>This outputs an XML reference to the envelope and registers it for later serialization if it is not already in dynObjs. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">checkPoint</td><td></td></tr>
-    <tr><td class="paramname">offset</td><td></td></tr>
+    <tr><td class="paramname">xmlOutput</td><td>The stream to write the XML reference to </td></tr>
+    <tr><td class="paramname">dynObjs</td><td>The list of dynamic variables to serialize </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a scaled envelope </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>This used to be in CMOD/utility.cpp </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000013">Deprecated:</a></b></dt><dd>This outputs an XML representation of the object to STDOUT </dd></dl>
 
 <p>Implements <a class="el" href="classDynamicVariable.html#a7ad63e518153d03875fa9209d927b029">DynamicVariable</a>.</p>
 

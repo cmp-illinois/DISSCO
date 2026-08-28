@@ -152,7 +152,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Constructor for (almost) empty object. Creates an empty list of integers (elist) and an empty list of doubles (wList). Sets size = 0 and skip = 0. Sets the related file name SIEVE/... </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>of related file for this sieve. </td></tr>
+    <tr><td class="paramname">aFile</td><td>name of the file associated with this sieve </td></tr>
   </table>
   </dd>
 </dl>
@@ -241,9 +241,9 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">maxVal</td><td>largest value allowed on list </td></tr>
     <tr><td class="paramname">eMethod</td><td>method for selecting elements of sieve </td></tr>
     <tr><td class="paramname">wMethod</td><td>method for selecting weights </td></tr>
-    <tr><td class="paramname">eArgVector</td><td>data for selecting elements of sieve </td></tr>
-    <tr><td class="paramname">wArgVector</td><td>data for selecting weights </td></tr>
-    <tr><td class="paramname">offsetVector</td><td>offset of the elements </td></tr>
+    <tr><td class="paramname">eArgVect</td><td>data for selecting elements of sieve </td></tr>
+    <tr><td class="paramname">wArgVect</td><td>data for selecting weights </td></tr>
+    <tr><td class="paramname">offsetVect</td><td>offset of the elements </td></tr>
   </table>
   </dd>
 </dl>
@@ -311,10 +311,11 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">minVal</td><td>smallest value allowed on list </td></tr>
     <tr><td class="paramname">maxVal</td><td>largest value allowed on list </td></tr>
-    <tr><td class="paramname">eMethod</td><td>method for selecting elements of sieve </td></tr>
+    <tr><td class="paramname">eMethod</td><td>unused; elements are selected by parsing expr </td></tr>
     <tr><td class="paramname">wMethod</td><td>method for selecting weights </td></tr>
     <tr><td class="paramname">expr</td><td>string to parse into a list </td></tr>
-    <tr><td class="paramname">wArgVector</td><td>data for selecting weights </td></tr>
+    <tr><td class="paramname">wArgVect</td><td>data for selecting weights </td></tr>
+    <tr><td class="paramname">offsetVect</td><td>offsets supplied to the modular expression parser </td></tr>
   </table>
   </dd>
 </dl>
@@ -550,7 +551,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Modify adds the values provided by a modulating envelope to the probability values of the sieve, adds the result in a cumulative way resulting in probabilities from 0 to 1 and chooses an element of the sieve by using ChooseL </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Envelope</td><td>*env an envelope </td></tr>
+    <tr><td class="paramname">env</td><td>envelope used to modulate the sieve weights </td></tr>
     <tr><td class="paramname">method</td><td>name of the method used </td></tr>
   </table>
   </dd>

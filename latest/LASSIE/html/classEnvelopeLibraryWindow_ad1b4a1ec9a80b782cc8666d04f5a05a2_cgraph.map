@@ -8,7 +8,7 @@
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="420,104,454,100,455,105,421,109"/>
 <area shape="rect" id="Node000005" href="$namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160" title=" " alt="" coords="482,134,633,159"/>
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="421,127,469,133,468,139,420,133"/>
-<area shape="rect" id="Node000010" href="$classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b" title="Trigger a redraw of the given envelope." alt="" coords="479,184,636,224"/>
+<area shape="rect" id="Node000010" href="$classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b" title="Trigger a redraw of the envelope library&#39;s active envelope." alt="" coords="479,184,636,224"/>
 <area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="381,136,469,170,489,177,487,182,467,174,379,141"/>
 <area shape="rect" id="Node000006" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="710,110,902,135"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="633,137,696,131,697,136,633,142"/>

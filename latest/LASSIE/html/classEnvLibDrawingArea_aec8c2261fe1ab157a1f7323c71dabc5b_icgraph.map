@@ -1,5 +1,5 @@
 <map id="EnvLibDrawingArea::showGraph" name="EnvLibDrawingArea::showGraph">
-<area shape="rect" id="Node000001" title="Trigger a redraw of the given envelope." alt="" coords="908,63,1065,103"/>
+<area shape="rect" id="Node000001" title="Trigger a redraw of the envelope library&#39;s active envelope." alt="" coords="908,63,1065,103"/>
 <area shape="rect" id="Node000002" href="$classEnvLibDrawingArea.html#aca692664dc8aa19535b80bab00102141" title="Handle presses (select node, start drag, show popup)" alt="" coords="5,44,163,84"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="894,63,860,56,678,26,536,10,467,8,393,11,211,31,143,46,142,41,210,25,393,5,467,3,536,5,679,21,860,51,895,57"/>
 <area shape="rect" id="Node000003" href="$classEnvelopeLibraryWindow.html#aa14f7e18a87521c7d42f1a4320488217" title="Called when a tree item is activated (double‐click or Enter)" alt="" coords="445,40,624,80"/>

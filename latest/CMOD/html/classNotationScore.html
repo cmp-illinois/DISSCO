@@ -159,6 +159,8 @@ Friends</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">score_title</td><td>The title of this score </td></tr>
+    <tr><td class="paramname">grandStaff</td><td>Whether to create a two-staff grand staff </td></tr>
+    <tr><td class="paramname">numberOfStaff</td><td>Staff count when grandStaff is false; nonpositive values fall back to one staff </td></tr>
   </table>
   </dd>
 </dl>
@@ -290,6 +292,7 @@ Here is the caller graph for this function:</div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tempo</td><td>The tempo to insert </td></tr>
+    <tr><td class="paramname">numberOfStaff</td><td>Zero-based index of the staff receiving the tempo, clamped to the available staff range (not a staff count) </td></tr>
   </table>
   </dd>
 </dl>
@@ -349,7 +352,7 @@ Here is the caller graph for this function:</div>
 <p><a class="el" href="classOutput.html" title="Process-global facade for accumulating and emitting CMOD output.">Output</a> the text representation of a score.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">out_stream</td><td>The stream to which the text will be appended </td></tr>
+    <tr><td class="paramname">output_stream</td><td>The stream to which the text will be appended </td></tr>
     <tr><td class="paramname">notation_score</td><td>The score whose text representation to output </td></tr>
   </table>
   </dd>

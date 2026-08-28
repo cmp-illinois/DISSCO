@@ -185,6 +185,7 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">modType</td><td>the type of modifier </td></tr>
     <tr><td class="paramname">prob</td><td>probability envelope </td></tr>
     <tr><td class="paramname">modApplyHow</td><td>apply to SOUND or PARTIAL </td></tr>
+    <tr><td class="paramname">modPartialNum</td><td>partial index to modify when applying to PARTIAL </td></tr>
   </table>
   </dd>
 </dl>
@@ -257,7 +258,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Add detune direction to detune <a class="el" href="classModifier.html" title="One configured modifier instance attached to a Bottom event.">Modifier</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">detune</td><td>direction to add </td></tr>
+    <tr><td class="paramname">dir_</td><td>detune direction to add </td></tr>
   </table>
   </dd>
 </dl>
@@ -283,7 +284,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Add detune spread to detune <a class="el" href="classModifier.html" title="One configured modifier instance attached to a Bottom event.">Modifier</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">detune</td><td>spread to add </td></tr>
+    <tr><td class="paramname">spread_</td><td>detune spread to add </td></tr>
   </table>
   </dd>
 </dl>
@@ -335,7 +336,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Add detune velocity to detune <a class="el" href="classModifier.html" title="One configured modifier instance attached to a Bottom event.">Modifier</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">detune</td><td>velocity to add </td></tr>
+    <tr><td class="paramname">vel</td><td>detune velocity to add </td></tr>
   </table>
   </dd>
 </dl>
@@ -362,7 +363,6 @@ Public Member Functions</h2></td></tr>
 <p>Apply the modifier to a sound </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">snd</td><td>pointer to the sound to add this modifier to </td></tr>
-    <tr><td class="paramname">partNum</td><td>the number of partials in the sound (only used if applyHow == "PARTIAL") </td></tr>
   </table>
   </dd>
 </dl>

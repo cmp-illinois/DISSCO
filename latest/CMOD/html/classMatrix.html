@@ -172,11 +172,13 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Constructor. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">numTypes</td><td></td></tr>
-    <tr><td class="paramname">numAttacks</td><td></td></tr>
-    <tr><td class="paramname">numDurations</td><td></td></tr>
-    <tr><td class="paramname">numTypesInLayers</td><td></td></tr>
-    <tr><td class="paramname">maxVal</td><td>- limit for the last duration (endDur) allowed by the parent </td></tr>
+    <tr><td class="paramname">numTypes</td><td>number of child event types </td></tr>
+    <tr><td class="paramname">numAttacks</td><td>number of possible start times per type </td></tr>
+    <tr><td class="paramname">numDurations</td><td>number of possible durations per start time </td></tr>
+    <tr><td class="paramname">numTypesInLayers</td><td>number of event types in each layer </td></tr>
+    <tr><td class="paramname">maxVal</td><td>parent end-time limit; unused by this constructor </td></tr>
+    <tr><td class="paramname">tempo</td><td>tempo used to interpret beat positions in EDUs </td></tr>
+    <tr><td class="paramname">wellAligned</td><td>whether duration end points must align with the attack sieve </td></tr>
   </table>
   </dd>
 </dl>
@@ -431,8 +433,8 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Uses the sieve defining the stimes and the envelopes corresponding to each type of each layer to set probabilities of occurrence for each stime at each layer. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Sieve*</td><td>attackSieve </td></tr>
-    <tr><td class="paramname">vector&lt;Envelope*&gt;</td><td>attackEnvs </td></tr>
+    <tr><td class="paramname">attackSieve</td><td>sieve providing possible start times and weights </td></tr>
+    <tr><td class="paramname">attackEnvs</td><td>optional per-type envelopes that scale attack weights </td></tr>
   </table>
   </dd>
 </dl>
@@ -511,8 +513,8 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Uses the sieve defining possible durations and the envelopes corresponding to each type of each layer to set probabilities of occurrence for each duration at each layer. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Sieve*</td><td>durSieve </td></tr>
-    <tr><td class="paramname">vector&lt;Envelope*&gt;</td><td>durEnvs </td></tr>
+    <tr><td class="paramname">durSieve</td><td>sieve providing possible durations and weights </td></tr>
+    <tr><td class="paramname">durEnvs</td><td>optional per-type envelopes that scale duration weights </td></tr>
     <tr><td class="paramname">maxVal</td><td>- limit for the last duration (endDur) allowed by the parent </td></tr>
   </table>
   </dd>
@@ -580,7 +582,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Sets the probabilities of occurrence for each type </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vector&lt;double&gt;</td><td>typeProbVect </td></tr>
+    <tr><td class="paramname">typeProbVect</td><td>relative probabilities in child event type order </td></tr>
   </table>
   </dd>
 </dl>

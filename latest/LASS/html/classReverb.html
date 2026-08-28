@@ -414,7 +414,7 @@ Here is the call graph for this function:</div>
           <td class="memname">void Reverb::ConstructorCommon </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classEnvelope.html">Envelope</a> *&#160;</td>
-          <td class="paramname"><em>percentReverbInput</em>, </td>
+          <td class="paramname"><em>percentReverb</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -463,12 +463,10 @@ Here is the call graph for this function:</div>
     <tr><td class="paramname">gainAllPass</td><td>Moore's reverberator has only one all-pass filter, and this is its gain. The default value is 0.7. Higher values (up to 1.0) cause more ringing at certain frequencies. Lower values (down to 0.0) cause less ringing. <br  />
  </td></tr>
     <tr><td class="paramname">delay</td><td>this is the length (in seconds) of the first echo response. </td></tr>
-    <tr><td class="paramname">samplingRate</td><td>is the number of samples per second that the reverb will assume on any data it is fed</td></tr>
+    <tr><td class="paramname">samplingRate</td><td>is the number of samples per second that the reverb will assume on any data it is fed </td></tr>
   </table>
   </dd>
 </dl>
-<p>constructor common - this code is used to unify code from the two constructors. Both do the same work, but based on varying degrees of user specification of parameters</p>
-<p>percentReverb - this <a class="el" href="classEnvelope.html">Envelope</a> defines the intended mix between reverb sound and the original sound over the length of the sound. 1.00 is all reverb sound, 0.00 is all original sound. combGainList - this is an array of 6 floats that acts like an equalizer for the reverbed sound. Each float controls the gain on one band of the reverbed sound. If, for example, you zero the first number, you the reverberator will have no effect on the lowest frequencies in your source sound, but will still respond to higher frequencies. gainAllPasss - this parameter has two effects. For delay values in the range that 'Elements of Computer Music' intended for this reverberator to be used with (anything on the order of milliseconds), this allPassGain acts to delay the reverb'ed sound slightly and smooth the reverb'ed sound. At much higher delay values, on the order of seconds or tenth of seconds, the gainAllPass parameter primarily acts as a rate of echo decay parameter. If you imagine an infinite series of echos, multiplied by an exponentially decaying envelope, this parameter acts as the decay rate of the envelope (higher values mean higher decay rate, lower values mean lower decay rate, and thus more echos) delay - this is the overall delay in units of seconds. This is analogous to room size. hilow_spread - this is a value between 0.0 and 1.0 (inclusive) that determines the ratio of low-repsonse to high response. For a value of 1.0, the low-frequence response of the reverb will be as high as possible given the values of the other parameters. For a value of 0.0, the reverb will have as uniform a response with respect to freqeuency as allowed by the other reverb parameters samplingRate - the sampling rate of the input sounds </p>
 
 <p class="definition">Definition at line <a class="el" href="Reverb_8cpp_source.html#l00206">206</a> of file <a class="el" href="Reverb_8cpp_source.html">Reverb.cpp</a>.</p>
 <div class="dynheader">

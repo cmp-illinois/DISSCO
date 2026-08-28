@@ -727,12 +727,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 <p>Method for assigning float values for stimeSec and duration using continuos (stochastic) distributions and int value for type - actually, a discrete value..</p>
-<p>Follows aq slightly different procedure than Sweep and Discrete. Why? </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">iter</td><td>FileValues to pass in for new objects </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Follows aq slightly different procedure than Sweep and Discrete. Why? </p>
 
 <p class="definition">Definition at line <a class="el" href="Event_8cpp_source.html#l00634">634</a> of file <a class="el" href="Event_8cpp_source.html">Event.cpp</a>.</p>
 <div class="dynheader">
@@ -862,12 +857,7 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Wrapper for assigning values for stimeMatrix, type and durMatrix using a matrix. Calls ObjCoordinates, Adjustments, and TimeConvert. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">iter</td><td>FileValues to pass in for new objects </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Wrapper for assigning values for stimeMatrix, type and durMatrix using a matrix. Calls ObjCoordinates, Adjustments, and TimeConvert. </p>
 
 <p class="definition">Definition at line <a class="el" href="Event_8cpp_source.html#l01344">1344</a> of file <a class="el" href="Event_8cpp_source.html">Event.cpp</a>.</p>
 <div class="dynheader">
@@ -1084,12 +1074,7 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Method for assigning stimeSec and durSec values in sequential order - "sweeping" from left to right or beginning to end of the event. For stime and duration two different methods are used, one for integer values the other for float values. Type being a discrete value, the integer values method is used for it. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">iter</td><td>FileValues to pass in for new objects </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Method for assigning stimeSec and durSec values in sequential order - "sweeping" from left to right or beginning to end of the event. For stime and duration two different methods are used, one for integer values the other for float values. Type being a discrete value, the integer values method is used for it. </p>
 
 <p class="definition">Definition at line <a class="el" href="Event_8cpp_source.html#l00794">794</a> of file <a class="el" href="Event_8cpp_source.html">Event.cpp</a>.</p>
 <div class="dynheader">
@@ -1646,13 +1631,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Adds pointers to any notes in this <a class="el" href="classEvent.html" title="Generic event in a DISSCO composition tree.">Event</a> (or any children) to a vector</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">noteVect</td><td>a reference to a vector of notes </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Collects the notes from this <a class="el" href="classEvent.html" title="Generic event in a DISSCO composition tree.">Event</a>'s descendants.</p>
+<dl class="section return"><dt>Returns</dt><dd>a list containing copies of the descendant notes </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classBottom.html#aa9d386ec2718b0030ce0358d18e3d71d">Bottom</a>.</p>
 
@@ -2078,7 +2058,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Checks if time is valid, if it is not, change it to closest valid value </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname"></td><td>int endTime time to be verified similar to a function in <a class="el" href="classNote.html" title="A single notated event emitted by a Bottom event.">Note</a> class </td></tr>
+    <tr><td class="paramname">endTime</td><td>end time in EDUs to check against the start-time sieve similar to a function in <a class="el" href="classNote.html" title="A single notated event emitted by a Bottom event.">Note</a> class </td></tr>
   </table>
   </dd>
 </dl>

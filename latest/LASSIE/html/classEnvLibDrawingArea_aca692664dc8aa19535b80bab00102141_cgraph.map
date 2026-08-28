@@ -6,7 +6,7 @@
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="163,112,886,135,886,140,163,117"/>
 <area shape="rect" id="Node000004" href="$classEnvelopeLibraryWindow.html#a5569ae9d30f88f6080575130f28c64cf" title="Programmatically update the X/Y entries." alt="" coords="211,63,389,103"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="163,99,197,94,198,100,163,104"/>
-<area shape="rect" id="Node000012" href="$classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b" title="Trigger a redraw of the given envelope." alt="" coords="911,184,1068,224"/>
+<area shape="rect" id="Node000012" href="$classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b" title="Trigger a redraw of the envelope library&#39;s active envelope." alt="" coords="911,184,1068,224"/>
 <area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="163,119,211,124,897,193,896,198,210,130,163,124"/>
 <area shape="rect" id="Node000005" href="$classEnvelopeLibraryWindow.html#ad1b4a1ec9a80b782cc8666d04f5a05a2" title="Called when either X or Y QLineEdit text changes." alt="" coords="437,63,616,103"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="390,80,423,80,423,86,390,86"/>

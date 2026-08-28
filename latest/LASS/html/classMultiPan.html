@@ -150,15 +150,7 @@ Public Member Functions</h2></td></tr>
 <p>This is a constructor. To use this constructor, you must call addEntry or addEntryLocation one or more times to set the spatialization data. Use the other constructor if you want to instead pass in a list of Interpolators (one per channel).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nChans</td><td>The number of channels (speakers) to pan across</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Simple constructor:</p>
-<p>If you use this constructor, you must call addEntry or addEntryLocation one or more times to set the spatialization data. Use the other constructor if you want to instead pass in a list of Interpolators (one per channel).</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">nChans</td><td>the number of channels (speakers) to pan across </td></tr>
+    <tr><td class="paramname">nChans</td><td>The number of channels (speakers) to pan across </td></tr>
   </table>
   </dd>
 </dl>
@@ -217,16 +209,7 @@ Here is the caller graph for this function:</div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">nChans</td><td>The number of channels (speakers) to pan across </td></tr>
-    <tr><td class="paramname">List</td><td>A vector of envs (nChan number of envs, to be precise). Each env will control the percent that the corresponding speaker will respond to input sound.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Advanced constructor:</p>
-<p>If you use this constructor, you pass in a list of env's (one per channel). If you want to call addEntry or addEntryLocation to set the spatialization data, use the other constructor.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">nChans</td><td>the number of channels (speakers) to pan across </td></tr>
-    <tr><td class="paramname">List</td><td>a vector of env's (nChan number of env's, to be precise). Each env's will control the percent that the corresponding speaker will respond to input sound </td></tr>
+    <tr><td class="paramname">List</td><td>A vector of envs (nChan number of envs, to be precise). Each env will control the percent that the corresponding speaker will respond to input sound. </td></tr>
   </table>
   </dd>
 </dl>
@@ -297,15 +280,7 @@ Here is the call graph for this function:</div>
 <p>Add another spatialization point to the dynamic variables (using the parameters as ratios of speaker volumes). Pass in the time value, t, and a list of numbers (0.0 to 1.0 for each) that gives each speaker's response (as a percentage) to a given sound.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>The time stamp (as a percent of total sound length, from 0.0 to 1.0)</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Add another spatialization point (using percents)</p>
-<p>Add another point to the dynamic variables (using the parameters as ratios of speaker volumes). Pass in the time value, t, and a list of numbers (0.0 to 1.0 for each) that gives each speakers resposne (as a percentage) to a given sound.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">t</td><td>the time stamp (as a percent of total sound length, from 0.0 to 1.0) </td></tr>
+    <tr><td class="paramname">t</td><td>The time stamp (as a percent of total sound length, from 0.0 to 1.0) </td></tr>
   </table>
   </dd>
 </dl>
@@ -349,20 +324,9 @@ Here is the call graph for this function:</div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t</td><td>The time stamp (as a percent of total sound length, from 0.0 to 1.0) </td></tr>
-    <tr><td class="paramname">theta</td><td>The rotation angle (in radians) where the sound will appear to originate from. An angle of zero is directly in front of you. Positive angles rotate to your left, with positive pi (3.14...) being directly behind you. Negative angles rotate to your left and negative pi (-3.14) is another name for the angle directly behind you. For reference, pi/2 is straight left and -pi/2 is straight right. To use pi, math.h defines the constant for you as 'M_PI'. For instance, you could use 'M_PI/2' to refer to the angle at your left. <br  />
+    <tr><td class="paramname">theta</td><td>The rotation angle (in radians) where the sound will appear to originate from. An angle of zero is directly in front of you. Positive angles rotate to your left, with positive pi (3.14...) being directly behind you. Negative angles rotate to your right and negative pi (-3.14) is another name for the angle directly behind you. For reference, pi/2 is straight left and -pi/2 is straight right. To use pi, math.h defines the constant for you as 'M_PI'. For instance, you could use 'M_PI/2' to refer to the angle at your left. <br  />
  </td></tr>
-    <tr><td class="paramname">radius</td><td>The distance from which the sound will appear to originate from. These should range from 0.0 to 1.0.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Add another spatialization point (using location)</p>
-<p>Add another point to the dynamic variables (using the parameters as a location within a circular array of speakers. theta=0 means straight ahead, positive thetas to the left, negatives to the right. radius ranges from 0 to 1.)</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">t</td><td>the time stamp (as a percent of total sound length, from 0.0 to 1.0) </td></tr>
-    <tr><td class="paramname">theta</td><td>the rotation angle (in radians) where the sound will appear to originate from. An angle of zero is directly in front of you. Positive angles rotate to your left, with positive pi (3.14...) being directly behind you. Negative angles rotate to your left and negative pi (-3.14) is another name for the angle directly behind you. For reference, pi/2 is straight left and -pi/2 is straight right. To use pi, math.h defines the constant for you as 'M_PI'. For instance, you could use 'M_PI/2' to refer to the angle at your left. <br  />
- </td></tr>
-    <tr><td class="paramname">radius</td><td>the distance from which the sound will appear to originate from. These should range from 0.0 to 1.0 </td></tr>
+    <tr><td class="paramname">radius</td><td>The distance from which the sound will appear to originate from. These should range from 0.0 to 1.0. </td></tr>
   </table>
   </dd>
 </dl>
@@ -438,7 +402,7 @@ Here is the caller graph for this function:</div>
 <p>This funcioned should be called after all the location entries are added, in other word, it's called right after the caller finishes calling <a class="el" href="classMultiPan.html#ab00e588f20c00033ffac794426d9e883">MultiPan::addEntryLocation</a>.</p>
 <p>This function constructs the actual envelopes needed for spatialization according to the location entries added. </p>
 
-<p class="definition">Definition at line <a class="el" href="MultiPan_8cpp_source.html#l00430">430</a> of file <a class="el" href="MultiPan_8cpp_source.html">MultiPan.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MultiPan_8cpp_source.html#l00428">428</a> of file <a class="el" href="MultiPan_8cpp_source.html">MultiPan.cpp</a>.</p>
 
 </div>
 </div>
@@ -508,18 +472,7 @@ Here is the caller graph for this function:</div>
 <p>This spatializes a track and returns a new <a class="el" href="classMultiTrack.html">MultiTrack</a> object with numTracks. The track will be panned accross the channels by the passed in <a class="el" href="classDynamicVariable.html">DynamicVariable</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t</td><td>A track to spatialize </td></tr>
-    <tr><td class="paramname">numTracks</td><td>The number of tracks to spatialize to. (This is redundant, but is kept for similarity of interface with the regular pan object. <a class="el" href="classMultiPan.html">MultiPan</a> already knows because you have to pass in nChans in the constructor) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>the track, spatialized to 'numTracks' number of tracks</dd></dl>
-<p>Spatialize a track</p>
-<p>Will return a new <a class="el" href="classMultiTrack.html">MultiTrack</a> object with numTracks. the track will be panned accross the channels by the passed in Dynamic Variable <br  />
-</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">t</td><td>a track to spatialize </td></tr>
-    <tr><td class="paramname">numTracks</td><td>the number of tracks to spatialize to. (This is redundant, but is kept for similarity of interface with the regular pan object. <a class="el" href="classMultiPan.html">MultiPan</a> already knows because you have to pass in nChans in the constructor) </td></tr>
+    <tr><td class="paramname">numTracks</td><td>The number of output tracks; must match the nChans value passed to the constructor </td></tr>
   </table>
   </dd>
 </dl>
@@ -527,7 +480,7 @@ Here is the caller graph for this function:</div>
 
 <p>Reimplemented from <a class="el" href="classSpatializer.html#a85146a717cd374a807f13899328b6403">Spatializer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="MultiPan_8cpp_source.html#l00343">343</a> of file <a class="el" href="MultiPan_8cpp_source.html">MultiPan.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MultiPan_8cpp_source.html#l00341">341</a> of file <a class="el" href="MultiPan_8cpp_source.html">MultiPan.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -582,7 +535,7 @@ Here is the call graph for this function:</div>
 
 <p>Reimplemented from <a class="el" href="classSpatializer.html#adc52c47a80728decfe4c953173ab48c5">Spatializer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="MultiPan_8cpp_source.html#l00450">450</a> of file <a class="el" href="MultiPan_8cpp_source.html">MultiPan.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="MultiPan_8cpp_source.html#l00448">448</a> of file <a class="el" href="MultiPan_8cpp_source.html">MultiPan.cpp</a>.</p>
 
 </div>
 </div>

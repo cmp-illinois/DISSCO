@@ -185,36 +185,45 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
 <div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>  <a class="code hl_typedef" href="Types_8h.html#af51a0a23512330487bbef4e87cec7a7e">m_value_type</a> <a class="code hl_function" href="classEnvelope.html#adb3c77591204f45650713138856d55ce">getMaxValue</a> ();</div>
 <div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>  <span class="keywordtype">float</span> <a class="code hl_function" href="classEnvelope.html#a90e126d9b3028de0751df94278f6d3f6">getScaledValueNew</a> (<span class="keywordtype">double</span> checkPoint, <span class="keywordtype">float</span> coef);</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>  <span class="comment">/*Envelope * FitEnvelopeNew(double checkPoint, int offset);*/</span></div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classEnvelope.html#a14dcbaab437a7728321f533e10682d1d">xml_print</a>( ofstream&amp; xmlOutput, list&lt;DynamicVariable*&gt;&amp; dynObjs );</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classEnvelope.html#a14dcbaab437a7728321f533e10682d1d">xml_print</a>( ofstream&amp; xmlOutput );</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span> </div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classEnvelope.html#a147185ea88b0784464dd96a6030db1fa">xml_read</a>(<a class="code hl_class" href="classXmlReader_1_1xmltag.html">XmlReader::xmltag</a>* soundtag);</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>  vector&lt;envelope_segment&gt;* segments_;</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>  vector&lt;Interpolator*&gt;* interpolators_;</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span> </div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>  vector&lt;m_value_type&gt;* generatedSegmentLengths_;</div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span> </div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>  <a class="code hl_typedef" href="Types_8h.html#af51a0a23512330487bbef4e87cec7a7e">m_value_type</a> totalLength_;</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>  <a class="code hl_typedef" href="Types_8h.html#ab7c593a9f05c6e76fb8e2c140c0bb92d">m_rate_type</a> currentInterpolatorRate_;</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span> </div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>  <span class="keywordtype">void</span> addInterpolators(<a class="code hl_typedef" href="Types_8h.html#ab7c593a9f05c6e76fb8e2c140c0bb92d">m_rate_type</a> rate);</div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>  <span class="keywordtype">void</span> generateLengths (<a class="code hl_typedef" href="Types_8h.html#a1125b6e8b8f52765d5af0d4d33edf473">m_time_type</a> totalLength);</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span> </div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>  <span class="keyword">inline</span> <span class="keywordtype">bool</span> checkValidSegmentIndex (<span class="keywordtype">int</span> index);</div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>};</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>  <span class="keywordtype">float</span> <a class="code hl_function" href="classEnvelope.html#a90e126d9b3028de0751df94278f6d3f6">getScaledValueNew</a> (<span class="keywordtype">double</span> checkPoint, <span class="keywordtype">float</span> coef);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>  <span class="comment">/*</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="comment">   * This function computes an envelope number from the parameters,</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="comment">   * loads the envelope from the library, scales it, and returns</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="comment">   * the scaled envelope.</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="comment">   * \param checkPoint</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="comment">   * \param offset</span></div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="comment">   * \returns a scaled envelope</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="comment">   * \note This used to be in CMOD/utility.cpp</span></div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="comment">   **/</span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>  <span class="comment">/*Envelope * FitEnvelopeNew(double checkPoint, int offset);*/</span></div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classEnvelope.html#a14dcbaab437a7728321f533e10682d1d">xml_print</a>( ofstream&amp; xmlOutput, list&lt;DynamicVariable*&gt;&amp; dynObjs );</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classEnvelope.html#a14dcbaab437a7728321f533e10682d1d">xml_print</a>( ofstream&amp; xmlOutput );</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classEnvelope.html#a147185ea88b0784464dd96a6030db1fa">xml_read</a>(<a class="code hl_class" href="classXmlReader_1_1xmltag.html">XmlReader::xmltag</a>* soundtag);</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>  vector&lt;envelope_segment&gt;* segments_;</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>  vector&lt;Interpolator*&gt;* interpolators_;</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>  vector&lt;m_value_type&gt;* generatedSegmentLengths_;</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>  <a class="code hl_typedef" href="Types_8h.html#af51a0a23512330487bbef4e87cec7a7e">m_value_type</a> totalLength_;</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span> </div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>  <a class="code hl_typedef" href="Types_8h.html#ab7c593a9f05c6e76fb8e2c140c0bb92d">m_rate_type</a> currentInterpolatorRate_;</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>  <span class="keywordtype">void</span> addInterpolators(<a class="code hl_typedef" href="Types_8h.html#ab7c593a9f05c6e76fb8e2c140c0bb92d">m_rate_type</a> rate);</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>  <span class="keywordtype">void</span> generateLengths (<a class="code hl_typedef" href="Types_8h.html#a1125b6e8b8f52765d5af0d4d33edf473">m_time_type</a> totalLength);</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>  <span class="keyword">inline</span> <span class="keywordtype">bool</span> checkValidSegmentIndex (<span class="keywordtype">int</span> index);</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>};</div>
 </div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span> </div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span><span class="preprocessor">#endif </span><span class="comment">//__ENVELOPE_H</span></div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span> </div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span><span class="preprocessor">#endif </span><span class="comment">//__ENVELOPE_H</span></div>
 <div class="ttc" id="aDynamicVariable_8h_html"><div class="ttname"><a href="DynamicVariable_8h.html">DynamicVariable.h</a></div></div>
 <div class="ttc" id="aInterpolatorIterator_8h_html"><div class="ttname"><a href="InterpolatorIterator_8h.html">InterpolatorIterator.h</a></div></div>
 <div class="ttc" id="aInterpolator_8h_html"><div class="ttname"><a href="Interpolator_8h.html">Interpolator.h</a></div></div>

@@ -106,7 +106,7 @@
 <area shape="poly" id="edge57_Node000056_Node000014" title=" " alt="" coords="618,643,653,619,670,596,677,573,684,549,701,523,738,491,778,466,781,471,741,496,705,527,689,551,682,575,674,598,657,623,621,647"/>
 <area shape="rect" id="Node000057" href="$classEnvLibDrawingArea.html#a049ecb2a281b1b7801303d5cc354f890" title="Recompute upperY/lowerY based on envelope data." alt="" coords="759,716,917,756"/>
 <area shape="poly" id="edge56_Node000056_Node000057" title=" " alt="" coords="634,683,703,701,747,712,745,717,702,706,632,688"/>
-<area shape="rect" id="Node000058" href="$classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b" title="Trigger a redraw of the given envelope." alt="" coords="759,652,917,692"/>
+<area shape="rect" id="Node000058" href="$classEnvLibDrawingArea.html#aec8c2261fe1ab157a1f7323c71dabc5b" title="Trigger a redraw of the envelope library&#39;s active envelope." alt="" coords="759,652,917,692"/>
 <area shape="poly" id="edge58_Node000056_Node000058" title=" " alt="" coords="650,665,746,667,746,672,650,670"/>
 <area shape="rect" id="Node000061" href="$classEnvLibDrawingArea.html#a41f39121793a68415000a76edf0f9b33" title="Update the active node&#39;s coords from external input." alt="" coords="467,569,655,609"/>
 <area shape="poly" id="edge61_Node000060_Node000061" title=" " alt="" coords="419,585,453,585,453,591,419,590"/>
