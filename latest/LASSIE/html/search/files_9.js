@@ -12,10 +12,11 @@ var searchData=
   ['postwindow_2ehpp_9',['PostWindow.hpp',['../PostWindow_8hpp.html',1,'']]],
   ['project_5fstruct_2ecpp_10',['project_struct.cpp',['../project__struct_8cpp.html',1,'']]],
   ['project_5fstruct_2ehpp_11',['project_struct.hpp',['../project__struct_8hpp.html',1,'']]],
-  ['projectpropertiesdialog_2ecpp_12',['ProjectPropertiesDialog.cpp',['../ProjectPropertiesDialog_8cpp.html',1,'']]],
-  ['projectpropertiesdialog_2ehpp_13',['ProjectPropertiesDialog.hpp',['../ProjectPropertiesDialog_8hpp.html',1,'']]],
-  ['projectviewcontroller_2ecpp_14',['ProjectViewController.cpp',['../ProjectViewController_8cpp.html',1,'']]],
-  ['projectviewcontroller_2ehpp_15',['ProjectViewController.hpp',['../ProjectViewController_8hpp.html',1,'']]],
-  ['projectxmlwriter_2ecpp_16',['ProjectXmlWriter.cpp',['../ProjectXmlWriter_8cpp.html',1,'']]],
-  ['projectxmlwriter_2ehpp_17',['ProjectXmlWriter.hpp',['../ProjectXmlWriter_8hpp.html',1,'']]]
+  ['projectclipboard_2ehpp_12',['ProjectClipboard.hpp',['../ProjectClipboard_8hpp.html',1,'']]],
+  ['projectpropertiesdialog_2ecpp_13',['ProjectPropertiesDialog.cpp',['../ProjectPropertiesDialog_8cpp.html',1,'']]],
+  ['projectpropertiesdialog_2ehpp_14',['ProjectPropertiesDialog.hpp',['../ProjectPropertiesDialog_8hpp.html',1,'']]],
+  ['projectviewcontroller_2ecpp_15',['ProjectViewController.cpp',['../ProjectViewController_8cpp.html',1,'']]],
+  ['projectviewcontroller_2ehpp_16',['ProjectViewController.hpp',['../ProjectViewController_8hpp.html',1,'']]],
+  ['projectxmlwriter_2ecpp_17',['ProjectXmlWriter.cpp',['../ProjectXmlWriter_8cpp.html',1,'']]],
+  ['projectxmlwriter_2ehpp_18',['ProjectXmlWriter.hpp',['../ProjectXmlWriter_8hpp.html',1,'']]]
 ];

@@ -17,5 +17,5 @@ var searchData=
   ['totalcount_14',['totalCount',['../namespaceLayerRefs.html#acb76e7040d02887056a2af9f7bb2d814',1,'LayerRefs']]],
   ['trigger_15',['Trigger',['../classUpdater.html#a07c3fd46396089dd065566f51957dad6',1,'Updater']]],
   ['triple_16',['triple',['../event__struct_8hpp.html#a9d2b3ce153fe35a8b2206f4fed2e5bebaad41fdb073888482bb921e8f72c295f4',1,'event_struct.hpp']]],
-  ['type_17',['type',['../structHEvent.html#aa20163547816bf5f473476b112349324',1,'HEvent::type'],['../structModifier.html#a5beaf1109d53a2ef62dd2e627edf5ef0',1,'Modifier::type']]]
+  ['type_17',['type',['../structPaletteEventCopy.html#ac0cc59f8387798b5c4f46b8fc574105f',1,'PaletteEventCopy::type'],['../structHEvent.html#aa20163547816bf5f473476b112349324',1,'HEvent::type'],['../structModifier.html#a5beaf1109d53a2ef62dd2e627edf5ef0',1,'Modifier::type']]]
 ];

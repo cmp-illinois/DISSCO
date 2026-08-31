@@ -95,6 +95,8 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ad478a677b217cba7af8478afb46516ed" id="r_ad478a677b217cba7af8478afb46516ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLayerRefs.html#ad478a677b217cba7af8478afb46516ed">referenceExists</a> (const <a class="el" href="structPackage.html">Package</a> &amp;package)</td></tr>
+<tr class="separator:ad478a677b217cba7af8478afb46516ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f3b25fa0435f2a6479bfa02222e231a" id="r_a9f3b25fa0435f2a6479bfa02222e231a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLayerRefs.html#adedbe954c646ca4ccb162c58901aaa86">Assoc</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLayerRefs.html#a9f3b25fa0435f2a6479bfa02222e231a">collect</a> (const QString &amp;typeNumStr, const QString &amp;name)</td></tr>
 <tr class="memdesc:a9f3b25fa0435f2a6479bfa02222e231a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find every <a class="el" href="structPackage.html">Package</a> across the current project that points at an event identified by (type, name).  <br /></td></tr>
 <tr class="separator:a9f3b25fa0435f2a6479bfa02222e231a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,7 +131,7 @@ Functions</h2></td></tr>
 <p>Result of a project-wide reference scan. </p>
 <p>Each entry pairs an <a class="el" href="structLayerRefs_1_1OwnerKey.html">OwnerKey</a> with the indices, within that layer's <code>discrete_packages</code> list, of the Packages that matched the (type, name) the scan was looking for. </p>
 
-<p class="definition">Definition at line <a class="el" href="LayerReferenceUtils_8hpp_source.html#l00057">57</a> of file <a class="el" href="LayerReferenceUtils_8hpp_source.html">LayerReferenceUtils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LayerReferenceUtils_8hpp_source.html#l00090">90</a> of file <a class="el" href="LayerReferenceUtils_8hpp_source.html">LayerReferenceUtils.hpp</a>.</p>
 
 </div>
 </div>
@@ -161,7 +163,7 @@ Functions</h2></td></tr>
 <p>Remove every package collected in <code>refs</code> from its owning layer. </p>
 <p>Indices are processed in descending order so that earlier removals do not invalidate later ones. </p>
 
-<p class="definition">Definition at line <a class="el" href="LayerReferenceUtils_8hpp_source.html#l00135">135</a> of file <a class="el" href="LayerReferenceUtils_8hpp_source.html">LayerReferenceUtils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LayerReferenceUtils_8hpp_source.html#l00168">168</a> of file <a class="el" href="LayerReferenceUtils_8hpp_source.html">LayerReferenceUtils.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -246,7 +248,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LayerReferenceUtils_8hpp_source.html#l00119">119</a> of file <a class="el" href="LayerReferenceUtils_8hpp_source.html">LayerReferenceUtils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LayerReferenceUtils_8hpp_source.html#l00152">152</a> of file <a class="el" href="LayerReferenceUtils_8hpp_source.html">LayerReferenceUtils.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -330,7 +332,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>list of matching references, grouped by owning layer </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LayerReferenceUtils_8hpp_source.html#l00066">66</a> of file <a class="el" href="LayerReferenceUtils_8hpp_source.html">LayerReferenceUtils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LayerReferenceUtils_8hpp_source.html#l00099">99</a> of file <a class="el" href="LayerReferenceUtils_8hpp_source.html">LayerReferenceUtils.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -370,6 +372,46 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="ad478a677b217cba7af8478afb46516ed" name="ad478a677b217cba7af8478afb46516ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad478a677b217cba7af8478afb46516ed">&#9670;&#160;</a></span>referenceExists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LayerRefs::referenceExists </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structPackage.html">Package</a> &amp;&#160;</td>
+          <td class="paramname"><em>package</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="LayerReferenceUtils_8hpp_source.html#l00040">40</a> of file <a class="el" href="LayerReferenceUtils_8hpp_source.html">LayerReferenceUtils.hpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceLayerRefs_ad478a677b217cba7af8478afb46516ed_cgraph.png" border="0" usemap="#anamespaceLayerRefs_ad478a677b217cba7af8478afb46516ed_cgraph" alt=""/></div>
+<map name="anamespaceLayerRefs_ad478a677b217cba7af8478afb46516ed_cgraph" id="anamespaceLayerRefs_ad478a677b217cba7af8478afb46516ed_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,201,31"/>
+<area shape="rect" href="classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="249,5,441,31"/>
+<area shape="poly" title=" " alt="" coords="202,15,236,15,236,21,202,21"/>
+<area shape="rect" href="classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="489,5,599,31"/>
+<area shape="poly" title=" " alt="" coords="442,15,475,15,475,21,442,21"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a88af7fddaa76aac27994e46d3b303b0a" name="a88af7fddaa76aac27994e46d3b303b0a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a88af7fddaa76aac27994e46d3b303b0a">&#9670;&#160;</a></span>resolveOwner()</h2>
 
@@ -397,7 +439,7 @@ Here is the caller graph for this function:</div>
 <p>Dereference an <a class="el" href="structLayerRefs_1_1OwnerKey.html">OwnerKey</a> to the actual <a class="el" href="structHEvent.html">HEvent</a> in the project. </p>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the owning <a class="el" href="structHEvent.html">HEvent</a>, or nullptr if the index is out of range </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LayerReferenceUtils_8hpp_source.html#l00102">102</a> of file <a class="el" href="LayerReferenceUtils_8hpp_source.html">LayerReferenceUtils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LayerReferenceUtils_8hpp_source.html#l00135">135</a> of file <a class="el" href="LayerReferenceUtils_8hpp_source.html">LayerReferenceUtils.hpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -468,7 +510,7 @@ Here is the caller graph for this function:</div>
 
 <p>Total number of individual package references across <code>refs</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="LayerReferenceUtils_8hpp_source.html#l00148">148</a> of file <a class="el" href="LayerReferenceUtils_8hpp_source.html">LayerReferenceUtils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LayerReferenceUtils_8hpp_source.html#l00181">181</a> of file <a class="el" href="LayerReferenceUtils_8hpp_source.html">LayerReferenceUtils.hpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['fibonaccifunction_0',['fibonaccifunction',['../classFibonacciFunction.html',1,'FibonacciFunction'],['../classFibonacciFunction.html#a6f6d42ae2b4552e816ec0deb5351e3be',1,'FibonacciFunction::FibonacciFunction()']]],
+  ['fibonaccifunction_0',['fibonaccifunction',['../classFibonacciFunction.html#a6f6d42ae2b4552e816ec0deb5351e3be',1,'FibonacciFunction::FibonacciFunction()'],['../classFibonacciFunction.html',1,'FibonacciFunction']]],
   ['fibonaccifunction_2ehpp_1',['FibonacciFunction.hpp',['../FibonacciFunction_8hpp.html',1,'']]],
   ['fieldcount_2',['fieldCount',['../namespaceModifierUiPolicy.html#a048d1c2b34de1201058e033168523cf5',1,'ModifierUiPolicy']]],
   ['fieldenabled_3',['fieldEnabled',['../namespaceModifierUiPolicy.html#a042972c99010fc10b7f02d71f3915944',1,'ModifierUiPolicy']]],
@@ -11,7 +11,7 @@ var searchData=
   ['filenewobject_2ecpp_8',['FileNewObject.cpp',['../FileNewObject_8cpp.html',1,'']]],
   ['filenewobject_2ehpp_9',['FileNewObject.hpp',['../FileNewObject_8hpp.html',1,'']]],
   ['filesave_10',['fileSave',['../classEnvelopeLibraryWindow.html#af515ba1cc128d9d9c20c6fff1fcb62b7',1,'EnvelopeLibraryWindow']]],
-  ['filter_11',['filter',['../event__struct_8hpp.html#ab79062bb6e4e9edab1293c4d05ad3b65a90d1f5a729c14d79f26de367352ffe71',1,'filter:&#160;event_struct.hpp'],['../structHEvent.html#a2eb7b688952396a6fa6e7c71744f363a',1,'HEvent::filter'],['../structExtraInfo.html#aedff9c43e869e1764ab2426120d08d38',1,'ExtraInfo::filter']]],
+  ['filter_11',['filter',['../event__struct_8hpp.html#ab79062bb6e4e9edab1293c4d05ad3b65a90d1f5a729c14d79f26de367352ffe71',1,'filter:&#160;event_struct.hpp'],['../structExtraInfo.html#aedff9c43e869e1764ab2426120d08d38',1,'ExtraInfo::filter'],['../structHEvent.html#a2eb7b688952396a6fa6e7c71744f363a',1,'HEvent::filter']]],
   ['filter_5fbuilder_12',['filter_builder',['../structFilterEvent.html#ad51f1b7c57fb3ee5721b02d1aaca342c',1,'FilterEvent']]],
   ['filterevent_13',['filterevent',['../event__struct_8hpp.html#a6e660b44d7b789493ec920be5b930d08',1,'FilterEvent:&#160;event_struct.hpp'],['../structFilterEvent.html',1,'FilterEvent']]],
   ['filterevents_14',['filterevents',['../classProjectManager.html#ad034eb0ddf517d732798522b12280925',1,'ProjectManager']]],
@@ -114,5 +114,8 @@ var searchData=
   ['functionvaluepick_111',['functionValuePick',['../lassie_8hpp.html#a3b22db4d0c717ee8d4c739478f654744a2bf13b5055caa587282599377dbab45a',1,'lassie.hpp']]],
   ['functionwidget_112',['functionwidget',['../classFunctionWidget.html#aea5e13a6c630b4d9c8e0afdbbb9d73b3',1,'FunctionWidget::FunctionWidget()'],['../classFunctionWidget.html',1,'FunctionWidget']]],
   ['functionwidget_2ecpp_113',['FunctionWidget.cpp',['../FunctionWidget_8cpp.html',1,'']]],
-  ['functionwidget_2ehpp_114',['FunctionWidget.hpp',['../FunctionWidget_8hpp.html',1,'']]]
+  ['functionwidget_2ehpp_114',['FunctionWidget.hpp',['../FunctionWidget_8hpp.html',1,'']]],
+  ['functionxmlformat_115',['FunctionXmlFormat',['../namespaceFunctionXmlFormat.html',1,'']]],
+  ['functionxmlformat_2ecpp_116',['FunctionXmlFormat.cpp',['../FunctionXmlFormat_8cpp.html',1,'']]],
+  ['functionxmlformat_2ehpp_117',['FunctionXmlFormat.hpp',['../FunctionXmlFormat_8hpp.html',1,'']]]
 ];

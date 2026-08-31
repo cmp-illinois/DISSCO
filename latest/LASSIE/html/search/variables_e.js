@@ -6,5 +6,6 @@ var searchData=
   ['phase_3',['phase',['../structExtraInfo.html#abd200c3acecbaaea744709c18109b8e4',1,'ExtraInfo']]],
   ['prefix_4',['prefix',['../structTempo.html#a48e331f8f991f5308edeb250e177fedf',1,'Tempo']]],
   ['prev_5',['prev',['../classEnvelopeLibraryEntry.html#ab6e47eb2c9d70100c273f38c48c0b985',1,'EnvelopeLibraryEntry']]],
-  ['probability_6',['probability',['../structPartialModifierFormat_1_1Values.html#a34fcceaa6beca79fba4542da736a4605',1,'PartialModifierFormat::Values']]]
+  ['probability_6',['probability',['../structPartialModifierFormat_1_1Values.html#a34fcceaa6beca79fba4542da736a4605',1,'PartialModifierFormat::Values']]],
+  ['project_7',['project',['../classProjectClipboard_1_1Detail_1_1Snapshot.html#acfb6d85a5ea77db9b54e2204a03ffe16',1,'ProjectClipboard::Detail::Snapshot']]]
 ];

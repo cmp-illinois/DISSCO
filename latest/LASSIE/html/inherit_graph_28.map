@@ -1,15 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,129,80,155"/>
-<area shape="rect" id="Node000001" href="$classFileNewObject.html" title=" " alt="" coords="157,5,273,31"/>
-<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="56,116,85,77,105,57,127,40,156,26,158,31,129,44,108,61,89,80,60,119"/>
-<area shape="rect" id="Node000002" href="$classFunctionGenerator.html" title=" " alt="" coords="144,55,287,80"/>
-<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="72,119,127,89,159,78,160,83,129,94,75,124"/>
-<area shape="rect" id="Node000003" href="$classModifierDetailsDialog.html" title=" " alt="" coords="134,104,297,129"/>
-<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="93,132,134,126,134,131,94,137"/>
-<area shape="rect" id="Node000004" href="$classModifierRulesDialog.html" title=" " alt="" coords="139,153,292,179"/>
-<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="94,146,139,153,138,158,93,152"/>
-<area shape="rect" id="Node000005" href="$classPartialModifierDialog.html" title=" " alt="" coords="136,203,295,228"/>
-<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="76,160,129,188,165,200,163,205,127,192,74,164"/>
-<area shape="rect" id="Node000006" href="$classProjectPropertiesDialog.html" title=" " alt="" coords="128,252,303,277"/>
-<area shape="poly" id="edge6_Node000000_Node000006" title=" " alt="" coords="61,165,90,202,129,237,155,250,153,254,127,242,86,206,57,168"/>
+<area shape="rect" id="Node000000" href="$structPatternEvent.html" title=" " alt="" coords="5,5,111,31"/>
 </map>

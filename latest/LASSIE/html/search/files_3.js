@@ -11,5 +11,7 @@ var searchData=
   ['functionregistry_2ecpp_8',['FunctionRegistry.cpp',['../FunctionRegistry_8cpp.html',1,'']]],
   ['functionregistry_2ehpp_9',['FunctionRegistry.hpp',['../FunctionRegistry_8hpp.html',1,'']]],
   ['functionwidget_2ecpp_10',['FunctionWidget.cpp',['../FunctionWidget_8cpp.html',1,'']]],
-  ['functionwidget_2ehpp_11',['FunctionWidget.hpp',['../FunctionWidget_8hpp.html',1,'']]]
+  ['functionwidget_2ehpp_11',['FunctionWidget.hpp',['../FunctionWidget_8hpp.html',1,'']]],
+  ['functionxmlformat_2ecpp_12',['FunctionXmlFormat.cpp',['../FunctionXmlFormat_8cpp.html',1,'']]],
+  ['functionxmlformat_2ehpp_13',['FunctionXmlFormat.hpp',['../FunctionXmlFormat_8hpp.html',1,'']]]
 ];

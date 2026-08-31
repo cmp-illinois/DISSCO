@@ -1,10 +1,18 @@
 <map id="LayerBox::eventFilter" name="LayerBox::eventFilter">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,70,167,95"/>
-<area shape="rect" id="Node000002" href="$event__struct_8hpp.html#a1eb2b768082eec56a45815689a721cd3" title="Convert a display string (e.g. &quot;Top&quot;, &quot;High&quot;) to the integer enum value as a string." alt="" coords="215,5,401,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,67,216,46,218,51,137,73"/>
-<area shape="rect" id="Node000003" href="$classLayerBox.html#a91565e0e0ffdba591b79eb88d720426d" title=" " alt="" coords="229,70,387,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="167,80,216,80,216,85,167,85"/>
-<area shape="rect" id="Node000004" href="$classLayerBox.html#a4e5f696ca52107b7441af5cd3344a8f9" title=" " alt="" coords="449,95,680,121"/>
-<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="143,93,215,104,328,110,436,110,436,116,328,116,214,109,142,98"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="387,88,436,93,436,98,387,93"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,121,167,146"/>
+<area shape="rect" id="Node000002" href="$event__struct_8hpp.html#a1eb2b768082eec56a45815689a721cd3" title="Convert a display string (e.g. &quot;Top&quot;, &quot;High&quot;) to the integer enum value as a string." alt="" coords="233,5,419,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,118,152,87,214,55,232,48,234,52,216,60,155,92,107,123"/>
+<area shape="rect" id="Node000003" href="$classLayerBox.html#a91565e0e0ffdba591b79eb88d720426d" title=" " alt="" coords="247,70,405,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="147,118,252,96,253,101,148,123"/>
+<area shape="rect" id="Node000004" href="$classLayerBox.html#a4e5f696ca52107b7441af5cd3344a8f9" title=" " alt="" coords="485,95,716,121"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="167,127,471,112,471,117,167,132"/>
+<area shape="rect" id="Node000005" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="230,171,422,197"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="148,144,253,166,252,171,147,149"/>
+<area shape="rect" id="Node000007" href="$classProjectManager.html#a02c96a91da7bebdb54dfcd2ea6688d4b" title="Mark the current project as having unsaved changes and emit dataModified()." alt="" coords="215,221,437,246"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="106,144,154,175,216,207,238,214,236,220,214,212,151,180,103,148"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="405,87,472,93,471,99,405,93"/>
+<area shape="rect" id="Node000006" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="546,171,655,197"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="422,181,532,181,532,187,422,187"/>
+<area shape="rect" id="Node000008" href="$classProjectManager.html#ac3696b7040a19b457dc4e4d2dcbe3c11" title=" " alt="" coords="492,221,709,246"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="438,231,478,231,478,236,438,236"/>
 </map>
