@@ -195,7 +195,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
 <div class="foldopen" id="foldopen00108" data-start="{" data-end="}">
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classUtilities.html#a2a5e70cda223552a6568a71f40d50a27">  108</a></span><a class="code hl_function" href="classUtilities.html#a2a5e70cda223552a6568a71f40d50a27">Utilities::Utilities</a>(pugi::xml_node root,</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                     <span class="keywordtype">string</span> _workingPath,</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                     <span class="keywordtype">string</span>,</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                     <span class="keywordtype">bool</span> _soundSynthesis,</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                     <span class="keywordtype">bool</span> _outputParticel,</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                     <span class="keywordtype">int</span> _numThreads,</div>
@@ -1242,16 +1242,16 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l01122" name="l01122"></a><span class="lineno"> 1122</span>  <span class="keywordtype">float</span> returnVal = 0.0;</div>
 <div class="line"><a id="l01123" name="l01123"></a><span class="lineno"> 1123</span> </div>
 <div class="line"><a id="l01124" name="l01124"></a><span class="lineno"> 1124</span>  <span class="keywordflow">if</span>(method == <span class="stringliteral">&quot;FUNCTIONS&quot;</span>) {</div>
-<div class="line"><a id="l01125" name="l01125"></a><span class="lineno"> 1125</span>    <span class="keywordtype">float</span> randomNumber;</div>
+<div class="line"><a id="l01125" name="l01125"></a><span class="lineno"> 1125</span>    <span class="keywordtype">float</span> randomNumber = 0.0f;</div>
 <div class="line"><a id="l01126" name="l01126"></a><span class="lineno"> 1126</span> </div>
 <div class="line"><a id="l01127" name="l01127"></a><span class="lineno"> 1127</span>    <span class="comment">// stacked up envelopes: their values at the same moment add up to 1</span></div>
 <div class="line"><a id="l01128" name="l01128"></a><span class="lineno"> 1128</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; (int)envVect.size(); i++) {</div>
-<div class="line"><a id="l01129" name="l01129"></a><span class="lineno"> 1129</span>      returnVal = envVect[i]-&gt;getValue(checkpoint, 1.);</div>
+<div class="line"><a id="l01129" name="l01129"></a><span class="lineno"> 1129</span>      returnVal = envVect[i]-&gt;getValue(<span class="keyword">static_cast&lt;</span>m_value_type<span class="keyword">&gt;</span>(checkpoint), 1.);</div>
 <div class="line"><a id="l01130" name="l01130"></a><span class="lineno"> 1130</span>      <span class="keywordflow">if</span>(envVect.size() &gt; 1) {                      <span class="comment">// probability areas</span></div>
-<div class="line"><a id="l01131" name="l01131"></a><span class="lineno"> 1131</span>        <span class="keywordflow">if</span>(i == 0) randomNumber = <a class="code hl_function" href="classRandom.html#a79954f12ada797389d4798c6f26c5914">Random::Rand</a>();</div>
+<div class="line"><a id="l01131" name="l01131"></a><span class="lineno"> 1131</span>        <span class="keywordflow">if</span>(i == 0) randomNumber = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(<a class="code hl_function" href="classRandom.html#a79954f12ada797389d4798c6f26c5914">Random::Rand</a>());</div>
 <div class="line"><a id="l01132" name="l01132"></a><span class="lineno"> 1132</span>        <span class="keywordflow">if</span> (returnVal &gt;= randomNumber) {</div>
-<div class="line"><a id="l01133" name="l01133"></a><span class="lineno"> 1133</span>          returnVal = i;</div>
-<div class="line"><a id="l01134" name="l01134"></a><span class="lineno"> 1134</span>          i = envVect.size(); <span class="comment">// done: break out of the for loop</span></div>
+<div class="line"><a id="l01133" name="l01133"></a><span class="lineno"> 1133</span>          returnVal = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(i);</div>
+<div class="line"><a id="l01134" name="l01134"></a><span class="lineno"> 1134</span>          <span class="keywordflow">break</span>;</div>
 <div class="line"><a id="l01135" name="l01135"></a><span class="lineno"> 1135</span>        }</div>
 <div class="line"><a id="l01136" name="l01136"></a><span class="lineno"> 1136</span>      }</div>
 <div class="line"><a id="l01137" name="l01137"></a><span class="lineno"> 1137</span>    }</div>
@@ -1269,10 +1269,10 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l01149" name="l01149"></a><span class="lineno"> 1149</span>    }</div>
 <div class="line"><a id="l01150" name="l01150"></a><span class="lineno"> 1150</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> offset = <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(offsetValue);</div>
 <div class="line"><a id="l01151" name="l01151"></a><span class="lineno"> 1151</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 2; i++) {</div>
-<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>      limit[i] = envVect[3 * offset + i]-&gt;getValue(checkpoint, 1);</div>
+<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>      limit[i] = envVect[3 * offset + i]-&gt;getValue(<span class="keyword">static_cast&lt;</span>m_value_type<span class="keyword">&gt;</span>(checkpoint), 1);</div>
 <div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span>    }</div>
 <div class="line"><a id="l01154" name="l01154"></a><span class="lineno"> 1154</span> </div>
-<div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span>    returnVal = envVect[3 * offset + 2]-&gt;getValue(<a class="code hl_function" href="classRandom.html#a79954f12ada797389d4798c6f26c5914">Random::Rand</a>(), 1);</div>
+<div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span>    returnVal = envVect[3 * offset + 2]-&gt;getValue(<span class="keyword">static_cast&lt;</span>m_value_type<span class="keyword">&gt;</span>(<a class="code hl_function" href="classRandom.html#a79954f12ada797389d4798c6f26c5914">Random::Rand</a>()), 1);</div>
 <div class="line"><a id="l01156" name="l01156"></a><span class="lineno"> 1156</span> </div>
 <div class="line"><a id="l01157" name="l01157"></a><span class="lineno"> 1157</span>    returnVal *= (limit[1] - limit[0]);</div>
 <div class="line"><a id="l01158" name="l01158"></a><span class="lineno"> 1158</span>    returnVal += limit[0];</div>
@@ -1842,13 +1842,13 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l01722" name="l01722"></a><span class="lineno"> 1722</span> </div>
 <div class="line"><a id="l01723" name="l01723"></a><span class="lineno"> 1723</span>    <span class="comment">// Find Expand parameters</span></div>
 <div class="line"><a id="l01724" name="l01724"></a><span class="lineno"> 1724</span>    elementIter = <a class="code hl_function" href="Libraries_8h.html#a1ecb0a878309e5bd7eadcecb2f701132">GNES</a>(elementIter);</div>
-<div class="line"><a id="l01725" name="l01725"></a><span class="lineno"> 1725</span>    <span class="keywordtype">int</span> mod = <a class="code hl_function" href="classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28">evaluate</a> ( <a class="code hl_function" href="classUtilities.html#a439a53ede571a296c6ce345a7bc87e98">XMLTranscode</a>( elementIter), _object);</div>
+<div class="line"><a id="l01725" name="l01725"></a><span class="lineno"> 1725</span>    <span class="keywordtype">int</span> mod = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_function" href="classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28">evaluate</a>(<a class="code hl_function" href="classUtilities.html#a439a53ede571a296c6ce345a7bc87e98">XMLTranscode</a>(elementIter), _object));</div>
 <div class="line"><a id="l01726" name="l01726"></a><span class="lineno"> 1726</span> </div>
 <div class="line"><a id="l01727" name="l01727"></a><span class="lineno"> 1727</span>    elementIter = <a class="code hl_function" href="Libraries_8h.html#a1ecb0a878309e5bd7eadcecb2f701132">GNES</a>(elementIter);</div>
-<div class="line"><a id="l01728" name="l01728"></a><span class="lineno"> 1728</span>    <span class="keywordtype">int</span> low = <a class="code hl_function" href="classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28">evaluate</a> ( <a class="code hl_function" href="classUtilities.html#a439a53ede571a296c6ce345a7bc87e98">XMLTranscode</a>( elementIter), _object);</div>
+<div class="line"><a id="l01728" name="l01728"></a><span class="lineno"> 1728</span>    <span class="keywordtype">int</span> low = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_function" href="classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28">evaluate</a>(<a class="code hl_function" href="classUtilities.html#a439a53ede571a296c6ce345a7bc87e98">XMLTranscode</a>(elementIter), _object));</div>
 <div class="line"><a id="l01729" name="l01729"></a><span class="lineno"> 1729</span> </div>
 <div class="line"><a id="l01730" name="l01730"></a><span class="lineno"> 1730</span>    elementIter = <a class="code hl_function" href="Libraries_8h.html#a1ecb0a878309e5bd7eadcecb2f701132">GNES</a>(elementIter);</div>
-<div class="line"><a id="l01731" name="l01731"></a><span class="lineno"> 1731</span>    <span class="keywordtype">int</span> high = <a class="code hl_function" href="classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28">evaluate</a> ( <a class="code hl_function" href="classUtilities.html#a439a53ede571a296c6ce345a7bc87e98">XMLTranscode</a>( elementIter), _object);</div>
+<div class="line"><a id="l01731" name="l01731"></a><span class="lineno"> 1731</span>    <span class="keywordtype">int</span> high = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_function" href="classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28">evaluate</a>(<a class="code hl_function" href="classUtilities.html#a439a53ede571a296c6ce345a7bc87e98">XMLTranscode</a>(elementIter), _object));</div>
 <div class="line"><a id="l01732" name="l01732"></a><span class="lineno"> 1732</span> </div>
 <div class="line"><a id="l01733" name="l01733"></a><span class="lineno"> 1733</span>    <span class="comment">// Recurse on the pattern to expand</span></div>
 <div class="line"><a id="l01734" name="l01734"></a><span class="lineno"> 1734</span>    elementIter = <a class="code hl_function" href="Libraries_8h.html#a1ecb0a878309e5bd7eadcecb2f701132">GNES</a>(elementIter);</div>
@@ -2195,7 +2195,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l02075" name="l02075"></a><span class="lineno"> 2075</span>  Envelope* env = envelopeLibrary-&gt;getEnvelope(envelopeNumber);</div>
 <div class="line"><a id="l02076" name="l02076"></a><span class="lineno"> 2076</span>  <span class="comment">//cout &lt;&lt;&quot;EnvLib: #&quot;&lt;&lt;envelopeNumber&lt;&lt;endl;</span></div>
 <div class="line"><a id="l02077" name="l02077"></a><span class="lineno"> 2077</span>  <span class="keywordtype">double</span> scale = <a class="code hl_function" href="classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28">evaluate</a>(<a class="code hl_function" href="classUtilities.html#a439a53ede571a296c6ce345a7bc87e98">XMLTranscode</a>(<a class="code hl_function" href="Libraries_8h.html#a1ecb0a878309e5bd7eadcecb2f701132">GNES</a>(_functionElement)), _object);</div>
-<div class="line"><a id="l02078" name="l02078"></a><span class="lineno"> 2078</span>  env-&gt;scale(scale);</div>
+<div class="line"><a id="l02078" name="l02078"></a><span class="lineno"> 2078</span>  env-&gt;scale(<span class="keyword">static_cast&lt;</span>m_value_type<span class="keyword">&gt;</span>(scale));</div>
 <div class="line"><a id="l02079" name="l02079"></a><span class="lineno"> 2079</span>  <span class="keywordflow">return</span> env;</div>
 <div class="line"><a id="l02080" name="l02080"></a><span class="lineno"> 2080</span> </div>
 <div class="line"><a id="l02081" name="l02081"></a><span class="lineno"> 2081</span>}</div>
@@ -2290,11 +2290,11 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l02170" name="l02170"></a><span class="lineno"> 2170</span>  <span class="keywordtype">float</span> prevXVal = 0;</div>
 <div class="line"><a id="l02171" name="l02171"></a><span class="lineno"> 2171</span>  <span class="keywordflow">while</span> (x!=NULL &amp;&amp; y!=NULL) {</div>
 <div class="line"><a id="l02172" name="l02172"></a><span class="lineno"> 2172</span>    xy_point xy;</div>
-<div class="line"><a id="l02173" name="l02173"></a><span class="lineno"> 2173</span>    xy.x = <a class="code hl_function" href="classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28">evaluate</a>(<a class="code hl_function" href="classUtilities.html#a439a53ede571a296c6ce345a7bc87e98">XMLTranscode</a>(x), _object);</div>
-<div class="line"><a id="l02174" name="l02174"></a><span class="lineno"> 2174</span>    xy.y = <a class="code hl_function" href="classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28">evaluate</a>(<a class="code hl_function" href="classUtilities.html#a439a53ede571a296c6ce345a7bc87e98">XMLTranscode</a>(y), _object);</div>
+<div class="line"><a id="l02173" name="l02173"></a><span class="lineno"> 2173</span>    xy.x = <span class="keyword">static_cast&lt;</span>m_value_type<span class="keyword">&gt;</span>(<a class="code hl_function" href="classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28">evaluate</a>(<a class="code hl_function" href="classUtilities.html#a439a53ede571a296c6ce345a7bc87e98">XMLTranscode</a>(x), _object));</div>
+<div class="line"><a id="l02174" name="l02174"></a><span class="lineno"> 2174</span>    xy.y = <span class="keyword">static_cast&lt;</span>m_value_type<span class="keyword">&gt;</span>(<a class="code hl_function" href="classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28">evaluate</a>(<a class="code hl_function" href="classUtilities.html#a439a53ede571a296c6ce345a7bc87e98">XMLTranscode</a>(y), _object));</div>
 <div class="line"><a id="l02175" name="l02175"></a><span class="lineno"> 2175</span> </div>
 <div class="line"><a id="l02176" name="l02176"></a><span class="lineno"> 2176</span>    <span class="keywordflow">if</span> (xy.x - prevXVal &lt; 0) { <span class="comment">// flag to keep previous xval</span></div>
-<div class="line"><a id="l02177" name="l02177"></a><span class="lineno"> 2177</span>      xy.x = prevXVal * 1.01;</div>
+<div class="line"><a id="l02177" name="l02177"></a><span class="lineno"> 2177</span>      xy.x = <span class="keyword">static_cast&lt;</span>m_value_type<span class="keyword">&gt;</span>(prevXVal * 1.01);</div>
 <div class="line"><a id="l02178" name="l02178"></a><span class="lineno"> 2178</span>    }</div>
 <div class="line"><a id="l02179" name="l02179"></a><span class="lineno"> 2179</span>    <span class="keywordflow">if</span> (xy.y &lt; 0) { <span class="comment">// flag to keep previous yval</span></div>
 <div class="line"><a id="l02180" name="l02180"></a><span class="lineno"> 2180</span>      xy.y = prevYVal;</div>
@@ -2350,7 +2350,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l02230" name="l02230"></a><span class="lineno"> 2230</span> </div>
 <div class="line"><a id="l02231" name="l02231"></a><span class="lineno"> 2231</span>  <span class="comment">// Create a new envelope given the points and segments defined</span></div>
 <div class="line"><a id="l02232" name="l02232"></a><span class="lineno"> 2232</span>  Envelope* madeEnv = <span class="keyword">new</span> Envelope(points, segments);</div>
-<div class="line"><a id="l02233" name="l02233"></a><span class="lineno"> 2233</span>  madeEnv-&gt;scale(scale);</div>
+<div class="line"><a id="l02233" name="l02233"></a><span class="lineno"> 2233</span>  madeEnv-&gt;scale(<span class="keyword">static_cast&lt;</span>m_value_type<span class="keyword">&gt;</span>(scale));</div>
 <div class="line"><a id="l02234" name="l02234"></a><span class="lineno"> 2234</span> </div>
 <div class="line"><a id="l02235" name="l02235"></a><span class="lineno"> 2235</span>  <span class="comment">// Clean up the temporary point and segment collections</span></div>
 <div class="line"><a id="l02236" name="l02236"></a><span class="lineno"> 2236</span>  points.clear();</div>
@@ -2368,7 +2368,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l02247" name="l02247"></a><span class="lineno"> 2247</span>      cout &lt;&lt; <span class="stringliteral">&quot;Error in getEnvelopeShape: env_num exceeds size of EnvLibrary&quot;</span> &lt;&lt; endl;</div>
 <div class="line"><a id="l02248" name="l02248"></a><span class="lineno"> 2248</span>      <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a id="l02249" name="l02249"></a><span class="lineno"> 2249</span>    }</div>
-<div class="line"><a id="l02250" name="l02250"></a><span class="lineno"> 2250</span>    env-&gt;scale(scale);</div>
+<div class="line"><a id="l02250" name="l02250"></a><span class="lineno"> 2250</span>    env-&gt;scale(<span class="keyword">static_cast&lt;</span>m_value_type<span class="keyword">&gt;</span>(scale));</div>
 <div class="line"><a id="l02251" name="l02251"></a><span class="lineno"> 2251</span>    <span class="keywordflow">return</span> env;</div>
 <div class="line"><a id="l02252" name="l02252"></a><span class="lineno"> 2252</span>}</div>
 </div>
@@ -2402,7 +2402,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aclassObjectReferenceGuard_html_af7b975b0d5e49b7462597e592d803484"><div class="ttname"><a href="classObjectReferenceGuard.html#af7b975b0d5e49b7462597e592d803484">ObjectReferenceGuard::ObjectReferenceGuard</a></div><div class="ttdeci">ObjectReferenceGuard(std::vector&lt; pugi::xml_node &gt; &amp;references, pugi::xml_node node, const string &amp;kind, const string &amp;name)</div><div class="ttdef"><b>Definition</b> <a href="Utilities_8cpp_source.html#l00062">Utilities.cpp:62</a></div></div>
 <div class="ttc" id="aclassPatter_html"><div class="ttname"><a href="classPatter.html">Patter</a></div><div class="ttdoc">Stateful pattern iterator.</div><div class="ttdef"><b>Definition</b> <a href="Patter_8h_source.html#l00066">Patter.h:66</a></div></div>
 <div class="ttc" id="aclassPatter_html_a1e2589db4714a775b9e9ce4c2447a264"><div class="ttname"><a href="classPatter.html#a1e2589db4714a775b9e9ce4c2447a264">Patter::SimplePat</a></div><div class="ttdeci">void SimplePat()</div><div class="ttdef"><b>Definition</b> <a href="Patter_8cpp_source.html#l00103">Patter.cpp:103</a></div></div>
-<div class="ttc" id="aclassPatter_html_a38408914faaf6cf0d807d22f0ef3475b"><div class="ttname"><a href="classPatter.html#a38408914faaf6cf0d807d22f0ef3475b">Patter::Expand</a></div><div class="ttdeci">void Expand(std::string method, int modulo, int low, int high)</div><div class="ttdef"><b>Definition</b> <a href="Patter_8cpp_source.html#l00116">Patter.cpp:116</a></div></div>
+<div class="ttc" id="aclassPatter_html_a38408914faaf6cf0d807d22f0ef3475b"><div class="ttname"><a href="classPatter.html#a38408914faaf6cf0d807d22f0ef3475b">Patter::Expand</a></div><div class="ttdeci">void Expand(std::string method, int modulo, int low, int high)</div><div class="ttdef"><b>Definition</b> <a href="Patter_8cpp_source.html#l00115">Patter.cpp:115</a></div></div>
 <div class="ttc" id="aclassPatter_html_acbfb64165131cc7e7c600718a466d0ba"><div class="ttname"><a href="classPatter.html#acbfb64165131cc7e7c600718a466d0ba">Patter::GetNextValue</a></div><div class="ttdeci">int GetNextValue(std::string method, int newOrigin=0)</div><div class="ttdef"><b>Definition</b> <a href="Patter_8cpp_source.html#l00086">Patter.cpp:86</a></div></div>
 <div class="ttc" id="aclassPiece_html"><div class="ttname"><a href="classPiece.html">Piece</a></div><div class="ttdoc">Root model of a DISSCO composition.</div><div class="ttdef"><b>Definition</b> <a href="Piece_8h_source.html#l00103">Piece.h:103</a></div></div>
 <div class="ttc" id="aclassRandom_html_a79954f12ada797389d4798c6f26c5914"><div class="ttname"><a href="classRandom.html#a79954f12ada797389d4798c6f26c5914">Random::Rand</a></div><div class="ttdeci">static double Rand()</div><div class="ttdef"><b>Definition</b> <a href="Random_8cpp_source.html#l00053">Random.cpp:53</a></div></div>

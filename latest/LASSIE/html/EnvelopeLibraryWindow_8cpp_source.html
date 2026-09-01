@@ -196,7 +196,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classEnvelopeLibraryWindow.html#aa5ccfd6bcfce9d10dbd3706bb2645b60">EnvelopeLibraryWindow::duplicateEnvelope</a>);</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    actionSave = <span class="keyword">new</span> QAction(<span class="stringliteral">&quot;Save&quot;</span>, <span class="keyword">this</span>);</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    actionSave-&gt;setShortcut(QKeySequence(Qt::CTRL + Qt::Key_S));</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    actionSave-&gt;setShortcut(QKeySequence(Qt::CTRL | Qt::Key_S));</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    connect(actionSave, &amp;QAction::triggered,</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classEnvelopeLibraryWindow.html#af515ba1cc128d9d9c20c6fff1fcb62b7">EnvelopeLibraryWindow::fileSave</a>);</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    addAction(actionSave);</div>
@@ -490,8 +490,8 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>    </div>
 <div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>    <span class="comment">// Only update if we have valid numeric input</span></div>
 <div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>    <span class="keywordtype">bool</span> xOk, yOk;</div>
-<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>    <span class="keywordtype">double</span> xVal = <a class="code hl_variable" href="classEnvelopeLibraryWindow.html#a7ff6f89026eab6640766cc870842c9a0">xEntry</a>-&gt;text().toDouble(&amp;xOk);</div>
-<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>    <span class="keywordtype">double</span> yVal = <a class="code hl_variable" href="classEnvelopeLibraryWindow.html#aa6c578f540524f0e5fe8cb9a98af39d5">yEntry</a>-&gt;text().toDouble(&amp;yOk);</div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>    <a class="code hl_variable" href="classEnvelopeLibraryWindow.html#a7ff6f89026eab6640766cc870842c9a0">xEntry</a>-&gt;text().toDouble(&amp;xOk);</div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>    <a class="code hl_variable" href="classEnvelopeLibraryWindow.html#aa6c578f540524f0e5fe8cb9a98af39d5">yEntry</a>-&gt;text().toDouble(&amp;yOk);</div>
 <div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>    </div>
 <div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>    <span class="keywordflow">if</span> (xOk &amp;&amp; yOk) {</div>
 <div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>        drawingArea-&gt;<a class="code hl_function" href="classEnvLibDrawingArea.html#a41f39121793a68415000a76edf0f9b33">setActiveNodeCoordinate</a>(</div>

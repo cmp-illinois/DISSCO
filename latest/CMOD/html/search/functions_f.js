@@ -4,7 +4,7 @@ var searchData=
   ['section_1',['section',['../classSection.html#a2e4216446ce73d461f53089d11c568fb',1,'Section::Section(TimeSignature time_signature)'],['../classSection.html#ae04024893829aefa4aad879400a7ab3a',1,'Section::Section(const Section &amp;other)']]],
   ['seed_2',['Seed',['../classRandom.html#ad80943e1cb4b0a912cb7782597e9ec20',1,'Random']]],
   ['seedbysystemtime_3',['SeedBySystemTime',['../classRandom.html#ac819547bbe0b528e629781b94757f7e7',1,'Random']]],
-  ['segfaulthandler_4',['segfaulthandler',['../SignalHandlers_8h.html#ae7aa0f0897500b3fafae9f011afb0d4d',1,'segfaultHandler(int signal):&#160;SignalHandlers.cpp'],['../SignalHandlers_8cpp.html#ae7aa0f0897500b3fafae9f011afb0d4d',1,'segfaultHandler(int signal):&#160;SignalHandlers.cpp']]],
+  ['segfaulthandler_4',['segfaulthandler',['../SignalHandlers_8h.html#ae7aa0f0897500b3fafae9f011afb0d4d',1,'segfaultHandler(int signal):&#160;SignalHandlers.cpp'],['../SignalHandlers_8cpp.html#a2f45b2201327c763cc101ecbd767c698',1,'segfaultHandler(int):&#160;SignalHandlers.cpp']]],
   ['select_5',['select',['../classdissco_1_1modifier__usage_1_1Program.html#a08d7c3a395d6c96ef841dd19675fac08',1,'dissco::modifier_usage::Program']]],
   ['setattacks_6',['setAttacks',['../classMatrix.html#a5fd03e891ada1fd4f596212e3d168ba6',1,'Matrix']]],
   ['setcheckpoint_7',['setCheckPoint',['../classModifier.html#aa002bd3cbcadf45a204ef002c4ebb236',1,'Modifier']]],

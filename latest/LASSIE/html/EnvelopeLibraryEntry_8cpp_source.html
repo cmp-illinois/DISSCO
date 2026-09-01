@@ -170,7 +170,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  <a class="code hl_class" href="classEnvLibEntrySeg.html">EnvLibEntrySeg</a>*  prevSeg  = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  <span class="comment">// build all but last segment</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  <span class="keywordtype">int</span> lastIndex = segments-&gt;size() - 1;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  <span class="keywordtype">int</span> lastIndex = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(segments-&gt;size() - 1);</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lastIndex; ++i) {</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="comment">// create node</span></div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <a class="code hl_class" href="classEnvLibEntryNode.html">EnvLibEntryNode</a>* node = <span class="keyword">new</span> <a class="code hl_class" href="classEnvLibEntryNode.html">EnvLibEntryNode</a>(segments-&gt;at(i).x, segments-&gt;at(i).y);</div>
@@ -248,7 +248,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="foldopen" id="foldopen00190" data-start="{" data-end="}">
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno"><a class="line" href="classEnvelopeLibraryEntry.html#ac30055687c13c1a5b6f992ce449f6191">  190</a></span>QString <a class="code hl_function" href="classEnvelopeLibraryEntry.html#ac30055687c13c1a5b6f992ce449f6191">EnvelopeLibraryEntry::getNumberString</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  <span class="keywordflow">return</span> QString::number(<a class="code hl_variable" href="classEnvelopeLibraryEntry.html#aa6c04f33b5346da04eb9506865e786ab">number</a>);</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>} </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>}</div>
 </div>
 <div class="ttc" id="aEnvelopeLibraryEntry_8hpp_html"><div class="ttname"><a href="EnvelopeLibraryEntry_8hpp.html">EnvelopeLibraryEntry.hpp</a></div></div>
 <div class="ttc" id="aEnvelopeLibraryEntry_8hpp_html_a1f7ea6a41bdeb2f7079202fa9b835880a3694873799f93a101cf0420670967da4"><div class="ttname"><a href="EnvelopeLibraryEntry_8hpp.html#a1f7ea6a41bdeb2f7079202fa9b835880a3694873799f93a101cf0420670967da4">envSegmentTypeExponential</a></div><div class="ttdeci">@ envSegmentTypeExponential</div><div class="ttdoc">Exponential interpolation.</div><div class="ttdef"><b>Definition</b> <a href="EnvelopeLibraryEntry_8hpp_source.html#l00012">EnvelopeLibraryEntry.hpp:12</a></div></div>

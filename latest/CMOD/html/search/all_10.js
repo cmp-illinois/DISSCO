@@ -8,7 +8,7 @@ var searchData=
   ['section_2eh_5',['Section.h',['../Section_8h.html',1,'']]],
   ['seed_6',['Seed',['../classRandom.html#ad80943e1cb4b0a912cb7782597e9ec20',1,'Random']]],
   ['seedbysystemtime_7',['SeedBySystemTime',['../classRandom.html#ac819547bbe0b528e629781b94757f7e7',1,'Random']]],
-  ['segfaulthandler_8',['segfaulthandler',['../SignalHandlers_8h.html#ae7aa0f0897500b3fafae9f011afb0d4d',1,'segfaultHandler(int signal):&#160;SignalHandlers.cpp'],['../SignalHandlers_8cpp.html#ae7aa0f0897500b3fafae9f011afb0d4d',1,'segfaultHandler(int signal):&#160;SignalHandlers.cpp']]],
+  ['segfaulthandler_8',['segfaulthandler',['../SignalHandlers_8h.html#ae7aa0f0897500b3fafae9f011afb0d4d',1,'segfaultHandler(int signal):&#160;SignalHandlers.cpp'],['../SignalHandlers_8cpp.html#a2f45b2201327c763cc101ecbd767c698',1,'segfaultHandler(int):&#160;SignalHandlers.cpp']]],
   ['select_9',['select',['../classdissco_1_1modifier__usage_1_1Program.html#a08d7c3a395d6c96ef841dd19675fac08',1,'dissco::modifier_usage::Program']]],
   ['selection_10',['Selection',['../structdissco_1_1modifier__usage_1_1Selection.html',1,'dissco::modifier_usage']]],
   ['selfreference_11',['SelfReference',['../namespacedissco_1_1modifier__usage.html#a81781cdce67e6031d84252ead99c90d8a218fd1b917d38c87228ef521a01b32b8',1,'dissco::modifier_usage']]],

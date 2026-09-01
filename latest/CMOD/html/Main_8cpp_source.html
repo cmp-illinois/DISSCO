@@ -126,7 +126,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">static</span> <span class="keywordtype">int</span> runCmod(<span class="keywordtype">int</span> parameterCount, <span class="keywordtype">char</span> **parameterList) {</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="comment">// Rubin Du 2024: Installed custom signal handler to print stack trace on segfault</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  signal(SIGSEGV, <a class="code hl_function" href="SignalHandlers_8cpp.html#ae7aa0f0897500b3fafae9f011afb0d4d">segfaultHandler</a>);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  signal(SIGSEGV, <a class="code hl_function" href="SignalHandlers_8cpp.html#a2f45b2201327c763cc101ecbd767c698">segfaultHandler</a>);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  time_t startTime;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  time(&amp;startTime);</div>
@@ -170,7 +170,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  time_t endTime;</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  time(&amp;endTime);</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  <span class="keywordtype">int</span> seconds = difftime(endTime, startTime);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  <span class="keywordtype">int</span> seconds = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(difftime(endTime, startTime));</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  <span class="keywordtype">int</span> hr = seconds / 3600;</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  <span class="keywordtype">int</span> min = (seconds % 3600) / 60;</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  <span class="keywordtype">int</span> sec = seconds % 60;</div>
@@ -207,7 +207,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aMain_8cpp_html_ad7fad620c08fb93cc7f4b5ebe35b9368"><div class="ttname"><a href="Main_8cpp.html#ad7fad620c08fb93cc7f4b5ebe35b9368">main</a></div><div class="ttdeci">int main(int parameterCount, char **parameterList)</div><div class="ttdef"><b>Definition</b> <a href="Main_8cpp_source.html#l00114">Main.cpp:114</a></div></div>
 <div class="ttc" id="aNote_8h_html"><div class="ttname"><a href="Note_8h.html">Note.h</a></div><div class="ttdoc">Notated-score representation of a single musical event.</div></div>
 <div class="ttc" id="aPiece_8h_html"><div class="ttname"><a href="Piece_8h.html">Piece.h</a></div><div class="ttdoc">Top-level composition object and supporting filesystem helpers.</div></div>
-<div class="ttc" id="aSignalHandlers_8cpp_html_ae7aa0f0897500b3fafae9f011afb0d4d"><div class="ttname"><a href="SignalHandlers_8cpp.html#ae7aa0f0897500b3fafae9f011afb0d4d">segfaultHandler</a></div><div class="ttdeci">void segfaultHandler(int signal)</div><div class="ttdef"><b>Definition</b> <a href="SignalHandlers_8cpp_source.html#l00003">SignalHandlers.cpp:3</a></div></div>
+<div class="ttc" id="aSignalHandlers_8cpp_html_a2f45b2201327c763cc101ecbd767c698"><div class="ttname"><a href="SignalHandlers_8cpp.html#a2f45b2201327c763cc101ecbd767c698">segfaultHandler</a></div><div class="ttdeci">void segfaultHandler(int)</div><div class="ttdef"><b>Definition</b> <a href="SignalHandlers_8cpp_source.html#l00003">SignalHandlers.cpp:3</a></div></div>
 <div class="ttc" id="aSignalHandlers_8h_html"><div class="ttname"><a href="SignalHandlers_8h.html">SignalHandlers.h</a></div><div class="ttdoc">Custom POSIX signal handlers for CMOD (Rubin Du, 2024).</div></div>
 <div class="ttc" id="aclassCmodError_html"><div class="ttname"><a href="classCmodError.html">CmodError</a></div><div class="ttdef"><b>Definition</b> <a href="CmodError_8h_source.html#l00010">CmodError.h:10</a></div></div>
 <div class="ttc" id="aclassCmodError_html_a95049bd4f3d2e9daede92d3752248690a9e727fdd3aec8274f46685441900280d"><div class="ttname"><a href="classCmodError.html#a95049bd4f3d2e9daede92d3752248690a9e727fdd3aec8274f46685441900280d">CmodError::Kind::Project</a></div><div class="ttdeci">@ Project</div></div>

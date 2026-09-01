@@ -138,7 +138,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classEnvelopeLibrary.html#a39cf6da57787eeaee8810d6b3efaf71c">   52</a></span><a class="code hl_function" href="classEnvelopeLibrary.html#addc4e47e8a3ca9b420ae892f7e424558">EnvelopeLibrary::EnvelopeLibrary</a> (<a class="code hl_class" href="classEnvelopeLibrary.html">EnvelopeLibrary</a> &amp; lib)</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>{</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> envs = 0; envs &lt; lib.library.size (); envs++)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <span class="keywordflow">for</span> (std::size_t envs = 0; envs &lt; lib.library.size (); envs++)</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    library.push_back(lib.library.at(envs)-&gt;clone() );</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
 </div>
@@ -156,7 +156,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      library.clear ();</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>      <span class="comment">// reassign new data</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> envs = 0; envs &lt; lib.library.size (); envs++)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>      <span class="keywordflow">for</span> (std::size_t envs = 0; envs &lt; lib.library.size (); envs++)</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  library.push_back(lib.library.at(envs) );</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  </div>
@@ -190,7 +190,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  outData &lt;&lt; library.size () &lt;&lt; <span class="stringliteral">&quot;\n\n&quot;</span>; <span class="comment">// write number of envelopes</span></div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> envs = 0; envs &lt; library.size (); envs++)</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>      <span class="keywordflow">for</span> (std::size_t envs = 0; envs &lt; library.size (); envs++)</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  {</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    temp_env = library.at(envs);</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    temp_coll = temp_env -&gt; getPoints ();</div>
@@ -199,7 +199,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    outData &lt;&lt; (temp_coll -&gt; <a class="code hl_function" href="classEnvelopeLibrary.html#aee38f438ecd706a6aea46710f782f9d5">size</a> () ) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>; <span class="comment">// number of points</span></div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> pts = 0; pts &lt; ( (temp_coll -&gt; <a class="code hl_function" href="classEnvelopeLibrary.html#aee38f438ecd706a6aea46710f782f9d5">size</a> () ) - 1); pts++)</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> pts = 0; <span class="keyword">static_cast&lt;</span>std::size_t<span class="keyword">&gt;</span>(pts) &lt; ( (temp_coll -&gt; <a class="code hl_function" href="classEnvelopeLibrary.html#aee38f438ecd706a6aea46710f782f9d5">size</a> () ) - 1); pts++)</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>      {</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="comment">// write point data for this envelope</span></div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="comment">// format: point nx, point ny</span></div>
@@ -334,7 +334,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>      inData.close ();</div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    }</div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>  <span class="keywordflow">return</span> (library.size () );</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>  <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(library.size () );</div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>}</div>
 </div>
 <div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
@@ -414,7 +414,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    inData.close ();</div>
 <div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>  }</div>
 <div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>  <span class="keywordflow">return</span> (library.size () );</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>  <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(library.size () );</div>
 <div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>}</div>
 </div>
 <div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span> </div>
@@ -423,7 +423,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="foldopen" id="foldopen00327" data-start="{" data-end="}">
 <div class="line"><a id="l00327" name="l00327"></a><span class="lineno"><a class="line" href="classEnvelopeLibrary.html#a4854884965e691990c4dfb9d7b952b39">  327</a></span><a class="code hl_class" href="classEnvelope.html">Envelope</a> * <a class="code hl_function" href="classEnvelopeLibrary.html#a4854884965e691990c4dfb9d7b952b39">EnvelopeLibrary::getEnvelope</a> (<span class="keywordtype">int</span> index)</div>
 <div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>{</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>  <span class="keywordflow">if</span> (index &gt; library.size () )</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>  <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span>std::size_t<span class="keyword">&gt;</span>(index) &gt; library.size () )</div>
 <div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>  <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    <span class="keywordflow">return</span> (library.at(index - 1) ) -&gt; clone ();</div>
@@ -444,7 +444,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00343" name="l00343"></a><span class="lineno"><a class="line" href="classEnvelopeLibrary.html#a1346928ae3b687785f53f47f8ef0ced6">  343</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classEnvelopeLibrary.html#a1346928ae3b687785f53f47f8ef0ced6">EnvelopeLibrary::addEnvelope</a> (<a class="code hl_class" href="classEnvelope.html">Envelope</a> * env)</div>
 <div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>{</div>
 <div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>  library.push_back(env);</div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>  <span class="keywordflow">return</span> (library.size () );</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>  <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(library.size () );</div>
 <div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>}</div>
 </div>
 <div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
@@ -465,7 +465,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="foldopen" id="foldopen00361" data-start="{" data-end="}">
 <div class="line"><a id="l00361" name="l00361"></a><span class="lineno"><a class="line" href="classEnvelopeLibrary.html#a1dad09ba7d238d946a0d6ccb644e1f83">  361</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classEnvelopeLibrary.html#a1dad09ba7d238d946a0d6ccb644e1f83">EnvelopeLibrary::updateEnvelope</a> (<span class="keywordtype">int</span> index, <a class="code hl_class" href="classEnvelope.html">Envelope</a> * env)</div>
 <div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>{</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>  <span class="keywordflow">if</span> (index &gt; library.size () )</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>  <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span>std::size_t<span class="keyword">&gt;</span>(index) &gt; library.size () )</div>
 <div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>  <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    {</div>
@@ -482,7 +482,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>{</div>
 <div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>  <a class="code hl_class" href="classEnvelope.html">Envelope</a> * temp_env;</div>
 <div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>  </div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>  <span class="keywordflow">if</span> (index &gt; library.size () )</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>  <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span>std::size_t<span class="keyword">&gt;</span>(index) &gt; library.size () )</div>
 <div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>    <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>  <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    {</div>
@@ -497,7 +497,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="foldopen" id="foldopen00389" data-start="{" data-end="}">
 <div class="line"><a id="l00389" name="l00389"></a><span class="lineno"><a class="line" href="classEnvelopeLibrary.html#aee38f438ecd706a6aea46710f782f9d5">  389</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classEnvelopeLibrary.html#aee38f438ecd706a6aea46710f782f9d5">EnvelopeLibrary::size</a> ()</div>
 <div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>{</div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>  <span class="keywordflow">return</span> (library.size () );</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>  <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(library.size () );</div>
 <div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>}</div>
 </div>
 <div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span> </div>
@@ -507,14 +507,14 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aEnvelopeLibrary_8h_html"><div class="ttname"><a href="EnvelopeLibrary_8h.html">EnvelopeLibrary.h</a></div></div>
 <div class="ttc" id="aEnvelope_8h_html"><div class="ttname"><a href="Envelope_8h.html">Envelope.h</a></div></div>
 <div class="ttc" id="aTypes_8h_html"><div class="ttname"><a href="Types_8h.html">Types.h</a></div></div>
-<div class="ttc" id="aTypes_8h_html_a1125b6e8b8f52765d5af0d4d33edf473"><div class="ttname"><a href="Types_8h.html#a1125b6e8b8f52765d5af0d4d33edf473">m_time_type</a></div><div class="ttdeci">float m_time_type</div><div class="ttdoc">Specifies a type for an individual time value.</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00047">Types.h:47</a></div></div>
-<div class="ttc" id="aTypes_8h_html_a471e7651aeb8074017a8d0a0059a958b"><div class="ttname"><a href="Types_8h.html#a471e7651aeb8074017a8d0a0059a958b">stretch_type</a></div><div class="ttdeci">stretch_type</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00059">Types.h:59</a></div></div>
-<div class="ttc" id="aTypes_8h_html_a471e7651aeb8074017a8d0a0059a958ba9b5eccb7f8f027c46f2018d07c74f384"><div class="ttname"><a href="Types_8h.html#a471e7651aeb8074017a8d0a0059a958ba9b5eccb7f8f027c46f2018d07c74f384">FIXED</a></div><div class="ttdeci">@ FIXED</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00059">Types.h:59</a></div></div>
-<div class="ttc" id="aTypes_8h_html_a471e7651aeb8074017a8d0a0059a958bad2dab1cda43e225012f8bd9148868b81"><div class="ttname"><a href="Types_8h.html#a471e7651aeb8074017a8d0a0059a958bad2dab1cda43e225012f8bd9148868b81">FLEXIBLE</a></div><div class="ttdeci">@ FLEXIBLE</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00059">Types.h:59</a></div></div>
-<div class="ttc" id="aTypes_8h_html_afe289733af5a151e49b7dadc43a70a8c"><div class="ttname"><a href="Types_8h.html#afe289733af5a151e49b7dadc43a70a8c">interpolation_type</a></div><div class="ttdeci">interpolation_type</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00066">Types.h:66</a></div></div>
-<div class="ttc" id="aTypes_8h_html_afe289733af5a151e49b7dadc43a70a8ca13480ea7779c90806a9fa4ef70322ebc"><div class="ttname"><a href="Types_8h.html#afe289733af5a151e49b7dadc43a70a8ca13480ea7779c90806a9fa4ef70322ebc">CUBIC_SPLINE</a></div><div class="ttdeci">@ CUBIC_SPLINE</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00066">Types.h:66</a></div></div>
-<div class="ttc" id="aTypes_8h_html_afe289733af5a151e49b7dadc43a70a8caa6055a3a8ab1aed0594419b51d9ec15e"><div class="ttname"><a href="Types_8h.html#afe289733af5a151e49b7dadc43a70a8caa6055a3a8ab1aed0594419b51d9ec15e">EXPONENTIAL</a></div><div class="ttdeci">@ EXPONENTIAL</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00066">Types.h:66</a></div></div>
-<div class="ttc" id="aTypes_8h_html_afe289733af5a151e49b7dadc43a70a8cadc101ebf31c49c2d4b80b7c6f59f22cb"><div class="ttname"><a href="Types_8h.html#afe289733af5a151e49b7dadc43a70a8cadc101ebf31c49c2d4b80b7c6f59f22cb">LINEAR</a></div><div class="ttdeci">@ LINEAR</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00066">Types.h:66</a></div></div>
+<div class="ttc" id="aTypes_8h_html_a1125b6e8b8f52765d5af0d4d33edf473"><div class="ttname"><a href="Types_8h.html#a1125b6e8b8f52765d5af0d4d33edf473">m_time_type</a></div><div class="ttdeci">float m_time_type</div><div class="ttdoc">Specifies a type for an individual time value.</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00049">Types.h:49</a></div></div>
+<div class="ttc" id="aTypes_8h_html_a471e7651aeb8074017a8d0a0059a958b"><div class="ttname"><a href="Types_8h.html#a471e7651aeb8074017a8d0a0059a958b">stretch_type</a></div><div class="ttdeci">stretch_type</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00064">Types.h:64</a></div></div>
+<div class="ttc" id="aTypes_8h_html_a471e7651aeb8074017a8d0a0059a958ba9b5eccb7f8f027c46f2018d07c74f384"><div class="ttname"><a href="Types_8h.html#a471e7651aeb8074017a8d0a0059a958ba9b5eccb7f8f027c46f2018d07c74f384">FIXED</a></div><div class="ttdeci">@ FIXED</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00064">Types.h:64</a></div></div>
+<div class="ttc" id="aTypes_8h_html_a471e7651aeb8074017a8d0a0059a958bad2dab1cda43e225012f8bd9148868b81"><div class="ttname"><a href="Types_8h.html#a471e7651aeb8074017a8d0a0059a958bad2dab1cda43e225012f8bd9148868b81">FLEXIBLE</a></div><div class="ttdeci">@ FLEXIBLE</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00064">Types.h:64</a></div></div>
+<div class="ttc" id="aTypes_8h_html_afe289733af5a151e49b7dadc43a70a8c"><div class="ttname"><a href="Types_8h.html#afe289733af5a151e49b7dadc43a70a8c">interpolation_type</a></div><div class="ttdeci">interpolation_type</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00071">Types.h:71</a></div></div>
+<div class="ttc" id="aTypes_8h_html_afe289733af5a151e49b7dadc43a70a8ca13480ea7779c90806a9fa4ef70322ebc"><div class="ttname"><a href="Types_8h.html#afe289733af5a151e49b7dadc43a70a8ca13480ea7779c90806a9fa4ef70322ebc">CUBIC_SPLINE</a></div><div class="ttdeci">@ CUBIC_SPLINE</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00071">Types.h:71</a></div></div>
+<div class="ttc" id="aTypes_8h_html_afe289733af5a151e49b7dadc43a70a8caa6055a3a8ab1aed0594419b51d9ec15e"><div class="ttname"><a href="Types_8h.html#afe289733af5a151e49b7dadc43a70a8caa6055a3a8ab1aed0594419b51d9ec15e">EXPONENTIAL</a></div><div class="ttdeci">@ EXPONENTIAL</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00071">Types.h:71</a></div></div>
+<div class="ttc" id="aTypes_8h_html_afe289733af5a151e49b7dadc43a70a8cadc101ebf31c49c2d4b80b7c6f59f22cb"><div class="ttname"><a href="Types_8h.html#afe289733af5a151e49b7dadc43a70a8cadc101ebf31c49c2d4b80b7c6f59f22cb">LINEAR</a></div><div class="ttdeci">@ LINEAR</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00071">Types.h:71</a></div></div>
 <div class="ttc" id="aclassEnvelopeLibrary_html"><div class="ttname"><a href="classEnvelopeLibrary.html">EnvelopeLibrary</a></div><div class="ttdef"><b>Definition</b> <a href="EnvelopeLibrary_8h_source.html#l00047">EnvelopeLibrary.h:48</a></div></div>
 <div class="ttc" id="aclassEnvelopeLibrary_html_a10c4e5568643dc9c0cfadfee29eec6f9"><div class="ttname"><a href="classEnvelopeLibrary.html#a10c4e5568643dc9c0cfadfee29eec6f9">EnvelopeLibrary::showEnvelope</a></div><div class="ttdeci">void showEnvelope(int index)</div><div class="ttdef"><b>Definition</b> <a href="EnvelopeLibrary_8cpp_source.html#l00374">EnvelopeLibrary.cpp:374</a></div></div>
 <div class="ttc" id="aclassEnvelopeLibrary_html_a1346928ae3b687785f53f47f8ef0ced6"><div class="ttname"><a href="classEnvelopeLibrary.html#a1346928ae3b687785f53f47f8ef0ced6">EnvelopeLibrary::addEnvelope</a></div><div class="ttdeci">int addEnvelope(Envelope *env)</div><div class="ttdef"><b>Definition</b> <a href="EnvelopeLibrary_8cpp_source.html#l00343">EnvelopeLibrary.cpp:343</a></div></div>
@@ -529,13 +529,13 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aclassEnvelopeLibrary_html_aee38f438ecd706a6aea46710f782f9d5"><div class="ttname"><a href="classEnvelopeLibrary.html#aee38f438ecd706a6aea46710f782f9d5">EnvelopeLibrary::size</a></div><div class="ttdeci">int size()</div><div class="ttdef"><b>Definition</b> <a href="EnvelopeLibrary_8cpp_source.html#l00389">EnvelopeLibrary.cpp:389</a></div></div>
 <div class="ttc" id="aclassEnvelopeLibrary_html_af5203c8c616c4398413dc784d2b1c764"><div class="ttname"><a href="classEnvelopeLibrary.html#af5203c8c616c4398413dc784d2b1c764">EnvelopeLibrary::loadLibraryNewFormat</a></div><div class="ttdeci">int loadLibraryNewFormat(char *filename)</div><div class="ttdef"><b>Definition</b> <a href="EnvelopeLibrary_8cpp_source.html#l00249">EnvelopeLibrary.cpp:249</a></div></div>
 <div class="ttc" id="aclassEnvelope_html"><div class="ttname"><a href="classEnvelope.html">Envelope</a></div><div class="ttdef"><b>Definition</b> <a href="Envelope_8h_source.html#l00063">Envelope.h:64</a></div></div>
-<div class="ttc" id="astructenvelope__segment_html"><div class="ttname"><a href="structenvelope__segment.html">envelope_segment</a></div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00092">Types.h:93</a></div></div>
-<div class="ttc" id="astructenvelope__segment_html_a238d646696aac8ca4370ca4c88c5d856"><div class="ttname"><a href="structenvelope__segment.html#a238d646696aac8ca4370ca4c88c5d856">envelope_segment::lengthType</a></div><div class="ttdeci">stretch_type lengthType</div><div class="ttdoc">length stretch type to use for the segment</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00101">Types.h:101</a></div></div>
-<div class="ttc" id="astructenvelope__segment_html_a7e60e59ec3173222172cdeac7321f0bd"><div class="ttname"><a href="structenvelope__segment.html#a7e60e59ec3173222172cdeac7321f0bd">envelope_segment::length</a></div><div class="ttdeci">m_value_type length</div><div class="ttdoc">length if applicable</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00103">Types.h:103</a></div></div>
-<div class="ttc" id="astructenvelope__segment_html_aac5fe4106fab37797d81c3c868756a11"><div class="ttname"><a href="structenvelope__segment.html#aac5fe4106fab37797d81c3c868756a11">envelope_segment::interType</a></div><div class="ttdeci">interpolation_type interType</div><div class="ttdoc">interpolation type to use for the segment</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00095">Types.h:95</a></div></div>
-<div class="ttc" id="astructxy__point_html"><div class="ttname"><a href="structxy__point.html">xy_point</a></div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00072">Types.h:73</a></div></div>
-<div class="ttc" id="astructxy__point_html_a4ea82357a95a576f5565ebb2189a3549"><div class="ttname"><a href="structxy__point.html#a4ea82357a95a576f5565ebb2189a3549">xy_point::x</a></div><div class="ttdeci">m_value_type x</div><div class="ttdoc">x value</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00075">Types.h:75</a></div></div>
-<div class="ttc" id="astructxy__point_html_adee12938d778a466838a27f9394217c4"><div class="ttname"><a href="structxy__point.html#adee12938d778a466838a27f9394217c4">xy_point::y</a></div><div class="ttdeci">m_value_type y</div><div class="ttdoc">y value</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00077">Types.h:77</a></div></div>
+<div class="ttc" id="astructenvelope__segment_html"><div class="ttname"><a href="structenvelope__segment.html">envelope_segment</a></div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00097">Types.h:98</a></div></div>
+<div class="ttc" id="astructenvelope__segment_html_a238d646696aac8ca4370ca4c88c5d856"><div class="ttname"><a href="structenvelope__segment.html#a238d646696aac8ca4370ca4c88c5d856">envelope_segment::lengthType</a></div><div class="ttdeci">stretch_type lengthType</div><div class="ttdoc">length stretch type to use for the segment</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00106">Types.h:106</a></div></div>
+<div class="ttc" id="astructenvelope__segment_html_a7e60e59ec3173222172cdeac7321f0bd"><div class="ttname"><a href="structenvelope__segment.html#a7e60e59ec3173222172cdeac7321f0bd">envelope_segment::length</a></div><div class="ttdeci">m_value_type length</div><div class="ttdoc">length if applicable</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00108">Types.h:108</a></div></div>
+<div class="ttc" id="astructenvelope__segment_html_aac5fe4106fab37797d81c3c868756a11"><div class="ttname"><a href="structenvelope__segment.html#aac5fe4106fab37797d81c3c868756a11">envelope_segment::interType</a></div><div class="ttdeci">interpolation_type interType</div><div class="ttdoc">interpolation type to use for the segment</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00100">Types.h:100</a></div></div>
+<div class="ttc" id="astructxy__point_html"><div class="ttname"><a href="structxy__point.html">xy_point</a></div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00077">Types.h:78</a></div></div>
+<div class="ttc" id="astructxy__point_html_a4ea82357a95a576f5565ebb2189a3549"><div class="ttname"><a href="structxy__point.html#a4ea82357a95a576f5565ebb2189a3549">xy_point::x</a></div><div class="ttdeci">m_value_type x</div><div class="ttdoc">x value</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00080">Types.h:80</a></div></div>
+<div class="ttc" id="astructxy__point_html_adee12938d778a466838a27f9394217c4"><div class="ttname"><a href="structxy__point.html#adee12938d778a466838a27f9394217c4">xy_point::y</a></div><div class="ttdeci">m_value_type y</div><div class="ttdoc">y value</div><div class="ttdef"><b>Definition</b> <a href="Types_8h_source.html#l00082">Types.h:82</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

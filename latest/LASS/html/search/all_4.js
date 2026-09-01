@@ -26,7 +26,7 @@ var searchData=
   ['doneaddentrylocation_23',['doneAddEntryLocation',['../classMultiPan.html#a46305c00398158ea631865a3293da2e2',1,'MultiPan']]],
   ['doneaddingsounds_24',['doneAddingSounds',['../classScore.html#a70de1da2f362a695b56f6738d8a33ac1',1,'Score']]],
   ['duration_25',['DURATION',['../Sound_8h.html#a53659c963f5fce879f7cdfa711096e4baaffdd09ac37b12ceaf2f84f2a72ef6c8',1,'Sound.h']]],
-  ['dvhash_26',['dvHash',['../classScore.html#a0be4cd547333ed637450a35954d18f56',1,'Score']]],
+  ['dvhash_26',['dvHash',['../classScore.html#a543a3c9015a4b96b0108ff7cf5e5757c',1,'Score']]],
   ['dynamicvariable_27',['dynamicvariable',['../classDynamicVariable.html#a9adada96b46fbf15b7cecc60b266f4e5',1,'DynamicVariable::DynamicVariable()'],['../classDynamicVariable.html',1,'DynamicVariable']]],
   ['dynamicvariable_2ecpp_28',['DynamicVariable.cpp',['../DynamicVariable_8cpp.html',1,'']]],
   ['dynamicvariable_2eh_29',['DynamicVariable.h',['../DynamicVariable_8h.html',1,'']]],

@@ -388,8 +388,8 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00314" name="l00314"></a><span class="lineno"><a class="line" href="classEnvLibDrawingArea.html#a720fca5e8faaf07a750fb2876581913b">  314</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classEnvLibDrawingArea.html#a720fca5e8faaf07a750fb2876581913b">EnvLibDrawingArea::mouseMoveEvent</a>(QMouseEvent* event)</div>
 <div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>{</div>
 <div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    <span class="keywordtype">int</span> w = width(), h = height();</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    <span class="keywordtype">double</span> x = <span class="keyword">event</span>-&gt;x()*(w+1)/<span class="keywordtype">double</span>(w*w);</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    <span class="keywordtype">double</span> y = 1.0 - <span class="keyword">event</span>-&gt;y()*(h+1)/<span class="keywordtype">double</span>(h*h);</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    <span class="keywordtype">double</span> x = qRound(event-&gt;position().x())*(w+1)/<span class="keywordtype">double</span>(w*w);</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    <span class="keywordtype">double</span> y = 1.0 - qRound(event-&gt;position().y())*(h+1)/<span class="keywordtype">double</span>(h*h);</div>
 <div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    y = mouseAdjustY(y);</div>
 <div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span> </div>
 <div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    <span class="comment">// round to 3 decimals</span></div>
@@ -415,8 +415,8 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    <span class="keywordflow">if</span> (!<a class="code hl_enumvalue" href="event__struct_8hpp.html#ab79062bb6e4e9edab1293c4d05ad3b65a9de8f14e4eab7732d5b59eedcbb860b0">env</a>) { QWidget::mousePressEvent(event); <span class="keywordflow">return</span>; }</div>
 <div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
 <div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    activeSegment = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    mouseX = <span class="keyword">event</span>-&gt;x();</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    mouseY = height() - <span class="keyword">event</span>-&gt;y();</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    mouseX = qRound(event-&gt;position().x());</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    mouseY = height() - qRound(event-&gt;position().y());</div>
 <div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
 <div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>    <span class="comment">// pick a node within ±5px</span></div>
 <div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>    <a class="code hl_class" href="classEnvLibEntryNode.html">EnvLibEntryNode</a>* cand = <a class="code hl_enumvalue" href="event__struct_8hpp.html#ab79062bb6e4e9edab1293c4d05ad3b65a9de8f14e4eab7732d5b59eedcbb860b0">env</a>-&gt;head;</div>
@@ -448,7 +448,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <span class="comment">// right-click → context menu</span></div>
 <div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    <span class="keywordflow">if</span> (event-&gt;button() == Qt::RightButton) {</div>
 <div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>        actionRemove-&gt;setEnabled(activeNode &amp;&amp; activeNode-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#a82921bad2d63e97ae0c854e4e2465dd4">leftSeg</a> &amp;&amp; activeNode-&gt;<a class="code hl_variable" href="classEnvLibEntryNode.html#a1c6800bceb099bc7c27d51804f20b638">rightSeg</a>);</div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>        m_pMenuPopup-&gt;exec(event-&gt;globalPos());</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>        m_pMenuPopup-&gt;exec(event-&gt;globalPosition().toPoint());</div>
 <div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    }</div>
 <div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <span class="comment">// left-click → start drag</span></div>
 <div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (event-&gt;button() == Qt::LeftButton) {</div>
@@ -647,7 +647,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span><span class="keywordtype">double</span> EnvLibDrawingArea::mouseAdjustY(<span class="keywordtype">double</span> y)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span><span class="keyword"></span>{</div>
 <div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>    <span class="keywordflow">return</span> y*(upperY-lowerY) + lowerY;</div>
-<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>} </div>
+<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>}</div>
 <div class="ttc" id="aEnvLibDrawingArea_8hpp_html"><div class="ttname"><a href="EnvLibDrawingArea_8hpp.html">EnvLibDrawingArea.hpp</a></div></div>
 <div class="ttc" id="aEnvelopeLibraryEntry_8hpp_html_a1f7ea6a41bdeb2f7079202fa9b835880a3694873799f93a101cf0420670967da4"><div class="ttname"><a href="EnvelopeLibraryEntry_8hpp.html#a1f7ea6a41bdeb2f7079202fa9b835880a3694873799f93a101cf0420670967da4">envSegmentTypeExponential</a></div><div class="ttdeci">@ envSegmentTypeExponential</div><div class="ttdoc">Exponential interpolation.</div><div class="ttdef"><b>Definition</b> <a href="EnvelopeLibraryEntry_8hpp_source.html#l00012">EnvelopeLibraryEntry.hpp:12</a></div></div>
 <div class="ttc" id="aEnvelopeLibraryEntry_8hpp_html_a1f7ea6a41bdeb2f7079202fa9b835880a59775a3c383d45d87cf6fba38ec50415"><div class="ttname"><a href="EnvelopeLibraryEntry_8hpp.html#a1f7ea6a41bdeb2f7079202fa9b835880a59775a3c383d45d87cf6fba38ec50415">envSegmentTypeLinear</a></div><div class="ttdeci">@ envSegmentTypeLinear</div><div class="ttdoc">Linear interpolation.</div><div class="ttdef"><b>Definition</b> <a href="EnvelopeLibraryEntry_8hpp_source.html#l00011">EnvelopeLibraryEntry.hpp:11</a></div></div>
