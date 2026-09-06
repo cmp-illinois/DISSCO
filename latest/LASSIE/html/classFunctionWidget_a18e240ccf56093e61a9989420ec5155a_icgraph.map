@@ -1,27 +1,29 @@
 <map id="FunctionWidget::xmlChanged" name="FunctionWidget::xmlChanged">
-<area shape="rect" id="Node000001" title=" " alt="" coords="308,351,521,376"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="308,383,521,408"/>
 <area shape="rect" id="Node000002" href="$classDecayFunction.html#a6132657fab62ec7e9e1bad068594bc36" title=" " alt="" coords="21,5,244,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="406,338,392,277,364,197,345,155,321,114,292,77,258,45,237,33,240,28,262,41,296,74,325,111,350,152,369,195,397,275,412,337"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="408,370,395,303,369,215,349,168,325,123,295,81,258,45,238,33,241,29,262,41,299,78,329,120,354,166,374,213,400,302,413,369"/>
 <area shape="rect" id="Node000003" href="$classExpandPatternFunction.html#a9c3e581e70b89151a561897a5254a8ab" title=" " alt="" coords="43,55,222,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="403,338,384,289,354,227,312,163,287,134,259,110,221,91,223,86,261,105,291,131,317,160,359,224,389,287,408,336"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="405,370,388,315,359,244,339,207,316,171,289,138,258,110,221,90,224,85,262,105,293,134,321,168,344,205,364,242,393,313,410,369"/>
 <area shape="rect" id="Node000004" href="$classGetPatternFunction.html#a5ec2445f782abf74910e499af6f40280" title=" " alt="" coords="55,119,210,159"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="398,340,376,302,345,257,305,212,259,174,235,162,210,153,211,148,237,157,261,169,309,208,349,254,381,299,403,337"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="401,371,380,327,349,274,309,219,285,195,259,174,235,161,210,152,211,147,237,156,261,169,288,191,313,216,354,271,385,325,405,368"/>
 <area shape="rect" id="Node000005" href="$classMakeEnvelopeFunction.html#a85ba5b6e6441069e57dec8178fb906db" title=" " alt="" coords="43,183,223,223"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="391,343,334,290,298,262,259,238,222,223,224,218,261,233,301,257,338,285,394,339"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="395,373,340,305,302,269,259,238,222,222,224,217,261,233,305,264,344,302,399,370"/>
 <area shape="rect" id="Node000006" href="$classMakeFilterFunction.html#acb80720c20aa27fe450e1318e4a38184" title=" " alt="" coords="56,247,209,287"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="373,347,259,302,209,287,210,282,261,297,375,342"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="384,377,328,339,259,302,209,285,211,280,261,297,331,334,387,372"/>
 <area shape="rect" id="Node000007" href="$classMakeSieveFunction.html#a022bdd97b024fdcb1cc40e2f0147cef4" title=" " alt="" coords="55,311,211,351"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="294,352,211,343,211,338,295,347"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="344,382,211,352,212,346,345,377"/>
 <area shape="rect" id="Node000008" href="$classMultiEntryFunction.html#a192f702ddc83a30ad117252068513f24" title=" " alt="" coords="57,375,209,415"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="294,380,209,389,209,384,294,374"/>
-<area shape="rect" id="Node000009" href="$classRevFunctionBase.html#ab366b2cd4fb4150d75a79c34c6edd747" title=" " alt="" coords="5,440,260,465"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="376,384,322,408,261,430,210,443,209,437,259,425,320,403,374,379"/>
-<area shape="rect" id="Node000010" href="$classSelectFunction.html#ad0b0a560f5835d251b9a76905892c645" title=" " alt="" coords="23,489,243,515"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="392,388,335,434,299,459,261,479,223,492,222,487,259,474,297,454,332,430,389,384"/>
-<area shape="rect" id="Node000011" href="$classSPAFunction.html#aacd0a7692f5445cd38d9de56d467425d" title=" " alt="" coords="39,539,227,564"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="400,389,376,422,345,460,306,497,261,528,228,542,226,537,259,524,302,493,341,456,372,418,395,386"/>
-<area shape="rect" id="Node000012" href="$classStochosFunction.html#aa58e1fa44632de82b8e013ba7857aed8" title=" " alt="" coords="39,589,226,629"/>
-<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="405,390,384,431,352,482,311,534,261,578,227,595,225,590,259,573,307,530,348,479,379,428,400,387"/>
-<area shape="rect" id="Node000013" href="$classValuePickFunction.html#a9a6db04b6f8c77f8d42fc19fc3cfc028" title=" " alt="" coords="59,653,207,693"/>
-<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="409,390,392,443,362,512,319,583,292,615,262,643,236,658,208,667,206,662,234,653,258,639,289,611,315,579,357,509,387,441,404,388"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="294,398,209,398,209,393,294,393"/>
+<area shape="rect" id="Node000009" href="$classRandomOrderIntFunction.html#a446b6376ba4a53e9203fa26b1e5a0fd3" title=" " alt="" coords="41,439,225,479"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="345,414,222,442,221,437,344,408"/>
+<area shape="rect" id="Node000010" href="$classRevFunctionBase.html#ab366b2cd4fb4150d75a79c34c6edd747" title=" " alt="" coords="5,504,260,529"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="388,419,331,457,261,494,220,507,218,501,259,489,329,453,385,414"/>
+<area shape="rect" id="Node000011" href="$classSelectFunction.html#ad0b0a560f5835d251b9a76905892c645" title=" " alt="" coords="23,553,243,579"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="397,421,342,483,304,516,261,543,229,556,227,551,259,538,300,511,338,479,394,417"/>
+<area shape="rect" id="Node000012" href="$classSPAFunction.html#aacd0a7692f5445cd38d9de56d467425d" title=" " alt="" coords="39,603,227,628"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="403,422,382,460,350,507,310,554,261,592,228,607,226,602,259,588,306,550,346,504,377,457,399,419"/>
+<area shape="rect" id="Node000013" href="$classStochosFunction.html#aa58e1fa44632de82b8e013ba7857aed8" title=" " alt="" coords="39,653,226,693"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="407,422,387,470,357,529,315,590,290,617,261,642,228,659,225,655,259,637,286,614,311,586,352,526,383,467,402,420"/>
+<area shape="rect" id="Node000014" href="$classValuePickFunction.html#a9a6db04b6f8c77f8d42fc19fc3cfc028" title=" " alt="" coords="59,717,207,757"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="411,422,395,481,367,558,347,599,323,638,295,675,262,707,236,722,208,732,206,727,234,717,258,703,291,671,319,635,342,596,362,556,390,480,406,421"/>
 </map>

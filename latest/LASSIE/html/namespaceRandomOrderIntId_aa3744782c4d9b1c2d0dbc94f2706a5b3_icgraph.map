@@ -1,0 +1,11 @@
+<map id="RandomOrderIntId::reserve" name="RandomOrderIntId::reserve">
+<area shape="rect" id="Node000001" title=" " alt="" coords="469,35,668,60"/>
+<area shape="rect" id="Node000002" href="$classProjectManager.html#ae02e10c5bae67bbc3fe488cce43c3841" title=" " alt="" coords="245,5,413,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="455,36,413,31,414,26,456,31"/>
+<area shape="rect" id="Node000004" href="$classRandomOrderIntFunction.html#ae3b59c9bc64af2b75d1d7a68df7aaf6c" title=" " alt="" coords="237,55,421,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="456,63,422,67,421,62,455,58"/>
+<area shape="rect" id="Node000003" href="$classProjectManager.html#ace67fedabf8ab2f225f83deeb01dd9e7" title="Validate and open a .dissco file from disk, returning a new Project." alt="" coords="15,5,179,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="231,21,179,21,179,15,231,15"/>
+<area shape="rect" id="Node000005" href="$classRandomOrderIntFunction.html#ae0afa6fb13bdd69cf20bcfc0f3959b62" title=" " alt="" coords="5,55,189,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="223,78,190,78,190,73,223,73"/>
+</map>

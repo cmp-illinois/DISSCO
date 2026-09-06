@@ -1,9 +1,15 @@
 <map id="StochosFunction::StochosFunction" name="StochosFunction::StochosFunction">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,192,75"/>
-<area shape="rect" id="Node000002" href="$classFunctionGenerator.html#ad22cbc76afd77a12811379570d947693" title=" " alt="" coords="271,5,422,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,41,257,33,258,38,192,46"/>
-<area shape="rect" id="Node000004" href="$classFunctionWidget.html#a18e240ccf56093e61a9989420ec5155a" title=" " alt="" coords="240,70,453,95"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="192,63,227,66,226,72,192,68"/>
-<area shape="rect" id="Node000003" href="$namespaceFunctionXmlFormat.html#a66dc65efa238d5cb4b9afcda0f317ca9" title=" " alt="" coords="501,5,659,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="422,23,487,23,487,28,422,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,99,192,139"/>
+<area shape="rect" id="Node000002" href="$classFunctionGenerator.html#ad22cbc76afd77a12811379570d947693" title=" " alt="" coords="271,69,422,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,105,257,97,258,102,192,110"/>
+<area shape="rect" id="Node000007" href="$classFunctionWidget.html#a18e240ccf56093e61a9989420ec5155a" title=" " alt="" coords="240,134,453,159"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="192,127,227,130,226,136,192,132"/>
+<area shape="rect" id="Node000003" href="$namespaceFunctionXmlFormat.html#a66dc65efa238d5cb4b9afcda0f317ca9" title=" " alt="" coords="516,5,673,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="422,67,502,46,504,51,423,73"/>
+<area shape="rect" id="Node000004" href="$namespaceFunctionXmlFormat.html#aa1b10621389b1dd1e6fc21892121ce0f" title=" " alt="" coords="516,69,673,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="422,87,502,87,502,92,422,92"/>
+<area shape="rect" id="Node000005" href="$namespaceRandomOrderIntId.html#aef9238a11efc3e465fc8399b06512ac5" title=" " alt="" coords="501,133,688,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="423,106,504,127,502,132,422,111"/>
+<area shape="rect" id="Node000006" href="$namespaceRandomOrderIntId.html#afdd05e73403cd63f59edf7633eaf0ac7" title=" " alt="" coords="736,141,937,166"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="688,151,722,151,722,156,688,156"/>
 </map>

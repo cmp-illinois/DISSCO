@@ -1,9 +1,17 @@
 <map id="LASSIE/src/widgets/generic/FunctionEntryRow.cpp" name="LASSIE/src/widgets/generic/FunctionEntryRow.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="447,5,668,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="905,5,1127,45"/>
 <area shape="rect" id="Node000002" href="$FunctionEntryRow_8hpp.html" title=" " alt="" coords="349,93,515,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="528,48,463,88,460,84,526,43"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="905,44,529,94,529,89,905,39"/>
 <area shape="rect" id="Node000010" href="$FunctionGenerator_8hpp.html" title=" " alt="" coords="618,93,862,119"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="602,43,701,85,699,90,600,48"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="951,48,794,92,793,87,949,43"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="887,93,1017,119"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="1003,47,972,84,968,81,998,44"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="1041,93,1119,119"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="1034,44,1064,81,1060,84,1029,47"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1143,93,1209,119"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="1055,43,1141,85,1139,90,1053,48"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1233,93,1383,119"/>
+<area shape="poly" id="edge17_Node000001_Node000016" title=" " alt="" coords="1087,43,1253,87,1251,92,1085,48"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="337,167,410,192"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="424,121,393,158,389,155,420,117"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="434,167,545,192"/>
