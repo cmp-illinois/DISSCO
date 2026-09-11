@@ -79,6 +79,8 @@ EnvLibDrawingArea::~EnvLibDrawingArea()
 void EnvLibDrawingArea::resetFields()
 {
     activeNode = nullptr;
+    activeSegment = nullptr;
+    mouseLeftButtonPressedDown = false;
     moveLeftBound = moveRightBound = 0.0;
     head = nullptr;
     tail = nullptr;
@@ -147,26 +149,37 @@ void EnvLibDrawingArea::setActiveNodeCoordinate(const QString& _x, const QString
  */
 void EnvLibDrawingArea::adjustBoundary(EnvelopeLibraryEntry* _envelope)
 {
-    if (!_envelope) return;
-    EnvLibEntrySeg* segment = _envelope->head->rightSeg;
-    double maxVal = 0.0, minVal = 0.0;
-
-    // Find actual max and min y values (not just ceil/floor)
-    while (segment) {
-        EnvLibEntryNode* nd = segment->rightNode;
-        if (nd->y > maxVal) maxVal = nd->y;
-        if (nd->y < minVal) minVal = nd->y;
-        segment = nd->rightSeg;
+    // Keep the mouse-to-value mapping stable for the entire drag. Otherwise
+    // moving the highest node changes the scale underneath the pointer.
+    if (!_envelope || mouseLeftButtonPressedDown) return;
+    double maxVal = 1.0;
+    for (auto* node = _envelope->head; node;
+         node = node->rightSeg ? node->rightSeg->rightNode : nullptr) {
+        maxVal = qMax(maxVal, node->y);
     }
-
-    // Fixed 0-10 range (Y is capped at 10)
-    upperY = qMax(1.0, maxVal);
+    upperY = maxVal;
     lowerY = 0.0;
+}
 
-    // Update boundary display
-    QString txt = QString("%1\n\n\n\n\n\n\n\n\n\n\n\n%2")
-                  .arg(QString::number(upperY, 'f', 3))
-                  .arg(QString::number(lowerY, 'f', 3));
+QRectF EnvLibDrawingArea::graphRect() const
+{
+    // Leave room for labels and the full endpoint handles, including Y=0
+    // and the highest node. Every editing operation uses this same rectangle.
+    return QRectF(44, 16, qMax(1, width() - 60), qMax(1, height() - 44));
+}
+
+QPointF EnvLibDrawingArea::nodePosition(double x, double y) const
+{
+    const QRectF plot = graphRect();
+    return QPointF(plot.left() + x * plot.width(),
+                   plot.bottom() - getAdjustedY(y) * plot.height());
+}
+
+QPointF EnvLibDrawingArea::valueAtPosition(const QPointF& position) const
+{
+    const QRectF plot = graphRect();
+    return QPointF((position.x() - plot.left()) / plot.width(),
+                   mouseAdjustY((plot.bottom() - position.y()) / plot.height()));
 }
 
 /*
@@ -183,24 +196,30 @@ void EnvLibDrawingArea::paintEvent(QPaintEvent* event)
 
     adjustBoundary(env);
 
-    int w = width(), h = height();
+    const QRectF plot = graphRect();
 
     // Draw grid lines
     painter.save();
     QPen gridPen(QColor(220,220,220));
     gridPen.setStyle(Qt::DashLine);
     painter.setPen(gridPen);
-    // Y-axis: lines every 0.25 (4 intervals)
+    // Y-axis: four equal intervals across the current range.
     for (int i = 1; i < 4; ++i) {
-        int y = h - i * h / 4;
-        painter.drawLine(0, y, w, y);
+        const double y = plot.bottom() - i * plot.height() / 4.0;
+        painter.drawLine(QPointF(plot.left(), y), QPointF(plot.right(), y));
     }
 
     // X-axis: lines every 0.2 (5 intervals)
     for (int i = 1; i < 5; ++i) {
-        int x = i * w / 5;
-        painter.drawLine(x, 0, x, h);
+        const double x = plot.left() + i * plot.width() / 5.0;
+        painter.drawLine(QPointF(x, plot.top()), QPointF(x, plot.bottom()));
     }
+    // Y=1 remains a useful reference even when the graph includes higher values.
+    gridPen.setStyle(Qt::SolidLine);
+    gridPen.setColor(QColor(170, 170, 170));
+    painter.setPen(gridPen);
+    const double unityY = nodePosition(0.0, 1.0).y();
+    painter.drawLine(QPointF(plot.left(), unityY), QPointF(plot.right(), unityY));
     painter.restore();
 
     // Draw axis labels
@@ -208,18 +227,20 @@ void EnvLibDrawingArea::paintEvent(QPaintEvent* event)
     font.setPointSize(10);
     painter.setFont(font);
     painter.setPen(Qt::black);
-    // Y-axis labels along left edge at each grid line (skip 0, shown by X-axis)
-    for (int i = 1; i <= 4; ++i) {
-        int y = h - i * h / 4;
+    // Y-axis labels sit outside the plot so they do not cover endpoint handles.
+    for (int i = 0; i <= 4; ++i) {
+        const double y = plot.bottom() - i * plot.height() / 4.0;
         double value = lowerY + (upperY - lowerY) * i / 4.0;
         QString label = QString::number(value, 'f', 2);
-        painter.drawText(3, y - 3, label);
+        painter.drawText(QRectF(0, y - 10, plot.left() - 8, 20),
+                         Qt::AlignRight | Qt::AlignVCenter, label);
     }
     // X-axis labels along bottom at each grid line
     for (int i = 0; i <= 5; ++i) {
-        int x = i * w / 5;
+        const double x = plot.left() + i * plot.width() / 5.0;
         QString label = QString::number(i * 0.2, 'f', 1);
-        painter.drawText(x + 2, h - 3, label);
+        painter.drawText(QRectF(x - 14, plot.bottom() + 8, 28, 20),
+                         Qt::AlignHCenter | Qt::AlignTop, label);
     }
 
     // Draw each segment
@@ -227,10 +248,10 @@ void EnvLibDrawingArea::paintEvent(QPaintEvent* event)
     while (seg) {
         EnvLibEntryNode* L = seg->leftNode;
         EnvLibEntryNode* R = seg->rightNode;
-        double x1 = L->x * w*w / double(w+1);
-        double y1 = h - getAdjustedY(L->y)*h*h / double(h+1);
-        double x2 = R->x * w*w / double(w+1);
-        double y2 = h - getAdjustedY(R->y)*h*h / double(h+1);
+        const QPointF leftPosition = nodePosition(L->x, L->y);
+        const QPointF rightPosition = nodePosition(R->x, R->y);
+        const double x1 = leftPosition.x(), y1 = leftPosition.y();
+        const double x2 = rightPosition.x(), y2 = rightPosition.y();
 
         QPen pen;
         // color by type (use dark/contrasting colors)
@@ -300,10 +321,8 @@ void EnvLibDrawingArea::paintEvent(QPaintEvent* event)
 
     // highlight active node
     if (activeNode) {
-        double ax = activeNode->x * w*w / double(w+1);
-        double ay = h - getAdjustedY(activeNode->y)*h*h / double(h+1);
         painter.setBrush(Qt::magenta); // Magenta for active node
-        painter.drawEllipse(QPointF(ax,ay), 8,8);
+        painter.drawEllipse(nodePosition(activeNode->x, activeNode->y), 8,8);
     }
 }
 
@@ -313,17 +332,18 @@ void EnvLibDrawingArea::paintEvent(QPaintEvent* event)
  */
 void EnvLibDrawingArea::mouseMoveEvent(QMouseEvent* event)
 {
-    int w = width(), h = height();
-    double x = qRound(event->position().x())*(w+1)/double(w*w);
-    double y = 1.0 - qRound(event->position().y())*(h+1)/double(h*h);
-    y = mouseAdjustY(y);
+    const QPointF value = valueAtPosition(event->position());
+    double x = value.x();
+    double y = value.y();
 
     // round to 3 decimals
     x = qRound(x*1000)/1000.0;
     y = qRound(y*1000)/1000.0;
     x = qBound(0.0, x, 1.0);
-    // Constrain Y to [0, 4]
+    // Constrain Y to [0, 10]. Only dragging snaps; typed values stay exact.
     y = qBound(0.0, y, 10.0);
+    if (qAbs(event->position().y() - nodePosition(0.0, 1.0).y()) <= 5.0)
+        y = 1.0;
 
     if (mouseLeftButtonPressedDown) {
         mouseX = x;
@@ -343,18 +363,18 @@ void EnvLibDrawingArea::mousePressEvent(QMouseEvent* event)
     if (!env) { QWidget::mousePressEvent(event); return; }
 
     activeSegment = nullptr;
-    mouseX = qRound(event->position().x());
-    mouseY = height() - qRound(event->position().y());
+    adjustBoundary(env);
+    const QPointF value = valueAtPosition(event->position());
+    mouseX = qBound(0.0, qRound(value.x() * 1000) / 1000.0, 1.0);
+    mouseY = qBound(0.0, qRound(value.y() * 1000) / 1000.0, 10.0);
 
-    // pick a node within ±5px
+    // Include the full 8-pixel selected handle when picking a node.
     EnvLibEntryNode* cand = env->head;
-    int w = width(), h = height();
     bool found = false;
     while (cand) {
-        double nx = cand->x*w*w/double(w+1);
-        double ny = getAdjustedY(cand->y)*h*h/double(h+1);
-        if (mouseX >= nx-5 && mouseX <= nx+5 &&
-            mouseY >= ny-5 && mouseY <= ny+5) {
+        const QPointF position = nodePosition(cand->x, cand->y);
+        if (qAbs(event->position().x() - position.x()) <= 8
+            && qAbs(event->position().y() - position.y()) <= 8) {
             activeNode = cand;
             found = true;
             break;
@@ -380,7 +400,7 @@ void EnvLibDrawingArea::mousePressEvent(QMouseEvent* event)
     }
     // left-click → start drag
     else if (event->button() == Qt::LeftButton) {
-        mouseLeftButtonPressedDown = true;
+        mouseLeftButtonPressedDown = activeNode != nullptr;
     }
     QWidget::mousePressEvent(event);
 }
@@ -394,6 +414,8 @@ void EnvLibDrawingArea::mouseReleaseEvent(QMouseEvent* event)
     if (event->button() == Qt::LeftButton) {
         mouseLeftButtonPressedDown = false;
         activeSegment = nullptr;
+        adjustBoundary(envelopeLibraryWindow->getActiveEnvelope());
+        update();
     }
     QWidget::mouseReleaseEvent(event);
 }
@@ -416,14 +438,7 @@ void EnvLibDrawingArea::insertEnvelopeSegment()
 {
     EnvelopeLibraryEntry* env = envelopeLibraryWindow->getActiveEnvelope();
     if (!env) return;
-    MUtilities::modified();
-
-    int w = width(), h = height();
-    double ix = mouseX*(w+1)/double(w*w);
-    double iy = 1.0 - mouseY*(h+1)/double(h*h);
-    iy = mouseAdjustY(iy); // Convert to actual Y value
-    ix = qRound(ix*1000)/1000.0;
-    iy = qRound(iy*1000)/1000.0;
+    const double ix = mouseX, iy = mouseY;
 
     EnvLibEntryNode* L = env->head;
     EnvLibEntryNode* R = L->rightSeg->rightNode;
@@ -431,6 +446,9 @@ void EnvLibDrawingArea::insertEnvelopeSegment()
         L = R;
         R = R->rightSeg->rightNode;
     }
+    // Endpoints already exist; do not create zero-length segments.
+    if (ix - L->x < 0.001 || R->x - ix < 0.001) return;
+    MUtilities::modified();
 
     // splice in new node & segment
     EnvLibEntryNode* newN = new EnvLibEntryNode(ix, iy);
@@ -443,6 +461,9 @@ void EnvLibDrawingArea::insertEnvelopeSegment()
     R->leftSeg     = newS;
     newS->segmentType     = L->rightSeg->segmentType;
     newS->segmentProperty = L->rightSeg->segmentProperty;
+    activeNode = newN;
+    envelopeLibraryWindow->setEntries(QString::number(ix, 'f', 4),
+                                     QString::number(iy, 'f', 4));
 
     adjustBoundary(env);
     showGraph(env);
@@ -457,7 +478,7 @@ void EnvLibDrawingArea::setFixed()
     if (!env) return;
     MUtilities::modified();
 
-    double ix = mouseX*(width()+1)/double(width()*width());
+    double ix = mouseX;
     EnvLibEntryNode* L = env->head;
     EnvLibEntryNode* R = L->rightSeg->rightNode;
     while (L->x < ix && R->x < ix) {
@@ -478,7 +499,7 @@ void EnvLibDrawingArea::setFlexible()
     if (!env) return;
     MUtilities::modified();
 
-    double ix = mouseX*(width()+1)/double(width()*width());
+    double ix = mouseX;
     EnvLibEntryNode* L = env->head;
     EnvLibEntryNode* R = L->rightSeg->rightNode;
     while (L->x < ix && R->x < ix) {
@@ -498,7 +519,7 @@ void EnvLibDrawingArea::setLinear()
     if (!env) return;
     MUtilities::modified();
 
-    double ix = mouseX*(width()+1)/double(width()*width());
+    double ix = mouseX;
     EnvLibEntryNode* L = env->head;
     EnvLibEntryNode* R = L->rightSeg->rightNode;
     while (L->x < ix && R->x < ix) {
@@ -518,7 +539,7 @@ void EnvLibDrawingArea::setSpline()
     if (!env) return;
     MUtilities::modified();
 
-    double ix = mouseX*(width()+1)/double(width()*width());
+    double ix = mouseX;
     EnvLibEntryNode* L = env->head;
     EnvLibEntryNode* R = L->rightSeg->rightNode;
     while (L->x < ix && R->x < ix) {
@@ -538,7 +559,7 @@ void EnvLibDrawingArea::setExponential()
     if (!env) return;
     MUtilities::modified();
 
-    double ix = mouseX*(width()+1)/double(width()*width());
+    double ix = mouseX;
     EnvLibEntryNode* L = env->head;
     EnvLibEntryNode* R = L->rightSeg->rightNode;
     while (L->x < ix && R->x < ix) {

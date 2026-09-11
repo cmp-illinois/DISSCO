@@ -1,6 +1,7 @@
 #include "PartialModifierDialog.hpp"
 
 #include "FunctionGenerator.hpp"
+#include "FunctionXmlFormat.hpp"
 
 #include <QDialogButtonBox>
 #include <QGroupBox>
@@ -156,7 +157,8 @@ PartialModifierDialog::PartialModifierDialog(QWidget* parent,
     m_preview = new QPlainTextEdit(this);
     m_preview->setReadOnly(true);
     m_preview->setMaximumHeight(100);
-    m_preview->setLineWrapMode(QPlainTextEdit::WidgetWidth);
+    m_preview->setLineWrapMode(QPlainTextEdit::NoWrap);
+    m_preview->setToolTip(tr("Generated expression on one line. Scroll horizontally to read it; edit the partial rows above to change values."));
     mainLayout->addWidget(m_preview);
 
     auto* buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
@@ -374,5 +376,5 @@ void PartialModifierDialog::updateCountControls()
 void PartialModifierDialog::updatePreview()
 {
     if (m_preview)
-        m_preview->setPlainText(resultString());
+        m_preview->setPlainText(FunctionXmlFormat::compact(resultString()));
 }

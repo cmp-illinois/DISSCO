@@ -1,0 +1,413 @@
+{
+  "source_repository": "https://github.com/cmp-illinois/DISSCO",
+  "source_commit": "1fb85dd3a1898339938c1b2ba1b1528e4b0f9f17",
+  "capture_date": "2026-09-09",
+  "capture_method": "Actual LASSIE Qt widgets rendered offscreen at 2x from the fixed application objects, using a temporary capture entry point.",
+  "qt_style": "Fusion",
+  "language": "English",
+  "format": "PNG",
+  "validation": "PNG decoding, dimension checks, English/Chinese OCR, and visual review completed.",
+  "images": [
+    {
+      "file": "01-project-properties.png",
+      "title": "Project Properties",
+      "width": 1920,
+      "height": 880,
+      "device_pixel_ratio": 2,
+      "sha256": "cee988d1a5f5432e588ea5a683fe936bf92f40be180cd614ebc577442a28a0b1",
+      "chinese_characters_detected": 0,
+      "capture_date": "2026-09-10"
+    },
+    {
+      "file": "02-random-start-time.png",
+      "title": "Function Generator",
+      "width": 1920,
+      "height": 680,
+      "device_pixel_ratio": 2,
+      "sha256": "9f2114df97874243cc50bfdd8a4f6accfbe5f3d7d694e469a7f77ed4c76bab3c",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "03-top-event.png",
+      "title": "stage5.dissco[*] - LASSIE",
+      "width": 3080,
+      "height": 2320,
+      "device_pixel_ratio": 2,
+      "sha256": "e71bf6a07441ac4973c8ab7516a657fe1fd410a4cc97cc1fca2f7a71f3611a8e",
+      "chinese_characters_detected": 0,
+      "capture_date": "2026-09-10"
+    },
+    {
+      "file": "04-new-bottom.png",
+      "title": "Create New Object",
+      "width": 1920,
+      "height": 840,
+      "device_pixel_ratio": 2,
+      "sha256": "988733bd47e7aba4bca5fe0ba89dd72490365d858372714968310b000ca93f3d",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "05-bottom-timing.png",
+      "title": "stage6.dissco[*] - LASSIE",
+      "width": 3080,
+      "height": 2320,
+      "device_pixel_ratio": 2,
+      "sha256": "c7370d87d981e5d778e25e6ddb11a965066b35d674078d99d84cb3d26414e88e",
+      "chinese_characters_detected": 0,
+      "capture_date": "2026-09-10"
+    },
+    {
+      "file": "06-envelope-triangle.png",
+      "title": "Envelope Library",
+      "width": 2200,
+      "height": 1520,
+      "device_pixel_ratio": 2,
+      "sha256": "d9a4238f980ba8dc6350deaf10dd251709169a469e2f25c1b8cc6cb2beed43b3",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "07-envlib.png",
+      "title": "Function Generator",
+      "width": 1920,
+      "height": 660,
+      "device_pixel_ratio": 2,
+      "sha256": "f24431ae63917bbe847b928c05b9d38b35ac4f4c96d860b1676d51be71eb231f",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "08-spectrum.png",
+      "title": "tutorial_sound.dissco[*] - LASSIE",
+      "width": 3080,
+      "height": 2320,
+      "device_pixel_ratio": 2,
+      "sha256": "12f81d6babd623b198216ffd633c1fbecdbe51767a64fd6bfe7f7f6d4c3241eb",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "09-bottom-sound.png",
+      "title": "first_tone.dissco[*] - LASSIE",
+      "width": 3080,
+      "height": 2320,
+      "device_pixel_ratio": 2,
+      "sha256": "a583938924817be22b883e5fc41f73712c7b591cf3e9e1c3fec011b3db2aa841",
+      "chinese_characters_detected": 0,
+      "capture_date": "2026-09-10"
+    },
+    {
+      "file": "10-spa-stereo.png",
+      "title": "Function Generator",
+      "width": 1960,
+      "height": 978,
+      "device_pixel_ratio": 2,
+      "sha256": "99424a769c4fd1066651e63072b218e42caf49516ea602bc5bcde223142c564d",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "11-reverb-simple.png",
+      "title": "Function Generator",
+      "width": 1920,
+      "height": 872,
+      "device_pixel_ratio": 2,
+      "sha256": "a71be684cfc46ba4ae446cc32058e85a156ccaeeaff1b9ca77d6116e682f8600",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "12-top-connection.png",
+      "title": "tutorial_sound.dissco[*] - LASSIE",
+      "width": 3080,
+      "height": 2320,
+      "device_pixel_ratio": 2,
+      "sha256": "34807ddabf1c9aacb88653e6f003fd78c3269789b4840d34401574a981fbe16b",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "13-random-seed.png",
+      "title": "Enter Seed",
+      "width": 1920,
+      "height": 194,
+      "device_pixel_ratio": 2,
+      "sha256": "f940c63e4d05491c8f2ccb1affbbf7c2df2cca939307a8648875bb67723e08f8",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "14-run-complete.png",
+      "title": "Process Output",
+      "width": 2400,
+      "height": 1480,
+      "device_pixel_ratio": 2,
+      "sha256": "440ff2a51e7c2ce077d5955464154b736c6bf51167fbd1e5f573f97c604c621f",
+      "chinese_characters_detected": 0,
+      "capture_date": "2026-09-10"
+    },
+    {
+      "file": "15-frequency-fundamental.png",
+      "title": "first_tone.dissco[*] - LASSIE",
+      "width": 3080,
+      "height": 2320,
+      "device_pixel_ratio": 2,
+      "sha256": "98fd70dff66d7877ee30ba6371d8147ed015d697e3b2c76666c7941815b9dadc",
+      "chinese_characters_detected": 0,
+      "capture_date": "2026-09-10"
+    },
+    {
+      "file": "16-frequency-continuum.png",
+      "title": "first_tone.dissco[*] - LASSIE",
+      "width": 3080,
+      "height": 2320,
+      "device_pixel_ratio": 2,
+      "sha256": "c1f0e9464875c371e7a0a99d0f66049d5aff998c8b438250011a2653ef9c9483",
+      "chinese_characters_detected": 0,
+      "capture_date": "2026-09-10"
+    },
+    {
+      "file": "17-envelope-constant.png",
+      "title": "Envelope Library",
+      "width": 2200,
+      "height": 1520,
+      "device_pixel_ratio": 2,
+      "sha256": "09bd5b4f5358fc8401de3b47be2f7ac6335967ee64701342e14512262c689217",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "18-make-envelope.png",
+      "title": "Function Generator",
+      "width": 2000,
+      "height": 1160,
+      "device_pixel_ratio": 2,
+      "sha256": "9ae281e81b5c2edca8619046ce306c7ed1f410bb6673fd9ec06ce0a8aef0b387",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "19-spectrum-partials.png",
+      "title": "tutorial_sound.dissco[*] - LASSIE",
+      "width": 3080,
+      "height": 2320,
+      "device_pixel_ratio": 2,
+      "sha256": "fe059ba1ce6f482d0518ccaba54a57e83647bf20b45ebfb27abbbbf6c35aef6d",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "20-generate-spectrum.png",
+      "title": "Function Generator",
+      "width": 2000,
+      "height": 760,
+      "device_pixel_ratio": 2,
+      "sha256": "a6ef68c6e37b74c4a6415d5c58bc2e1d531fa60a01d0a6f3e712065fcdb32556",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "21-spa-multipan.png",
+      "title": "Function Generator",
+      "width": 2000,
+      "height": 1600,
+      "device_pixel_ratio": 2,
+      "sha256": "a0245c9de37d3b8eed246ee5371692e8cdf42814dbc9d457f5fb3ff01d456ac2",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "22-spa-polar.png",
+      "title": "Function Generator",
+      "width": 2000,
+      "height": 1020,
+      "device_pixel_ratio": 2,
+      "sha256": "c21dec271ae0cb83eda9a7318158586f063d552039292fa38cac6c3db80b63fe",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "23-reverb-medium.png",
+      "title": "Function Generator",
+      "width": 2200,
+      "height": 1080,
+      "device_pixel_ratio": 2,
+      "sha256": "8e05b92cd71de48a722177db57eb76dd1f378f821a4987b5c5e94e561bb0a74d",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "24-reverb-advanced.png",
+      "title": "Function Generator",
+      "width": 2300,
+      "height": 1200,
+      "device_pixel_ratio": 2,
+      "sha256": "b4eb55d9d40e45271f402c26091295300534d1d6649788c1be29a1533b8996fa",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "25-filter.png",
+      "title": "Function Generator",
+      "width": 2000,
+      "height": 840,
+      "device_pixel_ratio": 2,
+      "sha256": "611556af7e3c95772542d97d249837597004bbe6b80f6b152eb56ddb7ca4e365",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "26-modifier-list.png",
+      "title": "tutorial_sound.dissco[*] - LASSIE",
+      "width": 3080,
+      "height": 2320,
+      "device_pixel_ratio": 2,
+      "sha256": "33a30d31b1cb575e4174f2490336ee877b08a809d7a018b730daed4a6f32041c",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "27-tremolo.png",
+      "title": "Tremolo Parameters",
+      "width": 2000,
+      "height": 760,
+      "device_pixel_ratio": 2,
+      "sha256": "c2ae3df9a4cb6f19cdc05c58fca6fa47c75361bbe1df35e2fe102f114bd7ab83",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "28-phase-modulation.png",
+      "title": "Phase Modulation Parameters",
+      "width": 2000,
+      "height": 760,
+      "device_pixel_ratio": 2,
+      "sha256": "f7617000d502712d27f632817a310de0f0344cd66b0efd3d25bdd9f88b7b5e63",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "29-detune.png",
+      "title": "Detune Parameters",
+      "width": 2000,
+      "height": 760,
+      "device_pixel_ratio": 2,
+      "sha256": "50ae3754f191e4fa2f5339dacbf5dbf7b4782956bc2cbb9c571f1bafc07baed6",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "30-transient.png",
+      "title": "Amplitude Transient Parameters",
+      "width": 2000,
+      "height": 760,
+      "device_pixel_ratio": 2,
+      "sha256": "893f13ccc8de0c4faa790d6726ffb503a0b93cdd05ddb6e11cccae6fae7c861f",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "31-wave-type.png",
+      "title": "Wave Type Parameters",
+      "width": 2000,
+      "height": 760,
+      "device_pixel_ratio": 2,
+      "sha256": "1e981790195e4141e86c33b43ff9f68e17b1600ce92a489724c788d22ec24fc4",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "32-partial-modifiers.png",
+      "title": "Customize Partials",
+      "width": 2400,
+      "height": 1800,
+      "device_pixel_ratio": 2,
+      "sha256": "6c29be22c09a2b20091d0f24c8d9e2f6f1f9230c304127190bfbb025041f8644",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "33-conditional-exception.png",
+      "title": "Vibrato conditional exceptions",
+      "width": 2000,
+      "height": 720,
+      "device_pixel_ratio": 2,
+      "sha256": "4d2d6ce6ede1c8d4fd7f54ba3ea76b1180ec898a87b4b9f3c20c3221a727e318",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "34-density.png",
+      "title": "tutorial_sound.dissco[*] - LASSIE",
+      "width": 3080,
+      "height": 2320,
+      "device_pixel_ratio": 2,
+      "sha256": "ab6bc77f7bcb200d988e27bcaa854e2e7cef68036dd76ffbd39ca05c781f4bf9",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "35-discrete.png",
+      "title": "tutorial_sound.dissco[*] - LASSIE",
+      "width": 3080,
+      "height": 2320,
+      "device_pixel_ratio": 2,
+      "sha256": "5b4236a356b2cc083abd2cee39bdded1279efdf552abb957c56990fd66eaf010",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "36-select.png",
+      "title": "Function Generator",
+      "width": 2200,
+      "height": 1300,
+      "device_pixel_ratio": 2,
+      "sha256": "7b9138ffd1e29c12927607a7da4e648fba97b5fa638f249fdccf8f151892f404",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "37-stochos.png",
+      "title": "Function Generator",
+      "width": 2200,
+      "height": 1300,
+      "device_pixel_ratio": 2,
+      "sha256": "77e5208413225b54d1233596fe98e6fa524e47763df2278b75d2c4563d8c8f56",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "38-sieve.png",
+      "title": "Function Generator",
+      "width": 2200,
+      "height": 1300,
+      "device_pixel_ratio": 2,
+      "sha256": "4d3360c1c01f61c79dcc2f725664350b700201af0676bf1d36ce95cb657692d7",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "39-markov.png",
+      "title": "Markov Model Library",
+      "width": 2300,
+      "height": 1500,
+      "device_pixel_ratio": 2,
+      "sha256": "bf9d21bed926b387e519c99ab9746c9be3331d233378645113fb8540f104f1f9",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "40-reusable-reverb.png",
+      "title": "tutorial_sound.dissco[*] - LASSIE",
+      "width": 3080,
+      "height": 2320,
+      "device_pixel_ratio": 2,
+      "sha256": "99529a09f2e375a068a7625e4b5ded4701e1ef8190df2286e161fa5e0525cf34",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "41-number-of-runs.png",
+      "title": "Number of runs",
+      "width": 1920,
+      "height": 200,
+      "device_pixel_ratio": 2,
+      "sha256": "bcde1a62f7f82b8b9dc0b125669b3c3e494b47010e3a44126ffe3f8b875610b5",
+      "chinese_characters_detected": 0
+    },
+    {
+      "file": "42-envelope-high-y.png",
+      "title": "Envelope Library",
+      "width": 2200,
+      "height": 1520,
+      "device_pixel_ratio": 2,
+      "sha256": "3938a6b2a06ec9e0987a69093ffa0dd8cf4b23d79579941eb0608bbc3f44a3ee",
+      "chinese_characters_detected": 0,
+      "capture_date": "2026-09-10"
+    }
+  ],
+  "source_state": "Official main base plus the accompanying committed fixes for 24-bit project defaults, envelope node editing, and compact Function Generator results. Captures were made before committing; the recorded widget-source hashes match fixes_commit.",
+  "changed_widget_source_sha256": {
+    "LASSIE/src/core/project_struct.hpp": "6eaed952f846153fbf750d9cb84b34c167123a547bbf5254bba937c97ad8783f",
+    "LASSIE/src/dialogs/FunctionGenerator.cpp": "ce88a53ac134a591505ccdf6f5f4223d549c7849e10c999d21f784d02b3efcf0",
+    "LASSIE/src/dialogs/FunctionXmlFormat.cpp": "c4d018585a39447733e978bb0ed4385d5cb9c7f1763e3ea0844fccfb8e8e33ee",
+    "LASSIE/src/dialogs/PartialModifierDialog.cpp": "b155db99e8a5d66348e54081daf641e96dbd08f69ee3be4576c7398f7fce4d2b",
+    "LASSIE/src/widgets/EnvLibDrawingArea.cpp": "fcf71ba0704631f2715ebfa1b2511c8a84bbcfc304f1256fece17875d58d7e78",
+    "LASSIE/src/widgets/EnvLibDrawingArea.hpp": "14f11984d3704757989b7b0ef301fab8677fa2038e20d4933aa96ba97b5cdfde",
+    "LASSIE/src/windows/EnvelopeLibraryWindow.cpp": "989a87225213f4804e8e0d1b788884109650378f084439b3a305ba75f34b343d"
+  },
+  "last_refresh_date": "2026-09-10",
+  "refresh_notes": "Images 01, 03, 05, 09, 14, 15, 16, and 42 were refreshed September 10. Properties now name first_tone; timing images show unconnected setup stages; sound/frequency images use the fixed centered tone without reverb; 14 records its successful Run; 42 shows the editable duplicate Envelope 3 at X=0.2, Y=2.5 after reopening. Other images retain September 9 captures.",
+  "fixes_repository": "https://github.com/DiyunZ/dissco",
+  "fixes_commit": "7f505f39d583f19a9929f462939165c1ecabbd5e",
+  "title_note": "Machine-specific directory prefixes are omitted from project-window titles."
+}

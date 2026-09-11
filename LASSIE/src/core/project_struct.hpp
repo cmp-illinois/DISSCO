@@ -74,7 +74,7 @@ class Project : public QObject {
         QString duration = "";
         QString num_channels = "2";
         QString sample_rate = "44100";
-        QString sample_size = "16";
+        QString sample_size = "24";
         QString num_threads = "1";
         QString num_staffs = "1";
         QString dat_path; /* excl filename */

@@ -99,7 +99,7 @@ EnvelopeLibraryWindow::EnvelopeLibraryWindow(QWidget* parent)
     xyForm->addRow("Y value:", yEntry);
     xyWidget->setLayout(xyForm);
     xyLegendLayout->addWidget(xyWidget, 0, Qt::AlignLeft);
-    QLabel* legend = new QLabel("Right click the graph to see available actions or click-and-drag a node to adjust the envelope.\nThick segment = Flexible; Thin segment = Fixed.\nBlue = Linear; Green = Spline; Red = Exponential (curved).\nYou can also type X and Y values directly to position nodes.", this);
+    QLabel* legend = new QLabel("Right click the graph to see available actions or click-and-drag a node to adjust the envelope.\nThick segment = Flexible; Thin segment = Fixed.\nBlue = Linear; Green = Spline; Red = Exponential (curved).\nDragging near Y = 1 snaps to exactly 1. Type X and Y values for precise positions.", this);
     legend->setObjectName("envelopeLegend");
     legend->setWordWrap(true);
     // Keep QLabel's height-for-width policy so wrapped text gets enough room.

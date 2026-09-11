@@ -80,8 +80,10 @@ void FunctionGenerator::setupUi()
     resultFont.setStyleHint(QFont::Monospace);
     ui->resultTextEdit->setFont(resultFont);
     ui->resultTextEdit->setAcceptRichText(false);
-    ui->resultTextEdit->setMinimumHeight(ui->resultTextEdit->fontMetrics().lineSpacing() * 8);
-    ui->resultTextEdit->setMaximumHeight(ui->resultTextEdit->fontMetrics().lineSpacing() * 12);
+    ui->resultTextEdit->setLineWrapMode(QTextEdit::NoWrap);
+    ui->resultTextEdit->setMinimumHeight(ui->resultTextEdit->fontMetrics().lineSpacing() * 3);
+    ui->resultTextEdit->setMaximumHeight(ui->resultTextEdit->fontMetrics().lineSpacing() * 4);
+    ui->resultTextEdit->setToolTip(tr("Function expression on one line. Scroll horizontally to read longer expressions. Use the fields above to edit parameters."));
     connect(ui->buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
     connect(ui->buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 

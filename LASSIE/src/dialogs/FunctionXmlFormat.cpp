@@ -106,7 +106,9 @@ QString format(const QString& xml, bool compact)
 
 QString FunctionXmlFormat::preview(const QString& xml)
 {
-    return format(xml, false);
+    // The editor shows a compact expression; saved project XML has its own
+    // independent pretty printer in ProjectXmlWriter.
+    return format(xml, true);
 }
 
 QString FunctionXmlFormat::compact(const QString& xml)
