@@ -1760,159 +1760,164 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l01675" name="l01675"></a><span class="lineno"> 1675</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l01676" name="l01676"></a><span class="lineno"> 1676</span> </div>
 <div class="line"><a id="l01677" name="l01677"></a><span class="lineno"> 1677</span>    modifiers-&gt;append(<a class="code hl_struct" href="structModifier.html">Modifier</a>());</div>
-<div class="line"><a id="l01678" name="l01678"></a><span class="lineno"> 1678</span>    addModifiersUI(modifiers-&gt;size() - 1);</div>
-<div class="line"><a id="l01679" name="l01679"></a><span class="lineno"> 1679</span>    updateModifierUsageUi();</div>
-<div class="line"><a id="l01680" name="l01680"></a><span class="lineno"> 1680</span>    <a class="code hl_function" href="namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160">MUtilities::modified</a>();</div>
-<div class="line"><a id="l01681" name="l01681"></a><span class="lineno"> 1681</span>}</div>
-<div class="line"><a id="l01682" name="l01682"></a><span class="lineno"> 1682</span> </div>
-<div class="line"><a id="l01683" name="l01683"></a><span class="lineno"> 1683</span><span class="keywordtype">void</span> EventAttributesViewController::tempoAsNoteValueButtonClicked() {</div>
-<div class="line"><a id="l01684" name="l01684"></a><span class="lineno"> 1684</span>    ui-&gt;tempoSecondaryStack-&gt;setCurrentWidget(ui-&gt;tempoValuePage);</div>
-<div class="line"><a id="l01685" name="l01685"></a><span class="lineno"> 1685</span>    ui-&gt;emptyTempoPage-&gt;setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);</div>
-<div class="line"><a id="l01686" name="l01686"></a><span class="lineno"> 1686</span>    ui-&gt;tempoFractionPage-&gt;setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);</div>
-<div class="line"><a id="l01687" name="l01687"></a><span class="lineno"> 1687</span>    ui-&gt;tempoValuePage-&gt;setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);</div>
-<div class="line"><a id="l01688" name="l01688"></a><span class="lineno"> 1688</span>    ui-&gt;tempoValuePage-&gt;adjustSize();</div>
-<div class="line"><a id="l01689" name="l01689"></a><span class="lineno"> 1689</span>    ui-&gt;tempoSecondaryStack-&gt;adjustSize();</div>
-<div class="line"><a id="l01690" name="l01690"></a><span class="lineno"> 1690</span>    <span class="comment">// bool modified = true;  // flag from original</span></div>
-<div class="line"><a id="l01691" name="l01691"></a><span class="lineno"> 1691</span>    <span class="comment">// if (!modified) {</span></div>
-<div class="line"><a id="l01692" name="l01692"></a><span class="lineno"> 1692</span>    <span class="comment">//     ui-&gt;tempoValueEntry-&gt;setText(ui-&gt;tempoValueEntry-&gt;text());</span></div>
-<div class="line"><a id="l01693" name="l01693"></a><span class="lineno"> 1693</span>    <span class="comment">// } else {</span></div>
-<div class="line"><a id="l01694" name="l01694"></a><span class="lineno"> 1694</span>    <span class="comment">//     QString s = generateTempoStringByFraction();</span></div>
-<div class="line"><a id="l01695" name="l01695"></a><span class="lineno"> 1695</span>    <span class="comment">//     FunctionGenerator gen(functionReturnFloat, s.toStdString());</span></div>
-<div class="line"><a id="l01696" name="l01696"></a><span class="lineno"> 1696</span>    <span class="comment">//     if (gen.run() == 0)</span></div>
-<div class="line"><a id="l01697" name="l01697"></a><span class="lineno"> 1697</span>    <span class="comment">//         ui-&gt;tempoValueEntry-&gt;setText(QString::fromStdString(gen.getResultString()));</span></div>
-<div class="line"><a id="l01698" name="l01698"></a><span class="lineno"> 1698</span>    <span class="comment">// }</span></div>
-<div class="line"><a id="l01699" name="l01699"></a><span class="lineno"> 1699</span>}</div>
-<div class="line"><a id="l01700" name="l01700"></a><span class="lineno"> 1700</span> </div>
-<div class="line"><a id="l01701" name="l01701"></a><span class="lineno"> 1701</span><span class="keywordtype">void</span> EventAttributesViewController::tempoAsFractionButtonClicked() {</div>
-<div class="line"><a id="l01702" name="l01702"></a><span class="lineno"> 1702</span>    ui-&gt;tempoSecondaryStack-&gt;setCurrentWidget(ui-&gt;tempoFractionPage);</div>
-<div class="line"><a id="l01703" name="l01703"></a><span class="lineno"> 1703</span>    ui-&gt;emptyTempoPage-&gt;setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);</div>
-<div class="line"><a id="l01704" name="l01704"></a><span class="lineno"> 1704</span>    ui-&gt;tempoValuePage-&gt;setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);</div>
-<div class="line"><a id="l01705" name="l01705"></a><span class="lineno"> 1705</span>    ui-&gt;tempoFractionPage-&gt;setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);</div>
-<div class="line"><a id="l01706" name="l01706"></a><span class="lineno"> 1706</span>    ui-&gt;tempoFractionPage-&gt;adjustSize();</div>
-<div class="line"><a id="l01707" name="l01707"></a><span class="lineno"> 1707</span>    ui-&gt;tempoSecondaryStack-&gt;adjustSize();</div>
-<div class="line"><a id="l01708" name="l01708"></a><span class="lineno"> 1708</span>    <span class="comment">// leave text as is</span></div>
-<div class="line"><a id="l01709" name="l01709"></a><span class="lineno"> 1709</span>}</div>
-<div class="line"><a id="l01710" name="l01710"></a><span class="lineno"> 1710</span><span class="comment">/*</span></div>
-<div class="line"><a id="l01711" name="l01711"></a><span class="lineno"> 1711</span><span class="comment">void EventAttributesViewController::tempoAsNoteValueEntryChanged(const QString&amp;) {</span></div>
-<div class="line"><a id="l01712" name="l01712"></a><span class="lineno"> 1712</span><span class="comment">    m_sharedPointers-&gt;projectView-&gt;modified();</span></div>
-<div class="line"><a id="l01713" name="l01713"></a><span class="lineno"> 1713</span><span class="comment">}</span></div>
-<div class="line"><a id="l01714" name="l01714"></a><span class="lineno"> 1714</span><span class="comment"></span> </div>
-<div class="line"><a id="l01715" name="l01715"></a><span class="lineno"> 1715</span><span class="comment">void EventAttributesViewController::refreshChildTypeInLayer() {</span></div>
-<div class="line"><a id="l01716" name="l01716"></a><span class="lineno"> 1716</span><span class="comment">    int idx = 0;</span></div>
-<div class="line"><a id="l01717" name="l01717"></a><span class="lineno"> 1717</span><span class="comment">    for (auto* box : m_layerBoxesStorage)</span></div>
-<div class="line"><a id="l01718" name="l01718"></a><span class="lineno"> 1718</span><span class="comment">        idx = box-&gt;refreshChildTypeIndex(idx);</span></div>
-<div class="line"><a id="l01719" name="l01719"></a><span class="lineno"> 1719</span><span class="comment">}</span></div>
-<div class="line"><a id="l01720" name="l01720"></a><span class="lineno"> 1720</span><span class="comment"></span> </div>
-<div class="line"><a id="l01721" name="l01721"></a><span class="lineno"> 1721</span><span class="comment">bool EventAttributesViewController::deleteLayer(LayerBox* deleteBox) {</span></div>
-<div class="line"><a id="l01722" name="l01722"></a><span class="lineno"> 1722</span><span class="comment">    if (m_layerBoxesStorage.size() &lt;= 1) return false;</span></div>
-<div class="line"><a id="l01723" name="l01723"></a><span class="lineno"> 1723</span><span class="comment">    ui-&gt;layersLayout-&gt;removeWidget(deleteBox);</span></div>
-<div class="line"><a id="l01724" name="l01724"></a><span class="lineno"> 1724</span><span class="comment">    m_layerBoxesStorage.removeOne(deleteBox);</span></div>
-<div class="line"><a id="l01725" name="l01725"></a><span class="lineno"> 1725</span><span class="comment">    delete deleteBox;</span></div>
-<div class="line"><a id="l01726" name="l01726"></a><span class="lineno"> 1726</span><span class="comment">    return true;</span></div>
-<div class="line"><a id="l01727" name="l01727"></a><span class="lineno"> 1727</span><span class="comment">}</span></div>
-<div class="line"><a id="l01728" name="l01728"></a><span class="lineno"> 1728</span><span class="comment"></span> </div>
-<div class="line"><a id="l01729" name="l01729"></a><span class="lineno"> 1729</span><span class="comment">IEvent* EventAttributesViewController::getCurrentEvent() const {</span></div>
-<div class="line"><a id="l01730" name="l01730"></a><span class="lineno"> 1730</span><span class="comment">    return m_currentlyShownEvent;</span></div>
-<div class="line"><a id="l01731" name="l01731"></a><span class="lineno"> 1731</span><span class="comment">}</span></div>
-<div class="line"><a id="l01732" name="l01732"></a><span class="lineno"> 1732</span><span class="comment"></span> </div>
-<div class="line"><a id="l01733" name="l01733"></a><span class="lineno"> 1733</span><span class="comment">bool EventAttributesViewController::checkAttackSieve() const {</span></div>
-<div class="line"><a id="l01734" name="l01734"></a><span class="lineno"> 1734</span><span class="comment">    QString text = ui-&gt;attackSieveEntry-&gt;text();</span></div>
-<div class="line"><a id="l01735" name="l01735"></a><span class="lineno"> 1735</span><span class="comment">    return m_sharedPointers-&gt;projectView</span></div>
-<div class="line"><a id="l01736" name="l01736"></a><span class="lineno"> 1736</span><span class="comment">        -&gt;getEventByTypeAndName(eventSiv, text.toStdString()) != nullptr;</span></div>
-<div class="line"><a id="l01737" name="l01737"></a><span class="lineno"> 1737</span><span class="comment">}</span></div>
-<div class="line"><a id="l01738" name="l01738"></a><span class="lineno"> 1738</span><span class="comment"></span> </div>
-<div class="line"><a id="l01739" name="l01739"></a><span class="lineno"> 1739</span><span class="comment">bool EventAttributesViewController::checkDurationSieve() const {</span></div>
-<div class="line"><a id="l01740" name="l01740"></a><span class="lineno"> 1740</span><span class="comment">    QString text = ui-&gt;durationSieveEntry-&gt;text();</span></div>
-<div class="line"><a id="l01741" name="l01741"></a><span class="lineno"> 1741</span><span class="comment">    return m_sharedPointers-&gt;projectView</span></div>
-<div class="line"><a id="l01742" name="l01742"></a><span class="lineno"> 1742</span><span class="comment">        -&gt;getEventByTypeAndName(eventSiv, text.toStdString()) != nullptr;</span></div>
-<div class="line"><a id="l01743" name="l01743"></a><span class="lineno"> 1743</span><span class="comment">}</span></div>
-<div class="line"><a id="l01744" name="l01744"></a><span class="lineno"> 1744</span><span class="comment"></span> </div>
-<div class="line"><a id="l01745" name="l01745"></a><span class="lineno"> 1745</span><span class="comment">void EventAttributesViewController::buildNoteModifiersList() {</span></div>
-<div class="line"><a id="l01746" name="l01746"></a><span class="lineno"> 1746</span><span class="comment">    // clear old</span></div>
-<div class="line"><a id="l01747" name="l01747"></a><span class="lineno"> 1747</span><span class="comment">    qDeleteAll(m_noteModifierCheckBoxes);</span></div>
-<div class="line"><a id="l01748" name="l01748"></a><span class="lineno"> 1748</span><span class="comment">    m_noteModifierCheckBoxes.clear();</span></div>
-<div class="line"><a id="l01749" name="l01749"></a><span class="lineno"> 1749</span><span class="comment">    // default</span></div>
-<div class="line"><a id="l01750" name="l01750"></a><span class="lineno"> 1750</span><span class="comment">    auto defaults = m_sharedPointers-&gt;projectView-&gt;getDefaultNoteModifiers();</span></div>
-<div class="line"><a id="l01751" name="l01751"></a><span class="lineno"> 1751</span><span class="comment">    int row = 0, col = 0;</span></div>
-<div class="line"><a id="l01752" name="l01752"></a><span class="lineno"> 1752</span><span class="comment">    for (auto&amp; kv : defaults) {</span></div>
-<div class="line"><a id="l01753" name="l01753"></a><span class="lineno"> 1753</span><span class="comment">        if (!kv.second) continue;</span></div>
-<div class="line"><a id="l01754" name="l01754"></a><span class="lineno"> 1754</span><span class="comment">        auto* cb = new QCheckBox(QString::fromStdString(kv.first));</span></div>
-<div class="line"><a id="l01755" name="l01755"></a><span class="lineno"> 1755</span><span class="comment">        connect(cb, &amp;QCheckBox::toggled, this, [=]{ m_sharedPointers-&gt;projectView-&gt;modified(); });</span></div>
-<div class="line"><a id="l01756" name="l01756"></a><span class="lineno"> 1756</span><span class="comment">        ui-&gt;noteModifiersLayout-&gt;addWidget(cb, row, col++);</span></div>
-<div class="line"><a id="l01757" name="l01757"></a><span class="lineno"> 1757</span><span class="comment">        if (col == 3) { col = 0; ++row; }</span></div>
-<div class="line"><a id="l01758" name="l01758"></a><span class="lineno"> 1758</span><span class="comment">        m_noteModifierCheckBoxes.push_back(cb);</span></div>
-<div class="line"><a id="l01759" name="l01759"></a><span class="lineno"> 1759</span><span class="comment">    }</span></div>
-<div class="line"><a id="l01760" name="l01760"></a><span class="lineno"> 1760</span><span class="comment">    // custom</span></div>
-<div class="line"><a id="l01761" name="l01761"></a><span class="lineno"> 1761</span><span class="comment">    auto customs = m_sharedPointers-&gt;projectView-&gt;getCustomNoteModifiers();</span></div>
-<div class="line"><a id="l01762" name="l01762"></a><span class="lineno"> 1762</span><span class="comment">    for (auto&amp; name : customs) {</span></div>
-<div class="line"><a id="l01763" name="l01763"></a><span class="lineno"> 1763</span><span class="comment">        auto* cb = new QCheckBox(QString::fromStdString(name));</span></div>
-<div class="line"><a id="l01764" name="l01764"></a><span class="lineno"> 1764</span><span class="comment">        connect(cb, &amp;QCheckBox::toggled, this, [=]{ m_sharedPointers-&gt;projectView-&gt;modified(); });</span></div>
-<div class="line"><a id="l01765" name="l01765"></a><span class="lineno"> 1765</span><span class="comment">        ui-&gt;noteModifiersLayout-&gt;addWidget(cb, row, col++);</span></div>
-<div class="line"><a id="l01766" name="l01766"></a><span class="lineno"> 1766</span><span class="comment">        if (col == 3) { col = 0; ++row; }</span></div>
-<div class="line"><a id="l01767" name="l01767"></a><span class="lineno"> 1767</span><span class="comment">        m_noteModifierCheckBoxes.push_back(cb);</span></div>
-<div class="line"><a id="l01768" name="l01768"></a><span class="lineno"> 1768</span><span class="comment">    }</span></div>
-<div class="line"><a id="l01769" name="l01769"></a><span class="lineno"> 1769</span><span class="comment">}</span></div>
-<div class="line"><a id="l01770" name="l01770"></a><span class="lineno"> 1770</span><span class="comment"></span> </div>
-<div class="line"><a id="l01771" name="l01771"></a><span class="lineno"> 1771</span><span class="comment">QString EventAttributesViewController::generateTempoStringByNoteValue() const {</span></div>
-<div class="line"><a id="l01772" name="l01772"></a><span class="lineno"> 1772</span><span class="comment">    QString s;</span></div>
-<div class="line"><a id="l01773" name="l01773"></a><span class="lineno"> 1773</span><span class="comment">    auto prefix = static_cast&lt;TempoPrefix&gt;(ui-&gt;tempoNotePrefixCombo-&gt;currentData().toInt());</span></div>
-<div class="line"><a id="l01774" name="l01774"></a><span class="lineno"> 1774</span><span class="comment">    auto noteVal = static_cast&lt;TempoNoteValue&gt;(ui-&gt;tempoNoteValueCombo-&gt;currentData().toInt());</span></div>
-<div class="line"><a id="l01775" name="l01775"></a><span class="lineno"> 1775</span><span class="comment">    switch (prefix) {</span></div>
-<div class="line"><a id="l01776" name="l01776"></a><span class="lineno"> 1776</span><span class="comment">    case tempoPrefixDotted:         s += &quot;dotted &quot;; break;</span></div>
-<div class="line"><a id="l01777" name="l01777"></a><span class="lineno"> 1777</span><span class="comment">    case tempoPrefixDoubleDotted:   s += &quot;double dotted &quot;; break;</span></div>
-<div class="line"><a id="l01778" name="l01778"></a><span class="lineno"> 1778</span><span class="comment">    case tempoPrefixTriple:         s += &quot;triple &quot;; break;</span></div>
-<div class="line"><a id="l01779" name="l01779"></a><span class="lineno"> 1779</span><span class="comment">    case tempoPrefixQuintuple:      s += &quot;quintuple &quot;; break;</span></div>
-<div class="line"><a id="l01780" name="l01780"></a><span class="lineno"> 1780</span><span class="comment">    case tempoPrefixSextuple:       s += &quot;sextuple &quot;; break;</span></div>
-<div class="line"><a id="l01781" name="l01781"></a><span class="lineno"> 1781</span><span class="comment">    case tempoPrefixSeptuple:       s += &quot;septuple &quot;; break;</span></div>
-<div class="line"><a id="l01782" name="l01782"></a><span class="lineno"> 1782</span><span class="comment">    default: break;</span></div>
-<div class="line"><a id="l01783" name="l01783"></a><span class="lineno"> 1783</span><span class="comment">    }</span></div>
-<div class="line"><a id="l01784" name="l01784"></a><span class="lineno"> 1784</span><span class="comment">    switch (noteVal) {</span></div>
-<div class="line"><a id="l01785" name="l01785"></a><span class="lineno"> 1785</span><span class="comment">    case tempoNoteValueWhole:        s += &quot;whole = &quot;; break;</span></div>
-<div class="line"><a id="l01786" name="l01786"></a><span class="lineno"> 1786</span><span class="comment">    case tempoNoteValueHalf:         s += &quot;half = &quot;; break;</span></div>
-<div class="line"><a id="l01787" name="l01787"></a><span class="lineno"> 1787</span><span class="comment">    case tempoNoteValueQuarter:      s += &quot;quarter = &quot;; break;</span></div>
-<div class="line"><a id="l01788" name="l01788"></a><span class="lineno"> 1788</span><span class="comment">    case tempoNoteValueEighth:       s += &quot;eighth = &quot;; break;</span></div>
-<div class="line"><a id="l01789" name="l01789"></a><span class="lineno"> 1789</span><span class="comment">    case tempoNoteValueSixteenth:    s += &quot;sixteenth = &quot;; break;</span></div>
-<div class="line"><a id="l01790" name="l01790"></a><span class="lineno"> 1790</span><span class="comment">    case tempoNoteValueThirtySecond: s += &quot;thirtysecond = &quot;; break;</span></div>
-<div class="line"><a id="l01791" name="l01791"></a><span class="lineno"> 1791</span><span class="comment">    }</span></div>
-<div class="line"><a id="l01792" name="l01792"></a><span class="lineno"> 1792</span><span class="comment">    return s + ui-&gt;tempoValueEntry-&gt;text();</span></div>
-<div class="line"><a id="l01793" name="l01793"></a><span class="lineno"> 1793</span><span class="comment">}</span></div>
-<div class="line"><a id="l01794" name="l01794"></a><span class="lineno"> 1794</span><span class="comment"></span> </div>
-<div class="line"><a id="l01795" name="l01795"></a><span class="lineno"> 1795</span><span class="comment">QString EventAttributesViewController::generateTempoStringByFraction() const {</span></div>
-<div class="line"><a id="l01796" name="l01796"></a><span class="lineno"> 1796</span><span class="comment">    QString s;</span></div>
-<div class="line"><a id="l01797" name="l01797"></a><span class="lineno"> 1797</span><span class="comment">    auto prefix = static_cast&lt;TempoPrefix&gt;(ui-&gt;tempoNotePrefixCombo-&gt;currentData().toInt());</span></div>
-<div class="line"><a id="l01798" name="l01798"></a><span class="lineno"> 1798</span><span class="comment">    auto noteVal = static_cast&lt;TempoNoteValue&gt;(ui-&gt;tempoNoteValueCombo-&gt;currentData().toInt());</span></div>
-<div class="line"><a id="l01799" name="l01799"></a><span class="lineno"> 1799</span><span class="comment">    switch (prefix) {</span></div>
-<div class="line"><a id="l01800" name="l01800"></a><span class="lineno"> 1800</span><span class="comment">    case tempoPrefixDotted:         s += &quot;dotted &quot;; break;</span></div>
-<div class="line"><a id="l01801" name="l01801"></a><span class="lineno"> 1801</span><span class="comment">    case tempoPrefixDoubleDotted:   s += &quot;double dotted &quot;; break;</span></div>
-<div class="line"><a id="l01802" name="l01802"></a><span class="lineno"> 1802</span><span class="comment">    case tempoPrefixTriple:         s += &quot;triple &quot;; break;</span></div>
-<div class="line"><a id="l01803" name="l01803"></a><span class="lineno"> 1803</span><span class="comment">    case tempoPrefixQuintuple:      s += &quot;quintuple &quot;; break;</span></div>
-<div class="line"><a id="l01804" name="l01804"></a><span class="lineno"> 1804</span><span class="comment">    case tempoPrefixSextuple:       s += &quot;sextuple &quot;; break;</span></div>
-<div class="line"><a id="l01805" name="l01805"></a><span class="lineno"> 1805</span><span class="comment">    case tempoPrefixSeptuple:       s += &quot;septuple &quot;; break;</span></div>
-<div class="line"><a id="l01806" name="l01806"></a><span class="lineno"> 1806</span><span class="comment">    default: break;</span></div>
-<div class="line"><a id="l01807" name="l01807"></a><span class="lineno"> 1807</span><span class="comment">    }</span></div>
-<div class="line"><a id="l01808" name="l01808"></a><span class="lineno"> 1808</span><span class="comment">    switch (noteVal) {</span></div>
-<div class="line"><a id="l01809" name="l01809"></a><span class="lineno"> 1809</span><span class="comment">    case tempoNoteValueWhole:        s += &quot;whole = &quot;; break;</span></div>
-<div class="line"><a id="l01810" name="l01810"></a><span class="lineno"> 1810</span><span class="comment">    case tempoNoteValueHalf:         s += &quot;half = &quot;; break;</span></div>
-<div class="line"><a id="l01811" name="l01811"></a><span class="lineno"> 1811</span><span class="comment">    case tempoNoteValueQuarter:      s += &quot;quarter = &quot;; break;</span></div>
-<div class="line"><a id="l01812" name="l01812"></a><span class="lineno"> 1812</span><span class="comment">    case tempoNoteValueEighth:       s += &quot;eighth = &quot;; break;</span></div>
-<div class="line"><a id="l01813" name="l01813"></a><span class="lineno"> 1813</span><span class="comment">    case tempoNoteValueSixteenth:    s += &quot;sixteenth = &quot;; break;</span></div>
-<div class="line"><a id="l01814" name="l01814"></a><span class="lineno"> 1814</span><span class="comment">    case tempoNoteValueThirtySecond: s += &quot;thirtysecond = &quot;; break;</span></div>
-<div class="line"><a id="l01815" name="l01815"></a><span class="lineno"> 1815</span><span class="comment">    }</span></div>
-<div class="line"><a id="l01816" name="l01816"></a><span class="lineno"> 1816</span><span class="comment">    // convert fraction to denominator notation</span></div>
-<div class="line"><a id="l01817" name="l01817"></a><span class="lineno"> 1817</span><span class="comment">    bool ok;</span></div>
-<div class="line"><a id="l01818" name="l01818"></a><span class="lineno"> 1818</span><span class="comment">    int num = ui-&gt;tempoFractionEntry1-&gt;text().toInt(&amp;ok);</span></div>
-<div class="line"><a id="l01819" name="l01819"></a><span class="lineno"> 1819</span><span class="comment">    int den = ui-&gt;tempoValueEntry-&gt;text().toInt(&amp;ok);</span></div>
-<div class="line"><a id="l01820" name="l01820"></a><span class="lineno"> 1820</span><span class="comment">    return s + QString::number(num) + &quot;/&quot; + QString::number(den);</span></div>
-<div class="line"><a id="l01821" name="l01821"></a><span class="lineno"> 1821</span><span class="comment">}</span></div>
-<div class="line"><a id="l01822" name="l01822"></a><span class="lineno"> 1822</span><span class="comment"></span> </div>
-<div class="line"><a id="l01823" name="l01823"></a><span class="lineno"> 1823</span><span class="comment">void EventAttributesViewController::deleteKeyPressed(QWidget* focus) {</span></div>
-<div class="line"><a id="l01824" name="l01824"></a><span class="lineno"> 1824</span><span class="comment">    for (auto* box : m_layerBoxesStorage) {</span></div>
-<div class="line"><a id="l01825" name="l01825"></a><span class="lineno"> 1825</span><span class="comment">        if (box-&gt;isAncestorOf(focus)) {</span></div>
-<div class="line"><a id="l01826" name="l01826"></a><span class="lineno"> 1826</span><span class="comment">            box-&gt;deleteObject();</span></div>
-<div class="line"><a id="l01827" name="l01827"></a><span class="lineno"> 1827</span><span class="comment">            break;</span></div>
-<div class="line"><a id="l01828" name="l01828"></a><span class="lineno"> 1828</span><span class="comment">        }</span></div>
-<div class="line"><a id="l01829" name="l01829"></a><span class="lineno"> 1829</span><span class="comment">    }</span></div>
-<div class="line"><a id="l01830" name="l01830"></a><span class="lineno"> 1830</span><span class="comment">}*/</span></div>
+<div class="line"><a id="l01678" name="l01678"></a><span class="lineno"> 1678</span>    <span class="comment">// Rebuild every row (not just add one for the new modifier) so</span></div>
+<div class="line"><a id="l01679" name="l01679"></a><span class="lineno"> 1679</span>    <span class="comment">// pre-existing rows re-check their move-up/move-down button state</span></div>
+<div class="line"><a id="l01680" name="l01680"></a><span class="lineno"> 1680</span>    <span class="comment">// against the new list size -- otherwise the previously-last row stays</span></div>
+<div class="line"><a id="l01681" name="l01681"></a><span class="lineno"> 1681</span>    <span class="comment">// stuck with &quot;move down&quot; disabled until it&#39;s edited for some other</span></div>
+<div class="line"><a id="l01682" name="l01682"></a><span class="lineno"> 1682</span>    <span class="comment">// reason. This matches deleteModifierRow/moveModifierRow, which already</span></div>
+<div class="line"><a id="l01683" name="l01683"></a><span class="lineno"> 1683</span>    <span class="comment">// rebuild for the same reason.</span></div>
+<div class="line"><a id="l01684" name="l01684"></a><span class="lineno"> 1684</span>    rebuildModifierRows();</div>
+<div class="line"><a id="l01685" name="l01685"></a><span class="lineno"> 1685</span>    <a class="code hl_function" href="namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160">MUtilities::modified</a>();</div>
+<div class="line"><a id="l01686" name="l01686"></a><span class="lineno"> 1686</span>}</div>
+<div class="line"><a id="l01687" name="l01687"></a><span class="lineno"> 1687</span> </div>
+<div class="line"><a id="l01688" name="l01688"></a><span class="lineno"> 1688</span><span class="keywordtype">void</span> EventAttributesViewController::tempoAsNoteValueButtonClicked() {</div>
+<div class="line"><a id="l01689" name="l01689"></a><span class="lineno"> 1689</span>    ui-&gt;tempoSecondaryStack-&gt;setCurrentWidget(ui-&gt;tempoValuePage);</div>
+<div class="line"><a id="l01690" name="l01690"></a><span class="lineno"> 1690</span>    ui-&gt;emptyTempoPage-&gt;setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);</div>
+<div class="line"><a id="l01691" name="l01691"></a><span class="lineno"> 1691</span>    ui-&gt;tempoFractionPage-&gt;setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);</div>
+<div class="line"><a id="l01692" name="l01692"></a><span class="lineno"> 1692</span>    ui-&gt;tempoValuePage-&gt;setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);</div>
+<div class="line"><a id="l01693" name="l01693"></a><span class="lineno"> 1693</span>    ui-&gt;tempoValuePage-&gt;adjustSize();</div>
+<div class="line"><a id="l01694" name="l01694"></a><span class="lineno"> 1694</span>    ui-&gt;tempoSecondaryStack-&gt;adjustSize();</div>
+<div class="line"><a id="l01695" name="l01695"></a><span class="lineno"> 1695</span>    <span class="comment">// bool modified = true;  // flag from original</span></div>
+<div class="line"><a id="l01696" name="l01696"></a><span class="lineno"> 1696</span>    <span class="comment">// if (!modified) {</span></div>
+<div class="line"><a id="l01697" name="l01697"></a><span class="lineno"> 1697</span>    <span class="comment">//     ui-&gt;tempoValueEntry-&gt;setText(ui-&gt;tempoValueEntry-&gt;text());</span></div>
+<div class="line"><a id="l01698" name="l01698"></a><span class="lineno"> 1698</span>    <span class="comment">// } else {</span></div>
+<div class="line"><a id="l01699" name="l01699"></a><span class="lineno"> 1699</span>    <span class="comment">//     QString s = generateTempoStringByFraction();</span></div>
+<div class="line"><a id="l01700" name="l01700"></a><span class="lineno"> 1700</span>    <span class="comment">//     FunctionGenerator gen(functionReturnFloat, s.toStdString());</span></div>
+<div class="line"><a id="l01701" name="l01701"></a><span class="lineno"> 1701</span>    <span class="comment">//     if (gen.run() == 0)</span></div>
+<div class="line"><a id="l01702" name="l01702"></a><span class="lineno"> 1702</span>    <span class="comment">//         ui-&gt;tempoValueEntry-&gt;setText(QString::fromStdString(gen.getResultString()));</span></div>
+<div class="line"><a id="l01703" name="l01703"></a><span class="lineno"> 1703</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l01704" name="l01704"></a><span class="lineno"> 1704</span>}</div>
+<div class="line"><a id="l01705" name="l01705"></a><span class="lineno"> 1705</span> </div>
+<div class="line"><a id="l01706" name="l01706"></a><span class="lineno"> 1706</span><span class="keywordtype">void</span> EventAttributesViewController::tempoAsFractionButtonClicked() {</div>
+<div class="line"><a id="l01707" name="l01707"></a><span class="lineno"> 1707</span>    ui-&gt;tempoSecondaryStack-&gt;setCurrentWidget(ui-&gt;tempoFractionPage);</div>
+<div class="line"><a id="l01708" name="l01708"></a><span class="lineno"> 1708</span>    ui-&gt;emptyTempoPage-&gt;setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);</div>
+<div class="line"><a id="l01709" name="l01709"></a><span class="lineno"> 1709</span>    ui-&gt;tempoValuePage-&gt;setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);</div>
+<div class="line"><a id="l01710" name="l01710"></a><span class="lineno"> 1710</span>    ui-&gt;tempoFractionPage-&gt;setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);</div>
+<div class="line"><a id="l01711" name="l01711"></a><span class="lineno"> 1711</span>    ui-&gt;tempoFractionPage-&gt;adjustSize();</div>
+<div class="line"><a id="l01712" name="l01712"></a><span class="lineno"> 1712</span>    ui-&gt;tempoSecondaryStack-&gt;adjustSize();</div>
+<div class="line"><a id="l01713" name="l01713"></a><span class="lineno"> 1713</span>    <span class="comment">// leave text as is</span></div>
+<div class="line"><a id="l01714" name="l01714"></a><span class="lineno"> 1714</span>}</div>
+<div class="line"><a id="l01715" name="l01715"></a><span class="lineno"> 1715</span><span class="comment">/*</span></div>
+<div class="line"><a id="l01716" name="l01716"></a><span class="lineno"> 1716</span><span class="comment">void EventAttributesViewController::tempoAsNoteValueEntryChanged(const QString&amp;) {</span></div>
+<div class="line"><a id="l01717" name="l01717"></a><span class="lineno"> 1717</span><span class="comment">    m_sharedPointers-&gt;projectView-&gt;modified();</span></div>
+<div class="line"><a id="l01718" name="l01718"></a><span class="lineno"> 1718</span><span class="comment">}</span></div>
+<div class="line"><a id="l01719" name="l01719"></a><span class="lineno"> 1719</span><span class="comment"></span> </div>
+<div class="line"><a id="l01720" name="l01720"></a><span class="lineno"> 1720</span><span class="comment">void EventAttributesViewController::refreshChildTypeInLayer() {</span></div>
+<div class="line"><a id="l01721" name="l01721"></a><span class="lineno"> 1721</span><span class="comment">    int idx = 0;</span></div>
+<div class="line"><a id="l01722" name="l01722"></a><span class="lineno"> 1722</span><span class="comment">    for (auto* box : m_layerBoxesStorage)</span></div>
+<div class="line"><a id="l01723" name="l01723"></a><span class="lineno"> 1723</span><span class="comment">        idx = box-&gt;refreshChildTypeIndex(idx);</span></div>
+<div class="line"><a id="l01724" name="l01724"></a><span class="lineno"> 1724</span><span class="comment">}</span></div>
+<div class="line"><a id="l01725" name="l01725"></a><span class="lineno"> 1725</span><span class="comment"></span> </div>
+<div class="line"><a id="l01726" name="l01726"></a><span class="lineno"> 1726</span><span class="comment">bool EventAttributesViewController::deleteLayer(LayerBox* deleteBox) {</span></div>
+<div class="line"><a id="l01727" name="l01727"></a><span class="lineno"> 1727</span><span class="comment">    if (m_layerBoxesStorage.size() &lt;= 1) return false;</span></div>
+<div class="line"><a id="l01728" name="l01728"></a><span class="lineno"> 1728</span><span class="comment">    ui-&gt;layersLayout-&gt;removeWidget(deleteBox);</span></div>
+<div class="line"><a id="l01729" name="l01729"></a><span class="lineno"> 1729</span><span class="comment">    m_layerBoxesStorage.removeOne(deleteBox);</span></div>
+<div class="line"><a id="l01730" name="l01730"></a><span class="lineno"> 1730</span><span class="comment">    delete deleteBox;</span></div>
+<div class="line"><a id="l01731" name="l01731"></a><span class="lineno"> 1731</span><span class="comment">    return true;</span></div>
+<div class="line"><a id="l01732" name="l01732"></a><span class="lineno"> 1732</span><span class="comment">}</span></div>
+<div class="line"><a id="l01733" name="l01733"></a><span class="lineno"> 1733</span><span class="comment"></span> </div>
+<div class="line"><a id="l01734" name="l01734"></a><span class="lineno"> 1734</span><span class="comment">IEvent* EventAttributesViewController::getCurrentEvent() const {</span></div>
+<div class="line"><a id="l01735" name="l01735"></a><span class="lineno"> 1735</span><span class="comment">    return m_currentlyShownEvent;</span></div>
+<div class="line"><a id="l01736" name="l01736"></a><span class="lineno"> 1736</span><span class="comment">}</span></div>
+<div class="line"><a id="l01737" name="l01737"></a><span class="lineno"> 1737</span><span class="comment"></span> </div>
+<div class="line"><a id="l01738" name="l01738"></a><span class="lineno"> 1738</span><span class="comment">bool EventAttributesViewController::checkAttackSieve() const {</span></div>
+<div class="line"><a id="l01739" name="l01739"></a><span class="lineno"> 1739</span><span class="comment">    QString text = ui-&gt;attackSieveEntry-&gt;text();</span></div>
+<div class="line"><a id="l01740" name="l01740"></a><span class="lineno"> 1740</span><span class="comment">    return m_sharedPointers-&gt;projectView</span></div>
+<div class="line"><a id="l01741" name="l01741"></a><span class="lineno"> 1741</span><span class="comment">        -&gt;getEventByTypeAndName(eventSiv, text.toStdString()) != nullptr;</span></div>
+<div class="line"><a id="l01742" name="l01742"></a><span class="lineno"> 1742</span><span class="comment">}</span></div>
+<div class="line"><a id="l01743" name="l01743"></a><span class="lineno"> 1743</span><span class="comment"></span> </div>
+<div class="line"><a id="l01744" name="l01744"></a><span class="lineno"> 1744</span><span class="comment">bool EventAttributesViewController::checkDurationSieve() const {</span></div>
+<div class="line"><a id="l01745" name="l01745"></a><span class="lineno"> 1745</span><span class="comment">    QString text = ui-&gt;durationSieveEntry-&gt;text();</span></div>
+<div class="line"><a id="l01746" name="l01746"></a><span class="lineno"> 1746</span><span class="comment">    return m_sharedPointers-&gt;projectView</span></div>
+<div class="line"><a id="l01747" name="l01747"></a><span class="lineno"> 1747</span><span class="comment">        -&gt;getEventByTypeAndName(eventSiv, text.toStdString()) != nullptr;</span></div>
+<div class="line"><a id="l01748" name="l01748"></a><span class="lineno"> 1748</span><span class="comment">}</span></div>
+<div class="line"><a id="l01749" name="l01749"></a><span class="lineno"> 1749</span><span class="comment"></span> </div>
+<div class="line"><a id="l01750" name="l01750"></a><span class="lineno"> 1750</span><span class="comment">void EventAttributesViewController::buildNoteModifiersList() {</span></div>
+<div class="line"><a id="l01751" name="l01751"></a><span class="lineno"> 1751</span><span class="comment">    // clear old</span></div>
+<div class="line"><a id="l01752" name="l01752"></a><span class="lineno"> 1752</span><span class="comment">    qDeleteAll(m_noteModifierCheckBoxes);</span></div>
+<div class="line"><a id="l01753" name="l01753"></a><span class="lineno"> 1753</span><span class="comment">    m_noteModifierCheckBoxes.clear();</span></div>
+<div class="line"><a id="l01754" name="l01754"></a><span class="lineno"> 1754</span><span class="comment">    // default</span></div>
+<div class="line"><a id="l01755" name="l01755"></a><span class="lineno"> 1755</span><span class="comment">    auto defaults = m_sharedPointers-&gt;projectView-&gt;getDefaultNoteModifiers();</span></div>
+<div class="line"><a id="l01756" name="l01756"></a><span class="lineno"> 1756</span><span class="comment">    int row = 0, col = 0;</span></div>
+<div class="line"><a id="l01757" name="l01757"></a><span class="lineno"> 1757</span><span class="comment">    for (auto&amp; kv : defaults) {</span></div>
+<div class="line"><a id="l01758" name="l01758"></a><span class="lineno"> 1758</span><span class="comment">        if (!kv.second) continue;</span></div>
+<div class="line"><a id="l01759" name="l01759"></a><span class="lineno"> 1759</span><span class="comment">        auto* cb = new QCheckBox(QString::fromStdString(kv.first));</span></div>
+<div class="line"><a id="l01760" name="l01760"></a><span class="lineno"> 1760</span><span class="comment">        connect(cb, &amp;QCheckBox::toggled, this, [=]{ m_sharedPointers-&gt;projectView-&gt;modified(); });</span></div>
+<div class="line"><a id="l01761" name="l01761"></a><span class="lineno"> 1761</span><span class="comment">        ui-&gt;noteModifiersLayout-&gt;addWidget(cb, row, col++);</span></div>
+<div class="line"><a id="l01762" name="l01762"></a><span class="lineno"> 1762</span><span class="comment">        if (col == 3) { col = 0; ++row; }</span></div>
+<div class="line"><a id="l01763" name="l01763"></a><span class="lineno"> 1763</span><span class="comment">        m_noteModifierCheckBoxes.push_back(cb);</span></div>
+<div class="line"><a id="l01764" name="l01764"></a><span class="lineno"> 1764</span><span class="comment">    }</span></div>
+<div class="line"><a id="l01765" name="l01765"></a><span class="lineno"> 1765</span><span class="comment">    // custom</span></div>
+<div class="line"><a id="l01766" name="l01766"></a><span class="lineno"> 1766</span><span class="comment">    auto customs = m_sharedPointers-&gt;projectView-&gt;getCustomNoteModifiers();</span></div>
+<div class="line"><a id="l01767" name="l01767"></a><span class="lineno"> 1767</span><span class="comment">    for (auto&amp; name : customs) {</span></div>
+<div class="line"><a id="l01768" name="l01768"></a><span class="lineno"> 1768</span><span class="comment">        auto* cb = new QCheckBox(QString::fromStdString(name));</span></div>
+<div class="line"><a id="l01769" name="l01769"></a><span class="lineno"> 1769</span><span class="comment">        connect(cb, &amp;QCheckBox::toggled, this, [=]{ m_sharedPointers-&gt;projectView-&gt;modified(); });</span></div>
+<div class="line"><a id="l01770" name="l01770"></a><span class="lineno"> 1770</span><span class="comment">        ui-&gt;noteModifiersLayout-&gt;addWidget(cb, row, col++);</span></div>
+<div class="line"><a id="l01771" name="l01771"></a><span class="lineno"> 1771</span><span class="comment">        if (col == 3) { col = 0; ++row; }</span></div>
+<div class="line"><a id="l01772" name="l01772"></a><span class="lineno"> 1772</span><span class="comment">        m_noteModifierCheckBoxes.push_back(cb);</span></div>
+<div class="line"><a id="l01773" name="l01773"></a><span class="lineno"> 1773</span><span class="comment">    }</span></div>
+<div class="line"><a id="l01774" name="l01774"></a><span class="lineno"> 1774</span><span class="comment">}</span></div>
+<div class="line"><a id="l01775" name="l01775"></a><span class="lineno"> 1775</span><span class="comment"></span> </div>
+<div class="line"><a id="l01776" name="l01776"></a><span class="lineno"> 1776</span><span class="comment">QString EventAttributesViewController::generateTempoStringByNoteValue() const {</span></div>
+<div class="line"><a id="l01777" name="l01777"></a><span class="lineno"> 1777</span><span class="comment">    QString s;</span></div>
+<div class="line"><a id="l01778" name="l01778"></a><span class="lineno"> 1778</span><span class="comment">    auto prefix = static_cast&lt;TempoPrefix&gt;(ui-&gt;tempoNotePrefixCombo-&gt;currentData().toInt());</span></div>
+<div class="line"><a id="l01779" name="l01779"></a><span class="lineno"> 1779</span><span class="comment">    auto noteVal = static_cast&lt;TempoNoteValue&gt;(ui-&gt;tempoNoteValueCombo-&gt;currentData().toInt());</span></div>
+<div class="line"><a id="l01780" name="l01780"></a><span class="lineno"> 1780</span><span class="comment">    switch (prefix) {</span></div>
+<div class="line"><a id="l01781" name="l01781"></a><span class="lineno"> 1781</span><span class="comment">    case tempoPrefixDotted:         s += &quot;dotted &quot;; break;</span></div>
+<div class="line"><a id="l01782" name="l01782"></a><span class="lineno"> 1782</span><span class="comment">    case tempoPrefixDoubleDotted:   s += &quot;double dotted &quot;; break;</span></div>
+<div class="line"><a id="l01783" name="l01783"></a><span class="lineno"> 1783</span><span class="comment">    case tempoPrefixTriple:         s += &quot;triple &quot;; break;</span></div>
+<div class="line"><a id="l01784" name="l01784"></a><span class="lineno"> 1784</span><span class="comment">    case tempoPrefixQuintuple:      s += &quot;quintuple &quot;; break;</span></div>
+<div class="line"><a id="l01785" name="l01785"></a><span class="lineno"> 1785</span><span class="comment">    case tempoPrefixSextuple:       s += &quot;sextuple &quot;; break;</span></div>
+<div class="line"><a id="l01786" name="l01786"></a><span class="lineno"> 1786</span><span class="comment">    case tempoPrefixSeptuple:       s += &quot;septuple &quot;; break;</span></div>
+<div class="line"><a id="l01787" name="l01787"></a><span class="lineno"> 1787</span><span class="comment">    default: break;</span></div>
+<div class="line"><a id="l01788" name="l01788"></a><span class="lineno"> 1788</span><span class="comment">    }</span></div>
+<div class="line"><a id="l01789" name="l01789"></a><span class="lineno"> 1789</span><span class="comment">    switch (noteVal) {</span></div>
+<div class="line"><a id="l01790" name="l01790"></a><span class="lineno"> 1790</span><span class="comment">    case tempoNoteValueWhole:        s += &quot;whole = &quot;; break;</span></div>
+<div class="line"><a id="l01791" name="l01791"></a><span class="lineno"> 1791</span><span class="comment">    case tempoNoteValueHalf:         s += &quot;half = &quot;; break;</span></div>
+<div class="line"><a id="l01792" name="l01792"></a><span class="lineno"> 1792</span><span class="comment">    case tempoNoteValueQuarter:      s += &quot;quarter = &quot;; break;</span></div>
+<div class="line"><a id="l01793" name="l01793"></a><span class="lineno"> 1793</span><span class="comment">    case tempoNoteValueEighth:       s += &quot;eighth = &quot;; break;</span></div>
+<div class="line"><a id="l01794" name="l01794"></a><span class="lineno"> 1794</span><span class="comment">    case tempoNoteValueSixteenth:    s += &quot;sixteenth = &quot;; break;</span></div>
+<div class="line"><a id="l01795" name="l01795"></a><span class="lineno"> 1795</span><span class="comment">    case tempoNoteValueThirtySecond: s += &quot;thirtysecond = &quot;; break;</span></div>
+<div class="line"><a id="l01796" name="l01796"></a><span class="lineno"> 1796</span><span class="comment">    }</span></div>
+<div class="line"><a id="l01797" name="l01797"></a><span class="lineno"> 1797</span><span class="comment">    return s + ui-&gt;tempoValueEntry-&gt;text();</span></div>
+<div class="line"><a id="l01798" name="l01798"></a><span class="lineno"> 1798</span><span class="comment">}</span></div>
+<div class="line"><a id="l01799" name="l01799"></a><span class="lineno"> 1799</span><span class="comment"></span> </div>
+<div class="line"><a id="l01800" name="l01800"></a><span class="lineno"> 1800</span><span class="comment">QString EventAttributesViewController::generateTempoStringByFraction() const {</span></div>
+<div class="line"><a id="l01801" name="l01801"></a><span class="lineno"> 1801</span><span class="comment">    QString s;</span></div>
+<div class="line"><a id="l01802" name="l01802"></a><span class="lineno"> 1802</span><span class="comment">    auto prefix = static_cast&lt;TempoPrefix&gt;(ui-&gt;tempoNotePrefixCombo-&gt;currentData().toInt());</span></div>
+<div class="line"><a id="l01803" name="l01803"></a><span class="lineno"> 1803</span><span class="comment">    auto noteVal = static_cast&lt;TempoNoteValue&gt;(ui-&gt;tempoNoteValueCombo-&gt;currentData().toInt());</span></div>
+<div class="line"><a id="l01804" name="l01804"></a><span class="lineno"> 1804</span><span class="comment">    switch (prefix) {</span></div>
+<div class="line"><a id="l01805" name="l01805"></a><span class="lineno"> 1805</span><span class="comment">    case tempoPrefixDotted:         s += &quot;dotted &quot;; break;</span></div>
+<div class="line"><a id="l01806" name="l01806"></a><span class="lineno"> 1806</span><span class="comment">    case tempoPrefixDoubleDotted:   s += &quot;double dotted &quot;; break;</span></div>
+<div class="line"><a id="l01807" name="l01807"></a><span class="lineno"> 1807</span><span class="comment">    case tempoPrefixTriple:         s += &quot;triple &quot;; break;</span></div>
+<div class="line"><a id="l01808" name="l01808"></a><span class="lineno"> 1808</span><span class="comment">    case tempoPrefixQuintuple:      s += &quot;quintuple &quot;; break;</span></div>
+<div class="line"><a id="l01809" name="l01809"></a><span class="lineno"> 1809</span><span class="comment">    case tempoPrefixSextuple:       s += &quot;sextuple &quot;; break;</span></div>
+<div class="line"><a id="l01810" name="l01810"></a><span class="lineno"> 1810</span><span class="comment">    case tempoPrefixSeptuple:       s += &quot;septuple &quot;; break;</span></div>
+<div class="line"><a id="l01811" name="l01811"></a><span class="lineno"> 1811</span><span class="comment">    default: break;</span></div>
+<div class="line"><a id="l01812" name="l01812"></a><span class="lineno"> 1812</span><span class="comment">    }</span></div>
+<div class="line"><a id="l01813" name="l01813"></a><span class="lineno"> 1813</span><span class="comment">    switch (noteVal) {</span></div>
+<div class="line"><a id="l01814" name="l01814"></a><span class="lineno"> 1814</span><span class="comment">    case tempoNoteValueWhole:        s += &quot;whole = &quot;; break;</span></div>
+<div class="line"><a id="l01815" name="l01815"></a><span class="lineno"> 1815</span><span class="comment">    case tempoNoteValueHalf:         s += &quot;half = &quot;; break;</span></div>
+<div class="line"><a id="l01816" name="l01816"></a><span class="lineno"> 1816</span><span class="comment">    case tempoNoteValueQuarter:      s += &quot;quarter = &quot;; break;</span></div>
+<div class="line"><a id="l01817" name="l01817"></a><span class="lineno"> 1817</span><span class="comment">    case tempoNoteValueEighth:       s += &quot;eighth = &quot;; break;</span></div>
+<div class="line"><a id="l01818" name="l01818"></a><span class="lineno"> 1818</span><span class="comment">    case tempoNoteValueSixteenth:    s += &quot;sixteenth = &quot;; break;</span></div>
+<div class="line"><a id="l01819" name="l01819"></a><span class="lineno"> 1819</span><span class="comment">    case tempoNoteValueThirtySecond: s += &quot;thirtysecond = &quot;; break;</span></div>
+<div class="line"><a id="l01820" name="l01820"></a><span class="lineno"> 1820</span><span class="comment">    }</span></div>
+<div class="line"><a id="l01821" name="l01821"></a><span class="lineno"> 1821</span><span class="comment">    // convert fraction to denominator notation</span></div>
+<div class="line"><a id="l01822" name="l01822"></a><span class="lineno"> 1822</span><span class="comment">    bool ok;</span></div>
+<div class="line"><a id="l01823" name="l01823"></a><span class="lineno"> 1823</span><span class="comment">    int num = ui-&gt;tempoFractionEntry1-&gt;text().toInt(&amp;ok);</span></div>
+<div class="line"><a id="l01824" name="l01824"></a><span class="lineno"> 1824</span><span class="comment">    int den = ui-&gt;tempoValueEntry-&gt;text().toInt(&amp;ok);</span></div>
+<div class="line"><a id="l01825" name="l01825"></a><span class="lineno"> 1825</span><span class="comment">    return s + QString::number(num) + &quot;/&quot; + QString::number(den);</span></div>
+<div class="line"><a id="l01826" name="l01826"></a><span class="lineno"> 1826</span><span class="comment">}</span></div>
+<div class="line"><a id="l01827" name="l01827"></a><span class="lineno"> 1827</span><span class="comment"></span> </div>
+<div class="line"><a id="l01828" name="l01828"></a><span class="lineno"> 1828</span><span class="comment">void EventAttributesViewController::deleteKeyPressed(QWidget* focus) {</span></div>
+<div class="line"><a id="l01829" name="l01829"></a><span class="lineno"> 1829</span><span class="comment">    for (auto* box : m_layerBoxesStorage) {</span></div>
+<div class="line"><a id="l01830" name="l01830"></a><span class="lineno"> 1830</span><span class="comment">        if (box-&gt;isAncestorOf(focus)) {</span></div>
+<div class="line"><a id="l01831" name="l01831"></a><span class="lineno"> 1831</span><span class="comment">            box-&gt;deleteObject();</span></div>
+<div class="line"><a id="l01832" name="l01832"></a><span class="lineno"> 1832</span><span class="comment">            break;</span></div>
+<div class="line"><a id="l01833" name="l01833"></a><span class="lineno"> 1833</span><span class="comment">        }</span></div>
+<div class="line"><a id="l01834" name="l01834"></a><span class="lineno"> 1834</span><span class="comment">    }</span></div>
+<div class="line"><a id="l01835" name="l01835"></a><span class="lineno"> 1835</span><span class="comment">}*/</span></div>
 <div class="ttc" id="aEventAttributesViewController_8hpp_html"><div class="ttname"><a href="EventAttributesViewController_8hpp.html">EventAttributesViewController.hpp</a></div></div>
 <div class="ttc" id="aEventAttributesViewController_8hpp_html_a7368f316b8cba93e88233efe6fc580b6"><div class="ttname"><a href="EventAttributesViewController_8hpp.html#a7368f316b8cba93e88233efe6fc580b6">FunctionButton</a></div><div class="ttdeci">FunctionButton</div><div class="ttdef"><b>Definition</b> <a href="EventAttributesViewController_8hpp_source.html#l00026">EventAttributesViewController.hpp:26</a></div></div>
 <div class="ttc" id="aEventAttributesViewController_8hpp_html_a7368f316b8cba93e88233efe6fc580b6a1b716478221dae2cc34a1a9da451b72c"><div class="ttname"><a href="EventAttributesViewController_8hpp.html#a7368f316b8cba93e88233efe6fc580b6a1b716478221dae2cc34a1a9da451b72c">BSContinuumFunButton</a></div><div class="ttdeci">@ BSContinuumFunButton</div><div class="ttdef"><b>Definition</b> <a href="EventAttributesViewController_8hpp_source.html#l00049">EventAttributesViewController.hpp:49</a></div></div>

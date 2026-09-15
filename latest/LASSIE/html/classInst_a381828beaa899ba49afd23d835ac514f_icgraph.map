@@ -1,109 +1,110 @@
 <map id="Inst::instance" name="Inst::instance">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1496,812,1605,837"/>
-<area shape="rect" id="Node000002" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="1256,787,1448,812"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1482,819,1448,814,1449,809,1483,813"/>
-<area shape="rect" id="Node000043" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="1325,836,1379,861"/>
-<area shape="poly" id="edge64_Node000001_Node000043" title=" " alt="" coords="1482,836,1380,848,1379,843,1482,830"/>
-<area shape="rect" id="Node000003" href="$classProjectView.html#a7fd56b4c9ad39984f7be48c89300e63a" title=" " alt="" coords="993,5,1195,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1347,773,1336,624,1311,407,1292,295,1269,193,1240,109,1224,76,1206,52,1179,33,1182,29,1210,48,1228,73,1245,107,1274,191,1298,294,1316,407,1341,624,1352,772"/>
-<area shape="rect" id="Node000004" href="$namespaceLayerRefs.html#a9f3b25fa0435f2a6479bfa02222e231a" title="Find every Package across the current project that points at an event identified by (type,..." alt="" coords="749,107,888,132"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1346,774,1332,650,1304,475,1285,386,1262,304,1236,238,1222,213,1206,195,1172,168,1133,147,1091,132,1048,122,962,113,888,114,888,109,963,108,1049,117,1093,127,1135,142,1175,163,1210,191,1226,210,1241,236,1267,303,1290,384,1309,474,1337,649,1351,773"/>
-<area shape="rect" id="Node000005" href="$classProjectView.html#ad43e2995a5dfd91bd480246c965230ad" title=" " alt="" coords="459,107,643,132"/>
-<area shape="poly" id="edge12_Node000002_Node000005" title=" " alt="" coords="1346,773,1334,639,1309,446,1290,347,1267,257,1239,184,1223,156,1206,136,1171,108,1134,86,1093,69,1051,57,1007,49,962,45,871,47,784,57,705,74,587,109,586,104,703,69,783,52,871,41,962,40,1007,44,1052,52,1095,64,1136,81,1174,104,1210,132,1228,153,1244,182,1272,255,1295,346,1314,445,1340,638,1352,773"/>
-<area shape="rect" id="Node000006" href="$classPaletteViewController.html#ad66417b58a503aac9762071d732eee92" title=" " alt="" coords="470,198,633,238"/>
-<area shape="poly" id="edge38_Node000002_Node000006" title=" " alt="" coords="1344,773,1326,672,1296,535,1277,466,1255,403,1232,353,1206,320,1188,307,1166,297,1109,280,1041,269,966,261,819,253,705,245,632,233,633,228,706,239,819,248,967,256,1041,263,1110,275,1167,292,1191,303,1210,316,1236,350,1260,401,1282,464,1301,534,1331,671,1349,772"/>
-<area shape="rect" id="Node000008" href="$classProjectView.html#ad121aed869e49e9d18b5eca5d3b04093" title=" " alt="" coords="1007,459,1181,484"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="1344,774,1330,715,1305,640,1287,601,1264,562,1238,527,1206,497,1180,483,1183,479,1210,493,1242,524,1269,560,1291,598,1310,638,1335,714,1349,772"/>
-<area shape="rect" id="Node000009" href="$classEnvelopeLibraryWindow.html#a1fc39bcfac7742b40037b5e5d971217f" title="Create a brand‐new envelope." alt="" coords="729,717,908,757"/>
-<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="1242,788,1208,783,908,749,909,744,1208,778,1243,782"/>
-<area shape="rect" id="Node000010" href="$classEnvelopeLibraryWindow.html#a0fc6921f519c11a1692c3a45a79fc900" title="Constructor: builds the UI." alt="" coords="211,627,397,667"/>
-<area shape="poly" id="edge16_Node000002_Node000010" title=" " alt="" coords="1332,777,1280,715,1246,682,1207,654,1135,617,1076,599,1013,589,932,579,795,567,688,570,581,586,446,613,374,630,373,625,445,607,580,581,688,564,795,561,932,574,1013,584,1077,593,1137,612,1209,649,1249,678,1284,711,1336,773"/>
-<area shape="rect" id="Node000011" href="$classEnvelopeLibraryWindow.html#a738a0ffb4095beaeb082b01d78c9ad01" title="Delete the selected envelope." alt="" coords="729,589,908,629"/>
-<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="1323,780,1271,743,1207,707,1130,678,1051,655,908,624,909,619,1052,650,1132,673,1209,702,1274,738,1326,776"/>
-<area shape="rect" id="Node000012" href="$classEnvelopeLibraryWindow.html#aa5ccfd6bcfce9d10dbd3706bb2645b60" title="Duplicate the selected envelope." alt="" coords="729,653,908,693"/>
-<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="1305,784,1207,751,1049,714,908,689,909,684,1050,709,1209,746,1307,779"/>
-<area shape="rect" id="Node000013" href="$classProjectView.html#ab075481cd5c8a0f9a48a58dc5dc08e68" title=" " alt="" coords="993,1065,1195,1091"/>
-<area shape="poly" id="edge15_Node000002_Node000013" title=" " alt="" coords="1264,821,1258,826,1239,853,1232,880,1231,907,1234,935,1238,963,1237,991,1229,1020,1210,1048,1181,1067,1178,1063,1206,1044,1225,1017,1232,990,1232,963,1229,935,1226,908,1226,879,1234,851,1254,823,1260,817"/>
-<area shape="rect" id="Node000014" href="$classLayerBox.html#a7015177c293bac4b1abed4d0bf4e44fa" title=" " alt="" coords="1013,1115,1175,1140"/>
-<area shape="poly" id="edge17_Node000002_Node000014" title=" " alt="" coords="1263,822,1258,826,1236,861,1228,895,1229,929,1236,964,1242,1000,1243,1035,1234,1070,1210,1105,1194,1117,1176,1125,1174,1120,1191,1113,1206,1101,1229,1068,1238,1034,1236,1000,1230,965,1224,930,1222,894,1231,859,1254,823,1259,818"/>
-<area shape="rect" id="Node000015" href="$classMarkovModelLibraryWindow.html#a30aea9cdddc52826fa7a36b43ac2a7e6" title=" " alt="" coords="715,781,922,821"/>
-<area shape="poly" id="edge18_Node000002_Node000015" title=" " alt="" coords="1242,802,922,803,922,798,1242,797"/>
-<area shape="rect" id="Node000016" href="$classMarkovModelLibraryWindow.html#abb34dbc1f7195a71b77aa42eb5258563" title=" " alt="" coords="715,973,922,1013"/>
-<area shape="poly" id="edge19_Node000002_Node000016" title=" " alt="" coords="1283,818,1257,827,1233,840,1209,852,1175,864,1144,870,1091,875,1040,883,1013,893,981,910,967,922,958,935,949,949,933,963,909,975,907,970,931,958,945,946,954,932,963,918,979,905,1010,888,1039,878,1091,870,1143,865,1173,858,1207,848,1231,835,1255,822,1281,813"/>
-<area shape="rect" id="Node000017" href="$classProjectView.html#a94f2ef2c8a44bbdd40f53417d740652e" title=" " alt="" coords="726,1037,911,1063"/>
-<area shape="poly" id="edge20_Node000002_Node000017" title=" " alt="" coords="1268,820,1258,827,1241,846,1235,867,1228,889,1210,909,1179,927,1150,936,1122,938,1095,937,1041,937,1012,944,982,960,966,976,958,992,950,1010,934,1027,908,1040,905,1035,930,1022,946,1007,954,990,962,973,978,956,1010,939,1040,932,1095,932,1122,933,1149,930,1177,922,1206,905,1223,886,1230,865,1237,844,1254,823,1265,816"/>
-<area shape="rect" id="Node000018" href="$classLayerBox.html#af4f626e754364178bf94507edd498083" title=" " alt="" coords="1018,1164,1170,1189"/>
-<area shape="poly" id="edge21_Node000002_Node000018" title=" " alt="" coords="1262,822,1258,826,1243,847,1232,867,1224,907,1227,948,1236,989,1244,1030,1247,1072,1237,1113,1226,1134,1210,1155,1192,1168,1171,1176,1169,1171,1189,1163,1206,1151,1222,1131,1232,1111,1242,1071,1239,1031,1230,990,1222,949,1219,907,1227,865,1238,844,1254,823,1259,818"/>
-<area shape="rect" id="Node000019" href="$classMainWindow.html#a3c01f12b25b07bb6c146b8ca1cc89b77" title="Build the main window and bind it to the application singleton." alt="" coords="995,1213,1193,1239"/>
-<area shape="poly" id="edge22_Node000002_Node000019" title=" " alt="" coords="1262,822,1258,826,1241,850,1229,873,1223,897,1220,920,1225,967,1236,1014,1247,1061,1251,1109,1248,1132,1241,1156,1228,1180,1210,1204,1194,1216,1191,1212,1206,1200,1224,1177,1236,1154,1243,1131,1245,1108,1242,1062,1231,1015,1219,968,1215,920,1217,896,1224,871,1236,847,1254,823,1259,818"/>
-<area shape="rect" id="Node000020" href="$namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160" title=" " alt="" coords="1019,812,1169,837"/>
-<area shape="poly" id="edge23_Node000002_Node000020" title=" " alt="" coords="1243,813,1170,820,1169,815,1242,807"/>
-<area shape="rect" id="Node000022" href="$classMarkovModelLibraryWindow.html#aa6aac28805c9e8bf4f7f72e4d842d0f5" title=" " alt="" coords="715,1087,922,1127"/>
-<area shape="poly" id="edge48_Node000002_Node000022" title=" " alt="" coords="1265,821,1258,827,1245,842,1238,858,1235,892,1232,926,1224,943,1210,960,1181,980,1152,989,1125,992,1097,990,1041,989,1012,995,982,1011,966,1026,958,1043,950,1060,934,1077,912,1089,910,1085,930,1073,946,1057,953,1041,962,1023,978,1006,1011,990,1041,984,1097,985,1124,986,1151,984,1178,975,1206,956,1219,941,1226,925,1230,891,1233,857,1240,840,1254,823,1262,817"/>
-<area shape="rect" id="Node000027" href="$classProjectView.html#a9f4f43c4b6e1b2a95577c6c1ee52c5e9" title=" " alt="" coords="723,1152,915,1177"/>
-<area shape="poly" id="edge61_Node000002_Node000027" title=" " alt="" coords="1264,821,1258,826,1242,849,1235,871,1234,894,1235,917,1237,941,1236,964,1228,988,1210,1011,1181,1031,1153,1040,1125,1041,1097,1038,1069,1034,1041,1034,1012,1040,982,1056,965,1076,958,1097,952,1120,934,1141,911,1154,908,1150,930,1137,947,1117,953,1096,960,1073,978,1052,1010,1035,1040,1029,1069,1029,1097,1033,1125,1035,1152,1034,1179,1026,1206,1007,1223,985,1230,963,1232,941,1230,918,1228,894,1229,870,1237,846,1254,823,1260,817"/>
-<area shape="rect" id="Node000028" href="$classPaletteViewController.html#a844435fd7993a4f35e7b3d2d7997c0c8" title=" " alt="" coords="445,262,657,302"/>
-<area shape="poly" id="edge39_Node000002_Node000028" title=" " alt="" coords="1349,773,1345,691,1338,637,1326,577,1308,517,1283,459,1250,405,1206,360,1179,348,1128,337,982,317,811,301,657,291,658,285,812,296,983,312,1129,332,1180,343,1210,356,1254,402,1288,456,1314,515,1331,576,1343,636,1350,690,1354,773"/>
-<area shape="rect" id="Node000029" href="$classPaletteViewController.html#a2aa7de728bc16b126b7d29d3e62e9f8c" title=" " alt="" coords="470,326,633,366"/>
-<area shape="poly" id="edge41_Node000002_Node000029" title=" " alt="" coords="1348,773,1341,698,1333,649,1321,597,1303,543,1278,492,1247,445,1206,406,1163,384,1102,367,1028,356,945,348,775,343,633,345,633,340,776,338,946,343,1028,350,1103,362,1165,379,1210,401,1251,441,1283,489,1308,541,1326,595,1338,648,1346,698,1353,773"/>
-<area shape="rect" id="Node000030" href="$classPartials.html#a648435da3ce592885949c4c7d2446d80" title=" " alt="" coords="1031,1263,1157,1288"/>
-<area shape="poly" id="edge43_Node000002_Node000030" title=" " alt="" coords="1262,822,1258,826,1239,853,1226,880,1219,906,1217,932,1223,985,1236,1039,1249,1092,1255,1145,1252,1172,1244,1199,1231,1226,1210,1253,1186,1270,1159,1278,1157,1273,1184,1265,1206,1249,1226,1223,1239,1197,1247,1171,1249,1145,1244,1093,1231,1040,1217,986,1211,933,1214,905,1221,878,1234,850,1254,823,1258,818"/>
-<area shape="rect" id="Node000031" href="$classProjectView.html#a06003d78ccc1ea4e24f855b7ac1e1ec4" title=" " alt="" coords="462,391,641,416"/>
-<area shape="poly" id="edge44_Node000002_Node000031" title=" " alt="" coords="1346,773,1338,705,1315,615,1297,568,1273,523,1243,482,1207,448,1164,428,1104,413,1031,403,950,398,784,396,641,401,641,395,784,390,951,392,1032,398,1105,408,1166,423,1209,444,1247,478,1278,520,1302,565,1320,613,1343,704,1352,772"/>
-<area shape="rect" id="Node000032" href="$classProjectView.html#ab1e02e041f7adbfeb8110a1c3e9f1836" title=" " alt="" coords="727,1339,910,1364"/>
-<area shape="poly" id="edge46_Node000002_Node000032" title=" " alt="" coords="1262,822,1258,826,1247,844,1240,866,1233,923,1233,991,1237,1064,1240,1138,1240,1206,1231,1262,1222,1285,1210,1303,1189,1317,1160,1328,1083,1344,994,1352,910,1355,910,1349,994,1347,1082,1339,1158,1323,1187,1312,1206,1299,1218,1282,1226,1261,1234,1205,1235,1138,1231,1065,1227,991,1227,922,1235,865,1243,841,1254,823,1258,818"/>
-<area shape="rect" id="Node000033" href="$namespaceLayerRefs.html#ad478a677b217cba7af8478afb46516ed" title=" " alt="" coords="996,1413,1192,1439"/>
-<area shape="poly" id="edge47_Node000002_Node000033" title=" " alt="" coords="1262,822,1258,826,1245,847,1236,874,1228,943,1230,1025,1236,1114,1241,1203,1242,1285,1234,1354,1224,1382,1210,1404,1194,1417,1191,1413,1206,1400,1219,1380,1229,1353,1237,1285,1236,1203,1230,1114,1224,1025,1223,943,1231,873,1240,845,1254,823,1258,818"/>
-<area shape="rect" id="Node000034" href="$namespaceLayerRefs.html#a88af7fddaa76aac27994e46d3b303b0a" title="Dereference an OwnerKey to the actual HEvent in the project." alt="" coords="1001,205,1187,231"/>
-<area shape="poly" id="edge49_Node000002_Node000034" title=" " alt="" coords="1345,773,1328,661,1298,504,1279,424,1257,351,1233,292,1206,252,1177,233,1180,228,1210,248,1237,289,1262,349,1284,422,1304,503,1333,660,1350,772"/>
-<area shape="rect" id="Node000037" href="$classProjectView.html#a2ccc2bcbd3fa20e55c9322e347da55e2" title=" " alt="" coords="1025,508,1163,533"/>
-<area shape="poly" id="edge55_Node000002_Node000037" title=" " alt="" coords="1340,774,1323,727,1295,667,1257,606,1233,579,1206,555,1185,542,1162,533,1164,528,1188,537,1210,551,1237,575,1261,603,1300,665,1328,725,1345,772"/>
-<area shape="rect" id="Node000040" href="$classMarkovModelLibraryWindow.html#a96a9b0267a2d48bb1998a2c3f0bec876" title=" " alt="" coords="991,1463,1197,1503"/>
-<area shape="poly" id="edge59_Node000002_Node000040" title=" " alt="" coords="1262,822,1258,826,1244,849,1235,879,1226,953,1228,1042,1234,1138,1241,1234,1243,1323,1234,1398,1225,1429,1210,1453,1197,1465,1193,1461,1206,1450,1220,1427,1229,1397,1238,1323,1236,1234,1229,1138,1222,1042,1221,953,1229,877,1239,847,1254,823,1258,818"/>
-<area shape="rect" id="Node000041" href="$classEnvelopeLibraryWindow.html#acca0567a012063a94d03dc9d9a94c22e" title="Set the active project." alt="" coords="1005,1527,1183,1567"/>
-<area shape="poly" id="edge60_Node000002_Node000041" title=" " alt="" coords="1262,822,1258,826,1243,852,1232,884,1226,923,1224,966,1226,1064,1234,1170,1243,1275,1245,1374,1243,1418,1236,1457,1226,1490,1210,1517,1185,1536,1182,1532,1206,1514,1221,1488,1231,1456,1237,1417,1240,1374,1237,1276,1229,1170,1221,1064,1218,966,1221,922,1227,883,1238,850,1254,823,1258,818"/>
-<area shape="rect" id="Node000042" href="$classProjectView.html#a7ffd2be2dbfeb057b3b8062cf5fa54d3" title=" " alt="" coords="980,1364,1208,1389"/>
-<area shape="poly" id="edge62_Node000002_Node000042" title=" " alt="" coords="1262,822,1258,826,1246,845,1238,869,1230,931,1230,1005,1234,1084,1239,1164,1239,1238,1231,1301,1222,1326,1210,1346,1184,1366,1181,1362,1206,1343,1218,1324,1226,1300,1234,1238,1233,1164,1229,1085,1225,1005,1225,931,1233,868,1242,843,1254,823,1258,818"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="736,122,644,122,644,117,736,117"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="737,137,706,146,643,172,589,200,586,196,641,167,704,141,735,132"/>
-<area shape="rect" id="Node000007" href="$classPaletteViewController.html#adac8c4d6d12b2aa01a7e8a8113b09fb5" title=" " alt="" coords="219,294,389,334"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="468,245,446,252,347,296,345,291,444,248,466,240"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="715,722,397,666,398,661,716,716"/>
-<area shape="poly" id="edge11_Node000011_Node000010" title=" " alt="" coords="716,619,398,643,397,638,716,614"/>
-<area shape="poly" id="edge14_Node000012_Node000010" title=" " alt="" coords="716,670,397,655,398,649,716,665"/>
-<area shape="poly" id="edge24_Node000020_Node000009" title=" " alt="" coords="1044,810,931,771,892,759,893,754,933,766,1046,805"/>
-<area shape="poly" id="edge25_Node000020_Node000011" title=" " alt="" coords="1076,802,1052,766,1019,723,978,680,931,643,907,631,910,626,933,638,981,676,1023,720,1056,763,1080,799"/>
-<area shape="poly" id="edge26_Node000020_Node000012" title=" " alt="" coords="1067,805,1008,756,970,730,931,707,902,695,904,690,933,702,973,725,1011,751,1071,801"/>
-<area shape="poly" id="edge28_Node000020_Node000015" title=" " alt="" coords="1005,820,922,812,922,807,1005,814"/>
-<area shape="poly" id="edge29_Node000020_Node000016" title=" " alt="" coords="1007,843,982,859,971,871,964,883,959,909,953,936,946,950,934,963,916,975,913,970,930,959,941,947,948,934,953,908,959,881,966,868,978,855,1004,839"/>
-<area shape="poly" id="edge30_Node000020_Node000017" title=" " alt="" coords="1058,846,1019,873,982,909,972,925,966,940,962,970,955,998,947,1013,934,1027,913,1040,910,1035,930,1023,943,1009,950,996,957,968,961,939,967,922,978,906,1015,869,1055,842"/>
-<area shape="rect" id="Node000021" href="$classEventAttributesViewController.html#ab2ff1960e73a21d94f108bdedae46d9f" title=" " alt="" coords="705,909,932,949"/>
-<area shape="poly" id="edge27_Node000020_Node000021" title=" " alt="" coords="1018,844,981,859,967,869,958,878,948,889,933,899,906,911,904,906,931,894,945,885,954,875,964,865,979,854,1016,839"/>
-<area shape="poly" id="edge31_Node000020_Node000022" title=" " alt="" coords="1072,849,1027,898,982,959,969,992,963,1021,955,1049,934,1077,917,1089,914,1085,930,1073,951,1047,958,1020,964,991,978,957,1023,894,1068,845"/>
-<area shape="rect" id="Node000023" href="$classEnvLibDrawingArea.html#a41f39121793a68415000a76edf0f9b33" title="Update the active node&#39;s coords from external input." alt="" coords="725,845,913,885"/>
-<area shape="poly" id="edge32_Node000020_Node000023" title=" " alt="" coords="1006,840,914,854,913,848,1005,835"/>
-<area shape="poly" id="edge37_Node000020_Node000027" title=" " alt="" coords="1078,850,1032,920,982,1010,970,1047,966,1080,958,1111,948,1126,934,1141,914,1154,911,1150,930,1137,944,1123,953,1108,961,1079,965,1046,978,1008,1028,918,1074,847"/>
-<area shape="rect" id="Node000024" href="$classEnvelopeLibraryWindow.html#ad1b4a1ec9a80b782cc8666d04f5a05a2" title="Called when either X or Y QLineEdit text changes." alt="" coords="462,809,641,849"/>
-<area shape="poly" id="edge33_Node000023_Node000024" title=" " alt="" coords="711,853,641,843,641,838,711,848"/>
-<area shape="poly" id="edge34_Node000024_Node000010" title=" " alt="" coords="510,802,331,670,334,665,513,798"/>
-<area shape="rect" id="Node000025" href="$classEnvelopeLibraryWindow.html#a5569ae9d30f88f6080575130f28c64cf" title="Programmatically update the X/Y entries." alt="" coords="215,809,393,849"/>
-<area shape="poly" id="edge35_Node000024_Node000025" title=" " alt="" coords="448,831,394,831,394,826,448,826"/>
-<area shape="rect" id="Node000026" href="$classEnvLibDrawingArea.html#aca692664dc8aa19535b80bab00102141" title="Handle presses (select node, start drag, show popup)" alt="" coords="5,809,163,849"/>
-<area shape="poly" id="edge36_Node000025_Node000026" title=" " alt="" coords="201,831,163,831,163,826,201,826"/>
-<area shape="poly" id="edge40_Node000028_Node000007" title=" " alt="" coords="432,300,390,306,389,300,431,295"/>
-<area shape="poly" id="edge42_Node000029_Node000007" title=" " alt="" coords="456,336,389,328,390,322,457,331"/>
-<area shape="poly" id="edge45_Node000031_Node000007" title=" " alt="" coords="475,390,444,381,391,359,343,337,345,332,393,354,446,375,476,385"/>
-<area shape="rect" id="Node000035" href="$namespaceLayerRefs.html#a410d03c150173c0657c0336438235edd" title="Remove every package collected in refs from its owning layer." alt="" coords="731,156,906,181"/>
-<area shape="poly" id="edge50_Node000034_Node000035" title=" " alt="" coords="1009,206,890,184,891,179,1010,200"/>
-<area shape="rect" id="Node000036" href="$namespaceLayerRefs.html#aa403055b505274bee957a47ea9e9c6b5" title="Rewrite the event_name field of every package collected in refs." alt="" coords="726,205,911,231"/>
-<area shape="poly" id="edge53_Node000034_Node000036" title=" " alt="" coords="988,221,912,221,912,215,988,215"/>
-<area shape="poly" id="edge51_Node000035_Node000005" title=" " alt="" coords="735,156,621,135,622,129,736,151"/>
-<area shape="poly" id="edge52_Node000035_Node000006" title=" " alt="" coords="736,186,633,206,632,200,735,181"/>
-<area shape="poly" id="edge54_Node000036_Node000006" title=" " alt="" coords="712,221,633,221,633,215,712,215"/>
-<area shape="rect" id="Node000038" href="$classEnvelopeLibraryWindow.html#af515ba1cc128d9d9c20c6fff1fcb62b7" title="Save via project controller (e.g. Ctrl+S)" alt="" coords="729,474,908,514"/>
-<area shape="poly" id="edge56_Node000037_Node000038" title=" " alt="" coords="1011,515,908,505,909,500,1012,510"/>
-<area shape="poly" id="edge57_Node000038_Node000010" title=" " alt="" coords="716,500,654,505,585,515,514,530,446,552,412,569,380,589,329,629,326,625,377,585,410,564,444,548,513,525,584,510,653,500,715,494"/>
-<area shape="rect" id="Node000039" href="$classEnvelopeLibraryWindow.html#ac20c29339b2be2716f1267447a020d96" title="Catch key presses for shortcuts." alt="" coords="462,441,641,481"/>
-<area shape="poly" id="edge58_Node000038_Node000039" title=" " alt="" coords="715,484,641,474,641,469,716,479"/>
-<area shape="poly" id="edge63_Node000042_Node000032" title=" " alt="" coords="966,1368,910,1362,911,1357,966,1362"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1496,1167,1605,1192"/>
+<area shape="rect" id="Node000002" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="1256,816,1448,841"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1533,1156,1358,843,1363,840,1538,1153"/>
+<area shape="rect" id="Node000019" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="1067,1544,1121,1569"/>
+<area shape="poly" id="edge65_Node000001_Node000019" title=" " alt="" coords="1536,1205,1488,1272,1415,1362,1369,1410,1320,1456,1266,1499,1209,1535,1164,1551,1122,1558,1121,1553,1163,1546,1207,1530,1263,1494,1316,1452,1366,1406,1411,1359,1484,1269,1532,1202"/>
+<area shape="rect" id="Node000003" href="$classProjectView.html#a7fd56b4c9ad39984f7be48c89300e63a" title=" " alt="" coords="993,184,1195,209"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1345,803,1330,681,1302,509,1283,421,1260,340,1235,275,1221,249,1206,231,1178,212,1181,207,1210,227,1225,247,1239,272,1265,339,1288,420,1307,508,1335,680,1351,802"/>
+<area shape="rect" id="Node000004" href="$namespaceLayerRefs.html#a9f3b25fa0435f2a6479bfa02222e231a" title="Find every Package across the current project that points at an event identified by (type,..." alt="" coords="749,237,888,263"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1344,803,1327,698,1297,553,1278,480,1256,414,1232,361,1206,325,1191,317,1162,309,1078,291,888,262,888,256,1079,286,1164,304,1193,313,1210,321,1237,358,1261,412,1283,479,1302,552,1332,697,1350,802"/>
+<area shape="rect" id="Node000005" href="$classProjectView.html#ad43e2995a5dfd91bd480246c965230ad" title=" " alt="" coords="459,237,643,263"/>
+<area shape="poly" id="edge12_Node000002_Node000005" title=" " alt="" coords="1345,802,1329,689,1300,532,1281,453,1258,380,1234,322,1206,283,1189,269,1167,258,1110,241,1042,229,968,223,820,221,706,227,615,240,614,235,705,222,820,216,968,218,1043,224,1111,235,1169,253,1192,265,1210,279,1238,319,1263,378,1286,451,1305,531,1334,689,1350,802"/>
+<area shape="rect" id="Node000006" href="$classPaletteViewController.html#ad66417b58a503aac9762071d732eee92" title=" " alt="" coords="470,329,633,369"/>
+<area shape="poly" id="edge39_Node000002_Node000006" title=" " alt="" coords="1347,802,1338,731,1316,636,1298,586,1274,537,1244,493,1207,455,633,364,633,359,1209,450,1248,489,1279,534,1303,584,1321,635,1343,730,1352,802"/>
+<area shape="rect" id="Node000008" href="$classProjectView.html#ad121aed869e49e9d18b5eca5d3b04093" title=" " alt="" coords="1007,589,1181,615"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="1338,804,1319,765,1290,716,1253,668,1207,628,1181,616,1183,611,1209,624,1256,665,1295,713,1323,762,1343,802"/>
+<area shape="rect" id="Node000009" href="$classEnvelopeLibraryWindow.html#a1fc39bcfac7742b40037b5e5d971217f" title="Create a brand‐new envelope." alt="" coords="729,719,908,759"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="1281,816,1208,801,1049,774,908,754,908,748,1050,769,1208,795,1282,810"/>
+<area shape="rect" id="Node000010" href="$classEnvelopeLibraryWindow.html#a0fc6921f519c11a1692c3a45a79fc900" title="Constructor: builds the UI." alt="" coords="211,758,397,798"/>
+<area shape="poly" id="edge16_Node000002_Node000010" title=" " alt="" coords="1314,812,1264,787,1207,765,1132,741,1072,727,932,710,795,700,688,703,581,717,446,743,374,761,373,755,445,738,580,712,687,698,795,695,932,705,1073,722,1133,736,1209,759,1267,782,1317,807"/>
+<area shape="rect" id="Node000011" href="$classEnvelopeLibraryWindow.html#a738a0ffb4095beaeb082b01d78c9ad01" title="Delete the selected envelope." alt="" coords="729,783,908,823"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="1242,826,908,810,908,805,1242,821"/>
+<area shape="rect" id="Node000012" href="$classEnvelopeLibraryWindow.html#aa5ccfd6bcfce9d10dbd3706bb2645b60" title="Duplicate the selected envelope." alt="" coords="729,847,908,887"/>
+<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="1242,839,909,864,908,858,1242,834"/>
+<area shape="rect" id="Node000013" href="$classProjectView.html#ab075481cd5c8a0f9a48a58dc5dc08e68" title=" " alt="" coords="993,1196,1195,1221"/>
+<area shape="poly" id="edge15_Node000002_Node000013" title=" " alt="" coords="1350,855,1339,920,1314,1008,1296,1054,1273,1099,1244,1142,1210,1179,1177,1198,1174,1194,1206,1175,1240,1138,1268,1097,1291,1052,1309,1006,1334,919,1345,854"/>
+<area shape="rect" id="Node000014" href="$classLayerBox.html#a7015177c293bac4b1abed4d0bf4e44fa" title=" " alt="" coords="1013,1245,1175,1271"/>
+<area shape="poly" id="edge17_Node000002_Node000014" title=" " alt="" coords="1352,855,1345,930,1323,1033,1305,1088,1281,1142,1249,1191,1210,1235,1194,1246,1176,1253,1174,1248,1191,1241,1206,1231,1245,1188,1276,1139,1300,1086,1318,1032,1339,930,1347,855"/>
+<area shape="rect" id="Node000015" href="$classMarkovModelLibraryWindow.html#a30aea9cdddc52826fa7a36b43ac2a7e6" title=" " alt="" coords="715,911,922,951"/>
+<area shape="poly" id="edge18_Node000002_Node000015" title=" " alt="" coords="1284,847,1209,863,923,916,922,911,1207,858,1282,842"/>
+<area shape="rect" id="Node000016" href="$classMarkovModelLibraryWindow.html#abb34dbc1f7195a71b77aa42eb5258563" title=" " alt="" coords="715,1103,922,1143"/>
+<area shape="poly" id="edge19_Node000002_Node000016" title=" " alt="" coords="1337,854,1285,918,1250,952,1209,982,1177,997,1147,1006,1094,1011,1041,1016,1013,1025,981,1040,967,1053,958,1066,949,1080,933,1094,909,1106,907,1101,931,1089,945,1076,954,1063,963,1049,979,1036,1011,1020,1040,1011,1093,1006,1146,1001,1175,992,1207,977,1246,948,1281,914,1333,851"/>
+<area shape="rect" id="Node000017" href="$classProjectView.html#a94f2ef2c8a44bbdd40f53417d740652e" title=" " alt="" coords="726,1168,911,1193"/>
+<area shape="poly" id="edge20_Node000002_Node000017" title=" " alt="" coords="1343,855,1324,896,1295,947,1257,998,1235,1021,1209,1040,1178,1057,1149,1065,1094,1066,1040,1067,1012,1075,982,1091,966,1106,958,1123,950,1141,934,1158,908,1170,905,1166,930,1153,946,1138,954,1121,962,1103,978,1087,1010,1070,1040,1062,1094,1061,1148,1060,1176,1052,1207,1036,1231,1017,1253,994,1291,944,1319,894,1338,853"/>
+<area shape="rect" id="Node000018" href="$classLayerBox.html#af4f626e754364178bf94507edd498083" title=" " alt="" coords="1018,1295,1170,1320"/>
+<area shape="poly" id="edge21_Node000002_Node000018" title=" " alt="" coords="1347,856,1282,1092,1242,1216,1225,1260,1210,1284,1192,1296,1171,1304,1169,1299,1189,1292,1206,1280,1220,1258,1237,1215,1277,1091,1341,854"/>
+<area shape="poly" id="edge22_Node000002_Node000019" title=" " alt="" coords="1345,855,1305,996,1259,1186,1252,1264,1249,1367,1245,1418,1238,1466,1227,1506,1210,1534,1190,1549,1167,1557,1122,1562,1122,1556,1166,1552,1188,1544,1206,1531,1222,1504,1233,1465,1240,1418,1243,1366,1247,1264,1253,1186,1300,994,1340,854"/>
+<area shape="rect" id="Node000020" href="$classMainWindow.html#a3c01f12b25b07bb6c146b8ca1cc89b77" title="Build the main window and bind it to the application singleton." alt="" coords="995,1344,1193,1369"/>
+<area shape="poly" id="edge23_Node000002_Node000020" title=" " alt="" coords="1346,855,1272,1128,1232,1268,1210,1333,1191,1346,1188,1342,1206,1330,1227,1267,1266,1127,1341,854"/>
+<area shape="rect" id="Node000021" href="$namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160" title=" " alt="" coords="1019,943,1169,968"/>
+<area shape="poly" id="edge24_Node000002_Node000021" title=" " alt="" coords="1326,852,1274,889,1209,926,1154,945,1152,940,1207,921,1271,885,1323,848"/>
+<area shape="rect" id="Node000023" href="$classMarkovModelLibraryWindow.html#aa6aac28805c9e8bf4f7f72e4d842d0f5" title=" " alt="" coords="715,1218,922,1258"/>
+<area shape="poly" id="edge49_Node000002_Node000023" title=" " alt="" coords="1347,855,1331,906,1303,970,1264,1035,1238,1065,1210,1091,1179,1109,1150,1118,1122,1120,1095,1119,1041,1119,1012,1126,982,1142,966,1156,958,1173,950,1190,934,1207,909,1220,907,1216,930,1203,945,1187,953,1170,962,1153,978,1137,1010,1121,1040,1114,1096,1113,1122,1114,1149,1112,1177,1104,1206,1087,1235,1061,1259,1032,1299,967,1326,904,1342,854"/>
+<area shape="rect" id="Node000028" href="$classProjectView.html#a9f4f43c4b6e1b2a95577c6c1ee52c5e9" title=" " alt="" coords="723,1283,915,1308"/>
+<area shape="poly" id="edge62_Node000002_Node000028" title=" " alt="" coords="1349,856,1336,916,1311,994,1293,1034,1270,1074,1242,1110,1210,1141,1179,1159,1150,1167,1122,1168,1095,1165,1067,1162,1040,1162,1011,1169,982,1185,965,1205,958,1227,952,1250,934,1272,911,1285,908,1280,930,1268,947,1248,953,1226,960,1203,978,1181,1009,1164,1039,1157,1068,1157,1095,1160,1122,1163,1149,1162,1177,1155,1206,1137,1238,1107,1266,1071,1288,1032,1306,992,1331,914,1344,855"/>
+<area shape="rect" id="Node000029" href="$classPaletteViewController.html#a844435fd7993a4f35e7b3d2d7997c0c8" title=" " alt="" coords="445,393,657,433"/>
+<area shape="poly" id="edge40_Node000002_Node000029" title=" " alt="" coords="1346,803,1335,738,1311,653,1293,609,1270,566,1241,527,1207,495,1178,483,1128,472,981,451,810,435,657,422,658,417,811,429,982,446,1129,467,1180,478,1209,490,1245,524,1275,563,1298,607,1317,652,1340,737,1351,802"/>
+<area shape="rect" id="Node000030" href="$classPaletteViewController.html#a2aa7de728bc16b126b7d29d3e62e9f8c" title=" " alt="" coords="470,457,633,497"/>
+<area shape="poly" id="edge42_Node000002_Node000030" title=" " alt="" coords="1344,803,1331,746,1306,673,1288,635,1265,599,1238,566,1207,539,1162,518,1101,503,1026,491,944,484,775,477,633,477,633,472,775,471,944,478,1027,486,1102,497,1164,513,1209,534,1242,562,1270,595,1292,632,1311,671,1336,744,1349,802"/>
+<area shape="rect" id="Node000031" href="$classPartials.html#a648435da3ce592885949c4c7d2446d80" title=" " alt="" coords="1031,1393,1157,1419"/>
+<area shape="poly" id="edge44_Node000002_Node000031" title=" " alt="" coords="1346,855,1259,1187,1251,1244,1250,1292,1248,1315,1242,1337,1230,1359,1210,1383,1186,1399,1158,1407,1157,1402,1183,1394,1206,1379,1225,1356,1237,1335,1243,1314,1245,1292,1245,1244,1253,1185,1341,854"/>
+<area shape="rect" id="Node000032" href="$classProjectView.html#a06003d78ccc1ea4e24f855b7ac1e1ec4" title=" " alt="" coords="462,521,641,547"/>
+<area shape="poly" id="edge45_Node000002_Node000032" title=" " alt="" coords="1342,803,1327,753,1300,691,1282,659,1261,628,1236,601,1207,579,1163,560,1102,547,1029,537,948,532,782,529,641,532,641,527,782,524,949,527,1030,532,1103,541,1164,555,1209,574,1239,597,1265,625,1287,656,1305,688,1332,751,1347,802"/>
+<area shape="rect" id="Node000033" href="$classProjectView.html#ab1e02e041f7adbfeb8110a1c3e9f1836" title=" " alt="" coords="727,1469,910,1495"/>
+<area shape="poly" id="edge47_Node000002_Node000033" title=" " alt="" coords="1351,856,1337,979,1310,1153,1291,1242,1268,1322,1241,1388,1226,1413,1210,1432,1188,1446,1158,1456,1081,1472,993,1480,910,1484,910,1479,993,1475,1081,1466,1157,1451,1186,1441,1206,1428,1222,1410,1236,1386,1263,1321,1286,1241,1305,1152,1332,978,1346,855"/>
+<area shape="rect" id="Node000034" href="$namespaceLayerRefs.html#ad478a677b217cba7af8478afb46516ed" title=" " alt="" coords="996,5,1192,31"/>
+<area shape="poly" id="edge48_Node000002_Node000034" title=" " alt="" coords="1347,802,1338,647,1315,419,1296,301,1272,193,1242,104,1225,70,1206,45,1190,33,1193,29,1210,41,1230,68,1247,102,1278,191,1301,300,1320,418,1343,647,1352,802"/>
+<area shape="rect" id="Node000035" href="$namespaceLayerRefs.html#a88af7fddaa76aac27994e46d3b303b0a" title="Dereference an OwnerKey to the actual HEvent in the project." alt="" coords="1001,336,1187,361"/>
+<area shape="poly" id="edge50_Node000002_Node000035" title=" " alt="" coords="1348,802,1342,721,1334,667,1322,608,1304,547,1279,487,1247,431,1206,383,1176,364,1179,359,1210,379,1252,428,1284,485,1309,545,1327,607,1339,666,1347,720,1353,802"/>
+<area shape="rect" id="Node000038" href="$classProjectView.html#a2ccc2bcbd3fa20e55c9322e347da55e2" title=" " alt="" coords="1025,639,1163,664"/>
+<area shape="poly" id="edge56_Node000002_Node000038" title=" " alt="" coords="1331,806,1280,746,1245,713,1207,686,1161,667,1163,662,1209,681,1249,709,1284,742,1335,803"/>
+<area shape="rect" id="Node000041" href="$classMarkovModelLibraryWindow.html#a96a9b0267a2d48bb1998a2c3f0bec876" title=" " alt="" coords="991,55,1197,95"/>
+<area shape="poly" id="edge60_Node000002_Node000041" title=" " alt="" coords="1346,802,1335,659,1309,450,1291,343,1267,244,1239,164,1223,133,1206,109,1192,98,1196,94,1210,106,1228,130,1244,161,1272,243,1296,342,1315,450,1340,658,1352,802"/>
+<area shape="rect" id="Node000042" href="$classEnvelopeLibraryWindow.html#acca0567a012063a94d03dc9d9a94c22e" title="Set the active project." alt="" coords="1005,119,1183,159"/>
+<area shape="poly" id="edge61_Node000002_Node000042" title=" " alt="" coords="1346,802,1332,670,1305,481,1286,384,1263,295,1237,222,1222,194,1206,173,1182,156,1185,152,1210,169,1226,191,1242,220,1269,293,1292,383,1311,480,1338,670,1351,802"/>
+<area shape="rect" id="Node000043" href="$classProjectView.html#a7ffd2be2dbfeb057b3b8062cf5fa54d3" title=" " alt="" coords="980,1495,1208,1520"/>
+<area shape="poly" id="edge63_Node000002_Node000043" title=" " alt="" coords="1346,855,1306,996,1259,1187,1252,1231,1252,1271,1257,1342,1257,1375,1251,1408,1236,1442,1210,1477,1182,1497,1179,1492,1206,1473,1232,1439,1246,1406,1251,1374,1252,1342,1246,1271,1247,1231,1253,1185,1301,994,1340,854"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="736,253,644,253,644,247,736,247"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="737,268,706,277,643,303,589,331,586,326,641,298,704,271,735,262"/>
+<area shape="rect" id="Node000007" href="$classPaletteViewController.html#adac8c4d6d12b2aa01a7e8a8113b09fb5" title=" " alt="" coords="219,425,389,465"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="468,376,446,383,347,427,345,422,444,378,466,371"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="716,750,398,774,397,768,716,744"/>
+<area shape="poly" id="edge11_Node000011_Node000010" title=" " alt="" coords="716,801,397,785,398,780,716,796"/>
+<area shape="poly" id="edge14_Node000012_Node000010" title=" " alt="" coords="715,852,397,797,398,791,716,847"/>
+<area shape="poly" id="edge25_Node000021_Node000009" title=" " alt="" coords="1076,932,1052,897,1019,854,978,811,931,774,907,762,910,757,933,769,981,807,1023,850,1056,894,1080,930"/>
+<area shape="poly" id="edge26_Node000021_Node000011" title=" " alt="" coords="1067,935,1008,886,970,860,931,838,902,826,904,821,933,833,973,856,1011,882,1071,931"/>
+<area shape="poly" id="edge27_Node000021_Node000012" title=" " alt="" coords="1044,940,931,902,892,890,893,885,933,897,1046,935"/>
+<area shape="poly" id="edge29_Node000021_Node000015" title=" " alt="" coords="1005,950,922,943,922,938,1005,945"/>
+<area shape="poly" id="edge30_Node000021_Node000016" title=" " alt="" coords="1007,974,982,989,971,1001,964,1014,959,1040,953,1067,946,1080,934,1093,916,1105,913,1101,930,1089,941,1077,948,1065,953,1039,959,1012,966,998,978,985,1004,969"/>
+<area shape="poly" id="edge31_Node000021_Node000017" title=" " alt="" coords="1058,977,1019,1004,982,1040,972,1055,966,1071,962,1100,955,1129,947,1143,934,1157,913,1170,910,1166,930,1153,943,1140,950,1127,957,1099,961,1069,967,1053,978,1036,1015,1000,1055,973"/>
+<area shape="rect" id="Node000022" href="$classEventAttributesViewController.html#ab2ff1960e73a21d94f108bdedae46d9f" title=" " alt="" coords="705,975,932,1015"/>
+<area shape="poly" id="edge28_Node000021_Node000022" title=" " alt="" coords="1005,971,932,982,932,976,1005,966"/>
+<area shape="poly" id="edge32_Node000021_Node000023" title=" " alt="" coords="1072,980,1027,1028,982,1090,969,1122,963,1151,955,1179,934,1207,914,1220,911,1216,930,1203,951,1176,958,1150,964,1121,978,1087,1023,1025,1068,976"/>
+<area shape="rect" id="Node000024" href="$classEnvLibDrawingArea.html#a41f39121793a68415000a76edf0f9b33" title="Update the active node&#39;s coords from external input." alt="" coords="725,1039,913,1079"/>
+<area shape="poly" id="edge33_Node000021_Node000024" title=" " alt="" coords="1018,975,981,990,967,999,958,1009,948,1019,933,1030,906,1042,904,1037,931,1025,945,1015,954,1005,964,995,979,985,1016,970"/>
+<area shape="poly" id="edge38_Node000021_Node000028" title=" " alt="" coords="1078,981,1032,1051,982,1140,970,1178,966,1211,958,1241,948,1257,934,1272,914,1285,911,1280,930,1268,944,1253,953,1239,961,1210,965,1177,978,1138,1028,1048,1074,978"/>
+<area shape="rect" id="Node000025" href="$classEnvelopeLibraryWindow.html#ad1b4a1ec9a80b782cc8666d04f5a05a2" title="Called when either X or Y QLineEdit text changes." alt="" coords="462,971,641,1011"/>
+<area shape="poly" id="edge34_Node000024_Node000025" title=" " alt="" coords="726,1039,630,1014,631,1009,727,1033"/>
+<area shape="poly" id="edge35_Node000025_Node000010" title=" " alt="" coords="515,964,327,800,330,796,518,960"/>
+<area shape="rect" id="Node000026" href="$classEnvelopeLibraryWindow.html#a5569ae9d30f88f6080575130f28c64cf" title="Programmatically update the X/Y entries." alt="" coords="215,971,393,1011"/>
+<area shape="poly" id="edge36_Node000025_Node000026" title=" " alt="" coords="448,994,394,994,394,989,448,989"/>
+<area shape="rect" id="Node000027" href="$classEnvLibDrawingArea.html#aca692664dc8aa19535b80bab00102141" title="Handle presses (select node, start drag, show popup)" alt="" coords="5,971,163,1011"/>
+<area shape="poly" id="edge37_Node000026_Node000027" title=" " alt="" coords="201,994,163,994,163,989,201,989"/>
+<area shape="poly" id="edge41_Node000029_Node000007" title=" " alt="" coords="432,431,390,436,389,431,431,426"/>
+<area shape="poly" id="edge43_Node000030_Node000007" title=" " alt="" coords="456,467,389,458,390,453,457,462"/>
+<area shape="poly" id="edge46_Node000032_Node000007" title=" " alt="" coords="475,520,444,511,391,490,343,467,345,463,393,485,446,506,476,515"/>
+<area shape="rect" id="Node000036" href="$namespaceLayerRefs.html#a410d03c150173c0657c0336438235edd" title="Remove every package collected in refs from its owning layer." alt="" coords="731,287,906,312"/>
+<area shape="poly" id="edge51_Node000035_Node000036" title=" " alt="" coords="1009,336,890,315,891,309,1010,331"/>
+<area shape="rect" id="Node000037" href="$namespaceLayerRefs.html#aa403055b505274bee957a47ea9e9c6b5" title="Rewrite the event_name field of every package collected in refs." alt="" coords="726,336,911,361"/>
+<area shape="poly" id="edge54_Node000035_Node000037" title=" " alt="" coords="988,351,912,351,912,346,988,346"/>
+<area shape="poly" id="edge52_Node000036_Node000005" title=" " alt="" coords="735,287,621,265,622,260,736,282"/>
+<area shape="poly" id="edge53_Node000036_Node000006" title=" " alt="" coords="736,317,633,336,632,331,735,312"/>
+<area shape="poly" id="edge55_Node000037_Node000006" title=" " alt="" coords="712,351,633,351,633,346,712,346"/>
+<area shape="rect" id="Node000039" href="$classEnvelopeLibraryWindow.html#af515ba1cc128d9d9c20c6fff1fcb62b7" title="Save via project controller (e.g. Ctrl+S)" alt="" coords="729,605,908,645"/>
+<area shape="poly" id="edge57_Node000038_Node000039" title=" " alt="" coords="1011,646,908,636,909,631,1012,641"/>
+<area shape="poly" id="edge58_Node000039_Node000010" title=" " alt="" coords="716,630,654,636,585,646,514,661,446,683,412,700,380,720,329,760,326,756,377,715,410,695,444,678,513,656,584,640,653,630,715,625"/>
+<area shape="rect" id="Node000040" href="$classEnvelopeLibraryWindow.html#ac20c29339b2be2716f1267447a020d96" title="Catch key presses for shortcuts." alt="" coords="462,571,641,611"/>
+<area shape="poly" id="edge59_Node000039_Node000040" title=" " alt="" coords="715,615,641,605,641,600,716,609"/>
+<area shape="poly" id="edge64_Node000043_Node000033" title=" " alt="" coords="966,1498,910,1493,911,1488,966,1493"/>
 </map>
