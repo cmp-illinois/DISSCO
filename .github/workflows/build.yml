@@ -165,6 +165,9 @@ jobs:
           Write-Host "MSVC flags: $env:CL"
           cmake --build build --parallel --verbose
 
+      - name: Test
+        run: ctest --test-dir build --output-on-failure --no-tests=error
+
   macos:
     name: macOS build
     runs-on: macos-14
@@ -210,3 +213,6 @@ jobs:
 
       - name: Build
         run: cmake --build build --parallel --verbose
+
+      - name: Test
+        run: ctest --test-dir build --output-on-failure --no-tests=error
