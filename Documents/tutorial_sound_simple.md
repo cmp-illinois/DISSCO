@@ -30,7 +30,8 @@ Avoid saving the project inside the DISSCO or LASSIE application/source folder.
    1. only check the boxes **Sound Synthesis** and **Ouput Particel**
 
    2. set **Piece Duration** to 30 and click OK
-  <img width="290" height="350" alt="image" src="https://github.com/user-attachments/assets/b6759cad-2652-41aa-87e9-3993c3c92352" />
+<img width="290" height="350" alt="image" src="https://github.com/user-attachments/assets/979aeb4a-6604-4bdc-bed0-72f2227bb829" />
+
 
 ## 3. Build a Top event – this is your piece and the root node of the structure
 
@@ -68,7 +69,7 @@ Avoid saving the project inside the DISSCO or LASSIE application/source folder.
 ## 5. Create a simple Envelope
 
 - Click **Envelope Library** button at bottom of the window
-- Click **Create New Envelope** bottom (three bottoms in the top) to create a new envelope item
+- Click **Create New Envelope** bottom (in the top) to create a new envelope item
 - Select the envelope item labeled 1 in the upper blank rectangle
 - Right-click the lower rectangle (graph) and select **Insert Node**
 - Moving around the node, you should notice the X and Y values below the graph
@@ -102,50 +103,52 @@ avoid clipping in your piece
 - Double click on the **Bottom s1** event to bring it back
 - Scrolling down, drag your **Spectrum sp1** into the white box underneath where it says
 **Child Type | Class | Name**
-<img width="3020" height="1714" alt="image" src="https://github.com/user-attachments/assets/018ab324-5774-4776-a467-19915ad28992" />
+<img width="3024" height="1832" alt="image" src="https://github.com/user-attachments/assets/3f56e72b-9755-484a-b2cb-7da4eade4ee2" />
 
 - Click **Insert Function** in the Value field below **Frequency** and choose **RandomInt**
 - 
   1. Set **Lower Bound** to 30
   2. Set **Higher Bound** to 90, hit OK
-(Note: as reference, 48 = C4) - this randomly assigns pitch values to each child between MIDI 27 - 78 (F#2 - F#7)
-<img width="3024" height="1648" alt="image" src="https://github.com/user-attachments/assets/0238657e-0d15-4671-917d-1da545c0b74b" />
+(Note: as reference, 48 = C4) - this randomly assigns pitch values to each child between MIDI 18 - 78 (F#2 - F#7)
+<img width="2980" height="1832" alt="image" src="https://github.com/user-attachments/assets/faf263bd-46ca-4c29-ab0b-47aed4f10fd5" />
 
-- (Loudness) Set **Loudness** to 200
-<img width="2292" height="1236" alt="image" src="https://github.com/user-attachments/assets/1b44bf57-3483-4c13-b133-14045af0c5d3" />
-
-<img width="600" height="300" alt="image" src="https://github.com/user-attachments/assets/d3bc8f6a-c846-47a9-b6a8-fb5cf38499c6" />
+- (Loudness) Set **Loudness** to 128
+<img width="3014" height="1250" alt="image" src="https://github.com/user-attachments/assets/3909518f-88b9-47b2-b59e-592b09bdd19d" />
 
 - (Spatialization) Click **Insert Function** next to **Spatialization** and choose **SPA**  (determines the locations of sounds in space)
  
    1. Click the **fn (function) button** next to the Envelope
    2. Select the **EnvLib** function
    3. Set **Envelope Number** to 1 (the envelope you created), **Scaling Factor** to 1.0, then hit OK (on both **Function Generator** and **SPA** windows)
-<img width="2308" height="1286" alt="image" src="https://github.com/user-attachments/assets/bf130fbb-ac57-4b91-9294-15e40aec0365" />
+<img width="3016" height="1862" alt="image" src="https://github.com/user-attachments/assets/11921491-02e4-4745-b783-2fc6a5debb73" />
 
 - (Reverb) Click **Insert Function** next to **Reverb** and choose **REV_Simple**  (this sets the reverberation quality of the room)
   1. Set **Room Size** to 0.5, hit OK
-<img width="290" height="310" alt="image" src="https://github.com/user-attachments/assets/b341ea34-482b-4958-b37b-fa9f64ccf00c" />
+<img width="290" height="310" alt="image" src="https://github.com/user-attachments/assets/9ced5e42-85f5-4b77-8b14-78faeee501f6" />
+
 
 - What we have now: 
-<img width="3010" height="1698" alt="image" src="https://github.com/user-attachments/assets/baaa3505-8159-4cf6-b9e8-eb49e6225071" />
+<img width="3012" height="1884" alt="image" src="https://github.com/user-attachments/assets/6a24694d-c31e-4e0e-86e6-06bbde2a3bf0" />
 
 ## 8. Return to the Top event and add Bottom as child of Top
 
 - Double click on the **Top 0** event
 - Drag **Bottom s1** into the white box underneath where it says **Child Type |Class |Name**
-<img width="1988" height="1218" alt="image" src="https://github.com/user-attachments/assets/c9bedcae-4e9c-404e-9a5e-ffd18fe7dd21" />
+<img width="3024" height="1892" alt="image" src="https://github.com/user-attachments/assets/39f93a3a-6477-49bd-a825-dd7d041bdb08" />
 
 
 ## 9.  Save Project and Synthesize
 
 - Click the **Save** button in the toolbar
 - From the **Project** menu in the toolbar, select **run**
-<img width="2304" height="1280" alt="image" src="https://github.com/user-attachments/assets/f930f219-c79e-4396-9577-0ce1542bfa22" />
+<img width="300" height="500" alt="image" src="https://github.com/user-attachments/assets/f466c51d-024c-4350-ae15-98746d9a6933" />
 
 - Type apple (or any sequence of letters and/or numbers) into the **Random Seed
 window** and click OK
-<img width="250" height="120" alt="image" src="https://github.com/user-attachments/assets/e459f3a2-18c6-471f-8ffa-cc9e3f893d78" />
+<img width="300" height="220" alt="image" src="https://github.com/user-attachments/assets/61facf22-f99a-42ae-81b5-697e131303fd" />
+
+- Type 1(Default) into the **Number of runs**
+<img width="300" height="220" alt="image" src="https://github.com/user-attachments/assets/bb509bd6-65fd-4dfd-8c57-c12557bdce0c" />
 
 - The .aiff output is in the folder **SoundFiles**, in the same folder as the project (ex.
 Tutorial/SoundFiles/Tutorial.aiff)
@@ -159,15 +162,15 @@ player/digital audio workstation).
 (**Open Project** we creat before)
 - Click **Project** in the toolbar and select **Set Properties**
 - Change the **Piece Duration** from 30 to **60**
-<img width="290" height="350" alt="image" src="https://github.com/user-attachments/assets/96b90962-4cde-44c3-8a88-add2b57c3fc6" />
+<img width="290" height="350" alt="image" src="https://github.com/user-attachments/assets/0dad5609-e8a7-49bd-bd08-4b13756ab993" />
 
 - Select Top 0 and change **Number of Children to Create** from 1 to **10**
-<img width="1952" height="724" alt="image" src="https://github.com/user-attachments/assets/eb90371f-8898-4d11-be8a-3726e835f5b9" />
+<img width="1952" height="724" alt="image" src="https://github.com/user-attachments/assets/81193fc5-b2b4-4923-a139-4d86f27c918f" />
 
 - Click **Insert Function** next to **Child Start Time** and choose **Random**
 - Keep **Lower Bound** at **0**
 - Set **Higher Bound** to **30**, hit OK
-<img width="2302" height="1240" alt="image" src="https://github.com/user-attachments/assets/e576a161-ca44-4048-afca-d0e9785f72ff" />
+<img width="3016" height="1182" alt="image" src="https://github.com/user-attachments/assets/57a0eeaf-32b8-4097-80c4-bd8568b4b7dc" />
 - Save Project and Synthesize (Step 9)
 
 <img width="2218" height="1402" alt="image" src="https://github.com/user-attachments/assets/73d3af6d-c7f8-4f08-b0d8-a3e611119913" />
