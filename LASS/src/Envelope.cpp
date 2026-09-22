@@ -28,6 +28,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "EnvelopeIterator.h"
 #include "InterpolatorTypes.h"
 #include "EnvelopeLibrary.h"
+#include <memory>
 
 EnvelopeLibrary envlib;
 
@@ -212,17 +213,28 @@ m_value_type Envelope::getValue(m_value_type x, m_value_type totalLength)
 		return segments_->at(segments_->size() - 1).y;
 	}
 
-    //TODO: Make come sort of cached flag that will see if this
-    //      actually needs to be performed or not.
-    generateLengths(totalLength);
+    if (getValueCachedLength_ != totalLength)
+        generateLengths(totalLength);
+
+    // Length generation can normalize stored FIXED lengths via a mutator;
+    // build the tables afterwards so invalidation cannot discard them.
+    if (!valueTablesBuilt_)
+        buildValueTables();
 
     //First, find the segment index that this x/totalLength refers to
-    m_value_type current = 0;
-    int x_Index = 0;
+    // Resume the same float prefix sum for forward/equal queries.
+    m_value_type current = x < lastSearchX_ ? 0 : lastSearchCurrent_;
+    int x_Index = x < lastSearchX_ ? 0 : lastSearchIndex_;
     while (current < x) {
 	    current += generatedSegmentLengths_->at(x_Index);
 	    x_Index++;
 	}
+
+    // Store the pre-correction state: re-adding a subtracted length can round
+    // differently from the original prefix sum.
+    lastSearchX_ = x;
+    lastSearchCurrent_ = current;
+    lastSearchIndex_ = x_Index;
 
     //If we have overshot, lets go back
     if (current != x) {
@@ -230,57 +242,45 @@ m_value_type Envelope::getValue(m_value_type x, m_value_type totalLength)
 	    current -= generatedSegmentLengths_->at(x_Index);
 	}
 
-    //Spawn an interpolator of the proper type
-    Interpolator *interp;
-    switch (getSegmentInterpolationType(x_Index)) {
-	  case EXPONENTIAL:
-	      interp = new ExponentialInterpolator();
-	      break;
-
-	  case CUBIC_SPLINE:
-	      interp = new CubicSplineInterpolator();
-	      break;
-
-	  default:
-	      interp = new LinearInterpolator();
-	      break;
-	}
-
-    // set the Interpolator's sampling rate to a fixed granularity
-    interp->setSamplingRate(100);
-
-    // set interpolator duration to one second to make it easy
-    interp->setDuration(1.0);
-
-    // We know that this segment interpolates between xy point
-    // x_Index and x_Index+1
-    xy_point left, right;
-    left = getPoint(x_Index);
-    right = getPoint(x_Index + 1);
-
-    // Now tell the interpolator what values we are going between
-    interp->addEntry(0, left.y);
-    interp->addEntry(1, right.y);
-
     // Figure out which sample we want from the interpolator.
     // This is done by taking the percentage we have to iterate thru
     // the interpolator, and then multiplying that by the number of samples
     int sample = (int) (round(((x - current) / generatedSegmentLengths_->at(x_Index)) * 100.0));
 
-    // Create a value iterator to get values from the interpolator
-    Iterator < m_value_type > tempIterator = interp->valueIterator();
+    return valueTables_.at(x_Index).at(sample);
+}
 
-    // Now lets skip the first sample-1 samples...
-    for (int i = 0; i < sample; i++) {
-	    tempIterator.next();
-	}
+void Envelope::buildValueTables()
+{
+    // Store the exact 100-Hz, one-second iterator outputs, including index 100.
+    // A closed-form interpolation would not preserve the same rounding.
+    const int count = static_cast<int>(segments_->size() - 1);
+    valueTables_.resize(count);
+    for (int segment = 0; segment < count; ++segment) {
+        std::unique_ptr<Interpolator> interp;
+        switch (getSegmentInterpolationType(segment)) {
+        case EXPONENTIAL: interp = std::make_unique<ExponentialInterpolator>(); break;
+        case CUBIC_SPLINE: interp = std::make_unique<CubicSplineInterpolator>(); break;
+        default: interp = std::make_unique<LinearInterpolator>(); break;
+        }
+        interp->setSamplingRate(100);
+        interp->setDuration(1.0);
+        interp->addEntry(0, getPoint(segment).y);
+        interp->addEntry(1, getPoint(segment + 1).y);
+        auto iterator = interp->valueIterator();
+        for (auto& value : valueTables_[segment])
+            value = iterator.next();
+    }
+    valueTablesBuilt_ = true;
+}
 
-    // Now grab the one we want
-    m_value_type returnval = tempIterator.next();
-
-    delete interp;
-
-    return returnval;
+void Envelope::invalidateValueCache()
+{
+    valueTablesBuilt_ = false;
+    getValueCachedLength_ = -1;
+    lastSearchX_ = -1;
+    lastSearchCurrent_ = 0;
+    lastSearchIndex_ = 0;
 }
 
 
@@ -344,6 +344,7 @@ m_value_type Envelope::getValue (m_time_type time,
 //----------------------------------------------------------------------------//
 void Envelope::defineShape()
 {
+    invalidateValueCache();
 	// set our local variables to copies of the variables passed in
 	//maybe make this its own function???
 	//===
@@ -360,6 +361,7 @@ void Envelope::defineShape()
 //----------------------------------------------------------------------------//
 void Envelope::addToShape(vector<envelope_segment> segs)
 {
+    invalidateValueCache();
 	int startIndex;  // want to start at 0 if segments_ is empty; otherwise 1
 	m_value_type x_Offset;
 	if (segments_->size() == 0) {
@@ -539,6 +541,7 @@ vector<envelope_segment>* Envelope::getSegments()
 //----------------------------------------------------------------------------//
 void Envelope::setSegment(int index, envelope_segment segment)
 {
+    invalidateValueCache();
     index++;
     if (checkValidSegmentIndex(index)) {
 	    if (checkValidSegmentIndex(index - 1)) {
@@ -563,6 +566,7 @@ envelope_segment Envelope::getSegment(int index)
 //----------------------------------------------------------------------------//
 void Envelope::setPoint(int index, xy_point point)
 {
+    invalidateValueCache();
     envelope_segment seg;
     seg = segments_->at(index);
     seg.x = point.x;
@@ -585,6 +589,7 @@ xy_point Envelope::getPoint(int index)
 //----------------------------------------------------------------------------//
 void Envelope::addSegment(envelope_segment segment)
 {
+    invalidateValueCache();
     //make sure it is an addable segment
     segment.length = segment.x - segments_->at(segments_->size() - 1).x;
     segments_->push_back(segment);
@@ -612,6 +617,7 @@ m_value_type Envelope::getSegmentLength(int index)
 //----------------------------------------------------------------------------//
 void Envelope::setSegmentLength(int index, m_value_type length)
 {
+    invalidateValueCache();
     index++;
     // make sure the time is positive, otherwise bad things will happen
     if (length < 0) {
@@ -635,6 +641,7 @@ stretch_type Envelope::getSegmentLengthType(int index)
 //----------------------------------------------------------------------------//
 void Envelope::setSegmentLengthType(int index, stretch_type lengthType)
 {
+    invalidateValueCache();
     index++;
     // assumes a valid index is supplied
     envelope_segment segTemp = segments_->at(index);
@@ -653,6 +660,7 @@ interpolation_type Envelope::getSegmentInterpolationType(int index)
 //----------------------------------------------------------------------------//
 void Envelope::setSegmentInterpolationType(int index, interpolation_type interType)
 {
+    invalidateValueCache();
     index++;
     // assumes a valid index is supplied
     envelope_segment
@@ -693,6 +701,13 @@ Iterator<m_value_type> Envelope::valueIterator()
 //----------------------------------------------------------------------------//
 void Envelope::generateLengths(m_time_type totalLength)
 {
+    // valueIterator also regenerates these shared lengths. Reset only the
+    // lookup cache's length/cursor state, leaving iterator reuse unchanged.
+    getValueCachedLength_ = totalLength;
+    lastSearchX_ = -1;
+    lastSearchCurrent_ = 0;
+    lastSearchIndex_ = 0;
+
 	int iNumSegments = static_cast<int>(segments_->size() - 1);
 	double dTotalFixedLength = 0;
 	double dTotalFlexPercent = 0;
@@ -735,6 +750,8 @@ void Envelope::generateLengths(m_time_type totalLength)
 	    // no flexible length is available
 	    dTotalFlexPercent = 0;
 
+        // setSegmentLength below invalidates the lookup cache, preserving
+        // repeated legacy normalization when float rounding requires it.
 	    // get a ratio to scale all fixed length entries by
 	    dScaleRatio = totalLength_ / dTotalFixedLength;
 
@@ -826,6 +843,7 @@ void Envelope::addInterpolators(m_rate_type rate)
 //----------------------------------------------------------------------------//
 void Envelope::scale(m_value_type factor)
 {
+    invalidateValueCache();
 	int iNumSegments = static_cast<int>(segments_->size());
 	envelope_segment segTemp;
 

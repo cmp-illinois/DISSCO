@@ -35,6 +35,7 @@
 #include "Iterator.h"
 #include "DynamicVariable.h"
 #include "InterpolatorIterator.h"
+#include <array>
 //#include "EnvelopeLibrary.h"
 
 /**
@@ -97,6 +98,8 @@ public:
    *	\param totalLength The length of time
    *	\return The approximate value
    **/
+  // Caches the existing iterator's quantized values per instance. Concurrent
+  // consumers must use separate Envelopes.
   m_value_type getValue (m_value_type x, m_value_type totalLength);
 
   /**
@@ -318,6 +321,19 @@ private:
 
   /** This is the sampling rate with which interpolators were generated **/
   m_rate_type currentInterpolatorRate_;
+
+  // Lookup-only cache: keep the existing valueIterator reuse policy unchanged.
+  m_time_type getValueCachedLength_ = -1;
+  vector<std::array<m_value_type, 101>> valueTables_;
+  bool valueTablesBuilt_ = false;
+  void buildValueTables();
+  void invalidateValueCache();
+
+  // Retain the PRE-overshoot-correction prefix sum so forward queries preserve
+  // float rounding: (S - L) + L need not equal S.
+  m_value_type lastSearchX_ = -1;
+  m_value_type lastSearchCurrent_ = 0;
+  int lastSearchIndex_ = 0;
 
   /**
    *	This function populate the private member variable with actual
