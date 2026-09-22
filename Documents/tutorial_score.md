@@ -22,7 +22,7 @@
 
 - A new window, **Project Properties**, will appear
   
-   1. only check the boxes **Score Printing** and **Ouput Particel**
+   1. only check the boxes **Score Printing** and **Output Particel**
 
    2. set **Piece Duration** to 30 and click OK
 
@@ -33,6 +33,10 @@
 (the default name of the newly created Top object is 0)
 
 - Click the wedge next to **Folder Top** then double click **Top 0**
+- Set **EDU Per Beat** (near the top of the Event Attributes panel, below Event Name) to 6
+
+(NOTE: EDU Per Beat defines the rhythmic grid. With 6 EDUs per quarter note, 3 EDUs is an eighth note and 180 EDUs is 30 beats, the whole 30-second piece. Leaving the default 60 makes the notes in this tutorial too short to be notated, and the score comes out empty.)
+
 - Set **Number of Children to Create** to 1
 - Enter 0 for **Child Start Time** and select **EDU** beneath it
 
@@ -53,6 +57,7 @@
 (**NOTE:** Bottom names must begin with a lower-case **n** !)
 
 - Click the wedge next to the **Folder Bottom** and double-click **Bottom n1**
+- Set **EDU Per Beat** to 6 (same as the Top event)
 - Set **Number of Children** to Create to 7  (these will be your sounds)
 - Click **Insert Function** next to **Child Start Time** and choose **Select**  (we are selecting the starting times (EDUs) for our 7 children (notes))
   1. Click **fn** next to **Choice Index** and choose **CURRENT_CHILD_NUM**, hit OK <img width="290" height="350" alt="image" src="https://github.com/user-attachments/assets/a6f5e375-3c2c-49a5-b12c-7a92a308cecd" />
@@ -69,7 +74,7 @@
 <img width="290" height="320" alt="image" src="https://github.com/user-attachments/assets/bb6eb9ad-78b6-4011-bc43-040831f8d49a" />
 
 - Set **Child Duration** to **3 EDUs**
-- Ser *Max Child Duration** to 30
+- Set **Max Child Duration** to 30
 <img width="2322" height="1336" alt="image" src="https://github.com/user-attachments/assets/22e7c777-db52-43e0-9732-21d9cf090713" />
 
 (we will complete the Bottom event in step 6)
@@ -122,6 +127,8 @@ pitches, and dynamic
 <img width="2310" height="1038" alt="image" src="https://github.com/user-attachments/assets/d429aa88-602b-424a-9394-ad2702d61188" />
 
 - Type 123 (or any sequence of letters and/or numbers) into the **Random Seed** window and click OK.
+
+- The PDF should show one bar of seven eighth notes (C C G G A A G, marked ff), some of them with an accent chosen at random, followed by an eighth rest.
 
 - The pdf sheet music output is in the folder ScoreFiles, in the same folder as the project. This tutorial only used randomness placing notation on notes. Through
 experimentation, it’s possible to randomize pitches, start times, and durations to have unique variations of our theme and whole new pieces!
