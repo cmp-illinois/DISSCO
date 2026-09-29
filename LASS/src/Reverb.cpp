@@ -268,9 +268,16 @@ m_sample_type Reverb::do_reverb(m_sample_type x_t, float x_value)
 m_sample_type Reverb::do_reverb(m_sample_type x_t, float x_value, Envelope *percentReverbinput)
 {
   m_sample_type y;
-  Envelope* temp = new Envelope(*percentReverbinput);
-  delete percentReverb;
-  percentReverb = temp;
+  // Retain our envelope's lookup cache on the normal sample path. Copy external
+  // envelopes as before, and preserve the copy constructor's duration/rate
+  // reset if a caller edited those settings through getEnvelope().
+  if (percentReverbinput != percentReverb ||
+      percentReverbinput->getDuration() != 1.0f ||
+      percentReverbinput->getSamplingRate() != DEFAULT_SAMPLING_RATE) {
+    Envelope* temp = new Envelope(*percentReverbinput);
+    delete percentReverb;
+    percentReverb = temp;
+  }
 
   // run the sample through various comb filters (for effeciency
   // reasons, I hard coded this (instead of looping from 0 to
