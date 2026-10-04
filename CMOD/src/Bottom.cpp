@@ -203,6 +203,15 @@ void Bottom::buildChildren(){
     exit(1);
   }
 
+  // A Bottom placed in Seconds or as a Fraction (an inexact start) begins a
+  // new tempo section at its own start, whatever unit its children use.
+  // Event::checkEvent does this for exact children; children in Seconds or
+  // Fraction need it too, or their notes are measured from the inherited
+  // section start. Only the score reads the tempo start, not the sound.
+  if (!ts.startEDU.isDeterminate()) {
+    tempo.setStartTime(ts.start);
+  }
+
   //Create the child events.
   for (currChildNum = 0; currChildNum < numChildren; currChildNum++) {
     if (method == "0") //continuum
@@ -477,18 +486,37 @@ void Bottom::buildNote(SoundAndNoteWrapper* _soundNoteWrapper) {
   }
   newNote->setPitchWellTempered(notePitch);
 
-  // Set notation start, start absolute, and end times in edus
-  newNote->setStartTime(_soundNoteWrapper->ts.startEDU.To<int>());
-  newNote->setEndTime(
-    _soundNoteWrapper->ts.startEDU.To<int>() + 
-      _soundNoteWrapper->ts.durationEDU.To<int>());
+  // Set notation start and end times in edus from the start of the tempo
+  // section. A start or duration given in Seconds or as a Fraction has no
+  // exact edu value (Ratio(0,0)), so it is placed by its global time in
+  // seconds, converted with the tempo and rounded to the nearest edu.
+  TimeSpan& noteTs = _soundNoteWrapper->ts;
+  int noteStartEDU;
+  if (noteTs.startEDU.isDeterminate()) {
+    noteStartEDU = noteTs.startEDU.To<int>();
+  } else {
+    noteStartEDU = tempo.convertSecondsToEDUs(noteTs.start - tempo.getStartTime());
+  }
+  int noteEndEDU;
+  if (noteTs.durationEDU.isDeterminate()) {
+    noteEndEDU = noteStartEDU + noteTs.durationEDU.To<int>();
+  } else {
+    noteEndEDU = tempo.convertSecondsToEDUs(
+      noteTs.start + noteTs.duration - tempo.getStartTime());
+  }
+  newNote->setStartTime(noteStartEDU);
+  newNote->setEndTime(noteEndEDU);
   // Initialize the parameter split before the arrangement
   newNote->initSplit();
   
   // multistaffs
-  //Output::notation_score_.RegisterTempo(tempo);
-  Output::notation_score_.RegisterTempo(tempo,newNote->getStaffNum());
-  Output::notation_score_.InsertNote(newNote);
+  // Only the score uses the notation score; without score output the
+  // tempo (whose time signature may not be notatable) is not registered
+  if (utilities->getScorePrinting()) {
+    //Output::notation_score_.RegisterTempo(tempo);
+    Output::notation_score_.RegisterTempo(tempo,newNote->getStaffNum());
+    Output::notation_score_.InsertNote(newNote, tempo);
+  }
 
   if (utilities->getOutputParticel()){
       Output::endSubLevel();

@@ -97,6 +97,27 @@ static void createDirectoryIfMissing(const string& path) {
                   "Check write permission and free disk space; a regular file must not occupy the output directory path.");
 }
 
+// Quotes one argument for the shell that system() runs, so any file name
+// (with quotes, spaces, $ or backticks) reaches the program unchanged.
+static string shellQuote(const string& argument) {
+#ifdef _WIN32
+  // cmd.exe: Windows file names cannot contain double quotes.
+  return "\"" + argument + "\"";
+#else
+  // POSIX sh: single quotes keep everything literal; an embedded single
+  // quote closes the string, adds an escaped quote, and reopens it.
+  string quoted = "'";
+  for (char c : argument) {
+    if (c == '\'') {
+      quoted += "'\\''";
+    } else {
+      quoted += c;
+    }
+  }
+  return quoted + "'";
+#endif
+}
+
 //----------------------------------------------------------------------------//
 
 string PieceHelper::getProjectName(string path) {
@@ -370,6 +391,7 @@ Piece::Piece(string _workingPath, string _projectTitle){
   utilities = new Utilities(root,
                             _workingPath,
                             soundSynthesis,
+                            scorePrinting,
                             outputParticel,
                             numThreads,
                             numChannels,
@@ -472,7 +494,13 @@ Piece::Piece(string _workingPath, string _projectTitle){
     }
 
   // execute lilypond to create pdf file
-  string lilypondCommand = "lilypond \"" + projectName + ".ly\"";
+  // A name starting with '-' would be read as an option, so pass it as
+  // ./name, which is the same relative file on POSIX and Windows.
+  string lilypondSource = projectName + ".ly";
+  if (lilypondSource[0] == '-') {
+    lilypondSource = "./" + lilypondSource;
+  }
+  string lilypondCommand = "lilypond " + shellQuote(lilypondSource);
   int lilypondStatus = system(lilypondCommand.c_str());
 
   if (lilypondStatus != 0) {

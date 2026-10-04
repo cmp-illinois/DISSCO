@@ -30,6 +30,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Random.h" 
 #include "Bottom.h"
 #include "CmodError.h"
+#include "TimeSignature.h"
 #include <cmath>
 #include <limits>
 
@@ -462,6 +463,17 @@ string Event::getTimeSignatureStringFromDOMElement(pugi::xml_node _element){
   sprintf(charbuffer, "%d", entry2);
   string returnString = stringbuffer + "/"+ string(charbuffer);
 
+  // The denominator is the note value of one beat, which the score must
+  // write as a note value (1 = whole, 2 = half, 4 = quarter, ...). Sound
+  // alone can use any beat, so only projects with score output need this.
+  if (utilities->getScorePrinting() && !TimeSignature::IsPowerOf2(entry2)) {
+    throw CmodError(CmodError::Kind::Project,
+                    "The Time Signature " + returnString + " cannot be notated: its denominator must be a power of two.",
+                    "Event '" + name + "' -> Time Signature: " + returnString,
+                    "Use a denominator of 1, 2, 4, 8, 16, ... (such as 3/4 or 3/8), "
+                    "and write triplets or other tuplets through EDU Per Beat instead.");
+  }
+
   return returnString;
 }
 
@@ -845,22 +857,29 @@ bool Event::buildSweep() {
     rawChildStartTime = static_cast<float>(previousChildEndTime);			//actually endTime
 //cout << "Event::buildSweep - rawChildStartTime=" << rawChildStartTime << endl;
 
-    if (startType == "1" ) {					//EDU
-      tsChild.start = rawChildStartTime *
+    // The child starts where the previous child ends, whatever units its
+    // times are given in. In EDU that is the previous child's exact end. In
+    // Seconds or as a Fraction it is the sum of the entered durations,
+    // converted to seconds exactly as CMOD has always computed it, so the
+    // sound of existing projects does not move by even one sample. When the
+    // start and the durations use different units, their sum means nothing,
+    // so the child starts at the previous child's end in seconds.
+    if (startType == "1" && tsPrevious.endEDU.isDeterminate()) {	//EDU
+      tsChild.startEDU = tsPrevious.endEDU;
+      tsChild.start = tsChild.startEDU.To<float>() *
         tempo.getEDUDurationInSeconds().To<float>();
-//cout << "		ts.Child.start=" << tsChild.start << endl;
-      tsChild.startEDU = Ratio((int)rawChildStartTime, 1);
-    } else if (startType == "2") {				//seconds
-      tsChild.start = rawChildStartTime; 	// no conversion needed
-      tsChild.durationEDU = Ratio(0, 0); // floating point is not exact: NaN
-    } else if (startType == "0") {				//fraction
-      tsChild.start = rawChildStartTime * ts.duration; 	// convert to seconds
-      tsChild.durationEDU = Ratio(0, 0); // floating point is not exact: NaN
-    }
-
-    if (tsChild.start < tsPrevious.end) { // Prevent events from overlapping
+    } else if (startType == durType && (startType == "2" || startType == "0")) {
+      if (startType == "2") {					//seconds
+        tsChild.start = rawChildStartTime; 	// no conversion needed
+      } else {							//fraction
+        tsChild.start = rawChildStartTime * ts.duration; 	// convert to seconds
+      }
+      if (tsChild.start < tsPrevious.end) // Prevent events from overlapping
+        tsChild.start = tsPrevious.end;
+      tsChild.startEDU = Ratio(0, 0); // floating point is not exact: NaN
+    } else {		//start and durations in different units
       tsChild.start = tsPrevious.end;
-      tsChild.startEDU = static_cast<int>(tsPrevious.end);
+      tsChild.startEDU = Ratio(0, 0); // floating point is not exact: NaN
     }
 
   // get the type
@@ -919,7 +938,17 @@ bool Event::buildSweep() {
 
   tsPrevious.end = tsChild.start + tsChild.duration;	//same as EndTime above
   tsPrevious.endEDU = tsChild.startEDU + tsChild.durationEDU;
-  tsPrevious.endEDU = tsChild.startEDU + tsChild.durationEDU;;
+
+  // Max Child Duration shortens the sound of a child timed in Seconds or as a
+  // Fraction, not its place in the Sweep: the next child still moves by the
+  // entered duration, as it always has, and the gap becomes a rest. (When the
+  // start uses the same unit, the start above already sums entered durations.)
+  if ((durType == "2" || durType == "0") && startType != durType) {
+    float enteredDuration = rawChildDuration;			//seconds
+    if (durType == "0") enteredDuration *= ts.duration;	//fraction
+    if (enteredDuration > tsChild.duration)
+      tsPrevious.end = tsChild.start + enteredDuration;
+  }
 /*
  cout << "   " << endl;
  cout << "Event:buildSweep - rawChildStartTime=" << rawChildStartTime << endl;

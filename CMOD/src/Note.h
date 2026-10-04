@@ -77,12 +77,18 @@ class Note {
      * Modifiers belong to the individual pitch event, not to the chord that
      * Section may create while laying out simultaneous or overlapping notes.
      * attack_edu records the event's original attack so tied continuation
-     * segments do not repeat its modifiers.
+     * segments do not repeat its modifiers. tied is true when the pitch
+     * sounds on into the next segment, so its last value here is tied: each
+     * pitch keeps its own ties, as the pitches of a chord need not start or
+     * end together. pitch_num (semitones, C0 = 0) places a tie written on
+     * this pitch alone below or above the chord.
      */
     struct ChordTone {
       std::string pitch;
+      int pitch_num;
       std::vector<std::string> modifiers;
       int attack_edu;
+      bool tied;
     };
 
     		//Rhythm//
@@ -130,7 +136,6 @@ class Note {
 
     int tuplet;
     string tuplet_name;
-    int split;
 
     //Absolute numeric value of the Staff
     int staffNum;
@@ -139,11 +144,19 @@ class Note {
 
     bool first_notation_fragment;
 
+    // Where the pitch (or chord) of the last value written to type_out
+    // starts, and whether it was written with its modifiers
+    size_t last_pitch_pos;
+    bool last_pitch_modifiers;
+
     void prepareForInsertion();
-    void mergePitches(const Note& other, bool prepend_other = false);
+    void mergePitches(const Note& other, bool prepend_other = false,
+                      bool other_continues = false);
+    void tieAllPitches();
     void beginNotation();
-    std::string nextPitchOutput();
-    std::string renderPitch(bool include_modifiers) const;
+    void writeNextPitch();
+    void writeEndTie();
+    std::string renderPitch(bool include_modifiers, bool include_ties) const;
     void rebuildPitchOutput();
     void adjustStartTime(int new_start_time);
     void shiftEDUs(int offset);
@@ -182,7 +195,7 @@ class Note {
     **/
     void setEndTime(int end_time);
     /**
-     * Init the split of this Note in EDUs.
+     * Init the split of this Note: none of its pitches is tied past its end.
     **/
     void initSplit();
 
