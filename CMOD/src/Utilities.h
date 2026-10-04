@@ -78,6 +78,7 @@ public:
    * \param _root
    * \param _workingPath
    * \param _soundSynthesis
+   * \param _scorePrinting Whether the project writes a score
    * \param _outputParticel
    * \param _numThreads The number of threads to use in multi-threaded rendering
    * \param _numChannels The number of channels to use
@@ -87,6 +88,7 @@ public:
   Utilities(pugi::xml_node _root,
             string _workingPath,
             bool _soundSynthesis,
+            bool _scorePrinting,
             bool _outputParticel,
             int _numThreads,
             int _numChannels,
@@ -166,6 +168,12 @@ public:
    * \return The output particel
    */
   bool getOutputParticel(){return outputParticel;}
+
+  /**
+   * Gets whether the project writes a score
+   * \return True if score output is on
+   */
+  bool getScorePrinting(){return scorePrinting;}
 
   /**
    * Gets the number of channels
@@ -457,6 +465,7 @@ private:
 
   // Piece Configurations
   bool soundSynthesis = true;
+  bool scorePrinting = true;
   bool outputParticel = true;
   int numThreads;
   int numChannels;

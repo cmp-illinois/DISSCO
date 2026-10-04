@@ -306,7 +306,8 @@ float Tempo::calculateSecondsFromEDUs(int edus) {
 //----------------------------------------------------------------------------//
 
 int Tempo::convertSecondsToEDUs(float seconds) {
-  float beats_per_second = tempoBeatsPerMinute.To<float>() / 60.0f;
-  float beats = seconds * beats_per_second;
-  return static_cast<int>(lround(beats * EDUPerTimeSignatureBeat.To<float>()));
+  // EDUs count time-signature beats, so the tempo beat (which may be a
+  // different note value, e.g. quarter = 60 in 6/8) is converted first
+  float edus = seconds * getEDUPerSecond().To<float>();
+  return static_cast<int>(lround(edus));
 }

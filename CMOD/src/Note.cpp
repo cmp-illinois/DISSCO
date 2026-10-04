@@ -51,10 +51,11 @@ Note::Note(TimeSpan ts, const Event* root_exact_ancestor)
       start_t(0),
       end_t(0),
       tuplet(0),
-      split(0),
       staffNum(0),
       type(NoteType::kUnknown),
-      first_notation_fragment(true) {
+      first_notation_fragment(true),
+      last_pitch_pos(0),
+      last_pitch_modifiers(false) {
 }
 
 //----------------------------------------------------------------------------//
@@ -68,10 +69,11 @@ Note::Note()
       start_t(0),
       end_t(0),
       tuplet(0),
-      split(0),
       staffNum(0),
       type(NoteType::kUnknown),
-      first_notation_fragment(true) {
+      first_notation_fragment(true),
+      last_pitch_pos(0),
+      last_pitch_modifiers(false) {
 }
 
 //----------------------------------------------------------------------------//
@@ -98,7 +100,9 @@ void Note::setEndTime(int end_time) {
 }
 //----------------------------------------------------------------------------//
 void Note::initSplit(){
-  split = 0;
+  for (ChordTone& tone : chord_tones) {
+    tone.tied = false;
+  }
 }
 //----------------------------------------------------------------------------//
 
@@ -119,7 +123,7 @@ void Note::setPitchWellTempered(int absPitchNum) {
   string sign = octaveNum < 3 ? string(3 - octaveNum, ',')
                              : string(octaveNum - 3, '\'');
   chord_tones.clear();
-  chord_tones.push_back({pitch + sign, modifiers, INT_MIN});
+  chord_tones.push_back({pitch + sign, absPitchNum, modifiers, INT_MIN, false});
   rebuildPitchOutput();
 
   
@@ -253,7 +257,8 @@ void Note::prepareForInsertion() {
   rebuildPitchOutput();
 }
 
-void Note::mergePitches(const Note& other, bool prepend_other) {
+void Note::mergePitches(const Note& other, bool prepend_other, bool other_continues) {
+  const size_t first_merged = prepend_other ? 0 : chord_tones.size();
   if (prepend_other) {
     chord_tones.insert(
         chord_tones.begin(), other.chord_tones.begin(), other.chord_tones.end());
@@ -261,22 +266,74 @@ void Note::mergePitches(const Note& other, bool prepend_other) {
     chord_tones.insert(
         chord_tones.end(), other.chord_tones.begin(), other.chord_tones.end());
   }
+  if (other_continues) {
+    // The other note sounds on past this one, so its pitches are tied
+    for (size_t tone_idx = first_merged;
+         tone_idx < first_merged + other.chord_tones.size();
+         ++tone_idx) {
+      chord_tones[tone_idx].tied = true;
+    }
+  }
   rebuildPitchOutput();
+}
+
+void Note::tieAllPitches() {
+  for (ChordTone& tone : chord_tones) {
+    tone.tied = true;
+  }
 }
 
 void Note::beginNotation() {
   first_notation_fragment = true;
 }
 
-string Note::nextPitchOutput() {
-  const string output = renderPitch(first_notation_fragment);
+void Note::writeNextPitch() {
+  last_pitch_pos = type_out.size();
+  last_pitch_modifiers = first_notation_fragment;
+  type_out += renderPitch(first_notation_fragment, false);
   first_notation_fragment = false;
-  return output;
 }
 
-string Note::renderPitch(bool include_modifiers) const {
+void Note::writeEndTie() {
+  size_t tied_tones = 0;
+  for (const ChordTone& tone : chord_tones) {
+    if (tone.tied) {
+      ++tied_tones;
+    }
+  }
+
+  if (tied_tones == 0) {
+    return;
+  }
+  if (tied_tones == chord_tones.size()) {
+    type_out += "~ "; // every pitch sounds on: tie the whole chord
+    return;
+  }
+
+  // Only some pitches sound on: tie each of them inside the last chord
+  // written, so the others can be attacked again
+  const size_t written_length = renderPitch(last_pitch_modifiers, false).size();
+  type_out.replace(last_pitch_pos, written_length,
+                   renderPitch(last_pitch_modifiers, true));
+}
+
+string Note::renderPitch(bool include_modifiers, bool include_ties) const {
   if (chord_tones.empty()) {
     return pitch_out;
+  }
+
+  // Ties are written per pitch only when some pitches of the chord sound on
+  // (writeEndTie). Each is given a direction so it is drawn at its own note:
+  // down for a pitch below the chord's middle, up otherwise
+  int lowest = chord_tones.front().pitch_num;
+  int highest = lowest;
+  for (const ChordTone& tone : chord_tones) {
+    if (tone.pitch_num < lowest) {
+      lowest = tone.pitch_num;
+    }
+    if (tone.pitch_num > highest) {
+      highest = tone.pitch_num;
+    }
   }
 
   string output = "<";
@@ -294,6 +351,9 @@ string Note::renderPitch(bool include_modifiers) const {
         output += *modifier;
       }
     }
+    if (include_ties && tone.tied) {
+      output += (2 * tone.pitch_num < lowest + highest) ? "_~" : "^~";
+    }
   }
   output += ">";
   return output;
@@ -301,7 +361,7 @@ string Note::renderPitch(bool include_modifiers) const {
 
 void Note::rebuildPitchOutput() {
   if (!chord_tones.empty()) {
-    pitch_out = renderPitch(false);
+    pitch_out = renderPitch(false, false);
   }
 }
 
@@ -328,9 +388,8 @@ void Note::shiftEDUs(int offset) {
 
 // multistaffs
 void Note::setStaffNum(int noteStaff){
-  if(noteStaff<0){
-    noteStaff = 0;
-  }
+  // NotationScore::InsertNote moves an out-of-range staff number to the
+  // nearest staff and warns about it
   staffNum = noteStaff;
 }
 

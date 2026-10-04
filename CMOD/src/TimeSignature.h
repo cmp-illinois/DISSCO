@@ -60,21 +60,28 @@ struct TimeSignature {
   }
 
   /**
-   * Calculate the greatest tuplet type possible in the score, exclusive.
-   * E.g. if the score can contain at most a quintuplet (5-tuplet),
-   * CalculateTupletLimit() will return 6.
+   * Calculate the greatest tuplet type possible in the score, exclusive,
+   * and store the duration of one tuplet note of every possible type in
+   * valid_dividers_ (from the whole beat down to one EDU). A tuplet type
+   * is possible when it divides the beat into equal whole numbers of
+   * EDUs, so every divisor of beat_edus_ is one, and the greatest is
+   * beat_edus_ itself (one EDU per note). E.g. with 10 EDUs per beat the
+   * types are 1, 2, 5 and 10, and CalculateTupletLimit() will return 11.
    * 
    * @return the greatest tuplet type possible in the score, exclusive.
   **/
   size_t CalculateTupletLimit() {
-    size_t tuplet_num = 1;
+    size_t tuplet_limit = 2; // the whole beat (type 1) is always possible
+    valid_dividers_.clear();
 
-    while (beat_edus_ % tuplet_num == 0) {
-      valid_dividers_.push_back(static_cast<int>(beat_edus_ / tuplet_num));
-      tuplet_num++;
+    for (int tuplet_num = 1; tuplet_num <= beat_edus_; ++tuplet_num) {
+      if (beat_edus_ % tuplet_num == 0) {
+        valid_dividers_.push_back(beat_edus_ / tuplet_num);
+        tuplet_limit = static_cast<size_t>(tuplet_num) + 1;
+      }
     }
 
-    return tuplet_num;
+    return tuplet_limit;
   }
 
   /** 
@@ -85,9 +92,11 @@ struct TimeSignature {
    * @return The fitting tuplet; -1 if input invalid
   **/
   int DetermineTuplet(int dur) {
-    for (int tuplet_num = 2; tuplet_num < tuplet_limit_; ++tuplet_num) {
-      int tuplet_beat_dur = beat_edus_ / tuplet_num;
-      if (dur % tuplet_beat_dur == 0) {
+    // valid_dividers_ runs from the longest tuplet note (the whole beat,
+    // type 1) to the shortest, so the first fit is the simplest tuplet
+    for (size_t i = 0; i < valid_dividers_.size(); ++i) {
+      int tuplet_num = beat_edus_ / valid_dividers_[i];
+      if (tuplet_num >= 2 && dur % valid_dividers_[i] == 0) {
         return tuplet_num;
       }
     }
@@ -96,16 +105,18 @@ struct TimeSignature {
   }
 
   /**
-   * Construct tuplet names as strings for Lilypond score generation.
+   * Construct tuplet names as strings for Lilypond score generation,
+   * one for each possible tuplet type.
   **/
   void ConstructTupletNames() {
     tuplet_types_.clear();
 
-    for(int i = 0; i < tuplet_limit_; ++i) {
-      int l = CalculateNearestPow2(i);
+    for (size_t i = 0; i < valid_dividers_.size(); ++i) {
+      int tuplet_num = beat_edus_ / valid_dividers_[i];
+      int l = CalculateNearestPow2(tuplet_num);
       string t = "\\tuplet ";
-      t += Note::int_to_str(i) + "/" + Note::int_to_str(l) + "{ ";
-      tuplet_types_.push_back(t);
+      t += Note::int_to_str(tuplet_num) + "/" + Note::int_to_str(l) + "{ ";
+      tuplet_types_[tuplet_num] = t;
     }
   }
 
@@ -151,25 +162,31 @@ struct TimeSignature {
    * Calculate log2(num).
    * 
    * @param num The number to evaluate
-   * @return The exponent of 2 which gives num; -1 if 
+   * @return The exponent of 2 which gives num (0 for num = 1); -1 if
    * num is not a power of 2
    **/
   static int DiscreteLog2(int num) {
-    if (num % 2 != 0) {
+    if (!IsPowerOf2(num)) {
       return -1;
     }
 
     int pow = 0;
-    int power_of_2 = 1;
-    while (power_of_2 < num) { // && pow < std::numeric_limits<int>::digits
-      power_of_2 *= 2;
+    while (num > 1) {
+      num /= 2;
       ++pow;
-      if (power_of_2 == num) {
-        return pow;
-      }
     }
 
-    return -1;
+    return pow;
+  }
+
+  /**
+   * Determine whether num is a power of 2 (1, 2, 4, 8, ...).
+   *
+   * @param num The number to evaluate
+   * @return True if num is a positive power of 2; else, false
+   **/
+  static bool IsPowerOf2(int num) {
+    return num > 0 && (num & (num - 1)) == 0;
   }
 
   /**
@@ -213,7 +230,7 @@ struct TimeSignature {
   int bar_edus_;
   int unit_note_ ; // the note that represents one beat
 
-  vector<string> tuplet_types_;
+  map<int, string> tuplet_types_; // tuplet type -> LilyPond tuplet opening
   vector<int> valid_dividers_;
   int tuplet_limit_;
 };

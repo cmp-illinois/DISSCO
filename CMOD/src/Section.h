@@ -75,12 +75,39 @@ public:
   ~Section();
 
   /**
-   * Insert a note into this section.
-   * 
-   * @param n A pointer to the note to insert
-   * @return True if the note was inserted; else, false.
+   * Determine whether this Section is the section of a tempo: the tempo
+   * of the same root exact ancestor, with the same timing and start.
+   *
+   * @param tempo The tempo of a note's Bottom
+   * @return True if the tempo's notes belong to this Section; else, false
   **/
-  bool InsertNote(Note* n);
+  bool IsSectionOf(Tempo& tempo);
+
+  /**
+   * Add a note to this section, with its start and end in edus from the
+   * section start. Notes are placed into bars when InsertAddedNotes is
+   * called, so a section can first take the notes of a section that
+   * overlaps it (TakeNotes).
+   *
+   * @param n A pointer to the note to add
+  **/
+  void AddNote(Note* n);
+
+  /**
+   * Move the notes added to a later Section that overlaps this one onto
+   * this Section's bars. Call it before InsertAddedNotes.
+   *
+   * @param later The Section whose notes to take; it is left without notes
+   * @param offset_edus How many edus after this Section's start the later
+   * Section starts
+  **/
+  void TakeNotes(Section& later, int offset_edus);
+
+  /**
+   * Insert the added notes into the bars of this section, combining
+   * notes that overlap into chords.
+  **/
+  void InsertAddedNotes();
 
   /**
    * Set the duration of this Section in edus with respect to this
@@ -90,6 +117,22 @@ public:
    * @param edus The duration of this Section in edus
   **/
   void SetDurationEDUS(int edus);
+
+  /**
+   * Get the end of the last note added to this Section, in edus from its
+   * start. Call it before building.
+   *
+   * @return The end of the last note in edus; 0 if no note was added
+  **/
+  int GetLastNoteEnd() const;
+
+  /**
+   * Get how much building this Section lengthened it to give its cap
+   * bar a notatable time signature.
+   *
+   * @return The extension in seconds; 0 if there was none
+  **/
+  float GetCapExtensionSeconds() const;
 
   /**
    * Get the global start time of this section in seconds.
@@ -108,18 +151,62 @@ public:
   int CalculateEDUsFromSecondsInTempo(float seconds);
   
   /**
+   * Convert a quantity of edus to seconds with respect to this
+   * Section's time signature.
+   *
+   * @param edus The quantity in edus to convert
+   * @return The equivalent seconds
+  **/
+  float CalculateSecondsFromEDUsInTempo(int edus);
+  
+  /**
    * Build the text representation of this section by adding bars,
    * rests, and adjusting durations.
    * 
    * @param notate_time_signature True if the time signature 
    * should be notated; else, false
+   * @param staff_loudness The last loudness mark notated on this
+   * Section's staff before it ("" if none); updated to the last
+   * loudness mark notated in this Section
   **/
-  void Build(bool notate_time_signature);
+  void Build(bool notate_time_signature, string& staff_loudness);
 
   /**
    * Get this section as a flattened entity ready for output.
   **/
   const list<Note*>& GetSectionFlat();
+
+  /**
+   * Get the time signature in force at the end of this Section after
+   * building: that of its cap bar if it has one, else its own.
+   *
+   * @return The time signature in force at the end of this Section
+  **/
+  TimeSignature GetEndingTimeSignature() const;
+
+  /**
+   * Get the time signature of each bar of this Section after building,
+   * in order: its own, except for its cap bar if it has one.
+   *
+   * @return The time signature of each bar, such as "4/4"
+  **/
+  vector<string> GetBarTimeSignatures() const;
+
+  /**
+   * Get whether each bar of this Section notates its time signature at
+   * its start, after building, in the order of GetBarTimeSignatures.
+   *
+   * @return True for each bar whose time signature is notated
+  **/
+  vector<bool> GetBarTimeSignatureMarks() const;
+
+  /**
+   * Notate the time signature of a bar of this Section at its start,
+   * after building, where it is not notated yet.
+   *
+   * @param bar The index of the bar, as in GetBarTimeSignatures
+  **/
+  void NotateBarTimeSignature(size_t bar);
 
   bool operator<(const TimeSignature& other) const;
 
@@ -129,43 +216,15 @@ public:
 
   bool operator!=(const TimeSignature& other) const;
 
-  void PrintAllNotesFlat(const string& title) const {
-    size_t note_idx = 0;
-    std::ofstream outfile;
-    outfile.open("./all_notes_flat.txt", std::ofstream::app);
-    outfile << endl << endl;
-    outfile << "ALL NOTES FLAT SECTION " << 
-            time_signature_.tempo_.getRootExactAncestor() << " : " << endl;
-    outfile << "Title: " << title << endl;
-    outfile << "Size: " << section_flat_.size() << endl;
-    for (list<Note*>::const_iterator iter = section_flat_.begin();
-         iter != section_flat_.end();
-         ++iter) {
-      const Note* note = *iter;
-      switch (note->type) {
-        case (NoteType::kBarline):
-          outfile << note_idx << " BAR ";
-          break;
-        case (NoteType::kNote):
-          outfile << note_idx << " NOTE ";
-          break;
-        case (NoteType::kRest):
-          outfile << note_idx << " REST ";
-          break;
-        case (NoteType::kTimeSignature):
-          outfile << note_idx << " TIMESIG ";
-          break;
-        case (NoteType::kUnknown):
-          outfile << note_idx << " UNKNOWN ";
-          break;
-      }
-      outfile << "start: " << note->start_t << " end: " << note->end_t << " text: " <<
-          note->type_out << " ID: " << note->rootExactAncestor << endl;
-      ++note_idx;
-    }
-  }
-
 private:
+  /**
+   * Insert a note into the bars of this section. Where it overlaps notes
+   * already inserted, they are cut into chords.
+   *
+   * @param n A pointer to the note to insert
+  **/
+  void InsertNote(Note* n);
+
   /**
    * If the remainder given by the note's end time modulo the edu's per beat
    * is not divisible by any element of valid_dividers_, find the smallest 
@@ -197,12 +256,23 @@ private:
   void AddRestsAndFlatten();
 
   /**
+   * Choose the tuplet type of every beat in which a sound or silence
+   * starts or ends: the simplest tuplet whose notes divide the beat at
+   * all of those points, so every sound and silence in the beat can be
+   * written in it without being moved or shortened. Stores the result
+   * in beat_tuplets_.
+  **/
+  void DetermineBeatTuplets();
+
+  /**
    * Run the notation loop for the section. 
   **/
   void Notate();
 
   /**
-   * Cap the ending of this Section according to the EDU allotment.
+   * Cap the ending of this Section according to the EDU allotment: when
+   * the next section starts partway through the last bar, rewrite that
+   * bar as a shorter cap bar with its own time signature.
   **/
   void CapEnding();
 
@@ -240,7 +310,8 @@ private:
 
   /**
    * Create a tuplet with rests for the current note's final remaining duration.
-   * 
+   * The remainder starts a beat and uses that beat's tuplet from beat_tuplets_.
+   *
    * @param current_note The current note whose duration to notate
    * @param prev_tuplet The type of the previous tuplet to set
    * @param remaining_dur The current note's leftover duration to be notated with rests
@@ -265,16 +336,26 @@ private:
   void LoudnessMark(Note* current_note);
 
   /**
-   * Get the first bar of this Section after building and
-   * __remove the full bar from this Section__
-   * 
-   * @return The first bar of this Section
+   * Make the item that notates a time signature at the start of a bar.
+   *
+   * @param time_signature The time signature, such as "4/4"
+   * @return The new item, owned by the caller
   **/
-  list<Note*> PopFirstBar();
+  static Note* TimeSignatureMark(const string& time_signature);
+
+  /**
+   * Report a beat unit that cannot be written as a note value. Time
+   * signatures are validated when read, so this means an internal error;
+   * it stops the beat-filling loops instead of letting them spin.
+   *
+   * @param unit_note The note value (1/unit_note) that is not a power of 2
+  **/
+  void ThrowUnnotatableBeat(int unit_note) const;
 
   /**
    * Get __only the notes__ of the last bar of this Section 
-   * after building and __remove the full bar from this Section__
+   * after building and __remove the full bar from this Section__,
+   * keeping the barline before it
    * 
    * @return The notes of the last bar of this Section
   **/
@@ -282,6 +363,7 @@ private:
 
   TimeSignature time_signature_;
 
+  vector<Note*> added_notes_; // notes added but not yet inserted into bars
   vector< vector<Note*> > section_;
   list<Note*> section_flat_;
   bool is_built_;
@@ -289,8 +371,11 @@ private:
   int remaining_edus_;
   bool is_edu_limit_; // true if the Section has an edu allotment; else false
   Section* cap_; // TODO - this is poor. the solution is to stop using pointers for Notes.
+  float cap_extension_seconds_; // how much CapEnding lengthened this Section
 
-  static string prev_loudness; // the previous loudness mark in notation loop
+  map<int, int> beat_tuplets_; // beat index -> the tuplet type of that beat in the notation loop
+  string prev_loudness_; // the previous loudness mark on this staff in the notation loop
+  string last_bar_loudness_; // the loudness mark in force where the last bar starts
 };
 
 #endif
