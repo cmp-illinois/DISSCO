@@ -1,5 +1,7 @@
 <map id="Tempo::isTempoSameAs" name="Tempo::isTempoSameAs">
-<area shape="rect" id="Node000001" title=" " alt="" coords="157,5,337,31"/>
-<area shape="rect" id="Node000002" href="$classEvent.html#a4f7a2537d2729b0035ff13ee67c40377" title=" " alt="" coords="5,5,109,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,21,110,21,110,15,144,15"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="205,31,385,56"/>
+<area shape="rect" id="Node000002" href="$classEvent.html#a4f7a2537d2729b0035ff13ee67c40377" title=" " alt="" coords="29,5,133,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,34,133,27,134,21,192,28"/>
+<area shape="rect" id="Node000003" href="$classSection.html#a8e46e7082f32c917d1485d477fb49376" title=" " alt="" coords="5,55,157,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,58,158,61,157,56,191,52"/>
 </map>

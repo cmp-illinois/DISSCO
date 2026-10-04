@@ -113,6 +113,8 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad9c43d3b078949af284f977e4b32ac6e" id="r_ad9c43d3b078949af284f977e4b32ac6e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTimeSignature.html#ad9c43d3b078949af284f977e4b32ac6e">DiscreteLog2</a> (int num)</td></tr>
 <tr class="separator:ad9c43d3b078949af284f977e4b32ac6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1898ea585cda03da98c74cbacfbfe47b" id="r_a1898ea585cda03da98c74cbacfbfe47b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTimeSignature.html#a1898ea585cda03da98c74cbacfbfe47b">IsPowerOf2</a> (int num)</td></tr>
+<tr class="separator:a1898ea585cda03da98c74cbacfbfe47b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af05d336db1c7d494e11a1bb490f8deec" id="r_af05d336db1c7d494e11a1bb490f8deec"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTimeSignature.html#af05d336db1c7d494e11a1bb490f8deec">CalculateNearestPow2</a> (int num)</td></tr>
 <tr class="separator:af05d336db1c7d494e11a1bb490f8deec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedfa8ad7cc4947f6c114d5d6ad3b92aa" id="r_aedfa8ad7cc4947f6c114d5d6ad3b92aa"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTimeSignature.html#aedfa8ad7cc4947f6c114d5d6ad3b92aa">Power</a> (int base, int pow)</td></tr>
@@ -132,8 +134,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:add5546cf74359d8351355ef203c89650"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0018c0a891ead5c7f3f28d7694595171" id="r_a0018c0a891ead5c7f3f28d7694595171"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTimeSignature.html#a0018c0a891ead5c7f3f28d7694595171">unit_note_</a></td></tr>
 <tr class="separator:a0018c0a891ead5c7f3f28d7694595171"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38270bc43107a0e6cd80513a9a6f35be" id="r_a38270bc43107a0e6cd80513a9a6f35be"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTimeSignature.html#a38270bc43107a0e6cd80513a9a6f35be">tuplet_types_</a></td></tr>
-<tr class="separator:a38270bc43107a0e6cd80513a9a6f35be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad55252754bd87930291213be08b89bd8" id="r_ad55252754bd87930291213be08b89bd8"><td class="memItemLeft" align="right" valign="top">map&lt; int, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTimeSignature.html#ad55252754bd87930291213be08b89bd8">tuplet_types_</a></td></tr>
+<tr class="separator:ad55252754bd87930291213be08b89bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65a92a7fad7fdea20ae66603148259a6" id="r_a65a92a7fad7fdea20ae66603148259a6"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTimeSignature.html#a65a92a7fad7fdea20ae66603148259a6">valid_dividers_</a></td></tr>
 <tr class="separator:a65a92a7fad7fdea20ae66603148259a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03a141c1500c2b9f3be44852eebc853f" id="r_a03a141c1500c2b9f3be44852eebc853f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTimeSignature.html#a03a141c1500c2b9f3be44852eebc853f">tuplet_limit_</a></td></tr>
@@ -307,7 +309,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The nearest power of 2 lower than num </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00182">182</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00199">199</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -347,10 +349,10 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Calculate the greatest tuplet type possible in the score, exclusive. E.g. if the score can contain at most a quintuplet (5-tuplet), <a class="el" href="structTimeSignature.html#a44e670f49b9b4a167c62121aba9a9f93">CalculateTupletLimit()</a> will return 6.</p>
+<p>Calculate the greatest tuplet type possible in the score, exclusive, and store the duration of one tuplet note of every possible type in valid_dividers_ (from the whole beat down to one EDU). A tuplet type is possible when it divides the beat into equal whole numbers of EDUs, so every divisor of beat_edus_ is one, and the greatest is beat_edus_ itself (one EDU per note). E.g. with 10 EDUs per beat the types are 1, 2, 5 and 10, and <a class="el" href="structTimeSignature.html#a44e670f49b9b4a167c62121aba9a9f93">CalculateTupletLimit()</a> will return 11.</p>
 <dl class="section return"><dt>Returns</dt><dd>the greatest tuplet type possible in the score, exclusive. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00069">69</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00073">73</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -388,9 +390,9 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Construct tuplet names as strings for Lilypond score generation. </p>
+<p>Construct tuplet names as strings for Lilypond score generation, one for each possible tuplet type. </p>
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00101">101</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00111">111</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -450,7 +452,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The fitting tuplet; -1 if input invalid </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00087">87</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00094">94</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 
 </div>
 </div>
@@ -484,9 +486,69 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The exponent of 2 which gives num; -1 if num is not a power of 2 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The exponent of 2 which gives num (0 for num = 1); -1 if num is not a power of 2 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00157">157</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00168">168</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="structTimeSignature_ad9c43d3b078949af284f977e4b32ac6e_cgraph.png" border="0" usemap="#astructTimeSignature_ad9c43d3b078949af284f977e4b32ac6e_cgraph" alt=""/></div>
+<map name="astructTimeSignature_ad9c43d3b078949af284f977e4b32ac6e_cgraph" id="astructTimeSignature_ad9c43d3b078949af284f977e4b32ac6e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,216,31"/>
+<area shape="rect" href="structTimeSignature.html#a1898ea585cda03da98c74cbacfbfe47b" title=" " alt="" coords="264,5,463,31"/>
+<area shape="poly" title=" " alt="" coords="216,15,251,15,251,21,216,21"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1898ea585cda03da98c74cbacfbfe47b" name="a1898ea585cda03da98c74cbacfbfe47b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1898ea585cda03da98c74cbacfbfe47b">&#9670;&#160;</a></span>IsPowerOf2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool TimeSignature::IsPowerOf2 </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Determine whether num is a power of 2 (1, 2, 4, 8, ...).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num</td><td>The number to evaluate </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if num is a positive power of 2; else, false </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00188">188</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="structTimeSignature_a1898ea585cda03da98c74cbacfbfe47b_icgraph.png" border="0" usemap="#astructTimeSignature_a1898ea585cda03da98c74cbacfbfe47b_icgraph" alt=""/></div>
+<map name="astructTimeSignature_a1898ea585cda03da98c74cbacfbfe47b_icgraph" id="astructTimeSignature_a1898ea585cda03da98c74cbacfbfe47b_icgraph">
+<area shape="rect" title=" " alt="" coords="427,35,625,60"/>
+<area shape="rect" href="structTimeSignature.html#ad9c43d3b078949af284f977e4b32ac6e" title=" " alt="" coords="163,5,373,31"/>
+<area shape="poly" title=" " alt="" coords="413,37,373,33,374,27,413,32"/>
+<area shape="rect" href="classEvent.html#a6f2a6f54bc9dd773e755d582991a37c6" title=" " alt="" coords="157,55,379,95"/>
+<area shape="poly" title=" " alt="" coords="413,62,379,66,378,61,413,57"/>
+<area shape="rect" href="classEvent.html#a4f7a2537d2729b0035ff13ee67c40377" title=" " alt="" coords="5,63,109,88"/>
+<area shape="poly" title=" " alt="" coords="144,78,110,78,110,73,144,73"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -522,7 +584,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>False if the two TimeSignatures are equivalent; else, true </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00136">136</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00147">147</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -568,7 +630,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the two TimeSignatures are equivalent; else, false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00121">121</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00132">132</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -625,7 +687,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>base^pow </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00199">199</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00216">216</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 
 </div>
 </div>
@@ -665,7 +727,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Print this <a class="el" href="structTimeSignature.html">TimeSignature</a> to an ostream. </p>
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00143">143</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00154">154</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 
 </div>
 </div>
@@ -682,7 +744,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00213">213</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00230">230</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 
 </div>
 </div>
@@ -698,7 +760,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00212">212</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00229">229</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 
 </div>
 </div>
@@ -714,7 +776,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00209">209</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00226">226</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 
 </div>
 </div>
@@ -730,7 +792,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00208">208</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00225">225</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 
 </div>
 </div>
@@ -746,7 +808,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00211">211</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00228">228</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 
 </div>
 </div>
@@ -762,23 +824,23 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00218">218</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00235">235</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 
 </div>
 </div>
-<a id="a38270bc43107a0e6cd80513a9a6f35be" name="a38270bc43107a0e6cd80513a9a6f35be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38270bc43107a0e6cd80513a9a6f35be">&#9670;&#160;</a></span>tuplet_types_</h2>
+<a id="ad55252754bd87930291213be08b89bd8" name="ad55252754bd87930291213be08b89bd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad55252754bd87930291213be08b89bd8">&#9670;&#160;</a></span>tuplet_types_</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt;string&gt; TimeSignature::tuplet_types_</td>
+          <td class="memname">map&lt;int, string&gt; TimeSignature::tuplet_types_</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00216">216</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00233">233</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 
 </div>
 </div>
@@ -794,7 +856,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00214">214</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00231">231</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 
 </div>
 </div>
@@ -810,7 +872,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00217">217</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TimeSignature_8h_source.html#l00234">234</a> of file <a class="el" href="TimeSignature_8h_source.html">TimeSignature.h</a>.</p>
 
 </div>
 </div>

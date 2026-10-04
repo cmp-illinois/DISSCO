@@ -1,24 +1,28 @@
 <map id="Event::checkEvent" name="Event::checkEvent">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,205,148,231"/>
-<area shape="rect" id="Node000002" href="$classTempo.html#a3122d6fb16d6e52a94564b27c96d505e" title=" " alt="" coords="196,5,421,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,204,96,172,120,130,153,86,194,48,221,33,224,38,198,52,157,89,125,133,101,175,86,206"/>
-<area shape="rect" id="Node000003" href="$classRational.html#a977d0a0644375119c82afce254679882" title=" " alt="" coords="507,31,606,56"/>
-<area shape="poly" id="edge10_Node000001_Node000003" title=" " alt="" coords="84,204,126,149,158,118,195,93,232,76,271,63,352,47,429,39,493,38,493,43,429,44,353,52,273,69,234,81,197,98,161,122,130,152,88,207"/>
-<area shape="rect" id="Node000004" href="$classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28" title=" " alt="" coords="239,107,378,132"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="93,203,138,172,195,142,225,132,227,137,197,147,140,177,96,207"/>
-<area shape="rect" id="Node000006" href="$classUtilities.html#ab6db39514c8879ef56f09da59a0c22bd" title=" " alt="" coords="212,156,405,181"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="136,203,234,182,235,187,138,208"/>
-<area shape="rect" id="Node000007" href="$Libraries_8h.html#ad8ae8ed9fbc892a9adb84d5f0b9051da" title=" " alt="" coords="280,205,337,231"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="148,215,266,215,266,221,148,221"/>
-<area shape="rect" id="Node000008" href="$Libraries_8h.html#a1ecb0a878309e5bd7eadcecb2f701132" title=" " alt="" coords="279,255,338,280"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="138,228,266,256,265,261,136,233"/>
-<area shape="rect" id="Node000009" href="$classRational.html#aaae029be1a728da35eff772ba346facd" title=" " alt="" coords="220,304,397,329"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="96,229,140,260,197,290,218,298,217,303,195,295,137,264,93,233"/>
-<area shape="rect" id="Node000010" href="$classTempo.html#afc23c35e715468cbba44a654199f865c" title=" " alt="" coords="230,353,387,379"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="88,229,131,284,162,314,197,340,218,349,216,354,195,344,158,318,127,287,84,233"/>
-<area shape="rect" id="Node000011" href="$classEvent.html#ac22bd2e4461217018f92195a661ad89e" title="Restarts the build process if necessary (for buildDiscrete)." alt="" coords="235,403,382,428"/>
-<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="85,230,100,263,123,306,156,352,176,372,197,389,224,402,221,407,195,394,172,376,152,355,119,309,95,265,80,232"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="422,27,494,34,493,40,421,32"/>
-<area shape="rect" id="Node000005" href="$classCmodError.html#a481a57955818c93a2978353cfc957b1a" title=" " alt="" coords="469,107,644,132"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="378,117,456,117,456,122,378,122"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,213,148,238"/>
+<area shape="rect" id="Node000002" href="$classTempo.html#a3122d6fb16d6e52a94564b27c96d505e" title=" " alt="" coords="196,13,421,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,211,96,180,120,138,153,93,194,55,221,41,224,45,198,60,157,97,125,140,101,182,86,214"/>
+<area shape="rect" id="Node000005" href="$classRational.html#a977d0a0644375119c82afce254679882" title=" " alt="" coords="515,63,614,89"/>
+<area shape="poly" id="edge12_Node000001_Node000005" title=" " alt="" coords="84,211,125,155,157,124,195,100,234,85,274,74,357,62,436,61,501,65,501,70,435,66,358,68,275,79,235,90,197,105,161,129,129,159,88,214"/>
+<area shape="rect" id="Node000006" href="$classUtilities.html#a5613d881d2e83a8ecbb7e038c4151f28" title=" " alt="" coords="239,114,378,139"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="93,210,138,180,195,150,225,139,227,144,197,154,140,184,96,215"/>
+<area shape="rect" id="Node000008" href="$classUtilities.html#ab6db39514c8879ef56f09da59a0c22bd" title=" " alt="" coords="212,163,405,189"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="136,210,234,189,235,194,138,215"/>
+<area shape="rect" id="Node000009" href="$Libraries_8h.html#ad8ae8ed9fbc892a9adb84d5f0b9051da" title=" " alt="" coords="280,213,337,238"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="148,223,266,223,266,228,148,228"/>
+<area shape="rect" id="Node000010" href="$Libraries_8h.html#a1ecb0a878309e5bd7eadcecb2f701132" title=" " alt="" coords="279,262,338,287"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="138,235,266,263,265,268,136,241"/>
+<area shape="rect" id="Node000011" href="$classRational.html#aaae029be1a728da35eff772ba346facd" title=" " alt="" coords="220,311,397,337"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="96,236,140,267,197,298,218,305,217,310,195,302,137,272,93,240"/>
+<area shape="rect" id="Node000012" href="$classTempo.html#afc23c35e715468cbba44a654199f865c" title=" " alt="" coords="230,361,387,386"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="88,237,131,291,162,322,197,347,218,356,216,361,195,352,158,326,127,295,84,240"/>
+<area shape="rect" id="Node000013" href="$classEvent.html#ac22bd2e4461217018f92195a661ad89e" title="Restarts the build process if necessary (for buildDiscrete)." alt="" coords="235,410,382,435"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="85,237,100,270,123,314,156,359,176,379,197,396,224,409,221,414,195,401,172,383,152,362,119,316,95,272,80,239"/>
+<area shape="rect" id="Node000003" href="$classTempo.html#a38d180ff752c1ea099184c5cc8eb7085" title=" " alt="" coords="469,13,660,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="421,23,456,23,456,28,421,28"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="374,36,502,61,501,66,373,41"/>
+<area shape="rect" id="Node000004" href="$classTempo.html#ac7bd9f9822b8ffe5c2d0386883cae6b3" title=" " alt="" coords="708,5,935,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="660,23,694,23,694,28,660,28"/>
+<area shape="rect" id="Node000007" href="$classCmodError.html#a481a57955818c93a2978353cfc957b1a" title=" " alt="" coords="477,114,652,139"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="378,124,464,124,464,129,378,129"/>
 </map>

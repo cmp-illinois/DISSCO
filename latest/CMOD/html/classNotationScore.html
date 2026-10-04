@@ -88,8 +88,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9e6463db8d45cd7b5767fbd9c59bdad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2333153794150dcb91e91a404e02b6c8" id="r_a2333153794150dcb91e91a404e02b6c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNotationScore.html#a2333153794150dcb91e91a404e02b6c8">RegisterTempo</a> (<a class="el" href="classTempo.html">Tempo</a> &amp;tempo, int numberOfStaff)</td></tr>
 <tr class="separator:a2333153794150dcb91e91a404e02b6c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2896bd285a467c8060734970045b456b" id="r_a2896bd285a467c8060734970045b456b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNotationScore.html#a2896bd285a467c8060734970045b456b">InsertNote</a> (<a class="el" href="classNote.html">Note</a> *n)</td></tr>
-<tr class="separator:a2896bd285a467c8060734970045b456b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88f1f081fb6c29c7f5a078ce287637ee" id="r_a88f1f081fb6c29c7f5a078ce287637ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNotationScore.html#a88f1f081fb6c29c7f5a078ce287637ee">InsertNote</a> (<a class="el" href="classNote.html">Note</a> *n, <a class="el" href="classTempo.html">Tempo</a> &amp;tempo)</td></tr>
+<tr class="separator:a88f1f081fb6c29c7f5a078ce287637ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a535f63a351b1bcb6ffe0cf9efa3ee853" id="r_a535f63a351b1bcb6ffe0cf9efa3ee853"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNotationScore.html#a535f63a351b1bcb6ffe0cf9efa3ee853">Build</a> ()</td></tr>
 <tr class="separator:a535f63a351b1bcb6ffe0cf9efa3ee853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -120,7 +120,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Construct a notation score. </p>
 
-<p class="definition">Definition at line <a class="el" href="NotationScore_8cpp_source.html#l00004">4</a> of file <a class="el" href="NotationScore_8cpp_source.html">NotationScore.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NotationScore_8cpp_source.html#l00342">342</a> of file <a class="el" href="NotationScore_8cpp_source.html">NotationScore.cpp</a>.</p>
 
 </div>
 </div>
@@ -165,7 +165,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="NotationScore_8cpp_source.html#l00014">14</a> of file <a class="el" href="NotationScore_8cpp_source.html">NotationScore.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NotationScore_8cpp_source.html#l00352">352</a> of file <a class="el" href="NotationScore_8cpp_source.html">NotationScore.cpp</a>.</p>
 
 </div>
 </div>
@@ -184,17 +184,39 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Build the text representation of this score by adding bars, rests, and adjusting durations. </p>
+<p>Build the text representation of this score by adding bars, rests, and adjusting durations. The project is rejected when sections with different tempos overlap in time, on any staves, since the staves share one tempo. Sections that overlap on a staff are merged onto the bars of the earlier one when they share its tempo, time signature and EDU Per Beat, the later one starting at the nearest edu of the earlier one's grid; otherwise the project is rejected. The score starts at 0 seconds: the silence before the first section is rests in its tempo and meter. The time a staff has no section of its own is filled with sections of rests taken from the other staves, and all staves end together, at the end of the bar that holds the last note of the score. </p>
 
-<p class="definition">Definition at line <a class="el" href="NotationScore_8cpp_source.html#l00133">133</a> of file <a class="el" href="NotationScore_8cpp_source.html">NotationScore.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NotationScore_8cpp_source.html#l00481">481</a> of file <a class="el" href="NotationScore_8cpp_source.html">NotationScore.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classNotationScore_a535f63a351b1bcb6ffe0cf9efa3ee853_cgraph.png" border="0" usemap="#aclassNotationScore_a535f63a351b1bcb6ffe0cf9efa3ee853_cgraph" alt=""/></div>
 <map name="aclassNotationScore_a535f63a351b1bcb6ffe0cf9efa3ee853_cgraph" id="aclassNotationScore_a535f63a351b1bcb6ffe0cf9efa3ee853_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,160,31"/>
-<area shape="rect" href="classCmodError.html#a481a57955818c93a2978353cfc957b1a" title=" " alt="" coords="208,5,383,31"/>
-<area shape="poly" title=" " alt="" coords="160,15,194,15,194,21,160,21"/>
+<area shape="rect" title=" " alt="" coords="5,149,160,175"/>
+<area shape="rect" href="classCmodError.html#a481a57955818c93a2978353cfc957b1a" title=" " alt="" coords="224,5,399,31"/>
+<area shape="poly" title=" " alt="" coords="92,147,137,95,170,66,207,41,225,33,227,38,209,46,173,70,141,99,96,151"/>
+<area shape="rect" href="classSection.html#a5ca46aba1b2911855e0a61aebf5c3f3b" title=" " alt="" coords="208,55,415,95"/>
+<area shape="poly" title=" " alt="" coords="116,147,207,112,243,98,245,103,209,116,118,152"/>
+<area shape="rect" href="classTempo.html#a3122d6fb16d6e52a94564b27c96d505e" title=" " alt="" coords="477,108,703,133"/>
+<area shape="poly" title=" " alt="" coords="160,153,463,128,464,134,160,158"/>
+<area shape="rect" href="classSection.html#abd7722aae58ef30d64d681c9b054638a" title=" " alt="" coords="215,170,408,210"/>
+<area shape="poly" title=" " alt="" coords="161,169,201,174,200,179,160,174"/>
+<area shape="rect" href="classSection.html#a3aa90ef0ff65f5a8d3050e9760e7ef81" title=" " alt="" coords="208,235,415,260"/>
+<area shape="poly" title=" " alt="" coords="108,172,154,196,209,219,238,229,236,234,207,225,152,201,105,177"/>
+<area shape="rect" href="classTempo.html#afc23c35e715468cbba44a654199f865c" title=" " alt="" coords="233,284,390,309"/>
+<area shape="poly" title=" " alt="" coords="96,173,142,221,174,248,209,270,224,277,222,282,207,275,171,252,138,225,93,177"/>
+<area shape="poly" title=" " alt="" coords="415,90,499,103,498,108,415,95"/>
+<area shape="rect" href="classTempo.html#a38d180ff752c1ea099184c5cc8eb7085" title=" " alt="" coords="779,95,970,120"/>
+<area shape="poly" title=" " alt="" coords="703,113,766,110,766,115,703,118"/>
+<area shape="rect" href="classRational.html#a977d0a0644375119c82afce254679882" title=" " alt="" coords="825,144,924,169"/>
+<area shape="poly" title=" " alt="" coords="691,131,812,146,811,151,690,136"/>
+<area shape="rect" href="classTempo.html#ac7bd9f9822b8ffe5c2d0386883cae6b3" title=" " alt="" coords="1032,87,1259,127"/>
+<area shape="poly" title=" " alt="" coords="970,105,1018,105,1018,110,970,110"/>
+<area shape="rect" href="classTempo.html#a63eea3938e6da73ef5350aa0ac7da12a" title=" " alt="" coords="463,177,717,203"/>
+<area shape="poly" title=" " alt="" coords="408,187,449,187,449,193,408,193"/>
+<area shape="poly" title=" " alt="" coords="698,175,811,161,812,167,699,180"/>
+<area shape="rect" href="classTempo.html#ade906f53101b477bb1187014e9fa6710" title=" " alt="" coords="765,194,984,234"/>
+<area shape="poly" title=" " alt="" coords="718,198,752,201,751,206,717,203"/>
 </map>
 </div>
 <div class="dynheader">
@@ -210,8 +232,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a2896bd285a467c8060734970045b456b" name="a2896bd285a467c8060734970045b456b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2896bd285a467c8060734970045b456b">&#9670;&#160;</a></span>InsertNote()</h2>
+<a id="a88f1f081fb6c29c7f5a078ce287637ee" name="a88f1f081fb6c29c7f5a078ce287637ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88f1f081fb6c29c7f5a078ce287637ee">&#9670;&#160;</a></span>InsertNote()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -220,25 +242,36 @@ Here is the caller graph for this function:</div>
           <td class="memname">void NotationScore::InsertNote </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classNote.html">Note</a> *&#160;</td>
-          <td class="paramname"><em>n</em></td><td>)</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="classTempo.html">Tempo</a> &amp;&#160;</td>
+          <td class="paramname"><em>tempo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Insert a <a class="el" href="classNote.html" title="A single notated event emitted by a Bottom event.">Note</a> into this score.</p>
+<p>Insert a <a class="el" href="classNote.html" title="A single notated event emitted by a Bottom event.">Note</a> into this score, in the section of its tempo on its staff. A note whose staff number is out of range goes on the nearest staff, and Build warns about it.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">n</td><td>A pointer to the note to insert </td></tr>
+    <tr><td class="paramname">tempo</td><td>The tempo of the note, registered with RegisterTempo </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="NotationScore_8cpp_source.html#l00087">87</a> of file <a class="el" href="NotationScore_8cpp_source.html">NotationScore.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NotationScore_8cpp_source.html#l00432">432</a> of file <a class="el" href="NotationScore_8cpp_source.html">NotationScore.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classNotationScore_a2896bd285a467c8060734970045b456b_cgraph.png" border="0" usemap="#aclassNotationScore_a2896bd285a467c8060734970045b456b_cgraph" alt=""/></div>
-<map name="aclassNotationScore_a2896bd285a467c8060734970045b456b_cgraph" id="aclassNotationScore_a2896bd285a467c8060734970045b456b_cgraph">
+<div class="center"><img src="classNotationScore_a88f1f081fb6c29c7f5a078ce287637ee_cgraph.png" border="0" usemap="#aclassNotationScore_a88f1f081fb6c29c7f5a078ce287637ee_cgraph" alt=""/></div>
+<map name="aclassNotationScore_a88f1f081fb6c29c7f5a078ce287637ee_cgraph" id="aclassNotationScore_a88f1f081fb6c29c7f5a078ce287637ee_cgraph">
 <area shape="rect" title=" " alt="" coords="5,31,196,56"/>
 <area shape="rect" href="classNote.html#a67aa25c488baabade89a6dd5189af301" title=" " alt="" coords="244,5,387,31"/>
 <area shape="poly" title=" " alt="" coords="196,29,230,25,231,31,197,35"/>
@@ -249,8 +282,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classNotationScore_a2896bd285a467c8060734970045b456b_icgraph.png" border="0" usemap="#aclassNotationScore_a2896bd285a467c8060734970045b456b_icgraph" alt=""/></div>
-<map name="aclassNotationScore_a2896bd285a467c8060734970045b456b_icgraph" id="aclassNotationScore_a2896bd285a467c8060734970045b456b_icgraph">
+<div class="center"><img src="classNotationScore_a88f1f081fb6c29c7f5a078ce287637ee_icgraph.png" border="0" usemap="#aclassNotationScore_a88f1f081fb6c29c7f5a078ce287637ee_icgraph" alt=""/></div>
+<map name="aclassNotationScore_a88f1f081fb6c29c7f5a078ce287637ee_icgraph" id="aclassNotationScore_a88f1f081fb6c29c7f5a078ce287637ee_icgraph">
 <area shape="rect" title=" " alt="" coords="625,5,816,31"/>
 <area shape="rect" href="classBottom.html#a8375b8cbfeebf69b5b140563422270e5" title=" " alt="" coords="436,5,577,31"/>
 <area shape="poly" title=" " alt="" coords="611,21,578,21,578,15,611,15"/>
@@ -288,7 +321,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Insert a <a class="el" href="classTempo.html" title="Combined tempo and time-signature descriptor used by every Event.">Tempo</a> into this score.</p>
+<p>Insert a <a class="el" href="classTempo.html" title="Combined tempo and time-signature descriptor used by every Event.">Tempo</a> into this score: each tempo (of one root exact ancestor) is a section of its own on the staff, even when it starts together with another one.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tempo</td><td>The tempo to insert </td></tr>
@@ -297,7 +330,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="NotationScore_8cpp_source.html#l00049">49</a> of file <a class="el" href="NotationScore_8cpp_source.html">NotationScore.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NotationScore_8cpp_source.html#l00387">387</a> of file <a class="el" href="NotationScore_8cpp_source.html">NotationScore.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -349,7 +382,7 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><a class="el" href="classOutput.html" title="Process-global facade for accumulating and emitting CMOD output.">Output</a> the text representation of a score.</p>
+<p><a class="el" href="classOutput.html" title="Process-global facade for accumulating and emitting CMOD output.">Output</a> the text representation of a score. The top staff shows a tempo mark at the start and wherever the tempo changes.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">output_stream</td><td>The stream to which the text will be appended </td></tr>
@@ -359,7 +392,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The modified stream </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="NotationScore_8cpp_source.html#l00217">217</a> of file <a class="el" href="NotationScore_8cpp_source.html">NotationScore.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NotationScore_8cpp_source.html#l00655">655</a> of file <a class="el" href="NotationScore_8cpp_source.html">NotationScore.cpp</a>.</p>
 
 </div>
 </div>

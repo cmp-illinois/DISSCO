@@ -10,10 +10,9 @@ var searchData=
   ['print_7',['print',['../classPiece.html#a771d0080316cc04a12286560bb697355',1,'Piece::Print()'],['../classBottom.html#ab1c068cde7f2c4e02b630542fbe51dd1',1,'Bottom::print()']]],
   ['print_5felist_8',['print_eList',['../classSieve.html#a26b9d908226de6b2965fc6b4d1b6cef3',1,'Sieve']]],
   ['print_5fwlist_9',['print_wList',['../classSieve.html#af4e4b5633a82a57a966ffa5f54b06c56',1,'Sieve']]],
-  ['printallnotesflat_10',['PrintAllNotesFlat',['../classSection.html#af270c2588bad660b2b7c874095d7d931',1,'Section']]],
-  ['printmatrix_11',['printMatrix',['../classMatrix.html#a7cc6947d4d0e627ced86db7a82a4821c',1,'Matrix']]],
-  ['printnote_12',['printNote',['../classBottom.html#a48b52418ef8a1e7d466732b74544fa25',1,'Bottom']]],
-  ['printnoteparticel_13',['printNoteParticel',['../classBottom.html#a61d88ad3fc0071e8ab30041729ae7b79',1,'Bottom']]],
-  ['printparticel_14',['printParticel',['../classBottom.html#a90794abcc11a69f4ebb7a9c58202398a',1,'Bottom']]],
-  ['program_15',['program',['../classdissco_1_1modifier__usage_1_1Program.html#a8af8bd9a886887c76ee54c3480361168',1,'dissco::modifier_usage::Program::Program(Program &amp;&amp;) noexcept'],['../classdissco_1_1modifier__usage_1_1Program.html#a81f0d4386221b6f721be5015f69784fc',1,'dissco::modifier_usage::Program::Program(const Program &amp;)=delete']]]
+  ['printmatrix_10',['printMatrix',['../classMatrix.html#a7cc6947d4d0e627ced86db7a82a4821c',1,'Matrix']]],
+  ['printnote_11',['printNote',['../classBottom.html#a48b52418ef8a1e7d466732b74544fa25',1,'Bottom']]],
+  ['printnoteparticel_12',['printNoteParticel',['../classBottom.html#a61d88ad3fc0071e8ab30041729ae7b79',1,'Bottom']]],
+  ['printparticel_13',['printParticel',['../classBottom.html#a90794abcc11a69f4ebb7a9c58202398a',1,'Bottom']]],
+  ['program_14',['program',['../classdissco_1_1modifier__usage_1_1Program.html#a8af8bd9a886887c76ee54c3480361168',1,'dissco::modifier_usage::Program::Program(Program &amp;&amp;) noexcept'],['../classdissco_1_1modifier__usage_1_1Program.html#a81f0d4386221b6f721be5015f69784fc',1,'dissco::modifier_usage::Program::Program(const Program &amp;)=delete']]]
 ];

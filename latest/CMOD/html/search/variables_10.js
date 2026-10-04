@@ -13,7 +13,7 @@ var searchData=
   ['tsprevious_10',['tsPrevious',['../classEvent.html#aa5f51744bb50ea847ec2414374630c31',1,'Event']]],
   ['tuplet_5flimit_5f_11',['tuplet_limit_',['../structTimeSignature.html#a03a141c1500c2b9f3be44852eebc853f',1,'TimeSignature']]],
   ['tuplet_5fnames_12',['tuplet_names',['../tables_8cpp.html#ad4d5ea265d8a9a9191b6ec03edc7e2f5',1,'tuplet_names:&#160;tables.cpp'],['../tables_8h.html#ad4d5ea265d8a9a9191b6ec03edc7e2f5',1,'tuplet_names:&#160;tables.cpp']]],
-  ['tuplet_5ftypes_5f_13',['tuplet_types_',['../structTimeSignature.html#a38270bc43107a0e6cd80513a9a6f35be',1,'TimeSignature']]],
+  ['tuplet_5ftypes_5f_13',['tuplet_types_',['../structTimeSignature.html#ad55252754bd87930291213be08b89bd8',1,'TimeSignature']]],
   ['type_14',['type',['../classSoundAndNoteWrapper.html#a7f8f15b14021ebd6839c85e3938c0995',1,'SoundAndNoteWrapper::type'],['../classEvent.html#aa8f27a09d800e0c1bf573877130d5038',1,'Event::type'],['../structMatPoint.html#a6fc6389322e0ccc9bcecb342167a938b',1,'MatPoint::type']]],
   ['types_15',['types',['../tables_8cpp.html#a67859543a158addd11afa10dbde40c07',1,'types:&#160;tables.cpp'],['../tables_8h.html#a67859543a158addd11afa10dbde40c07',1,'types:&#160;tables.cpp']]],
   ['typevect_16',['typeVect',['../classEvent.html#affbce601937c529756b935a66ebe773b',1,'Event']]]

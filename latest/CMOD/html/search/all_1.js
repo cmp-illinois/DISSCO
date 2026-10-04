@@ -9,7 +9,7 @@ var searchData=
   ['bottom_2eh_6',['Bottom.h',['../Bottom_8h.html',1,'']]],
   ['bottomeventnames_7',['bottomEventnames',['../classUtilities.html#ace855dbab164f28703425942c1c02482',1,'Utilities']]],
   ['bottomeventvalues_8',['bottomEventValues',['../classUtilities.html#a8d146cbf825ef73854dc54c1f84c519b',1,'Utilities']]],
-  ['build_9',['build',['../classNotationScore.html#a535f63a351b1bcb6ffe0cf9efa3ee853',1,'NotationScore::Build()'],['../classSection.html#a800c6f699b7908e8024d4655a49a4046',1,'Section::Build()'],['../classSieve.html#a4e735f5be0cc972ec953f7d08c9794a5',1,'Sieve::Build()']]],
+  ['build_9',['build',['../classNotationScore.html#a535f63a351b1bcb6ffe0cf9efa3ee853',1,'NotationScore::Build()'],['../classSection.html#a2e56185915c8585f16390a6c04c90877',1,'Section::Build()'],['../classSieve.html#a4e735f5be0cc972ec953f7d08c9794a5',1,'Sieve::Build()']]],
   ['buildchildevents_10',['buildChildEvents',['../classBottom.html#a1ec60539ddd786410725883102eadf29',1,'Bottom']]],
   ['buildchildren_11',['buildchildren',['../classBottom.html#a32e301cf566271d4072951c1a851e88c',1,'Bottom::buildChildren()'],['../classEvent.html#af43248915d08da44962951c1a4d0b4c8',1,'Event::buildChildren()']]],
   ['buildcontinuum_12',['buildContinuum',['../classEvent.html#ada22a83088a037dcf7d1b41cece0dbbb',1,'Event']]],

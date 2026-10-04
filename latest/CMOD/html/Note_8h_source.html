@@ -135,143 +135,152 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classNote.html">   71</a></span><span class="keyword">class </span><a class="code hl_class" href="classNote.html">Note</a> {</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classNote.html#a0bd6fc422149e1c8416770631b28d40c">   72</a></span>  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classSection.html">Section</a>;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keyword">struct </span>ChordTone {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>      std::string pitch;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>      std::vector&lt;std::string&gt; <a class="code hl_variable" href="tables_8cpp.html#a79f43620a5c6672a1f0eed95afc055d8">modifiers</a>;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>      <span class="keywordtype">int</span> attack_edu;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    };</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="comment">//Rhythm//</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">//The timespan of the note.</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_struct" href="structTimeSpan.html">TimeSpan</a> ts;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="comment">// The ancestor event that carries the reference tempo for this Note.</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">const</span> <a class="code hl_class" href="classEvent.html">Event</a>* rootExactAncestor;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keyword">struct </span>ChordTone {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>      std::string pitch;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>      <span class="keywordtype">int</span> pitch_num;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>      std::vector&lt;std::string&gt; <a class="code hl_variable" href="tables_8cpp.html#a79f43620a5c6672a1f0eed95afc055d8">modifiers</a>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>      <span class="keywordtype">int</span> attack_edu;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>      <span class="keywordtype">bool</span> tied;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    };</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="comment">//Rhythm//</span></div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="comment">//Pitch//</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="comment">//Absolute numeric value of the pitch</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">int</span> pitchNum;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="comment">//The timespan of the note.</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_struct" href="structTimeSpan.html">TimeSpan</a> ts;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="comment">// The ancestor event that carries the reference tempo for this Note.</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keyword">const</span> <a class="code hl_class" href="classEvent.html">Event</a>* rootExactAncestor;</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="comment">//The octave the pitch is in</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordtype">int</span> octaveNum;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="comment">//The number of the pitches within the octave</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">int</span> octavePitch;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="comment">//Pitch//</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="comment">//Absolute numeric value of the pitch</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">int</span> pitchNum;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    </div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="comment">//The string name of this pitch</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    std::string pitchName;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="comment">//The octave the pitch is in</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">int</span> octaveNum;</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="comment">//Dynamic number</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">int</span> loudnessNum;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="comment">//The number of the pitches within the octave</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">int</span> octavePitch;</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="comment">//Dynamic marking (i.e. &quot;ff&quot;)</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    std::string loudnessMark;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="comment">//The string name of this pitch</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    std::string pitchName;</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="comment">// Validated LilyPond modifier commands for this individual event.</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    std::vector&lt;std::string&gt; modifiers;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="comment">//Dynamic number</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordtype">int</span> loudnessNum;</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="comment">// Individual pitch events retained when Section groups them as a chord.</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    std::vector&lt;ChordTone&gt; chord_tones;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="comment">/* variables for output notes */</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">string</span> pitch_out;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordtype">string</span> type_out;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordtype">string</span> loudness_out;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordtype">int</span> start_t;</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordtype">int</span> end_t;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordtype">int</span> tuplet;</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordtype">string</span> tuplet_name;</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordtype">int</span> split;</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="comment">//Absolute numeric value of the Staff</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordtype">int</span> staffNum;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <a class="code hl_enumeration" href="structNoteType.html#a8515a9809c7ee368ef5db4c4baa2f01e">NoteType::type</a> type;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="comment">//Dynamic marking (i.e. &quot;ff&quot;)</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    std::string loudnessMark;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="comment">// Validated LilyPond modifier commands for this individual event.</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    std::vector&lt;std::string&gt; modifiers;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="comment">// Individual pitch events retained when Section groups them as a chord.</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    std::vector&lt;ChordTone&gt; chord_tones;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="comment">/* variables for output notes */</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordtype">string</span> pitch_out;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordtype">string</span> type_out;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordtype">string</span> loudness_out;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordtype">int</span> start_t;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordtype">int</span> end_t;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordtype">int</span> tuplet;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="keywordtype">string</span> tuplet_name;</div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordtype">bool</span> first_notation_fragment;</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordtype">void</span> prepareForInsertion();</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordtype">void</span> mergePitches(<span class="keyword">const</span> <a class="code hl_class" href="classNote.html">Note</a>&amp; other, <span class="keywordtype">bool</span> prepend_other = <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordtype">void</span> beginNotation();</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    std::string nextPitchOutput();</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    std::string renderPitch(<span class="keywordtype">bool</span> include_modifiers) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordtype">void</span> rebuildPitchOutput();</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordtype">void</span> adjustStartTime(<span class="keywordtype">int</span> new_start_time);</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordtype">void</span> shiftEDUs(<span class="keywordtype">int</span> offset);</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <a class="code hl_function" href="classNote.html#a11dfaf68eb7a094b121add4adb18620e">Note</a>();</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <a class="code hl_function" href="classNote.html#a11dfaf68eb7a094b121add4adb18620e">Note</a>(<a class="code hl_struct" href="structTimeSpan.html">TimeSpan</a> ts, <span class="keyword">const</span> <a class="code hl_class" href="classEvent.html">Event</a>* root_exact_ancestor);</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="classNote.html#a78638a98fdd79a9e661aab67f74aa91b">  165</a></span>    <a class="code hl_function" href="classNote.html#a78638a98fdd79a9e661aab67f74aa91b">Note</a>(<span class="keyword">const</span> <a class="code hl_class" href="classNote.html">Note</a>&amp; other);</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classNote.html#a7f610c48a212a038d93c2479f10bee38">operator&lt; </a>(<span class="keyword">const</span> <a class="code hl_class" href="classNote.html">Note</a>&amp; rhs);</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="comment">//Absolute numeric value of the Staff</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordtype">int</span> staffNum;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <a class="code hl_enumeration" href="structNoteType.html#a8515a9809c7ee368ef5db4c4baa2f01e">NoteType::type</a> type;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordtype">bool</span> first_notation_fragment;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="comment">// Where the pitch (or chord) of the last value written to type_out</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="comment">// starts, and whether it was written with its modifiers</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordtype">size_t</span> last_pitch_pos;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordtype">bool</span> last_pitch_modifiers;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordtype">void</span> prepareForInsertion();</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keywordtype">void</span> mergePitches(<span class="keyword">const</span> <a class="code hl_class" href="classNote.html">Note</a>&amp; other, <span class="keywordtype">bool</span> prepend_other = <span class="keyword">false</span>,</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                      <span class="keywordtype">bool</span> other_continues = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keywordtype">void</span> tieAllPitches();</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordtype">void</span> beginNotation();</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keywordtype">void</span> writeNextPitch();</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="keywordtype">void</span> writeEndTie();</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    std::string renderPitch(<span class="keywordtype">bool</span> include_modifiers, <span class="keywordtype">bool</span> include_ties) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordtype">void</span> rebuildPitchOutput();</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordtype">void</span> adjustStartTime(<span class="keywordtype">int</span> new_start_time);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keywordtype">void</span> shiftEDUs(<span class="keywordtype">int</span> offset);</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <a class="code hl_function" href="classNote.html#a11dfaf68eb7a094b121add4adb18620e">Note</a>();</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <a class="code hl_function" href="classNote.html#a11dfaf68eb7a094b121add4adb18620e">Note</a>(<a class="code hl_struct" href="structTimeSpan.html">TimeSpan</a> ts, <span class="keyword">const</span> <a class="code hl_class" href="classEvent.html">Event</a>* root_exact_ancestor);</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a7158fbea4f75ab7ab155f455f8c952d2">setStartTime</a>(<span class="keywordtype">int</span> start_time);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="classNote.html#a78638a98fdd79a9e661aab67f74aa91b">  178</a></span>    <a class="code hl_function" href="classNote.html#a78638a98fdd79a9e661aab67f74aa91b">Note</a>(<span class="keyword">const</span> <a class="code hl_class" href="classNote.html">Note</a>&amp; other);</div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a5034ac5ba073d411747904c8220fba8d">setEndTime</a>(<span class="keywordtype">int</span> end_time);</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a4c5b5c71f3deaa568dc7735e6e0a2fea">initSplit</a>();</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a28bc31df03279f2e2ea425dd786c46a5">setPitchWellTempered</a>(<span class="keywordtype">int</span> pitchNum);</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classNote.html#a93196e0ab249a4737fe399315a11f3f5">HertzToPitch</a>(<span class="keywordtype">float</span> freqHz);</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a92e5a56dbce119824bc7d82d0266fbaa">setLoudnessMark</a>(<span class="keywordtype">int</span> dynamicNum, std::vector&lt;std::string&gt; dynamicNames);</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#ae4e19820d3ebbdfe382849fb91026c1e">setLoudnessSones</a>(<span class="keywordtype">float</span> sones);</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a8d59a15aebdb303e46907ae538003cd8">setModifiers</a>(std::vector&lt;std::string&gt; modNames);</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a6469987da6a248005ba67e4d0ce5ffc4">setStaffNum</a>(<span class="keywordtype">int</span> noteStaff);</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classNote.html#a67aa25c488baabade89a6dd5189af301">getStaffNum</a>();</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a5e7113f5302e348d18d3e75a2ab7c400">setPitchNum</a>(<span class="keywordtype">int</span> notePitchNum);</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classNote.html#a5dc7761f88cd1f46592f341857a4b8c6">getPitchNum</a>();</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classNote.html#ab05615d78197cb40e03f66e4f215a2dd">is_real_note</a>();</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code hl_function" href="classNote.html#acb14b6c07f419acc4225bbb49b79d728">GetText</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span> </div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classNote.html#a03026f5244abb170a163ee10e199ffdf">str_to_int</a>(<span class="keywordtype">string</span> s);</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span> </div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    <span class="keyword">static</span> <span class="keywordtype">string</span> <a class="code hl_function" href="classNote.html#a6e1a38b045f9de544534ebc01db170b3">int_to_str</a>(<span class="keywordtype">int</span> n);</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>};</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classNote.html#a7f610c48a212a038d93c2479f10bee38">operator&lt; </a>(<span class="keyword">const</span> <a class="code hl_class" href="classNote.html">Note</a>&amp; rhs);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a7158fbea4f75ab7ab155f455f8c952d2">setStartTime</a>(<span class="keywordtype">int</span> start_time);</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a5034ac5ba073d411747904c8220fba8d">setEndTime</a>(<span class="keywordtype">int</span> end_time);</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a4c5b5c71f3deaa568dc7735e6e0a2fea">initSplit</a>();</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a28bc31df03279f2e2ea425dd786c46a5">setPitchWellTempered</a>(<span class="keywordtype">int</span> pitchNum);</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classNote.html#a93196e0ab249a4737fe399315a11f3f5">HertzToPitch</a>(<span class="keywordtype">float</span> freqHz);</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a92e5a56dbce119824bc7d82d0266fbaa">setLoudnessMark</a>(<span class="keywordtype">int</span> dynamicNum, std::vector&lt;std::string&gt; dynamicNames);</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#ae4e19820d3ebbdfe382849fb91026c1e">setLoudnessSones</a>(<span class="keywordtype">float</span> sones);</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a8d59a15aebdb303e46907ae538003cd8">setModifiers</a>(std::vector&lt;std::string&gt; modNames);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a6469987da6a248005ba67e4d0ce5ffc4">setStaffNum</a>(<span class="keywordtype">int</span> noteStaff);</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classNote.html#a67aa25c488baabade89a6dd5189af301">getStaffNum</a>();</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a5e7113f5302e348d18d3e75a2ab7c400">setPitchNum</a>(<span class="keywordtype">int</span> notePitchNum);</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classNote.html#a5dc7761f88cd1f46592f341857a4b8c6">getPitchNum</a>();</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classNote.html#ab05615d78197cb40e03f66e4f215a2dd">is_real_note</a>();</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code hl_function" href="classNote.html#acb14b6c07f419acc4225bbb49b79d728">GetText</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classNote.html#a03026f5244abb170a163ee10e199ffdf">str_to_int</a>(<span class="keywordtype">string</span> s);</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    <span class="keyword">static</span> <span class="keywordtype">string</span> <a class="code hl_function" href="classNote.html#a6e1a38b045f9de544534ebc01db170b3">int_to_str</a>(<span class="keywordtype">int</span> n);</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>};</div>
 </div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span> </div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="preprocessor">#endif </span><span class="comment">/* NOTE_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span><span class="preprocessor">#endif </span><span class="comment">/* NOTE_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aLibraries_8h_html"><div class="ttname"><a href="Libraries_8h.html">Libraries.h</a></div><div class="ttdoc">Central include hub for CMOD.</div></div>
 <div class="ttc" id="aRational_8h_html"><div class="ttname"><a href="Rational_8h.html">Rational.h</a></div><div class="ttdoc">Templated exact-rational arithmetic, adapted from Belle, Bonne, Sage (William Andrew Burnson,...</div></div>
 <div class="ttc" id="aTempo_8h_html"><div class="ttname"><a href="Tempo_8h.html">Tempo.h</a></div><div class="ttdoc">Tempo + time-signature representation for CMOD events.</div></div>
 <div class="ttc" id="aTimeSpan_8h_html"><div class="ttname"><a href="TimeSpan_8h.html">TimeSpan.h</a></div><div class="ttdoc">Dual-representation [start, end] interval used by every Event.</div></div>
 <div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="classEvent.html">Event</a></div><div class="ttdoc">Generic event in a DISSCO composition tree.</div><div class="ttdef"><b>Definition</b> <a href="Event_8h_source.html#l00123">Event.h:123</a></div></div>
 <div class="ttc" id="aclassNote_html"><div class="ttname"><a href="classNote.html">Note</a></div><div class="ttdoc">A single notated event emitted by a Bottom event.</div><div class="ttdef"><b>Definition</b> <a href="Note_8h_source.html#l00071">Note.h:71</a></div></div>
-<div class="ttc" id="aclassNote_html_a03026f5244abb170a163ee10e199ffdf"><div class="ttname"><a href="classNote.html#a03026f5244abb170a163ee10e199ffdf">Note::str_to_int</a></div><div class="ttdeci">static int str_to_int(string s)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00364">Note.cpp:364</a></div></div>
-<div class="ttc" id="aclassNote_html_a11dfaf68eb7a094b121add4adb18620e"><div class="ttname"><a href="classNote.html#a11dfaf68eb7a094b121add4adb18620e">Note::Note</a></div><div class="ttdeci">Note()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00062">Note.cpp:62</a></div></div>
-<div class="ttc" id="aclassNote_html_a28bc31df03279f2e2ea425dd786c46a5"><div class="ttname"><a href="classNote.html#a28bc31df03279f2e2ea425dd786c46a5">Note::setPitchWellTempered</a></div><div class="ttdeci">void setPitchWellTempered(int pitchNum)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00105">Note.cpp:105</a></div></div>
-<div class="ttc" id="aclassNote_html_a4c5b5c71f3deaa568dc7735e6e0a2fea"><div class="ttname"><a href="classNote.html#a4c5b5c71f3deaa568dc7735e6e0a2fea">Note::initSplit</a></div><div class="ttdeci">void initSplit()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00100">Note.cpp:100</a></div></div>
-<div class="ttc" id="aclassNote_html_a5034ac5ba073d411747904c8220fba8d"><div class="ttname"><a href="classNote.html#a5034ac5ba073d411747904c8220fba8d">Note::setEndTime</a></div><div class="ttdeci">void setEndTime(int end_time)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00096">Note.cpp:96</a></div></div>
-<div class="ttc" id="aclassNote_html_a5dc7761f88cd1f46592f341857a4b8c6"><div class="ttname"><a href="classNote.html#a5dc7761f88cd1f46592f341857a4b8c6">Note::getPitchNum</a></div><div class="ttdeci">int getPitchNum()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00341">Note.cpp:341</a></div></div>
-<div class="ttc" id="aclassNote_html_a5e7113f5302e348d18d3e75a2ab7c400"><div class="ttname"><a href="classNote.html#a5e7113f5302e348d18d3e75a2ab7c400">Note::setPitchNum</a></div><div class="ttdeci">void setPitchNum(int notePitchNum)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00345">Note.cpp:345</a></div></div>
-<div class="ttc" id="aclassNote_html_a6469987da6a248005ba67e4d0ce5ffc4"><div class="ttname"><a href="classNote.html#a6469987da6a248005ba67e4d0ce5ffc4">Note::setStaffNum</a></div><div class="ttdeci">void setStaffNum(int noteStaff)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00330">Note.cpp:330</a></div></div>
-<div class="ttc" id="aclassNote_html_a67aa25c488baabade89a6dd5189af301"><div class="ttname"><a href="classNote.html#a67aa25c488baabade89a6dd5189af301">Note::getStaffNum</a></div><div class="ttdeci">int getStaffNum()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00337">Note.cpp:337</a></div></div>
-<div class="ttc" id="aclassNote_html_a6e1a38b045f9de544534ebc01db170b3"><div class="ttname"><a href="classNote.html#a6e1a38b045f9de544534ebc01db170b3">Note::int_to_str</a></div><div class="ttdeci">static string int_to_str(int n)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00375">Note.cpp:375</a></div></div>
-<div class="ttc" id="aclassNote_html_a7158fbea4f75ab7ab155f455f8c952d2"><div class="ttname"><a href="classNote.html#a7158fbea4f75ab7ab155f455f8c952d2">Note::setStartTime</a></div><div class="ttdeci">void setStartTime(int start_time)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00090">Note.cpp:90</a></div></div>
+<div class="ttc" id="aclassNote_html_a03026f5244abb170a163ee10e199ffdf"><div class="ttname"><a href="classNote.html#a03026f5244abb170a163ee10e199ffdf">Note::str_to_int</a></div><div class="ttdeci">static int str_to_int(string s)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00423">Note.cpp:423</a></div></div>
+<div class="ttc" id="aclassNote_html_a11dfaf68eb7a094b121add4adb18620e"><div class="ttname"><a href="classNote.html#a11dfaf68eb7a094b121add4adb18620e">Note::Note</a></div><div class="ttdeci">Note()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00063">Note.cpp:63</a></div></div>
+<div class="ttc" id="aclassNote_html_a28bc31df03279f2e2ea425dd786c46a5"><div class="ttname"><a href="classNote.html#a28bc31df03279f2e2ea425dd786c46a5">Note::setPitchWellTempered</a></div><div class="ttdeci">void setPitchWellTempered(int pitchNum)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00109">Note.cpp:109</a></div></div>
+<div class="ttc" id="aclassNote_html_a4c5b5c71f3deaa568dc7735e6e0a2fea"><div class="ttname"><a href="classNote.html#a4c5b5c71f3deaa568dc7735e6e0a2fea">Note::initSplit</a></div><div class="ttdeci">void initSplit()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00102">Note.cpp:102</a></div></div>
+<div class="ttc" id="aclassNote_html_a5034ac5ba073d411747904c8220fba8d"><div class="ttname"><a href="classNote.html#a5034ac5ba073d411747904c8220fba8d">Note::setEndTime</a></div><div class="ttdeci">void setEndTime(int end_time)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00098">Note.cpp:98</a></div></div>
+<div class="ttc" id="aclassNote_html_a5dc7761f88cd1f46592f341857a4b8c6"><div class="ttname"><a href="classNote.html#a5dc7761f88cd1f46592f341857a4b8c6">Note::getPitchNum</a></div><div class="ttdeci">int getPitchNum()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00400">Note.cpp:400</a></div></div>
+<div class="ttc" id="aclassNote_html_a5e7113f5302e348d18d3e75a2ab7c400"><div class="ttname"><a href="classNote.html#a5e7113f5302e348d18d3e75a2ab7c400">Note::setPitchNum</a></div><div class="ttdeci">void setPitchNum(int notePitchNum)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00404">Note.cpp:404</a></div></div>
+<div class="ttc" id="aclassNote_html_a6469987da6a248005ba67e4d0ce5ffc4"><div class="ttname"><a href="classNote.html#a6469987da6a248005ba67e4d0ce5ffc4">Note::setStaffNum</a></div><div class="ttdeci">void setStaffNum(int noteStaff)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00390">Note.cpp:390</a></div></div>
+<div class="ttc" id="aclassNote_html_a67aa25c488baabade89a6dd5189af301"><div class="ttname"><a href="classNote.html#a67aa25c488baabade89a6dd5189af301">Note::getStaffNum</a></div><div class="ttdeci">int getStaffNum()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00396">Note.cpp:396</a></div></div>
+<div class="ttc" id="aclassNote_html_a6e1a38b045f9de544534ebc01db170b3"><div class="ttname"><a href="classNote.html#a6e1a38b045f9de544534ebc01db170b3">Note::int_to_str</a></div><div class="ttdeci">static string int_to_str(int n)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00434">Note.cpp:434</a></div></div>
+<div class="ttc" id="aclassNote_html_a7158fbea4f75ab7ab155f455f8c952d2"><div class="ttname"><a href="classNote.html#a7158fbea4f75ab7ab155f455f8c952d2">Note::setStartTime</a></div><div class="ttdeci">void setStartTime(int start_time)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00092">Note.cpp:92</a></div></div>
 <div class="ttc" id="aclassNote_html_a78638a98fdd79a9e661aab67f74aa91b"><div class="ttname"><a href="classNote.html#a78638a98fdd79a9e661aab67f74aa91b">Note::Note</a></div><div class="ttdeci">Note(const Note &amp;other)</div></div>
-<div class="ttc" id="aclassNote_html_a7f610c48a212a038d93c2479f10bee38"><div class="ttname"><a href="classNote.html#a7f610c48a212a038d93c2479f10bee38">Note::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const Note &amp;rhs)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00083">Note.cpp:83</a></div></div>
-<div class="ttc" id="aclassNote_html_a8d59a15aebdb303e46907ae538003cd8"><div class="ttname"><a href="classNote.html#a8d59a15aebdb303e46907ae538003cd8">Note::setModifiers</a></div><div class="ttdeci">void setModifiers(std::vector&lt; std::string &gt; modNames)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00233">Note.cpp:233</a></div></div>
-<div class="ttc" id="aclassNote_html_a92e5a56dbce119824bc7d82d0266fbaa"><div class="ttname"><a href="classNote.html#a92e5a56dbce119824bc7d82d0266fbaa">Note::setLoudnessMark</a></div><div class="ttdeci">void setLoudnessMark(int dynamicNum, std::vector&lt; std::string &gt; dynamicNames)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00150">Note.cpp:150</a></div></div>
-<div class="ttc" id="aclassNote_html_a93196e0ab249a4737fe399315a11f3f5"><div class="ttname"><a href="classNote.html#a93196e0ab249a4737fe399315a11f3f5">Note::HertzToPitch</a></div><div class="ttdeci">int HertzToPitch(float freqHz)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00134">Note.cpp:134</a></div></div>
-<div class="ttc" id="aclassNote_html_ab05615d78197cb40e03f66e4f215a2dd"><div class="ttname"><a href="classNote.html#ab05615d78197cb40e03f66e4f215a2dd">Note::is_real_note</a></div><div class="ttdeci">bool is_real_note()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00349">Note.cpp:349</a></div></div>
-<div class="ttc" id="aclassNote_html_acb14b6c07f419acc4225bbb49b79d728"><div class="ttname"><a href="classNote.html#acb14b6c07f419acc4225bbb49b79d728">Note::GetText</a></div><div class="ttdeci">const string &amp; GetText() const</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00358">Note.cpp:358</a></div></div>
-<div class="ttc" id="aclassNote_html_ae4e19820d3ebbdfe382849fb91026c1e"><div class="ttname"><a href="classNote.html#ae4e19820d3ebbdfe382849fb91026c1e">Note::setLoudnessSones</a></div><div class="ttdeci">void setLoudnessSones(float sones)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00182">Note.cpp:182</a></div></div>
+<div class="ttc" id="aclassNote_html_a7f610c48a212a038d93c2479f10bee38"><div class="ttname"><a href="classNote.html#a7f610c48a212a038d93c2479f10bee38">Note::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const Note &amp;rhs)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00085">Note.cpp:85</a></div></div>
+<div class="ttc" id="aclassNote_html_a8d59a15aebdb303e46907ae538003cd8"><div class="ttname"><a href="classNote.html#a8d59a15aebdb303e46907ae538003cd8">Note::setModifiers</a></div><div class="ttdeci">void setModifiers(std::vector&lt; std::string &gt; modNames)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00237">Note.cpp:237</a></div></div>
+<div class="ttc" id="aclassNote_html_a92e5a56dbce119824bc7d82d0266fbaa"><div class="ttname"><a href="classNote.html#a92e5a56dbce119824bc7d82d0266fbaa">Note::setLoudnessMark</a></div><div class="ttdeci">void setLoudnessMark(int dynamicNum, std::vector&lt; std::string &gt; dynamicNames)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00154">Note.cpp:154</a></div></div>
+<div class="ttc" id="aclassNote_html_a93196e0ab249a4737fe399315a11f3f5"><div class="ttname"><a href="classNote.html#a93196e0ab249a4737fe399315a11f3f5">Note::HertzToPitch</a></div><div class="ttdeci">int HertzToPitch(float freqHz)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00138">Note.cpp:138</a></div></div>
+<div class="ttc" id="aclassNote_html_ab05615d78197cb40e03f66e4f215a2dd"><div class="ttname"><a href="classNote.html#ab05615d78197cb40e03f66e4f215a2dd">Note::is_real_note</a></div><div class="ttdeci">bool is_real_note()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00408">Note.cpp:408</a></div></div>
+<div class="ttc" id="aclassNote_html_acb14b6c07f419acc4225bbb49b79d728"><div class="ttname"><a href="classNote.html#acb14b6c07f419acc4225bbb49b79d728">Note::GetText</a></div><div class="ttdeci">const string &amp; GetText() const</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00417">Note.cpp:417</a></div></div>
+<div class="ttc" id="aclassNote_html_ae4e19820d3ebbdfe382849fb91026c1e"><div class="ttname"><a href="classNote.html#ae4e19820d3ebbdfe382849fb91026c1e">Note::setLoudnessSones</a></div><div class="ttdeci">void setLoudnessSones(float sones)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00186">Note.cpp:186</a></div></div>
 <div class="ttc" id="aclassSection_html"><div class="ttname"><a href="classSection.html">Section</a></div><div class="ttdef"><b>Definition</b> <a href="Section_8h_source.html#l00032">Section.h:32</a></div></div>
 <div class="ttc" id="astructNoteType_html"><div class="ttname"><a href="structNoteType.html">NoteType</a></div><div class="ttdoc">Tag for what kind of token a Note represents in the score stream.</div><div class="ttdef"><b>Definition</b> <a href="Note_8h_source.html#l00050">Note.h:50</a></div></div>
 <div class="ttc" id="astructNoteType_html_a8515a9809c7ee368ef5db4c4baa2f01e"><div class="ttname"><a href="structNoteType.html#a8515a9809c7ee368ef5db4c4baa2f01e">NoteType::type</a></div><div class="ttdeci">type</div><div class="ttdef"><b>Definition</b> <a href="Note_8h_source.html#l00051">Note.h:51</a></div></div>
