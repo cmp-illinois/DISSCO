@@ -45,17 +45,16 @@ jobs:
             git build-essential ninja-build python3-venv libsndfile1-dev \
             libgl1-mesa-dev libxkbcommon-x11-0 libxcb-cursor0 \
             libxkbcommon-dev '^libxcb.*-dev' libx11-xcb-dev \
-            libglu1-mesa-dev libxrender-dev libxi-dev libxkbfile-dev
+            libglu1-mesa-dev libxrender-dev libxi-dev libxkbfile-dev lilypond
 
+      # Same commands as the Ubuntu steps in BUILDING_LINUX_DETAILED.md.
       - name: Install Qt 6.11.2 and CMake as documented
         run: |
-          python3 -m venv "$HOME/.local/share/dissco-tools"
-          . "$HOME/.local/share/dissco-tools/bin/activate"
-          python -m pip install 'aqtinstall==3.3.*' 'cmake>=3.25,<4'
-          python -m aqt install-qt linux desktop 6.11.2 linux_gcc_64 \
-            --outputdir "$HOME/Qt"
-          test "$("$HOME/Qt/6.11.2/gcc_64/bin/qmake" -query QT_VERSION)" = "6.11.2"
-          cmake --version
+          python3 -m venv ~/.local/share/dissco-tools
+          ~/.local/share/dissco-tools/bin/python -m pip install 'aqtinstall==3.3.*' 'cmake>=3.25,<4'
+          ~/.local/share/dissco-tools/bin/python -m aqt install-qt linux desktop 6.11.2 linux_gcc_64 --outputdir ~/Qt
+          test "$(~/Qt/6.11.2/gcc_64/bin/qmake -query QT_VERSION)" = "6.11.2"
+          ~/.local/share/dissco-tools/bin/cmake --version
           printf '%s\n' "$HOME/.local/share/dissco-tools/bin" >> "$GITHUB_PATH"
 
       - name: Configure
@@ -76,6 +75,50 @@ jobs:
       - name: Smoke-test desktop startup and CMOD
         run: |
           sudo apt-get install -y xvfb xauth
+          status=0
+          xvfb-run -a timeout 5s build/LASSIE/lassie > lassie-startup.log 2>&1 || status=$?
+          cat lassie-startup.log
+          if [[ "$status" -ne 124 ]]; then
+            echo "LASSIE exited before the startup timeout (status $status)." >&2
+            exit 1
+          fi
+          build/CMOD/cmod --help
+
+  # Runs the commands from BUILDING_LINUX.md on the distributions whose own Qt
+  # is new enough. Containers run as root, so the guide's `sudo` is omitted.
+  linux-distro-qt:
+    name: Linux build with distribution Qt (${{ matrix.image }})
+    runs-on: ubuntu-24.04
+    container: ${{ matrix.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ['debian:trixie', 'ubuntu:26.04']
+    env:
+      DEBIAN_FRONTEND: noninteractive
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Install packages as documented
+        run: |
+          apt-get update
+          apt-get install -y git build-essential cmake qt6-base-dev libsndfile1-dev lilypond
+          apt-get install -y ca-certificates xvfb xauth
+
+      - uses: actions/checkout@v5
+
+      - name: Configure as documented
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build as documented
+        run: cmake --build build --parallel 2
+
+      - name: Test Qt UI integration
+        run: ctest --test-dir build --output-on-failure --no-tests=error
+
+      - name: Smoke-test desktop startup and CMOD
+        run: |
           status=0
           xvfb-run -a timeout 5s build/LASSIE/lassie > lassie-startup.log 2>&1 || status=$?
           cat lassie-startup.log
