@@ -49,6 +49,12 @@ if(BUILD_TESTING)
     target_compile_features(LASSTests PRIVATE cxx_std_20)
 
     add_test(NAME LASS.UnitTests COMMAND LASSTests)
+
+    # Tag every test registered in this folder (including future ones) with
+    # the "LASS" label, so CI can run and report each part of DISSCO as its
+    # own step (ctest -L '^LASS$'). -- Tony Chai, 2026
+    get_property(_lass_tests DIRECTORY PROPERTY TESTS)
+    set_tests_properties(${_lass_tests} PROPERTIES LABELS LASS)
 endif()
 
 message(STATUS "DONE!")

@@ -241,6 +241,12 @@ if(BUILD_TESTING)
         ENVIRONMENT "QT_QPA_PLATFORM=offscreen;DISSCO_TEST_MODIFIER_ADD_REFRESH=1"
         TIMEOUT 10
     )
+
+    # Tag every test registered in this folder (including future ones) with
+    # the "LASSIE" label, so CI can run and report each part of DISSCO as its
+    # own step (ctest -L '^LASSIE$'). -- Tony Chai, 2026
+    get_property(_lassie_tests DIRECTORY PROPERTY TESTS)
+    set_tests_properties(${_lassie_tests} PROPERTIES LABELS LASSIE)
 endif()
 
 message(STATUS "DONE!")
