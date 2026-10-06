@@ -18,6 +18,7 @@
 #include <variant>
 
 #include <QDialog>
+#include <QInputDialog>
 #include <QVBoxLayout>
 #include <QLineEdit>
 #include <QCheckBox>
