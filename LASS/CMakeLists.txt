@@ -41,4 +41,14 @@ else()
     message(STATUS "Found libsndfile install!")
 endif()
 
+if(BUILD_TESTING)
+    add_executable(LASSTests
+        tests/LASSTests.cpp
+    )
+    target_link_libraries(LASSTests PRIVATE LASS)
+    target_compile_features(LASSTests PRIVATE cxx_std_20)
+
+    add_test(NAME LASS.UnitTests COMMAND LASSTests)
+endif()
+
 message(STATUS "DONE!")
