@@ -283,6 +283,10 @@ jobs:
         uses: hendrikmuhs/ccache-action@v1.2.24
         with:
           key: macos
+          # Download ccache's official prebuilt binary: Homebrew has no
+          # prebuilt ccache for macOS 14, so it would build it (and GCC)
+          # from source, which takes over an hour.
+          install: binary
           max-size: 500M
           job-summary: Compiler cache stats
 
