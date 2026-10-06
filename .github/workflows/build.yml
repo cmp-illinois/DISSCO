@@ -68,12 +68,28 @@ jobs:
             -DCMAKE_PREFIX_PATH="$HOME/Qt/6.11.2/gcc_64"
 
       - name: Build
+        id: build
         run: cmake --build build --parallel 2 --verbose
 
-      - name: Test Qt UI integration
-        run: ctest --test-dir build --output-on-failure --no-tests=error
+      # One step per part of DISSCO, so a red check shows which part failed.
+      # Each runs as long as the build succeeded, even if an earlier test
+      # step failed. Labels come from each folder's CMakeLists.txt.
+      - name: Test LASS
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: ctest --test-dir build --output-on-failure --no-tests=error -L '^LASS$'
+
+      - name: Test LASSIE
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: ctest --test-dir build --output-on-failure --no-tests=error -L '^LASSIE$'
+
+      # Safety net: anything not covered above (a new folder's tests, or a
+      # test without a label) still runs here instead of being skipped.
+      - name: Test other parts
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: ctest --test-dir build --output-on-failure --no-tests=ignore -LE '^(LASS|LASSIE)$'
 
       - name: Smoke-test desktop startup and CMOD
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         run: |
           sudo apt-get install -y xvfb xauth
           status=0
@@ -151,6 +167,7 @@ jobs:
             "-DSNDFILE_LIBRARY=$vcpkgRoot\installed\x64-windows\lib\sndfile.lib"
 
       - name: Build
+        id: build
         env:
           CL: /EHsc /DNOMINMAX /DNOGDI /DMUPARSER_STATIC /D_CRT_SECURE_NO_WARNINGS
         run: |
@@ -165,8 +182,22 @@ jobs:
           Write-Host "MSVC flags: $env:CL"
           cmake --build build --parallel --verbose
 
-      - name: Test
-        run: ctest --test-dir build --output-on-failure --no-tests=error
+      # One step per part of DISSCO, so a red check shows which part failed.
+      # Each runs as long as the build succeeded, even if an earlier test
+      # step failed. Labels come from each folder's CMakeLists.txt.
+      - name: Test LASS
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: ctest --test-dir build --output-on-failure --no-tests=error -L '^LASS$'
+
+      - name: Test LASSIE
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: ctest --test-dir build --output-on-failure --no-tests=error -L '^LASSIE$'
+
+      # Safety net: anything not covered above (a new folder's tests, or a
+      # test without a label) still runs here instead of being skipped.
+      - name: Test other parts
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: ctest --test-dir build --output-on-failure --no-tests=ignore -LE '^(LASS|LASSIE)$'
 
   macos:
     name: macOS build
@@ -212,7 +243,22 @@ jobs:
             -DCMAKE_PREFIX_PATH="${QT_ROOT_DIR}"
 
       - name: Build
+        id: build
         run: cmake --build build --parallel --verbose
 
-      - name: Test
-        run: ctest --test-dir build --output-on-failure --no-tests=error
+      # One step per part of DISSCO, so a red check shows which part failed.
+      # Each runs as long as the build succeeded, even if an earlier test
+      # step failed. Labels come from each folder's CMakeLists.txt.
+      - name: Test LASS
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: ctest --test-dir build --output-on-failure --no-tests=error -L '^LASS$'
+
+      - name: Test LASSIE
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: ctest --test-dir build --output-on-failure --no-tests=error -L '^LASSIE$'
+
+      # Safety net: anything not covered above (a new folder's tests, or a
+      # test without a label) still runs here instead of being skipped.
+      - name: Test other parts
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: ctest --test-dir build --output-on-failure --no-tests=ignore -LE '^(LASS|LASSIE)$'
