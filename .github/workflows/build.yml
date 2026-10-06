@@ -58,10 +58,21 @@ jobs:
           cmake --version
           printf '%s\n' "$HOME/.local/share/dissco-tools/bin" >> "$GITHUB_PATH"
 
+      # Reuse compiled files from earlier runs when the source and compiler
+      # settings are identical; anything that changed is recompiled fresh.
+      - name: Set up compiler cache
+        uses: hendrikmuhs/ccache-action@v1.2.24
+        with:
+          key: linux-${{ matrix.os }}
+          max-size: 500M
+          job-summary: Compiler cache stats
+
       - name: Configure
         run: |
           cmake --fresh -S . -B build -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_C_COMPILER=/usr/bin/gcc \
             -DCMAKE_CXX_COMPILER=/usr/bin/g++ \
             -DCMAKE_COMPILE_WARNING_AS_ERROR=ON \
@@ -125,7 +136,27 @@ jobs:
           arch: win64_msvc2022_64
           cache: true
 
+      # vcpkg is always fetched fresh (latest libraries); only the libraries it
+      # has already built are cached, matched to their exact versions and
+      # build settings, so any library update is rebuilt from source.
+      - name: Fetch vcpkg
+        id: vcpkg
+        run: |
+          $vcpkgRoot = "$env:RUNNER_TEMP\vcpkg"
+          git clone --depth 1 https://github.com/microsoft/vcpkg.git $vcpkgRoot
+          "commit=$(git -C $vcpkgRoot rev-parse HEAD)" >> $env:GITHUB_OUTPUT
+          New-Item -ItemType Directory -Force "$env:RUNNER_TEMP\vcpkg-binary-cache" | Out-Null
+
+      - name: Restore vcpkg library cache
+        uses: actions/cache@v5
+        with:
+          path: ${{ runner.temp }}/vcpkg-binary-cache
+          key: vcpkg-windows-x64-${{ steps.vcpkg.outputs.commit }}
+          restore-keys: vcpkg-windows-x64-
+
       - name: Install vcpkg dependencies
+        env:
+          VCPKG_BINARY_SOURCES: clear;files,${{ runner.temp }}\vcpkg-binary-cache,readwrite
         run: |
           $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
           $vsRoot = & $vswhere -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
@@ -135,12 +166,21 @@ jobs:
           $vcpkgRoot = "$env:RUNNER_TEMP\vcpkg"
           $env:VCPKG_ROOT = $vcpkgRoot
 
-          git clone --depth 1 https://github.com/microsoft/vcpkg.git $vcpkgRoot
           & "$vcpkgRoot\bootstrap-vcpkg.bat" -disableMetrics
 
           & "$vcpkgRoot\vcpkg.exe" install `
             libsndfile:x64-windows `
             dirent:x64-windows
+
+      # Reuse compiled files from earlier runs when the source and compiler
+      # settings are identical; anything that changed is recompiled fresh.
+      - name: Set up compiler cache
+        uses: hendrikmuhs/ccache-action@v1.2.24
+        with:
+          variant: sccache
+          key: windows
+          max-size: 500M
+          job-summary: Compiler cache stats
 
       - name: Configure
         env:
@@ -158,6 +198,8 @@ jobs:
 
           cmake -S . -B build -G Ninja `
             -DCMAKE_BUILD_TYPE=Release `
+            -DCMAKE_C_COMPILER_LAUNCHER=sccache `
+            -DCMAKE_CXX_COMPILER_LAUNCHER=sccache `
             -DCMAKE_COMPILE_WARNING_AS_ERROR=ON `
             "-DCMAKE_PREFIX_PATH=$env:QT_ROOT_DIR" `
             "-DCMAKE_TOOLCHAIN_FILE=$vcpkgRoot\scripts\buildsystems\vcpkg.cmake" `
@@ -235,10 +277,21 @@ jobs:
           modules: ""
           cache: true
 
+      # Reuse compiled files from earlier runs when the source and compiler
+      # settings are identical; anything that changed is recompiled fresh.
+      - name: Set up compiler cache
+        uses: hendrikmuhs/ccache-action@v1.2.24
+        with:
+          key: macos
+          max-size: 500M
+          job-summary: Compiler cache stats
+
       - name: Configure
         run: |
           cmake -S . -B build -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_COMPILE_WARNING_AS_ERROR=ON \
             -DCMAKE_PREFIX_PATH="${QT_ROOT_DIR}"
 
