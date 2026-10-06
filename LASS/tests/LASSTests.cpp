@@ -20,16 +20,20 @@
 #include <limits>
 #include <stdexcept>
 #include <string>
+#include <vector>
 
 namespace {
 
-int failureCount = 0;
+// Name of the test currently running, so every failure message says which
+// test it came from.
+std::string currentTest;
+int currentTestFailures = 0;
 
 void expect(bool condition, const std::string& message)
 {
     if (!condition) {
-        std::cerr << "FAILED: " << message << '\n';
-        ++failureCount;
+        std::cerr << "FAILED [" << currentTest << "]: " << message << '\n';
+        ++currentTestFailures;
     }
 }
 
@@ -40,9 +44,9 @@ void expectNear(double actual, double expected, const std::string& message)
     // tolerance would allow.
     constexpr double tolerance = 1.0e-6;
     if (std::abs(actual - expected) > tolerance) {
-        std::cerr << "FAILED: " << message << ": expected " << expected
-                   << ", got " << actual << '\n';
-        ++failureCount;
+        std::cerr << "FAILED [" << currentTest << "]: " << message
+                  << ": expected " << expected << ", got " << actual << '\n';
+        ++currentTestFailures;
     }
 }
 
@@ -299,26 +303,57 @@ void testMarkovModelInvalidStateThrows()
            "querying an out-of-range state must throw a catchable exception, not abort the process");
 }
 
+// Runs one test and reports it by name. An unexpected exception counts as a
+// failure of that test only, so the remaining tests still run. Everything goes
+// to std::cerr (unbuffered), so if a test crashes outright, the last
+// "RUN" line in the log names the test that crashed.
+void runTest(const char* name, void (*test)(), std::vector<std::string>& failedTests)
+{
+    currentTest = name;
+    currentTestFailures = 0;
+    std::cerr << "RUN  " << name << '\n';
+
+    try {
+        test();
+    } catch (const std::exception& e) {
+        std::cerr << "FAILED [" << name << "]: unexpected exception: " << e.what() << '\n';
+        ++currentTestFailures;
+    } catch (...) {
+        std::cerr << "FAILED [" << name << "]: unexpected non-standard exception\n";
+        ++currentTestFailures;
+    }
+
+    if (currentTestFailures > 0) {
+        failedTests.push_back(name);
+    } else {
+        std::cerr << "OK   " << name << '\n';
+    }
+}
+
 } // namespace
 
 int main()
 {
-    testMultiPanCloneIsIndependent();
-    testSoundSetDetuneValidation();
-    testSpatializerMultiTrackComposite();
-    testReverbOwnsItsOwnEnvelopeCopy();
-    testSoundInvalidPartialCountIsSafe();
-    testEnvelopeConstantValueInterpolation();
-    testMarkovModelNormalizeAndSample();
-    testMarkovModelInvalidStateThrows();
-    testPanCenteredAcrossThreeChannels();
-    testPanSingleChannelIsUnscaled();
+    std::vector<std::string> failedTests;
 
-    if (failureCount > 0) {
-        std::cerr << failureCount << " LASS test(s) failed\n";
+    runTest("testMultiPanCloneIsIndependent", testMultiPanCloneIsIndependent, failedTests);
+    runTest("testSoundSetDetuneValidation", testSoundSetDetuneValidation, failedTests);
+    runTest("testSpatializerMultiTrackComposite", testSpatializerMultiTrackComposite, failedTests);
+    runTest("testReverbOwnsItsOwnEnvelopeCopy", testReverbOwnsItsOwnEnvelopeCopy, failedTests);
+    runTest("testSoundInvalidPartialCountIsSafe", testSoundInvalidPartialCountIsSafe, failedTests);
+    runTest("testEnvelopeConstantValueInterpolation", testEnvelopeConstantValueInterpolation, failedTests);
+    runTest("testMarkovModelNormalizeAndSample", testMarkovModelNormalizeAndSample, failedTests);
+    runTest("testMarkovModelInvalidStateThrows", testMarkovModelInvalidStateThrows, failedTests);
+    runTest("testPanCenteredAcrossThreeChannels", testPanCenteredAcrossThreeChannels, failedTests);
+    runTest("testPanSingleChannelIsUnscaled", testPanSingleChannelIsUnscaled, failedTests);
+
+    if (!failedTests.empty()) {
+        std::cerr << '\n' << failedTests.size() << " LASS test(s) failed:\n";
+        for (const std::string& name : failedTests)
+            std::cerr << "  " << name << '\n';
         return 1;
     }
 
-    std::cout << "LASSTests passed\n";
+    std::cerr << "\nAll LASS tests passed\n";
     return 0;
 }
