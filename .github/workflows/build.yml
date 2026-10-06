@@ -60,6 +60,9 @@ jobs:
 
       # Reuse compiled files from earlier runs when the source and compiler
       # settings are identical; anything that changed is recompiled fresh.
+      # Precompiled headers are turned off in CI because files built with
+      # them can't be cached (and building without them also catches
+      # missing #includes that precompiled headers would hide).
       - name: Set up compiler cache
         uses: hendrikmuhs/ccache-action@v1.2.24
         with:
@@ -73,6 +76,7 @@ jobs:
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON \
             -DCMAKE_C_COMPILER=/usr/bin/gcc \
             -DCMAKE_CXX_COMPILER=/usr/bin/g++ \
             -DCMAKE_COMPILE_WARNING_AS_ERROR=ON \
@@ -174,6 +178,9 @@ jobs:
 
       # Reuse compiled files from earlier runs when the source and compiler
       # settings are identical; anything that changed is recompiled fresh.
+      # Precompiled headers are turned off in CI because files built with
+      # them can't be cached (and building without them also catches
+      # missing #includes that precompiled headers would hide).
       - name: Set up compiler cache
         uses: hendrikmuhs/ccache-action@v1.2.24
         with:
@@ -200,6 +207,7 @@ jobs:
             -DCMAKE_BUILD_TYPE=Release `
             -DCMAKE_C_COMPILER_LAUNCHER=sccache `
             -DCMAKE_CXX_COMPILER_LAUNCHER=sccache `
+            -DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON `
             -DCMAKE_COMPILE_WARNING_AS_ERROR=ON `
             "-DCMAKE_PREFIX_PATH=$env:QT_ROOT_DIR" `
             "-DCMAKE_TOOLCHAIN_FILE=$vcpkgRoot\scripts\buildsystems\vcpkg.cmake" `
@@ -279,6 +287,9 @@ jobs:
 
       # Reuse compiled files from earlier runs when the source and compiler
       # settings are identical; anything that changed is recompiled fresh.
+      # Precompiled headers are turned off in CI because files built with
+      # them can't be cached (and building without them also catches
+      # missing #includes that precompiled headers would hide).
       - name: Set up compiler cache
         uses: hendrikmuhs/ccache-action@v1.2.24
         with:
@@ -296,6 +307,7 @@ jobs:
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON \
             -DCMAKE_COMPILE_WARNING_AS_ERROR=ON \
             -DCMAKE_PREFIX_PATH="${QT_ROOT_DIR}"
 
