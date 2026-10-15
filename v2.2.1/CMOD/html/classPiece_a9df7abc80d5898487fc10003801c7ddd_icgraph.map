@@ -1,0 +1,10 @@
+<map id="Piece::functionModifier" name="Piece::functionModifier">
+<area shape="rect" id="Node000001" title=" " alt="" coords="679,29,849,55"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="801,20,790,11,764,8,742,10,731,15,728,20,734,28,730,31,723,21,727,11,741,5,764,3,793,6,804,15"/>
+<area shape="rect" id="Node000002" href="$classPiece.html#a87fed60350b1f71bf8c4524dc17ed2b3" title=" " alt="" coords="485,29,631,55"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="665,45,631,45,631,39,665,39"/>
+<area shape="rect" id="Node000003" href="$classPiece.html#a2095ac0c2cea8c497b51fa597025dd54" title=" " alt="" coords="251,29,437,55"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="472,45,437,45,437,39,472,39"/>
+<area shape="rect" id="Node000004" href="$classPiece.html#a9ab6a57f7b5a4fce90402c2faf2156b4" title=" " alt="" coords="5,29,203,55"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="237,45,203,45,203,39,237,39"/>
+</map>

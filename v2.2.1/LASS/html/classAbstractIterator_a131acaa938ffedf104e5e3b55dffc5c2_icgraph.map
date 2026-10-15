@@ -1,0 +1,19 @@
+<map id="AbstractIterator::next" name="AbstractIterator::next">
+<area shape="rect" id="Node000001" title=" " alt="" coords="452,205,613,230"/>
+<area shape="rect" id="Node000002" href="$classIterator.html#a12aa5b9d3dd7370cd40943427834adc6" title=" " alt="" coords="297,205,404,230"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="438,220,404,220,404,215,438,215"/>
+<area shape="rect" id="Node000003" href="$classProbabilityEnvelope.html#a87b234199241372f91d9a815b7bc274e" title=" " alt="" coords="30,5,225,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="338,193,324,162,305,126,279,90,248,59,223,46,226,41,251,55,283,86,309,123,329,159,343,191"/>
+<area shape="rect" id="Node000004" href="$classProbabilityEnvelope.html#a0fdd918a8252fcc03a672f2110dcbda1" title=" " alt="" coords="47,69,207,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="329,196,294,159,248,124,207,107,209,102,251,119,298,155,333,192"/>
+<area shape="rect" id="Node000005" href="$classDynamicVariableSequence.html#a08f1b4a4bb7e92c31c620fe3fd252a29" title=" " alt="" coords="29,133,225,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="298,203,249,188,206,176,207,171,250,183,299,198"/>
+<area shape="rect" id="Node000006" href="$classDynamicVariableSequenceIterator.html#a25c8f6ed6c737abf9f04c7522db06b6e" title=" " alt="" coords="5,197,249,237"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="284,220,249,220,249,215,284,215"/>
+<area shape="rect" id="Node000007" href="$classEnvelopeIterator.html#af566291ad6962bed189700e072e19c12" title=" " alt="" coords="44,262,211,287"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="300,237,250,252,196,265,195,259,249,247,299,232"/>
+<area shape="rect" id="Node000008" href="$classMultiPan.html#ae814ca649cb2909bc482c9e138e049c9" title=" " alt="" coords="53,312,202,352"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="329,242,294,273,251,301,204,319,202,314,248,296,290,268,325,238"/>
+<area shape="rect" id="Node000009" href="$classPan.html#a69e820c09fd00c0c38ee415d0a5ed4e6" title=" " alt="" coords="49,377,206,402"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="341,244,308,306,282,339,251,366,230,377,207,385,205,380,228,372,248,362,278,335,303,303,337,242"/>
+</map>

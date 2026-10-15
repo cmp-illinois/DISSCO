@@ -1,0 +1,11 @@
+<map id="QtParser::parsePackage" name="QtParser::parsePackage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,63,180,88"/>
+<area shape="rect" id="Node000002" href="$namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="235,5,408,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,60,256,31,257,37,145,65"/>
+<area shape="rect" id="Node000003" href="$event__struct_8hpp.html#a1eb2b768082eec56a45815689a721cd3" title="Convert a display string (e.g. &quot;Top&quot;, &quot;High&quot;) to the integer enum value as a string." alt="" coords="228,55,415,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,73,214,73,214,78,180,78"/>
+<area shape="rect" id="Node000004" href="$namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="231,120,411,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="145,85,257,114,256,119,144,91"/>
+<area shape="rect" id="Node000005" href="$namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="463,120,609,145"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="411,130,449,130,449,135,411,135"/>
+</map>

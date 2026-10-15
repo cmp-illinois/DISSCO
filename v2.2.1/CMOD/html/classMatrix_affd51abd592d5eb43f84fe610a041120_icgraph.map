@@ -1,0 +1,12 @@
+<map id="Matrix::chooseContinuum" name="Matrix::chooseContinuum">
+<area shape="rect" id="Node000001" title=" " alt="" coords="584,43,773,68"/>
+<area shape="rect" id="Node000002" href="$classEvent.html#ada22a83088a037dcf7d1b41cece0dbbb" title=" " alt="" coords="365,43,536,68"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="570,58,536,58,536,53,570,53"/>
+<area shape="rect" id="Node000003" href="$classBottom.html#a32e301cf566271d4072951c1a851e88c" title=" " alt="" coords="153,5,317,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="363,43,308,33,309,28,364,38"/>
+<area shape="rect" id="Node000004" href="$classEvent.html#af43248915d08da44962951c1a4d0b4c8" title=" " alt="" coords="159,79,312,104"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="361,73,312,81,311,76,360,68"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="267,68,258,60,235,57,216,59,207,64,205,70,210,77,206,80,199,70,203,61,215,54,235,52,260,56,270,64"/>
+<area shape="rect" id="Node000005" href="$classPiece.html#a4dc9d0d3627fc2208b7da6a36a2ca9c2" title=" " alt="" coords="5,79,105,104"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="145,94,105,94,105,89,145,89"/>
+</map>

@@ -1,0 +1,14 @@
+<map id="ParameterLib::getParam" name="ParameterLib::getParam">
+<area shape="rect" id="Node000001" title=" " alt="" coords="627,55,805,80"/>
+<area shape="rect" id="Node000002" href="$classScore.html#a21eb4c3d1a905b6a64f4121805a271a7" title=" " alt="" coords="458,5,549,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="647,54,548,31,549,26,648,49"/>
+<area shape="rect" id="Node000003" href="$classLoudness.html#a5cd0fbde3dfe3cbefe82970f946186a5" title=" " alt="" coords="428,55,579,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="613,70,579,70,579,65,613,65"/>
+<area shape="rect" id="Node000005" href="$Score_8cpp.html#a39d69126a1c6f253e4f8e8dbe365ee1d" title=" " alt="" coords="156,80,220,105"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="646,85,579,95,476,101,374,102,220,97,220,92,374,97,476,96,578,90,645,80"/>
+<area shape="rect" id="Node000004" href="$classSound.html#a4f246242d337ab7ef8a646f69f2a04ae" title=" " alt="" coords="268,55,380,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="414,70,380,70,380,65,414,65"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="255,83,221,89,220,84,254,78"/>
+<area shape="rect" id="Node000006" href="$classScore.html#acb0a205511c777b06c258f673f7e0d4d" title=" " alt="" coords="5,80,108,105"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="142,95,108,95,108,90,142,90"/>
+</map>

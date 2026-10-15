@@ -1,0 +1,9 @@
+<map id="TimeSignature::CalculateNearestPow2" name="TimeSignature::CalculateNearestPow2">
+<area shape="rect" id="Node000001" title=" " alt="" coords="508,23,695,63"/>
+<area shape="rect" id="Node000002" href="$structTimeSignature.html#aa5b16f0fa1d1c88ae9b58971512bb195" title=" " alt="" coords="273,23,460,63"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="495,46,460,46,460,41,495,41"/>
+<area shape="rect" id="Node000003" href="$structTimeSignature.html#ac46159b35f8e7777b5c1648aaa378a1e" title=" " alt="" coords="5,5,225,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="259,35,225,32,226,26,260,30"/>
+<area shape="rect" id="Node000004" href="$structTimeSignature.html#a05f565a2c5fbf53d715efc7178e94cb9" title=" " alt="" coords="5,55,225,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="260,56,226,59,225,54,259,51"/>
+</map>

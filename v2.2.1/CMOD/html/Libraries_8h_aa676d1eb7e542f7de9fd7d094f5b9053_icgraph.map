@@ -1,0 +1,16 @@
+<map id="descendantByName" name="descendantByName">
+<area shape="rect" id="Node000001" title=" " alt="" coords="679,81,832,107"/>
+<area shape="poly" id="edge6_Node000001_Node000001" title=" " alt="" coords="790,71,780,63,755,60,734,62,723,67,721,72,727,80,723,83,716,73,719,63,733,57,755,55,782,58,794,67"/>
+<area shape="rect" id="Node000002" href="$classPiece.html#a00502c974f9dd9fb883ab335d395f537" title=" " alt="" coords="488,5,628,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="708,79,591,33,593,28,710,74"/>
+<area shape="rect" id="Node000003" href="$classPiece.html#ac9c19fe18ece76a1575fdd6cebc41dce" title=" " alt="" coords="251,57,437,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="665,91,437,78,437,73,665,86"/>
+<area shape="rect" id="Node000005" href="$classPiece.html#a2095ac0c2cea8c497b51fa597025dd54" title=" " alt="" coords="251,107,437,132"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="665,102,438,116,437,111,665,97"/>
+<area shape="rect" id="Node000006" href="$classPiece.html#a87fed60350b1f71bf8c4524dc17ed2b3" title=" " alt="" coords="485,157,631,183"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="710,114,593,160,591,155,708,109"/>
+<area shape="rect" id="Node000004" href="$classPiece.html#a9ab6a57f7b5a4fce90402c2faf2156b4" title=" " alt="" coords="5,83,203,108"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="238,84,203,88,203,82,237,79"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="237,111,203,108,203,103,238,106"/>
+<area shape="poly" id="edge8_Node000006_Node000005" title=" " alt="" coords="489,157,398,135,399,129,491,151"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="LASSIE/src/dialogs/functions/impl/ExpandPatternFunction.hpp" name="LASSIE/src/dialogs/functions/impl/ExpandPatternFunction.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="197,5,414,60"/>
+<area shape="rect" id="Node000002" href="$FunctionWidget_8hpp.html" title=" " alt="" coords="224,108,387,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="308,60,308,94,303,94,303,60"/>
+<area shape="rect" id="Node000003" href="$lassie_8hpp.html" title="Project&#45;wide enum definitions for LASSIE." alt="" coords="5,181,117,207"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="267,136,115,180,113,175,265,131"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="142,181,197,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="285,136,205,177,202,173,282,131"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="221,181,291,207"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="299,135,274,172,270,169,295,132"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="315,181,394,207"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="316,132,341,169,337,172,311,135"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="418,181,569,207"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="336,131,451,174,449,179,335,136"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="593,181,679,207"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="359,131,580,178,579,183,358,136"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="SoundAndNoteWrapper" name="SoundAndNoteWrapper">
+<area shape="rect" id="Node000001" title="Per&#45;child snapshot used while a Bottom event is building its notes." alt="" coords="55,211,228,236"/>
+<area shape="rect" id="Node000002" href="$structTimeSpan.html" title="Interval expressed simultaneously in seconds and in EDUs." alt="" coords="23,123,110,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,157,133,208,129,212,84,160"/>
+<area shape="rect" id="Node000003" href="$classRational.html" title=" " alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="69,44,69,123,64,123,64,44"/>
+<area shape="rect" id="Node000004" href="$classTempo.html" title="Combined tempo and time&#45;signature descriptor used by every Event." alt="" coords="134,123,199,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="162,162,147,211,142,209,157,161"/>
+</map>

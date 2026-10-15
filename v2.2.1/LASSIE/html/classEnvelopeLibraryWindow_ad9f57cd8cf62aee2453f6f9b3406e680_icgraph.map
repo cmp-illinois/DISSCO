@@ -1,0 +1,5 @@
+<map id="EnvelopeLibraryWindow::refreshEnvelopeList" name="EnvelopeLibraryWindow::refreshEnvelopeList">
+<area shape="rect" id="Node000001" title="Rebuild the entire envelope list from the project." alt="" coords="232,5,411,45"/>
+<area shape="rect" id="Node000002" href="$classEnvelopeLibraryWindow.html#acca0567a012063a94d03dc9d9a94c22e" title="Set the active project." alt="" coords="5,5,184,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,28,184,28,184,23,218,23"/>
+</map>

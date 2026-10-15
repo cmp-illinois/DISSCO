@@ -1,0 +1,15 @@
+<map id="Bottom" name="Bottom">
+<area shape="rect" id="Node000001" title="Concrete leaf Event that produces Sounds and Notes." alt="" coords="175,315,246,340"/>
+<area shape="rect" id="Node000002" href="$classEvent.html" title="Generic event in a DISSCO composition tree." alt="" coords="181,240,240,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,280,213,314,208,314,208,280"/>
+<area shape="rect" id="Node000003" href="$structTimeSpan.html" title="Interval expressed simultaneously in seconds and in EDUs." alt="" coords="23,123,110,148"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="72,161,79,189,95,214,115,228,137,238,181,247,180,252,135,243,112,233,91,218,74,191,67,162"/>
+<area shape="rect" id="Node000004" href="$classRational.html" title=" " alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="69,44,69,123,64,123,64,44"/>
+<area shape="rect" id="Node000005" href="$classTempo.html" title="Combined tempo and time&#45;signature descriptor used by every Event." alt="" coords="134,123,199,148"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="170,161,174,188,182,215,200,238,195,241,178,217,169,189,165,162"/>
+<area shape="rect" id="Node000006" href="$classMatrix.html" title="3&#45;D occurrence&#45;probability table for choosing CMOD events." alt="" coords="224,123,288,148"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="250,162,229,217,219,241,214,239,224,215,245,160"/>
+<area shape="rect" id="Node000007" href="$classUtilities.html" title="Project&#45;wide evaluator + CMOD&#45;to&#45;LASS adapter." alt="" coords="313,123,386,148"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="340,162,323,191,298,218,270,235,241,246,239,241,267,230,294,214,318,187,336,159"/>
+</map>

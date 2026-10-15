@@ -1,0 +1,14 @@
+<map id="Tempo::getTempoBeat" name="Tempo::getTempoBeat">
+<area shape="rect" id="Node000001" title=" " alt="" coords="588,31,755,56"/>
+<area shape="rect" id="Node000002" href="$classEvent.html#a4f7a2537d2729b0035ff13ee67c40377" title=" " alt="" coords="401,5,505,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="574,35,504,27,505,21,574,29"/>
+<area shape="rect" id="Node000003" href="$classEvent.html#acd7ee684016dad7977e2080df82467d1" title=" " alt="" coords="365,55,540,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="574,57,541,60,540,55,574,51"/>
+<area shape="rect" id="Node000004" href="$classBottom.html#a32e301cf566271d4072951c1a851e88c" title=" " alt="" coords="153,17,317,43"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="364,55,309,45,310,40,365,50"/>
+<area shape="rect" id="Node000005" href="$classEvent.html#af43248915d08da44962951c1a4d0b4c8" title=" " alt="" coords="159,91,312,116"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="363,85,312,93,312,88,362,80"/>
+<area shape="poly" id="edge5_Node000005_Node000005" title=" " alt="" coords="267,80,258,72,235,69,216,71,207,76,205,82,210,89,206,92,199,82,203,73,215,66,235,64,260,68,270,76"/>
+<area shape="rect" id="Node000006" href="$classPiece.html#a4dc9d0d3627fc2208b7da6a36a2ca9c2" title=" " alt="" coords="5,91,105,116"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="145,106,105,106,105,101,145,101"/>
+</map>

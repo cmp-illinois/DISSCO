@@ -1,0 +1,26 @@
+<map id="LASSIE/src/widgets/REVChannel.cpp" name="LASSIE/src/widgets/REVChannel.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="144,5,289,45"/>
+<area shape="rect" id="Node000002" href="$REVChannel_8hpp.html" title=" " alt="" coords="152,93,281,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,46,219,79,214,79,214,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,240,79,265"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="204,121,68,233,65,229,201,117"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="497,167,608,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="271,116,485,161,484,166,270,121"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="103,240,210,265"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="214,120,169,228,164,226,209,118"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="234,240,301,265"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="222,118,245,191,259,226,254,228,239,193,217,120"/>
+<area shape="rect" id="Node000007" href="$FunctionEntryRow_8hpp.html" title=" " alt="" coords="254,167,473,192"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="241,116,328,158,326,163,239,121"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="311,195,93,242,92,237,310,189"/>
+<area shape="poly" id="edge11_Node000007_Node000005" title=" " alt="" coords="331,195,204,238,202,233,329,189"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="349,194,296,234,293,229,346,190"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="665,240,776,265"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="421,189,652,235,651,240,420,195"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="325,240,409,265"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="367,192,369,226,363,227,361,192"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="433,240,504,265"/>
+<area shape="poly" id="edge12_Node000007_Node000010" title=" " alt="" coords="382,190,442,230,439,235,379,194"/>
+<area shape="rect" id="Node000011" href="$lassie_8hpp.html" title="Project&#45;wide enum definitions for LASSIE." alt="" coords="529,240,641,265"/>
+<area shape="poly" id="edge13_Node000007_Node000011" title=" " alt="" coords="400,189,537,233,535,238,398,195"/>
+</map>

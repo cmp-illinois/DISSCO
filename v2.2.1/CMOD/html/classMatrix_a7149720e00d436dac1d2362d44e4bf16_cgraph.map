@@ -1,0 +1,9 @@
+<map id="Matrix::setDurations" name="Matrix::setDurations">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,160,80"/>
+<area shape="rect" id="Node000002" href="$classSieve.html#a5a7ebb3d38b1d4bc3795e5260e93f471" title=" " alt="" coords="243,5,389,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,52,241,31,242,36,144,57"/>
+<area shape="rect" id="Node000003" href="$classTempo.html#aabcddeb4bdd3c7a2aa9df91b67c61125" title=" " alt="" coords="208,55,424,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,65,194,65,194,70,160,70"/>
+<area shape="rect" id="Node000004" href="$classRational.html#afa8ea1d64a7227105e294e5bca4b9518" title=" " alt="" coords="259,104,373,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="144,77,246,99,245,104,143,83"/>
+</map>

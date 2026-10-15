@@ -1,0 +1,31 @@
+<map id="DynamicVariable::setDuration" name="DynamicVariable::setDuration">
+<area shape="rect" id="Node000001" title=" " alt="" coords="743,248,960,273"/>
+<area shape="rect" id="Node000002" href="$classLoudness.html#a5cd0fbde3dfe3cbefe82970f946186a5" title=" " alt="" coords="521,5,672,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="837,236,815,194,784,142,743,90,719,66,693,46,668,33,671,28,696,41,723,62,747,86,788,139,820,191,841,234"/>
+<area shape="rect" id="Node000006" href="$classDynamicVariableSequence.html#a08f1b4a4bb7e92c31c620fe3fd252a29" title=" " alt="" coords="499,55,695,95"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="830,239,773,175,735,140,693,110,670,98,672,93,696,105,739,136,777,171,834,236"/>
+<area shape="rect" id="Node000007" href="$classProbabilityEnvelope.html#a0e601fb77035256f363b4f7c1ca2709d" title=" " alt="" coords="517,119,677,159"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="818,243,761,208,694,174,664,162,666,157,696,169,763,204,820,238"/>
+<area shape="rect" id="Node000008" href="$classProbabilityEnvelope.html#a0058b0a97bdc47fade569361be382639" title=" " alt="" coords="517,183,677,223"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="780,247,676,224,677,219,781,242"/>
+<area shape="rect" id="Node000009" href="$classPartial.html#a6ab80d7069346d873d3811de427a53d8" title=" " alt="" coords="540,248,653,273"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="729,263,654,263,654,258,729,258"/>
+<area shape="rect" id="Node000010" href="$classPan.html#a69e820c09fd00c0c38ee415d0a5ed4e6" title=" " alt="" coords="518,297,675,323"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="772,279,664,300,663,295,771,273"/>
+<area shape="rect" id="Node000011" href="$classEnvelope.html#a147185ea88b0784464dd96a6030db1fa" title=" " alt="" coords="521,347,672,372"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="816,282,760,310,696,337,655,349,653,344,694,331,758,305,813,277"/>
+<area shape="rect" id="Node000013" href="$classInterpolator.html#a3b12598576173eb1ade8c15da2d90ba7" title=" " alt="" coords="513,396,680,421"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="830,285,772,336,735,363,696,386,663,398,661,393,694,381,732,358,769,332,826,281"/>
+<area shape="rect" id="Node000014" href="$classConstant.html#a419d42006b6b3f5e2494a9e5378019da" title=" " alt="" coords="522,445,671,471"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="837,286,814,320,782,361,742,402,696,436,671,448,669,443,693,432,738,398,778,357,810,317,833,283"/>
+<area shape="rect" id="Node000003" href="$classSound.html#a4f246242d337ab7ef8a646f69f2a04ae" title=" " alt="" coords="303,5,415,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="508,21,415,21,415,15,508,15"/>
+<area shape="rect" id="Node000004" href="$Score_8cpp.html#a39d69126a1c6f253e4f8e8dbe365ee1d" title=" " alt="" coords="156,5,220,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="290,21,220,21,220,15,290,15"/>
+<area shape="rect" id="Node000005" href="$classScore.html#acb0a205511c777b06c258f673f7e0d4d" title=" " alt="" coords="5,5,108,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="142,21,108,21,108,15,142,15"/>
+<area shape="rect" id="Node000012" href="$classDynamicVariable.html#afcd9e37f0d36f06d24293476606ca6ce" title=" " alt="" coords="268,389,451,429"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="522,377,452,392,450,387,521,372"/>
+<area shape="poly" id="edge13_Node000013_Node000012" title=" " alt="" coords="500,411,451,411,451,406,500,406"/>
+<area shape="poly" id="edge15_Node000014_Node000012" title=" " alt="" coords="521,445,450,430,452,425,522,440"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="TimeSignature::IsPowerOf2" name="TimeSignature::IsPowerOf2">
+<area shape="rect" id="Node000001" title=" " alt="" coords="427,35,625,60"/>
+<area shape="rect" id="Node000002" href="$structTimeSignature.html#ad9c43d3b078949af284f977e4b32ac6e" title=" " alt="" coords="163,5,373,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="413,37,373,33,374,27,413,32"/>
+<area shape="rect" id="Node000003" href="$classEvent.html#a6f2a6f54bc9dd773e755d582991a37c6" title=" " alt="" coords="157,55,379,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="413,62,379,66,378,61,413,57"/>
+<area shape="rect" id="Node000004" href="$classEvent.html#a4f7a2537d2729b0035ff13ee67c40377" title=" " alt="" coords="5,63,109,88"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="144,78,110,78,110,73,144,73"/>
+</map>

@@ -1,0 +1,20 @@
+<map id="Semaphore::wait" name="Semaphore::wait">
+<area shape="rect" id="Node000001" title=" " alt="" coords="912,81,1044,107"/>
+<area shape="rect" id="Node000002" href="$classScore.html#a21eb4c3d1a905b6a64f4121805a271a7" title=" " alt="" coords="721,5,811,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="931,79,863,53,807,33,808,28,865,47,933,74"/>
+<area shape="rect" id="Node000003" href="$classScore.html#a67edbc6859c893581817cee453ca34e4" title=" " alt="" coords="428,56,620,81"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="898,92,620,77,621,71,898,87"/>
+<area shape="rect" id="Node000004" href="$Score_8cpp.html#a39d69126a1c6f253e4f8e8dbe365ee1d" title=" " alt="" coords="156,132,220,157"/>
+<area shape="poly" id="edge10_Node000001_Node000004" title=" " alt="" coords="898,102,220,145,220,140,898,96"/>
+<area shape="rect" id="Node000006" href="$classScore.html#a5454303993d1efa3db744d9d6e39bf58" title=" " alt="" coords="668,157,864,197"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="933,114,819,159,817,154,931,109"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="415,76,342,85,269,103,237,117,209,134,206,129,234,113,267,98,341,80,414,70"/>
+<area shape="rect" id="Node000005" href="$classScore.html#acb0a205511c777b06c258f673f7e0d4d" title=" " alt="" coords="5,183,108,208"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="144,164,91,185,89,180,142,159"/>
+<area shape="rect" id="Node000007" href="$Score_8cpp.html#a2e1065ce25c966cc4228e217e80ce1e7" title=" " alt="" coords="479,164,569,189"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="654,179,570,179,570,174,654,174"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="465,189,380,198,232,202,108,200,108,195,232,197,380,193,465,183"/>
+<area shape="rect" id="Node000008" href="$classSound.html#a4f246242d337ab7ef8a646f69f2a04ae" title=" " alt="" coords="268,157,380,183"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="465,177,380,175,380,169,465,172"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="254,160,220,153,221,148,255,154"/>
+</map>

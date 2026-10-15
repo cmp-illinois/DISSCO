@@ -1,0 +1,10 @@
+<map id="Event::checkEvent" name="Event::checkEvent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="365,43,508,68"/>
+<area shape="rect" id="Node000002" href="$classBottom.html#a32e301cf566271d4072951c1a851e88c" title=" " alt="" coords="153,5,317,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="354,43,304,33,305,28,355,37"/>
+<area shape="rect" id="Node000003" href="$classEvent.html#af43248915d08da44962951c1a4d0b4c8" title=" " alt="" coords="159,79,312,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="352,73,307,81,306,76,351,68"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="267,68,258,60,235,57,216,59,207,64,205,70,210,77,206,80,199,70,203,61,215,54,235,52,260,56,270,64"/>
+<area shape="rect" id="Node000004" href="$classPiece.html#a4dc9d0d3627fc2208b7da6a36a2ca9c2" title=" " alt="" coords="5,79,105,104"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="145,94,105,94,105,89,145,89"/>
+</map>

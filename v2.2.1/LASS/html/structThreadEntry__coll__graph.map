@@ -1,0 +1,11 @@
+<map id="ThreadEntry" name="ThreadEntry">
+<area shape="rect" id="Node000001" title=" " alt="" coords="191,152,292,177"/>
+<area shape="rect" id="Node000002" href="$classScore.html" title=" " alt="" coords="5,13,64,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,46,99,86,153,126,205,149,203,154,151,130,96,90,53,50"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="89,5,271,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,57,225,127,237,150,232,153,220,129,190,59"/>
+<area shape="rect" id="Node000004" href="$classSemaphore.html" title="Minimal counting semaphore with POSIX&#45;style wait/post." alt="" coords="296,13,392,38"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="324,50,306,71,291,100,276,129,255,153,251,150,271,127,286,97,302,68,320,46"/>
+<area shape="rect" id="Node000005" href="$classMultiTrack.html" title=" " alt="" coords="458,13,547,38"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="505,52,498,92,489,113,475,130,443,145,396,155,293,164,292,159,395,150,442,140,472,126,485,110,493,91,500,51"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="QtParser::nextChildInner" name="QtParser::nextChildInner">
+<area shape="rect" id="Node000001" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="951,42,1131,67"/>
+<area shape="rect" id="Node000002" href="$namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3" title=" " alt="" coords="728,42,903,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="936,57,903,57,903,52,936,52"/>
+<area shape="rect" id="Node000003" href="$namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3" title=" " alt="" coords="523,42,680,67"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="714,57,680,57,680,52,714,52"/>
+<area shape="rect" id="Node000004" href="$namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="276,42,475,67"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="509,57,475,57,475,52,509,52"/>
+<area shape="rect" id="Node000005" href="$namespaceQtParser.html#a2e0c1dee02c31335a748652b2b6aeedc" title=" " alt="" coords="13,5,220,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="262,45,220,40,221,34,263,39"/>
+<area shape="rect" id="Node000006" href="$namespaceQtParser.html#a424656e1d022f7799c5edc1e51e8e8b9" title=" " alt="" coords="5,70,228,95"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="262,70,229,73,228,68,262,64"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="ProjectManager::build" name="ProjectManager::build">
+<area shape="rect" id="Node000001" title="Build a Project from an arbitrary file path (e.g. import path)." alt="" coords="5,55,169,80"/>
+<area shape="rect" id="Node000002" href="$classProjectManager.html#a08f7b64b62717be7682a178f35227fd0" title="Create a fresh in&#45;memory Project; not yet bound to a file on disk." alt="" coords="226,5,399,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,52,240,31,241,36,147,57"/>
+<area shape="rect" id="Node000004" href="$classProjectManager.html#a4b7722dcadc8376741ba4de1e92396a7" title=" " alt="" coords="224,55,401,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="170,65,210,65,210,70,170,70"/>
+<area shape="rect" id="Node000005" href="$classProjectManager.html#aa0f7ca3b2943123ef1e497434ece1363" title=" " alt="" coords="217,104,408,129"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="147,77,241,98,240,104,145,83"/>
+<area shape="rect" id="Node000003" href="$classProjectManager.html#a1d2153ae538c181e0028a7edb987b505" title=" " alt="" coords="456,5,615,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="400,15,442,15,442,21,400,21"/>
+</map>

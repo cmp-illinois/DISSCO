@@ -1,0 +1,31 @@
+<map id="LASS/src/InterpolatorTypes.h" name="LASS/src/InterpolatorTypes.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="668,5,875,31"/>
+<area shape="rect" id="Node000002" href="$DynamicVariable_8cpp.html" title=" " alt="" coords="5,86,225,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="654,34,237,81,186,89,185,83,236,76,654,28"/>
+<area shape="rect" id="Node000003" href="$DynamicVariableSequence_8cpp.html" title=" " alt="" coords="249,79,443,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="697,36,443,82,442,77,696,30"/>
+<area shape="rect" id="Node000004" href="$Envelope_8cpp.html" title=" " alt="" coords="467,86,636,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="727,38,584,88,582,83,725,33"/>
+<area shape="rect" id="Node000005" href="$InterpolatorTypes_8cpp.html" title=" " alt="" coords="660,86,883,111"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="774,44,774,86,769,86,769,44"/>
+<area shape="rect" id="Node000006" href="$LASS_8h.html" title="Umbrella header for the LASS additive sound synthesis library." alt="" coords="853,240,980,265"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="834,33,868,51,896,77,908,98,916,120,924,167,924,209,921,240,916,240,919,209,919,167,911,122,903,100,892,80,865,55,832,38"/>
+<area shape="rect" id="Node000007" href="$Loudness_8cpp.html" title=" " alt="" coords="1347,240,1518,265"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="889,28,1017,47,1153,76,1275,105,1325,126,1381,165,1398,182,1413,203,1431,239,1426,241,1408,205,1394,186,1378,169,1322,130,1273,110,1152,81,1016,52,888,34"/>
+<area shape="rect" id="Node000008" href="$Sound_8h.html" title=" " alt="" coords="1005,86,1140,111"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="829,31,1029,83,1028,89,827,37"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="1050,122,997,169,929,241,925,238,993,165,1046,118"/>
+<area shape="rect" id="Node000009" href="$Loudness_8h.html" title=" " alt="" coords="1213,167,1367,192"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="1118,113,1259,164,1257,169,1116,118"/>
+<area shape="rect" id="Node000010" href="$Sound_8cpp.html" title=" " alt="" coords="1174,240,1323,265"/>
+<area shape="poly" id="edge17_Node000008_Node000010" title=" " alt="" coords="1098,118,1237,238,1234,242,1095,122"/>
+<area shape="rect" id="Node000011" href="$Score_8h.html" title=" " alt="" coords="1007,167,1138,192"/>
+<area shape="poly" id="edge13_Node000008_Node000011" title=" " alt="" coords="1075,125,1075,166,1070,166,1070,125"/>
+<area shape="poly" id="edge10_Node000009_Node000006" title=" " alt="" coords="1217,197,978,243,977,237,1216,192"/>
+<area shape="poly" id="edge11_Node000009_Node000007" title=" " alt="" coords="1326,196,1411,237,1408,242,1324,200"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="1279,205,1258,241,1253,239,1274,203"/>
+<area shape="poly" id="edge14_Node000011_Node000006" title=" " alt="" coords="1036,200,943,242,941,237,1034,195"/>
+<area shape="poly" id="edge16_Node000011_Node000010" title=" " alt="" coords="1115,195,1221,237,1219,242,1113,200"/>
+<area shape="rect" id="Node000012" href="$Score_8cpp.html" title=" " alt="" coords="1004,240,1149,265"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="1077,206,1079,240,1073,240,1071,206"/>
+</map>

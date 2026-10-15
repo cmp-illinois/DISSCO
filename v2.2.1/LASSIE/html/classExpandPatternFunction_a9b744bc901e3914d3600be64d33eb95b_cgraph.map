@@ -1,0 +1,9 @@
+<map id="ExpandPatternFunction::populateFromXML" name="ExpandPatternFunction::populateFromXML">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,176,75"/>
+<area shape="rect" id="Node000002" href="$classFunctionWidget.html#a7081ba54096387d4537dc54271e7febf" title=" " alt="" coords="224,5,417,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,41,210,37,211,42,176,46"/>
+<area shape="rect" id="Node000004" href="$classFunctionEntryRow.html#a2e57aabad525e069114ac13f7deaf8a1" title=" " alt="" coords="224,70,417,95"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="176,62,211,67,210,72,176,68"/>
+<area shape="rect" id="Node000003" href="$classFunctionWidget.html#a62272a2c379e0070770409cbe2eb51f2" title=" " alt="" coords="465,13,659,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="417,23,452,23,452,28,417,28"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="QtParser::nextRequiredChildInner" name="QtParser::nextRequiredChildInner">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,27,211,67"/>
+<area shape="rect" id="Node000002" href="$namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="287,5,433,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,33,272,25,273,31,211,38"/>
+<area shape="rect" id="Node000003" href="$namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="259,55,461,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,56,245,60,245,65,210,61"/>
+</map>

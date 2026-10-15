@@ -1,0 +1,20 @@
+<map id="EnvelopeLibraryWindow::createNewEnvelope" name="EnvelopeLibraryWindow::createNewEnvelope">
+<area shape="rect" id="Node000001" title="Create a brand‐new envelope." alt="" coords="5,113,184,153"/>
+<area shape="rect" id="Node000002" href="$namespaceEnvelopeUtilities.html#a89aa270b6266dbefc58dabcf4f0fc4d0" title=" " alt="" coords="243,5,438,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,111,175,83,231,55,250,47,252,52,233,60,177,87,129,115"/>
+<area shape="rect" id="Node000003" href="$classProjectManager.html#aef96b4de43479dce1deecf558fce632e" title=" " alt="" coords="232,70,449,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,112,265,95,266,101,185,118"/>
+<area shape="rect" id="Node000004" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="513,154,705,179"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="185,136,499,157,499,162,184,142"/>
+<area shape="rect" id="Node000006" href="$classEnvelopeLibraryEntry.html#ac30055687c13c1a5b6f992ce449f6191" title="Get this entry&#39;s number as a QString." alt="" coords="260,171,421,211"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="182,151,247,166,246,171,180,156"/>
+<area shape="rect" id="Node000007" href="$namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160" title=" " alt="" coords="265,235,416,261"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="123,152,172,187,233,220,257,229,255,234,231,225,169,191,119,156"/>
+<area shape="rect" id="Node000005" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="822,154,931,179"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="705,164,808,164,808,169,705,169"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="401,233,449,220,561,182,563,187,450,225,402,238"/>
+<area shape="rect" id="Node000008" href="$classProjectManager.html#a02c96a91da7bebdb54dfcd2ea6688d4b" title="Mark the current project as having unsaved changes and emit dataModified()." alt="" coords="497,235,720,261"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="416,245,483,245,483,251,416,251"/>
+<area shape="rect" id="Node000009" href="$classProjectManager.html#ac3696b7040a19b457dc4e4d2dcbe3c11" title=" " alt="" coords="768,235,985,261"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="720,245,754,245,754,251,720,251"/>
+</map>

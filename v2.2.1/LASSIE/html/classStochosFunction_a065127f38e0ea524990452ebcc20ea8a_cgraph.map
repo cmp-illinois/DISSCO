@@ -1,0 +1,18 @@
+<map id="StochosFunction::populateFromXML" name="StochosFunction::populateFromXML">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,139,199,179"/>
+<area shape="rect" id="Node000002" href="$classFunctionWidget.html#a7081ba54096387d4537dc54271e7febf" title=" " alt="" coords="247,5,440,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,136,182,100,245,62,273,48,276,53,248,66,185,104,132,141"/>
+<area shape="rect" id="Node000003" href="$classFunctionWidget.html#a62272a2c379e0070770409cbe2eb51f2" title=" " alt="" coords="488,42,681,67"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="152,136,246,105,363,81,474,64,475,69,364,86,247,111,154,141"/>
+<area shape="rect" id="Node000004" href="$classStochos.html#ac02ab0ae2bdd2aac9122e7570117e245" title=" " alt="" coords="266,121,421,146"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="198,146,252,140,252,146,199,151"/>
+<area shape="rect" id="Node000005" href="$classStochos.html#ac3931905c73f66ddacbde548a9b2d5e0" title=" " alt="" coords="265,170,421,195"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="199,166,252,171,251,176,198,171"/>
+<area shape="rect" id="Node000006" href="$classStochos.html#af6ad647a71ca5d37834e89d9b9042488" title=" " alt="" coords="267,219,419,245"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="161,176,247,204,280,213,278,218,246,209,160,181"/>
+<area shape="rect" id="Node000007" href="$classStochos.html#afc1fcbdea00400f72c5577204df699db" title=" " alt="" coords="269,269,417,294"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="129,177,181,217,248,255,266,262,264,267,246,260,178,221,125,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="440,34,475,39,474,44,440,40"/>
+<area shape="rect" id="Node000008" href="$classFunctionEntryRow.html#a2e57aabad525e069114ac13f7deaf8a1" title=" " alt="" coords="488,269,681,294"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="418,279,474,279,474,284,418,284"/>
+</map>

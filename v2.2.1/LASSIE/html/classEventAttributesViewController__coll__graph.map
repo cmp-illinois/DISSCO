@@ -1,0 +1,9 @@
+<map id="EventAttributesViewController" name="EventAttributesViewController">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,168,224,193"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="57,80,130,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,118,114,167,109,168,97,119"/>
+<area shape="rect" id="Node000003" href="$classProjectView.html" title=" " alt="" coords="155,80,253,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,117,129,169,125,166,180,113"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="167,5,241,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="207,45,207,80,201,80,201,45"/>
+</map>

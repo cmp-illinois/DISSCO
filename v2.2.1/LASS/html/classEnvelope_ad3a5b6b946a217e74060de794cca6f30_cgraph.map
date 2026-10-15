@@ -1,0 +1,9 @@
+<map id="Envelope::multiply" name="Envelope::multiply">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,149,80"/>
+<area shape="rect" id="Node000002" href="$classEnvelope.html#ac609dfa5fe79dd719530e8c29bb35725" title=" " alt="" coords="210,5,361,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,52,217,31,218,37,132,57"/>
+<area shape="rect" id="Node000003" href="$classEnvelope.html#a1c45a493da7c83989cc15d2c717f6f12" title=" " alt="" coords="197,55,373,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="150,65,184,65,184,70,150,70"/>
+<area shape="rect" id="Node000004" href="$classEnvelope.html#ac9b110ee7810ed28ff0a931b9ac38308" title=" " alt="" coords="212,104,359,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="132,77,218,98,217,103,131,83"/>
+</map>

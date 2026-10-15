@@ -1,0 +1,5 @@
+<map id="Updater::gitHubRepoSlug" name="Updater::gitHubRepoSlug">
+<area shape="rect" id="Node000001" title="&quot;owner/repo&quot; slug for the GitHub repo being polled." alt="" coords="248,5,435,31"/>
+<area shape="rect" id="Node000002" href="$classUpdater.html#a8dd6921b46c31473918e21808f775686" title="Run a release check. Safe to call from the GUI thread." alt="" coords="5,5,200,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,21,200,21,200,15,234,15"/>
+</map>

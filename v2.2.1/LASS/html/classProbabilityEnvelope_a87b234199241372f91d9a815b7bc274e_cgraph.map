@@ -1,0 +1,19 @@
+<map id="ProbabilityEnvelope::estimateAreaUnderCurve" name="ProbabilityEnvelope::estimateAreaUnderCurve">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,73,200,113"/>
+<area shape="rect" id="Node000002" href="$classIterator.html#a69b4bebf4a915a4ee591e6c8bd9b9b9a" title=" " alt="" coords="308,5,440,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,70,247,39,294,29,295,34,249,45,156,75"/>
+<area shape="rect" id="Node000004" href="$classIterator.html#a12aa5b9d3dd7370cd40943427834adc6" title=" " alt="" coords="321,55,427,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="200,81,307,71,307,76,200,86"/>
+<area shape="rect" id="Node000006" href="$classDynamicVariable.html#a8c7752a0b37aa3d2b37bfbf22a65e104" title=" " alt="" coords="248,104,500,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="200,99,234,102,234,107,200,104"/>
+<area shape="rect" id="Node000007" href="$classEnvelope.html#a358cf47aba679c596f42236d8a77815c" title=" " alt="" coords="287,153,461,179"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="160,110,249,138,290,148,289,153,247,143,158,115"/>
+<area shape="rect" id="Node000003" href="$classAbstractIterator.html#aabada3692730edd3a71070e9fc0fd3c0" title=" " alt="" coords="581,5,768,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="440,15,568,15,568,21,440,21"/>
+<area shape="rect" id="Node000005" href="$classAbstractIterator.html#a131acaa938ffedf104e5e3b55dffc5c2" title=" " alt="" coords="594,55,755,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="428,65,580,65,580,70,428,70"/>
+<area shape="rect" id="Node000008" href="$classDynamicVariable.html#ad535d26db2fb71e8e9fd05f142d9d844" title=" " alt="" coords="565,104,784,129"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="452,151,583,129,583,134,453,156"/>
+<area shape="rect" id="Node000009" href="$classDynamicVariable.html#ae748c97f7a5831e8138bcc5a6f1cdd76" title=" " alt="" coords="548,153,801,179"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="462,163,535,163,535,169,462,169"/>
+</map>

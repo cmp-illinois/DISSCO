@@ -1,0 +1,25 @@
+<map id="Reverb::do_reverb" name="Reverb::do_reverb">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,162,147,188"/>
+<area shape="rect" id="Node000002" href="$classReverb.html#a1cff433c04ff5cf8b010761fbdc9de96" title=" " alt="" coords="195,162,336,188"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,172,181,172,181,178,147,178"/>
+<area shape="rect" id="Node000003" href="$classAllPassFilter.html#a35478d1e13350c818aa6ee30885701ec" title=" " alt="" coords="689,125,852,150"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="319,159,384,148,537,137,675,134,675,139,538,142,384,154,320,165"/>
+<area shape="rect" id="Node000006" href="$classLPCombFilter.html#a6ecc8e020af892b8a6f42f5cba2be227" title=" " alt="" coords="426,36,595,61"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="285,160,383,103,465,64,468,69,385,108,288,165"/>
+<area shape="rect" id="Node000008" href="$classDynamicVariable.html#ad535d26db2fb71e8e9fd05f142d9d844" title=" " alt="" coords="401,162,620,188"/>
+<area shape="poly" id="edge11_Node000002_Node000008" title=" " alt="" coords="336,172,388,172,388,178,336,178"/>
+<area shape="rect" id="Node000009" href="$classDynamicVariable.html#ae748c97f7a5831e8138bcc5a6f1cdd76" title=" " alt="" coords="384,212,637,237"/>
+<area shape="poly" id="edge12_Node000002_Node000009" title=" " alt="" coords="325,185,385,198,428,206,427,212,383,203,324,190"/>
+<area shape="rect" id="Node000010" href="$classEnvelope.html#ac9b110ee7810ed28ff0a931b9ac38308" title=" " alt="" coords="437,261,584,286"/>
+<area shape="poly" id="edge13_Node000002_Node000010" title=" " alt="" coords="284,185,328,217,385,247,424,259,423,264,383,252,325,221,281,190"/>
+<area shape="rect" id="Node000004" href="$classFilter_1_1hist__queue.html#a909fccfcaaabd09bbc60ca6906504601" title=" " alt="" coords="904,74,1039,114"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="829,122,890,109,891,114,830,127"/>
+<area shape="rect" id="Node000005" href="$classFilter_1_1hist__queue.html#a17542b5fc79565d3baa039d2cfb18184" title=" " alt="" coords="904,10,1039,50"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="792,122,903,59,914,53,916,58,905,64,795,127"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="596,54,891,83,890,88,595,59"/>
+<area shape="poly" id="edge10_Node000006_Node000005" title=" " alt="" coords="557,33,618,19,685,8,771,3,856,8,891,12,890,17,856,14,771,8,686,14,619,24,559,38"/>
+<area shape="rect" id="Node000007" href="$classLowPassFilter.html#a56d370e9ca41cd0330a21ac429162bd0" title=" " alt="" coords="685,24,856,49"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="595,42,672,38,672,43,596,47"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="817,46,892,68,890,73,815,52"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="856,31,890,30,890,35,857,36"/>
+</map>

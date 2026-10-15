@@ -1,0 +1,31 @@
+<map id="PaletteViewController::onRowsAboutToBeRemoved" name="PaletteViewController::onRowsAboutToBeRemoved">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,294,217,334"/>
+<area shape="rect" id="Node000002" href="$classProjectManager.html#a48bad9d94ff6de5ff8bc8c473db36639" title=" " alt="" coords="273,5,495,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,293,132,241,161,172,181,136,204,100,232,68,264,40,272,35,275,39,267,44,236,71,209,103,185,138,166,174,137,243,120,295"/>
+<area shape="rect" id="Node000003" href="$classProjectManager.html#a8f1dd228b8a3088559203de0634f2022" title=" " alt="" coords="266,55,502,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="118,293,137,250,168,194,210,137,236,111,264,89,274,83,276,88,267,94,239,115,214,140,173,197,142,252,123,295"/>
+<area shape="rect" id="Node000004" href="$classProjectManager.html#ad034eb0ddf517d732798522b12280925" title=" " alt="" coords="281,104,487,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="122,292,144,258,176,216,217,174,264,138,277,132,279,137,267,143,220,178,180,219,149,261,127,295"/>
+<area shape="rect" id="Node000005" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="288,153,480,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="129,292,186,239,224,211,264,188,282,180,284,185,267,192,226,215,189,243,133,296"/>
+<area shape="rect" id="Node000007" href="$classProjectManager.html#a490f88c635ce3806608462afd13fd163" title=" " alt="" coords="282,203,486,228"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="146,292,201,263,264,237,292,229,293,234,266,242,203,268,149,296"/>
+<area shape="rect" id="Node000008" href="$classProjectManager.html#ae3c228c1a19a399bf505a49e77e374d2" title=" " alt="" coords="285,252,483,277"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="217,292,299,277,300,282,218,297"/>
+<area shape="rect" id="Node000009" href="$classProjectManager.html#ab368d43e6d98ea7a117b09dccdf973cb" title=" " alt="" coords="283,301,485,327"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="217,311,270,311,270,317,217,317"/>
+<area shape="rect" id="Node000010" href="$classProjectManager.html#a0778050629a1d8033fc6ee1b603cca94" title=" " alt="" coords="281,351,487,376"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="218,331,300,346,299,351,217,336"/>
+<area shape="rect" id="Node000011" href="$classProjectManager.html#a9ef0087f8445a3715883b43af249bee3" title=" " alt="" coords="273,400,495,425"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="150,332,204,359,266,385,298,394,297,399,264,390,202,364,147,337"/>
+<area shape="rect" id="Node000012" href="$classProjectManager.html#ab0ab6ad9bc299b5d899031def05dd123" title=" " alt="" coords="275,449,493,475"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="134,332,190,384,227,411,266,434,288,443,286,448,264,439,224,416,187,388,130,336"/>
+<area shape="rect" id="Node000013" href="$classProjectManager.html#a47b06af178c1c5c2a26b378359df53f0" title=" " alt="" coords="279,499,489,524"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="127,333,149,366,181,408,220,449,267,484,282,491,280,496,264,488,217,453,177,411,145,369,122,336"/>
+<area shape="rect" id="Node000014" href="$classProjectManager.html#a52adba923a3551fd126a2432e50a0956" title=" " alt="" coords="285,548,483,573"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="123,333,142,376,173,430,215,486,239,512,267,533,279,540,276,545,264,538,236,516,211,490,168,433,137,378,118,335"/>
+<area shape="rect" id="Node000015" href="$classProjectManager.html#a1aee411de09bb5de1a35ac460e8c41be" title=" " alt="" coords="265,597,503,623"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="120,333,137,385,166,453,186,489,209,523,236,555,267,583,277,589,274,594,264,587,232,559,205,527,181,491,161,455,132,386,115,335"/>
+<area shape="rect" id="Node000006" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="551,153,660,179"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="481,163,537,163,537,169,481,169"/>
+</map>

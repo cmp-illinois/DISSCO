@@ -1,0 +1,19 @@
+<map id="DynamicVariable::clone" name="DynamicVariable::clone">
+<area shape="rect" id="Node000001" title=" " alt="" coords="852,55,1028,80"/>
+<area shape="rect" id="Node000002" href="$classPartial.html#a6ab80d7069346d873d3811de427a53d8" title=" " alt="" coords="659,5,772,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="868,54,772,33,773,28,869,49"/>
+<area shape="rect" id="Node000003" href="$classPan.html#a719ffe74ea0cee0010a3e98a786c5b37" title=" " alt="" coords="679,55,752,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="838,70,752,70,752,65,838,65"/>
+<area shape="rect" id="Node000004" href="$classParameterLib.html#a0f210f2092675bfccd5694cccf3aa372" title=" " alt="" coords="627,104,804,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="869,86,775,107,773,101,868,80"/>
+<area shape="rect" id="Node000005" href="$classLoudness.html#a5cd0fbde3dfe3cbefe82970f946186a5" title=" " alt="" coords="428,79,579,104"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="613,107,579,103,580,98,613,102"/>
+<area shape="rect" id="Node000009" href="$classSound.html#aa26d7b97123cab409cad4c34c1bf4706" title=" " alt="" coords="448,128,559,153"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="613,131,559,137,559,132,613,126"/>
+<area shape="rect" id="Node000006" href="$classSound.html#a4f246242d337ab7ef8a646f69f2a04ae" title=" " alt="" coords="268,79,380,104"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="414,94,380,94,380,89,414,89"/>
+<area shape="rect" id="Node000007" href="$Score_8cpp.html#a39d69126a1c6f253e4f8e8dbe365ee1d" title=" " alt="" coords="156,79,220,104"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="254,94,220,94,220,89,254,89"/>
+<area shape="rect" id="Node000008" href="$classScore.html#acb0a205511c777b06c258f673f7e0d4d" title=" " alt="" coords="5,79,108,104"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="142,94,108,94,108,89,142,89"/>
+</map>

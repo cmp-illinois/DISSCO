@@ -1,0 +1,15 @@
+<map id="Score::add" name="Score::add">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,90,96,115"/>
+<area shape="rect" id="Node000002" href="$classReverb.html#aa6f4b3abeb52759de5b8f84de09c6be7" title=" " alt="" coords="391,15,529,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,88,94,54,117,37,143,24,204,9,267,3,328,5,382,10,381,16,328,10,267,9,205,14,145,29,120,41,97,58,64,91"/>
+<area shape="rect" id="Node000003" href="$classParameterLib.html#ab7c9e5e33bc46baaa3e75514c53cd2b0" title=" " alt="" coords="371,64,549,90"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="96,97,357,81,357,86,96,102"/>
+<area shape="rect" id="Node000004" href="$classSound.html#a6dea3ab5c56ffabb1a30163c62ecd211" title=" " alt="" coords="144,39,323,64"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="95,87,173,66,174,71,97,93"/>
+<area shape="rect" id="Node000005" href="$classSemaphore.html#a99bb4da0df09d6f3181c2a376dd5b8f0" title=" " alt="" coords="167,140,299,166"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="97,112,174,134,173,139,95,117"/>
+<area shape="rect" id="Node000006" href="$classSemaphore.html#a85500356c2f7d1057d4568227e7f35b7" title=" " alt="" coords="167,190,299,215"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="66,113,100,145,145,176,160,183,158,188,143,181,96,149,62,117"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="323,40,376,34,377,39,323,45"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="323,59,357,63,357,68,323,64"/>
+</map>

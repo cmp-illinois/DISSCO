@@ -1,0 +1,10 @@
+<map id="PieceHelper::getFixedPath" name="PieceHelper::getFixedPath">
+<area shape="rect" id="Node000001" title="Ensures a path has a backslash on the end." alt="" coords="391,45,581,70"/>
+<area shape="rect" id="Node000002" href="$structPieceHelper.html#a83d099d9ffdc29cf83935b927d172aa0" title="Creates the score files directory if it does not exist." alt="" coords="155,5,341,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="378,45,341,40,341,35,378,40"/>
+<area shape="rect" id="Node000004" href="$structPieceHelper.html#abfe0ff1bd5655dfcdd27a11bba4248eb" title="Creates the sound files directory if it does not exist." alt="" coords="153,69,343,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="378,75,343,79,343,74,377,69"/>
+<area shape="rect" id="Node000003" href="$classPiece.html#a4dc9d0d3627fc2208b7da6a36a2ca9c2" title=" " alt="" coords="5,45,105,70"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="142,46,106,52,105,46,141,40"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="139,74,105,68,106,63,140,69"/>
+</map>
