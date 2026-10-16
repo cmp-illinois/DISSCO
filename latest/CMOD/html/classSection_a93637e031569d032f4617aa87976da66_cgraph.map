@@ -1,0 +1,11 @@
+<map id="Section::IsWholeEDUsInTempo" name="Section::IsWholeEDUsInTempo">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,38,225,63"/>
+<area shape="rect" id="Node000002" href="$classTempo.html#a34883b5a49197cc97db0b6516744b0ba" title=" " alt="" coords="273,38,433,63"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="225,48,260,48,260,53,225,53"/>
+<area shape="rect" id="Node000003" href="$classTempo.html#a38d180ff752c1ea099184c5cc8eb7085" title=" " alt="" coords="481,13,672,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="433,39,467,35,468,40,434,44"/>
+<area shape="rect" id="Node000005" href="$classRational.html#a977d0a0644375119c82afce254679882" title=" " alt="" coords="527,62,626,87"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="434,57,514,65,513,71,433,62"/>
+<area shape="rect" id="Node000004" href="$classTempo.html#ac7bd9f9822b8ffe5c2d0386883cae6b3" title=" " alt="" coords="720,5,947,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="672,23,706,23,706,28,672,28"/>
+</map>

@@ -109,6 +109,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3aa90ef0ff65f5a8d3050e9760e7ef81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ca46aba1b2911855e0a61aebf5c3f3b" id="r_a5ca46aba1b2911855e0a61aebf5c3f3b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSection.html#a5ca46aba1b2911855e0a61aebf5c3f3b">CalculateEDUsFromSecondsInTempo</a> (float seconds)</td></tr>
 <tr class="separator:a5ca46aba1b2911855e0a61aebf5c3f3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93637e031569d032f4617aa87976da66" id="r_a93637e031569d032f4617aa87976da66"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSection.html#a93637e031569d032f4617aa87976da66">IsWholeEDUsInTempo</a> (float seconds)</td></tr>
+<tr class="separator:a93637e031569d032f4617aa87976da66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd7722aae58ef30d64d681c9b054638a" id="r_abd7722aae58ef30d64d681c9b054638a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSection.html#abd7722aae58ef30d64d681c9b054638a">CalculateSecondsFromEDUsInTempo</a> (int edus)</td></tr>
 <tr class="separator:abd7722aae58ef30d64d681c9b054638a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e56185915c8585f16390a6c04c90877" id="r_a2e56185915c8585f16390a6c04c90877"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSection.html#a2e56185915c8585f16390a6c04c90877">Build</a> (bool notate_time_signature, string &amp;staff_loudness)</td></tr>
@@ -273,7 +275,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00336">336</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00340">340</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -367,7 +369,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The equivalent seconds </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00332">332</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00336">336</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -414,7 +416,7 @@ Here is the caller graph for this function:</div>
 <p>Get whether each bar of this <a class="el" href="classSection.html">Section</a> notates its time signature at its start, after building, in the order of GetBarTimeSignatures.</p>
 <dl class="section return"><dt>Returns</dt><dd>True for each bar whose time signature is notated </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00406">406</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00410">410</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -445,7 +447,7 @@ Here is the caller graph for this function:</div>
 <p>Get the time signature of each bar of this <a class="el" href="classSection.html">Section</a> after building, in order: its own, except for its cap bar if it has one.</p>
 <dl class="section return"><dt>Returns</dt><dd>The time signature of each bar, such as "4/4" </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00393">393</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00397">397</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -497,7 +499,7 @@ Here is the caller graph for this function:</div>
 <p>Get the time signature in force at the end of this <a class="el" href="classSection.html">Section</a> after building: that of its cap bar if it has one, else its own.</p>
 <dl class="section return"><dt>Returns</dt><dd>The time signature in force at the end of this <a class="el" href="classSection.html">Section</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00389">389</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00393">393</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
 
 </div>
 </div>
@@ -538,7 +540,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Get this section as a flattened entity ready for output. </p>
 
-<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00378">378</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00382">382</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -668,6 +670,50 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="a93637e031569d032f4617aa87976da66" name="a93637e031569d032f4617aa87976da66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93637e031569d032f4617aa87976da66">&#9670;&#160;</a></span>IsWholeEDUsInTempo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Section::IsWholeEDUsInTempo </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>seconds</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether a quantity of seconds is a whole number of edus with respect to this section's tempo</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seconds</td><td>The quantity in seconds to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>false if it falls between two edus </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00332">332</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSection_a93637e031569d032f4617aa87976da66_cgraph.png" border="0" usemap="#aclassSection_a93637e031569d032f4617aa87976da66_cgraph" alt=""/></div>
+<map name="aclassSection_a93637e031569d032f4617aa87976da66_cgraph" id="aclassSection_a93637e031569d032f4617aa87976da66_cgraph">
+<area shape="rect" title=" " alt="" coords="5,38,225,63"/>
+<area shape="rect" href="classTempo.html#a34883b5a49197cc97db0b6516744b0ba" title=" " alt="" coords="273,38,433,63"/>
+<area shape="poly" title=" " alt="" coords="225,48,260,48,260,53,225,53"/>
+<area shape="rect" href="classTempo.html#a38d180ff752c1ea099184c5cc8eb7085" title=" " alt="" coords="481,13,672,38"/>
+<area shape="poly" title=" " alt="" coords="433,39,467,35,468,40,434,44"/>
+<area shape="rect" href="classRational.html#a977d0a0644375119c82afce254679882" title=" " alt="" coords="527,62,626,87"/>
+<area shape="poly" title=" " alt="" coords="434,57,514,65,513,71,433,62"/>
+<area shape="rect" href="classTempo.html#ac7bd9f9822b8ffe5c2d0386883cae6b3" title=" " alt="" coords="720,5,947,45"/>
+<area shape="poly" title=" " alt="" coords="672,23,706,23,706,28,672,28"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="ad33bfbb9a141725fcd8dc7f567ea1f81" name="ad33bfbb9a141725fcd8dc7f567ea1f81"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad33bfbb9a141725fcd8dc7f567ea1f81">&#9670;&#160;</a></span>NotateBarTimeSignature()</h2>
 
@@ -691,7 +737,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00422">422</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00426">426</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -723,7 +769,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00449">449</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00453">453</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -753,7 +799,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00437">437</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00441">441</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
 
 </div>
 </div>
@@ -801,7 +847,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00445">445</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00449">449</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -831,7 +877,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00441">441</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Section_8cpp_source.html#l00445">445</a> of file <a class="el" href="Section_8cpp_source.html">Section.cpp</a>.</p>
 
 </div>
 </div>

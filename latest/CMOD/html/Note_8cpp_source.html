@@ -444,123 +444,131 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    }</div>
 <div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>  }</div>
 <div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>  <span class="keywordtype">string</span> output = <span class="stringliteral">&quot;&lt;&quot;</span>;</div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> tone_idx = 0; tone_idx &lt; chord_tones.size(); ++tone_idx) {</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    <span class="keywordflow">if</span> (tone_idx &gt; 0) {</div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>      output += <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    }</div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    <span class="keyword">const</span> ChordTone&amp; tone = chord_tones[tone_idx];</div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    output += tone.pitch;</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    <span class="keywordflow">if</span> (include_modifiers &amp;&amp; tone.attack_edu == start_t) {</div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>      <span class="keywordflow">for</span> (vector&lt;string&gt;::const_reverse_iterator modifier = tone.modifiers.rbegin();</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>           modifier != tone.modifiers.rend();</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>           ++modifier) {</div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        output += *modifier;</div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>      }</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    }</div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>    <span class="keywordflow">if</span> (include_ties &amp;&amp; tone.tied) {</div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>      output += (2 * tone.pitch_num &lt; lowest + highest) ? <span class="stringliteral">&quot;_~&quot;</span> : <span class="stringliteral">&quot;^~&quot;</span>;</div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>    }</div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>  }</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>  output += <span class="stringliteral">&quot;&gt;&quot;</span>;</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>  <span class="keywordflow">return</span> output;</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>}</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="keywordtype">void</span> Note::rebuildPitchOutput() {</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>  <span class="keywordflow">if</span> (!chord_tones.empty()) {</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    pitch_out = renderPitch(<span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>  <span class="comment">// A mark that several pitches attacked together carry is written once, on</span></div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>  <span class="comment">// the first of them: LilyPond stacks a mark written on every pitch of a</span></div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>  <span class="comment">// chord, where the music has one mark for the chord</span></div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>  vector&lt;string&gt; written_modifiers;</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>  <span class="keywordtype">string</span> output = <span class="stringliteral">&quot;&lt;&quot;</span>;</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> tone_idx = 0; tone_idx &lt; chord_tones.size(); ++tone_idx) {</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    <span class="keywordflow">if</span> (tone_idx &gt; 0) {</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>      output += <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    }</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>    <span class="keyword">const</span> ChordTone&amp; tone = chord_tones[tone_idx];</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>    output += tone.pitch;</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>    <span class="keywordflow">if</span> (include_modifiers &amp;&amp; tone.attack_edu == start_t) {</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>      <span class="keywordflow">for</span> (vector&lt;string&gt;::const_reverse_iterator modifier = tone.modifiers.rbegin();</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>           modifier != tone.modifiers.rend();</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>           ++modifier) {</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>        <span class="keywordflow">if</span> (std::find(written_modifiers.begin(), written_modifiers.end(), *modifier) ==</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>            written_modifiers.end()) {</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>          written_modifiers.push_back(*modifier);</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>          output += *modifier;</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        }</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>      }</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    }</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    <span class="keywordflow">if</span> (include_ties &amp;&amp; tone.tied) {</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>      output += (2 * tone.pitch_num &lt; lowest + highest) ? <span class="stringliteral">&quot;_~&quot;</span> : <span class="stringliteral">&quot;^~&quot;</span>;</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    }</div>
 <div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>  }</div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>}</div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="keywordtype">void</span> Note::adjustStartTime(<span class="keywordtype">int</span> new_start_time) {</div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>  <span class="keywordflow">for</span> (ChordTone&amp; tone : chord_tones) {</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    <span class="keywordflow">if</span> (tone.attack_edu == start_t) {</div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>      tone.attack_edu = new_start_time;</div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>    }</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>  output += <span class="stringliteral">&quot;&gt;&quot;</span>;</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>  <span class="keywordflow">return</span> output;</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>}</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span> </div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span><span class="keywordtype">void</span> Note::rebuildPitchOutput() {</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>  <span class="keywordflow">if</span> (!chord_tones.empty()) {</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>    pitch_out = renderPitch(<span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>  }</div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>  start_t = new_start_time;</div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>}</div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span> </div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span><span class="keywordtype">void</span> Note::shiftEDUs(<span class="keywordtype">int</span> offset) {</div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>  start_t += offset;</div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>  end_t += offset;</div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>  <span class="keywordflow">for</span> (ChordTone&amp; tone : chord_tones) {</div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <span class="keywordflow">if</span> (tone.attack_edu != INT_MIN) {</div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>      tone.attack_edu += offset;</div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>    }</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>  }</div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>}</div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span> </div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span> </div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span><span class="comment">// multistaffs</span></div>
-<div class="foldopen" id="foldopen00390" data-start="{" data-end="}">
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno"><a class="line" href="classNote.html#a6469987da6a248005ba67e4d0ce5ffc4">  390</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a6469987da6a248005ba67e4d0ce5ffc4">Note::setStaffNum</a>(<span class="keywordtype">int</span> noteStaff){</div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>  <span class="comment">// NotationScore::InsertNote moves an out-of-range staff number to the</span></div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>  <span class="comment">// nearest staff and warns about it</span></div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>  staffNum = noteStaff;</div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>}</div>
-</div>
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span> </div>
-<div class="foldopen" id="foldopen00396" data-start="{" data-end="}">
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno"><a class="line" href="classNote.html#a67aa25c488baabade89a6dd5189af301">  396</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classNote.html#a67aa25c488baabade89a6dd5189af301">Note::getStaffNum</a>(){</div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>  <span class="keywordflow">return</span> staffNum;</div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>}</div>
-</div>
-<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span> </div>
-<div class="foldopen" id="foldopen00400" data-start="{" data-end="}">
-<div class="line"><a id="l00400" name="l00400"></a><span class="lineno"><a class="line" href="classNote.html#a5dc7761f88cd1f46592f341857a4b8c6">  400</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classNote.html#a5dc7761f88cd1f46592f341857a4b8c6">Note::getPitchNum</a>(){</div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>  <span class="keywordflow">return</span> pitchNum;</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>}</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span> </div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span><span class="keywordtype">void</span> Note::adjustStartTime(<span class="keywordtype">int</span> new_start_time) {</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>  <span class="keywordflow">for</span> (ChordTone&amp; tone : chord_tones) {</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    <span class="keywordflow">if</span> (tone.attack_edu == start_t) {</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>      tone.attack_edu = new_start_time;</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    }</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>  }</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>  start_t = new_start_time;</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>}</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span> </div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span><span class="keywordtype">void</span> Note::shiftEDUs(<span class="keywordtype">int</span> offset) {</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>  start_t += offset;</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>  end_t += offset;</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>  <span class="keywordflow">for</span> (ChordTone&amp; tone : chord_tones) {</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>    <span class="keywordflow">if</span> (tone.attack_edu != INT_MIN) {</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>      tone.attack_edu += offset;</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>    }</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>  }</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>}</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span> </div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span> </div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span><span class="comment">// multistaffs</span></div>
+<div class="foldopen" id="foldopen00398" data-start="{" data-end="}">
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno"><a class="line" href="classNote.html#a6469987da6a248005ba67e4d0ce5ffc4">  398</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a6469987da6a248005ba67e4d0ce5ffc4">Note::setStaffNum</a>(<span class="keywordtype">int</span> noteStaff){</div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>  <span class="comment">// NotationScore::InsertNote moves an out-of-range staff number to the</span></div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>  <span class="comment">// nearest staff and warns about it</span></div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>  staffNum = noteStaff;</div>
 <div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>}</div>
 </div>
 <div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span> </div>
 <div class="foldopen" id="foldopen00404" data-start="{" data-end="}">
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno"><a class="line" href="classNote.html#a5e7113f5302e348d18d3e75a2ab7c400">  404</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a5e7113f5302e348d18d3e75a2ab7c400">Note::setPitchNum</a>(<span class="keywordtype">int</span> notePitchNum){</div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>  pitchNum = notePitchNum;</div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno"><a class="line" href="classNote.html#a67aa25c488baabade89a6dd5189af301">  404</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classNote.html#a67aa25c488baabade89a6dd5189af301">Note::getStaffNum</a>(){</div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>  <span class="keywordflow">return</span> staffNum;</div>
 <div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>}</div>
 </div>
 <div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span> </div>
 <div class="foldopen" id="foldopen00408" data-start="{" data-end="}">
-<div class="line"><a id="l00408" name="l00408"></a><span class="lineno"><a class="line" href="classNote.html#ab05615d78197cb40e03f66e4f215a2dd">  408</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classNote.html#ab05615d78197cb40e03f66e4f215a2dd">Note::is_real_note</a>(){</div>
-<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>  <span class="keywordflow">if</span>(type==<a class="code hl_enumvalue" href="structNoteType.html#a8515a9809c7ee368ef5db4c4baa2f01eacd4f082937d1a3711a4249bda06bb6b3">NoteType::kNote</a>){</div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>  }</div>
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>}</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno"><a class="line" href="classNote.html#a5dc7761f88cd1f46592f341857a4b8c6">  408</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classNote.html#a5dc7761f88cd1f46592f341857a4b8c6">Note::getPitchNum</a>(){</div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>  <span class="keywordflow">return</span> pitchNum;</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>}</div>
 </div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span> </div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span> </div>
-<div class="foldopen" id="foldopen00417" data-start="{" data-end="}">
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno"><a class="line" href="classNote.html#acb14b6c07f419acc4225bbb49b79d728">  417</a></span><span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code hl_function" href="classNote.html#acb14b6c07f419acc4225bbb49b79d728">Note::GetText</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>  <span class="keywordflow">return</span> type_out;</div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>}</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span> </div>
+<div class="foldopen" id="foldopen00412" data-start="{" data-end="}">
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno"><a class="line" href="classNote.html#a5e7113f5302e348d18d3e75a2ab7c400">  412</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classNote.html#a5e7113f5302e348d18d3e75a2ab7c400">Note::setPitchNum</a>(<span class="keywordtype">int</span> notePitchNum){</div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>  pitchNum = notePitchNum;</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>}</div>
 </div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span> </div>
-<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span> </div>
+<div class="foldopen" id="foldopen00416" data-start="{" data-end="}">
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno"><a class="line" href="classNote.html#ab05615d78197cb40e03f66e4f215a2dd">  416</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classNote.html#ab05615d78197cb40e03f66e4f215a2dd">Note::is_real_note</a>(){</div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>  <span class="keywordflow">if</span>(type==<a class="code hl_enumvalue" href="structNoteType.html#a8515a9809c7ee368ef5db4c4baa2f01eacd4f082937d1a3711a4249bda06bb6b3">NoteType::kNote</a>){</div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>  }</div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>}</div>
+</div>
 <div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span> </div>
-<div class="foldopen" id="foldopen00423" data-start="{" data-end="}">
-<div class="line"><a id="l00423" name="l00423"></a><span class="lineno"><a class="line" href="classNote.html#a03026f5244abb170a163ee10e199ffdf">  423</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classNote.html#a03026f5244abb170a163ee10e199ffdf">Note::str_to_int</a>(<span class="keywordtype">string</span> s) {</div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>  <span class="keywordtype">int</span> temp = 0;</div>
-<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; s.length(); ++i) {</div>
-<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>    <span class="keywordtype">int</span> x = int(s[i] - 48);</div>
-<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>    temp = temp*10 + x;</div>
-<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>  }</div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>  <span class="keywordflow">return</span> temp;</div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>}</div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span> </div>
+<div class="foldopen" id="foldopen00425" data-start="{" data-end="}">
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno"><a class="line" href="classNote.html#acb14b6c07f419acc4225bbb49b79d728">  425</a></span><span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code hl_function" href="classNote.html#acb14b6c07f419acc4225bbb49b79d728">Note::GetText</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>  <span class="keywordflow">return</span> type_out;</div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>}</div>
 </div>
-<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span> </div>
-<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span> </div>
-<div class="foldopen" id="foldopen00434" data-start="{" data-end="}">
-<div class="line"><a id="l00434" name="l00434"></a><span class="lineno"><a class="line" href="classNote.html#a6e1a38b045f9de544534ebc01db170b3">  434</a></span><span class="keywordtype">string</span> <a class="code hl_function" href="classNote.html#a6e1a38b045f9de544534ebc01db170b3">Note::int_to_str</a>(<span class="keywordtype">int</span> n) {</div>
-<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>  stringstream ss;</div>
-<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>  ss &lt;&lt; n;</div>
-<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>  <span class="keywordflow">return</span> ss.str();</div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span> </div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span> </div>
+<div class="foldopen" id="foldopen00431" data-start="{" data-end="}">
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno"><a class="line" href="classNote.html#a03026f5244abb170a163ee10e199ffdf">  431</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classNote.html#a03026f5244abb170a163ee10e199ffdf">Note::str_to_int</a>(<span class="keywordtype">string</span> s) {</div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>  <span class="keywordtype">int</span> temp = 0;</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>  <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; s.length(); ++i) {</div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>    <span class="keywordtype">int</span> x = int(s[i] - 48);</div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>    temp = temp*10 + x;</div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>  }</div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>  <span class="keywordflow">return</span> temp;</div>
 <div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>}</div>
 </div>
 <div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span> </div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span> </div>
+<div class="foldopen" id="foldopen00442" data-start="{" data-end="}">
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno"><a class="line" href="classNote.html#a6e1a38b045f9de544534ebc01db170b3">  442</a></span><span class="keywordtype">string</span> <a class="code hl_function" href="classNote.html#a6e1a38b045f9de544534ebc01db170b3">Note::int_to_str</a>(<span class="keywordtype">int</span> n) {</div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>  stringstream ss;</div>
+<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span>  ss &lt;&lt; n;</div>
+<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>  <span class="keywordflow">return</span> ss.str();</div>
+<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>}</div>
+</div>
+<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span> </div>
 <div class="ttc" id="aCmodError_8h_html"><div class="ttname"><a href="CmodError_8h.html">CmodError.h</a></div></div>
 <div class="ttc" id="aDefine_8h_html_a2f670099bd8af05b9c7690c2ce7f9fe3"><div class="ttname"><a href="Define_8h.html#a2f670099bd8af05b9c7690c2ce7f9fe3">MINFREQ</a></div><div class="ttdeci">#define MINFREQ</div><div class="ttdef"><b>Definition</b> <a href="Define_8h_source.html#l00052">Define.h:52</a></div></div>
 <div class="ttc" id="aDefine_8h_html_aba709b83abe92c61dd39d21d039fb65c"><div class="ttname"><a href="Define_8h.html#aba709b83abe92c61dd39d21d039fb65c">CEILING</a></div><div class="ttdeci">#define CEILING</div><div class="ttdef"><b>Definition</b> <a href="Define_8h_source.html#l00051">Define.h:51</a></div></div>
@@ -573,23 +581,23 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aclassCmodError_html_a95049bd4f3d2e9daede92d3752248690a9e727fdd3aec8274f46685441900280d"><div class="ttname"><a href="classCmodError.html#a95049bd4f3d2e9daede92d3752248690a9e727fdd3aec8274f46685441900280d">CmodError::Kind::Project</a></div><div class="ttdeci">@ Project</div></div>
 <div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="classEvent.html">Event</a></div><div class="ttdoc">Generic event in a DISSCO composition tree.</div><div class="ttdef"><b>Definition</b> <a href="Event_8h_source.html#l00123">Event.h:123</a></div></div>
 <div class="ttc" id="aclassNote_html"><div class="ttname"><a href="classNote.html">Note</a></div><div class="ttdoc">A single notated event emitted by a Bottom event.</div><div class="ttdef"><b>Definition</b> <a href="Note_8h_source.html#l00071">Note.h:71</a></div></div>
-<div class="ttc" id="aclassNote_html_a03026f5244abb170a163ee10e199ffdf"><div class="ttname"><a href="classNote.html#a03026f5244abb170a163ee10e199ffdf">Note::str_to_int</a></div><div class="ttdeci">static int str_to_int(string s)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00423">Note.cpp:423</a></div></div>
+<div class="ttc" id="aclassNote_html_a03026f5244abb170a163ee10e199ffdf"><div class="ttname"><a href="classNote.html#a03026f5244abb170a163ee10e199ffdf">Note::str_to_int</a></div><div class="ttdeci">static int str_to_int(string s)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00431">Note.cpp:431</a></div></div>
 <div class="ttc" id="aclassNote_html_a11dfaf68eb7a094b121add4adb18620e"><div class="ttname"><a href="classNote.html#a11dfaf68eb7a094b121add4adb18620e">Note::Note</a></div><div class="ttdeci">Note()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00063">Note.cpp:63</a></div></div>
 <div class="ttc" id="aclassNote_html_a28bc31df03279f2e2ea425dd786c46a5"><div class="ttname"><a href="classNote.html#a28bc31df03279f2e2ea425dd786c46a5">Note::setPitchWellTempered</a></div><div class="ttdeci">void setPitchWellTempered(int pitchNum)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00109">Note.cpp:109</a></div></div>
 <div class="ttc" id="aclassNote_html_a4c5b5c71f3deaa568dc7735e6e0a2fea"><div class="ttname"><a href="classNote.html#a4c5b5c71f3deaa568dc7735e6e0a2fea">Note::initSplit</a></div><div class="ttdeci">void initSplit()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00102">Note.cpp:102</a></div></div>
 <div class="ttc" id="aclassNote_html_a5034ac5ba073d411747904c8220fba8d"><div class="ttname"><a href="classNote.html#a5034ac5ba073d411747904c8220fba8d">Note::setEndTime</a></div><div class="ttdeci">void setEndTime(int end_time)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00098">Note.cpp:98</a></div></div>
-<div class="ttc" id="aclassNote_html_a5dc7761f88cd1f46592f341857a4b8c6"><div class="ttname"><a href="classNote.html#a5dc7761f88cd1f46592f341857a4b8c6">Note::getPitchNum</a></div><div class="ttdeci">int getPitchNum()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00400">Note.cpp:400</a></div></div>
-<div class="ttc" id="aclassNote_html_a5e7113f5302e348d18d3e75a2ab7c400"><div class="ttname"><a href="classNote.html#a5e7113f5302e348d18d3e75a2ab7c400">Note::setPitchNum</a></div><div class="ttdeci">void setPitchNum(int notePitchNum)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00404">Note.cpp:404</a></div></div>
-<div class="ttc" id="aclassNote_html_a6469987da6a248005ba67e4d0ce5ffc4"><div class="ttname"><a href="classNote.html#a6469987da6a248005ba67e4d0ce5ffc4">Note::setStaffNum</a></div><div class="ttdeci">void setStaffNum(int noteStaff)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00390">Note.cpp:390</a></div></div>
-<div class="ttc" id="aclassNote_html_a67aa25c488baabade89a6dd5189af301"><div class="ttname"><a href="classNote.html#a67aa25c488baabade89a6dd5189af301">Note::getStaffNum</a></div><div class="ttdeci">int getStaffNum()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00396">Note.cpp:396</a></div></div>
-<div class="ttc" id="aclassNote_html_a6e1a38b045f9de544534ebc01db170b3"><div class="ttname"><a href="classNote.html#a6e1a38b045f9de544534ebc01db170b3">Note::int_to_str</a></div><div class="ttdeci">static string int_to_str(int n)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00434">Note.cpp:434</a></div></div>
+<div class="ttc" id="aclassNote_html_a5dc7761f88cd1f46592f341857a4b8c6"><div class="ttname"><a href="classNote.html#a5dc7761f88cd1f46592f341857a4b8c6">Note::getPitchNum</a></div><div class="ttdeci">int getPitchNum()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00408">Note.cpp:408</a></div></div>
+<div class="ttc" id="aclassNote_html_a5e7113f5302e348d18d3e75a2ab7c400"><div class="ttname"><a href="classNote.html#a5e7113f5302e348d18d3e75a2ab7c400">Note::setPitchNum</a></div><div class="ttdeci">void setPitchNum(int notePitchNum)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00412">Note.cpp:412</a></div></div>
+<div class="ttc" id="aclassNote_html_a6469987da6a248005ba67e4d0ce5ffc4"><div class="ttname"><a href="classNote.html#a6469987da6a248005ba67e4d0ce5ffc4">Note::setStaffNum</a></div><div class="ttdeci">void setStaffNum(int noteStaff)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00398">Note.cpp:398</a></div></div>
+<div class="ttc" id="aclassNote_html_a67aa25c488baabade89a6dd5189af301"><div class="ttname"><a href="classNote.html#a67aa25c488baabade89a6dd5189af301">Note::getStaffNum</a></div><div class="ttdeci">int getStaffNum()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00404">Note.cpp:404</a></div></div>
+<div class="ttc" id="aclassNote_html_a6e1a38b045f9de544534ebc01db170b3"><div class="ttname"><a href="classNote.html#a6e1a38b045f9de544534ebc01db170b3">Note::int_to_str</a></div><div class="ttdeci">static string int_to_str(int n)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00442">Note.cpp:442</a></div></div>
 <div class="ttc" id="aclassNote_html_a7158fbea4f75ab7ab155f455f8c952d2"><div class="ttname"><a href="classNote.html#a7158fbea4f75ab7ab155f455f8c952d2">Note::setStartTime</a></div><div class="ttdeci">void setStartTime(int start_time)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00092">Note.cpp:92</a></div></div>
 <div class="ttc" id="aclassNote_html_a7f610c48a212a038d93c2479f10bee38"><div class="ttname"><a href="classNote.html#a7f610c48a212a038d93c2479f10bee38">Note::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const Note &amp;rhs)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00085">Note.cpp:85</a></div></div>
 <div class="ttc" id="aclassNote_html_a8d59a15aebdb303e46907ae538003cd8"><div class="ttname"><a href="classNote.html#a8d59a15aebdb303e46907ae538003cd8">Note::setModifiers</a></div><div class="ttdeci">void setModifiers(std::vector&lt; std::string &gt; modNames)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00237">Note.cpp:237</a></div></div>
 <div class="ttc" id="aclassNote_html_a92e5a56dbce119824bc7d82d0266fbaa"><div class="ttname"><a href="classNote.html#a92e5a56dbce119824bc7d82d0266fbaa">Note::setLoudnessMark</a></div><div class="ttdeci">void setLoudnessMark(int dynamicNum, std::vector&lt; std::string &gt; dynamicNames)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00154">Note.cpp:154</a></div></div>
 <div class="ttc" id="aclassNote_html_a93196e0ab249a4737fe399315a11f3f5"><div class="ttname"><a href="classNote.html#a93196e0ab249a4737fe399315a11f3f5">Note::HertzToPitch</a></div><div class="ttdeci">int HertzToPitch(float freqHz)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00138">Note.cpp:138</a></div></div>
-<div class="ttc" id="aclassNote_html_ab05615d78197cb40e03f66e4f215a2dd"><div class="ttname"><a href="classNote.html#ab05615d78197cb40e03f66e4f215a2dd">Note::is_real_note</a></div><div class="ttdeci">bool is_real_note()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00408">Note.cpp:408</a></div></div>
-<div class="ttc" id="aclassNote_html_acb14b6c07f419acc4225bbb49b79d728"><div class="ttname"><a href="classNote.html#acb14b6c07f419acc4225bbb49b79d728">Note::GetText</a></div><div class="ttdeci">const string &amp; GetText() const</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00417">Note.cpp:417</a></div></div>
+<div class="ttc" id="aclassNote_html_ab05615d78197cb40e03f66e4f215a2dd"><div class="ttname"><a href="classNote.html#ab05615d78197cb40e03f66e4f215a2dd">Note::is_real_note</a></div><div class="ttdeci">bool is_real_note()</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00416">Note.cpp:416</a></div></div>
+<div class="ttc" id="aclassNote_html_acb14b6c07f419acc4225bbb49b79d728"><div class="ttname"><a href="classNote.html#acb14b6c07f419acc4225bbb49b79d728">Note::GetText</a></div><div class="ttdeci">const string &amp; GetText() const</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00425">Note.cpp:425</a></div></div>
 <div class="ttc" id="aclassNote_html_ae4e19820d3ebbdfe382849fb91026c1e"><div class="ttname"><a href="classNote.html#ae4e19820d3ebbdfe382849fb91026c1e">Note::setLoudnessSones</a></div><div class="ttdeci">void setLoudnessSones(float sones)</div><div class="ttdef"><b>Definition</b> <a href="Note_8cpp_source.html#l00186">Note.cpp:186</a></div></div>
 <div class="ttc" id="aclassOutput_html_aac3423bbbe3e6667f366304e80638a6d"><div class="ttname"><a href="classOutput.html#aac3423bbbe3e6667f366304e80638a6d">Output::addProperty</a></div><div class="ttdeci">static void addProperty(string name, string value, string units=&quot;&quot;)</div><div class="ttdef"><b>Definition</b> <a href="Output_8cpp_source.html#l00245">Output.cpp:245</a></div></div>
 <div class="ttc" id="astructNoteType_html"><div class="ttname"><a href="structNoteType.html">NoteType</a></div><div class="ttdoc">Tag for what kind of token a Note represents in the score stream.</div><div class="ttdef"><b>Definition</b> <a href="Note_8h_source.html#l00050">Note.h:50</a></div></div>

@@ -21,5 +21,7 @@ var searchData=
   ['issectionof_18',['IsSectionOf',['../classSection.html#a8e46e7082f32c917d1485d477fb49376',1,'Section']]],
   ['issievefunction_19',['isSieveFunction',['../classUtilities.html#aab1901b96738a319db860f4c3e8c2bc6',1,'Utilities']]],
   ['istemposameas_20',['isTempoSameAs',['../classTempo.html#af5e179e65285982a11c09a1d80bcdfcf',1,'Tempo']]],
-  ['iswhole_21',['isWhole',['../classRational.html#a163aad1285b1d8d6ee618d42c13dc273',1,'Rational']]]
+  ['iswhole_21',['isWhole',['../classRational.html#a163aad1285b1d8d6ee618d42c13dc273',1,'Rational']]],
+  ['iswholeedus_22',['isWholeEDUs',['../classTempo.html#a34883b5a49197cc97db0b6516744b0ba',1,'Tempo']]],
+  ['iswholeedusintempo_23',['IsWholeEDUsInTempo',['../classSection.html#a93637e031569d032f4617aa87976da66',1,'Section']]]
 ];
