@@ -311,3 +311,11 @@ int Tempo::convertSecondsToEDUs(float seconds) {
   float edus = seconds * getEDUPerSecond().To<float>();
   return static_cast<int>(lround(edus));
 }
+
+//----------------------------------------------------------------------------//
+
+bool Tempo::isWholeEDUs(float seconds) {
+  // Seconds are floats, so a time on an EDU can miss it by a tiny amount
+  double edus = seconds * getEDUPerSecond().To<double>();
+  return fabs(edus - round(edus)) < 0.01;
+}

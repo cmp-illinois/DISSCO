@@ -149,6 +149,15 @@ public:
    * @return The equivalent edus
   **/
   int CalculateEDUsFromSecondsInTempo(float seconds);
+
+  /**
+   * Whether a quantity of seconds is a whole number of edus with respect
+   * to this section's tempo
+   *
+   * @param seconds The quantity in seconds to check
+   * @return false if it falls between two edus
+  **/
+  bool IsWholeEDUsInTempo(float seconds);
   
   /**
    * Convert a quantity of edus to seconds with respect to this

@@ -643,6 +643,21 @@ int Event::checkedChildType(double value) const {
   return static_cast<int>(value);
 }
 
+// A child time in EDU is cut to a whole EDU. The score cannot show a time
+// that falls between two EDUs, so with score output such a value is an error.
+void Event::checkWholeEDUs(float value, const string& field) const {
+  if (!utilities->getScorePrinting() || fabs(value - round(value)) < 0.001f) return;
+  throw CmodError(CmodError::Kind::Project,
+                  "A child " + field + " in EDU is not a whole number, so it falls between two "
+                  "EDUs, which the score cannot show.",
+                  "Event '" + name + "' -> child " + to_string(currChildNum + 1) + " -> " +
+                      field + ": " + to_string(value) + " EDU",
+                  "Make the " + field + " produce whole numbers of EDUs (for example with a "
+                  "sieve), or disable score output.");
+}
+
+//----------------------------------------------------------------------------//
+
 bool Event::buildContinuum() {
   string startType = XMLTC(childStartTypeFlag);
   string durType = XMLTC(childDurationTypeFlag);
@@ -681,6 +696,7 @@ bool Event::buildContinuum() {
     rawChildStartTime = static_cast<float>(utilities->evaluate(XMLTC(childStartTimeElement),(void*)this));
     // how to process start time: EDU, SECONDS or PERCENTAGE
     if (startType == "1" ) { //"EDU"
+      checkWholeEDUs(rawChildStartTime, "Start Time");
       tsChild.start = rawChildStartTime *
         tempo.getEDUDurationInSeconds().To<float>();
       tsChild.startEDU = Ratio((int)rawChildStartTime, 1);
@@ -717,6 +733,7 @@ bool Event::buildContinuum() {
 
     // how to process duration: EDU, SECONDS or PERCENTAGE
     if (durType == "1") {//EDU
+      checkWholeEDUs(rawChildDuration, "Duration");
       tsChild.durationEDU = Ratio(rawChildDurationInt, 1);
       tsChild.duration = // convert to seconds
         (float)rawChildDurationInt * tempo.getEDUDurationInSeconds().To<float>();
@@ -904,6 +921,7 @@ bool Event::buildSweep() {
         rawChildDurationInt = maxChildDurInt;		//enforce limit
 
     if (durType == "1") {					//EDU
+      checkWholeEDUs(rawChildDuration, "Duration");
       tsChild.durationEDU = Ratio(rawChildDurationInt, 1);
       tsChild.duration = 			// convert to seconds
         (float)rawChildDurationInt * tempo.getEDUDurationInSeconds().To<float>();

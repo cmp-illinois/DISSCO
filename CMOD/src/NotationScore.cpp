@@ -202,8 +202,8 @@ static string DescribeSection(const Section& section) {
 
 // Gets where a later section starts on the edu grid of an earlier one: the
 // time between their starts, rounded to the nearest edu of the earlier
-// section, as a time between edus is rounded. The sections overlap when
-// the earlier one's notes end after that.
+// section. The sections overlap when the earlier one's notes end after
+// that, and then the later one must start on an edu (MergeOverlappingSections).
 static int StartOffsetEDUs(Section& earlier, const Section& later) {
   return earlier.CalculateEDUsFromSecondsInTempo(later.GetStartTimeGlobal() -
                                                  earlier.GetStartTimeGlobal());
@@ -267,8 +267,8 @@ static void CheckSimultaneousTempos(vector< vector<Section> >& staves) {
 // that overlap in time: where the notes of one still sound when the next
 // starts, the next section's notes go onto the bars of the first, which
 // continue until the merged music ends. That needs one bar grid for both:
-// the same tempo, time signature and EDU Per Beat. The next section starts
-// at the nearest edu of the first one's grid (StartOffsetEDUs), and its
+// the same tempo, time signature and EDU Per Beat, and the next section
+// must start on an edu of the first one's grid (StartOffsetEDUs); its
 // notes keep their offsets from that start. Sections that overlap without
 // sharing a grid cannot be notated on one staff.
 static void MergeOverlappingSections(vector<Section>& sections, int staff) {
@@ -296,6 +296,16 @@ static void MergeOverlappingSections(vector<Section>& sections, int staff) {
                       "Give the overlapping events the same Tempo, Time Signature and EDU Per "
                       "Beat, start the later one after the earlier one's notes end, or put their "
                       "notes on different staves.");
+    }
+    if (!first.IsWholeEDUsInTempo(second.GetStartTimeGlobal() - first.GetStartTimeGlobal())) {
+      throw CmodError(CmodError::Kind::Project,
+                      "Two tempo sections overlap on one staff, and the later one starts between "
+                      "two EDUs of the earlier one, which the score cannot show.",
+                      "Score output, staff " + to_string(staff) + ", sections starting at " +
+                          DescribeSection(first) + " and at " + DescribeSection(second),
+                      "Start the later event a whole number of EDUs after the earlier one (or give "
+                      "its Start Time in EDU), start it after the earlier one's notes end, or put "
+                      "their notes on different staves.");
     }
 
     first.TakeNotes(second, offset_edus);

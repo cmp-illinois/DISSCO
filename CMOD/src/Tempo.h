@@ -169,6 +169,15 @@ class Tempo {
    * @return the nearest time in EDUs
   **/
   int convertSecondsToEDUs(float seconds);
+
+  /**
+   * Whether the given time in seconds is a whole number of EDUs in this
+   * Tempo, allowing for the rounding of floating-point seconds.
+   *
+   * @param seconds the time in seconds
+   * @return true if the time falls on an EDU, false if it falls between two
+  **/
+  bool isWholeEDUs(float seconds);
 };
 #endif /* TEMPO_H */
 

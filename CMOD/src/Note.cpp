@@ -336,6 +336,10 @@ string Note::renderPitch(bool include_modifiers, bool include_ties) const {
     }
   }
 
+  // A mark that several pitches attacked together carry is written once, on
+  // the first of them: LilyPond stacks a mark written on every pitch of a
+  // chord, where the music has one mark for the chord
+  vector<string> written_modifiers;
   string output = "<";
   for (size_t tone_idx = 0; tone_idx < chord_tones.size(); ++tone_idx) {
     if (tone_idx > 0) {
@@ -348,7 +352,11 @@ string Note::renderPitch(bool include_modifiers, bool include_ties) const {
       for (vector<string>::const_reverse_iterator modifier = tone.modifiers.rbegin();
            modifier != tone.modifiers.rend();
            ++modifier) {
-        output += *modifier;
+        if (std::find(written_modifiers.begin(), written_modifiers.end(), *modifier) ==
+            written_modifiers.end()) {
+          written_modifiers.push_back(*modifier);
+          output += *modifier;
+        }
       }
     }
     if (include_ties && tone.tied) {

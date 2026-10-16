@@ -329,6 +329,10 @@ int Section::CalculateEDUsFromSecondsInTempo(float seconds) {
   return time_signature_.tempo_.convertSecondsToEDUs(seconds);
 }
 
+bool Section::IsWholeEDUsInTempo(float seconds) {
+  return time_signature_.tempo_.isWholeEDUs(seconds);
+}
+
 float Section::CalculateSecondsFromEDUsInTempo(int edus) {
   return time_signature_.tempo_.calculateSecondsFromEDUs(edus);
 }

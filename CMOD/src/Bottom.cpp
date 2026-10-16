@@ -489,20 +489,40 @@ void Bottom::buildNote(SoundAndNoteWrapper* _soundNoteWrapper) {
   // Set notation start and end times in edus from the start of the tempo
   // section. A start or duration given in Seconds or as a Fraction has no
   // exact edu value (Ratio(0,0)), so it is placed by its global time in
-  // seconds, converted with the tempo and rounded to the nearest edu.
+  // seconds, converted with the tempo. The score cannot show a time that
+  // falls between two edus, so such a time is an error.
   TimeSpan& noteTs = _soundNoteWrapper->ts;
+  const float startSeconds = noteTs.start - tempo.getStartTime();
+  const float endSeconds = noteTs.start + noteTs.duration - tempo.getStartTime();
+  if (utilities->getScorePrinting()) {
+    const bool startOff = !noteTs.startEDU.isDeterminate() && !tempo.isWholeEDUs(startSeconds);
+    const bool endOff = !noteTs.durationEDU.isDeterminate() && !tempo.isWholeEDUs(endSeconds);
+    if (startOff || endOff) {
+      const float offSeconds = startOff ? startSeconds : endSeconds;
+      throw CmodError(CmodError::Kind::Project,
+                      string("A note ") + (startOff ? "starts" : "ends") +
+                          " between two EDUs, which the score cannot show.",
+                      "Note at " + to_string(noteTs.start) +
+                          " seconds -> " + (startOff ? "start" : "end") + " " +
+                          to_string(offSeconds) + " seconds = " +
+                          to_string(offSeconds * tempo.getEDUPerSecond().To<float>()) +
+                          " EDU from the tempo start (1 EDU = " +
+                          tempo.getEDUDurationInSeconds().toPrettyString() + " sec.)",
+                      "Give the note's Start Time and Duration in EDU, choose Seconds or "
+                      "Fraction values that are whole numbers of EDUs, or disable score output.");
+    }
+  }
   int noteStartEDU;
   if (noteTs.startEDU.isDeterminate()) {
     noteStartEDU = noteTs.startEDU.To<int>();
   } else {
-    noteStartEDU = tempo.convertSecondsToEDUs(noteTs.start - tempo.getStartTime());
+    noteStartEDU = tempo.convertSecondsToEDUs(startSeconds);
   }
   int noteEndEDU;
   if (noteTs.durationEDU.isDeterminate()) {
     noteEndEDU = noteStartEDU + noteTs.durationEDU.To<int>();
   } else {
-    noteEndEDU = tempo.convertSecondsToEDUs(
-      noteTs.start + noteTs.duration - tempo.getStartTime());
+    noteEndEDU = tempo.convertSecondsToEDUs(endSeconds);
   }
   newNote->setStartTime(noteStartEDU);
   newNote->setEndTime(noteEndEDU);

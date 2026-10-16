@@ -438,6 +438,8 @@ protected:
 
     int checkedChildType(double value) const;
 
+    void checkWholeEDUs(float value, const string& field) const;
+
     void buildMatrix(bool discrete);
     
     /**
