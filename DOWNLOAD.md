@@ -4,7 +4,7 @@ Go to the [latest DISSCO release](https://github.com/cmp-illinois/DISSCO/release
 
 DISSCO includes three components:
 
-- **CMOD**: the composition and synthesis engine.
+- **CMOD**: the composition module.
 - **LASS**: the sound synthesis library used by CMOD. It is built into the application and needs no separate download or installation.
 - **LASSIE**: the graphical editor for creating and running DISSCO projects.
 
