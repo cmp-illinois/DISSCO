@@ -703,8 +703,8 @@ string Utilities::removeSpaces(string _originalString){
   while (true) {
     index = input.find(" ", index);
     if (index == string::npos) break;
+    // The next character slides into `index`, so search from here again.
     input.replace(index, 1, "");
-    index ++;
   }
   return input;
 }
