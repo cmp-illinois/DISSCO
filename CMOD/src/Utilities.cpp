@@ -1314,6 +1314,9 @@ string Utilities::function_ChooseL(pugi::xml_node _functionElement, void* _objec
   //<Fun><Name>ChooseL</Name><Entry>SIV</Entry></Fun>
   string sivFunctionString =  XMLTC(GNES(GFEC(_functionElement))) ;
   Sieve* svPtr = (Sieve*)evaluateObject(sivFunctionString, _object, eventSiv);
+  // The sieve holds raw weights (e.g. 1, 1, 2); ChooseL needs running
+  // totals (0.25, 0.5, 1.0), or it always picks the first element.
+  svPtr->CumulWeights();
   double resultNum = svPtr->ChooseL();
   delete svPtr;
   return to_string(resultNum);

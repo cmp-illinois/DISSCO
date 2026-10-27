@@ -215,7 +215,14 @@ void Sieve::Weights(std::vector<int> eArgVect,
                     std::vector<int> wArgVect,
 		    std::vector<int> offsetVect) {
   if(strcmp(method, "PERIODIC") == 0) {
-    wArgVect.resize(2);
+    // Cycle through the whole list as given (it used to be cut or padded to
+    // exactly 2 values, so "1" became 1, 0, 1, 0). -- Tony Chai, 2026
+    if (wArgVect.empty()) {
+      throw CmodError(CmodError::Kind::Project,
+                      "Sieve PERIODIC weights list is empty.",
+                      "Sieve -> PERIODIC weights",
+                      "Enter at least one weight to repeat across the sieve's elements.");
+    }
     Sieve::PeriodicWeights(wArgVect);
   } else if(strcmp(method, "HIERARCHIC") == 0) {
     Sieve::HierarchicWeights(eArgVect, wArgVect, offsetVect);
