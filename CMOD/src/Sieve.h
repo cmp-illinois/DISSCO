@@ -149,7 +149,8 @@ class Sieve {
     /**
     *  Cumulative weights.  Each weigh on the list is divided by their sum
     *  and then added to a cumulative weight or probability.
-    *  ChooseL needs this done first (Modify already does it).
+    *  ChooseL needs this done first (Modify already does it). Made public
+    *  so the ChooseL function can call it. -- Tony Chai, 2026
     **/
     void CumulWeights();
 
