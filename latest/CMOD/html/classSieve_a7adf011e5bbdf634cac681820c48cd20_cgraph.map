@@ -1,7 +1,9 @@
 <map id="Sieve::Modify" name="Sieve::Modify">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,116,31"/>
-<area shape="rect" id="Node000002" href="$classSieve.html#a658ce35fb5337b62508d155abf9e0d4d" title=" " alt="" coords="164,5,285,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,15,150,15,150,21,116,21"/>
-<area shape="rect" id="Node000003" href="$classRandom.html#a79954f12ada797389d4798c6f26c5914" title=" " alt="" coords="333,5,451,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="285,15,319,15,319,21,285,21"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,116,56"/>
+<area shape="rect" id="Node000002" href="$classSieve.html#a658ce35fb5337b62508d155abf9e0d4d" title=" " alt="" coords="183,5,305,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,33,169,26,170,31,117,38"/>
+<area shape="rect" id="Node000004" href="$classSieve.html#a49f14c1ba5facbc1845ec653c83b3183" title=" " alt="" coords="164,55,324,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="117,48,151,52,150,58,116,53"/>
+<area shape="rect" id="Node000003" href="$classRandom.html#a79954f12ada797389d4798c6f26c5914" title=" " alt="" coords="372,5,489,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="305,15,358,15,358,21,305,21"/>
 </map>

@@ -24,5 +24,6 @@ var searchData=
   ['convertsecondstoedus_21',['convertSecondsToEDUs',['../classTempo.html#a3122d6fb16d6e52a94564b27c96d505e',1,'Tempo']]],
   ['createscorefilesdirectory_22',['createScoreFilesDirectory',['../structPieceHelper.html#a83d099d9ffdc29cf83935b927d172aa0',1,'PieceHelper']]],
   ['createsoundfilesdirectory_23',['createSoundFilesDirectory',['../structPieceHelper.html#abfe0ff1bd5655dfcdd27a11bba4248eb',1,'PieceHelper']]],
-  ['crossovermutation_24',['crossoverMutation',['../classPiece.html#a2095ac0c2cea8c497b51fa597025dd54',1,'Piece']]]
+  ['crossovermutation_24',['crossoverMutation',['../classPiece.html#a2095ac0c2cea8c497b51fa597025dd54',1,'Piece']]],
+  ['cumulweights_25',['CumulWeights',['../classSieve.html#a49f14c1ba5facbc1845ec653c83b3183',1,'Sieve']]]
 ];

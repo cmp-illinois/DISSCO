@@ -46,6 +46,7 @@ var searchData=
   ['createscorefilesdirectory_43',['createScoreFilesDirectory',['../structPieceHelper.html#a83d099d9ffdc29cf83935b927d172aa0',1,'PieceHelper']]],
   ['createsoundfilesdirectory_44',['createSoundFilesDirectory',['../structPieceHelper.html#abfe0ff1bd5655dfcdd27a11bba4248eb',1,'PieceHelper']]],
   ['crossovermutation_45',['crossoverMutation',['../classPiece.html#a2095ac0c2cea8c497b51fa597025dd54',1,'Piece']]],
-  ['currchild_46',['currChild',['../classUtilities.html#a69326515bca62c750246fc0aba8ac2ed',1,'Utilities']]],
-  ['currchildnum_47',['currChildNum',['../classEvent.html#a5696dff33faf555301e9677f2c368629',1,'Event']]]
+  ['cumulweights_46',['CumulWeights',['../classSieve.html#a49f14c1ba5facbc1845ec653c83b3183',1,'Sieve']]],
+  ['currchild_47',['currChild',['../classUtilities.html#a69326515bca62c750246fc0aba8ac2ed',1,'Utilities']]],
+  ['currchildnum_48',['currChildNum',['../classEvent.html#a5696dff33faf555301e9677f2c368629',1,'Event']]]
 ];
