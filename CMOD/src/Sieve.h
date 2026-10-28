@@ -147,6 +147,14 @@ class Sieve {
     int Modify(Envelope *env, std::string method);
 
     /**
+    *  Cumulative weights.  Each weigh on the list is divided by their sum
+    *  and then added to a cumulative weight or probability.
+    *  ChooseL needs this done first (Modify already does it). Made public
+    *  so the ChooseL function can call it. -- Tony Chai, 2026
+    **/
+    void CumulWeights();
+
+    /**
      *   This function chooses an element from a list of integers by matching its
      *   probability of occurence stored in a corresponding list of doubles with a
      *   random number.
@@ -252,12 +260,6 @@ class Sieve {
     *  \param method to be usedin choosing the envelope/distribution
     **/
     void AddEnvelope(Envelope *env, std::string method);
-
-    /**
-    *  Cumulative weights.  Each weigh on the list is divided by their sum
-    *  and then added to a cumulative weight or probability.
-    **/
-    void CumulWeights();
 
     /**
     *  CumulArray.  Takes an array of doubles, divides each element by the sum of
