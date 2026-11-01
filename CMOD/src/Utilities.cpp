@@ -469,9 +469,15 @@ string Utilities::XMLTranscode(pugi::xml_node _thisFunctionElement){
   }
 
   // Otherwise serialize each child node (XML for elements, raw text for text nodes).
+  // Bug fix: text was printed as XML, so ">" became "&gt;" and a field like
+  // (<Fun>...</Fun> >= 2) * 0.4 failed to evaluate. Text is now copied as
+  // typed; only the <Fun> parts stay XML. -- Tony Chai, 2026
   std::ostringstream oss;
   for (auto c = _thisFunctionElement.first_child(); c; c = c.next_sibling()) {
-    c.print(oss, "", pugi::format_raw | pugi::format_no_declaration);
+    if (c.type() == pugi::node_pcdata || c.type() == pugi::node_cdata)
+      oss << c.value();
+    else
+      c.print(oss, "", pugi::format_raw | pugi::format_no_declaration);
   }
   return oss.str();
 }
