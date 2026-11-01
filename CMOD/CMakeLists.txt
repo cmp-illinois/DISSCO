@@ -26,6 +26,57 @@ target_include_directories(ModifierUsage PUBLIC
 )
 target_compile_features(ModifierUsage PUBLIC cxx_std_20)
 
+if(BUILD_TESTING)
+    # Runs the real cmod program on the tutorial example projects and checks
+    # the sound and particel it produces. -- Tony Chai, 2026
+    add_executable(CmodExampleProjectsTests
+        tests/CmodExampleProjectsTests.cpp
+    )
+    target_link_libraries(CmodExampleProjectsTests PRIVATE ${SNDFILE_LIBRARY})
+    target_include_directories(CmodExampleProjectsTests PRIVATE ${SNDFILE_INCLUDE_DIR})
+    target_compile_features(CmodExampleProjectsTests PRIVATE cxx_std_20)
+    add_dependencies(CmodExampleProjectsTests CMOD)
+    add_test(NAME CMOD.ExampleProjectsCompose
+        COMMAND CmodExampleProjectsTests
+            $<TARGET_FILE:CMOD>
+            "${CMAKE_SOURCE_DIR}/Documents/examples/tutorial_sound"
+    )
+    set_tests_properties(CMOD.ExampleProjectsCompose PROPERTIES TIMEOUT 300)
+
+    # Checks the functions composers type into LASSIE fields (RandomInt,
+    # Select, Stochos, ...). CMOD is only built as a program, so this
+    # compiles CMOD's sources (minus its main()) into the test. -- Tony Chai, 2026
+    set(CMOD_TESTABLE_SRC ${CMOD_SRC})
+    list(REMOVE_ITEM CMOD_TESTABLE_SRC "${PROJECT_SOURCE_DIR}/src/Main.cpp")
+    add_executable(CmodFunctionTests
+        tests/CmodFunctionTests.cpp
+        ${CMOD_TESTABLE_SRC}
+    )
+    target_link_libraries(CmodFunctionTests PRIVATE
+        ${SNDFILE_LIBRARY} PUGIXML MUPARSER LASS DISSCO::ModifierUsage)
+    target_compile_features(CmodFunctionTests PRIVATE cxx_std_20)
+    add_test(NAME CMOD.Functions COMMAND CmodFunctionTests)
+
+    # Checks the functions that read from the event being built
+    # (CURRENT_CHILD_NUM, GetPattern, ...) by running the real cmod program
+    # on small generated projects and reading its particel. -- Tony Chai, 2026
+    add_executable(CmodEventFunctionsTests
+        tests/CmodEventFunctionsTests.cpp
+    )
+    target_compile_features(CmodEventFunctionsTests PRIVATE cxx_std_20)
+    add_dependencies(CmodEventFunctionsTests CMOD)
+    add_test(NAME CMOD.EventFunctions
+        COMMAND CmodEventFunctionsTests $<TARGET_FILE:CMOD>
+    )
+    set_tests_properties(CMOD.EventFunctions PROPERTIES TIMEOUT 120)
+
+    # Tag every test registered in this folder (including future ones) with
+    # the "CMOD" label, so CI can run and report each part of DISSCO as its
+    # own step (ctest -L '^CMOD$'). -- Tony Chai, 2026
+    get_property(_cmod_tests DIRECTORY PROPERTY TESTS)
+    set_tests_properties(${_cmod_tests} PROPERTIES LABELS CMOD)
+endif()
+
 add_executable(CMOD ${CMOD_SRC})
 set(CMOD_EXECUTABLE_BASENAME "cmod")
 set_target_properties(CMOD PROPERTIES
