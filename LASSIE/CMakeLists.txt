@@ -242,6 +242,20 @@ if(BUILD_TESTING)
         TIMEOUT 10
     )
 
+    # Save -> reopen round trip of the tutorial examples and a fixture with
+    # one of every kind of object. -- Tony Chai, 2026
+    target_sources(LASSIE PRIVATE
+        tests/ProjectRoundTripTest.cpp
+        tests/ProjectRoundTripTest.hpp
+    )
+    add_test(NAME LASSIE.ProjectSaveRoundTrip
+        COMMAND LASSIE
+    )
+    set_tests_properties(LASSIE.ProjectSaveRoundTrip PROPERTIES
+        ENVIRONMENT "QT_QPA_PLATFORM=offscreen;DISSCO_TEST_PROJECT_ROUNDTRIP=1;DISSCO_TEST_PROJECT_DIRS=${CMAKE_CURRENT_SOURCE_DIR}/tests/data|${CMAKE_SOURCE_DIR}/Documents/examples/tutorial_sound"
+        TIMEOUT 60
+    )
+
     # Tag every test registered in this folder (including future ones) with
     # the "LASSIE" label, so CI can run and report each part of DISSCO as its
     # own step (ctest -L '^LASSIE$'). -- Tony Chai, 2026

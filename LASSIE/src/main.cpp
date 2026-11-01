@@ -19,6 +19,7 @@
 #include "widgets/EventAttributesViewController.hpp"
 #include "widgets/Modifiers.hpp"
 #include "windows/EnvelopeLibraryWindow.hpp"
+#include "../tests/ProjectRoundTripTest.hpp"
 #endif
 #include "widgets/ComboBoxWheelGuard.hpp"
 #include "widgets/TextOverflowDisplayPolicy.hpp"
@@ -188,6 +189,13 @@ int main(int argc, char *argv[])
 #endif
 
     registerAllFunctions();
+#ifdef DISSCO_ENABLE_UI_LAYOUT_TESTS
+    // Save -> reopen round trip of real projects (needs the function
+    // registry above, so it runs here rather than with the tests above).
+    // -- Tony Chai, 2026
+    if (qEnvironmentVariableIsSet("DISSCO_TEST_PROJECT_ROUNDTRIP"))
+        return runProjectRoundTripTest();
+#endif
     Inst *m = Inst::instance();
     MainWindow *w = new MainWindow(m);
     w->show();
