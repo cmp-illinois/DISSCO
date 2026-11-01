@@ -38,6 +38,12 @@ namespace QtParser {
             r.readNext();
             switch (r.tokenType()) {
                 case QXmlStreamReader::StartElement: {
+                    // Bug fix: text before the first <Fun> (e.g. "2 * " in
+                    // "2 * <Fun>...</Fun>") was left in textBuffer and lost,
+                    // so opening and saving a project changed the formula.
+                    // It's now written out before the element. -- Tony Chai, 2026
+                    if (!hasChildElement && !textBuffer.trimmed().isEmpty())
+                        w.writeCharacters(textBuffer.trimmed());
                     hasChildElement = true;
                     w.writeStartElement(r.name().toString());
                     const auto attrs = r.attributes();
