@@ -97,6 +97,21 @@ EnvelopeIterator::~EnvelopeIterator()
 
 
 //----------------------------------------------------------------------------//
+// Bug fix: there was no copy constructor, so clone() (used whenever an
+// Iterator is copied) shared interpolators_ and currentIterator_ with the
+// original, and both deleted them. The copy now has its own, and continues
+// from the same place. -- Tony Chai, 2026
+EnvelopeIterator::EnvelopeIterator(const EnvelopeIterator& other)
+    : interpolators_(new vector<Interpolator*>(*other.interpolators_)),
+      iSegmentIndex_(other.iSegmentIndex_),
+      currentIterator_(other.currentIterator_
+                           ? new Iterator<m_value_type>(*other.currentIterator_)
+                           : NULL),
+      currentValue_(other.currentValue_),
+      moreValues_(other.moreValues_)
+{
+}
+
 EnvelopeIterator* EnvelopeIterator::clone()
 {
     return (new EnvelopeIterator(*this));

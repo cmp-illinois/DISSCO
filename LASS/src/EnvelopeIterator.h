@@ -50,7 +50,13 @@ class EnvelopeIterator : public AbstractIterator<m_value_type>
     *	\param interpolators
     **/
     EnvelopeIterator(vector<Interpolator*> interpolators);
-    
+
+    /**
+    *   Copies the iterator, including its position (used by clone()).
+    **/
+    EnvelopeIterator(const EnvelopeIterator& other);
+    EnvelopeIterator& operator=(const EnvelopeIterator&) = delete;
+
     /**
     *   This is the Destructor.
     **/

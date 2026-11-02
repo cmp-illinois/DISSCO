@@ -216,8 +216,6 @@ m_value_type Envelope::getValue(m_value_type x, m_value_type totalLength)
     if (getValueCachedLength_ != totalLength)
         generateLengths(totalLength);
 
-    // Length generation can normalize stored FIXED lengths via a mutator;
-    // build the tables afterwards so invalidation cannot discard them.
     if (!valueTablesBuilt_)
         buildValueTables();
 
@@ -452,13 +450,11 @@ Envelope* Envelope::multiply(Envelope & env1, Envelope & env2)
 	while (first_seg != NULL || second_seg != NULL) {
 		// advance pointers depending on which seg was added last
 		if (add_seg == &seg1) {
-			printf("was 1\n");
 			if (segments1 != env1Segs->end())
 				seg1 = *segments1++;
 			else
 				first_seg = NULL;
 		} else if (add_seg == &seg2) {
-			printf("was 2\n");
 			if (segments2 != env2Segs->end())
 				seg2 = *segments2++;
 			else
@@ -466,7 +462,6 @@ Envelope* Envelope::multiply(Envelope & env1, Envelope & env2)
 		} else {	// this is the first time
 			seg1 = *segments1++;
 			seg2 = *segments2++;
-			printf("first time\n");
 		}
 
 		m_value_type seg_len;		
@@ -487,7 +482,6 @@ Envelope* Envelope::multiply(Envelope & env1, Envelope & env2)
 		newseg.x = (add_seg->x / seg_len) * length;
 		newseg.y = env1.getValue(newseg.x, length) *
 			env2.getValue(newseg.x, length);
-		printf("x=%f, length=%f\n", newseg.x, length);
 		newseg.lengthType = FLEXIBLE;
 		newseg.interType = EXPONENTIAL;
 
@@ -500,17 +494,10 @@ Envelope* Envelope::multiply(Envelope & env1, Envelope & env2)
 			}
 		}
 
-		printf("doing x=%f", newseg.x);
 		// add only if not a duplicate
 		if (duplicate == 0) {
 			result.push_back(newseg);
-			printf(" added.");
 		}
-		printf("\n");
-		if (first_seg == NULL)
-			printf("first_seg=null\n");
-		if (second_seg == NULL)
-			printf("second_seg=null\n");
 	} // while
 
     return (new Envelope(result));
@@ -750,20 +737,21 @@ void Envelope::generateLengths(m_time_type totalLength)
 	    // no flexible length is available
 	    dTotalFlexPercent = 0;
 
-        // setSegmentLength below invalidates the lookup cache, preserving
-        // repeated legacy normalization when float rounding requires it.
 	    // get a ratio to scale all fixed length entries by
 	    dScaleRatio = totalLength_ / dTotalFixedLength;
 
+	    // Bug fix: the scaled lengths were also written back into the
+	    // segments, so one use shorter than the FIXED part set the FLEXIBLE
+	    // segments to 0 for good and the envelope played wrong at every
+	    // duration afterwards. Only the generated lengths for this duration
+	    // are scaled now; the envelope itself is unchanged. -- Tony Chai, 2026
 	    for (int iIndex = 0; iIndex < iNumSegments; iIndex++) {
 		    // scale every FIXED length value
 		    if (this->getSegmentLengthType(iIndex) == FIXED) {
 				generatedSegmentLengths_->at(iIndex) = static_cast<m_time_type>(getSegmentLength(iIndex) * dScaleRatio);
-			    setSegmentLength(iIndex, static_cast<m_value_type>(getSegmentLength(iIndex) * dScaleRatio));
 			} else {
 			    // all flex length entries are set to 0
 			    generatedSegmentLengths_->at(iIndex) = 0;
-			    setSegmentLength(iIndex, 0);
 			}
 		}
 	} else if (dTotalFlexPercent != 1.0 && dTotalFlexPercent != 0) {
@@ -861,10 +849,15 @@ void Envelope::scale(m_value_type factor)
 m_value_type Envelope::getMaxValue()
 {
     int iNumSegments = static_cast<int>(segments_->size());
-    m_value_type maxVal = 0.0;
+    if (iNumSegments == 0)
+        return 0.0;
+
+    // Bug fix: the max started at 0, so an all-negative envelope (e.g. -3 to
+    // -1) reported 0. It now starts from the first point. -- Tony Chai, 2026
+    m_value_type maxVal = segments_->at(0).y;
 
     // for every point that we've got stored
-    for (int iIndex = 0; iIndex < iNumSegments; iIndex++) {
+    for (int iIndex = 1; iIndex < iNumSegments; iIndex++) {
 	    // if this point's value is greater than the max, set max = this value
 	    if (segments_->at(iIndex).y > maxVal) {
 		    maxVal = segments_->at(iIndex).y;
@@ -877,16 +870,11 @@ m_value_type Envelope::getMaxValue()
 //----------------------------------------------------------------------------//
 float Envelope::getScaledValueNew(double checkPoint, float coef) 
 {
-	// the value we will return
-	float value;
-
-	// scale it by the given coefficient
-	scale(coef);
-
-	// Find the envelope value
-	value = getValue((float)checkPoint, 1.);
-
-	return value;
+	// Bug fix: this used to call scale(coef), which changed the envelope
+	// itself, so asking twice with coef 2 gave 2x, then 4x. It also threw
+	// away the lookup tables on every call, even with coef 1. The value is
+	// now scaled on its own and the envelope is unchanged. -- Tony Chai, 2026
+	return getValue(static_cast<float>(checkPoint), 1.) * coef;
 }
 
 //----------------------------------------------------------------------------//

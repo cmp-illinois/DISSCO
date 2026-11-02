@@ -67,8 +67,11 @@ EnvelopeLibrary & EnvelopeLibrary::operator= (EnvelopeLibrary & lib)
       library.clear ();
 
       // reassign new data
+      // Bug fix: the envelopes were shared with lib instead of copied, so
+      // both libraries deleted the same envelopes. They're now cloned, like
+      // the copy constructor does. -- Tony Chai, 2026
       for (std::size_t envs = 0; envs < lib.library.size (); envs++)
-	library.push_back(lib.library.at(envs) );
+	library.push_back(lib.library.at(envs)->clone() );
     }
   
   return * this;
@@ -269,7 +272,10 @@ int EnvelopeLibrary::loadLibraryNewFormat (char * filename)
 
     Envelope * temp_env;
 
-    while ( !std::getline(inData,line).eof() ) {
+    // Bug fix: the loop stopped as soon as getline hit the end of the file,
+    // so a last line with no line break after it was skipped, and that line
+    // is what creates the last envelope. -- Tony Chai, 2026
+    while ( std::getline(inData,line) ) {
       std::stringstream nextCheck(line);
       std::stringstream envLine(line);
 
