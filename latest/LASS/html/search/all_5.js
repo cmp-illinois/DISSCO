@@ -10,7 +10,7 @@ var searchData=
   ['envelope_2ecpp_7',['Envelope.cpp',['../Envelope_8cpp.html',1,'']]],
   ['envelope_2eh_8',['Envelope.h',['../Envelope_8h.html',1,'']]],
   ['envelope_5fsegment_9',['envelope_segment',['../structenvelope__segment.html',1,'']]],
-  ['envelopeiterator_10',['envelopeiterator',['../classEnvelopeIterator.html',1,'EnvelopeIterator'],['../classEnvelopeIterator.html#ab93e9492d8f106c66b7d1b55324ca552',1,'EnvelopeIterator::EnvelopeIterator()']]],
+  ['envelopeiterator_10',['envelopeiterator',['../classEnvelopeIterator.html',1,'EnvelopeIterator'],['../classEnvelopeIterator.html#ab93e9492d8f106c66b7d1b55324ca552',1,'EnvelopeIterator::EnvelopeIterator(vector&lt; Interpolator * &gt; interpolators)'],['../classEnvelopeIterator.html#a89430e28ae089ce44408c3e7945254f7',1,'EnvelopeIterator::EnvelopeIterator(const EnvelopeIterator &amp;other)']]],
   ['envelopeiterator_2ecpp_11',['EnvelopeIterator.cpp',['../EnvelopeIterator_8cpp.html',1,'']]],
   ['envelopeiterator_2eh_12',['EnvelopeIterator.h',['../EnvelopeIterator_8h.html',1,'']]],
   ['envelopelibrary_13',['envelopelibrary',['../classEnvelopeLibrary.html',1,'EnvelopeLibrary'],['../classEnvelopeLibrary.html#addc4e47e8a3ca9b420ae892f7e424558',1,'EnvelopeLibrary::EnvelopeLibrary()'],['../classEnvelopeLibrary.html#a39cf6da57787eeaee8810d6b3efaf71c',1,'EnvelopeLibrary::EnvelopeLibrary(EnvelopeLibrary &amp;lib)']]],
