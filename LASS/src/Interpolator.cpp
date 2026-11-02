@@ -71,7 +71,12 @@ void Interpolator::scale(m_value_type scale)
 //----------------------------------------------------------------------------//
 m_value_type Interpolator::getMaxValue()
 {
-    m_value_type maxVal = 0.0;
+    if (entries_.empty())
+        return 0.0;
+
+    // Bug fix: the max started at 0, so all-negative values reported 0.
+    // It now starts from the first entry. -- Tony Chai, 2026
+    m_value_type maxVal = entries_.front().value_;
     for (InterpolatorEntry& entry : entries_)
     {
         if (entry.value_ > maxVal) maxVal = entry.value_;
