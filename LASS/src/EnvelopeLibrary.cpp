@@ -82,7 +82,7 @@ EnvelopeLibrary & EnvelopeLibrary::operator= (EnvelopeLibrary & lib)
 bool EnvelopeLibrary::saveLibrary (char * filename)
 {
   Envelope * temp_env;
-  vector<xy_point> * temp_coll;
+  vector<xy_point> temp_coll;
 
   if (library.size () == 0) // empty library?
     return false;
@@ -109,14 +109,14 @@ bool EnvelopeLibrary::saveLibrary (char * filename)
 
 	  outData << setw(10) << "Envelope" << setw(10) << (envs + 1) << "\n"; // envelope index number
 
-	  outData << (temp_coll -> size () ) << "\n"; // number of points
+	  outData << (temp_coll.size () ) << "\n"; // number of points
 
-	  for (int pts = 0; static_cast<std::size_t>(pts) < ( (temp_coll -> size () ) - 1); pts++)
+	  for (int pts = 0; static_cast<std::size_t>(pts) < ( (temp_coll.size () ) - 1); pts++)
 	    {
 	      // write point data for this envelope
 	      // format: point nx, point ny
-	      outData << setw(10) << (temp_coll ->at(pts).x)
-		      << setw(10) << (temp_coll ->at(pts).y);
+	      outData << setw(10) << (temp_coll.at(pts).x)
+		      << setw(10) << (temp_coll.at(pts).y);
 	      
 	      // write segment data for this envelope
 	      // format: interpolation_type n, time_type n, time_value n
@@ -139,8 +139,8 @@ bool EnvelopeLibrary::saveLibrary (char * filename)
 	      outData << setw(10) << (temp_env -> getSegmentLength (pts) ) << "\n"; 
 	    }
 	  // write the last set of points: point (n + 1)x, point (n + 1)y
-	  outData << setw(10) << (temp_coll ->at( (temp_coll -> size () ) - 1).x)
-		  << setw(10) << (temp_coll ->at( (temp_coll -> size () ) - 1).y) 
+	  outData << setw(10) << (temp_coll.at( (temp_coll.size () ) - 1).x)
+		  << setw(10) << (temp_coll.at( (temp_coll.size () ) - 1).y) 
 		  << "\n\n";
 
 	}
