@@ -25,7 +25,7 @@ Avoid saving the project inside the DISSCO or LASSIE application/source folder.
 
 - A new window, **Project Properties**, will appear
   
-   1. only check the boxes **Sound Synthesis** and **Ouput Particel**
+   1. only check the boxes **Sound Synthesis** and **Output Particel**
 
    2. set **Piece Duration** to 30 and click OK
 <img width="290" height="350" alt="image" src="https://github.com/user-attachments/assets/979aeb4a-6604-4bdc-bed0-72f2227bb829" />
@@ -55,7 +55,7 @@ Avoid saving the project inside the DISSCO or LASSIE application/source folder.
   
     - keep **Lower Bound** at 0
   
-    - set **Higher Bound** to 1, hit OK
+    - set **Upper Bound** to 1, hit OK
   <img width="290" height="300" alt="image" src="https://github.com/user-attachments/assets/5e015d37-5224-4cf1-9675-298cd8dbdf66" />
 
   2. Set **Child Type** to 0
@@ -106,7 +106,7 @@ avoid clipping in your piece
 - Click **Insert Function** in the Value field below **Frequency** and choose **RandomInt**
 - 
   1. Set **Lower Bound** to 30
-  2. Set **Higher Bound** to 90, hit OK
+  2. Set **Upper Bound** to 90, hit OK
 (Note: as reference, 48 = C4) - this randomly assigns pitch values to each child between MIDI 18 - 78 (F#2 - F#7)
 <img width="2980" height="1832" alt="image" src="https://github.com/user-attachments/assets/faf263bd-46ca-4c29-ab0b-47aed4f10fd5" />
 
@@ -167,7 +167,7 @@ player/digital audio workstation).
 
 - Click **Insert Function** next to **Child Start Time** and choose **Random**
 - Keep **Lower Bound** at **0**
-- Set **Higher Bound** to **30**, hit OK
+- Set **Upper Bound** to **30**, hit OK
 <img width="3016" height="1182" alt="image" src="https://github.com/user-attachments/assets/57a0eeaf-32b8-4097-80c4-bd8568b4b7dc" />
 - Save Project and Synthesize (Step 9)
 
