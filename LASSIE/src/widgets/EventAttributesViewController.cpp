@@ -1121,7 +1121,12 @@ void EventAttributesViewController::insertFunctionString(FunctionButton button) 
         break;
     case childEventDefStartTimeFunButton:
         target = ui->childDefEntry1;
-        gen = new FunctionGenerator(nullptr, functionReturnFloat, target->text());
+        // The child's type is chosen after its start time, so the Start Time
+        // can't use CURRENT_TYPE or CURRENT_LAYER (CMOD gives an error).
+        // -- Tony Chai, 2026
+        gen = new FunctionGenerator(nullptr, functionReturnFloat, target->text(),
+                                    {CMODFunction::function_staticCURRENT_TYPE,
+                                     CMODFunction::function_staticCURRENT_LAYER});
         break;
     case childEventDefChildTypeFunButton:
         target = ui->childDefEntry2;

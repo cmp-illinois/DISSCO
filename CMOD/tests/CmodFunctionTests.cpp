@@ -268,14 +268,18 @@ void testInverse()
     expectProjectError([] { eval(fun("Inverse", {{"Entry", "0"}})); }, "Inverse(0)");
 }
 
-// Despite its name, LN gives e^(-x) (1 / 2.71828^x), not the natural log.
-// These lock in what it does today; if that's ever corrected on purpose,
-// update the expected values here.
-void testLN()
+// EXP_DECAY gives e^(-x) (1 / 2.71828^x). It used to be called LN, though it
+// was never the natural log, and projects that still say LN must give the
+// same values.
+void testExpDecay()
 {
-    expectNear(eval(fun("LN", {{"Entry", "0"}})), 1.0, 1e-6, "LN(0)");
-    expectNear(eval(fun("LN", {{"Entry", "1"}})), 0.367879, 1e-5, "LN(1)");
-    expectNear(eval(fun("LN", {{"Entry", "2"}})), 0.135335, 1e-5, "LN(2)");
+    expectNear(eval(fun("EXP_DECAY", {{"Entry", "0"}})), 1.0, 1e-6, "EXP_DECAY(0)");
+    expectNear(eval(fun("EXP_DECAY", {{"Entry", "1"}})), 0.367879, 1e-5, "EXP_DECAY(1)");
+    expectNear(eval(fun("EXP_DECAY", {{"Entry", "2"}})), 0.135335, 1e-5, "EXP_DECAY(2)");
+    for (const char* entry : {"0", "1", "2", "-3"})
+        expectNear(eval(fun("LN", {{"Entry", entry}})),
+                   eval(fun("EXP_DECAY", {{"Entry", entry}})), 0,
+                   std::string("old name LN(") + entry + ") same as EXP_DECAY");
 }
 
 void testFibonacci()
@@ -795,7 +799,7 @@ int main()
         runTest("plain arithmetic", testPlainArithmetic, failedTests);
         runTest("functions inside expressions", testFunctionsInsideExpressions, failedTests);
         runTest("Inverse", testInverse, failedTests);
-        runTest("LN", testLN, failedTests);
+        runTest("EXP_DECAY (formerly LN)", testExpDecay, failedTests);
         runTest("Fibonacci", testFibonacci, failedTests);
         runTest("Decay", testDecay, failedTests);
         runTest("Select", testSelect, failedTests);

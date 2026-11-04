@@ -21,7 +21,7 @@ QList<CMODFunction> FunctionRegistry::functionsFor(FunctionReturnType returnType
     QList<CMODFunction> result;
     for (CMODFunction id : m_order) {
         const Entry& e = m_entries.value(id);
-        if (e.returnTypes.contains(returnType)) result.append(id);
+        if (e.inMenu && e.returnTypes.contains(returnType)) result.append(id);
     }
     return result;
 }

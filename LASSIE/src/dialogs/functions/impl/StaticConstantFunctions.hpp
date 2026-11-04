@@ -84,14 +84,17 @@ public:
     }
 };
 
+// PREVIOUS_CHILD_END_TIME gives when the previous child ended. It used to be
+// called PREVIOUS_CHILD_DURATION, though it never gave a duration.
+// -- Tony Chai, 2026
 class PreviousChildDurationFunction : public MultiEntryFunction {
     Q_OBJECT
 public:
     explicit PreviousChildDurationFunction(QWidget* parent = nullptr)
         : MultiEntryFunction({}, parent) {}
     CMODFunction id() const override { return CMODFunction::function_staticPREVIOUS_CHILD_DURATION; }
-    QString xmlName() const override { return QStringLiteral("PREVIOUS_CHILD_DURATION"); }
-    QString displayName() const override { return QStringLiteral("PREVIOUS_CHILD_DURATION"); }
+    QString xmlName() const override { return QStringLiteral("PREVIOUS_CHILD_END_TIME"); }
+    QString displayName() const override { return QStringLiteral("PREVIOUS_CHILD_END_TIME"); }
     QList<FunctionReturnType> supportedReturnTypes() const override {
         return { FunctionReturnType::functionReturnInt,
                  FunctionReturnType::functionReturnFloat,

@@ -21,12 +21,21 @@ using enum FunctionReturnType;
 
 FunctionGenerator::FunctionGenerator(QWidget* parent,
                                      FunctionReturnType returnType,
-                                     QString originalString)
+                                     QString originalString,
+                                     QList<CMODFunction> excluded)
     : QDialog(parent),
       ui(new Ui::FunctionGenerator),
       m_returnType(returnType),
-      m_originalString(std::move(originalString))
+      m_originalString(std::move(originalString)),
+      m_excluded(std::move(excluded))
 {
+    // A picker opened from inside another one (for one of its entries) leaves
+    // out the same functions, so e.g. CURRENT_TYPE can't reach a Start Time
+    // through Select. -- Tony Chai, 2026
+    for (const FunctionGenerator* open : s_openGenerators)
+        m_excluded += open->m_excluded;
+    s_openGenerators.append(this);
+
     ui->setupUi(this);
     // The .ui's single placeholder page must not stretch the dialog.
     ui->functionStackedWidget->widget(0)->setSizePolicy(QSizePolicy::Ignored,
@@ -39,8 +48,11 @@ FunctionGenerator::FunctionGenerator(QWidget* parent,
     adjustSize();
 }
 
+QList<FunctionGenerator*> FunctionGenerator::s_openGenerators;
+
 FunctionGenerator::~FunctionGenerator()
 {
+    s_openGenerators.removeOne(this);
     delete ui;
 }
 
@@ -61,7 +73,8 @@ void FunctionGenerator::setupUi()
     ui->functionOptions->clear();
     ui->functionOptions->addItem(QString(), static_cast<int>(NOT_A_FUNCTION));
     for (CMODFunction id : reg.functionsFor(m_returnType))
-        ui->functionOptions->addItem(reg.displayName(id), static_cast<int>(id));
+        if (!m_excluded.contains(id))
+            ui->functionOptions->addItem(reg.displayName(id), static_cast<int>(id));
 
     connect(ui->functionOptions, &QComboBox::currentIndexChanged,
             this, &FunctionGenerator::handleFunctionChanged);

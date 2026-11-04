@@ -384,7 +384,7 @@ class Bottom : public Event {
     /**
      *  Sets the spatialization of a sound according to a stereo environment
      *  \param s pointer to a sound
-     *  \param envList List of FileValues (envelopes)
+     *  \param envList List of envelopes
      *  \param applyHow string containing info if it applies to sound or
      *     individual partials
      *  \param numParts the number of partials in this sound
@@ -398,7 +398,7 @@ class Bottom : public Event {
      *  Sets the spatialization of a sound by assigning each speaker in an
      *     array its own envelope
      *  \param s pointer to a sound
-     *  \param outerList List of Lists of FileValues (envelopes)
+     *  \param outerList List of lists of envelopes
      *  \param applyHow string containing info if it applies to sound or
      *     individual partials
      *  \param numParts the number of partials in this sound
