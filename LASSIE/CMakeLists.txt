@@ -256,6 +256,21 @@ if(BUILD_TESTING)
         TIMEOUT 60
     )
 
+    # What the function picker offers: renamed functions, CURRENT_SEGMENT
+    # hidden, and no CURRENT_TYPE/CURRENT_LAYER for a child Start Time.
+    # -- Tony Chai, 2026
+    target_sources(LASSIE PRIVATE
+        tests/FunctionPickerTest.cpp
+        tests/FunctionPickerTest.hpp
+    )
+    add_test(NAME LASSIE.FunctionPicker
+        COMMAND LASSIE
+    )
+    set_tests_properties(LASSIE.FunctionPicker PROPERTIES
+        ENVIRONMENT "QT_QPA_PLATFORM=offscreen;DISSCO_TEST_FUNCTION_PICKER=1"
+        TIMEOUT 30
+    )
+
     # Tag every test registered in this folder (including future ones) with
     # the "LASSIE" label, so CI can run and report each part of DISSCO as its
     # own step (ctest -L '^LASSIE$'). -- Tony Chai, 2026

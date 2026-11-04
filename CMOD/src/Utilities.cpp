@@ -735,6 +735,7 @@ string Utilities::evaluateFunction(string _functionString,void* _object){
       || functionName == "CURRENT_PARTIAL_NUM"
       || functionName == "AVAILABLE_EDU"
       || functionName == "CURRENT_LAYER"
+      || functionName == "PREVIOUS_CHILD_END_TIME"
       || functionName == "PREVIOUS_CHILD_DURATION";
   if (needsEvent && (_object == NULL || _object == piece)) {
     throw CmodError(CmodError::Kind::Project,
@@ -801,8 +802,10 @@ string Utilities::evaluateFunction(string _functionString,void* _object){
     resultString = function_Fibonacci(root, _object);
   }
 
-  else if (functionName.compare("LN")==0){
-    resultString = function_LN(root, _object);
+  // LN is the old name of EXP_DECAY, still read so older projects compose
+  // the same. -- Tony Chai, 2026
+  else if (functionName == "EXP_DECAY" || functionName == "LN"){
+    resultString = function_EXP_DECAY(root, _object);
   }
    else if (functionName.compare("Inverse")==0){
     resultString = function_Inverse(root, _object);
@@ -832,8 +835,11 @@ string Utilities::evaluateFunction(string _functionString,void* _object){
   else if (functionName.compare("CURRENT_LAYER")==0){
     resultString = static_function_CURRENT_LAYER( _object);
   }
-  else if (functionName.compare("PREVIOUS_CHILD_DURATION")==0){
-    resultString = static_function_PREVIOUS_CHILD_DURATION( _object);
+  // PREVIOUS_CHILD_DURATION is the old name of PREVIOUS_CHILD_END_TIME,
+  // still read so older projects compose the same. -- Tony Chai, 2026
+  else if (functionName == "PREVIOUS_CHILD_END_TIME"
+           || functionName == "PREVIOUS_CHILD_DURATION"){
+    resultString = static_function_PREVIOUS_CHILD_END_TIME( _object);
   }
   else {
     throw CmodError(CmodError::Kind::Project,
@@ -870,8 +876,21 @@ Sieve* Utilities::evaluateSieveFunction(string _functionString,void* _object){
 
 //----------------------------------------------------------------------------//
 
+// CURRENT_TYPE and CURRENT_LAYER can't be used in a child Start Time: the
+// child's type is chosen after its start time. -- Tony Chai, 2026
+static void refuseInChildStartTime(void* _object, const string& functionName){
+  Event* event = static_cast<Event*>(_object);
+  if (!event->isEvaluatingChildStartTime()) return;
+  throw CmodError(CmodError::Kind::Project,
+                  functionName + " can't be used in a child Start Time.",
+                  "Event '" + event->getEventName() + "' -> Child Event Definition -> Start Time",
+                  "The start time is chosen before the child's type. Use " + functionName
+                      + " in the child Type or Duration instead.");
+}
+
 string Utilities::static_function_CURRENT_TYPE(void* _object){
   if (_object !=NULL){
+    refuseInChildStartTime(_object, "CURRENT_TYPE");
     double resultNum = ((Event*)_object)->getCurrentChildType();
     return to_string(resultNum);
   }
@@ -948,6 +967,7 @@ string Utilities::static_function_AVAILABLE_EDU(void* _object){
 
 string Utilities::static_function_CURRENT_LAYER(void* _object){
   if (_object !=NULL){
+    refuseInChildStartTime(_object, "CURRENT_LAYER");
     double resultNum = ((Event*)_object)->getCurrentLayer();
     return to_string(resultNum);
   }
@@ -959,15 +979,16 @@ string Utilities::static_function_CURRENT_LAYER(void* _object){
 
 //----------------------------------------------------------------------------//
 
-string Utilities::static_function_PREVIOUS_CHILD_DURATION(void* _object){
+// PREVIOUS_CHILD_END_TIME gives when the previous child ended. It was called
+// PREVIOUS_CHILD_DURATION, though it never gave a duration; the old name still
+// works. -- Tony Chai, 2026
+string Utilities::static_function_PREVIOUS_CHILD_END_TIME(void* _object){
 if (_object !=NULL){
     double resultNum = ((Event*)_object)->getPreviousChildEndTime();
-//  cout << "Utilities::static_function_PREVIOUS_CHILD_DURATION - resultNum=" 
-//       << resultNum << endl;
     return to_string(resultNum);
   }
   else {
-    cerr<<"Utilities:Warning! static_function_PREVIOUS_CHILD_DURATION has no object to look up."<<endl;
+    cerr<<"Utilities:Warning! static_function_PREVIOUS_CHILD_END_TIME has no object to look up."<<endl;
     return "0";
   }
 }
@@ -1010,7 +1031,9 @@ string Utilities::function_Markov(pugi::xml_node _functionElement, void* _object
 
 //----------------------------------------------------------------------------//
 
-string Utilities::function_LN(pugi::xml_node _functionElement, void* _object){
+// EXP_DECAY gives e^(-x). It was called LN, though it was never a natural log;
+// Prof. Tipei kept the curve and renamed it. LN still works. -- Tony Chai, 2026
+string Utilities::function_EXP_DECAY(pugi::xml_node _functionElement, void* _object){
 
   pugi::xml_node elementIter = GNES(GFEC(_functionElement));
   double entry = evaluate(XMLTranscode(elementIter ),_object);

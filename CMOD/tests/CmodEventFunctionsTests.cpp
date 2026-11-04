@@ -1,7 +1,8 @@
 // Tests for the CMOD functions that read from the event being built:
-// CURRENT_CHILD_NUM, CURRENT_TYPE, CURRENT_LAYER, PREVIOUS_CHILD_DURATION,
+// CURRENT_CHILD_NUM, CURRENT_TYPE, CURRENT_LAYER, PREVIOUS_CHILD_END_TIME,
 // AVAILABLE_EDU, CURRENT_PARTIAL_NUM, and GetPattern (which remembers its
-// place between children). -- Tony Chai, 2026
+// place between children), plus how Sweep reads its Start Time and the rule
+// that a Start Time can't use the child's type. -- Tony Chai, 2026
 //
 // Usage (ctest passes this): CmodEventFunctionsTests <cmod>
 //
@@ -390,10 +391,15 @@ fs::path freshFolder(const std::string& label)
     return folder;
 }
 
+struct CmodRun {
+    int exitCode = -1;
+    std::string output;     // everything cmod printed
+    std::string particel;   // empty if cmod wrote none
+};
+
 // Writes the project into a fresh folder, runs cmod on it there (the way
-// LASSIE does), and returns the parsed particel. Stops the test if cmod
-// fails or writes no particel.
-ReportNode compose(const std::string& project)
+// LASSIE does), and returns what it printed and wrote.
+CmodRun runCmod(const std::string& project)
 {
     std::string label;
     for (char c : currentTest)
@@ -416,28 +422,51 @@ ReportNode compose(const std::string& project)
 #endif
     std::string command = "\"" + cmodProgram.string() + "\" \"" + projectFile.string()
         + "\" > \"" + log.string() + "\" 2>&1" + noInput;
+    CmodRun run;
 #ifdef _WIN32
     command = "\"" + command + "\""; // cmd.exe strips one outer pair of quotes
-    const int exitCode = std::system(command.c_str());
+    run.exitCode = std::system(command.c_str());
 #else
     const int status = std::system(command.c_str());
-    const int exitCode = WIFEXITED(status) ? WEXITSTATUS(status) : -1;
+    run.exitCode = WIFEXITED(status) ? WEXITSTATUS(status) : -1;
 #endif
     fs::current_path(previous);
 
-    if (exitCode != 0) {
-        std::string output = readFile(log);
+    run.output = readFile(log);
+    const fs::path particel = folder / "event_functions.particel";
+    if (fs::exists(particel))
+        run.particel = readFile(particel);
+    fs::remove_all(folder);
+    return run;
+}
+
+// Composes the project and returns the parsed particel. Stops the test if
+// cmod fails or writes no particel.
+ReportNode compose(const std::string& project)
+{
+    const CmodRun run = runCmod(project);
+    if (run.exitCode != 0) {
+        std::string output = run.output;
         if (output.size() > 1500)
             output = "..." + output.substr(output.size() - 1500);
-        fs::remove_all(folder);
-        require(false, "cmod exited with code " + std::to_string(exitCode)
+        require(false, "cmod exited with code " + std::to_string(run.exitCode)
                            + ". Its output ended with:\n" + output);
     }
-    const fs::path particel = folder / "event_functions.particel";
-    require(fs::exists(particel), "cmod wrote no particel");
-    ReportNode report = parseParticel(readFile(particel));
-    fs::remove_all(folder);
-    return report;
+    require(!run.particel.empty(), "cmod wrote no particel");
+    return parseParticel(run.particel);
+}
+
+// Checks that cmod refuses the project and that its output says `message`.
+void expectCmodError(const std::string& project, const std::string& message,
+                     const std::string& what)
+{
+    const CmodRun run = runCmod(project);
+    std::string output = run.output;
+    if (output.size() > 600)
+        output = "..." + output.substr(output.size() - 600);
+    expect(run.exitCode != 0 && run.output.find(message) != std::string::npos,
+           what + ": expected cmod to stop with \"" + message + "\", but it exited with code "
+               + std::to_string(run.exitCode) + " and printed:\n" + output);
 }
 
 // The children placed by the first event named `name`. Stops the test if
@@ -511,27 +540,141 @@ void testCurrentLayer()
                  "Duration = CURRENT_LAYER + 1 with sA in layer 0 and sB, sC in layer 1");
 }
 
-// PREVIOUS_CHILD_DURATION is where the previous child ended (0 for the
-// first one), so using it as the Start Time puts children back to back.
-void testPreviousChildDuration()
+// PREVIOUS_CHILD_END_TIME is where the previous child ended (0 for the
+// first one), so using it as the Start Time puts children back to back. It
+// used to be called PREVIOUS_CHILD_DURATION, and that name still works.
+void testPreviousChildEndTime()
 {
     // Continuum reads it from the Start Time field.
     EventSpec top;
     top.children = "4";
-    top.start = fun("PREVIOUS_CHILD_DURATION");
+    top.start = fun("PREVIOUS_CHILD_END_TIME");
     top.duration = childNum + " + 1";
     top.layers = {{{"s1", 4}}};
     auto placed = placementsOf(compose(projectXml({top, soundEvent("s1")})), "0");
     expectValues(column(placed, &Placement::startSeconds), {0, 1, 3, 6},
-                 "Continuum, Start Time = PREVIOUS_CHILD_DURATION, durations 1-4: child starts");
+                 "Continuum, Start Time = PREVIOUS_CHILD_END_TIME, durations 1-4: child starts");
 
     // Sweep, the way the tutorial sets it up, gives the same placement.
     top.method = "1";
     placed = placementsOf(compose(projectXml({top, soundEvent("s1")})), "0");
     expectValues(column(placed, &Placement::startSeconds), {0, 1, 3, 6},
-                 "Sweep, Start Time = PREVIOUS_CHILD_DURATION, durations 1-4: child starts");
+                 "Sweep, Start Time = PREVIOUS_CHILD_END_TIME, durations 1-4: child starts");
     expectValues(column(placed, &Placement::durationSeconds), {1, 2, 3, 4},
                  "Sweep, durations 1-4: child durations");
+
+    // Older projects that say PREVIOUS_CHILD_DURATION compose the same.
+    top.method = "0";
+    top.start = fun("PREVIOUS_CHILD_DURATION");
+    placed = placementsOf(compose(projectXml({top, soundEvent("s1")})), "0");
+    expectValues(column(placed, &Placement::startSeconds), {0, 1, 3, 6},
+                 "Continuum, Start Time = old name PREVIOUS_CHILD_DURATION: child starts");
+}
+
+// The child's type is chosen after its start time, so a Start Time can't use
+// CURRENT_TYPE or CURRENT_LAYER (Prof. Tipei: the start time must not depend
+// on the type). cmod stops with an error instead of quietly using the
+// previous child's type.
+void testNoTypeInStartTime()
+{
+    EventSpec top;
+    top.children = "2";
+    top.layers = {{{"sA", 4}}, {{"sB", 4}}};
+    const auto project = [&] {
+        return projectXml({top, soundEvent("sA"), soundEvent("sB")});
+    };
+
+    top.start = fun("CURRENT_TYPE") + " * 10";
+    expectCmodError(project(), "CURRENT_TYPE can't be used in a child Start Time",
+                    "Continuum, Start Time = CURRENT_TYPE * 10");
+
+    top.start = fun("CURRENT_LAYER") + " * 10";
+    expectCmodError(project(), "CURRENT_LAYER can't be used in a child Start Time",
+                    "Continuum, Start Time = CURRENT_LAYER * 10");
+
+    // Also when it's inside another function.
+    top.start = fun("Select", {{"List", "0, 5"}, {"Index", fun("CURRENT_TYPE")}});
+    expectCmodError(project(), "CURRENT_TYPE can't be used in a child Start Time",
+                    "Continuum, Start Time = Select(0, 5) by CURRENT_TYPE");
+
+    top.method = "1";
+    top.start = fun("CURRENT_TYPE");
+    expectCmodError(project(), "CURRENT_TYPE can't be used in a child Start Time",
+                    "Sweep, Start Time = CURRENT_TYPE");
+
+    // Type and Duration can still use them.
+    top.method = "0";
+    top.start = childNum + " * 10";
+    top.type = childNum;
+    top.duration = fun("CURRENT_LAYER") + " + " + fun("CURRENT_TYPE") + " + 1";
+    const auto placed = placementsOf(compose(project()), "0");
+    expectValues(column(placed, &Placement::durationSeconds), {1, 3},
+                 "Duration = CURRENT_LAYER + CURRENT_TYPE + 1 still works");
+}
+
+// Sweep reads its Start Time field (Prof. Tipei: any number or function).
+// It's when the child starts; a start before the previous child's end is
+// moved to that end, so Sweep children never overlap.
+void testSweepStartTime()
+{
+    EventSpec top;
+    top.method = "1";
+    top.children = "3";
+    top.duration = "1";
+    top.layers = {{{"s1", 4}}};
+    const auto starts = [&] {
+        return column(placementsOf(compose(projectXml({top, soundEvent("s1")})), "0"),
+                      &Placement::startSeconds);
+    };
+
+    top.start = "0";
+    expectValues(starts(), {0, 1, 2}, "Sweep, Start Time = 0: back to back");
+
+    top.start = "5";
+    expectValues(starts(), {5, 6, 7},
+                 "Sweep, Start Time = 5: first child at 5, the rest moved to the previous end");
+
+    top.start = fun("PREVIOUS_CHILD_END_TIME") + " + 2";
+    expectValues(starts(), {2, 5, 8}, "Sweep, Start Time = PREVIOUS_CHILD_END_TIME + 2: 2 s rests");
+
+    top.start = fun("Select", {{"List", "0, 4, 4.5"}, {"Index", childNum}});
+    expectValues(starts(), {0, 4, 5},
+                 "Sweep, Start Time = Select 0, 4, 4.5: 4.5 overlaps the child ending at 5");
+
+    // A random start lands somewhere inside its range, never overlapping.
+    top.start = fun("PREVIOUS_CHILD_END_TIME") + " + "
+        + fun("Random", {{"Low", "1"}, {"High", "2"}});
+    const auto randomStarts = starts();
+    require(randomStarts.size() == 3, "Sweep with a Random start: expected 3 children");
+    double previousEnd = 0;
+    for (double start : randomStarts) {
+        expect(start >= previousEnd + 1 - 1e-4 && start <= previousEnd + 2 + 1e-4,
+               "Sweep, Start Time = PREVIOUS_CHILD_END_TIME + Random(1, 2): start "
+                   + std::to_string(start) + " should be 1-2 s after " + std::to_string(previousEnd));
+        previousEnd = start + 1;
+    }
+
+    // In EDU (60 EDU per second here): starts 60, 180 and 300 EDU.
+    top.startUnit = "1";
+    top.durationUnit = "1";
+    top.duration = "60";
+    top.start = fun("PREVIOUS_CHILD_END_TIME") + " + 60";
+    const auto inEDU = placementsOf(compose(projectXml({top, soundEvent("s1")})), "0");
+    expectValues(column(inEDU, &Placement::startSeconds), {1, 3, 5},
+                 "Sweep in EDU, Start Time = PREVIOUS_CHILD_END_TIME + 60: starts in seconds");
+    std::vector<std::string> startEDUs;
+    for (const Placement& p : inEDU)
+        startEDUs.push_back(p.startEDU);
+    expect(startEDUs == std::vector<std::string>{"60 EDU", "180 EDU", "300 EDU"},
+           "Sweep in EDU: expected start EDUs {60, 180, 300}, got " + listText(startEDUs));
+
+    // Start in seconds, durations as a fraction of the 30 s parent (0.1 = 3 s).
+    top.startUnit = "2";
+    top.durationUnit = "0";
+    top.duration = "0.1";
+    top.start = "5";
+    expectValues(starts(), {5, 8, 11},
+                 "Sweep, Start Time = 5 s with durations 0.1 of 30 s: starts");
 }
 
 // AVAILABLE_EDU is the parent's length in EDU (here 30 s = 1800 EDU).
@@ -694,7 +837,10 @@ int main(int argc, char** argv)
     runTest("CURRENT_CHILD_NUM", testCurrentChildNum, failedTests);
     runTest("CURRENT_TYPE", testCurrentType, failedTests);
     runTest("CURRENT_LAYER", testCurrentLayer, failedTests);
-    runTest("PREVIOUS_CHILD_DURATION", testPreviousChildDuration, failedTests);
+    runTest("PREVIOUS_CHILD_END_TIME (formerly PREVIOUS_CHILD_DURATION)", testPreviousChildEndTime,
+            failedTests);
+    runTest("no CURRENT_TYPE or CURRENT_LAYER in a Start Time", testNoTypeInStartTime, failedTests);
+    runTest("Sweep reads its Start Time", testSweepStartTime, failedTests);
     runTest("AVAILABLE_EDU", testAvailableEdu, failedTests);
     runTest("CURRENT_PARTIAL_NUM", testCurrentPartialNum, failedTests);
     runTest("GetPattern remembers its place", testGetPatternRemembers, failedTests);
