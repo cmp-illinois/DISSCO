@@ -9,7 +9,7 @@ var searchData=
   ['linearinterpolatoriterator_6',['linearinterpolatoriterator',['../classLinearInterpolatorIterator.html',1,'LinearInterpolatorIterator'],['../classLinearInterpolatorIterator.html#a8395944e8dd55800f9bff2cd67e1f89b',1,'LinearInterpolatorIterator::LinearInterpolatorIterator()']]],
   ['list_7',['list',['../deprecated.html',1,'Deprecated List'],['../todo.html',1,'Todo List']]],
   ['loadlibrary_8',['loadLibrary',['../classEnvelopeLibrary.html#aca869bdeb02fc31f9c0a02ca824eb791',1,'EnvelopeLibrary']]],
-  ['loadlibrarynewformat_9',['loadLibraryNewFormat',['../classEnvelopeLibrary.html#af5203c8c616c4398413dc784d2b1c764',1,'EnvelopeLibrary']]],
+  ['loadlibrarynewformat_9',['loadlibrarynewformat',['../classEnvelopeLibrary.html#af5203c8c616c4398413dc784d2b1c764',1,'EnvelopeLibrary::loadLibraryNewFormat(char *filename)'],['../classEnvelopeLibrary.html#a7d4ccbc64ef7a303c208959f93da560e',1,'EnvelopeLibrary::loadLibraryNewFormat(std::istream &amp;inData)']]],
   ['loudness_10',['loudness',['../Sound_8h.html#a53659c963f5fce879f7cdfa711096e4baedd3a8b10c60c0e9331edc0ed631c295',1,'LOUDNESS:&#160;Sound.h'],['../classLoudness.html',1,'Loudness']]],
   ['loudness_2ecpp_11',['Loudness.cpp',['../Loudness_8cpp.html',1,'']]],
   ['loudness_2eh_12',['Loudness.h',['../Loudness_8h.html',1,'']]],
