@@ -11,12 +11,13 @@ var searchData=
   ['isbottom_8',['isBottom',['../structOutputNode.html#a0b83116b12f90867a353fc9260258b02',1,'OutputNode']]],
   ['isbuildphase_9',['isBuildPhase',['../structOutputNode.html#af285a743a44795fdc155848e67ab974c',1,'OutputNode']]],
   ['isdeterminate_10',['isDeterminate',['../classRational.html#aaae029be1a728da35eff772ba346facd',1,'Rational']]],
-  ['isnote_11',['isNote',['../structOutputNode.html#a8b974bde7404c8adafa6baa6e7dacc5c',1,'OutputNode']]],
-  ['ispowerof2_12',['IsPowerOf2',['../structTimeSignature.html#a1898ea585cda03da98c74cbacfbfe47b',1,'TimeSignature']]],
-  ['issectionof_13',['IsSectionOf',['../classSection.html#a8e46e7082f32c917d1485d477fb49376',1,'Section']]],
-  ['issievefunction_14',['isSieveFunction',['../classUtilities.html#aab1901b96738a319db860f4c3e8c2bc6',1,'Utilities']]],
-  ['istemposameas_15',['isTempoSameAs',['../classTempo.html#af5e179e65285982a11c09a1d80bcdfcf',1,'Tempo']]],
-  ['iswhole_16',['isWhole',['../classRational.html#a163aad1285b1d8d6ee618d42c13dc273',1,'Rational']]],
-  ['iswholeedus_17',['isWholeEDUs',['../classTempo.html#a34883b5a49197cc97db0b6516744b0ba',1,'Tempo']]],
-  ['iswholeedusintempo_18',['IsWholeEDUsInTempo',['../classSection.html#a93637e031569d032f4617aa87976da66',1,'Section']]]
+  ['isevaluatingchildstarttime_11',['isEvaluatingChildStartTime',['../classEvent.html#adb86c52486405de0ed09d57ec29e1e9a',1,'Event']]],
+  ['isnote_12',['isNote',['../structOutputNode.html#a8b974bde7404c8adafa6baa6e7dacc5c',1,'OutputNode']]],
+  ['ispowerof2_13',['IsPowerOf2',['../structTimeSignature.html#a1898ea585cda03da98c74cbacfbfe47b',1,'TimeSignature']]],
+  ['issectionof_14',['IsSectionOf',['../classSection.html#a8e46e7082f32c917d1485d477fb49376',1,'Section']]],
+  ['issievefunction_15',['isSieveFunction',['../classUtilities.html#aab1901b96738a319db860f4c3e8c2bc6',1,'Utilities']]],
+  ['istemposameas_16',['isTempoSameAs',['../classTempo.html#af5e179e65285982a11c09a1d80bcdfcf',1,'Tempo']]],
+  ['iswhole_17',['isWhole',['../classRational.html#a163aad1285b1d8d6ee618d42c13dc273',1,'Rational']]],
+  ['iswholeedus_18',['isWholeEDUs',['../classTempo.html#a34883b5a49197cc97db0b6516744b0ba',1,'Tempo']]],
+  ['iswholeedusintempo_19',['IsWholeEDUsInTempo',['../classSection.html#a93637e031569d032f4617aa87976da66',1,'Section']]]
 ];

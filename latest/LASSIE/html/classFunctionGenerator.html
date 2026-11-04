@@ -101,8 +101,8 @@ Collaboration diagram for FunctionGenerator:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a63e2bc648290229545eb3e4c7d0f770e" id="r_a63e2bc648290229545eb3e4c7d0f770e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFunctionGenerator.html#a63e2bc648290229545eb3e4c7d0f770e">FunctionGenerator</a> (QWidget *parent=nullptr, <a class="el" href="lassie_8hpp.html#ae2c60d9441531af374b18eeaf728ed99">FunctionReturnType</a> returnType=<a class="el" href="lassie_8hpp.html#ae2c60d9441531af374b18eeaf728ed99afe297e8dcd415188895c548c99af7e7e">FunctionReturnType::functionReturnFloat</a>, QString originalString=QString())</td></tr>
-<tr class="separator:a63e2bc648290229545eb3e4c7d0f770e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addc84b37dccbf128021bf3d5b29db06e" id="r_addc84b37dccbf128021bf3d5b29db06e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFunctionGenerator.html#addc84b37dccbf128021bf3d5b29db06e">FunctionGenerator</a> (QWidget *parent=nullptr, <a class="el" href="lassie_8hpp.html#ae2c60d9441531af374b18eeaf728ed99">FunctionReturnType</a> returnType=<a class="el" href="lassie_8hpp.html#ae2c60d9441531af374b18eeaf728ed99afe297e8dcd415188895c548c99af7e7e">FunctionReturnType::functionReturnFloat</a>, QString originalString=QString(), QList&lt; <a class="el" href="lassie_8hpp.html#a3b22db4d0c717ee8d4c739478f654744">CMODFunction</a> &gt; excluded={})</td></tr>
+<tr class="separator:addc84b37dccbf128021bf3d5b29db06e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a937ecd90079299ba0cec4e70482832b4" id="r_a937ecd90079299ba0cec4e70482832b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFunctionGenerator.html#a937ecd90079299ba0cec4e70482832b4">~FunctionGenerator</a> () override</td></tr>
 <tr class="separator:a937ecd90079299ba0cec4e70482832b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad22cbc76afd77a12811379570d947693" id="r_ad22cbc76afd77a12811379570d947693"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFunctionGenerator.html#ad22cbc76afd77a12811379570d947693">getResultString</a> ()</td></tr>
@@ -113,8 +113,8 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="FunctionGenerator_8hpp_source.html#l00024">24</a> of file <a class="el" href="FunctionGenerator_8hpp_source.html">FunctionGenerator.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a63e2bc648290229545eb3e4c7d0f770e" name="a63e2bc648290229545eb3e4c7d0f770e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63e2bc648290229545eb3e4c7d0f770e">&#9670;&#160;</a></span>FunctionGenerator()</h2>
+<a id="addc84b37dccbf128021bf3d5b29db06e" name="addc84b37dccbf128021bf3d5b29db06e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addc84b37dccbf128021bf3d5b29db06e">&#9670;&#160;</a></span>FunctionGenerator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -138,7 +138,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">QString&#160;</td>
-          <td class="paramname"><em>originalString</em> = <code>QString()</code>&#160;</td>
+          <td class="paramname"><em>originalString</em> = <code>QString()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QList&lt; <a class="el" href="lassie_8hpp.html#a3b22db4d0c717ee8d4c739478f654744">CMODFunction</a> &gt;&#160;</td>
+          <td class="paramname"><em>excluded</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -180,7 +186,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FunctionGenerator_8cpp_source.html#l00042">42</a> of file <a class="el" href="FunctionGenerator_8cpp_source.html">FunctionGenerator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FunctionGenerator_8cpp_source.html#l00053">53</a> of file <a class="el" href="FunctionGenerator_8cpp_source.html">FunctionGenerator.cpp</a>.</p>
 
 </div>
 </div>
@@ -200,7 +206,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="FunctionGenerator_8cpp_source.html#l00047">47</a> of file <a class="el" href="FunctionGenerator_8cpp_source.html">FunctionGenerator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="FunctionGenerator_8cpp_source.html#l00059">59</a> of file <a class="el" href="FunctionGenerator_8cpp_source.html">FunctionGenerator.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

@@ -83,9 +83,11 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a99084a0a8aca9a3c95bb1cb7c36ef54e" id="r_a99084a0a8aca9a3c95bb1cb7c36ef54e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a99084a0a8aca9a3c95bb1cb7c36ef54e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classFunctionRegistry.html#a99084a0a8aca9a3c95bb1cb7c36ef54e">registerType</a> ()</td></tr>
-<tr class="separator:a99084a0a8aca9a3c95bb1cb7c36ef54e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab0fa9293c6ebd9d66e8dc27c6914bb4" id="r_aab0fa9293c6ebd9d66e8dc27c6914bb4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aab0fa9293c6ebd9d66e8dc27c6914bb4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classFunctionRegistry.html#aab0fa9293c6ebd9d66e8dc27c6914bb4">registerType</a> (bool inMenu=true)</td></tr>
+<tr class="separator:aab0fa9293c6ebd9d66e8dc27c6914bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6acbb8dcfe26417c8f9362dd80cdaf4c" id="r_a6acbb8dcfe26417c8f9362dd80cdaf4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFunctionRegistry.html#a6acbb8dcfe26417c8f9362dd80cdaf4c">registerOldXmlName</a> (const QString &amp;oldXmlName, <a class="el" href="lassie_8hpp.html#a3b22db4d0c717ee8d4c739478f654744">CMODFunction</a> id)</td></tr>
+<tr class="separator:a6acbb8dcfe26417c8f9362dd80cdaf4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bab99d477293332677ab3399c6f17a2" id="r_a6bab99d477293332677ab3399c6f17a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFunctionWidget.html">FunctionWidget</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFunctionRegistry.html#a6bab99d477293332677ab3399c6f17a2">create</a> (<a class="el" href="lassie_8hpp.html#a3b22db4d0c717ee8d4c739478f654744">CMODFunction</a> id) const</td></tr>
 <tr class="separator:a6bab99d477293332677ab3399c6f17a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a388f31e6b7566fed0c18b3fdd28e83fb" id="r_a388f31e6b7566fed0c18b3fdd28e83fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lassie_8hpp.html#a3b22db4d0c717ee8d4c739478f654744">CMODFunction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFunctionRegistry.html#a388f31e6b7566fed0c18b3fdd28e83fb">idFromXmlName</a> (const QString &amp;<a class="el" href="classFunctionRegistry.html#a013c0c98cabdd49fd2d463ff0d473e7c">xmlName</a>) const</td></tr>
@@ -106,7 +108,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Process-wide registry of <a class="el" href="classFunctionWidget.html">FunctionWidget</a> subclasses.</p>
-<p>Each subclass is registered once at startup via <a class="el" href="classFunctionRegistry.html#a99084a0a8aca9a3c95bb1cb7c36ef54e">registerType&lt;T&gt;()</a>. The registry instantiates a short-lived prototype to read the type's metadata (id, xmlName, displayName, supportedReturnTypes) and stores a factory closure for producing fresh instances at runtime.</p>
+<p>Each subclass is registered once at startup via <a class="el" href="classFunctionRegistry.html#aab0fa9293c6ebd9d66e8dc27c6914bb4">registerType&lt;T&gt;()</a>. The registry instantiates a short-lived prototype to read the type's metadata (id, xmlName, displayName, supportedReturnTypes) and stores a factory closure for producing fresh instances at runtime.</p>
 <p><a class="el" href="classFunctionGenerator.html">FunctionGenerator</a> queries the registry in two directions:</p><ul>
 <li>functionsFor(rt) : populate the combo box for a return-type context.</li>
 <li>create(id) / idFromXmlName(name) : produce the widget that handles a given function.</li>
@@ -267,8 +269,47 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a99084a0a8aca9a3c95bb1cb7c36ef54e" name="a99084a0a8aca9a3c95bb1cb7c36ef54e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99084a0a8aca9a3c95bb1cb7c36ef54e">&#9670;&#160;</a></span>registerType()</h2>
+<a id="a6acbb8dcfe26417c8f9362dd80cdaf4c" name="a6acbb8dcfe26417c8f9362dd80cdaf4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6acbb8dcfe26417c8f9362dd80cdaf4c">&#9670;&#160;</a></span>registerOldXmlName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FunctionRegistry::registerOldXmlName </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>oldXmlName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="lassie_8hpp.html#a3b22db4d0c717ee8d4c739478f654744">CMODFunction</a>&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Also recognize <code>oldXmlName</code> as <code>id</code>, so fields saved under a function's old name still open in the picker. The picker writes the current name. &ndash; Tony Chai, 2026 </p>
+
+<p class="definition">Definition at line <a class="el" href="FunctionRegistry_8hpp_source.html#l00057">57</a> of file <a class="el" href="FunctionRegistry_8hpp_source.html">FunctionRegistry.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aab0fa9293c6ebd9d66e8dc27c6914bb4" name="aab0fa9293c6ebd9d66e8dc27c6914bb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab0fa9293c6ebd9d66e8dc27c6914bb4">&#9670;&#160;</a></span>registerType()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -281,7 +322,8 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">void FunctionRegistry::registerType </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>inMenu</em> = <code>true</code></td><td>)</td>
           <td></td>
         </tr>
       </table>

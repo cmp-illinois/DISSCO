@@ -10,7 +10,7 @@ var searchData=
   ['filterevents_7',['filterevents',['../classProjectManager.html#ad034eb0ddf517d732798522b12280925',1,'ProjectManager']]],
   ['folderfortype_8',['folderForType',['../classPaletteViewController.html#a524b1543a06e4a4f895eb43a7fbe9ebb',1,'PaletteViewController']]],
   ['functionentryrow_9',['FunctionEntryRow',['../classFunctionEntryRow.html#aae0dd4ec56f622e2582815125cf3124d',1,'FunctionEntryRow']]],
-  ['functiongenerator_10',['FunctionGenerator',['../classFunctionGenerator.html#a63e2bc648290229545eb3e4c7d0f770e',1,'FunctionGenerator']]],
+  ['functiongenerator_10',['FunctionGenerator',['../classFunctionGenerator.html#addc84b37dccbf128021bf3d5b29db06e',1,'FunctionGenerator']]],
   ['functionsfor_11',['functionsFor',['../classFunctionRegistry.html#ae9a48486250de5b6b7312bf94172c0a5',1,'FunctionRegistry']]],
   ['functionwidget_12',['FunctionWidget',['../classFunctionWidget.html#aea5e13a6c630b4d9c8e0afdbbb9d73b3',1,'FunctionWidget']]]
 ];
