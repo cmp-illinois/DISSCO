@@ -405,8 +405,17 @@ ReportNode compose(const std::string& project)
 
     const fs::path previous = fs::current_path();
     fs::current_path(folder);
+    // Bug fix: cmod asks "how many times you want to run" and waits for the
+    // keyboard. Run from a terminal, ctest passed the keyboard through, so cmod
+    // waited until the 120 s timeout. It now gets an empty input, answers
+    // nothing, and runs once, as it does on GitHub. -- Tony Chai, 2026
+#ifdef _WIN32
+    const std::string noInput = " < NUL";
+#else
+    const std::string noInput = " < /dev/null";
+#endif
     std::string command = "\"" + cmodProgram.string() + "\" \"" + projectFile.string()
-        + "\" > \"" + log.string() + "\" 2>&1";
+        + "\" > \"" + log.string() + "\" 2>&1" + noInput;
 #ifdef _WIN32
     command = "\"" + command + "\""; // cmd.exe strips one outer pair of quotes
     const int exitCode = std::system(command.c_str());

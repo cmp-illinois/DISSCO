@@ -93,8 +93,17 @@ int runCmod(const fs::path& cmod, const fs::path& project, const fs::path& log)
 {
     const fs::path previous = fs::current_path();
     fs::current_path(project.parent_path());
+    // Bug fix: cmod asks "how many times you want to run" and waits for the
+    // keyboard. Run from a terminal, ctest passed the keyboard through, so cmod
+    // waited until the 300 s timeout. It now gets an empty input, answers
+    // nothing, and runs once, as it does on GitHub. -- Tony Chai, 2026
+#ifdef _WIN32
+    const std::string noInput = " < NUL";
+#else
+    const std::string noInput = " < /dev/null";
+#endif
     std::string command = "\"" + cmod.string() + "\" \"" + project.string()
-        + "\" > \"" + log.string() + "\" 2>&1";
+        + "\" > \"" + log.string() + "\" 2>&1" + noInput;
 #ifdef _WIN32
     command = "\"" + command + "\""; // cmd.exe strips one outer pair of quotes
 #endif
