@@ -740,16 +740,16 @@ Start from a fresh `tutorial_sound.dissco` copy. In **Bottom s1**, enter all the
 | --- | --- |
 | Number of Children | **Fixed**, `5` |
 | Children Events Definition | **Sweep** |
-| Child Start Time /Child Type | PREVIOUS_CHILD_DURATION / `0` |
+| Child Start Time /Child Type | PREVIOUS_CHILD_END_TIME / `0` |
 | Start Time unit / Duration unit | **Seconds** / **Seconds** |
 | Child Duration / Max Child Duration | `1` / `1` |
 | Frequency | **Continuum > Hertz**, Value `440` |
 | Spatialization | **Stereo / Sound / EnvLib 2 / Scale 0.5** |
-| Reverb / '0.5' |
+| Reverb | **REV_Simple / Sound / Room Size 0.5** |
 | Filter(Optional) | Empty |
 | Modifiers | No rows |
 
-**Sweep** produces an uninterrupted sequence of starttimes and requires the Static Function **PREVIOUS_CHILD_DURATION** as an entry for **Child Start Time**.
+**Sweep** places each child after the previous one, so children never overlap. The Static Function **PREVIOUS_CHILD_END_TIME** in **Child Start Time** starts each child right where the previous one ends; `0` gives the same result, because a start before the previous child's end is moved to that end. A later start leaves a gap: `PREVIOUS_CHILD_END_TIME + 1` adds one second of silence between sounds, and any number or function (Random, Select, ...) also works.
 
 Run: five centered one-second sounds should begin at 0, 1, 2, 3, and 4 seconds. This is also the **five separate sounds** setup used in sections 21–22. If they overlap or start at random times, recheck Sweep and both Seconds selections.
 
@@ -829,9 +829,9 @@ For the Density exercise, open a fresh `tutorial_sound.dissco` copy. In **Bottom
 
 | Method | Behavior | Starting exercise |
 | --- | --- | --- |
-| **Continuum** | Determines children start times independently.n order or randomly | The Random start times from the beginner example. |
-| **Sweep** | Places children in sequence from start time '0': no child can start before the previous child's end. Use PREVIOUS_CHILD_DURATION. | Follow the complete [five separate sounds setup](#prepare-five-separate-sounds). |
-| **Discrete** | Builds a 3D matrix (attacks*types*durations) containing different layers while avoiding overlapping events within a layer. Uses EDIs | Refer to **Sieves** and the [worked sieve example](#make-a-sieve-of-allowed-values) before running. |
+| **Continuum** | Determines each child's start time independently, in order or randomly. | The Random start times from the beginner example. |
+| **Sweep** | Places children in sequence from start time `0`: a child's Start Time can leave a gap after the previous child, but never makes it start before the previous child's end. Use PREVIOUS_CHILD_END_TIME (or `0`) for back-to-back children. | Follow the complete [five separate sounds setup](#prepare-five-separate-sounds). |
+| **Discrete** | Builds a 3D matrix (attacks*types*durations) containing different layers while avoiding overlapping events within a layer. Uses EDUs. | Refer to **Sieves** and the [worked sieve example](#make-a-sieve-of-allowed-values) before running. |
 
 **Listen checkpoint — sequential timing.** Run the [five separate sounds setup](#prepare-five-separate-sounds). You should hear five one-second sounds in order, unlike the scattered starts of the original piece. Check Sweep and Seconds if the timing is wrong. Adding reverb afterward can make decays overlap even though the start times remain sequential.
 
@@ -1019,16 +1019,16 @@ The table below accounts for the numeric and selection helpers in Function Gener
 | **GetFromMarkovChain** | Return a value from the numbered Markov model; see [Use a Markov model](#use-a-markov-model). |
 | **GetPattern** | Get the next pattern value; use IN_ORDER. |
 | **Inverse** | Return 1 divided by the input: input `4` gives `0.25`. Use a nonzero input. |
-| **LN** | Return the natural logarithm: input `1` gives `0`. Use a positive input and check that the result is suitable for the receiving field. |
+| **EXP_DECAY** | Return e^(-x), shown as **EXP_DECAY: e^(-x)**: input `0` gives `1`, input `1` gives about `0.368`, and larger inputs approach `0`. It used to be called **LN**, although it never gave a natural logarithm; projects that still say LN give the same values. |
 | **Fibonacci** | Return a Fibonacci value. Use a nonnegative integer index no greater than `46`. |
 | **Decay** | **Linear** gives Base − Rate × Index; **Exponential** gives Base × Rate^Index. For decreasing loudness, try Exponential, Base `64`, Rate `0.5`, and Index **CURRENT_CHILD_NUM** inserted with the function button: successive children receive 64, 32, 16, and so on. |
 | **CURRENT_CHILD_NUM** | Current child index, starting at 0. Use it when successive children should receive different values. |
-| **CURRENT_TYPE** | Current child type number, corresponding to the Child Type column of the parent's child table. |
-| **PREVIOUS_CHILD_DURATION** | Despite its name, returns the previous child’s **end time** in the current event’s raw timing units. It is not simply the last child’s duration. |
+| **CURRENT_TYPE** | Current child type number, corresponding to the Child Type column of the parent's child table. Not allowed in a **Child Start Time**: the type is chosen after the start time, so CMOD stops with an error, and LASSIE's Start Time function list leaves it out. |
+| **PREVIOUS_CHILD_END_TIME** | The previous child's **end time**, in the current event's raw timing units (`0` for the first child). It used to be called **PREVIOUS_CHILD_DURATION**; projects that still use that name work the same. |
 | **AVAILABLE_EDU** | Available duration expressed in EDUs in an event context. |
 | **CURRENT_PARTIAL_NUM** | Current partial index in partial construction; the internal index begins at 0 although the visible partial rows begin at 1. |
-| **CURRENT_SEGMENT** | Not implemented in this engine: it reports a warning and returns `0`. Use an explicit value or supported expression. |
-| **CURRENT_LAYER** | Current layer index in event generation, starting at 0. |
+| **CURRENT_SEGMENT** | Not offered in LASSIE's function list, because CMOD doesn't implement it: it reports a warning and returns `0`. Older projects that use it still open. Use an explicit value or supported expression. |
+| **CURRENT_LAYER** | Current layer index in event generation, starting at 0. Like CURRENT_TYPE, not allowed in a **Child Start Time**. |
 
 Supported context functions need the corresponding event, partial, or layer to exist. Do not use them in global Project Properties simply because they appear in a function list. Start with a literal value in that setting.
 

@@ -65,7 +65,7 @@
   3. Hit OK
 
 - Select **EDU** beneath **Child Start Time**
-- Click **Insert Function** next to **Child Type** and choose **RandInt**
+- Click **Insert Function** next to **Child Type** and choose **RandomInt**
 
 (allows us to randomly choose between 2 note types which we create in the next step)
 

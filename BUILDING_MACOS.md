@@ -338,9 +338,11 @@ The GitHub Actions release workflow requires these secrets:
 - `APPLE_TEAM_ID`: Apple Developer team identifier
 - `APPLE_APP_SPECIFIC_PASSWORD`: app-specific password for the Apple ID
 
-Release builds fail instead of uploading an unsigned DMG when these credentials
-are unavailable. Workflow runs without a release tag may still produce ad-hoc
-signed, temporary artifacts for developer testing.
+Without these secrets, a release build still uploads a DMG, but it is only
+ad-hoc signed and not notarized: the workflow prints an "Unsigned macOS
+release" warning, and macOS asks users to approve the app on first launch.
+Workflow runs without a release tag also produce ad-hoc signed, temporary
+artifacts for developer testing.
 
 The application icon at `packaging/macos/LASSIE.icns` is a placeholder. Replace
 the artwork and run `packaging/macos/make-icns.sh` before an official release.
