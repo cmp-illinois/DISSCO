@@ -18,6 +18,7 @@
 #include <cmath>
 #include <iostream>
 #include <limits>
+#include <memory>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -162,6 +163,37 @@ void testSpatializerMultiTrackComposite()
         }
     }
     delete result;
+}
+
+// The basic spatializer spreads one track evenly over every channel, and each
+// channel is its own copy (changing one leaves the others alone).
+void testSpatializerSpreadsTrackOverIndependentChannels()
+{
+    constexpr m_sample_count_type sampleCount = 4;
+    const float samples[sampleCount] = {1.0f, -2.0f, 3.0f, 0.5f};
+    Track input(sampleCount, 44100, true);
+    for (m_sample_count_type i = 0; i < sampleCount; i++)
+        input.getWave()[i] = samples[i];
+
+    for (int channels : {1, 2, 3}) {
+        Spatializer spatializer;
+        std::unique_ptr<MultiTrack> result(spatializer.spatialize_Track(input, channels));
+        const std::string label = std::to_string(channels) + " channel(s)";
+        expect(result->size() == channels, label + ": wrong channel count");
+        if (result->size() != channels)
+            continue;
+        for (int c = 0; c < channels; c++)
+            for (m_sample_count_type i = 0; i < sampleCount; i++)
+                expectNear(result->get(c)->getWave()[i], samples[i] / channels,
+                           label + ": channel " + std::to_string(c) + " sample "
+                               + std::to_string(i));
+        result->get(channels - 1)->getWave()[0] = 99.0f;
+        for (int c = 0; c + 1 < channels; c++)
+            expectNear(result->get(c)->getWave()[0], samples[0] / channels,
+                       label + ": channel " + std::to_string(c)
+                           + " changed when the last channel was changed");
+    }
+    expectNear(input.getWave()[0], samples[0], "the input track must not change");
 }
 
 // Reverb must own a private copy of its Envelope, not a dangling pointer to the caller's.
@@ -339,6 +371,7 @@ int main()
     runTest("testMultiPanCloneIsIndependent", testMultiPanCloneIsIndependent, failedTests);
     runTest("testSoundSetDetuneValidation", testSoundSetDetuneValidation, failedTests);
     runTest("testSpatializerMultiTrackComposite", testSpatializerMultiTrackComposite, failedTests);
+    runTest("testSpatializerSpreadsTrackOverIndependentChannels", testSpatializerSpreadsTrackOverIndependentChannels, failedTests);
     runTest("testReverbOwnsItsOwnEnvelopeCopy", testReverbOwnsItsOwnEnvelopeCopy, failedTests);
     runTest("testSoundInvalidPartialCountIsSafe", testSoundInvalidPartialCountIsSafe, failedTests);
     runTest("testEnvelopeConstantValueInterpolation", testEnvelopeConstantValueInterpolation, failedTests);

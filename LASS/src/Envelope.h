@@ -36,6 +36,7 @@
 #include "DynamicVariable.h"
 #include "InterpolatorIterator.h"
 #include <array>
+#include <memory>
 //#include "EnvelopeLibrary.h"
 
 /**
@@ -138,13 +139,13 @@ public:
    *	This function returns a collection of points that make up the shape.
    *	\return A vector of points
    **/
-  vector<xy_point>* getPoints ();
+  vector<xy_point> getPoints () const;
 
   /**
    *	This function returns a collection of segments that make up the shape.
    *	\return A vector of envelope segments
    **/
-  vector<envelope_segment>* getSegments ();
+  vector<envelope_segment> getSegments () const;
 
   /**
    *	This function sets an envelope segment identified by its index.
@@ -301,12 +302,12 @@ private:
   /**
    *	This is a vector to hold the segment data for this DVS.
    **/
-  vector<envelope_segment>* segments_;
+  vector<envelope_segment> segments_;
 
   /**
    *	This is a vector to hold interpolators.
    **/
-  vector<Interpolator*>* interpolators_;
+  vector<std::unique_ptr<Interpolator>> interpolators_;
 
   /**
    *	This is a vector of Time values for segments that were
@@ -314,7 +315,7 @@ private:
    *	include the 0 dummy segment, so element 0 will correspond to element
    *	1 in segments_.
    **/
-  vector<m_value_type>* generatedSegmentLengths_;
+  vector<m_value_type> generatedSegmentLengths_;
 
   /** This is the value with which the segment times were generated **/
   m_value_type totalLength_;
