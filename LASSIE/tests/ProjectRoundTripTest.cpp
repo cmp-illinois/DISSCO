@@ -6,6 +6,8 @@
 //   - the project opens and saves without errors or pop-up dialogs,
 //   - nothing in the original file is lost or changed by saving,
 //   - saving an unchanged project a second time gives an identical file.
+// It also opens each project from a read-only folder and checks that all of
+// its envelopes are loaded.
 //
 // Run through ctest (LASSIE.ProjectSaveRoundTrip). The project files used are
 // the tutorial examples in Documents/examples/ plus
@@ -14,6 +16,7 @@
 
 #include "ProjectRoundTripTest.hpp"
 
+#include "../src/core/EnvelopeLibraryEntry.hpp"
 #include "../src/core/project_struct.hpp"
 #include "../src/inst.hpp"
 #include "../src/windows/MainWindow.hpp"
@@ -250,14 +253,55 @@ void roundTrip(MainWindow& window, const QString& originalPath)
     }
 }
 
-void runTest(const std::string& name, MainWindow& window, const QString& path,
-             std::vector<std::string>& failedTests)
+// Number of envelopes in a project file's <EnvelopeLibrary> (each starts
+// with an "Envelope <n>" line).
+int envelopesInFile(const QString& filePath)
+{
+    QFile file(filePath);
+    require(file.open(QIODevice::ReadOnly),
+            QStringLiteral("could not read %1").arg(filePath));
+    QDomDocument document;
+    require(static_cast<bool>(document.setContent(&file)),
+            QStringLiteral("%1 is not valid XML").arg(filePath));
+    const QString library = document.documentElement()
+                                .firstChildElement(QStringLiteral("EnvelopeLibrary")).text();
+    return static_cast<int>(library.split(QLatin1Char('\n'))
+                                .filter(QRegularExpression(QStringLiteral("^\\s*Envelope\\b")))
+                                .size());
+}
+
+// A project opened from a folder LASSIE can't write to (read-only, a shared
+// drive) must still come with all of its envelopes.
+void openFromReadOnlyFolder(MainWindow& window, const QString& originalPath)
+{
+    const int expected = envelopesInFile(originalPath);
+    QTemporaryDir workDir;
+    require(workDir.isValid(), QStringLiteral("could not create a temporary folder"));
+    const QString copyPath = workDir.filePath(QFileInfo(originalPath).fileName());
+    require(QFile::copy(originalPath, copyPath),
+            QStringLiteral("could not copy %1 to a temporary folder").arg(originalPath));
+
+    const QFile::Permissions writable = QFile::permissions(workDir.path());
+    QFile::setPermissions(workDir.path(), QFile::ReadOwner | QFile::ExeOwner);
+    const bool opened = openInWindow(window, copyPath);
+    EnvelopeLibraryEntry* entries = Inst::get_project_manager()->envlibentries();
+    const int loaded = (opened && entries) ? entries->count() : 0;
+    QFile::setPermissions(workDir.path(), writable);  // so the folder can be removed
+
+    require(opened, QStringLiteral("LASSIE could not open the project from a read-only folder"));
+    if (loaded != expected)
+        fail(QStringLiteral("opened from a read-only folder: %1 of %2 envelopes loaded")
+                 .arg(loaded).arg(expected));
+}
+
+void runTest(const std::string& name, void (*test)(MainWindow&, const QString&),
+             MainWindow& window, const QString& path, std::vector<std::string>& failedTests)
 {
     currentTest = name;
     currentTestFailures = 0;
     std::cerr << "RUN  " << name << '\n';
     try {
-        roundTrip(window, path);
+        test(window, path);
     } catch (const RequirementFailed& e) {
         fail(e.message + QStringLiteral(" (stopped this test; later checks depend on it)"));
     } catch (const std::exception& e) {
@@ -299,9 +343,10 @@ int runProjectRoundTripTest()
         MainWindow window(Inst::instance());
         DialogWatchdog watchdog;
         for (const QString& project : projects) {
-            const std::string name =
-                "roundTrip(" + QFileInfo(project).fileName().toStdString() + ")";
-            runTest(name, window, project, failedTests);
+            const std::string fileName = QFileInfo(project).fileName().toStdString();
+            runTest("roundTrip(" + fileName + ")", roundTrip, window, project, failedTests);
+            runTest("openFromReadOnlyFolder(" + fileName + ")", openFromReadOnlyFolder,
+                    window, project, failedTests);
         }
     }
     QSettings().clear();

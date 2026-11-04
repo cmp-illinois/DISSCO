@@ -94,6 +94,14 @@ public:
     int loadLibraryNewFormat (char * filename);
 
     /**
+     *  Reads an Envelope library in the new format from a stream, e.g. the
+     *  <EnvelopeLibrary> text of a project in a std::istringstream.
+     *	\param inData The stream to read from
+     *	\return The number of entries in the library
+     **/
+    int loadLibraryNewFormat (std::istream& inData);
+
+    /**
      *  This function returns a pointer to a new Envelope given an
      *  index to an existing EnvelopeLibrary, or NULL if index is out of range.
      *	\param index Which Envelope in the EnvelopeLibrary to find

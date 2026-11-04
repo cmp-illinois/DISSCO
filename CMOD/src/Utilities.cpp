@@ -38,7 +38,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "ProbabilityEnvelope.h" // consider moving this into LASS.h
 #include <cmath>
 #include <algorithm>
-#include <filesystem>
 #include <iomanip>
 #include <memory>
 #include <limits>
@@ -143,28 +142,11 @@ Utilities::Utilities(pugi::xml_node root,
 
   // Construct Envelope library
   pugi::xml_node envelopeLibraryElement = root.child("EnvelopeLibrary");
-  string envLibContent = XMLTranscode(envelopeLibraryElement);
-  string fileString = "lib.temp";
-  FILE* file  = fopen(fileString.c_str(), "w");
-  if (file == NULL) {
-    throw CmodError(CmodError::Kind::Output,
-                    "Cannot create the temporary envelope library file.",
-                    "File: " + fileString,
-                    "Check that the project folder is writable and that lib.temp is not a directory.");
-  }
-  const bool writeSucceeded = fputs(envLibContent.c_str(), file) >= 0;
-  const bool closeSucceeded = fclose(file) == 0;
-  if (!writeSucceeded || !closeSucceeded) {
-    throw CmodError(CmodError::Kind::Output,
-                    "Cannot write the temporary envelope library file.",
-                    "File: " + fileString,
-                    "Check free disk space and write permissions for the project folder.");
-  }
-
+  // Read the library straight from the project text (it used to go through
+  // a lib.temp file in the current folder). -- Tony Chai, 2026
+  std::istringstream envLibContent(XMLTranscode(envelopeLibraryElement));
   envelopeLibrary = new EnvelopeLibrary();
-  envelopeLibrary->loadLibraryNewFormat((char*)fileString.c_str());
-  std::error_code removalError;
-  std::filesystem::remove(fileString, removalError);
+  envelopeLibrary->loadLibraryNewFormat(envLibContent);
 
   // Construct Markov Model Library
   pugi::xml_node markovModelLibraryElement = root.child("MarkovModelLibrary");

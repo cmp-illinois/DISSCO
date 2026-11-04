@@ -27,9 +27,7 @@
 
 #include <pugixml.hpp>
 
-#include <chrono>
 #include <cmath>
-#include <filesystem>
 #include <functional>
 #include <iostream>
 #include <map>
@@ -38,8 +36,6 @@
 #include <string>
 #include <utility>
 #include <vector>
-
-namespace fs = std::filesystem;
 
 namespace {
 
@@ -776,15 +772,6 @@ void runTest(const std::string& name, void (*test)(), std::vector<std::string>& 
 
 int main()
 {
-    // CMOD writes a scratch file (lib.temp) into the current folder while
-    // loading the envelope library, so work in a fresh temporary folder.
-    const fs::path previous = fs::current_path();
-    const fs::path folder = fs::temp_directory_path()
-        / ("dissco-cmod-function-tests-"
-           + std::to_string(std::chrono::steady_clock::now().time_since_epoch().count()));
-    fs::create_directories(folder);
-    fs::current_path(folder);
-
     pugi::xml_document project;
     project.load_string(kTestProject);
     std::vector<std::string> failedTests;
@@ -825,8 +812,6 @@ int main()
         failedTests.push_back("load test project");
     }
 
-    fs::current_path(previous);
-    fs::remove_all(folder);
 
     if (!failedTests.empty()) {
         std::cerr << '\n' << failedTests.size() << " CMOD function test(s) failed:\n";
