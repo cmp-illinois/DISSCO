@@ -255,75 +255,77 @@ int EnvelopeLibrary::loadLibraryNewFormat (char * filename)
 
   if (!inData) {
     cerr << "ERROR: file could not be opened.\n";
-    inData.close ();
     return -1;
+  }
+  return loadLibraryNewFormat(inData);
+}
 
-  } else {
-    // tmp vars to build envs
-    float xpt, ypt;
-    xy_point point;
-    std::string line, buf, interp, stretch;
-    vector<xy_point> env_points;
+//----------------------------------------------------------------------------//
 
-    interpolation_type intyp = LINEAR;
-    stretch_type tstyp;
-    envelope_segment segment;
-    vector<envelope_segment> env_segments;
+int EnvelopeLibrary::loadLibraryNewFormat (std::istream& inData)
+{
+  // tmp vars to build envs
+  float xpt, ypt;
+  xy_point point;
+  std::string line, buf, interp, stretch;
+  vector<xy_point> env_points;
 
-    Envelope * temp_env;
+  interpolation_type intyp = LINEAR;
+  stretch_type tstyp;
+  envelope_segment segment;
+  vector<envelope_segment> env_segments;
 
-    // Bug fix: the loop stopped as soon as getline hit the end of the file,
-    // so a last line with no line break after it was skipped, and that line
-    // is what creates the last envelope. -- Tony Chai, 2026
-    while ( std::getline(inData,line) ) {
-      std::stringstream nextCheck(line);
-      std::stringstream envLine(line);
+  Envelope * temp_env;
 
-      if (nextCheck >> buf) {
-        if (buf == "Envelope" ) {
-          // start a new env
-          env_points.clear();
-          env_segments.clear();
-        } else if( envLine >> xpt >> ypt ) {
-          // must be data about env
-          point.x = xpt;
-          point.y = ypt;
-          env_points.push_back(point);
+  // Bug fix: the loop stopped as soon as getline hit the end of the file,
+  // so a last line with no line break after it was skipped, and that line
+  // is what creates the last envelope. -- Tony Chai, 2026
+  while ( std::getline(inData,line) ) {
+    std::stringstream nextCheck(line);
+    std::stringstream envLine(line);
 
-          //calculate and set length (timev) for the previous segment
-          if (env_segments.size() > 0) {
-            float lastxpt = env_points.at(env_segments.size()-1).x;
-            env_segments.at(env_segments.size()-1).length = xpt - lastxpt;
+    if (nextCheck >> buf) {
+      if (buf == "Envelope" ) {
+        // start a new env
+        env_points.clear();
+        env_segments.clear();
+      } else if( envLine >> xpt >> ypt ) {
+        // must be data about env
+        point.x = xpt;
+        point.y = ypt;
+        env_points.push_back(point);
+
+        //calculate and set length (timev) for the previous segment
+        if (env_segments.size() > 0) {
+          float lastxpt = env_points.at(env_segments.size()-1).x;
+          env_segments.at(env_segments.size()-1).length = xpt - lastxpt;
+        }
+
+        if (envLine >> interp >> stretch) {
+          if (interp == "LINEAR") {
+            intyp = LINEAR;
+          } else if (interp == "EXPONENTIAL") {
+            intyp = EXPONENTIAL;
+          } else if (interp == "CUBIC_SPLINE") {
+            intyp = CUBIC_SPLINE;
           }
-
-          if (envLine >> interp >> stretch) {
-            if (interp == "LINEAR") {
-              intyp = LINEAR;
-            } else if (interp == "EXPONENTIAL") {
-              intyp = EXPONENTIAL;
-            } else if (interp == "CUBIC_SPLINE") {
-              intyp = CUBIC_SPLINE;
-            }
-            if (stretch == "FIXED") {
-              tstyp = FIXED;
-            } else {
-              tstyp = FLEXIBLE;
-            }
-            segment.interType = intyp;
-            segment.lengthType = tstyp;
-            env_segments.push_back(segment); // length gets set the next time around
-  
+          if (stretch == "FIXED") {
+            tstyp = FIXED;
           } else {
-            // last line of an env ---- create it!
-            temp_env = new Envelope(env_points, env_segments);
-            library.push_back(temp_env);
+            tstyp = FLEXIBLE;
           }
+          segment.interType = intyp;
+          segment.lengthType = tstyp;
+          env_segments.push_back(segment); // length gets set the next time around
+
+        } else {
+          // last line of an env ---- create it!
+          temp_env = new Envelope(env_points, env_segments);
+          library.push_back(temp_env);
         }
       }
-    } // end while
-
-    inData.close ();
-  }
+    }
+  } // end while
 
   return static_cast<int>(library.size () );
 }
