@@ -35,6 +35,7 @@
 #include <map>
 #include <memory>
 #include <set>
+#include <sstream>
 #include <string>
 #include <utility>
 #include <vector>
@@ -249,6 +250,32 @@ void testPlainArithmetic()
     expectNear(eval(""), 0, 1e-9, "an empty field");
     expectProjectError([] { eval("2+*3"); }, "a malformed expression");
     expectProjectError([] { eval("1/0"); }, "division by zero");
+}
+
+// A field that is just a number gives exactly (bit for bit) the same value
+// as that number inside an expression, and anything that isn't a valid
+// number (hex, "inf", "1e") is treated the same way either way.
+void testPlainNumbersReadLikeExpressions()
+{
+    // What a field gives: its value, or "error" if CMOD rejects it.
+    auto outcome = [](const std::string& field) -> std::string {
+        try {
+            const double value = eval(field);
+            std::ostringstream out;
+            out.precision(17);
+            out << value;
+            return out.str();
+        } catch (const CmodError&) {
+            return "error";
+        }
+    };
+    for (const std::string number : {"440", " 2.5 ", "-3", "+7", "1e3", "1.5E-2", "0.1",
+                                     "3.", ".25", "123456789.123456789", "0.30000000000000004",
+                                     "0x10", "inf", "nan", "1e", "1e400", "2 3"}) {
+        expect(outcome(number) == outcome("(" + number + ")"),
+               "plain \"" + number + "\" gives " + outcome(number) + " but (" + number
+                   + ") gives " + outcome("(" + number + ")"));
+    }
 }
 
 void testFunctionsInsideExpressions()
@@ -797,6 +824,7 @@ int main()
         cmod = &utilities;
 
         runTest("plain arithmetic", testPlainArithmetic, failedTests);
+        runTest("plain numbers read like expressions", testPlainNumbersReadLikeExpressions, failedTests);
         runTest("functions inside expressions", testFunctionsInsideExpressions, failedTests);
         runTest("Inverse", testInverse, failedTests);
         runTest("EXP_DECAY (formerly LN)", testExpDecay, failedTests);

@@ -43,6 +43,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <memory>
 #include <limits>
 #include <sstream>
+#include <unordered_map>
 #include <string>
 
 static int checkedEnvelopeNumber(double number, int size,
@@ -527,6 +528,19 @@ double Utilities::evaluate(std::string _input, void* _object){
     // look for next function
     locOfFun = workingString.find("<Fun>");
   }
+  // Most fields are just a number (e.g. "440"). Read those directly instead
+  // of building a muParser for each one; anything else (operators, hex, inf,
+  // nan) still goes to muParser below. -- Tony Chai, 2026
+  if (workingString.find_first_not_of("0123456789.eE+- \t\r\n") == string::npos) {
+    const char* begin = workingString.c_str();
+    char* end = nullptr;
+    const double number = std::strtod(begin, &end);
+    if (end != begin && std::isfinite(number)
+        && workingString.find_first_not_of(" \t\r\n", end - begin) == string::npos) {
+      return number;
+    }
+  }
+
   // evaluate the expression to the final result
   mu::Parser p;
   double result;
@@ -724,131 +738,71 @@ string Utilities::evaluateFunction(string _functionString,void* _object){
   parsedDoc.load_string(_functionString.c_str());
   pugi::xml_node root = parsedDoc.document_element();
 
-  string resultString = "";
-
   pugi::xml_node functionNameElement = GFEC(root);
   string functionName = functionNameElement.child_value();
 
-  const bool needsEvent = functionName == "GetPattern"
-      || functionName == "CURRENT_TYPE"
-      || functionName == "CURRENT_CHILD_NUM"
-      || functionName == "CURRENT_PARTIAL_NUM"
-      || functionName == "AVAILABLE_EDU"
-      || functionName == "CURRENT_LAYER"
-      || functionName == "PREVIOUS_CHILD_END_TIME"
-      || functionName == "PREVIOUS_CHILD_DURATION";
-  if (needsEvent && (_object == NULL || _object == piece)) {
-    throw CmodError(CmodError::Kind::Project,
-                    "Function '" + functionName + "' requires an event context.",
-                    "Function: " + _functionString,
-                    "Use this function in an event, or replace it with a constant in Project Properties.");
-  }
+  // Every numeric function by name: how to evaluate it, and whether it reads
+  // from the event being built (and so can't be used without one).
+  // -- Tony Chai, 2026
+  using Handler = string (*)(Utilities&, pugi::xml_node, const string&, void*);
+  struct NumericFunction {
+    Handler evaluate;
+    bool needsEvent;
+  };
+  static const std::unordered_map<string, NumericFunction> numericFunctions = {
+    {"RandomInt", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_RandomInt(f, o); }, false}},
+    {"RandomOrderInt", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_RandomOrderInt(f, o); }, false}},
+    {"Random", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_Random(f, o); }, false}},
+    {"Select", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_Select(f, o); }, false}},
+    {"GetPattern", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_GetPattern(f, o); }, true}},
+    {"Markov", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_Markov(f, o); }, false}},
+    {"Randomizer", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_Randomizer(f, o); }, false}},
+    {"RandomDensity", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_RandomDensity(f, o); }, false}},
+    {"ChooseL", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_ChooseL(f, o); }, false}},
+    {"ValuePick", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_ValuePick(f, o); }, false}},
+    {"Stochos", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_Stochos(f, o); }, false}},
+    {"MakeEnvelope", {[](Utilities& u, pugi::xml_node, const string& text, void* o) {
+      // Numeric fields sample the curve at the current event checkpoint,
+      // exactly like Stochos FUNCTIONS with a single envelope. Object fields
+      // still use getEnvelope() to obtain the entire curve.
+      std::unique_ptr<Envelope> envelope(u.getEnvelope(text, o));
+      const double checkpoint = (o != NULL && o != u.piece)
+          ? static_cast<Event*>(o)->getCheckPoint() : 0.0;
+      return to_string(envelope->getValue(static_cast<m_value_type>(checkpoint), 1.));
+    }, false}},
+    {"Decay", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_Decay(f, o); }, false}},
+    {"Fibonacci", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_Fibonacci(f, o); }, false}},
+    {"EXP_DECAY", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_EXP_DECAY(f, o); }, false}},
+    // Old name of EXP_DECAY, still read so older projects compose the same.
+    {"LN", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_EXP_DECAY(f, o); }, false}},
+    {"Inverse", {[](Utilities& u, pugi::xml_node f, const string&, void* o) { return u.function_Inverse(f, o); }, false}},
+    // static functions
+    {"CURRENT_TYPE", {[](Utilities& u, pugi::xml_node, const string&, void* o) { return u.static_function_CURRENT_TYPE(o); }, true}},
+    {"CURRENT_CHILD_NUM", {[](Utilities& u, pugi::xml_node, const string&, void* o) { return u.static_function_CURRENT_CHILD_NUM(o); }, true}},
+    {"CURRENT_PARTIAL_NUM", {[](Utilities& u, pugi::xml_node, const string&, void* o) { return u.static_function_CURRENT_PARTIAL_NUM(o); }, true}},
+    {"CURRENT_DENSITY", {[](Utilities& u, pugi::xml_node, const string&, void* o) { return u.static_function_CURRENT_DENSITY(o); }, false}},
+    {"CURRENT_SEGMENT", {[](Utilities& u, pugi::xml_node, const string&, void* o) { return u.static_function_CURRENT_SEGMENT(o); }, false}},
+    {"AVAILABLE_EDU", {[](Utilities& u, pugi::xml_node, const string&, void* o) { return u.static_function_AVAILABLE_EDU(o); }, true}},
+    {"CURRENT_LAYER", {[](Utilities& u, pugi::xml_node, const string&, void* o) { return u.static_function_CURRENT_LAYER(o); }, true}},
+    {"PREVIOUS_CHILD_END_TIME", {[](Utilities& u, pugi::xml_node, const string&, void* o) { return u.static_function_PREVIOUS_CHILD_END_TIME(o); }, true}},
+    // Old name of PREVIOUS_CHILD_END_TIME, still read so older projects compose the same.
+    {"PREVIOUS_CHILD_DURATION", {[](Utilities& u, pugi::xml_node, const string&, void* o) { return u.static_function_PREVIOUS_CHILD_END_TIME(o); }, true}},
+  };
 
-  // check the function name and call the proper method for evaluation
-  if(functionName.compare("RandomInt")==0){
-     resultString = function_RandomInt(root, _object);
-  }
-
-  else if (functionName.compare("RandomOrderInt")==0) {
-    resultString = function_RandomOrderInt(root, _object);
-  }
-
-  else if (functionName.compare("Random")==0){
-    resultString = function_Random(root, _object);
-  }
-
-  else if (functionName.compare("Select")==0){
-    resultString = function_Select(root, _object);
-  }
-
-  else if (functionName.compare("GetPattern")==0){
-    resultString = function_GetPattern(root, _object);
-  }
-  else if (functionName.compare("Markov") == 0) {
-    resultString = function_Markov(root, _object);
-  }
-
-  else if (functionName.compare("Randomizer")==0){
-    resultString = function_Randomizer(root, _object);
-  }
-  else if (functionName.compare("RandomDensity") == 0) {
-    resultString = function_RandomDensity(root, _object);
-  }
-  else if (functionName.compare("ChooseL")==0){
-    resultString = function_ChooseL(root, _object);
-  }
-
-  else if (functionName.compare("ValuePick")==0){
-    resultString = function_ValuePick(root, _object);
-  }
-
-  else if (functionName.compare("Stochos")==0){
-    resultString = function_Stochos(root, _object);
-  }
-  else if (functionName == "MakeEnvelope") {
-    // Numeric fields sample the curve at the current event checkpoint,
-    // exactly like Stochos FUNCTIONS with a single envelope. Object fields
-    // still use getEnvelope() to obtain the entire curve.
-    std::unique_ptr<Envelope> envelope(getEnvelope(_functionString, _object));
-    const double checkpoint = (_object != NULL && _object != piece)
-        ? static_cast<Event*>(_object)->getCheckPoint() : 0.0;
-    resultString = to_string(envelope->getValue(static_cast<m_value_type>(checkpoint), 1.));
-  }
-  else if (functionName.compare("Decay")==0){
-    resultString = function_Decay(root, _object);
-  }
-
-  else if (functionName.compare("Fibonacci")==0){
-    resultString = function_Fibonacci(root, _object);
-  }
-
-  // LN is the old name of EXP_DECAY, still read so older projects compose
-  // the same. -- Tony Chai, 2026
-  else if (functionName == "EXP_DECAY" || functionName == "LN"){
-    resultString = function_EXP_DECAY(root, _object);
-  }
-   else if (functionName.compare("Inverse")==0){
-    resultString = function_Inverse(root, _object);
-  }
-
-  // static functions
-  else if (functionName.compare("CURRENT_TYPE")==0){
-    resultString = static_function_CURRENT_TYPE( _object);
-  }
-
-  else if (functionName.compare("CURRENT_CHILD_NUM")==0){
-    resultString = static_function_CURRENT_CHILD_NUM( _object);
-  }
-
-  else if (functionName.compare("CURRENT_PARTIAL_NUM")==0){
-    resultString = static_function_CURRENT_PARTIAL_NUM( _object);
-  }
-  else if (functionName.compare("CURRENT_DENSITY")==0){
-    resultString = static_function_CURRENT_DENSITY( _object);
-  }
-  else if (functionName.compare("CURRENT_SEGMENT")==0){
-    resultString = static_function_CURRENT_SEGMENT( _object);
-  }
-  else if (functionName.compare("AVAILABLE_EDU")==0){
-    resultString = static_function_AVAILABLE_EDU( _object);
-  }
-  else if (functionName.compare("CURRENT_LAYER")==0){
-    resultString = static_function_CURRENT_LAYER( _object);
-  }
-  // PREVIOUS_CHILD_DURATION is the old name of PREVIOUS_CHILD_END_TIME,
-  // still read so older projects compose the same. -- Tony Chai, 2026
-  else if (functionName == "PREVIOUS_CHILD_END_TIME"
-           || functionName == "PREVIOUS_CHILD_DURATION"){
-    resultString = static_function_PREVIOUS_CHILD_END_TIME( _object);
-  }
-  else {
+  const auto found = numericFunctions.find(functionName);
+  if (found == numericFunctions.end()) {
     throw CmodError(CmodError::Kind::Project,
                     "Unknown numeric function '" + functionName + "'.",
                     "Function: " + _functionString,
                     "Choose a supported numeric function in LASSIE and check its name.");
   }
-
-  return resultString;
+  if (found->second.needsEvent && (_object == NULL || _object == piece)) {
+    throw CmodError(CmodError::Kind::Project,
+                    "Function '" + functionName + "' requires an event context.",
+                    "Function: " + _functionString,
+                    "Use this function in an event, or replace it with a constant in Project Properties.");
+  }
+  return found->second.evaluate(*this, root, _functionString, _object);
 }
 
 
@@ -1602,11 +1556,12 @@ Sieve* Utilities::getSieveHelper(void* _object, pugi::xml_node _SIVFunction){
   //cout << "Utilities::getSieve. checkpoint: " << checkpoint << endl;
   // Get the function name
   pugi::xml_node functionNameElement = GFEC(GFEC(_SIVFunction));
+  const string functionName = XMLTranscode(functionNameElement);
 
   // If the function is ReadSIVFile:
   // Get the _SIVFunction from the filename, and recursively call itself
   // on that function.
-  if (XMLTranscode(functionNameElement).compare("ReadSIVFile")==0){
+  if (functionName == "ReadSIVFile"){
     string fileName = XMLTranscode(GNES(functionNameElement));
     pugi::xml_node k = getEventElement(eventSiv, fileName);
     ObjectReferenceGuard reference(resolvingObjectReferences, k, "sieve", fileName);
@@ -1616,7 +1571,7 @@ Sieve* Utilities::getSieveHelper(void* _object, pugi::xml_node _SIVFunction){
   // If the function is MakeSieve:
   // Read each of the values from _SIVFunction and create a new Sieve with
   // those values.
-  else if (XMLTranscode(functionNameElement).compare("MakeSieve")==0){
+  else if (functionName == "MakeSieve"){
   /*
     // Get minVal
     pugi::xml_node elementIter = GNES(GFEC(GFEC(_SIVFunction)));
@@ -1698,7 +1653,7 @@ Sieve* Utilities::getSieveHelper(void* _object, pugi::xml_node _SIVFunction){
   // If the function is Select:
   // Parse the Select function from _SIVFunction and recursively call itself
   // on the new function.
-  else if (XMLTranscode(functionNameElement).compare("Select")==0){
+  else if (functionName == "Select"){
     string selectedListElementString = "<root>" + function_SelectObject(GFEC(_SIVFunction), _object) + "</root>";
     pugi::xml_document doc;
     doc.load_string(selectedListElementString.c_str());
@@ -1731,11 +1686,12 @@ Patter* Utilities::getPattern(string _functionString, void* _object){
 Patter* Utilities::getPatternHelper(void* _object, pugi::xml_node _PATFunction){
   // Get the function name
   pugi::xml_node functionNameElement = GFEC(GFEC(_PATFunction));
+  const string functionName = XMLTranscode(functionNameElement);
 
   // If the function is ReadPATFile:
   // Get the _PATFunction from the filename, and recursively call itself
   // on that function.
-  if (XMLTranscode(functionNameElement).compare("ReadPATFile")==0){
+  if (functionName == "ReadPATFile"){
     string fileName = XMLTranscode(GNES(functionNameElement));
     pugi::xml_node k = getEventElement(eventPat, fileName);
     ObjectReferenceGuard reference(resolvingObjectReferences, k, "pattern", fileName);
@@ -1747,7 +1703,7 @@ Patter* Utilities::getPatternHelper(void* _object, pugi::xml_node _PATFunction){
   // If the function is MakePattern:
   // Read each of the values from _PATFunction and create a new Patter with
   // those values.
-  else if (XMLTranscode(functionNameElement).compare("MakePattern")==0){
+  else if (functionName == "MakePattern"){
 
 cout << "Patter* Utilities::getPatternHelper - MakePattern option" << endl;
     pugi::xml_node listElement = GNES(GFEC(GFEC(_PATFunction)));
@@ -1774,7 +1730,7 @@ cout << "intList size: " << stringList.size() << "    " << endl;
   // Expand the pattern.
   //
   // TODO: Figure out if this is true.
-  else if (XMLTranscode(functionNameElement).compare("ExpandPattern")==0){
+  else if (functionName == "ExpandPattern"){
     cout<<"see Expand pattern:"<<endl;
     cout<<XMLTranscode(GFEC(_PATFunction))<<endl;
     pugi::xml_node elementIter = GNES(GFEC(GFEC(_PATFunction)));
@@ -1801,7 +1757,7 @@ cout << "intList size: " << stringList.size() << "    " << endl;
   // If the function is Select:
   // Parse the Select function from _PATFunction and recursively call itself
   // on the new function.
-  else if (XMLTranscode(functionNameElement).compare("Select")==0){
+  else if (functionName == "Select"){
     string selectedListElementString = "<root>" + function_SelectObject(GFEC(_PATFunction), _object) + "</root>";
 
     // Here we need to push a temporary parser in the _object to stored the
@@ -1841,8 +1797,9 @@ pugi::xml_node Utilities::getSPAFunctionElementHelper(void* _object, pugi::xml_n
     SPAElement = _SPAFunction;
   }
   pugi::xml_node functionNameElement = GFEC(GFEC(SPAElement));
+  const string functionName = XMLTranscode(functionNameElement);
 
-  if (XMLTranscode(functionNameElement).compare("ReadSPAFile")==0){
+  if (functionName == "ReadSPAFile"){
     string functionString = XMLTC(SPAElement);
     string fileName;
 
@@ -1880,7 +1837,7 @@ pugi::xml_node Utilities::getSPAFunctionElementHelper(void* _object, pugi::xml_n
     return getSPAFunctionElementHelper(_object, GNES(GNES(GFEC(k))), false);
 
   }
-  else if (XMLTranscode(functionNameElement).compare("Select")==0){
+  else if (functionName == "Select"){
     string selectedListElementString = "<root>" + function_SelectObject(GFEC(SPAElement), _object) + "</root>";
 
     // Here we need to push a temporary parser in the _object to stored the
@@ -1923,8 +1880,9 @@ pugi::xml_node Utilities::getREVFunctionElementHelper(void* _object, pugi::xml_n
   }
 
   pugi::xml_node functionNameElement = GFEC(GFEC(REVElement));
+  const string functionName = XMLTranscode(functionNameElement);
 
-  if (XMLTranscode(functionNameElement).compare("ReadREVFile")==0){
+  if (functionName == "ReadREVFile"){
     string functionString = XMLTC(REVElement);
     string fileName;
 
@@ -1962,7 +1920,7 @@ pugi::xml_node Utilities::getREVFunctionElementHelper(void* _object, pugi::xml_n
     return getREVFunctionElementHelper(_object, GNES(GNES(GFEC(k))), false); ;
 
   }
-  else if (XMLTranscode(functionNameElement).compare("Select")==0){
+  else if (functionName == "Select"){
     string selectedListElementString = "<root>" + function_SelectObject(GFEC(REVElement), _object) + "</root>";
 
     // Here we need to push a temporary parser in the _object to stored the
@@ -2010,6 +1968,7 @@ pugi::xml_node Utilities::getFILFunctionElementHelper(void* _object, pugi::xml_n
 
   if (GFEC(FILElement)== pugi::xml_node() || GFEC(GFEC(FILElement))== pugi::xml_node()) return pugi::xml_node();
    pugi::xml_node functionNameElement = GFEC(GFEC(FILElement));
+   const string functionName = XMLTranscode(functionNameElement);
 
   if ( XMLTC(FILElement) ==""){
     cout<<"no filter"<<endl;
@@ -2017,7 +1976,7 @@ pugi::xml_node Utilities::getFILFunctionElementHelper(void* _object, pugi::xml_n
   }
 
 
-  if (XMLTranscode(functionNameElement).compare("ReadFILFile")==0){
+  if (functionName == "ReadFILFile"){
     string functionString = XMLTC(FILElement);
     string fileName;
 
@@ -2055,7 +2014,7 @@ pugi::xml_node Utilities::getFILFunctionElementHelper(void* _object, pugi::xml_n
     return getFILFunctionElementHelper(_object, GNES(GNES(GFEC(k))), false); ;
 
   }
-  else if (XMLTranscode(functionNameElement).compare("Select")==0){
+  else if (functionName == "Select"){
     string selectedListElementString = "<root>" + function_SelectObject(GFEC(FILElement), _object) + "</root>";
 
     // Here we need to push a temporary parser in the _object to stored the
