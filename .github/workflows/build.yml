@@ -257,7 +257,10 @@ jobs:
 
   macos:
     name: macOS build
-    runs-on: macos-14
+    # GitHub retired the macos-14 image on 2026-11-02, so this runs on the
+    # oldest image left. Configure below still builds for macOS 14, so Macs
+    # on 14 stay supported. -- Tony Chai, 2026
+    runs-on: macos-15
     steps:
       - name: Configure Git defaults
         run: git config --global init.defaultBranch main
@@ -271,9 +274,10 @@ jobs:
           HOMEBREW_NO_INSTALL_CLEANUP: 1
         run: |
           # The image's preinstalled azure-cli moved from a formula to a cask,
-          # so brew update reinstalls it. That upgrades OpenSSL, which
-          # Homebrew builds from source on macOS 14 (about 3 min). Nothing
-          # here uses Azure, so remove it first if it's installed.
+          # so brew update reinstalls it, along with a newer OpenSSL (built
+          # from source when Homebrew has no prebuilt copy for the image,
+          # about 3 min). Nothing here uses Azure, so remove it first if it's
+          # installed.
           if brew list --formula azure-cli >/dev/null 2>&1; then
             brew uninstall --ignore-dependencies azure-cli
           fi
@@ -312,9 +316,9 @@ jobs:
         uses: hendrikmuhs/ccache-action@v1.2.24
         with:
           key: macos
-          # Download ccache's official prebuilt binary: Homebrew has no
-          # prebuilt ccache for macOS 14, so it would build it (and GCC)
-          # from source, which takes over an hour.
+          # Download ccache's official prebuilt binary, so it never depends
+          # on Homebrew having a prebuilt ccache for the image (on macOS 14
+          # it didn't, and building it and GCC from source took over an hour).
           install: binary
           max-size: 500M
           job-summary: Compiler cache stats
@@ -327,7 +331,11 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON \
             -DCMAKE_COMPILE_WARNING_AS_ERROR=ON \
+            -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0 \
             -DCMAKE_PREFIX_PATH="${QT_ROOT_DIR}"
+        # Building for macOS 14 on the macOS 15 image keeps DISSCO usable on
+        # 14: with warnings as errors, code that needs anything newer than
+        # macOS 14 fails the build here. -- Tony Chai, 2026
 
       - name: Build
         id: build
