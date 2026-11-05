@@ -10,14 +10,12 @@ on:
       - '**/CMakeLists.txt'
       - '**/*.cmake'
       - '.github/workflows/build.yml'
+  # Every pull request is built and tested, whatever files it changes. A
+  # filter here skipped PRs that only changed files the build or tests use
+  # (LASSIE's .ui layouts, the .dissco test projects, cmod.manifest,
+  # packaging scripts), and a required check that never starts would block
+  # docs-only PRs forever. -- Tony Chai, 2026
   pull_request:
-    paths:
-      - '**/*.cpp'
-      - '**/*.hpp'
-      - '**/*.h'
-      - '**/CMakeLists.txt'
-      - '**/*.cmake'
-      - '.github/workflows/build.yml'
   workflow_dispatch:
   # GitHub deletes caches that go unused for 7 days, and main only builds
   # when code changes, so after a quiet week the next PR rebuilt everything
