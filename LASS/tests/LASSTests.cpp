@@ -15,6 +15,7 @@
 #include "Track.h"
 #include "Types.h"
 
+#include <algorithm>
 #include <cmath>
 #include <iostream>
 #include <limits>
@@ -51,21 +52,56 @@ void expectNear(double actual, double expected, const std::string& message)
     }
 }
 
-// MultiPan::clone() must deep-copy, not share pointers with the original.
+// Expects two multi-channel results to hold the same samples.
+void expectSameChannels(MultiTrack& actual, MultiTrack& expected, const std::string& what)
+{
+    if (actual.size() != expected.size()) {
+        expect(false, what + ": " + std::to_string(actual.size()) + " channels instead of "
+                          + std::to_string(expected.size()));
+        return;
+    }
+    for (int c = 0; c < expected.size(); c++) {
+        SoundSample& a = actual.get(c)->getWave();
+        SoundSample& e = expected.get(c)->getWave();
+        if (a.getSampleCount() != e.getSampleCount()) {
+            expect(false, what + ": channel " + std::to_string(c) + " has "
+                              + std::to_string(a.getSampleCount()) + " samples instead of "
+                              + std::to_string(e.getSampleCount()));
+            continue;
+        }
+        for (m_sample_count_type i = 0; i < e.getSampleCount(); i++)
+            expectNear(a[i], e[i], what + ": channel " + std::to_string(c) + " sample "
+                                       + std::to_string(i));
+    }
+}
+
+// MultiPan::clone() must deep-copy: once the original is deleted, the clone
+// still spreads a track over the channels exactly as the original did.
+// (This used to only check that nothing crashed.) -- Tony Chai, 2026
 void testMultiPanCloneIsIndependent()
 {
-    MultiPan* original = new MultiPan(4);
+    constexpr int channels = 4;
+    Track track(8, 44100, true);
+    for (m_sample_count_type i = 0; i < 8; i++)
+        track.getWave()[i] = static_cast<float>(i + 1);
+
+    MultiPan* original = new MultiPan(channels);
     original->addEntryLocation(0.0f, 0.0f, 1.0f);
     original->addEntryLocation(1.0f, static_cast<float>(M_PI / 2.0), 0.5f);
     original->doneAddEntryLocation();
-
     MultiPan* clone = original->clone();
-    delete original;
 
-    clone->print();
+    std::unique_ptr<MultiTrack> expected(original->spatialize_Track(track, channels));
+    delete original;
+    std::unique_ptr<MultiTrack> actual(clone->spatialize_Track(track, channels));
     delete clone;
 
-    expect(true, "MultiPan clone/delete-original/use-clone completed without crashing");
+    double loudest = 0.0;
+    for (int c = 0; c < expected->size(); c++)
+        for (m_sample_count_type i = 0; i < 8; i++)
+            loudest = std::max(loudest, std::abs(static_cast<double>(expected->get(c)->getWave()[i])));
+    expect(loudest > 0.0, "the original MultiPan produced silence, so the comparison proves nothing");
+    expectSameChannels(*actual, *expected, "clone used after the original was deleted");
 }
 
 // Sound::setDetune must reject invalid values and canonicalize direction to +/-1.
@@ -159,7 +195,8 @@ void testSpatializerMultiTrackComposite()
             const double expected =
                 (samplesA[i] + samplesB[i]) / numOutputTracks;
             expectNear(outWave[i], expected,
-                       "composited multi-track output sample mismatch");
+                       "channel " + std::to_string(c) + " sample " + std::to_string(i)
+                           + " should be the average of the input tracks");
         }
     }
     delete result;
@@ -196,17 +233,49 @@ void testSpatializerSpreadsTrackOverIndependentChannels()
     expectNear(input.getWave()[0], samples[0], "the input track must not change");
 }
 
-// Reverb must own a private copy of its Envelope, not a dangling pointer to the caller's.
+// Reverb keeps its own copy of the reverb-amount envelope: deleting the
+// caller's envelope right after making the Reverb must not change what it
+// produces. It's compared with the same Reverb whose envelope stays alive.
+// (This used to only check that nothing crashed.) -- Tony Chai, 2026
 void testReverbOwnsItsOwnEnvelopeCopy()
 {
-    Envelope* callerOwnedInput = new Envelope();
-    Reverb* reverb = new Reverb(callerOwnedInput, /*hilow_spread=*/0.5f,
-                                 /*gainAllPass=*/0.7f, /*delay=*/0.03f,
-                                 /*samplingRate=*/44100);
-    delete reverb;
+    auto makeAmount = [] {
+        vector<xy_point> points = {xy_point(0.0f, 0.5f), xy_point(1.0f, 0.5f)};
+        envelope_segment seg{};
+        seg.interType = LINEAR;
+        seg.lengthType = FLEXIBLE;
+        seg.timeValue = 1.0f;
+        vector<envelope_segment> segs = {seg};
+        return new Envelope(points, segs);
+    };
+    // A click followed by silence, so the reverb tail is easy to see.
+    Track click(4410, 44100, true);
+    click.getWave()[0] = 1.0f;
 
-    expect(true,
-           "Reverb construct/destroy with a caller-owned Envelope completed without crashing");
+    Envelope* keptAmount = makeAmount();
+    Reverb reference(keptAmount, 0.5f, 0.7f, 0.03f, 44100);
+    Envelope* deletedAmount = makeAmount();
+    Reverb reverb(deletedAmount, 0.5f, 0.7f, 0.03f, 44100);
+    delete deletedAmount;
+
+    std::unique_ptr<Track> expected(&reference.do_reverb_Track(click));
+    std::unique_ptr<Track> actual(&reverb.do_reverb_Track(click));
+    delete keptAmount;
+
+    SoundSample& e = expected->getWave();
+    SoundSample& a = actual->getWave();
+    double tail = 0.0;
+    for (m_sample_count_type i = 1; i < e.getSampleCount(); i++)
+        tail = std::max(tail, std::abs(static_cast<double>(e[i])));
+    expect(tail > 1e-4, "the reverb added no tail after the click");
+    if (a.getSampleCount() != e.getSampleCount()) {
+        expect(false, "output has " + std::to_string(a.getSampleCount())
+                          + " samples instead of " + std::to_string(e.getSampleCount()));
+        return;
+    }
+    for (m_sample_count_type i = 0; i < e.getSampleCount(); i++)
+        expectNear(a[i], e[i], "sample " + std::to_string(i)
+                                   + " changed when the caller's envelope was deleted");
 }
 
 // Sound(numPartials, freq) should handle numPartials <= 0 safely, not crash.
@@ -293,7 +362,8 @@ void testPanCenteredAcrossThreeChannels()
         SoundSample& wave = result->get(c)->getWave();
         for (m_sample_count_type i = 0; i < 4; i++) {
             expectNear(wave[i], expectedScale[c] * 2.0,
-                       "centered pan should scale each channel by its distance from center");
+                       "channel " + std::to_string(c) + " sample " + std::to_string(i)
+                           + ": centered pan should scale each channel by its distance from center");
         }
     }
     delete result;
@@ -313,8 +383,10 @@ void testPanSingleChannelIsUnscaled()
     expect(result->size() == 1, "Pan with numTracks=1 should still produce one channel");
     SoundSample& wave = result->get(0)->getWave();
     for (m_sample_count_type i = 0; i < 4; i++) {
-        expect(!std::isnan(wave[i]), "single-channel pan must not produce NaN");
-        expectNear(wave[i], 2.0, "single-channel pan should pass the signal through unscaled");
+        expect(!std::isnan(wave[i]), "sample " + std::to_string(i)
+                                         + ": single-channel pan must not produce NaN");
+        expectNear(wave[i], 2.0, "sample " + std::to_string(i)
+                                     + ": single-channel pan should pass the signal through unscaled");
     }
     delete result;
 }
@@ -333,6 +405,50 @@ void testMarkovModelInvalidStateThrows()
     }
     expect(threw,
            "querying an out-of-range state must throw a catchable exception, not abort the process");
+}
+
+// Renders a one-partial 440 Hz sound lasting 1 second into 2 channels and
+// checks the audio itself: each channel holds exactly 1 second of samples,
+// none of them NaN or infinite, the sound isn't silent, and its pitch is
+// 440 Hz (counted as upward zero crossings). -- Tony Chai, 2026
+void testSoundRendersItsPitchAndLength()
+{
+    constexpr m_rate_type rate = 44100;
+    constexpr double frequency = 440.0;
+    Sound sound(1, frequency);
+    sound.setParam(DURATION, 1.0);
+    std::unique_ptr<MultiTrack> rendered(sound.render(2, rate));
+    expect(rendered->size() == 2, "expected 2 channels, got "
+                                      + std::to_string(rendered->size()));
+    for (int c = 0; c < rendered->size(); c++) {
+        const std::string channel = "channel " + std::to_string(c);
+        SoundSample& wave = rendered->get(c)->getWave();
+        expect(wave.getSampleCount() == rate,
+               channel + ": expected " + std::to_string(rate) + " samples (1 second), got "
+                   + std::to_string(wave.getSampleCount()));
+        long long badSamples = 0;
+        int upwardCrossings = 0;
+        double peak = 0.0;
+        for (m_sample_count_type i = 0; i < wave.getSampleCount(); i++) {
+            const double value = wave[i];
+            if (!std::isfinite(value)) {
+                ++badSamples;
+                continue;
+            }
+            peak = std::max(peak, std::abs(value));
+            if (i > 0 && wave[i - 1] < 0 && value >= 0)
+                ++upwardCrossings;
+        }
+        expect(badSamples == 0, channel + ": " + std::to_string(badSamples)
+                                    + " NaN/infinite samples");
+        expect(peak > 1e-4, channel + ": the sound is silent (peak "
+                                + std::to_string(peak) + ")");
+        // A 440 Hz wave crosses zero upward 440 times a second; allow one
+        // either way for where the wave starts and ends.
+        expect(std::abs(upwardCrossings - 440) <= 1,
+               channel + ": pitch should be 440 Hz, but the wave crossed zero upward "
+                   + std::to_string(upwardCrossings) + " times in 1 second");
+    }
 }
 
 // Runs one test and reports it by name. An unexpected exception counts as a
@@ -379,6 +495,7 @@ int main()
     runTest("testMarkovModelInvalidStateThrows", testMarkovModelInvalidStateThrows, failedTests);
     runTest("testPanCenteredAcrossThreeChannels", testPanCenteredAcrossThreeChannels, failedTests);
     runTest("testPanSingleChannelIsUnscaled", testPanSingleChannelIsUnscaled, failedTests);
+    runTest("testSoundRendersItsPitchAndLength", testSoundRendersItsPitchAndLength, failedTests);
 
     if (!failedTests.empty()) {
         std::cerr << '\n' << failedTests.size() << " LASS test(s) failed:\n";
