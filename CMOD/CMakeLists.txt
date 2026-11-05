@@ -52,8 +52,9 @@ if(BUILD_TESTING)
             "${CMAKE_SOURCE_DIR}/Documents/examples/tutorial_sound"
     )
     # Each time limit is for that one test alone (not the whole run). This one
-    # takes 2-8 s; 60 s leaves room for slow machines while a stuck run fails
-    # in a minute instead of five. -- Tony Chai, 2026
+    # composes each project three times and takes 2-10 s; 60 s leaves room for
+    # slow machines while a stuck run fails in a minute instead of five.
+    # -- Tony Chai, 2026
     set_tests_properties(CMOD.ExampleProjectsCompose PROPERTIES TIMEOUT 60)
 
     # Checks the functions composers type into LASSIE fields (RandomInt,
@@ -96,6 +97,12 @@ set(CMOD_EXECUTABLE_BASENAME "cmod")
 set_target_properties(CMOD PROPERTIES
     OUTPUT_NAME "${CMOD_EXECUTABLE_BASENAME}"
 )
+# Bug fix: on Windows, project paths with letters outside the system code
+# page reached cmod as "?". The manifest makes Windows give cmod UTF-8 paths;
+# CMake merges it into cmod.exe's own manifest. -- Tony Chai, 2026
+if(MSVC)
+    target_sources(CMOD PRIVATE cmod.manifest)
+endif()
 # CMOD is consumed by LASSIE as a standalone subprocess (QProcess::start),
 # not linked into it. No ENABLE_EXPORTS / WINDOWS_EXPORT_ALL_SYMBOLS is
 # needed — and adding them just to "make the link work" backfires on
