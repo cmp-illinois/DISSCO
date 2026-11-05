@@ -6,8 +6,11 @@
 //   - the project opens and saves without errors or pop-up dialogs,
 //   - nothing in the original file is lost or changed by saving,
 //   - saving an unchanged project a second time gives an identical file.
+// The round trip happens in a folder whose name has spaces, an accent and
+// Chinese characters, as a user's folder or Windows user name might.
 // It also opens each project from a read-only folder and checks that all of
-// its envelopes are loaded.
+// its envelopes are loaded, and repeats the round trip from a copy with
+// Windows (CRLF) line endings, as LASSIE saves projects on Windows.
 //
 // Run through ctest (LASSIE.ProjectSaveRoundTrip). The project files used are
 // the tutorial examples in Documents/examples/ plus
@@ -28,6 +31,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QListWidgetItem>
+#include <QProcess>
 #include <QMessageBox>
 #include <QMetaObject>
 #include <QRegularExpression>
@@ -44,6 +48,8 @@ namespace {
 
 std::string currentTest;
 int currentTestFailures = 0;
+// Set by a test that couldn't run here, so it isn't reported as OK.
+bool currentTestSkipped = false;
 
 void fail(const QString& message)
 {
@@ -193,18 +199,58 @@ bool saveInWindow(MainWindow& window)
     return saved;
 }
 
-// The round trip for one project file.
-void roundTrip(MainWindow& window, const QString& originalPath)
+// Number of envelopes in a project file's <EnvelopeLibrary> (each starts
+// with an "Envelope <n>" line).
+int envelopesInFile(const QString& filePath)
 {
-    QTemporaryDir workDir;
+    QFile file(filePath);
+    require(file.open(QIODevice::ReadOnly),
+            QStringLiteral("could not read %1").arg(filePath));
+    QDomDocument document;
+    require(static_cast<bool>(document.setContent(&file)),
+            QStringLiteral("%1 is not valid XML").arg(filePath));
+    const QString library = document.documentElement()
+                                .firstChildElement(QStringLiteral("EnvelopeLibrary")).text();
+    return static_cast<int>(library.split(QLatin1Char('\n'))
+                                .filter(QRegularExpression(QStringLiteral("^\\s*Envelope\\b")))
+                                .size());
+}
+
+// Copies a project, giving the copy Windows (CRLF) line endings.
+bool copyWithWindowsLineEndings(const QString& from, const QString& to)
+{
+    QFile in(from);
+    QFile out(to);
+    if (!in.open(QIODevice::ReadOnly) || !out.open(QIODevice::WriteOnly))
+        return false;
+    QByteArray text = in.readAll();
+    text.replace("\r\n", "\n");
+    text.replace("\n", "\r\n");
+    return out.write(text) == text.size();
+}
+
+// The round trip for one project file, in a folder whose name has spaces, an
+// accent and Chinese characters. With windowsLineEndings, it starts from a
+// copy with CRLF line endings, and the values must still match the original.
+void roundTripCopy(MainWindow& window, const QString& originalPath, bool windowsLineEndings)
+{
+    QTemporaryDir workDir(QDir::tempPath()
+                          + QStringLiteral("/LASSIE test Zoë 音乐-XXXXXX"));
     require(workDir.isValid(), QStringLiteral("could not create a temporary folder"));
     const QString copyPath = workDir.filePath(QFileInfo(originalPath).fileName());
-    require(QFile::copy(originalPath, copyPath),
+    require(windowsLineEndings ? copyWithWindowsLineEndings(originalPath, copyPath)
+                               : QFile::copy(originalPath, copyPath),
             QStringLiteral("could not copy %1 to a temporary folder").arg(originalPath));
     QFile::setPermissions(copyPath, QFile::ReadOwner | QFile::WriteOwner);
 
     require(openInWindow(window, copyPath),
             QStringLiteral("LASSIE could not open the project"));
+    // Every envelope must be loaded, not only kept as text.
+    EnvelopeLibraryEntry* entries = Inst::get_project_manager()->envlibentries();
+    const int loaded = entries ? entries->count() : 0;
+    const int expected = envelopesInFile(originalPath);
+    if (loaded != expected)
+        fail(QStringLiteral("%1 of %2 envelopes loaded").arg(loaded).arg(expected));
     require(saveInWindow(window), QStringLiteral("first save reported failure"));
     const QByteArray firstSave = readAll(copyPath);
 
@@ -253,22 +299,74 @@ void roundTrip(MainWindow& window, const QString& originalPath)
     }
 }
 
-// Number of envelopes in a project file's <EnvelopeLibrary> (each starts
-// with an "Envelope <n>" line).
-int envelopesInFile(const QString& filePath)
+void roundTrip(MainWindow& window, const QString& originalPath)
 {
-    QFile file(filePath);
-    require(file.open(QIODevice::ReadOnly),
-            QStringLiteral("could not read %1").arg(filePath));
-    QDomDocument document;
-    require(static_cast<bool>(document.setContent(&file)),
-            QStringLiteral("%1 is not valid XML").arg(filePath));
-    const QString library = document.documentElement()
-                                .firstChildElement(QStringLiteral("EnvelopeLibrary")).text();
-    return static_cast<int>(library.split(QLatin1Char('\n'))
-                                .filter(QRegularExpression(QStringLiteral("^\\s*Envelope\\b")))
-                                .size());
+    roundTripCopy(window, originalPath, false);
 }
+
+void roundTripWindowsLineEndings(MainWindow& window, const QString& originalPath)
+{
+    roundTripCopy(window, originalPath, true);
+}
+
+// Makes a folder read-only for as long as this object lives, then makes it
+// writable again so it can be removed.
+//
+// Bug fix: on Windows, the read-only flag that QFile::setPermissions sets on a
+// folder doesn't stop anyone from writing files into it, so the read-only
+// folder check passed on Windows without testing anything. On Windows a "deny
+// write" permission rule is now added with icacls instead. Since a user with
+// admin rights (or root on macOS/Linux) can still write anywhere, isReadOnly()
+// tries to write a probe file to confirm the folder really is read-only.
+// -- Tony Chai, 2026
+class ReadOnlyFolder {
+public:
+    explicit ReadOnlyFolder(const QString& path) : path_(path)
+    {
+#ifdef Q_OS_WIN
+        // S-1-1-0 is "Everyone". (OI)(CI) also covers the files in the folder.
+        // Only the write rights are denied: icacls's plain (W) also includes
+        // the right to wait on a file, which Windows needs to read it.
+        runIcacls({QStringLiteral("/deny"),
+                   QStringLiteral("*S-1-1-0:(OI)(CI)(WD,AD,WEA,WA)")});
+#else
+        writable_ = QFile::permissions(path_);
+        QFile::setPermissions(path_, QFile::ReadOwner | QFile::ExeOwner);
+#endif
+    }
+
+    ~ReadOnlyFolder()
+    {
+#ifdef Q_OS_WIN
+        runIcacls({QStringLiteral("/remove:d"), QStringLiteral("*S-1-1-0")});
+#else
+        QFile::setPermissions(path_, writable_);
+#endif
+    }
+
+    bool isReadOnly() const
+    {
+        QFile probe(QDir(path_).filePath(QStringLiteral("write-probe.tmp")));
+        if (!probe.open(QIODevice::WriteOnly))
+            return true;
+        probe.close();
+        probe.remove();
+        return false;
+    }
+
+private:
+#ifdef Q_OS_WIN
+    void runIcacls(const QStringList& change) const
+    {
+        QProcess::execute(QStringLiteral("icacls"),
+                          QStringList{QDir::toNativeSeparators(path_)} << change
+                              << QStringLiteral("/Q"));
+    }
+#else
+    QFile::Permissions writable_;
+#endif
+    QString path_;
+};
 
 // A project opened from a folder LASSIE can't write to (read-only, a shared
 // drive) must still come with all of its envelopes.
@@ -281,12 +379,22 @@ void openFromReadOnlyFolder(MainWindow& window, const QString& originalPath)
     require(QFile::copy(originalPath, copyPath),
             QStringLiteral("could not copy %1 to a temporary folder").arg(originalPath));
 
-    const QFile::Permissions writable = QFile::permissions(workDir.path());
-    QFile::setPermissions(workDir.path(), QFile::ReadOwner | QFile::ExeOwner);
-    const bool opened = openInWindow(window, copyPath);
-    EnvelopeLibraryEntry* entries = Inst::get_project_manager()->envlibentries();
-    const int loaded = (opened && entries) ? entries->count() : 0;
-    QFile::setPermissions(workDir.path(), writable);  // so the folder can be removed
+    bool opened = false;
+    int loaded = 0;
+    {
+        ReadOnlyFolder readOnly(workDir.path());
+        if (!readOnly.isReadOnly()) {
+            // Passing here would prove nothing, so say so instead.
+            std::cerr << "SKIPPED [" << currentTest << "]: this account can write to a "
+                         "read-only folder (running as root or administrator?), so the "
+                         "check can't be done here\n";
+            currentTestSkipped = true;
+            return;
+        }
+        opened = openInWindow(window, copyPath);
+        EnvelopeLibraryEntry* entries = Inst::get_project_manager()->envlibentries();
+        loaded = (opened && entries) ? entries->count() : 0;
+    }  // the folder is writable again here, so it can be removed
 
     require(opened, QStringLiteral("LASSIE could not open the project from a read-only folder"));
     if (loaded != expected)
@@ -299,6 +407,7 @@ void runTest(const std::string& name, void (*test)(MainWindow&, const QString&),
 {
     currentTest = name;
     currentTestFailures = 0;
+    currentTestSkipped = false;
     std::cerr << "RUN  " << name << '\n';
     try {
         test(window, path);
@@ -311,7 +420,7 @@ void runTest(const std::string& name, void (*test)(MainWindow&, const QString&),
     }
     if (currentTestFailures > 0)
         failedTests.push_back(name);
-    else
+    else if (!currentTestSkipped)
         std::cerr << "OK   " << name << '\n';
 }
 
@@ -347,6 +456,8 @@ int runProjectRoundTripTest()
             runTest("roundTrip(" + fileName + ")", roundTrip, window, project, failedTests);
             runTest("openFromReadOnlyFolder(" + fileName + ")", openFromReadOnlyFolder,
                     window, project, failedTests);
+            runTest("roundTripWindowsLineEndings(" + fileName + ")",
+                    roundTripWindowsLineEndings, window, project, failedTests);
         }
     }
     QSettings().clear();
