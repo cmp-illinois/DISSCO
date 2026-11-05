@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  Bug fix: Windows handed cmod the project path in the system code page, so a
+  path with letters that code page doesn't have (Chinese, Cyrillic, Greek...,
+  in a folder or Windows user name) reached cmod as "?" and nothing could be
+  composed. This asks Windows (10 version 1903 and later) to use UTF-8 for
+  cmod instead, so every path arrives and opens as it is. Older Windows
+  ignores it and behaves as before. Merged into cmod.exe by CMOD/CMakeLists.txt.
+  Tony Chai, 2026 (XML comments can't contain a double dash.)
+-->
+<assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">
+  <application xmlns="urn:schemas-microsoft-com:asm.v3">
+    <windowsSettings>
+      <activeCodePage xmlns="http://schemas.microsoft.com/SMI/2019/WindowsSettings">UTF-8</activeCodePage>
+    </windowsSettings>
+  </application>
+</assembly>

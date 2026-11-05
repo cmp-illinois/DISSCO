@@ -10,12 +10,20 @@
 //   - it writes exactly one sound file and one .particel file,
 //   - the sound file opens, matches the project's channel count and sample
 //     rate, isn't silent, and contains no NaN/infinite samples,
-//   - running it again in another fresh folder gives identical files
-//     (same project + same seed = same music).
+//   - composing it again gives identical files (same project + same seed =
+//     same music), both
+//       - in a folder whose name has spaces, an accent and Chinese
+//         characters, as a user's folder or Windows user name might, and
+//       - from a copy with Windows (CRLF) line endings, as LASSIE saves
+//         projects on Windows.
 // Output isn't compared against stored "expected" audio, because cmod's
 // random numbers come from the platform's rand(), which differs between
 // Windows, macOS and Linux.
 
+#ifdef _WIN32
+// Lets the test open sound files whose paths aren't in the Windows code page.
+#define ENABLE_SNDFILE_WINDOWS_PROTOTYPES 1
+#endif
 #include <sndfile.h>
 
 #include <algorithm>
@@ -76,12 +84,15 @@ std::string projectSetting(const std::string& projectXml, const std::string& tag
     return std::regex_search(projectXml, match, pattern) ? match[1].str() : "";
 }
 
-// A fresh, empty folder under the system temp directory.
-fs::path freshFolder(const std::string& label)
+// A fresh, empty folder under the system temp directory. With
+// unusualName, the folder's name has spaces, an accent and Chinese characters.
+fs::path freshFolder(const std::string& label, bool unusualName = false)
 {
     const auto stamp = std::chrono::steady_clock::now().time_since_epoch().count();
-    fs::path folder = fs::temp_directory_path()
-        / ("dissco-cmod-test-" + label + "-" + std::to_string(stamp));
+    fs::path name = unusualName ? fs::path(u8"dissco cmod test Zoë 音乐 ")
+                                : fs::path("dissco-cmod-test-");
+    name += label + "-" + std::to_string(stamp);
+    fs::path folder = fs::temp_directory_path() / name;
     fs::remove_all(folder);
     fs::create_directories(folder);
     return folder;
@@ -98,16 +109,17 @@ int runCmod(const fs::path& cmod, const fs::path& project, const fs::path& log)
     // waited until the 300 s timeout. It now gets an empty input, answers
     // nothing, and runs once, as it does on GitHub. -- Tony Chai, 2026
 #ifdef _WIN32
-    const std::string noInput = " < NUL";
+    // Built from wide strings, so paths outside the Windows code page reach
+    // cmod as they are (a narrow string would turn them into "?").
+    std::wstring command = L"\"" + cmod.wstring() + L"\" \"" + project.wstring()
+        + L"\" > \"" + log.wstring() + L"\" 2>&1 < NUL";
+    command = L"\"" + command + L"\""; // cmd.exe strips one outer pair of quotes
+    const int status = _wsystem(command.c_str());
 #else
-    const std::string noInput = " < /dev/null";
-#endif
-    std::string command = "\"" + cmod.string() + "\" \"" + project.string()
-        + "\" > \"" + log.string() + "\" 2>&1" + noInput;
-#ifdef _WIN32
-    command = "\"" + command + "\""; // cmd.exe strips one outer pair of quotes
-#endif
+    const std::string command = "\"" + cmod.string() + "\" \"" + project.string()
+        + "\" > \"" + log.string() + "\" 2>&1 < /dev/null";
     const int status = std::system(command.c_str());
+#endif
     fs::current_path(previous);
 #ifdef _WIN32
     return status;
@@ -117,18 +129,37 @@ int runCmod(const fs::path& cmod, const fs::path& project, const fs::path& log)
 }
 
 struct CmodOutput {
+    fs::path folder;
     fs::path soundFile;
     fs::path particelFile;
 };
 
+// Copies a project, giving the copy Windows (CRLF) line endings.
+void copyWithWindowsLineEndings(const fs::path& from, const fs::path& to)
+{
+    std::string text = readFile(from);
+    std::string converted;
+    for (size_t i = 0; i < text.size(); ++i) {
+        if (text[i] == '\n' && (i == 0 || text[i - 1] != '\r'))
+            converted += '\r';
+        converted += text[i];
+    }
+    std::ofstream(to, std::ios::binary) << converted;
+}
+
 // Copies the project into a fresh folder, runs cmod, and checks that it
 // finished and wrote exactly one sound file and one particel.
 CmodOutput composeInFreshFolder(const fs::path& cmod, const fs::path& original,
-                                const std::string& label)
+                                const std::string& label, bool unusualFolderName = false,
+                                bool windowsLineEndings = false)
 {
-    const fs::path folder = freshFolder(original.stem().string() + "-" + label);
+    const fs::path folder = freshFolder(original.stem().string() + "-" + label,
+                                        unusualFolderName);
     const fs::path project = folder / original.filename();
-    fs::copy_file(original, project);
+    if (windowsLineEndings)
+        copyWithWindowsLineEndings(original, project);
+    else
+        fs::copy_file(original, project);
     const fs::path log = folder / "cmod-output.log";
 
     const int exitCode = runCmod(cmod, project, log);
@@ -137,10 +168,11 @@ CmodOutput composeInFreshFolder(const fs::path& cmod, const fs::path& original,
         if (output.size() > 1500)
             output = "..." + output.substr(output.size() - 1500);
         require(false, "cmod exited with code " + std::to_string(exitCode)
-                           + " (" + label + " run). Its output ended with:\n" + output);
+                           + " (run " + label + "). Its output ended with:\n" + output);
     }
 
     CmodOutput result;
+    result.folder = folder;
     int soundFiles = 0;
     if (fs::exists(folder / "SoundFiles")) {
         for (const auto& entry : fs::directory_iterator(folder / "SoundFiles")) {
@@ -148,19 +180,23 @@ CmodOutput composeInFreshFolder(const fs::path& cmod, const fs::path& original,
             result.soundFile = entry.path();
         }
     }
-    require(soundFiles == 1, "expected 1 sound file in SoundFiles/ after the "
-                                 + label + " run, found " + std::to_string(soundFiles));
+    require(soundFiles == 1, "expected 1 sound file in SoundFiles/ (run "
+                                 + label + "), found " + std::to_string(soundFiles));
     result.particelFile = folder / (original.stem().string() + ".particel");
     require(fs::exists(result.particelFile),
-            "no " + result.particelFile.filename().string() + " was written ("
-                + label + " run)");
+            "no " + result.particelFile.filename().string() + " was written (run "
+                + label + ")");
     return result;
 }
 
 void checkSoundFile(const fs::path& soundFile, const std::string& projectXml)
 {
     SF_INFO info{};
-    SNDFILE* sound = sf_open(soundFile.string().c_str(), SFM_READ, &info);
+#ifdef _WIN32
+    SNDFILE* sound = sf_wchar_open(soundFile.c_str(), SFM_READ, &info);
+#else
+    SNDFILE* sound = sf_open(soundFile.c_str(), SFM_READ, &info);
+#endif
     require(sound != nullptr, "could not open the sound file: "
                                   + std::string(sf_strerror(nullptr)));
 
@@ -193,20 +229,42 @@ void checkSoundFile(const fs::path& soundFile, const std::string& projectXml)
     expect(peak > 1e-4, "sound is silent (peak level " + std::to_string(peak) + ")");
 }
 
+// Composes the project again, in the way `how` describes, and checks that
+// the music is identical to the first run's. A failure here is reported but
+// doesn't stop the other runs, since they don't depend on this one.
+void expectSameMusicAgain(const fs::path& cmod, const fs::path& original,
+                          const CmodOutput& first, const std::string& how,
+                          bool unusualFolderName, bool windowsLineEndings)
+{
+    try {
+        const CmodOutput again = composeInFreshFolder(cmod, original, how,
+                                                      unusualFolderName, windowsLineEndings);
+        expect(readFile(first.soundFile) == readFile(again.soundFile),
+               "composing the same project with the same seed " + how
+                   + " gave different audio");
+        expect(readFile(first.particelFile) == readFile(again.particelFile),
+               "composing the same project with the same seed " + how
+                   + " gave a different particel");
+        fs::remove_all(again.folder);
+    } catch (const RequirementFailed& e) {
+        expect(false, e.what());
+    }
+}
+
 void testExampleProject(const fs::path& cmod, const fs::path& original)
 {
     const std::string projectXml = readFile(original);
     const CmodOutput first = composeInFreshFolder(cmod, original, "first");
     checkSoundFile(first.soundFile, projectXml);
 
-    const CmodOutput second = composeInFreshFolder(cmod, original, "second");
-    expect(readFile(first.soundFile) == readFile(second.soundFile),
-           "running the same project with the same seed twice gave different audio");
-    expect(readFile(first.particelFile) == readFile(second.particelFile),
-           "running the same project with the same seed twice gave a different particel");
+    // Where the project is kept, and which line endings its file has, must
+    // not change the music.
+    expectSameMusicAgain(cmod, original, first,
+                         "in a folder named with spaces, accents and Chinese", true, false);
+    expectSameMusicAgain(cmod, original, first,
+                         "from a copy with Windows (CRLF) line endings", false, true);
 
-    fs::remove_all(first.soundFile.parent_path().parent_path());
-    fs::remove_all(second.soundFile.parent_path().parent_path());
+    fs::remove_all(first.folder);
 }
 
 // Runs one test and reports it by name; a failure stops only that test.
