@@ -166,12 +166,11 @@ Score::Score(int _numThreads, int _numChannels, int _samplingRate )
   // setClippingManagementMode, before sounds are added/rendered).
   Track::setAmplitudeTracking(modeNeedsAmplitude(cmm_));
 
-  scoreEndTime = 1; //start with a small number
-  scoreMultiTrackLength = scoreEndTime;
+  scoreEndTime = 0;
+  scoreMultiTrackLength = 0;
   m_sample_count_type newNumSamples =
-        (m_sample_count_type) (scoreMultiTrackLength * float(samplingRate));
-  scoreMultiTrack = new MultiTrack
-        (numChannels,newNumSamples,samplingRate);
+        (m_sample_count_type)0;
+  scoreMultiTrack = nullptr;
 
 
   reverbObj = NULL;
@@ -269,9 +268,13 @@ MultiTrack* Score::joinThreadsAndMix(){
   if(reverbObj != NULL)
   {
     cout << "Applying reverb to the score..." << endl;
-    MultiTrack *tmp = & reverbObj->do_reverb_MultiTrack(*scoreMultiTrack);
-    delete scoreMultiTrack;
-    scoreMultiTrack = tmp;
+    // Process one track at a time so peak RSS is 1× score + 1 track,
+    // not 2× score as do_reverb_MultiTrack would require.
+    for (Track*& trackPtr : *scoreMultiTrack) {
+      Track& newTrack = reverbObj->do_reverb_Track(*trackPtr);
+      delete trackPtr;
+      trackPtr = &newTrack;
+    }
   }
 
   // perform Clipping management on the composite:
@@ -290,16 +293,19 @@ void Score::checkScoreMultiTrackLength(){
       scoreMultiTrackLength = scoreEndTime;
       m_sample_count_type newNumSamples =
         (m_sample_count_type) (scoreMultiTrackLength * float(samplingRate));
-      MultiTrack* newScoreMultiTrack = new MultiTrack
-        (numChannels,newNumSamples,samplingRate);
 
-      newScoreMultiTrack->composite(*scoreMultiTrack, 0);
-      delete scoreMultiTrack;
-      scoreMultiTrack = newScoreMultiTrack;
+      if (scoreMultiTrack == nullptr) {
+        // First allocation: size it correctly up front, no copy needed.
+        scoreMultiTrack = new MultiTrack(numChannels, newNumSamples, samplingRate);
+      } else {
+        // Buffer already exists but needs to grow — copy existing data then replace.
+        MultiTrack* newScoreMultiTrack = new MultiTrack(numChannels, newNumSamples, samplingRate);
+        newScoreMultiTrack->composite(*scoreMultiTrack, 0);
+        delete scoreMultiTrack;
+        scoreMultiTrack = newScoreMultiTrack;
+      }
 
-      //pthread_mutex_unlock( &mutexVectorRenderedSound );
-      cout<<"Get a longer score with length = " << scoreEndTime << " seconds."<<endl;
-
+      cout<<"Score buffer sized to " << scoreEndTime << " seconds."<<endl;
   }
 }
 
