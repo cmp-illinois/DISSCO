@@ -28,6 +28,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //----------------------------------------------------------------------------//
 #include "StandardHeaders.h"
 
+#include <deque>
 #include <mutex>
 #include <thread>
 
@@ -74,7 +75,8 @@ public:
     /**
     * Worker threads give the renderedSound back to the main thread to compositie
     **/
-    void addRenderedSound(m_time_type _startTime, MultiTrack* _renderedSound);
+    void addRenderedSound(int _soundNumber, m_time_type _startTime,
+                          MultiTrack* _renderedSound);
     
     /**
     * This function is called by the working threads to test if CMOD
@@ -256,12 +258,17 @@ private:
     /**
     * stores the Sound objects to be rendered.
     **/
-    std::vector<Sound*> sounds;
+    std::deque<Sound*> sounds;
     
     /**
     * stores the rendered sounds for the main thread to composite them
     **/
-    std::vector<std::pair<m_time_type, MultiTrack*>*> renderedSounds;
+    struct RenderedSound {
+      int number;              // the sound's place in the order add() got it
+      m_time_type startTime;
+      MultiTrack* track;
+    };
+    std::vector<RenderedSound> renderedSounds;
     
     /**
     * The MultiTrack object which holds the actual score
