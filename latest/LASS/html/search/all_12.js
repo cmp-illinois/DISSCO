@@ -51,7 +51,7 @@ var searchData=
   ['sound_2eh_48',['Sound.h',['../Sound_8h.html',1,'']]],
   ['sounddynamicparam_49',['SoundDynamicParam',['../Sound_8h.html#a5fe79930a335a7d12d2dfec402168c35',1,'Sound.h']]],
   ['soundobjectscreated_50',['soundObjectsCreated',['../structThreadEntry.html#add2b34e1a8a9a6cebdfee427d624748d',1,'ThreadEntry']]],
-  ['sounds_51',['sounds',['../structThreadEntry.html#abc270347932edaeec35c1de8015bb3ec',1,'ThreadEntry']]],
+  ['sounds_51',['sounds',['../structThreadEntry.html#af4b319fe787e4298ded9f933f2caa03c',1,'ThreadEntry']]],
   ['soundsample_52',['soundsample',['../classSoundSample.html',1,'SoundSample'],['../classSoundSample.html#afac3bd89adf1afa5c3d22c873cdf302e',1,'SoundSample::SoundSample(m_sample_count_type sampleCount, m_rate_type samplingRate=DEFAULT_SAMPLING_RATE, bool zeroData=false)'],['../classSoundSample.html#a525ed84a94fc56aee737b675383f4077',1,'SoundSample::SoundSample(const SoundSample &amp;ss)']]],
   ['soundsample_2ecpp_53',['SoundSample.cpp',['../SoundSample_8cpp.html',1,'']]],
   ['soundsample_2eh_54',['SoundSample.h',['../SoundSample_8h.html',1,'']]],
