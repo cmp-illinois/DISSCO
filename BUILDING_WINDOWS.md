@@ -118,7 +118,9 @@ git clone --depth 1 --branch main --single-branch https://github.com/cmp-illinoi
 ~~~
 
 The explicit destination avoids confusion about the downloaded folder's name.
-The shallow clone omits old history to reduce the download.
+The shallow clone omits old history to reduce the download. To work on DISSCO
+itself (check out other branches, test a pull request, or push your own),
+leave out `--depth 1 --branch main --single-branch` to get the full repository.
 
 **Already have the repository?** Skip cloning. Do not delete an existing folder
 just to make the clone command work. Check the remote and branch:
@@ -285,6 +287,12 @@ Ordinary edits can reuse it. Do not delete source or project files to reset a bu
 
 The PowerShell issue is explained in
 [Microsoft's module-path documentation](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_psmodulepath#starting-windows-powershell-from-powershell-7).
+
+## Verification record — 2026-11-05
+
+Windows 11 x64 (build 26200), MSVC 19.51, CMake 4.3.1, Ninja 1.13.2 and
+Qt 6.11.1, at commit 89d68abf: a full clone built with the commands above and
+all 12 CTest tests passed.
 
 ## Verification record — 2026-08-27
 
