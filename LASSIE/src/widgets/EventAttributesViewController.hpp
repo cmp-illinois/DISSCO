@@ -189,6 +189,8 @@ private:
     ExtraInfo* currentBottomExtraInfo();
     void rebuildModifierRows();
     void updateModifierUsageUi();
+    bool currentIsNotationBottom() const;
+    void applyNotationBottomState();
     void updateModifierUsageSummary();
     void deleteModifierRow(Modifiers* row);
     void moveModifierRow(Modifiers* row, int offset);
