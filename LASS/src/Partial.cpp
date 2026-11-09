@@ -32,6 +32,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Constant.h"
 #include "Track.h"
 #include "Iterator.h"
+#include <memory>
 
 //----------------------------------------------------------------------------//
 Partial::Partial()
@@ -80,14 +81,14 @@ MultiTrack* Partial::render(int numChannels,
     // create two SoundSample objects to write to:
     // one for the actuial sound:
     //    SoundSample* waveSample = new SoundSample(numSamplesTotal, samplingRate);
-    SoundSample* waveSample = new SoundSample(sampleCount, samplingRate);
+    auto waveSample = std::make_unique<SoundSample>(sampleCount, samplingRate);
     // and one to store amplitude data (only when a downstream consumer, i.e. an
     // amplitude-based clipping mode, actually needs it -- otherwise this would
     // double the rendering memory for nothing):
     //    SoundSample* ampSample = new SoundSample(numSamplesTotal, samplingRate);
-    SoundSample* ampSample = Track::amplitudeTrackingEnabled()
-        ? new SoundSample(sampleCount, samplingRate)
-        : 0;
+    std::unique_ptr<SoundSample> ampSample;
+    if (Track::amplitudeTrackingEnabled())
+        ampSample = std::make_unique<SoundSample>(sampleCount, samplingRate);
 
     // tell each dynamic variable what the DURATION will be:
     getParam(FREQUENCY).setDuration(duration);
@@ -144,16 +145,17 @@ MultiTrack* Partial::render(int numChannels,
     // make a copy of the glissando dynamic variable
 
 //cout << "Partial:: render - frequency before detune:" << getParam(FREQ_ENV).getMaxValue() << endl;
-    DynamicVariable* frequency_env = getParam(FREQUENCY).clone();
+    std::unique_ptr<DynamicVariable> frequency_env(getParam(FREQUENCY).clone());
     frequency_env->setDuration(duration);
 
     //DynamicVariable* gliss_env = getParam(GLISSANDO_ENV).clone();
-    DynamicVariable* freq_env = getParam(FREQ_ENV).clone();
-      DynamicVariable* detuning_env = getParam(DETUNING_ENV).clone();
-    DynamicVariable* amptrans_amp_env = getParam(AMPTRANS_AMP_ENV).clone();
-    DynamicVariable* amptrans_rate_env = getParam(AMPTRANS_RATE_ENV).clone();
-    DynamicVariable* freqtrans_amp_env = getParam(FREQTRANS_AMP_ENV).clone();
-    DynamicVariable* freqtrans_rate_env = getParam(FREQTRANS_RATE_ENV).clone();
+    // Keep the cloned variables alive until their iterators have been destroyed.
+    std::unique_ptr<DynamicVariable> freq_env(getParam(FREQ_ENV).clone());
+    std::unique_ptr<DynamicVariable> detuning_env(getParam(DETUNING_ENV).clone());
+    std::unique_ptr<DynamicVariable> amptrans_amp_env(getParam(AMPTRANS_AMP_ENV).clone());
+    std::unique_ptr<DynamicVariable> amptrans_rate_env(getParam(AMPTRANS_RATE_ENV).clone());
+    std::unique_ptr<DynamicVariable> freqtrans_amp_env(getParam(FREQTRANS_AMP_ENV).clone());
+    std::unique_ptr<DynamicVariable> freqtrans_rate_env(getParam(FREQTRANS_RATE_ENV).clone());
     //gliss_env->setDuration(duration);
     freq_env->setDuration(duration);
       detuning_env->setDuration(duration);
@@ -384,7 +386,10 @@ MultiTrack* Partial::render(int numChannels,
     }
 
     // create a TrackObject:
-    Track *_track = new Track(waveSample, ampSample);
+    auto _track = std::make_unique<Track>(waveSample.get(), ampSample.get());
+    // Track owns both buffers once its construction succeeds.
+    waveSample.release();
+    ampSample.release();
 
     // do the reverb, if necessary
     if(reverbObj != NULL)
@@ -392,9 +397,7 @@ MultiTrack* Partial::render(int numChannels,
         // do_reverb_Track() returns a freshly heap-allocated Track, so take
         // ownership of it directly instead of deep-copying its full-length
         // buffers into another new Track and then freeing the original.
-        Track &tmp = reverbObj->do_reverb_Track(*_track);
-        delete _track;
-        _track = &tmp;
+        _track.reset(&reverbObj->do_reverb_Track(*_track));
     }
 
     /* ZIYUAN CHEN, July 2023: On the default behavior of spatialization (Partial side)
@@ -410,15 +413,6 @@ MultiTrack* Partial::render(int numChannels,
 
 //cout << "Partial::render - frequency after detune:" << getParam(FREQ_ENV).getMaxValue() << endl;
 //  cout<< "--------------------------------------------"<< endl;
-
-    // this section is added by Ming-ching on Dec.10 2012 to prevent memory leak
-    delete frequency_env;
-    delete freq_env;
-    delete amptrans_amp_env;
-    delete amptrans_rate_env;
-    delete freqtrans_amp_env;
-    delete freqtrans_rate_env;
-
 
     return returnTrack;
 }
