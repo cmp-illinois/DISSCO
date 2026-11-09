@@ -35,6 +35,9 @@ Modifier::Modifier() {
   checkPt = 0;
   partialNum = 0;
   partialResultString = "";
+  spread = 0.0;
+  direction = 0.0;
+  velocity = 0.0;
 }
 
 //----------------------------------------------------------------------------//
@@ -48,6 +51,9 @@ Modifier::Modifier(string modType, Envelope* prob, string modApplyHow, int modPa
   applyHow = modApplyHow;
   partialNum = modPartialNum;
   checkPt = 0;
+  spread = 0.0;
+  direction = 0.0;
+  velocity = 0.0;
 }
 
 //----------------------------------------------------------------------------//
@@ -58,6 +64,9 @@ Modifier::Modifier(const Modifier& orig) {
   checkPt = orig.checkPt;
   partialNum = orig.partialNum;
   partialResultString = orig.partialResultString;
+  spread = orig.spread;
+  direction = orig.direction;
+  velocity = orig.velocity;
 
   if (orig.probEnv != NULL) {
     probEnv = new Envelope(*orig.probEnv);
@@ -85,6 +94,9 @@ Modifier& Modifier::operator=(const Modifier& rhs) {
   checkPt = rhs.checkPt;
   partialNum = rhs.partialNum;
   partialResultString = rhs.partialResultString;
+  spread = rhs.spread;
+  direction = rhs.direction;
+  velocity = rhs.velocity;
 
   delete probEnv;
   if (rhs.probEnv != NULL) {
@@ -257,12 +269,9 @@ void Modifier::applyModPartial(Sound* snd) {
     snd->get(partialNum).setParam(FREQ_ENV, *(env_values.front()));
     delete env_values.front();
     env_values.pop_front();
-//		-----------------------added by Sever 2/4/23
   } else if (type == "DETUNE") {
-    snd->get(partialNum).setParam(DETUNING_ENV, *(env_values.front()));
-    delete env_values.front();
-    env_values.pop_front();
-//	----------------------------------------------------
+    // Same spread/direction/velocity as SOUND, applied to this partial only.
+    snd->setPartialDetune(partialNum, direction, spread, velocity);
   } else if (type == "TREMOLO") {
     snd->get(partialNum).setParam(TREMOLO_AMP, *(env_values.front()));
     delete env_values.front();

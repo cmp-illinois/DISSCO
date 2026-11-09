@@ -4,6 +4,8 @@
 #include <QDomDocument>
 #include <QTextStream>
 
+#include <cmath>
+
 namespace {
 
 QString elementInnerXml(const QDomElement& element)
@@ -53,6 +55,54 @@ QString missingEffectError(int zeroBasedRow, const QString& effect)
                "Partial %1 is enabled but has no %2 envelope.")
         .arg(zeroBasedRow + 1)
         .arg(effect);
+}
+
+// DETUNE by partial takes the same three numbers as DETUNE by sound.
+QString detuneRowError(int zeroBasedRow,
+                       const PartialModifierFormat::Values& value)
+{
+    const int partial = zeroBasedRow + 1;
+    const auto fieldError = [partial](const QString& field,
+                                      const QString& rule) {
+        return QCoreApplication::translate(
+                   "PartialModifierDialog",
+                   "Partial %1: Detune %2 must be %3.")
+            .arg(partial)
+            .arg(field)
+            .arg(rule);
+    };
+
+    const QString spreadText = value.magnitude.trimmed();
+    if (spreadText.startsWith(QLatin1Char('<'))) {
+        return QCoreApplication::translate(
+                   "PartialModifierDialog",
+                   "Partial %1 still uses the old Detuning envelope. DETUNE by "
+                   "partial now takes Spread, Direction and Velocity numbers, "
+                   "like DETUNE by sound.")
+            .arg(partial);
+    }
+
+    bool ok = false;
+    const double spread = spreadText.toDouble(&ok);
+    if (!hasConfiguredValue(spreadText) || !ok || !std::isfinite(spread)
+        || spread < 0.0 || spread > 1.0) {
+        return fieldError(translated("Spread"),
+                          translated("a number from 0 to 1"));
+    }
+
+    const double direction = value.width.trimmed().toDouble(&ok);
+    if (!ok || !std::isfinite(direction) || direction == 0.0) {
+        return fieldError(translated("Direction"),
+                          translated("a negative number (detune) or a positive "
+                                     "number (tune)"));
+    }
+
+    const double velocity = value.rate.trimmed().toDouble(&ok);
+    if (!ok || !std::isfinite(velocity) || velocity < -1.0 || velocity > 1.0) {
+        return fieldError(translated("Velocity"),
+                          translated("a number from -1 to 1"));
+    }
+    return {};
 }
 
 } // namespace
@@ -176,9 +226,11 @@ QString PartialModifierFormat::validationError(int modifierType,
                 error = require(value.rate, "Rate");
             break;
         case 2: // Glissando
-        case 3: // Detune
         case 6: // Wave Type
             error = require(value.magnitude, "Magnitude");
+            break;
+        case 3: // Detune
+            error = detuneRowError(row, value);
             break;
         case 4: // Amplitude Transient
         case 5: // Frequency Transient

@@ -27,6 +27,8 @@ struct ParameterPresentation {
     bool usesMagnitude = false;
     bool usesWidth = false;
     bool usesRate = false;
+    // DETUNE takes plain numbers (like its SOUND fields), not envelopes.
+    bool numeric = false;
 };
 
 ParameterPresentation presentationFor(int modifierType)
@@ -42,8 +44,12 @@ ParameterPresentation presentationFor(int modifierType)
         return {QObject::tr("Frequency change:"), QString(), QString(),
                 true, false, false};
     case 3:
-        return {QObject::tr("Detuning:"), QString(), QString(),
-                true, false, false};
+        // Same three values as DETUNE applied by SOUND, stored in the
+        // Magnitude, Width and Rate slots of the row.
+        return {QObject::tr("Detune Spread (0 to 1):"),
+                QObject::tr("Detune Direction (- detune, + tune):"),
+                QObject::tr("Detune Velocity (-1 to 1):"),
+                true, true, true, true};
     case 4:
     case 5:
         return {QObject::tr("Magnitude:"), QObject::tr("Width:"),
@@ -81,9 +87,15 @@ PartialModifierDialog::PartialModifierDialog(QWidget* parent,
 
     auto* mainLayout = new QVBoxLayout(this);
     auto* explanation = new QLabel(
-        tr("Each row controls one spectrum partial. Probability decides whether "
-           "the modifier is applied to that partial. Use Insert Function to build "
-           "each envelope; N/A means that value is not used."),
+        modifierType == 3
+            ? tr("Each row controls one spectrum partial. Probability decides "
+                 "whether the modifier is applied to that partial. Spread, "
+                 "Direction and Velocity are numbers that work like the DETUNE "
+                 "fields applied by SOUND, but only for this partial.")
+            : tr("Each row controls one spectrum partial. Probability decides "
+                 "whether the modifier is applied to that partial. Use Insert "
+                 "Function to build each envelope; N/A means that value is not "
+                 "used."),
         this);
     explanation->setWordWrap(true);
     mainLayout->addWidget(explanation);
@@ -190,25 +202,29 @@ void PartialModifierDialog::addPartialRow(
 
     PartialRow row;
     row.group = group;
-    addEnvelopeEntry(layout, tr("Probability:"), values.probability, true, &row.probability);
+    addEnvelopeEntry(layout, tr("Probability:"), values.probability, true,
+                     false, &row.probability);
 
     addEnvelopeEntry(
         layout,
         presentation.usesMagnitude
             ? presentation.magnitudeLabel : unusedLabel(tr("Magnitude")),
-        values.magnitude, presentation.usesMagnitude, &row.magnitude);
+        values.magnitude, presentation.usesMagnitude, presentation.numeric,
+        &row.magnitude);
 
     addEnvelopeEntry(
         layout,
         presentation.usesWidth
             ? presentation.widthLabel : unusedLabel(tr("Width")),
-        values.width, presentation.usesWidth, &row.width);
+        values.width, presentation.usesWidth, presentation.numeric,
+        &row.width);
 
     addEnvelopeEntry(
         layout,
         presentation.usesRate
             ? presentation.rateLabel : unusedLabel(tr("Rate")),
-        values.rate, presentation.usesRate, &row.rate);
+        values.rate, presentation.usesRate, presentation.numeric,
+        &row.rate);
 
     m_rows.append(row);
     m_rowsLayout->insertWidget(m_rowsLayout->count() - 1, group);
@@ -218,6 +234,7 @@ void PartialModifierDialog::addEnvelopeEntry(QVBoxLayout* layout,
                                              const QString& label,
                                              const QString& value,
                                              bool enabled,
+                                             bool numeric,
                                              QLineEdit** entry)
 {
     auto* rowLayout = new QHBoxLayout;
@@ -232,12 +249,24 @@ void PartialModifierDialog::addEnvelopeEntry(QVBoxLayout* layout,
 
     lineEdit->setEnabled(enabled);
     button->setEnabled(enabled);
+    // A numeric field has no envelope to build; keep the column aligned.
+    if (numeric) {
+        QSizePolicy keepSpace = button->sizePolicy();
+        keepSpace.setRetainSizeWhenHidden(true);
+        button->setSizePolicy(keepSpace);
+        button->setVisible(false);
+    }
     rowLabel->setEnabled(enabled);
     rowLabel->setBuddy(lineEdit);
     button->setAccessibleName(tr("Insert function for %1").arg(label));
-    lineEdit->setToolTip(enabled
-        ? tr("An ENV-returning function, or N/A.")
-        : tr("This value is not used by the selected modifier type."));
+    lineEdit->setToolTip(!enabled
+        ? tr("This value is not used by the selected modifier type.")
+        : numeric ? tr("A number.")
+                  : tr("An ENV-returning function, or N/A."));
+    if (numeric && lineEdit->text() == QStringLiteral("N/A"))
+        lineEdit->clear();
+    if (numeric)
+        lineEdit->setPlaceholderText(tr("Number"));
 
     connect(button, &QPushButton::clicked, this,
             [this, lineEdit]() { openEnvelopeGenerator(lineEdit); });
