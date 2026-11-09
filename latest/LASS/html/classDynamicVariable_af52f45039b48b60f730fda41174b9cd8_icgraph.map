@@ -6,10 +6,11 @@
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="575,70,489,70,489,65,575,65"/>
 <area shape="rect" id="Node000004" href="$classParameterLib.html#a0f210f2092675bfccd5694cccf3aa372" title=" " alt="" coords="364,104,541,129"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="606,86,512,107,511,101,605,80"/>
-<area shape="rect" id="Node000005" href="$classLoudness.html#a5cd0fbde3dfe3cbefe82970f946186a5" title=" " alt="" coords="165,79,316,104"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="350,107,316,103,317,98,351,102"/>
-<area shape="rect" id="Node000007" href="$classSound.html#aa26d7b97123cab409cad4c34c1bf4706" title=" " alt="" coords="185,128,296,153"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="351,131,297,137,296,132,350,126"/>
+<area shape="rect" id="Node000005" href="$classLoudness.html#a5cd0fbde3dfe3cbefe82970f946186a5" title=" " alt="" coords="165,53,316,79"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="385,103,294,81,295,76,386,98"/>
 <area shape="rect" id="Node000006" href="$classSound.html#a4f246242d337ab7ef8a646f69f2a04ae" title=" " alt="" coords="5,79,117,104"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="151,94,118,94,118,89,151,89"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="350,113,117,98,118,92,350,107"/>
+<area shape="rect" id="Node000007" href="$classSound.html#aa26d7b97123cab409cad4c34c1bf4706" title=" " alt="" coords="185,155,296,180"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="386,135,295,157,294,152,385,130"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="152,81,118,86,117,81,151,76"/>
 </map>

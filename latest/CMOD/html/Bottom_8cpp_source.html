@@ -1883,395 +1883,431 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l01802" name="l01802"></a><span class="lineno"> 1802</span>    <span class="keyword">const</span> <span class="keywordtype">string</span> directionStr = <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(modifierElement.child(<span class="stringliteral">&quot;DetuneDirection&quot;</span>));</div>
 <div class="line"><a id="l01803" name="l01803"></a><span class="lineno"> 1803</span>    <span class="keyword">const</span> <span class="keywordtype">string</span> velocityStr = <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(modifierElement.child(<span class="stringliteral">&quot;DetuneVelocity&quot;</span>));</div>
 <div class="line"><a id="l01804" name="l01804"></a><span class="lineno"> 1804</span> </div>
-<div class="line"><a id="l01805" name="l01805"></a><span class="lineno"> 1805</span>    <span class="keywordtype">double</span> detuneSpread = 0.0;</div>
-<div class="line"><a id="l01806" name="l01806"></a><span class="lineno"> 1806</span>    <span class="keywordtype">double</span> detuneDirection = 0.0;</div>
-<div class="line"><a id="l01807" name="l01807"></a><span class="lineno"> 1807</span>    <span class="keywordtype">double</span> detuneVelocity = 0.0;</div>
-<div class="line"><a id="l01808" name="l01808"></a><span class="lineno"> 1808</span>    <span class="keywordflow">if</span> (!applyByPartial &amp;&amp; modType == <span class="stringliteral">&quot;DETUNE&quot;</span>) {</div>
-<div class="line"><a id="l01809" name="l01809"></a><span class="lineno"> 1809</span>      <span class="keywordflow">if</span> (isUnavailable(spreadStr) || isUnavailable(directionStr)</div>
-<div class="line"><a id="l01810" name="l01810"></a><span class="lineno"> 1810</span>          || isUnavailable(velocityStr)) {</div>
-<div class="line"><a id="l01811" name="l01811"></a><span class="lineno"> 1811</span>        runtimeError(<span class="stringliteral">&quot;DETUNE modifier &#39;&quot;</span> + usageId</div>
-<div class="line"><a id="l01812" name="l01812"></a><span class="lineno"> 1812</span>                     + <span class="stringliteral">&quot;&#39; requires spread, direction, and velocity.&quot;</span>);</div>
-<div class="line"><a id="l01813" name="l01813"></a><span class="lineno"> 1813</span>        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l01814" name="l01814"></a><span class="lineno"> 1814</span>      }</div>
-<div class="line"><a id="l01815" name="l01815"></a><span class="lineno"> 1815</span>      <span class="keywordflow">if</span> (!parseStrictDouble(spreadStr.c_str(), detuneSpread)</div>
-<div class="line"><a id="l01816" name="l01816"></a><span class="lineno"> 1816</span>          || !std::isfinite(detuneSpread)</div>
-<div class="line"><a id="l01817" name="l01817"></a><span class="lineno"> 1817</span>          || detuneSpread &lt; 0.0 || detuneSpread &gt; 1.0) {</div>
-<div class="line"><a id="l01818" name="l01818"></a><span class="lineno"> 1818</span>        runtimeError(<span class="stringliteral">&quot;DETUNE modifier &#39;&quot;</span> + usageId</div>
-<div class="line"><a id="l01819" name="l01819"></a><span class="lineno"> 1819</span>                     + <span class="stringliteral">&quot;&#39; has an invalid spread; expected a finite value &quot;</span></div>
-<div class="line"><a id="l01820" name="l01820"></a><span class="lineno"> 1820</span>                       <span class="stringliteral">&quot;between 0 and 1.&quot;</span>);</div>
-<div class="line"><a id="l01821" name="l01821"></a><span class="lineno"> 1821</span>        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l01822" name="l01822"></a><span class="lineno"> 1822</span>      }</div>
-<div class="line"><a id="l01823" name="l01823"></a><span class="lineno"> 1823</span>      <span class="keywordflow">if</span> (!parseStrictDouble(directionStr.c_str(), detuneDirection)</div>
-<div class="line"><a id="l01824" name="l01824"></a><span class="lineno"> 1824</span>          || !std::isfinite(detuneDirection)</div>
-<div class="line"><a id="l01825" name="l01825"></a><span class="lineno"> 1825</span>          || detuneDirection == 0.0) {</div>
-<div class="line"><a id="l01826" name="l01826"></a><span class="lineno"> 1826</span>        runtimeError(<span class="stringliteral">&quot;DETUNE modifier &#39;&quot;</span> + usageId</div>
-<div class="line"><a id="l01827" name="l01827"></a><span class="lineno"> 1827</span>                     + <span class="stringliteral">&quot;&#39; has an invalid direction; expected a finite, &quot;</span></div>
-<div class="line"><a id="l01828" name="l01828"></a><span class="lineno"> 1828</span>                       <span class="stringliteral">&quot;non-zero value.&quot;</span>);</div>
-<div class="line"><a id="l01829" name="l01829"></a><span class="lineno"> 1829</span>        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l01830" name="l01830"></a><span class="lineno"> 1830</span>      }</div>
-<div class="line"><a id="l01831" name="l01831"></a><span class="lineno"> 1831</span>      <span class="keywordflow">if</span> (!parseStrictDouble(velocityStr.c_str(), detuneVelocity)</div>
-<div class="line"><a id="l01832" name="l01832"></a><span class="lineno"> 1832</span>          || !std::isfinite(detuneVelocity)</div>
-<div class="line"><a id="l01833" name="l01833"></a><span class="lineno"> 1833</span>          || detuneVelocity &lt; -1.0 || detuneVelocity &gt; 1.0) {</div>
-<div class="line"><a id="l01834" name="l01834"></a><span class="lineno"> 1834</span>        runtimeError(<span class="stringliteral">&quot;DETUNE modifier &#39;&quot;</span> + usageId</div>
-<div class="line"><a id="l01835" name="l01835"></a><span class="lineno"> 1835</span>                     + <span class="stringliteral">&quot;&#39; has an invalid velocity; expected a finite value &quot;</span></div>
-<div class="line"><a id="l01836" name="l01836"></a><span class="lineno"> 1836</span>                       <span class="stringliteral">&quot;between -1 and 1.&quot;</span>);</div>
-<div class="line"><a id="l01837" name="l01837"></a><span class="lineno"> 1837</span>        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l01838" name="l01838"></a><span class="lineno"> 1838</span>      }</div>
-<div class="line"><a id="l01839" name="l01839"></a><span class="lineno"> 1839</span>      detuneDirection = detuneDirection &lt; 0.0 ? -1.0 : 1.0;</div>
-<div class="line"><a id="l01840" name="l01840"></a><span class="lineno"> 1840</span>    }</div>
+<div class="line"><a id="l01805" name="l01805"></a><span class="lineno"> 1805</span>    <span class="comment">// DETUNE takes three numbers, both for SOUND (DetuneSpread/Direction/</span></div>
+<div class="line"><a id="l01806" name="l01806"></a><span class="lineno"> 1806</span>    <span class="comment">// Velocity) and for each PARTIAL row (Magnitude/Width/Rate slots).</span></div>
+<div class="line"><a id="l01807" name="l01807"></a><span class="lineno"> 1807</span>    <span class="keyword">auto</span> parseDetune = [&amp;runtimeError, &amp;usageId](</div>
+<div class="line"><a id="l01808" name="l01808"></a><span class="lineno"> 1808</span>                           <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; spreadText,</div>
+<div class="line"><a id="l01809" name="l01809"></a><span class="lineno"> 1809</span>                           <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; directionText,</div>
+<div class="line"><a id="l01810" name="l01810"></a><span class="lineno"> 1810</span>                           <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; velocityText,</div>
+<div class="line"><a id="l01811" name="l01811"></a><span class="lineno"> 1811</span>                           <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; where,</div>
+<div class="line"><a id="l01812" name="l01812"></a><span class="lineno"> 1812</span>                           <span class="keywordtype">double</span>&amp; spread, <span class="keywordtype">double</span>&amp; direction,</div>
+<div class="line"><a id="l01813" name="l01813"></a><span class="lineno"> 1813</span>                           <span class="keywordtype">double</span>&amp; velocity) {</div>
+<div class="line"><a id="l01814" name="l01814"></a><span class="lineno"> 1814</span>      <span class="keyword">const</span> <span class="keywordtype">string</span> subject = <span class="stringliteral">&quot;DETUNE modifier &#39;&quot;</span> + usageId + <span class="stringliteral">&quot;&#39;&quot;</span> + where;</div>
+<div class="line"><a id="l01815" name="l01815"></a><span class="lineno"> 1815</span>      <span class="keywordflow">if</span> (isUnavailable(spreadText) || isUnavailable(directionText)</div>
+<div class="line"><a id="l01816" name="l01816"></a><span class="lineno"> 1816</span>          || isUnavailable(velocityText)) {</div>
+<div class="line"><a id="l01817" name="l01817"></a><span class="lineno"> 1817</span>        runtimeError(subject + <span class="stringliteral">&quot; requires spread, direction, and velocity.&quot;</span>);</div>
+<div class="line"><a id="l01818" name="l01818"></a><span class="lineno"> 1818</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l01819" name="l01819"></a><span class="lineno"> 1819</span>      }</div>
+<div class="line"><a id="l01820" name="l01820"></a><span class="lineno"> 1820</span>      <span class="keywordflow">if</span> (!parseStrictDouble(spreadText.c_str(), spread)</div>
+<div class="line"><a id="l01821" name="l01821"></a><span class="lineno"> 1821</span>          || !std::isfinite(spread) || spread &lt; 0.0 || spread &gt; 1.0) {</div>
+<div class="line"><a id="l01822" name="l01822"></a><span class="lineno"> 1822</span>        runtimeError(subject + <span class="stringliteral">&quot; has an invalid spread; expected a finite &quot;</span></div>
+<div class="line"><a id="l01823" name="l01823"></a><span class="lineno"> 1823</span>                     <span class="stringliteral">&quot;value between 0 and 1.&quot;</span>);</div>
+<div class="line"><a id="l01824" name="l01824"></a><span class="lineno"> 1824</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l01825" name="l01825"></a><span class="lineno"> 1825</span>      }</div>
+<div class="line"><a id="l01826" name="l01826"></a><span class="lineno"> 1826</span>      <span class="keywordflow">if</span> (!parseStrictDouble(directionText.c_str(), direction)</div>
+<div class="line"><a id="l01827" name="l01827"></a><span class="lineno"> 1827</span>          || !std::isfinite(direction) || direction == 0.0) {</div>
+<div class="line"><a id="l01828" name="l01828"></a><span class="lineno"> 1828</span>        runtimeError(subject + <span class="stringliteral">&quot; has an invalid direction; expected a finite, &quot;</span></div>
+<div class="line"><a id="l01829" name="l01829"></a><span class="lineno"> 1829</span>                     <span class="stringliteral">&quot;non-zero value.&quot;</span>);</div>
+<div class="line"><a id="l01830" name="l01830"></a><span class="lineno"> 1830</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l01831" name="l01831"></a><span class="lineno"> 1831</span>      }</div>
+<div class="line"><a id="l01832" name="l01832"></a><span class="lineno"> 1832</span>      <span class="keywordflow">if</span> (!parseStrictDouble(velocityText.c_str(), velocity)</div>
+<div class="line"><a id="l01833" name="l01833"></a><span class="lineno"> 1833</span>          || !std::isfinite(velocity) || velocity &lt; -1.0 || velocity &gt; 1.0) {</div>
+<div class="line"><a id="l01834" name="l01834"></a><span class="lineno"> 1834</span>        runtimeError(subject + <span class="stringliteral">&quot; has an invalid velocity; expected a finite &quot;</span></div>
+<div class="line"><a id="l01835" name="l01835"></a><span class="lineno"> 1835</span>                     <span class="stringliteral">&quot;value between -1 and 1.&quot;</span>);</div>
+<div class="line"><a id="l01836" name="l01836"></a><span class="lineno"> 1836</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l01837" name="l01837"></a><span class="lineno"> 1837</span>      }</div>
+<div class="line"><a id="l01838" name="l01838"></a><span class="lineno"> 1838</span>      direction = direction &lt; 0.0 ? -1.0 : 1.0;</div>
+<div class="line"><a id="l01839" name="l01839"></a><span class="lineno"> 1839</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l01840" name="l01840"></a><span class="lineno"> 1840</span>    };</div>
 <div class="line"><a id="l01841" name="l01841"></a><span class="lineno"> 1841</span> </div>
-<div class="line"><a id="l01842" name="l01842"></a><span class="lineno"> 1842</span>    <span class="keyword">auto</span> addEnvelope = [<span class="keyword">this</span>, &amp;runtimeError, &amp;usageId](</div>
-<div class="line"><a id="l01843" name="l01843"></a><span class="lineno"> 1843</span>                           <a class="code hl_class" href="classModifier.html">Modifier</a>&amp; modifier,</div>
-<div class="line"><a id="l01844" name="l01844"></a><span class="lineno"> 1844</span>                           <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; value,</div>
-<div class="line"><a id="l01845" name="l01845"></a><span class="lineno"> 1845</span>                           <span class="keyword">const</span> <span class="keywordtype">char</span>* fieldName) {</div>
-<div class="line"><a id="l01846" name="l01846"></a><span class="lineno"> 1846</span>      <span class="keywordflow">if</span> (isUnavailable(value)) {</div>
-<div class="line"><a id="l01847" name="l01847"></a><span class="lineno"> 1847</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l01848" name="l01848"></a><span class="lineno"> 1848</span>      }</div>
-<div class="line"><a id="l01849" name="l01849"></a><span class="lineno"> 1849</span>      Envelope* envelope = <span class="keyword">static_cast&lt;</span>Envelope*<span class="keyword">&gt;</span>(</div>
-<div class="line"><a id="l01850" name="l01850"></a><span class="lineno"> 1850</span>          <a class="code hl_variable" href="classEvent.html#a5092cd4f16d5eb7c7ec0ebe96d6e91dc">utilities</a>-&gt;<a class="code hl_function" href="classUtilities.html#a4b0848cc0278c8edc4b3ee28b6900a98">evaluateObject</a>(value, <span class="keyword">this</span>, <a class="code hl_enumvalue" href="Libraries_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa816850b6a91020a2e423c80b9b77544b">eventEnv</a>));</div>
-<div class="line"><a id="l01851" name="l01851"></a><span class="lineno"> 1851</span>      <span class="keywordflow">if</span> (envelope == NULL) {</div>
-<div class="line"><a id="l01852" name="l01852"></a><span class="lineno"> 1852</span>        runtimeError(<span class="stringliteral">&quot;modifier &#39;&quot;</span> + usageId + <span class="stringliteral">&quot;&#39; has an invalid &quot;</span></div>
-<div class="line"><a id="l01853" name="l01853"></a><span class="lineno"> 1853</span>                     + fieldName + <span class="stringliteral">&quot; envelope.&quot;</span>);</div>
-<div class="line"><a id="l01854" name="l01854"></a><span class="lineno"> 1854</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l01855" name="l01855"></a><span class="lineno"> 1855</span>      }</div>
-<div class="line"><a id="l01856" name="l01856"></a><span class="lineno"> 1856</span>      modifier.addValueEnv(envelope);</div>
-<div class="line"><a id="l01857" name="l01857"></a><span class="lineno"> 1857</span>      <span class="keyword">delete</span> envelope;</div>
-<div class="line"><a id="l01858" name="l01858"></a><span class="lineno"> 1858</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l01859" name="l01859"></a><span class="lineno"> 1859</span>    };</div>
-<div class="line"><a id="l01860" name="l01860"></a><span class="lineno"> 1860</span> </div>
-<div class="line"><a id="l01861" name="l01861"></a><span class="lineno"> 1861</span>    <span class="keywordflow">if</span> (!applyByPartial) {</div>
-<div class="line"><a id="l01862" name="l01862"></a><span class="lineno"> 1862</span>      <span class="keyword">auto</span> effect = std::make_unique&lt;Modifier&gt;(modType, <span class="keyword">nullptr</span>, <span class="stringliteral">&quot;SOUND&quot;</span>);</div>
-<div class="line"><a id="l01863" name="l01863"></a><span class="lineno"> 1863</span>      <span class="keywordtype">int</span> envelopeCount = 0;</div>
-<div class="line"><a id="l01864" name="l01864"></a><span class="lineno"> 1864</span>      envelopeCount += addEnvelope(*effect, ampStr, <span class="stringliteral">&quot;Amplitude&quot;</span>) ? 1 : 0;</div>
-<div class="line"><a id="l01865" name="l01865"></a><span class="lineno"> 1865</span>      <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;DETUNE&quot;</span>) {</div>
-<div class="line"><a id="l01866" name="l01866"></a><span class="lineno"> 1866</span>        effect-&gt;addSpread(detuneSpread);</div>
-<div class="line"><a id="l01867" name="l01867"></a><span class="lineno"> 1867</span>        effect-&gt;addDirection(detuneDirection);</div>
-<div class="line"><a id="l01868" name="l01868"></a><span class="lineno"> 1868</span>        effect-&gt;addVelocity(detuneVelocity);</div>
-<div class="line"><a id="l01869" name="l01869"></a><span class="lineno"> 1869</span>      }</div>
-<div class="line"><a id="l01870" name="l01870"></a><span class="lineno"> 1870</span>      envelopeCount += addEnvelope(*effect, rateStr, <span class="stringliteral">&quot;Rate&quot;</span>) ? 1 : 0;</div>
-<div class="line"><a id="l01871" name="l01871"></a><span class="lineno"> 1871</span>      envelopeCount += addEnvelope(*effect, widthStr, <span class="stringliteral">&quot;Width&quot;</span>) ? 1 : 0;</div>
-<div class="line"><a id="l01872" name="l01872"></a><span class="lineno"> 1872</span> </div>
-<div class="line"><a id="l01873" name="l01873"></a><span class="lineno"> 1873</span>      <span class="keywordtype">int</span> requiredEnvelopeCount = 0;</div>
-<div class="line"><a id="l01874" name="l01874"></a><span class="lineno"> 1874</span>      <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;TREMOLO&quot;</span> || modType == <span class="stringliteral">&quot;VIBRATO&quot;</span></div>
-<div class="line"><a id="l01875" name="l01875"></a><span class="lineno"> 1875</span>          || modType == <span class="stringliteral">&quot;PHASE_MOD&quot;</span>) {</div>
-<div class="line"><a id="l01876" name="l01876"></a><span class="lineno"> 1876</span>        requiredEnvelopeCount = 2;</div>
-<div class="line"><a id="l01877" name="l01877"></a><span class="lineno"> 1877</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;GLISSANDO&quot;</span> || modType == <span class="stringliteral">&quot;WAVE_TYPE&quot;</span>) {</div>
-<div class="line"><a id="l01878" name="l01878"></a><span class="lineno"> 1878</span>        requiredEnvelopeCount = 1;</div>
-<div class="line"><a id="l01879" name="l01879"></a><span class="lineno"> 1879</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;AMPTRANS&quot;</span> || modType == <span class="stringliteral">&quot;FREQTRANS&quot;</span>) {</div>
-<div class="line"><a id="l01880" name="l01880"></a><span class="lineno"> 1880</span>        requiredEnvelopeCount = 3;</div>
-<div class="line"><a id="l01881" name="l01881"></a><span class="lineno"> 1881</span>      }</div>
-<div class="line"><a id="l01882" name="l01882"></a><span class="lineno"> 1882</span>      <span class="keywordflow">if</span> (envelopeCount &lt; requiredEnvelopeCount) {</div>
-<div class="line"><a id="l01883" name="l01883"></a><span class="lineno"> 1883</span>        runtimeError(<span class="stringliteral">&quot;modifier &#39;&quot;</span> + usageId</div>
-<div class="line"><a id="l01884" name="l01884"></a><span class="lineno"> 1884</span>                     + <span class="stringliteral">&quot;&#39; (&quot;</span> + modType + <span class="stringliteral">&quot;) is missing a required parameter envelope: &quot;</span></div>
-<div class="line"><a id="l01885" name="l01885"></a><span class="lineno"> 1885</span>                     + (isUnavailable(ampStr) ? <span class="stringliteral">&quot;Amplitude &quot;</span> : <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a id="l01886" name="l01886"></a><span class="lineno"> 1886</span>                     + (requiredEnvelopeCount &gt;= 2 &amp;&amp; isUnavailable(rateStr) ? <span class="stringliteral">&quot;Rate &quot;</span> : <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a id="l01887" name="l01887"></a><span class="lineno"> 1887</span>                     + (requiredEnvelopeCount &gt;= 3 &amp;&amp; isUnavailable(widthStr) ? <span class="stringliteral">&quot;Width &quot;</span> : <span class="stringliteral">&quot;&quot;</span>));</div>
-<div class="line"><a id="l01888" name="l01888"></a><span class="lineno"> 1888</span>        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l01889" name="l01889"></a><span class="lineno"> 1889</span>      }</div>
-<div class="line"><a id="l01890" name="l01890"></a><span class="lineno"> 1890</span>      modifiersById[usageId].push_back(</div>
-<div class="line"><a id="l01891" name="l01891"></a><span class="lineno"> 1891</span>          RuntimeModifier{std::move(effect), <span class="keyword">false</span>});</div>
-<div class="line"><a id="l01892" name="l01892"></a><span class="lineno"> 1892</span>      <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l01893" name="l01893"></a><span class="lineno"> 1893</span>    }</div>
-<div class="line"><a id="l01894" name="l01894"></a><span class="lineno"> 1894</span> </div>
-<div class="line"><a id="l01895" name="l01895"></a><span class="lineno"> 1895</span>    <span class="keyword">const</span> <span class="keywordtype">string</span> partialResultStr =</div>
-<div class="line"><a id="l01896" name="l01896"></a><span class="lineno"> 1896</span>        <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(modifierElement.child(<span class="stringliteral">&quot;PartialResultString&quot;</span>));</div>
-<div class="line"><a id="l01897" name="l01897"></a><span class="lineno"> 1897</span>    pugi::xml_document partialResultDoc;</div>
-<div class="line"><a id="l01898" name="l01898"></a><span class="lineno"> 1898</span>    <span class="keyword">const</span> pugi::xml_parse_result parseResult =</div>
-<div class="line"><a id="l01899" name="l01899"></a><span class="lineno"> 1899</span>        partialResultDoc.load_string(partialResultStr.c_str());</div>
-<div class="line"><a id="l01900" name="l01900"></a><span class="lineno"> 1900</span>    <span class="keyword">const</span> pugi::xml_node root = partialResultDoc.document_element();</div>
-<div class="line"><a id="l01901" name="l01901"></a><span class="lineno"> 1901</span>    pugi::xml_node envelopeElement =</div>
-<div class="line"><a id="l01902" name="l01902"></a><span class="lineno"> 1902</span>        root.child(<span class="stringliteral">&quot;Envelopes&quot;</span>).child(<span class="stringliteral">&quot;Envelope&quot;</span>);</div>
-<div class="line"><a id="l01903" name="l01903"></a><span class="lineno"> 1903</span>    <span class="keywordflow">if</span> (!parseResult || !root || !envelopeElement) {</div>
-<div class="line"><a id="l01904" name="l01904"></a><span class="lineno"> 1904</span>      runtimeError(<span class="stringliteral">&quot;PARTIAL modifier &#39;&quot;</span> + usageId</div>
-<div class="line"><a id="l01905" name="l01905"></a><span class="lineno"> 1905</span>                   + <span class="stringliteral">&quot;&#39; has an invalid PartialResultString.&quot;</span>);</div>
-<div class="line"><a id="l01906" name="l01906"></a><span class="lineno"> 1906</span>      <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l01907" name="l01907"></a><span class="lineno"> 1907</span>    }</div>
-<div class="line"><a id="l01908" name="l01908"></a><span class="lineno"> 1908</span> </div>
-<div class="line"><a id="l01909" name="l01909"></a><span class="lineno"> 1909</span>    <span class="comment">// A logical PARTIAL modifier may intentionally have no enabled rows (for</span></div>
-<div class="line"><a id="l01910" name="l01910"></a><span class="lineno"> 1910</span>    <span class="comment">// example, every Probability slot is N/A). Keep the ID represented so it</span></div>
-<div class="line"><a id="l01911" name="l01911"></a><span class="lineno"> 1911</span>    <span class="comment">// remains a valid no-op when selected.</span></div>
-<div class="line"><a id="l01912" name="l01912"></a><span class="lineno"> 1912</span>    vector&lt;RuntimeModifier&gt;&amp; runtimeModifiers = modifiersById[usageId];</div>
-<div class="line"><a id="l01913" name="l01913"></a><span class="lineno"> 1913</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> partialIndex = 0; partialIndex &lt; numPartials; ++partialIndex) {</div>
-<div class="line"><a id="l01914" name="l01914"></a><span class="lineno"> 1914</span>      <span class="comment">// Fewer configured rows than spectrum partials is intentional: the</span></div>
-<div class="line"><a id="l01915" name="l01915"></a><span class="lineno"> 1915</span>      <span class="comment">// remaining partials simply do not receive this modifier. Once a row</span></div>
-<div class="line"><a id="l01916" name="l01916"></a><span class="lineno"> 1916</span>      <span class="comment">// starts, however, the legacy wire format still requires all four slots.</span></div>
-<div class="line"><a id="l01917" name="l01917"></a><span class="lineno"> 1917</span>      <span class="keywordflow">if</span> (!envelopeElement) {</div>
-<div class="line"><a id="l01918" name="l01918"></a><span class="lineno"> 1918</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l01919" name="l01919"></a><span class="lineno"> 1919</span>      }</div>
-<div class="line"><a id="l01920" name="l01920"></a><span class="lineno"> 1920</span>      pugi::xml_node probabilityElement = envelopeElement;</div>
-<div class="line"><a id="l01921" name="l01921"></a><span class="lineno"> 1921</span>      pugi::xml_node amplitudeElement =</div>
-<div class="line"><a id="l01922" name="l01922"></a><span class="lineno"> 1922</span>          probabilityElement.next_sibling(<span class="stringliteral">&quot;Envelope&quot;</span>);</div>
-<div class="line"><a id="l01923" name="l01923"></a><span class="lineno"> 1923</span>      pugi::xml_node widthElement =</div>
-<div class="line"><a id="l01924" name="l01924"></a><span class="lineno"> 1924</span>          amplitudeElement.next_sibling(<span class="stringliteral">&quot;Envelope&quot;</span>);</div>
-<div class="line"><a id="l01925" name="l01925"></a><span class="lineno"> 1925</span>      pugi::xml_node rateElement =</div>
-<div class="line"><a id="l01926" name="l01926"></a><span class="lineno"> 1926</span>          widthElement.next_sibling(<span class="stringliteral">&quot;Envelope&quot;</span>);</div>
-<div class="line"><a id="l01927" name="l01927"></a><span class="lineno"> 1927</span>      <span class="keywordflow">if</span> (!probabilityElement || !amplitudeElement</div>
-<div class="line"><a id="l01928" name="l01928"></a><span class="lineno"> 1928</span>          || !widthElement || !rateElement) {</div>
-<div class="line"><a id="l01929" name="l01929"></a><span class="lineno"> 1929</span>        runtimeError(<span class="stringliteral">&quot;PARTIAL modifier &#39;&quot;</span> + usageId</div>
-<div class="line"><a id="l01930" name="l01930"></a><span class="lineno"> 1930</span>                     + <span class="stringliteral">&quot;&#39; contains fewer than four envelopes per partial.&quot;</span>);</div>
-<div class="line"><a id="l01931" name="l01931"></a><span class="lineno"> 1931</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l01932" name="l01932"></a><span class="lineno"> 1932</span>      }</div>
-<div class="line"><a id="l01933" name="l01933"></a><span class="lineno"> 1933</span> </div>
-<div class="line"><a id="l01934" name="l01934"></a><span class="lineno"> 1934</span>      <span class="keyword">const</span> <span class="keywordtype">string</span> probabilityStr = <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(probabilityElement);</div>
-<div class="line"><a id="l01935" name="l01935"></a><span class="lineno"> 1935</span>      <span class="keywordflow">if</span> (isUnavailable(probabilityStr)) {</div>
-<div class="line"><a id="l01936" name="l01936"></a><span class="lineno"> 1936</span>        envelopeElement = rateElement.next_sibling(<span class="stringliteral">&quot;Envelope&quot;</span>);</div>
-<div class="line"><a id="l01937" name="l01937"></a><span class="lineno"> 1937</span>        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l01938" name="l01938"></a><span class="lineno"> 1938</span>      }</div>
-<div class="line"><a id="l01939" name="l01939"></a><span class="lineno"> 1939</span> </div>
-<div class="line"><a id="l01940" name="l01940"></a><span class="lineno"> 1940</span>      Envelope* probabilityEnvelope = <span class="keyword">static_cast&lt;</span>Envelope*<span class="keyword">&gt;</span>(</div>
-<div class="line"><a id="l01941" name="l01941"></a><span class="lineno"> 1941</span>          <a class="code hl_variable" href="classEvent.html#a5092cd4f16d5eb7c7ec0ebe96d6e91dc">utilities</a>-&gt;<a class="code hl_function" href="classUtilities.html#a4b0848cc0278c8edc4b3ee28b6900a98">evaluateObject</a>(probabilityStr, <span class="keyword">this</span>, <a class="code hl_enumvalue" href="Libraries_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa816850b6a91020a2e423c80b9b77544b">eventEnv</a>));</div>
-<div class="line"><a id="l01942" name="l01942"></a><span class="lineno"> 1942</span>      <span class="keywordflow">if</span> (probabilityEnvelope == NULL) {</div>
-<div class="line"><a id="l01943" name="l01943"></a><span class="lineno"> 1943</span>        runtimeError(<span class="stringliteral">&quot;PARTIAL modifier &#39;&quot;</span> + usageId</div>
-<div class="line"><a id="l01944" name="l01944"></a><span class="lineno"> 1944</span>                     + <span class="stringliteral">&quot;&#39; has an invalid Probability envelope.&quot;</span>);</div>
-<div class="line"><a id="l01945" name="l01945"></a><span class="lineno"> 1945</span>      }</div>
-<div class="line"><a id="l01946" name="l01946"></a><span class="lineno"> 1946</span> </div>
-<div class="line"><a id="l01947" name="l01947"></a><span class="lineno"> 1947</span>      <span class="keyword">auto</span> effect = std::make_unique&lt;Modifier&gt;(</div>
-<div class="line"><a id="l01948" name="l01948"></a><span class="lineno"> 1948</span>          modType, probabilityEnvelope, <span class="stringliteral">&quot;PARTIAL&quot;</span>, partialIndex);</div>
-<div class="line"><a id="l01949" name="l01949"></a><span class="lineno"> 1949</span>      <span class="keyword">delete</span> probabilityEnvelope;</div>
-<div class="line"><a id="l01950" name="l01950"></a><span class="lineno"> 1950</span> </div>
-<div class="line"><a id="l01951" name="l01951"></a><span class="lineno"> 1951</span>      <span class="keywordtype">int</span> envelopeCount = 0;</div>
-<div class="line"><a id="l01952" name="l01952"></a><span class="lineno"> 1952</span>      envelopeCount += addEnvelope(</div>
-<div class="line"><a id="l01953" name="l01953"></a><span class="lineno"> 1953</span>          *effect, <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(amplitudeElement), <span class="stringliteral">&quot;partial Amplitude&quot;</span>) ? 1 : 0;</div>
-<div class="line"><a id="l01954" name="l01954"></a><span class="lineno"> 1954</span>      envelopeCount += addEnvelope(</div>
-<div class="line"><a id="l01955" name="l01955"></a><span class="lineno"> 1955</span>          *effect, <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(rateElement), <span class="stringliteral">&quot;partial Rate&quot;</span>) ? 1 : 0;</div>
-<div class="line"><a id="l01956" name="l01956"></a><span class="lineno"> 1956</span>      <span class="keywordflow">if</span> (modType != <span class="stringliteral">&quot;PHASE_MOD&quot;</span>) {</div>
-<div class="line"><a id="l01957" name="l01957"></a><span class="lineno"> 1957</span>        envelopeCount += addEnvelope(</div>
-<div class="line"><a id="l01958" name="l01958"></a><span class="lineno"> 1958</span>            *effect, <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(widthElement), <span class="stringliteral">&quot;partial Width&quot;</span>) ? 1 : 0;</div>
-<div class="line"><a id="l01959" name="l01959"></a><span class="lineno"> 1959</span>      }</div>
-<div class="line"><a id="l01960" name="l01960"></a><span class="lineno"> 1960</span> </div>
-<div class="line"><a id="l01961" name="l01961"></a><span class="lineno"> 1961</span>      <span class="keywordtype">int</span> requiredEnvelopeCount = 0;</div>
-<div class="line"><a id="l01962" name="l01962"></a><span class="lineno"> 1962</span>      <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;TREMOLO&quot;</span> || modType == <span class="stringliteral">&quot;VIBRATO&quot;</span></div>
-<div class="line"><a id="l01963" name="l01963"></a><span class="lineno"> 1963</span>          || modType == <span class="stringliteral">&quot;PHASE_MOD&quot;</span>) {</div>
-<div class="line"><a id="l01964" name="l01964"></a><span class="lineno"> 1964</span>        requiredEnvelopeCount = 2;</div>
-<div class="line"><a id="l01965" name="l01965"></a><span class="lineno"> 1965</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;GLISSANDO&quot;</span> || modType == <span class="stringliteral">&quot;DETUNE&quot;</span></div>
-<div class="line"><a id="l01966" name="l01966"></a><span class="lineno"> 1966</span>                 || modType == <span class="stringliteral">&quot;WAVE_TYPE&quot;</span>) {</div>
-<div class="line"><a id="l01967" name="l01967"></a><span class="lineno"> 1967</span>        requiredEnvelopeCount = 1;</div>
-<div class="line"><a id="l01968" name="l01968"></a><span class="lineno"> 1968</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;AMPTRANS&quot;</span> || modType == <span class="stringliteral">&quot;FREQTRANS&quot;</span>) {</div>
-<div class="line"><a id="l01969" name="l01969"></a><span class="lineno"> 1969</span>        requiredEnvelopeCount = 3;</div>
-<div class="line"><a id="l01970" name="l01970"></a><span class="lineno"> 1970</span>      }</div>
-<div class="line"><a id="l01971" name="l01971"></a><span class="lineno"> 1971</span>      <span class="keywordflow">if</span> (envelopeCount &lt; requiredEnvelopeCount) {</div>
-<div class="line"><a id="l01972" name="l01972"></a><span class="lineno"> 1972</span>        runtimeError(<span class="stringliteral">&quot;PARTIAL modifier &#39;&quot;</span> + usageId</div>
-<div class="line"><a id="l01973" name="l01973"></a><span class="lineno"> 1973</span>                     + <span class="stringliteral">&quot;&#39; is missing a required parameter envelope.&quot;</span>);</div>
-<div class="line"><a id="l01974" name="l01974"></a><span class="lineno"> 1974</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l01975" name="l01975"></a><span class="lineno"> 1975</span>      }</div>
-<div class="line"><a id="l01976" name="l01976"></a><span class="lineno"> 1976</span> </div>
-<div class="line"><a id="l01977" name="l01977"></a><span class="lineno"> 1977</span>      runtimeModifiers.push_back(RuntimeModifier{std::move(effect), <span class="keyword">true</span>});</div>
-<div class="line"><a id="l01978" name="l01978"></a><span class="lineno"> 1978</span>      envelopeElement = rateElement.next_sibling(<span class="stringliteral">&quot;Envelope&quot;</span>);</div>
-<div class="line"><a id="l01979" name="l01979"></a><span class="lineno"> 1979</span>    }</div>
-<div class="line"><a id="l01980" name="l01980"></a><span class="lineno"> 1980</span>  }</div>
-<div class="line"><a id="l01981" name="l01981"></a><span class="lineno"> 1981</span> </div>
-<div class="line"><a id="l01982" name="l01982"></a><span class="lineno"> 1982</span>  <span class="comment">// Program compilation and runtime effect parsing must describe the same</span></div>
-<div class="line"><a id="l01983" name="l01983"></a><span class="lineno"> 1983</span>  <span class="comment">// ordered logical modifiers. Check this before drawing or applying anything.</span></div>
-<div class="line"><a id="l01984" name="l01984"></a><span class="lineno"> 1984</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_typedef" href="namespacedissco_1_1modifier__usage.html#aa57c928be91dba85989ca24560adc464">ModifierId</a>&amp; modifierId : modifierUsageRuntime-&gt;modifierIds) {</div>
-<div class="line"><a id="l01985" name="l01985"></a><span class="lineno"> 1985</span>    <span class="keyword">const</span> <span class="keyword">auto</span> found = modifiersById.find(modifierId);</div>
-<div class="line"><a id="l01986" name="l01986"></a><span class="lineno"> 1986</span>    <span class="keywordflow">if</span> (found == modifiersById.end()) {</div>
-<div class="line"><a id="l01987" name="l01987"></a><span class="lineno"> 1987</span>      runtimeError(<span class="stringliteral">&quot;compiled modifier &#39;&quot;</span> + modifierId</div>
-<div class="line"><a id="l01988" name="l01988"></a><span class="lineno"> 1988</span>                   + <span class="stringliteral">&quot;&#39; has no runtime effect.&quot;</span>);</div>
-<div class="line"><a id="l01989" name="l01989"></a><span class="lineno"> 1989</span>    }</div>
-<div class="line"><a id="l01990" name="l01990"></a><span class="lineno"> 1990</span>  }</div>
-<div class="line"><a id="l01991" name="l01991"></a><span class="lineno"> 1991</span>  <a class="code hl_struct" href="structdissco_1_1modifier__usage_1_1Selection.html">Selection</a> selection;</div>
-<div class="line"><a id="l01992" name="l01992"></a><span class="lineno"> 1992</span>  <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l01993" name="l01993"></a><span class="lineno"> 1993</span>    selection = modifierUsageRuntime-&gt;program-&gt;select(</div>
-<div class="line"><a id="l01994" name="l01994"></a><span class="lineno"> 1994</span>        []() { <span class="keywordflow">return</span> <a class="code hl_function" href="classRandom.html#a79954f12ada797389d4798c6f26c5914">Random::Rand</a>(); });</div>
-<div class="line"><a id="l01995" name="l01995"></a><span class="lineno"> 1995</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classCmodError.html">CmodError</a>&amp;) {</div>
-<div class="line"><a id="l01996" name="l01996"></a><span class="lineno"> 1996</span>    <span class="keywordflow">throw</span>;</div>
-<div class="line"><a id="l01997" name="l01997"></a><span class="lineno"> 1997</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; error) {</div>
-<div class="line"><a id="l01998" name="l01998"></a><span class="lineno"> 1998</span>    <span class="keywordflow">throw</span> <a class="code hl_class" href="classCmodError.html">CmodError</a>(<a class="code hl_enumvalue" href="classCmodError.html#a95049bd4f3d2e9daede92d3752248690aafbf0897a5a83fdd873dfb032ec695d3">CmodError::Kind::Internal</a>,</div>
-<div class="line"><a id="l01999" name="l01999"></a><span class="lineno"> 1999</span>                    <span class="stringliteral">&quot;Modifier selection failed: &quot;</span> + <span class="keywordtype">string</span>(error.what()),</div>
-<div class="line"><a id="l02000" name="l02000"></a><span class="lineno"> 2000</span>                    <span class="stringliteral">&quot;Bottom &#39;&quot;</span> + <a class="code hl_variable" href="classEvent.html#a2260aa14c4dfb50ad5db1dd71ece65eb">name</a> + <span class="stringliteral">&quot;&#39; / Modifier Usage selection&quot;</span>,</div>
-<div class="line"><a id="l02001" name="l02001"></a><span class="lineno"> 2001</span>                    <span class="stringliteral">&quot;Report this diagnostic to the DISSCO developers with the project and seed.&quot;</span>);</div>
-<div class="line"><a id="l02002" name="l02002"></a><span class="lineno"> 2002</span>  }</div>
-<div class="line"><a id="l02003" name="l02003"></a><span class="lineno"> 2003</span> </div>
-<div class="line"><a id="l02004" name="l02004"></a><span class="lineno"> 2004</span>  <span class="comment">// Selection IDs are already in Program order. A selected PARTIAL logical</span></div>
-<div class="line"><a id="l02005" name="l02005"></a><span class="lineno"> 2005</span>  <span class="comment">// modifier still uses its existing per-partial Probability envelope as a</span></div>
-<div class="line"><a id="l02006" name="l02006"></a><span class="lineno"> 2006</span>  <span class="comment">// second-stage gate.</span></div>
-<div class="line"><a id="l02007" name="l02007"></a><span class="lineno"> 2007</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_typedef" href="namespacedissco_1_1modifier__usage.html#aa57c928be91dba85989ca24560adc464">ModifierId</a>&amp; selectedId : selection.orderedOnIds) {</div>
-<div class="line"><a id="l02008" name="l02008"></a><span class="lineno"> 2008</span>    <span class="keyword">auto</span> found = modifiersById.find(selectedId);</div>
-<div class="line"><a id="l02009" name="l02009"></a><span class="lineno"> 2009</span>    <span class="keywordflow">if</span> (found == modifiersById.end()) {</div>
-<div class="line"><a id="l02010" name="l02010"></a><span class="lineno"> 2010</span>      runtimeError(<span class="stringliteral">&quot;selection returned unknown modifier &#39;&quot;</span> + selectedId + <span class="stringliteral">&quot;&#39;.&quot;</span>);</div>
-<div class="line"><a id="l02011" name="l02011"></a><span class="lineno"> 2011</span>      <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l02012" name="l02012"></a><span class="lineno"> 2012</span>    }</div>
-<div class="line"><a id="l02013" name="l02013"></a><span class="lineno"> 2013</span>    <span class="keywordflow">for</span> (RuntimeModifier&amp; runtimeModifier : found-&gt;second) {</div>
-<div class="line"><a id="l02014" name="l02014"></a><span class="lineno"> 2014</span>      <a class="code hl_class" href="classModifier.html">Modifier</a>&amp; effect = *runtimeModifier.effect;</div>
-<div class="line"><a id="l02015" name="l02015"></a><span class="lineno"> 2015</span>      <span class="keywordflow">if</span> (runtimeModifier.applyByPartial) {</div>
-<div class="line"><a id="l02016" name="l02016"></a><span class="lineno"> 2016</span>        <span class="keywordflow">if</span> (effect.<a class="code hl_function" href="classModifier.html#a556b2483c0d0a9cc4859c61684316197">willOccur</a>(<a class="code hl_variable" href="classEvent.html#abd0a1667544db725a4fba522013c6389">checkPoint</a>)) {</div>
-<div class="line"><a id="l02017" name="l02017"></a><span class="lineno"> 2017</span>          effect.<a class="code hl_function" href="classModifier.html#a639c69b69fade3d47bfe19eec79ee81e">applyModifier</a>(s);</div>
-<div class="line"><a id="l02018" name="l02018"></a><span class="lineno"> 2018</span>        }</div>
-<div class="line"><a id="l02019" name="l02019"></a><span class="lineno"> 2019</span>      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l02020" name="l02020"></a><span class="lineno"> 2020</span>        effect.<a class="code hl_function" href="classModifier.html#aa002bd3cbcadf45a204ef002c4ebb236">setCheckPoint</a>(<a class="code hl_variable" href="classEvent.html#abd0a1667544db725a4fba522013c6389">checkPoint</a>);</div>
-<div class="line"><a id="l02021" name="l02021"></a><span class="lineno"> 2021</span>        effect.<a class="code hl_function" href="classModifier.html#a639c69b69fade3d47bfe19eec79ee81e">applyModifier</a>(s);</div>
-<div class="line"><a id="l02022" name="l02022"></a><span class="lineno"> 2022</span>      }</div>
-<div class="line"><a id="l02023" name="l02023"></a><span class="lineno"> 2023</span>    }</div>
-<div class="line"><a id="l02024" name="l02024"></a><span class="lineno"> 2024</span>  }</div>
-<div class="line"><a id="l02025" name="l02025"></a><span class="lineno"> 2025</span>}</div>
-<div class="line"><a id="l02026" name="l02026"></a><span class="lineno"> 2026</span> </div>
-<div class="line"><a id="l02027" name="l02027"></a><span class="lineno"> 2027</span><span class="comment">//-----------------------------------------------------------------------------/</span></div>
-<div class="line"><a id="l02028" name="l02028"></a><span class="lineno"> 2028</span> </div>
-<div class="line"><a id="l02029" name="l02029"></a><span class="lineno"> 2029</span><span class="keywordtype">void</span> Bottom::applyModifiers(Sound *s, <span class="keywordtype">int</span> numPartials) {</div>
-<div class="line"><a id="l02030" name="l02030"></a><span class="lineno"> 2030</span>  applyModifierUsage(s, numPartials);</div>
-<div class="line"><a id="l02031" name="l02031"></a><span class="lineno"> 2031</span>}</div>
-<div class="line"><a id="l02032" name="l02032"></a><span class="lineno"> 2032</span> </div>
-<div class="line"><a id="l02033" name="l02033"></a><span class="lineno"> 2033</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l02034" name="l02034"></a><span class="lineno"> 2034</span> </div>
-<div class="line"><a id="l02035" name="l02035"></a><span class="lineno"> 2035</span><span class="comment">// int applyNoteStaffs(pugi::xml_node _playingMethods){</span></div>
-<div class="line"><a id="l02036" name="l02036"></a><span class="lineno"> 2036</span><span class="comment">//   int noteStaff;</span></div>
-<div class="line"><a id="l02037" name="l02037"></a><span class="lineno"> 2037</span> </div>
-<div class="line"><a id="l02038" name="l02038"></a><span class="lineno"> 2038</span><span class="comment">//   pugi::xml_node noteInfo = GNES(GNES(GFEC(_playingMethods)));</span></div>
-<div class="line"><a id="l02039" name="l02039"></a><span class="lineno"> 2039</span><span class="comment">//   pugi::xml_node techniqueElement = GFEC(noteInfo);</span></div>
-<div class="line"><a id="l02040" name="l02040"></a><span class="lineno"> 2040</span> </div>
-<div class="line"><a id="l02041" name="l02041"></a><span class="lineno"> 2041</span><span class="comment">//   noteStaff = utilities-&gt;evaluate(XMLTC(techniqueElement),(void*)this);</span></div>
-<div class="line"><a id="l02042" name="l02042"></a><span class="lineno"> 2042</span> </div>
-<div class="line"><a id="l02043" name="l02043"></a><span class="lineno"> 2043</span><span class="comment">//   return noteStaff;</span></div>
-<div class="line"><a id="l02044" name="l02044"></a><span class="lineno"> 2044</span><span class="comment">// }</span></div>
-<div class="line"><a id="l02045" name="l02045"></a><span class="lineno"> 2045</span> </div>
-<div class="line"><a id="l02046" name="l02046"></a><span class="lineno"> 2046</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l02047" name="l02047"></a><span class="lineno"> 2047</span> </div>
-<div class="line"><a id="l02048" name="l02048"></a><span class="lineno"> 2048</span>vector&lt;string&gt; Bottom::applyNoteModifiers( pugi::xml_node _playingMethods) {</div>
-<div class="line"><a id="l02049" name="l02049"></a><span class="lineno"> 2049</span> </div>
-<div class="line"><a id="l02050" name="l02050"></a><span class="lineno"> 2050</span>  vector&lt;string&gt; modNames;</div>
-<div class="line"><a id="l02051" name="l02051"></a><span class="lineno"> 2051</span> </div>
-<div class="line"><a id="l02052" name="l02052"></a><span class="lineno"> 2052</span>  <span class="comment">// pugi::xml_node noteInfo = GNES(GNES(GFEC(_playingMethods)));</span></div>
-<div class="line"><a id="l02053" name="l02053"></a><span class="lineno"> 2053</span>  <span class="comment">// pugi::xml_node techniqueElement = GNES(GFEC(noteInfo));</span></div>
-<div class="line"><a id="l02054" name="l02054"></a><span class="lineno"> 2054</span> </div>
-<div class="line"><a id="l02055" name="l02055"></a><span class="lineno"> 2055</span><span class="comment">//  string name0 = XMLTC(techniqueElement);</span></div>
-<div class="line"><a id="l02056" name="l02056"></a><span class="lineno"> 2056</span><span class="comment">//  cout &lt;&lt; &quot;name0: &quot; &lt;&lt; name0 &lt;&lt; endl;</span></div>
-<div class="line"><a id="l02057" name="l02057"></a><span class="lineno"> 2057</span> </div>
-<div class="line"><a id="l02058" name="l02058"></a><span class="lineno"> 2058</span>  <span class="comment">// pugi::xml_node currentTechnique = GFEC(techniqueElement);</span></div>
-<div class="line"><a id="l02059" name="l02059"></a><span class="lineno"> 2059</span>  pugi::xml_node currentTechnique = <a class="code hl_function" href="Libraries_8h.html#ad8ae8ed9fbc892a9adb84d5f0b9051da">GFEC</a>(_playingMethods);</div>
-<div class="line"><a id="l02060" name="l02060"></a><span class="lineno"> 2060</span> </div>
-<div class="line"><a id="l02061" name="l02061"></a><span class="lineno"> 2061</span>  <span class="comment">// do {</span></div>
-<div class="line"><a id="l02062" name="l02062"></a><span class="lineno"> 2062</span>  <span class="comment">//   string name = XMLTC(currentTechnique);</span></div>
-<div class="line"><a id="l02063" name="l02063"></a><span class="lineno"> 2063</span>  <span class="comment">//   modNames.push_back(name);</span></div>
-<div class="line"><a id="l02064" name="l02064"></a><span class="lineno"> 2064</span>  <span class="comment">//   currentTechnique = GNES(currentTechnique);</span></div>
-<div class="line"><a id="l02065" name="l02065"></a><span class="lineno"> 2065</span>  <span class="comment">// } while ( currentTechnique != NULL);</span></div>
-<div class="line"><a id="l02066" name="l02066"></a><span class="lineno"> 2066</span> </div>
-<div class="line"><a id="l02067" name="l02067"></a><span class="lineno"> 2067</span>  <span class="keywordflow">while</span> (currentTechnique != NULL) {</div>
-<div class="line"><a id="l02068" name="l02068"></a><span class="lineno"> 2068</span>    <span class="keywordtype">string</span> techniqueName = <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(currentTechnique);</div>
-<div class="line"><a id="l02069" name="l02069"></a><span class="lineno"> 2069</span>    modNames.push_back(techniqueName);</div>
-<div class="line"><a id="l02070" name="l02070"></a><span class="lineno"> 2070</span>    currentTechnique = <a class="code hl_function" href="Libraries_8h.html#a1ecb0a878309e5bd7eadcecb2f701132">GNES</a>(currentTechnique);</div>
-<div class="line"><a id="l02071" name="l02071"></a><span class="lineno"> 2071</span>  }</div>
-<div class="line"><a id="l02072" name="l02072"></a><span class="lineno"> 2072</span> </div>
-<div class="line"><a id="l02073" name="l02073"></a><span class="lineno"> 2073</span>  <span class="keywordflow">return</span> modNames;</div>
-<div class="line"><a id="l02074" name="l02074"></a><span class="lineno"> 2074</span>}</div>
-<div class="line"><a id="l02075" name="l02075"></a><span class="lineno"> 2075</span> </div>
-<div class="line"><a id="l02076" name="l02076"></a><span class="lineno"> 2076</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l02077" name="l02077"></a><span class="lineno"> 2077</span> </div>
-<div class="line"><a id="l02078" name="l02078"></a><span class="lineno"> 2078</span><span class="keywordtype">void</span> Bottom::generatePartials(Sound* newsound, <span class="keywordtype">float</span> frequency, <span class="keywordtype">float</span>, <span class="keywordtype">float</span>, Envelope* waveShape){</div>
-<div class="line"><a id="l02079" name="l02079"></a><span class="lineno"> 2079</span> </div>
-<div class="line"><a id="l02080" name="l02080"></a><span class="lineno"> 2080</span>  <span class="keywordflow">if</span> ((frequency &lt; 233) || frequency &gt; 932){</div>
-<div class="line"><a id="l02081" name="l02081"></a><span class="lineno"> 2081</span>    warnBottom(<a class="code hl_variable" href="classEvent.html#a2260aa14c4dfb50ad5db1dd71ece65eb">name</a>, <span class="stringliteral">&quot;Generate Spectrum / Frequency&quot;</span>,</div>
-<div class="line"><a id="l02082" name="l02082"></a><span class="lineno"> 2082</span>               <span class="stringliteral">&quot;Frequency is &quot;</span> + std::to_string(frequency)</div>
-<div class="line"><a id="l02083" name="l02083"></a><span class="lineno"> 2083</span>                   + <span class="stringliteral">&quot; Hz, outside Spectrum_Gen&#39;s reference range of 233 to 932 Hz; generation continues.&quot;</span>,</div>
-<div class="line"><a id="l02084" name="l02084"></a><span class="lineno"> 2084</span>               <span class="stringliteral">&quot;Check the Bottom event&#39;s Frequency, or use explicit spectrum partial envelopes if this wider range is intentional.&quot;</span>);</div>
-<div class="line"><a id="l02085" name="l02085"></a><span class="lineno"> 2085</span>  }</div>
-<div class="line"><a id="l02086" name="l02086"></a><span class="lineno"> 2086</span>  <span class="comment">//calculate scale for Partials</span></div>
-<div class="line"><a id="l02087" name="l02087"></a><span class="lineno"> 2087</span>  <span class="keywordtype">double</span> scaleTable[3][3][20] = {</div>
-<div class="line"><a id="l02088" name="l02088"></a><span class="lineno"> 2088</span>    { <span class="comment">//Bb3,p,m,f     233 hz</span></div>
-<div class="line"><a id="l02089" name="l02089"></a><span class="lineno"> 2089</span>      {0.886, 0.014, 1, 0.072, 0.367, 0.193, 0.183, 0.036, 0.058, 0.010, 0.028,</div>
-<div class="line"><a id="l02090" name="l02090"></a><span class="lineno"> 2090</span>        0.021, 0.011, 0.016, 0.003, 0.003, 0.002, 0.002, 0.002, 0.002},</div>
-<div class="line"><a id="l02091" name="l02091"></a><span class="lineno"> 2091</span>      {0.756, 0.014, 1, 0.037, 0.521, 0.217, 0.234, 0.123, 0.306, 0.066, 0.142,</div>
-<div class="line"><a id="l02092" name="l02092"></a><span class="lineno"> 2092</span>      0.040, 0.053, 0.044, 0.053, 0.039, 0.033, 0.043, 0.004, 0.012},</div>
-<div class="line"><a id="l02093" name="l02093"></a><span class="lineno"> 2093</span>      {0.832, 0.019, 1.000, 0.043, 0.481, 0.226, 0.145, 0.119, 0.384, 0.091,</div>
-<div class="line"><a id="l02094" name="l02094"></a><span class="lineno"> 2094</span>        0.182, 0.048, 0.080, 0.094, 0.077, 0.053, 0.044, 0.057, 0.009, 0.021}</div>
-<div class="line"><a id="l02095" name="l02095"></a><span class="lineno"> 2095</span>      },</div>
-<div class="line"><a id="l02096" name="l02096"></a><span class="lineno"> 2096</span>    {<span class="comment">//Bb4,p,m,f     466 hz</span></div>
-<div class="line"><a id="l02097" name="l02097"></a><span class="lineno"> 2097</span>      {1.000, 0.115, 0.834, 0.079, 0.233, 0.031, 0.027, 0.015, 0.005, 0.004,</div>
-<div class="line"><a id="l02098" name="l02098"></a><span class="lineno"> 2098</span>      0.008, 0.002, 0.001, 0.0017, 0.001, 0.001, 0.001, 0.001, 0.0006, 0.001},</div>
-<div class="line"><a id="l02099" name="l02099"></a><span class="lineno"> 2099</span>      {0.938, 0.072, 1.000, 0.318, 0.096, 0.096, 0.036, 0.109, 0.023, 0.010,</div>
-<div class="line"><a id="l02100" name="l02100"></a><span class="lineno"> 2100</span>      0.007, 0.007, 0.002, 0.010, 0.002, 0.0015, 0.002, 0.002, 0.002, 0.0015},</div>
-<div class="line"><a id="l02101" name="l02101"></a><span class="lineno"> 2101</span>      {0.939, 0.036, 1.000, 0.252, 0.220, 0.078, 0.057, 0.045, 0.027, 0.016,</div>
-<div class="line"><a id="l02102" name="l02102"></a><span class="lineno"> 2102</span>      0.013, 0.007, 0.003, 0.008, 0.004, 0.001, 0.002, 0.001, 0.0022, 0.0018}</div>
-<div class="line"><a id="l02103" name="l02103"></a><span class="lineno"> 2103</span>    },</div>
-<div class="line"><a id="l02104" name="l02104"></a><span class="lineno"> 2104</span>    {<span class="comment">//Bb5,p,m,f     932 hz</span></div>
-<div class="line"><a id="l02105" name="l02105"></a><span class="lineno"> 2105</span>      {1.000, 0.269, 0.227, 0.040, 0.004, 0.006, 0.003, 0.0007, 0.002, 0.0007,</div>
-<div class="line"><a id="l02106" name="l02106"></a><span class="lineno"> 2106</span>      0.0007, 0.003, 0.0007, 0.001, 0.0014, 0.0005, 0.0007, 0.0005, 0.0007, 0.0005},</div>
-<div class="line"><a id="l02107" name="l02107"></a><span class="lineno"> 2107</span>      {1.00, 0.507, 0.132, 0.160, 0.030, 0.002, 0.001, 0.0008, 0.0016, 0.003, 0.002,</div>
-<div class="line"><a id="l02108" name="l02108"></a><span class="lineno"> 2108</span>      0.001, 0.001, 0.001, 0.0005, 0.0005, 0.001, 0.0005, 0.001, 0.00064},</div>
-<div class="line"><a id="l02109" name="l02109"></a><span class="lineno"> 2109</span>      {1.00, 0.354, 0.198, 0.102, 0.054, 0.012, 0.005, 0.002, 0.005, 0.003, 0.003,</div>
-<div class="line"><a id="l02110" name="l02110"></a><span class="lineno"> 2110</span>      0.002, 0.001, 0.002, 0.004, 0.0015, 0.002, 0.002, 0.003, 0.0013}</div>
-<div class="line"><a id="l02111" name="l02111"></a><span class="lineno"> 2111</span>    }</div>
-<div class="line"><a id="l02112" name="l02112"></a><span class="lineno"> 2112</span>  };</div>
-<div class="line"><a id="l02113" name="l02113"></a><span class="lineno"> 2113</span>  <span class="comment">//Set the number of partials.</span></div>
-<div class="line"><a id="l02114" name="l02114"></a><span class="lineno"> 2114</span>  <span class="keywordtype">int</span> numPartials = 20;</div>
-<div class="line"><a id="l02115" name="l02115"></a><span class="lineno"> 2115</span>  <span class="comment">//For each partial, create and add to sound.</span></div>
-<div class="line"><a id="l02116" name="l02116"></a><span class="lineno"> 2116</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; numPartials; i++) {</div>
-<div class="line"><a id="l02117" name="l02117"></a><span class="lineno"> 2117</span> </div>
-<div class="line"><a id="l02118" name="l02118"></a><span class="lineno"> 2118</span>    <span class="comment">//Create the next partial object.</span></div>
-<div class="line"><a id="l02119" name="l02119"></a><span class="lineno"> 2119</span>    Partial partial;</div>
-<div class="line"><a id="l02120" name="l02120"></a><span class="lineno"> 2120</span> </div>
-<div class="line"><a id="l02121" name="l02121"></a><span class="lineno"> 2121</span>    <span class="comment">//Set the partial number of the partial based on the current index.</span></div>
-<div class="line"><a id="l02122" name="l02122"></a><span class="lineno"> 2122</span>    partial.setParam(PARTIAL_NUM, <span class="keyword">static_cast&lt;</span>m_value_type<span class="keyword">&gt;</span>(i));</div>
-<div class="line"><a id="l02123" name="l02123"></a><span class="lineno"> 2123</span> </div>
-<div class="line"><a id="l02124" name="l02124"></a><span class="lineno"> 2124</span>    <span class="comment">//Set the frequencies for each partial.</span></div>
-<div class="line"><a id="l02125" name="l02125"></a><span class="lineno"> 2125</span>    <span class="keywordtype">float</span> actualFrequency = setPartialFreq(</div>
-<div class="line"><a id="l02126" name="l02126"></a><span class="lineno"> 2126</span>      partial, 0, frequency, i);</div>
-<div class="line"><a id="l02127" name="l02127"></a><span class="lineno"> 2127</span> </div>
-<div class="line"><a id="l02128" name="l02128"></a><span class="lineno"> 2128</span>    <span class="comment">//Report the actual frequency.</span></div>
-<div class="line"><a id="l02129" name="l02129"></a><span class="lineno"> 2129</span>    stringstream ss; <span class="keywordflow">if</span>(i != 0) ss &lt;&lt; <span class="stringliteral">&quot;Partial &quot;</span> &lt;&lt; i; <span class="keywordflow">else</span> ss &lt;&lt; <span class="stringliteral">&quot;Fundamental&quot;</span>;</div>
-<div class="line"><a id="l02130" name="l02130"></a><span class="lineno"> 2130</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classEvent.html#a5092cd4f16d5eb7c7ec0ebe96d6e91dc">utilities</a>-&gt;<a class="code hl_function" href="classUtilities.html#ac278b0255dc54c72d9107346ce3cf785">getOutputParticel</a>())</div>
-<div class="line"><a id="l02131" name="l02131"></a><span class="lineno"> 2131</span>  <a class="code hl_function" href="classOutput.html#aac3423bbbe3e6667f366304e80638a6d">Output::addProperty</a>(ss.str(), actualFrequency, <span class="stringliteral">&quot;Hz&quot;</span>);</div>
-<div class="line"><a id="l02132" name="l02132"></a><span class="lineno"> 2132</span>    <span class="comment">//Set the spectrum for this partial.</span></div>
-<div class="line"><a id="l02133" name="l02133"></a><span class="lineno"> 2133</span>    <span class="comment">//interpolate the scale from scale table</span></div>
-<div class="line"><a id="l02134" name="l02134"></a><span class="lineno"> 2134</span>    <span class="comment">// double scale;</span></div>
-<div class="line"><a id="l02135" name="l02135"></a><span class="lineno"> 2135</span>    <span class="comment">// if (frequency &lt;= 466){</span></div>
-<div class="line"><a id="l02136" name="l02136"></a><span class="lineno"> 2136</span>    <span class="comment">//   if (strength &lt;= 1){</span></div>
-<div class="line"><a id="l02137" name="l02137"></a><span class="lineno"> 2137</span>    <span class="comment">//     double scale_strength1 = calculateFreqPartial(233,scaleTable[0][0][i],466,scaleTable[1][0][i],frequency);</span></div>
-<div class="line"><a id="l02138" name="l02138"></a><span class="lineno"> 2138</span>    <span class="comment">//     double scale_strength2 = calculateFreqPartial(233,scaleTable[0][1][i],466,scaleTable[1][1][i],frequency);</span></div>
-<div class="line"><a id="l02139" name="l02139"></a><span class="lineno"> 2139</span>    <span class="comment">//     scale = strength * scale_strength1 + (1 - strength) * scale_strength2;</span></div>
-<div class="line"><a id="l02140" name="l02140"></a><span class="lineno"> 2140</span>    <span class="comment">//   }</span></div>
-<div class="line"><a id="l02141" name="l02141"></a><span class="lineno"> 2141</span>    <span class="comment">//   else{</span></div>
-<div class="line"><a id="l02142" name="l02142"></a><span class="lineno"> 2142</span>    <span class="comment">//     double scale_strength1 = calculateFreqPartial(233,scaleTable[0][1][i],466,scaleTable[1][1][i],frequency);</span></div>
-<div class="line"><a id="l02143" name="l02143"></a><span class="lineno"> 2143</span>    <span class="comment">//     double scale_strength2 = calculateFreqPartial(233,scaleTable[0][2][i],466,scaleTable[1][2][i],frequency);</span></div>
-<div class="line"><a id="l02144" name="l02144"></a><span class="lineno"> 2144</span>    <span class="comment">//     scale = (2 - strength) * scale_strength1 + (strength - 1) * scale_strength2;</span></div>
-<div class="line"><a id="l02145" name="l02145"></a><span class="lineno"> 2145</span>    <span class="comment">//   }</span></div>
-<div class="line"><a id="l02146" name="l02146"></a><span class="lineno"> 2146</span>    <span class="comment">// }</span></div>
-<div class="line"><a id="l02147" name="l02147"></a><span class="lineno"> 2147</span>    <span class="comment">// else{</span></div>
-<div class="line"><a id="l02148" name="l02148"></a><span class="lineno"> 2148</span>    <span class="comment">//   if (strength &lt;= 1){</span></div>
-<div class="line"><a id="l02149" name="l02149"></a><span class="lineno"> 2149</span>    <span class="comment">//     double scale_strength1 = calculateFreqPartial(466,scaleTable[1][0][i],932,scaleTable[2][0][i],frequency);</span></div>
-<div class="line"><a id="l02150" name="l02150"></a><span class="lineno"> 2150</span>    <span class="comment">//     double scale_strength2 = calculateFreqPartial(466,scaleTable[1][1][i],932,scaleTable[2][1][i],frequency);</span></div>
-<div class="line"><a id="l02151" name="l02151"></a><span class="lineno"> 2151</span>    <span class="comment">//     scale = strength * scale_strength1 + (1 - strength) * scale_strength2;</span></div>
-<div class="line"><a id="l02152" name="l02152"></a><span class="lineno"> 2152</span>    <span class="comment">//   }</span></div>
-<div class="line"><a id="l02153" name="l02153"></a><span class="lineno"> 2153</span>    <span class="comment">//   else{</span></div>
-<div class="line"><a id="l02154" name="l02154"></a><span class="lineno"> 2154</span>    <span class="comment">//     double scale_strength1 = calculateFreqPartial(466,scaleTable[1][1][i],932,scaleTable[2][1][i],frequency);</span></div>
-<div class="line"><a id="l02155" name="l02155"></a><span class="lineno"> 2155</span>    <span class="comment">//     double scale_strength2 = calculateFreqPartial(466,scaleTable[1][2][i],932,scaleTable[2][2][i],frequency);</span></div>
-<div class="line"><a id="l02156" name="l02156"></a><span class="lineno"> 2156</span>    <span class="comment">//     scale = (2 - strength) * scale_strength1 + (strength - 1) * scale_strength2;</span></div>
-<div class="line"><a id="l02157" name="l02157"></a><span class="lineno"> 2157</span>    <span class="comment">//   }</span></div>
-<div class="line"><a id="l02158" name="l02158"></a><span class="lineno"> 2158</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l01842" name="l01842"></a><span class="lineno"> 1842</span>    <span class="keywordtype">double</span> detuneSpread = 0.0;</div>
+<div class="line"><a id="l01843" name="l01843"></a><span class="lineno"> 1843</span>    <span class="keywordtype">double</span> detuneDirection = 0.0;</div>
+<div class="line"><a id="l01844" name="l01844"></a><span class="lineno"> 1844</span>    <span class="keywordtype">double</span> detuneVelocity = 0.0;</div>
+<div class="line"><a id="l01845" name="l01845"></a><span class="lineno"> 1845</span>    <span class="keywordflow">if</span> (!applyByPartial &amp;&amp; modType == <span class="stringliteral">&quot;DETUNE&quot;</span></div>
+<div class="line"><a id="l01846" name="l01846"></a><span class="lineno"> 1846</span>        &amp;&amp; !parseDetune(spreadStr, directionStr, velocityStr, <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a id="l01847" name="l01847"></a><span class="lineno"> 1847</span>                        detuneSpread, detuneDirection, detuneVelocity)) {</div>
+<div class="line"><a id="l01848" name="l01848"></a><span class="lineno"> 1848</span>      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l01849" name="l01849"></a><span class="lineno"> 1849</span>    }</div>
+<div class="line"><a id="l01850" name="l01850"></a><span class="lineno"> 1850</span> </div>
+<div class="line"><a id="l01851" name="l01851"></a><span class="lineno"> 1851</span>    <span class="keyword">auto</span> addEnvelope = [<span class="keyword">this</span>, &amp;runtimeError, &amp;usageId](</div>
+<div class="line"><a id="l01852" name="l01852"></a><span class="lineno"> 1852</span>                           <a class="code hl_class" href="classModifier.html">Modifier</a>&amp; modifier,</div>
+<div class="line"><a id="l01853" name="l01853"></a><span class="lineno"> 1853</span>                           <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; value,</div>
+<div class="line"><a id="l01854" name="l01854"></a><span class="lineno"> 1854</span>                           <span class="keyword">const</span> <span class="keywordtype">char</span>* fieldName) {</div>
+<div class="line"><a id="l01855" name="l01855"></a><span class="lineno"> 1855</span>      <span class="keywordflow">if</span> (isUnavailable(value)) {</div>
+<div class="line"><a id="l01856" name="l01856"></a><span class="lineno"> 1856</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l01857" name="l01857"></a><span class="lineno"> 1857</span>      }</div>
+<div class="line"><a id="l01858" name="l01858"></a><span class="lineno"> 1858</span>      Envelope* envelope = <span class="keyword">static_cast&lt;</span>Envelope*<span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l01859" name="l01859"></a><span class="lineno"> 1859</span>          <a class="code hl_variable" href="classEvent.html#a5092cd4f16d5eb7c7ec0ebe96d6e91dc">utilities</a>-&gt;<a class="code hl_function" href="classUtilities.html#a4b0848cc0278c8edc4b3ee28b6900a98">evaluateObject</a>(value, <span class="keyword">this</span>, <a class="code hl_enumvalue" href="Libraries_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa816850b6a91020a2e423c80b9b77544b">eventEnv</a>));</div>
+<div class="line"><a id="l01860" name="l01860"></a><span class="lineno"> 1860</span>      <span class="keywordflow">if</span> (envelope == NULL) {</div>
+<div class="line"><a id="l01861" name="l01861"></a><span class="lineno"> 1861</span>        runtimeError(<span class="stringliteral">&quot;modifier &#39;&quot;</span> + usageId + <span class="stringliteral">&quot;&#39; has an invalid &quot;</span></div>
+<div class="line"><a id="l01862" name="l01862"></a><span class="lineno"> 1862</span>                     + fieldName + <span class="stringliteral">&quot; envelope.&quot;</span>);</div>
+<div class="line"><a id="l01863" name="l01863"></a><span class="lineno"> 1863</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l01864" name="l01864"></a><span class="lineno"> 1864</span>      }</div>
+<div class="line"><a id="l01865" name="l01865"></a><span class="lineno"> 1865</span>      modifier.addValueEnv(envelope);</div>
+<div class="line"><a id="l01866" name="l01866"></a><span class="lineno"> 1866</span>      <span class="keyword">delete</span> envelope;</div>
+<div class="line"><a id="l01867" name="l01867"></a><span class="lineno"> 1867</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l01868" name="l01868"></a><span class="lineno"> 1868</span>    };</div>
+<div class="line"><a id="l01869" name="l01869"></a><span class="lineno"> 1869</span> </div>
+<div class="line"><a id="l01870" name="l01870"></a><span class="lineno"> 1870</span>    <span class="keywordflow">if</span> (!applyByPartial) {</div>
+<div class="line"><a id="l01871" name="l01871"></a><span class="lineno"> 1871</span>      <span class="keyword">auto</span> effect = std::make_unique&lt;Modifier&gt;(modType, <span class="keyword">nullptr</span>, <span class="stringliteral">&quot;SOUND&quot;</span>);</div>
+<div class="line"><a id="l01872" name="l01872"></a><span class="lineno"> 1872</span>      <span class="keywordtype">int</span> envelopeCount = 0;</div>
+<div class="line"><a id="l01873" name="l01873"></a><span class="lineno"> 1873</span>      envelopeCount += addEnvelope(*effect, ampStr, <span class="stringliteral">&quot;Amplitude&quot;</span>) ? 1 : 0;</div>
+<div class="line"><a id="l01874" name="l01874"></a><span class="lineno"> 1874</span>      <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;DETUNE&quot;</span>) {</div>
+<div class="line"><a id="l01875" name="l01875"></a><span class="lineno"> 1875</span>        effect-&gt;addSpread(detuneSpread);</div>
+<div class="line"><a id="l01876" name="l01876"></a><span class="lineno"> 1876</span>        effect-&gt;addDirection(detuneDirection);</div>
+<div class="line"><a id="l01877" name="l01877"></a><span class="lineno"> 1877</span>        effect-&gt;addVelocity(detuneVelocity);</div>
+<div class="line"><a id="l01878" name="l01878"></a><span class="lineno"> 1878</span>      }</div>
+<div class="line"><a id="l01879" name="l01879"></a><span class="lineno"> 1879</span>      envelopeCount += addEnvelope(*effect, rateStr, <span class="stringliteral">&quot;Rate&quot;</span>) ? 1 : 0;</div>
+<div class="line"><a id="l01880" name="l01880"></a><span class="lineno"> 1880</span>      envelopeCount += addEnvelope(*effect, widthStr, <span class="stringliteral">&quot;Width&quot;</span>) ? 1 : 0;</div>
+<div class="line"><a id="l01881" name="l01881"></a><span class="lineno"> 1881</span> </div>
+<div class="line"><a id="l01882" name="l01882"></a><span class="lineno"> 1882</span>      <span class="keywordtype">int</span> requiredEnvelopeCount = 0;</div>
+<div class="line"><a id="l01883" name="l01883"></a><span class="lineno"> 1883</span>      <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;TREMOLO&quot;</span> || modType == <span class="stringliteral">&quot;VIBRATO&quot;</span></div>
+<div class="line"><a id="l01884" name="l01884"></a><span class="lineno"> 1884</span>          || modType == <span class="stringliteral">&quot;PHASE_MOD&quot;</span>) {</div>
+<div class="line"><a id="l01885" name="l01885"></a><span class="lineno"> 1885</span>        requiredEnvelopeCount = 2;</div>
+<div class="line"><a id="l01886" name="l01886"></a><span class="lineno"> 1886</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;GLISSANDO&quot;</span> || modType == <span class="stringliteral">&quot;WAVE_TYPE&quot;</span>) {</div>
+<div class="line"><a id="l01887" name="l01887"></a><span class="lineno"> 1887</span>        requiredEnvelopeCount = 1;</div>
+<div class="line"><a id="l01888" name="l01888"></a><span class="lineno"> 1888</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;AMPTRANS&quot;</span> || modType == <span class="stringliteral">&quot;FREQTRANS&quot;</span>) {</div>
+<div class="line"><a id="l01889" name="l01889"></a><span class="lineno"> 1889</span>        requiredEnvelopeCount = 3;</div>
+<div class="line"><a id="l01890" name="l01890"></a><span class="lineno"> 1890</span>      }</div>
+<div class="line"><a id="l01891" name="l01891"></a><span class="lineno"> 1891</span>      <span class="keywordflow">if</span> (envelopeCount &lt; requiredEnvelopeCount) {</div>
+<div class="line"><a id="l01892" name="l01892"></a><span class="lineno"> 1892</span>        runtimeError(<span class="stringliteral">&quot;modifier &#39;&quot;</span> + usageId</div>
+<div class="line"><a id="l01893" name="l01893"></a><span class="lineno"> 1893</span>                     + <span class="stringliteral">&quot;&#39; (&quot;</span> + modType + <span class="stringliteral">&quot;) is missing a required parameter envelope: &quot;</span></div>
+<div class="line"><a id="l01894" name="l01894"></a><span class="lineno"> 1894</span>                     + (isUnavailable(ampStr) ? <span class="stringliteral">&quot;Amplitude &quot;</span> : <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a id="l01895" name="l01895"></a><span class="lineno"> 1895</span>                     + (requiredEnvelopeCount &gt;= 2 &amp;&amp; isUnavailable(rateStr) ? <span class="stringliteral">&quot;Rate &quot;</span> : <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a id="l01896" name="l01896"></a><span class="lineno"> 1896</span>                     + (requiredEnvelopeCount &gt;= 3 &amp;&amp; isUnavailable(widthStr) ? <span class="stringliteral">&quot;Width &quot;</span> : <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a id="l01897" name="l01897"></a><span class="lineno"> 1897</span>        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l01898" name="l01898"></a><span class="lineno"> 1898</span>      }</div>
+<div class="line"><a id="l01899" name="l01899"></a><span class="lineno"> 1899</span>      modifiersById[usageId].push_back(</div>
+<div class="line"><a id="l01900" name="l01900"></a><span class="lineno"> 1900</span>          RuntimeModifier{std::move(effect), <span class="keyword">false</span>});</div>
+<div class="line"><a id="l01901" name="l01901"></a><span class="lineno"> 1901</span>      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l01902" name="l01902"></a><span class="lineno"> 1902</span>    }</div>
+<div class="line"><a id="l01903" name="l01903"></a><span class="lineno"> 1903</span> </div>
+<div class="line"><a id="l01904" name="l01904"></a><span class="lineno"> 1904</span>    <span class="keyword">const</span> <span class="keywordtype">string</span> partialResultStr =</div>
+<div class="line"><a id="l01905" name="l01905"></a><span class="lineno"> 1905</span>        <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(modifierElement.child(<span class="stringliteral">&quot;PartialResultString&quot;</span>));</div>
+<div class="line"><a id="l01906" name="l01906"></a><span class="lineno"> 1906</span>    pugi::xml_document partialResultDoc;</div>
+<div class="line"><a id="l01907" name="l01907"></a><span class="lineno"> 1907</span>    <span class="keyword">const</span> pugi::xml_parse_result parseResult =</div>
+<div class="line"><a id="l01908" name="l01908"></a><span class="lineno"> 1908</span>        partialResultDoc.load_string(partialResultStr.c_str());</div>
+<div class="line"><a id="l01909" name="l01909"></a><span class="lineno"> 1909</span>    <span class="keyword">const</span> pugi::xml_node root = partialResultDoc.document_element();</div>
+<div class="line"><a id="l01910" name="l01910"></a><span class="lineno"> 1910</span>    pugi::xml_node envelopeElement =</div>
+<div class="line"><a id="l01911" name="l01911"></a><span class="lineno"> 1911</span>        root.child(<span class="stringliteral">&quot;Envelopes&quot;</span>).child(<span class="stringliteral">&quot;Envelope&quot;</span>);</div>
+<div class="line"><a id="l01912" name="l01912"></a><span class="lineno"> 1912</span>    <span class="keywordflow">if</span> (!parseResult || !root || !envelopeElement) {</div>
+<div class="line"><a id="l01913" name="l01913"></a><span class="lineno"> 1913</span>      runtimeError(<span class="stringliteral">&quot;PARTIAL modifier &#39;&quot;</span> + usageId</div>
+<div class="line"><a id="l01914" name="l01914"></a><span class="lineno"> 1914</span>                   + <span class="stringliteral">&quot;&#39; has an invalid PartialResultString.&quot;</span>);</div>
+<div class="line"><a id="l01915" name="l01915"></a><span class="lineno"> 1915</span>      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l01916" name="l01916"></a><span class="lineno"> 1916</span>    }</div>
+<div class="line"><a id="l01917" name="l01917"></a><span class="lineno"> 1917</span> </div>
+<div class="line"><a id="l01918" name="l01918"></a><span class="lineno"> 1918</span>    <span class="comment">// A logical PARTIAL modifier may intentionally have no enabled rows (for</span></div>
+<div class="line"><a id="l01919" name="l01919"></a><span class="lineno"> 1919</span>    <span class="comment">// example, every Probability slot is N/A). Keep the ID represented so it</span></div>
+<div class="line"><a id="l01920" name="l01920"></a><span class="lineno"> 1920</span>    <span class="comment">// remains a valid no-op when selected.</span></div>
+<div class="line"><a id="l01921" name="l01921"></a><span class="lineno"> 1921</span>    vector&lt;RuntimeModifier&gt;&amp; runtimeModifiers = modifiersById[usageId];</div>
+<div class="line"><a id="l01922" name="l01922"></a><span class="lineno"> 1922</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> partialIndex = 0; partialIndex &lt; numPartials; ++partialIndex) {</div>
+<div class="line"><a id="l01923" name="l01923"></a><span class="lineno"> 1923</span>      <span class="comment">// Fewer configured rows than spectrum partials is intentional: the</span></div>
+<div class="line"><a id="l01924" name="l01924"></a><span class="lineno"> 1924</span>      <span class="comment">// remaining partials simply do not receive this modifier. Once a row</span></div>
+<div class="line"><a id="l01925" name="l01925"></a><span class="lineno"> 1925</span>      <span class="comment">// starts, however, the legacy wire format still requires all four slots.</span></div>
+<div class="line"><a id="l01926" name="l01926"></a><span class="lineno"> 1926</span>      <span class="keywordflow">if</span> (!envelopeElement) {</div>
+<div class="line"><a id="l01927" name="l01927"></a><span class="lineno"> 1927</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l01928" name="l01928"></a><span class="lineno"> 1928</span>      }</div>
+<div class="line"><a id="l01929" name="l01929"></a><span class="lineno"> 1929</span>      pugi::xml_node probabilityElement = envelopeElement;</div>
+<div class="line"><a id="l01930" name="l01930"></a><span class="lineno"> 1930</span>      pugi::xml_node amplitudeElement =</div>
+<div class="line"><a id="l01931" name="l01931"></a><span class="lineno"> 1931</span>          probabilityElement.next_sibling(<span class="stringliteral">&quot;Envelope&quot;</span>);</div>
+<div class="line"><a id="l01932" name="l01932"></a><span class="lineno"> 1932</span>      pugi::xml_node widthElement =</div>
+<div class="line"><a id="l01933" name="l01933"></a><span class="lineno"> 1933</span>          amplitudeElement.next_sibling(<span class="stringliteral">&quot;Envelope&quot;</span>);</div>
+<div class="line"><a id="l01934" name="l01934"></a><span class="lineno"> 1934</span>      pugi::xml_node rateElement =</div>
+<div class="line"><a id="l01935" name="l01935"></a><span class="lineno"> 1935</span>          widthElement.next_sibling(<span class="stringliteral">&quot;Envelope&quot;</span>);</div>
+<div class="line"><a id="l01936" name="l01936"></a><span class="lineno"> 1936</span>      <span class="keywordflow">if</span> (!probabilityElement || !amplitudeElement</div>
+<div class="line"><a id="l01937" name="l01937"></a><span class="lineno"> 1937</span>          || !widthElement || !rateElement) {</div>
+<div class="line"><a id="l01938" name="l01938"></a><span class="lineno"> 1938</span>        runtimeError(<span class="stringliteral">&quot;PARTIAL modifier &#39;&quot;</span> + usageId</div>
+<div class="line"><a id="l01939" name="l01939"></a><span class="lineno"> 1939</span>                     + <span class="stringliteral">&quot;&#39; contains fewer than four envelopes per partial.&quot;</span>);</div>
+<div class="line"><a id="l01940" name="l01940"></a><span class="lineno"> 1940</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l01941" name="l01941"></a><span class="lineno"> 1941</span>      }</div>
+<div class="line"><a id="l01942" name="l01942"></a><span class="lineno"> 1942</span> </div>
+<div class="line"><a id="l01943" name="l01943"></a><span class="lineno"> 1943</span>      <span class="keyword">const</span> <span class="keywordtype">string</span> probabilityStr = <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(probabilityElement);</div>
+<div class="line"><a id="l01944" name="l01944"></a><span class="lineno"> 1944</span>      <span class="keywordflow">if</span> (isUnavailable(probabilityStr)) {</div>
+<div class="line"><a id="l01945" name="l01945"></a><span class="lineno"> 1945</span>        envelopeElement = rateElement.next_sibling(<span class="stringliteral">&quot;Envelope&quot;</span>);</div>
+<div class="line"><a id="l01946" name="l01946"></a><span class="lineno"> 1946</span>        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l01947" name="l01947"></a><span class="lineno"> 1947</span>      }</div>
+<div class="line"><a id="l01948" name="l01948"></a><span class="lineno"> 1948</span> </div>
+<div class="line"><a id="l01949" name="l01949"></a><span class="lineno"> 1949</span>      Envelope* probabilityEnvelope = <span class="keyword">static_cast&lt;</span>Envelope*<span class="keyword">&gt;</span>(</div>
+<div class="line"><a id="l01950" name="l01950"></a><span class="lineno"> 1950</span>          <a class="code hl_variable" href="classEvent.html#a5092cd4f16d5eb7c7ec0ebe96d6e91dc">utilities</a>-&gt;<a class="code hl_function" href="classUtilities.html#a4b0848cc0278c8edc4b3ee28b6900a98">evaluateObject</a>(probabilityStr, <span class="keyword">this</span>, <a class="code hl_enumvalue" href="Libraries_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faa816850b6a91020a2e423c80b9b77544b">eventEnv</a>));</div>
+<div class="line"><a id="l01951" name="l01951"></a><span class="lineno"> 1951</span>      <span class="keywordflow">if</span> (probabilityEnvelope == NULL) {</div>
+<div class="line"><a id="l01952" name="l01952"></a><span class="lineno"> 1952</span>        runtimeError(<span class="stringliteral">&quot;PARTIAL modifier &#39;&quot;</span> + usageId</div>
+<div class="line"><a id="l01953" name="l01953"></a><span class="lineno"> 1953</span>                     + <span class="stringliteral">&quot;&#39; has an invalid Probability envelope.&quot;</span>);</div>
+<div class="line"><a id="l01954" name="l01954"></a><span class="lineno"> 1954</span>      }</div>
+<div class="line"><a id="l01955" name="l01955"></a><span class="lineno"> 1955</span> </div>
+<div class="line"><a id="l01956" name="l01956"></a><span class="lineno"> 1956</span>      <span class="keyword">auto</span> effect = std::make_unique&lt;Modifier&gt;(</div>
+<div class="line"><a id="l01957" name="l01957"></a><span class="lineno"> 1957</span>          modType, probabilityEnvelope, <span class="stringliteral">&quot;PARTIAL&quot;</span>, partialIndex);</div>
+<div class="line"><a id="l01958" name="l01958"></a><span class="lineno"> 1958</span>      <span class="keyword">delete</span> probabilityEnvelope;</div>
+<div class="line"><a id="l01959" name="l01959"></a><span class="lineno"> 1959</span> </div>
+<div class="line"><a id="l01960" name="l01960"></a><span class="lineno"> 1960</span>      <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;DETUNE&quot;</span>) {</div>
+<div class="line"><a id="l01961" name="l01961"></a><span class="lineno"> 1961</span>        <span class="comment">// Same three parameters as SOUND, stored in the Magnitude (spread),</span></div>
+<div class="line"><a id="l01962" name="l01962"></a><span class="lineno"> 1962</span>        <span class="comment">// Width (direction) and Rate (velocity) slots of this row.</span></div>
+<div class="line"><a id="l01963" name="l01963"></a><span class="lineno"> 1963</span>        <span class="keywordtype">double</span> spread = 0.0;</div>
+<div class="line"><a id="l01964" name="l01964"></a><span class="lineno"> 1964</span>        <span class="keywordtype">double</span> direction = 0.0;</div>
+<div class="line"><a id="l01965" name="l01965"></a><span class="lineno"> 1965</span>        <span class="keywordtype">double</span> velocity = 0.0;</div>
+<div class="line"><a id="l01966" name="l01966"></a><span class="lineno"> 1966</span>        <span class="keywordflow">if</span> (amplitudeElement.first_child().type() == pugi::node_element) {</div>
+<div class="line"><a id="l01967" name="l01967"></a><span class="lineno"> 1967</span>          runtimeError(<span class="stringliteral">&quot;DETUNE modifier &#39;&quot;</span> + usageId + <span class="stringliteral">&quot;&#39; (partial &quot;</span></div>
+<div class="line"><a id="l01968" name="l01968"></a><span class="lineno"> 1968</span>                       + std::to_string(partialIndex + 1)</div>
+<div class="line"><a id="l01969" name="l01969"></a><span class="lineno"> 1969</span>                       + <span class="stringliteral">&quot;) still uses the old Detuning envelope; DETUNE by &quot;</span></div>
+<div class="line"><a id="l01970" name="l01970"></a><span class="lineno"> 1970</span>                         <span class="stringliteral">&quot;partial now takes spread, direction, and velocity &quot;</span></div>
+<div class="line"><a id="l01971" name="l01971"></a><span class="lineno"> 1971</span>                         <span class="stringliteral">&quot;numbers, like DETUNE by sound.&quot;</span>);</div>
+<div class="line"><a id="l01972" name="l01972"></a><span class="lineno"> 1972</span>          <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l01973" name="l01973"></a><span class="lineno"> 1973</span>        }</div>
+<div class="line"><a id="l01974" name="l01974"></a><span class="lineno"> 1974</span>        <span class="keywordflow">if</span> (!parseDetune(<a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(amplitudeElement), <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(widthElement),</div>
+<div class="line"><a id="l01975" name="l01975"></a><span class="lineno"> 1975</span>                         <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(rateElement),</div>
+<div class="line"><a id="l01976" name="l01976"></a><span class="lineno"> 1976</span>                         <span class="stringliteral">&quot; (partial &quot;</span> + std::to_string(partialIndex + 1) + <span class="stringliteral">&quot;)&quot;</span>,</div>
+<div class="line"><a id="l01977" name="l01977"></a><span class="lineno"> 1977</span>                         spread, direction, velocity)) {</div>
+<div class="line"><a id="l01978" name="l01978"></a><span class="lineno"> 1978</span>          <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l01979" name="l01979"></a><span class="lineno"> 1979</span>        }</div>
+<div class="line"><a id="l01980" name="l01980"></a><span class="lineno"> 1980</span>        effect-&gt;addSpread(spread);</div>
+<div class="line"><a id="l01981" name="l01981"></a><span class="lineno"> 1981</span>        effect-&gt;addDirection(direction);</div>
+<div class="line"><a id="l01982" name="l01982"></a><span class="lineno"> 1982</span>        effect-&gt;addVelocity(velocity);</div>
+<div class="line"><a id="l01983" name="l01983"></a><span class="lineno"> 1983</span>        runtimeModifiers.push_back(RuntimeModifier{std::move(effect), <span class="keyword">true</span>});</div>
+<div class="line"><a id="l01984" name="l01984"></a><span class="lineno"> 1984</span>        envelopeElement = rateElement.next_sibling(<span class="stringliteral">&quot;Envelope&quot;</span>);</div>
+<div class="line"><a id="l01985" name="l01985"></a><span class="lineno"> 1985</span>        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l01986" name="l01986"></a><span class="lineno"> 1986</span>      }</div>
+<div class="line"><a id="l01987" name="l01987"></a><span class="lineno"> 1987</span> </div>
+<div class="line"><a id="l01988" name="l01988"></a><span class="lineno"> 1988</span>      <span class="keywordtype">int</span> envelopeCount = 0;</div>
+<div class="line"><a id="l01989" name="l01989"></a><span class="lineno"> 1989</span>      envelopeCount += addEnvelope(</div>
+<div class="line"><a id="l01990" name="l01990"></a><span class="lineno"> 1990</span>          *effect, <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(amplitudeElement), <span class="stringliteral">&quot;partial Amplitude&quot;</span>) ? 1 : 0;</div>
+<div class="line"><a id="l01991" name="l01991"></a><span class="lineno"> 1991</span>      envelopeCount += addEnvelope(</div>
+<div class="line"><a id="l01992" name="l01992"></a><span class="lineno"> 1992</span>          *effect, <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(rateElement), <span class="stringliteral">&quot;partial Rate&quot;</span>) ? 1 : 0;</div>
+<div class="line"><a id="l01993" name="l01993"></a><span class="lineno"> 1993</span>      <span class="keywordflow">if</span> (modType != <span class="stringliteral">&quot;PHASE_MOD&quot;</span>) {</div>
+<div class="line"><a id="l01994" name="l01994"></a><span class="lineno"> 1994</span>        envelopeCount += addEnvelope(</div>
+<div class="line"><a id="l01995" name="l01995"></a><span class="lineno"> 1995</span>            *effect, <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(widthElement), <span class="stringliteral">&quot;partial Width&quot;</span>) ? 1 : 0;</div>
+<div class="line"><a id="l01996" name="l01996"></a><span class="lineno"> 1996</span>      }</div>
+<div class="line"><a id="l01997" name="l01997"></a><span class="lineno"> 1997</span> </div>
+<div class="line"><a id="l01998" name="l01998"></a><span class="lineno"> 1998</span>      <span class="keywordtype">int</span> requiredEnvelopeCount = 0;</div>
+<div class="line"><a id="l01999" name="l01999"></a><span class="lineno"> 1999</span>      <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;TREMOLO&quot;</span> || modType == <span class="stringliteral">&quot;VIBRATO&quot;</span></div>
+<div class="line"><a id="l02000" name="l02000"></a><span class="lineno"> 2000</span>          || modType == <span class="stringliteral">&quot;PHASE_MOD&quot;</span>) {</div>
+<div class="line"><a id="l02001" name="l02001"></a><span class="lineno"> 2001</span>        requiredEnvelopeCount = 2;</div>
+<div class="line"><a id="l02002" name="l02002"></a><span class="lineno"> 2002</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;GLISSANDO&quot;</span> || modType == <span class="stringliteral">&quot;WAVE_TYPE&quot;</span>) {</div>
+<div class="line"><a id="l02003" name="l02003"></a><span class="lineno"> 2003</span>        requiredEnvelopeCount = 1;</div>
+<div class="line"><a id="l02004" name="l02004"></a><span class="lineno"> 2004</span>      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (modType == <span class="stringliteral">&quot;AMPTRANS&quot;</span> || modType == <span class="stringliteral">&quot;FREQTRANS&quot;</span>) {</div>
+<div class="line"><a id="l02005" name="l02005"></a><span class="lineno"> 2005</span>        requiredEnvelopeCount = 3;</div>
+<div class="line"><a id="l02006" name="l02006"></a><span class="lineno"> 2006</span>      }</div>
+<div class="line"><a id="l02007" name="l02007"></a><span class="lineno"> 2007</span>      <span class="keywordflow">if</span> (envelopeCount &lt; requiredEnvelopeCount) {</div>
+<div class="line"><a id="l02008" name="l02008"></a><span class="lineno"> 2008</span>        runtimeError(<span class="stringliteral">&quot;PARTIAL modifier &#39;&quot;</span> + usageId</div>
+<div class="line"><a id="l02009" name="l02009"></a><span class="lineno"> 2009</span>                     + <span class="stringliteral">&quot;&#39; is missing a required parameter envelope.&quot;</span>);</div>
+<div class="line"><a id="l02010" name="l02010"></a><span class="lineno"> 2010</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l02011" name="l02011"></a><span class="lineno"> 2011</span>      }</div>
+<div class="line"><a id="l02012" name="l02012"></a><span class="lineno"> 2012</span> </div>
+<div class="line"><a id="l02013" name="l02013"></a><span class="lineno"> 2013</span>      runtimeModifiers.push_back(RuntimeModifier{std::move(effect), <span class="keyword">true</span>});</div>
+<div class="line"><a id="l02014" name="l02014"></a><span class="lineno"> 2014</span>      envelopeElement = rateElement.next_sibling(<span class="stringliteral">&quot;Envelope&quot;</span>);</div>
+<div class="line"><a id="l02015" name="l02015"></a><span class="lineno"> 2015</span>    }</div>
+<div class="line"><a id="l02016" name="l02016"></a><span class="lineno"> 2016</span>  }</div>
+<div class="line"><a id="l02017" name="l02017"></a><span class="lineno"> 2017</span> </div>
+<div class="line"><a id="l02018" name="l02018"></a><span class="lineno"> 2018</span>  <span class="comment">// Program compilation and runtime effect parsing must describe the same</span></div>
+<div class="line"><a id="l02019" name="l02019"></a><span class="lineno"> 2019</span>  <span class="comment">// ordered logical modifiers. Check this before drawing or applying anything.</span></div>
+<div class="line"><a id="l02020" name="l02020"></a><span class="lineno"> 2020</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_typedef" href="namespacedissco_1_1modifier__usage.html#aa57c928be91dba85989ca24560adc464">ModifierId</a>&amp; modifierId : modifierUsageRuntime-&gt;modifierIds) {</div>
+<div class="line"><a id="l02021" name="l02021"></a><span class="lineno"> 2021</span>    <span class="keyword">const</span> <span class="keyword">auto</span> found = modifiersById.find(modifierId);</div>
+<div class="line"><a id="l02022" name="l02022"></a><span class="lineno"> 2022</span>    <span class="keywordflow">if</span> (found == modifiersById.end()) {</div>
+<div class="line"><a id="l02023" name="l02023"></a><span class="lineno"> 2023</span>      runtimeError(<span class="stringliteral">&quot;compiled modifier &#39;&quot;</span> + modifierId</div>
+<div class="line"><a id="l02024" name="l02024"></a><span class="lineno"> 2024</span>                   + <span class="stringliteral">&quot;&#39; has no runtime effect.&quot;</span>);</div>
+<div class="line"><a id="l02025" name="l02025"></a><span class="lineno"> 2025</span>    }</div>
+<div class="line"><a id="l02026" name="l02026"></a><span class="lineno"> 2026</span>  }</div>
+<div class="line"><a id="l02027" name="l02027"></a><span class="lineno"> 2027</span>  <a class="code hl_struct" href="structdissco_1_1modifier__usage_1_1Selection.html">Selection</a> selection;</div>
+<div class="line"><a id="l02028" name="l02028"></a><span class="lineno"> 2028</span>  <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l02029" name="l02029"></a><span class="lineno"> 2029</span>    selection = modifierUsageRuntime-&gt;program-&gt;select(</div>
+<div class="line"><a id="l02030" name="l02030"></a><span class="lineno"> 2030</span>        []() { <span class="keywordflow">return</span> <a class="code hl_function" href="classRandom.html#a79954f12ada797389d4798c6f26c5914">Random::Rand</a>(); });</div>
+<div class="line"><a id="l02031" name="l02031"></a><span class="lineno"> 2031</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classCmodError.html">CmodError</a>&amp;) {</div>
+<div class="line"><a id="l02032" name="l02032"></a><span class="lineno"> 2032</span>    <span class="keywordflow">throw</span>;</div>
+<div class="line"><a id="l02033" name="l02033"></a><span class="lineno"> 2033</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; error) {</div>
+<div class="line"><a id="l02034" name="l02034"></a><span class="lineno"> 2034</span>    <span class="keywordflow">throw</span> <a class="code hl_class" href="classCmodError.html">CmodError</a>(<a class="code hl_enumvalue" href="classCmodError.html#a95049bd4f3d2e9daede92d3752248690aafbf0897a5a83fdd873dfb032ec695d3">CmodError::Kind::Internal</a>,</div>
+<div class="line"><a id="l02035" name="l02035"></a><span class="lineno"> 2035</span>                    <span class="stringliteral">&quot;Modifier selection failed: &quot;</span> + <span class="keywordtype">string</span>(error.what()),</div>
+<div class="line"><a id="l02036" name="l02036"></a><span class="lineno"> 2036</span>                    <span class="stringliteral">&quot;Bottom &#39;&quot;</span> + <a class="code hl_variable" href="classEvent.html#a2260aa14c4dfb50ad5db1dd71ece65eb">name</a> + <span class="stringliteral">&quot;&#39; / Modifier Usage selection&quot;</span>,</div>
+<div class="line"><a id="l02037" name="l02037"></a><span class="lineno"> 2037</span>                    <span class="stringliteral">&quot;Report this diagnostic to the DISSCO developers with the project and seed.&quot;</span>);</div>
+<div class="line"><a id="l02038" name="l02038"></a><span class="lineno"> 2038</span>  }</div>
+<div class="line"><a id="l02039" name="l02039"></a><span class="lineno"> 2039</span> </div>
+<div class="line"><a id="l02040" name="l02040"></a><span class="lineno"> 2040</span>  <span class="comment">// Selection IDs are already in Program order. A selected PARTIAL logical</span></div>
+<div class="line"><a id="l02041" name="l02041"></a><span class="lineno"> 2041</span>  <span class="comment">// modifier still uses its existing per-partial Probability envelope as a</span></div>
+<div class="line"><a id="l02042" name="l02042"></a><span class="lineno"> 2042</span>  <span class="comment">// second-stage gate.</span></div>
+<div class="line"><a id="l02043" name="l02043"></a><span class="lineno"> 2043</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_typedef" href="namespacedissco_1_1modifier__usage.html#aa57c928be91dba85989ca24560adc464">ModifierId</a>&amp; selectedId : selection.orderedOnIds) {</div>
+<div class="line"><a id="l02044" name="l02044"></a><span class="lineno"> 2044</span>    <span class="keyword">auto</span> found = modifiersById.find(selectedId);</div>
+<div class="line"><a id="l02045" name="l02045"></a><span class="lineno"> 2045</span>    <span class="keywordflow">if</span> (found == modifiersById.end()) {</div>
+<div class="line"><a id="l02046" name="l02046"></a><span class="lineno"> 2046</span>      runtimeError(<span class="stringliteral">&quot;selection returned unknown modifier &#39;&quot;</span> + selectedId + <span class="stringliteral">&quot;&#39;.&quot;</span>);</div>
+<div class="line"><a id="l02047" name="l02047"></a><span class="lineno"> 2047</span>      <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l02048" name="l02048"></a><span class="lineno"> 2048</span>    }</div>
+<div class="line"><a id="l02049" name="l02049"></a><span class="lineno"> 2049</span>    <span class="keywordflow">for</span> (RuntimeModifier&amp; runtimeModifier : found-&gt;second) {</div>
+<div class="line"><a id="l02050" name="l02050"></a><span class="lineno"> 2050</span>      <a class="code hl_class" href="classModifier.html">Modifier</a>&amp; effect = *runtimeModifier.effect;</div>
+<div class="line"><a id="l02051" name="l02051"></a><span class="lineno"> 2051</span>      <span class="keywordflow">if</span> (runtimeModifier.applyByPartial) {</div>
+<div class="line"><a id="l02052" name="l02052"></a><span class="lineno"> 2052</span>        <span class="keywordflow">if</span> (effect.<a class="code hl_function" href="classModifier.html#a556b2483c0d0a9cc4859c61684316197">willOccur</a>(<a class="code hl_variable" href="classEvent.html#abd0a1667544db725a4fba522013c6389">checkPoint</a>)) {</div>
+<div class="line"><a id="l02053" name="l02053"></a><span class="lineno"> 2053</span>          effect.<a class="code hl_function" href="classModifier.html#a639c69b69fade3d47bfe19eec79ee81e">applyModifier</a>(s);</div>
+<div class="line"><a id="l02054" name="l02054"></a><span class="lineno"> 2054</span>        }</div>
+<div class="line"><a id="l02055" name="l02055"></a><span class="lineno"> 2055</span>      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l02056" name="l02056"></a><span class="lineno"> 2056</span>        effect.<a class="code hl_function" href="classModifier.html#aa002bd3cbcadf45a204ef002c4ebb236">setCheckPoint</a>(<a class="code hl_variable" href="classEvent.html#abd0a1667544db725a4fba522013c6389">checkPoint</a>);</div>
+<div class="line"><a id="l02057" name="l02057"></a><span class="lineno"> 2057</span>        effect.<a class="code hl_function" href="classModifier.html#a639c69b69fade3d47bfe19eec79ee81e">applyModifier</a>(s);</div>
+<div class="line"><a id="l02058" name="l02058"></a><span class="lineno"> 2058</span>      }</div>
+<div class="line"><a id="l02059" name="l02059"></a><span class="lineno"> 2059</span>    }</div>
+<div class="line"><a id="l02060" name="l02060"></a><span class="lineno"> 2060</span>  }</div>
+<div class="line"><a id="l02061" name="l02061"></a><span class="lineno"> 2061</span>}</div>
+<div class="line"><a id="l02062" name="l02062"></a><span class="lineno"> 2062</span> </div>
+<div class="line"><a id="l02063" name="l02063"></a><span class="lineno"> 2063</span><span class="comment">//-----------------------------------------------------------------------------/</span></div>
+<div class="line"><a id="l02064" name="l02064"></a><span class="lineno"> 2064</span> </div>
+<div class="line"><a id="l02065" name="l02065"></a><span class="lineno"> 2065</span><span class="keywordtype">void</span> Bottom::applyModifiers(Sound *s, <span class="keywordtype">int</span> numPartials) {</div>
+<div class="line"><a id="l02066" name="l02066"></a><span class="lineno"> 2066</span>  applyModifierUsage(s, numPartials);</div>
+<div class="line"><a id="l02067" name="l02067"></a><span class="lineno"> 2067</span>}</div>
+<div class="line"><a id="l02068" name="l02068"></a><span class="lineno"> 2068</span> </div>
+<div class="line"><a id="l02069" name="l02069"></a><span class="lineno"> 2069</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l02070" name="l02070"></a><span class="lineno"> 2070</span> </div>
+<div class="line"><a id="l02071" name="l02071"></a><span class="lineno"> 2071</span><span class="comment">// int applyNoteStaffs(pugi::xml_node _playingMethods){</span></div>
+<div class="line"><a id="l02072" name="l02072"></a><span class="lineno"> 2072</span><span class="comment">//   int noteStaff;</span></div>
+<div class="line"><a id="l02073" name="l02073"></a><span class="lineno"> 2073</span> </div>
+<div class="line"><a id="l02074" name="l02074"></a><span class="lineno"> 2074</span><span class="comment">//   pugi::xml_node noteInfo = GNES(GNES(GFEC(_playingMethods)));</span></div>
+<div class="line"><a id="l02075" name="l02075"></a><span class="lineno"> 2075</span><span class="comment">//   pugi::xml_node techniqueElement = GFEC(noteInfo);</span></div>
+<div class="line"><a id="l02076" name="l02076"></a><span class="lineno"> 2076</span> </div>
+<div class="line"><a id="l02077" name="l02077"></a><span class="lineno"> 2077</span><span class="comment">//   noteStaff = utilities-&gt;evaluate(XMLTC(techniqueElement),(void*)this);</span></div>
+<div class="line"><a id="l02078" name="l02078"></a><span class="lineno"> 2078</span> </div>
+<div class="line"><a id="l02079" name="l02079"></a><span class="lineno"> 2079</span><span class="comment">//   return noteStaff;</span></div>
+<div class="line"><a id="l02080" name="l02080"></a><span class="lineno"> 2080</span><span class="comment">// }</span></div>
+<div class="line"><a id="l02081" name="l02081"></a><span class="lineno"> 2081</span> </div>
+<div class="line"><a id="l02082" name="l02082"></a><span class="lineno"> 2082</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l02083" name="l02083"></a><span class="lineno"> 2083</span> </div>
+<div class="line"><a id="l02084" name="l02084"></a><span class="lineno"> 2084</span>vector&lt;string&gt; Bottom::applyNoteModifiers( pugi::xml_node _playingMethods) {</div>
+<div class="line"><a id="l02085" name="l02085"></a><span class="lineno"> 2085</span> </div>
+<div class="line"><a id="l02086" name="l02086"></a><span class="lineno"> 2086</span>  vector&lt;string&gt; modNames;</div>
+<div class="line"><a id="l02087" name="l02087"></a><span class="lineno"> 2087</span> </div>
+<div class="line"><a id="l02088" name="l02088"></a><span class="lineno"> 2088</span>  <span class="comment">// pugi::xml_node noteInfo = GNES(GNES(GFEC(_playingMethods)));</span></div>
+<div class="line"><a id="l02089" name="l02089"></a><span class="lineno"> 2089</span>  <span class="comment">// pugi::xml_node techniqueElement = GNES(GFEC(noteInfo));</span></div>
+<div class="line"><a id="l02090" name="l02090"></a><span class="lineno"> 2090</span> </div>
+<div class="line"><a id="l02091" name="l02091"></a><span class="lineno"> 2091</span><span class="comment">//  string name0 = XMLTC(techniqueElement);</span></div>
+<div class="line"><a id="l02092" name="l02092"></a><span class="lineno"> 2092</span><span class="comment">//  cout &lt;&lt; &quot;name0: &quot; &lt;&lt; name0 &lt;&lt; endl;</span></div>
+<div class="line"><a id="l02093" name="l02093"></a><span class="lineno"> 2093</span> </div>
+<div class="line"><a id="l02094" name="l02094"></a><span class="lineno"> 2094</span>  <span class="comment">// pugi::xml_node currentTechnique = GFEC(techniqueElement);</span></div>
+<div class="line"><a id="l02095" name="l02095"></a><span class="lineno"> 2095</span>  pugi::xml_node currentTechnique = <a class="code hl_function" href="Libraries_8h.html#ad8ae8ed9fbc892a9adb84d5f0b9051da">GFEC</a>(_playingMethods);</div>
+<div class="line"><a id="l02096" name="l02096"></a><span class="lineno"> 2096</span> </div>
+<div class="line"><a id="l02097" name="l02097"></a><span class="lineno"> 2097</span>  <span class="comment">// do {</span></div>
+<div class="line"><a id="l02098" name="l02098"></a><span class="lineno"> 2098</span>  <span class="comment">//   string name = XMLTC(currentTechnique);</span></div>
+<div class="line"><a id="l02099" name="l02099"></a><span class="lineno"> 2099</span>  <span class="comment">//   modNames.push_back(name);</span></div>
+<div class="line"><a id="l02100" name="l02100"></a><span class="lineno"> 2100</span>  <span class="comment">//   currentTechnique = GNES(currentTechnique);</span></div>
+<div class="line"><a id="l02101" name="l02101"></a><span class="lineno"> 2101</span>  <span class="comment">// } while ( currentTechnique != NULL);</span></div>
+<div class="line"><a id="l02102" name="l02102"></a><span class="lineno"> 2102</span> </div>
+<div class="line"><a id="l02103" name="l02103"></a><span class="lineno"> 2103</span>  <span class="keywordflow">while</span> (currentTechnique != NULL) {</div>
+<div class="line"><a id="l02104" name="l02104"></a><span class="lineno"> 2104</span>    <span class="keywordtype">string</span> techniqueName = <a class="code hl_define" href="Libraries_8h.html#a9999bd203a9afdccd05ab9c00c3c7c89">XMLTC</a>(currentTechnique);</div>
+<div class="line"><a id="l02105" name="l02105"></a><span class="lineno"> 2105</span>    modNames.push_back(techniqueName);</div>
+<div class="line"><a id="l02106" name="l02106"></a><span class="lineno"> 2106</span>    currentTechnique = <a class="code hl_function" href="Libraries_8h.html#a1ecb0a878309e5bd7eadcecb2f701132">GNES</a>(currentTechnique);</div>
+<div class="line"><a id="l02107" name="l02107"></a><span class="lineno"> 2107</span>  }</div>
+<div class="line"><a id="l02108" name="l02108"></a><span class="lineno"> 2108</span> </div>
+<div class="line"><a id="l02109" name="l02109"></a><span class="lineno"> 2109</span>  <span class="keywordflow">return</span> modNames;</div>
+<div class="line"><a id="l02110" name="l02110"></a><span class="lineno"> 2110</span>}</div>
+<div class="line"><a id="l02111" name="l02111"></a><span class="lineno"> 2111</span> </div>
+<div class="line"><a id="l02112" name="l02112"></a><span class="lineno"> 2112</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l02113" name="l02113"></a><span class="lineno"> 2113</span> </div>
+<div class="line"><a id="l02114" name="l02114"></a><span class="lineno"> 2114</span><span class="keywordtype">void</span> Bottom::generatePartials(Sound* newsound, <span class="keywordtype">float</span> frequency, <span class="keywordtype">float</span>, <span class="keywordtype">float</span>, Envelope* waveShape){</div>
+<div class="line"><a id="l02115" name="l02115"></a><span class="lineno"> 2115</span> </div>
+<div class="line"><a id="l02116" name="l02116"></a><span class="lineno"> 2116</span>  <span class="keywordflow">if</span> ((frequency &lt; 233) || frequency &gt; 932){</div>
+<div class="line"><a id="l02117" name="l02117"></a><span class="lineno"> 2117</span>    warnBottom(<a class="code hl_variable" href="classEvent.html#a2260aa14c4dfb50ad5db1dd71ece65eb">name</a>, <span class="stringliteral">&quot;Generate Spectrum / Frequency&quot;</span>,</div>
+<div class="line"><a id="l02118" name="l02118"></a><span class="lineno"> 2118</span>               <span class="stringliteral">&quot;Frequency is &quot;</span> + std::to_string(frequency)</div>
+<div class="line"><a id="l02119" name="l02119"></a><span class="lineno"> 2119</span>                   + <span class="stringliteral">&quot; Hz, outside Spectrum_Gen&#39;s reference range of 233 to 932 Hz; generation continues.&quot;</span>,</div>
+<div class="line"><a id="l02120" name="l02120"></a><span class="lineno"> 2120</span>               <span class="stringliteral">&quot;Check the Bottom event&#39;s Frequency, or use explicit spectrum partial envelopes if this wider range is intentional.&quot;</span>);</div>
+<div class="line"><a id="l02121" name="l02121"></a><span class="lineno"> 2121</span>  }</div>
+<div class="line"><a id="l02122" name="l02122"></a><span class="lineno"> 2122</span>  <span class="comment">//calculate scale for Partials</span></div>
+<div class="line"><a id="l02123" name="l02123"></a><span class="lineno"> 2123</span>  <span class="keywordtype">double</span> scaleTable[3][3][20] = {</div>
+<div class="line"><a id="l02124" name="l02124"></a><span class="lineno"> 2124</span>    { <span class="comment">//Bb3,p,m,f     233 hz</span></div>
+<div class="line"><a id="l02125" name="l02125"></a><span class="lineno"> 2125</span>      {0.886, 0.014, 1, 0.072, 0.367, 0.193, 0.183, 0.036, 0.058, 0.010, 0.028,</div>
+<div class="line"><a id="l02126" name="l02126"></a><span class="lineno"> 2126</span>        0.021, 0.011, 0.016, 0.003, 0.003, 0.002, 0.002, 0.002, 0.002},</div>
+<div class="line"><a id="l02127" name="l02127"></a><span class="lineno"> 2127</span>      {0.756, 0.014, 1, 0.037, 0.521, 0.217, 0.234, 0.123, 0.306, 0.066, 0.142,</div>
+<div class="line"><a id="l02128" name="l02128"></a><span class="lineno"> 2128</span>      0.040, 0.053, 0.044, 0.053, 0.039, 0.033, 0.043, 0.004, 0.012},</div>
+<div class="line"><a id="l02129" name="l02129"></a><span class="lineno"> 2129</span>      {0.832, 0.019, 1.000, 0.043, 0.481, 0.226, 0.145, 0.119, 0.384, 0.091,</div>
+<div class="line"><a id="l02130" name="l02130"></a><span class="lineno"> 2130</span>        0.182, 0.048, 0.080, 0.094, 0.077, 0.053, 0.044, 0.057, 0.009, 0.021}</div>
+<div class="line"><a id="l02131" name="l02131"></a><span class="lineno"> 2131</span>      },</div>
+<div class="line"><a id="l02132" name="l02132"></a><span class="lineno"> 2132</span>    {<span class="comment">//Bb4,p,m,f     466 hz</span></div>
+<div class="line"><a id="l02133" name="l02133"></a><span class="lineno"> 2133</span>      {1.000, 0.115, 0.834, 0.079, 0.233, 0.031, 0.027, 0.015, 0.005, 0.004,</div>
+<div class="line"><a id="l02134" name="l02134"></a><span class="lineno"> 2134</span>      0.008, 0.002, 0.001, 0.0017, 0.001, 0.001, 0.001, 0.001, 0.0006, 0.001},</div>
+<div class="line"><a id="l02135" name="l02135"></a><span class="lineno"> 2135</span>      {0.938, 0.072, 1.000, 0.318, 0.096, 0.096, 0.036, 0.109, 0.023, 0.010,</div>
+<div class="line"><a id="l02136" name="l02136"></a><span class="lineno"> 2136</span>      0.007, 0.007, 0.002, 0.010, 0.002, 0.0015, 0.002, 0.002, 0.002, 0.0015},</div>
+<div class="line"><a id="l02137" name="l02137"></a><span class="lineno"> 2137</span>      {0.939, 0.036, 1.000, 0.252, 0.220, 0.078, 0.057, 0.045, 0.027, 0.016,</div>
+<div class="line"><a id="l02138" name="l02138"></a><span class="lineno"> 2138</span>      0.013, 0.007, 0.003, 0.008, 0.004, 0.001, 0.002, 0.001, 0.0022, 0.0018}</div>
+<div class="line"><a id="l02139" name="l02139"></a><span class="lineno"> 2139</span>    },</div>
+<div class="line"><a id="l02140" name="l02140"></a><span class="lineno"> 2140</span>    {<span class="comment">//Bb5,p,m,f     932 hz</span></div>
+<div class="line"><a id="l02141" name="l02141"></a><span class="lineno"> 2141</span>      {1.000, 0.269, 0.227, 0.040, 0.004, 0.006, 0.003, 0.0007, 0.002, 0.0007,</div>
+<div class="line"><a id="l02142" name="l02142"></a><span class="lineno"> 2142</span>      0.0007, 0.003, 0.0007, 0.001, 0.0014, 0.0005, 0.0007, 0.0005, 0.0007, 0.0005},</div>
+<div class="line"><a id="l02143" name="l02143"></a><span class="lineno"> 2143</span>      {1.00, 0.507, 0.132, 0.160, 0.030, 0.002, 0.001, 0.0008, 0.0016, 0.003, 0.002,</div>
+<div class="line"><a id="l02144" name="l02144"></a><span class="lineno"> 2144</span>      0.001, 0.001, 0.001, 0.0005, 0.0005, 0.001, 0.0005, 0.001, 0.00064},</div>
+<div class="line"><a id="l02145" name="l02145"></a><span class="lineno"> 2145</span>      {1.00, 0.354, 0.198, 0.102, 0.054, 0.012, 0.005, 0.002, 0.005, 0.003, 0.003,</div>
+<div class="line"><a id="l02146" name="l02146"></a><span class="lineno"> 2146</span>      0.002, 0.001, 0.002, 0.004, 0.0015, 0.002, 0.002, 0.003, 0.0013}</div>
+<div class="line"><a id="l02147" name="l02147"></a><span class="lineno"> 2147</span>    }</div>
+<div class="line"><a id="l02148" name="l02148"></a><span class="lineno"> 2148</span>  };</div>
+<div class="line"><a id="l02149" name="l02149"></a><span class="lineno"> 2149</span>  <span class="comment">//Set the number of partials.</span></div>
+<div class="line"><a id="l02150" name="l02150"></a><span class="lineno"> 2150</span>  <span class="keywordtype">int</span> numPartials = 20;</div>
+<div class="line"><a id="l02151" name="l02151"></a><span class="lineno"> 2151</span>  <span class="comment">//For each partial, create and add to sound.</span></div>
+<div class="line"><a id="l02152" name="l02152"></a><span class="lineno"> 2152</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; numPartials; i++) {</div>
+<div class="line"><a id="l02153" name="l02153"></a><span class="lineno"> 2153</span> </div>
+<div class="line"><a id="l02154" name="l02154"></a><span class="lineno"> 2154</span>    <span class="comment">//Create the next partial object.</span></div>
+<div class="line"><a id="l02155" name="l02155"></a><span class="lineno"> 2155</span>    Partial partial;</div>
+<div class="line"><a id="l02156" name="l02156"></a><span class="lineno"> 2156</span> </div>
+<div class="line"><a id="l02157" name="l02157"></a><span class="lineno"> 2157</span>    <span class="comment">//Set the partial number of the partial based on the current index.</span></div>
+<div class="line"><a id="l02158" name="l02158"></a><span class="lineno"> 2158</span>    partial.setParam(PARTIAL_NUM, <span class="keyword">static_cast&lt;</span>m_value_type<span class="keyword">&gt;</span>(i));</div>
 <div class="line"><a id="l02159" name="l02159"></a><span class="lineno"> 2159</span> </div>
-<div class="line"><a id="l02160" name="l02160"></a><span class="lineno"> 2160</span>    partial.setParam(WAVE_SHAPE, *waveShape);</div>
-<div class="line"><a id="l02161" name="l02161"></a><span class="lineno"> 2161</span>    <span class="comment">//Add the partial to the sound.</span></div>
-<div class="line"><a id="l02162" name="l02162"></a><span class="lineno"> 2162</span>    newsound-&gt;add(partial);</div>
-<div class="line"><a id="l02163" name="l02163"></a><span class="lineno"> 2163</span>  }</div>
-<div class="line"><a id="l02164" name="l02164"></a><span class="lineno"> 2164</span>}</div>
-<div class="line"><a id="l02165" name="l02165"></a><span class="lineno"> 2165</span> </div>
-<div class="line"><a id="l02166" name="l02166"></a><span class="lineno"> 2166</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
-<div class="line"><a id="l02167" name="l02167"></a><span class="lineno"> 2167</span> </div>
-<div class="line"><a id="l02168" name="l02168"></a><span class="lineno"> 2168</span><span class="keywordtype">double</span> Bottom::calculateFreqPartial(<span class="keywordtype">double</span> x1, <span class="keywordtype">double</span> y1, <span class="keywordtype">double</span> x2, <span class="keywordtype">double</span> y2, <span class="keywordtype">double</span> x){</div>
-<div class="line"><a id="l02169" name="l02169"></a><span class="lineno"> 2169</span>  <span class="comment">//return the amplitude (ratio) of the generated partial</span></div>
-<div class="line"><a id="l02170" name="l02170"></a><span class="lineno"> 2170</span>  <span class="comment">//the curve between two points (x1,y1) and (x2,y2) is modeled by y=a*2^(b*(x-x1))</span></div>
-<div class="line"><a id="l02171" name="l02171"></a><span class="lineno"> 2171</span>  <span class="comment">//assuming y2&gt;y1</span></div>
-<div class="line"><a id="l02172" name="l02172"></a><span class="lineno"> 2172</span>  <span class="keywordflow">if</span> ((x &gt; x2) || (x &lt; x1)){</div>
-<div class="line"><a id="l02173" name="l02173"></a><span class="lineno"> 2173</span>    cout &lt;&lt; <span class="stringliteral">&quot;Bottom::error in calculateFreqPartials&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a id="l02174" name="l02174"></a><span class="lineno"> 2174</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l02175" name="l02175"></a><span class="lineno"> 2175</span>  }</div>
-<div class="line"><a id="l02176" name="l02176"></a><span class="lineno"> 2176</span>  <span class="keywordtype">double</span> a, b, y;</div>
-<div class="line"><a id="l02177" name="l02177"></a><span class="lineno"> 2177</span>  <span class="keywordflow">if</span> (y2 &gt;= y1){</div>
-<div class="line"><a id="l02178" name="l02178"></a><span class="lineno"> 2178</span>    a = y1;</div>
-<div class="line"><a id="l02179" name="l02179"></a><span class="lineno"> 2179</span>    b = (log2(y2 / y1)) / (x2 - x1);</div>
-<div class="line"><a id="l02180" name="l02180"></a><span class="lineno"> 2180</span>    y = a * pow(2, b * (x-x1) );</div>
-<div class="line"><a id="l02181" name="l02181"></a><span class="lineno"> 2181</span>  }</div>
-<div class="line"><a id="l02182" name="l02182"></a><span class="lineno"> 2182</span>  <span class="keywordflow">else</span>{</div>
-<div class="line"><a id="l02183" name="l02183"></a><span class="lineno"> 2183</span>    <span class="comment">//the downward curve is supposed to be symmetric (with respect to the</span></div>
-<div class="line"><a id="l02184" name="l02184"></a><span class="lineno"> 2184</span>    <span class="comment">//horizontal line y1) to the above case. Model the curve as if y2&gt;y1 and</span></div>
-<div class="line"><a id="l02185" name="l02185"></a><span class="lineno"> 2185</span>    <span class="comment">//take the symmetric result</span></div>
-<div class="line"><a id="l02186" name="l02186"></a><span class="lineno"> 2186</span>    <span class="keywordtype">double</span> y2_temp = y1 + (y1 - y2);</div>
-<div class="line"><a id="l02187" name="l02187"></a><span class="lineno"> 2187</span>    a = y1;</div>
-<div class="line"><a id="l02188" name="l02188"></a><span class="lineno"> 2188</span>    b = (log2(y2_temp / y1)) / (x2 - x1);</div>
-<div class="line"><a id="l02189" name="l02189"></a><span class="lineno"> 2189</span>    <span class="keywordtype">double</span> y_temp = a * pow(2, b * (x-x1) );</div>
-<div class="line"><a id="l02190" name="l02190"></a><span class="lineno"> 2190</span>    y = y1 - (y_temp - y1);</div>
-<div class="line"><a id="l02191" name="l02191"></a><span class="lineno"> 2191</span>  }</div>
-<div class="line"><a id="l02192" name="l02192"></a><span class="lineno"> 2192</span>  <span class="keywordflow">return</span> y;</div>
-<div class="line"><a id="l02193" name="l02193"></a><span class="lineno"> 2193</span>}</div>
+<div class="line"><a id="l02160" name="l02160"></a><span class="lineno"> 2160</span>    <span class="comment">//Set the frequencies for each partial.</span></div>
+<div class="line"><a id="l02161" name="l02161"></a><span class="lineno"> 2161</span>    <span class="keywordtype">float</span> actualFrequency = setPartialFreq(</div>
+<div class="line"><a id="l02162" name="l02162"></a><span class="lineno"> 2162</span>      partial, 0, frequency, i);</div>
+<div class="line"><a id="l02163" name="l02163"></a><span class="lineno"> 2163</span> </div>
+<div class="line"><a id="l02164" name="l02164"></a><span class="lineno"> 2164</span>    <span class="comment">//Report the actual frequency.</span></div>
+<div class="line"><a id="l02165" name="l02165"></a><span class="lineno"> 2165</span>    stringstream ss; <span class="keywordflow">if</span>(i != 0) ss &lt;&lt; <span class="stringliteral">&quot;Partial &quot;</span> &lt;&lt; i; <span class="keywordflow">else</span> ss &lt;&lt; <span class="stringliteral">&quot;Fundamental&quot;</span>;</div>
+<div class="line"><a id="l02166" name="l02166"></a><span class="lineno"> 2166</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classEvent.html#a5092cd4f16d5eb7c7ec0ebe96d6e91dc">utilities</a>-&gt;<a class="code hl_function" href="classUtilities.html#ac278b0255dc54c72d9107346ce3cf785">getOutputParticel</a>())</div>
+<div class="line"><a id="l02167" name="l02167"></a><span class="lineno"> 2167</span>  <a class="code hl_function" href="classOutput.html#aac3423bbbe3e6667f366304e80638a6d">Output::addProperty</a>(ss.str(), actualFrequency, <span class="stringliteral">&quot;Hz&quot;</span>);</div>
+<div class="line"><a id="l02168" name="l02168"></a><span class="lineno"> 2168</span>    <span class="comment">//Set the spectrum for this partial.</span></div>
+<div class="line"><a id="l02169" name="l02169"></a><span class="lineno"> 2169</span>    <span class="comment">//interpolate the scale from scale table</span></div>
+<div class="line"><a id="l02170" name="l02170"></a><span class="lineno"> 2170</span>    <span class="comment">// double scale;</span></div>
+<div class="line"><a id="l02171" name="l02171"></a><span class="lineno"> 2171</span>    <span class="comment">// if (frequency &lt;= 466){</span></div>
+<div class="line"><a id="l02172" name="l02172"></a><span class="lineno"> 2172</span>    <span class="comment">//   if (strength &lt;= 1){</span></div>
+<div class="line"><a id="l02173" name="l02173"></a><span class="lineno"> 2173</span>    <span class="comment">//     double scale_strength1 = calculateFreqPartial(233,scaleTable[0][0][i],466,scaleTable[1][0][i],frequency);</span></div>
+<div class="line"><a id="l02174" name="l02174"></a><span class="lineno"> 2174</span>    <span class="comment">//     double scale_strength2 = calculateFreqPartial(233,scaleTable[0][1][i],466,scaleTable[1][1][i],frequency);</span></div>
+<div class="line"><a id="l02175" name="l02175"></a><span class="lineno"> 2175</span>    <span class="comment">//     scale = strength * scale_strength1 + (1 - strength) * scale_strength2;</span></div>
+<div class="line"><a id="l02176" name="l02176"></a><span class="lineno"> 2176</span>    <span class="comment">//   }</span></div>
+<div class="line"><a id="l02177" name="l02177"></a><span class="lineno"> 2177</span>    <span class="comment">//   else{</span></div>
+<div class="line"><a id="l02178" name="l02178"></a><span class="lineno"> 2178</span>    <span class="comment">//     double scale_strength1 = calculateFreqPartial(233,scaleTable[0][1][i],466,scaleTable[1][1][i],frequency);</span></div>
+<div class="line"><a id="l02179" name="l02179"></a><span class="lineno"> 2179</span>    <span class="comment">//     double scale_strength2 = calculateFreqPartial(233,scaleTable[0][2][i],466,scaleTable[1][2][i],frequency);</span></div>
+<div class="line"><a id="l02180" name="l02180"></a><span class="lineno"> 2180</span>    <span class="comment">//     scale = (2 - strength) * scale_strength1 + (strength - 1) * scale_strength2;</span></div>
+<div class="line"><a id="l02181" name="l02181"></a><span class="lineno"> 2181</span>    <span class="comment">//   }</span></div>
+<div class="line"><a id="l02182" name="l02182"></a><span class="lineno"> 2182</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l02183" name="l02183"></a><span class="lineno"> 2183</span>    <span class="comment">// else{</span></div>
+<div class="line"><a id="l02184" name="l02184"></a><span class="lineno"> 2184</span>    <span class="comment">//   if (strength &lt;= 1){</span></div>
+<div class="line"><a id="l02185" name="l02185"></a><span class="lineno"> 2185</span>    <span class="comment">//     double scale_strength1 = calculateFreqPartial(466,scaleTable[1][0][i],932,scaleTable[2][0][i],frequency);</span></div>
+<div class="line"><a id="l02186" name="l02186"></a><span class="lineno"> 2186</span>    <span class="comment">//     double scale_strength2 = calculateFreqPartial(466,scaleTable[1][1][i],932,scaleTable[2][1][i],frequency);</span></div>
+<div class="line"><a id="l02187" name="l02187"></a><span class="lineno"> 2187</span>    <span class="comment">//     scale = strength * scale_strength1 + (1 - strength) * scale_strength2;</span></div>
+<div class="line"><a id="l02188" name="l02188"></a><span class="lineno"> 2188</span>    <span class="comment">//   }</span></div>
+<div class="line"><a id="l02189" name="l02189"></a><span class="lineno"> 2189</span>    <span class="comment">//   else{</span></div>
+<div class="line"><a id="l02190" name="l02190"></a><span class="lineno"> 2190</span>    <span class="comment">//     double scale_strength1 = calculateFreqPartial(466,scaleTable[1][1][i],932,scaleTable[2][1][i],frequency);</span></div>
+<div class="line"><a id="l02191" name="l02191"></a><span class="lineno"> 2191</span>    <span class="comment">//     double scale_strength2 = calculateFreqPartial(466,scaleTable[1][2][i],932,scaleTable[2][2][i],frequency);</span></div>
+<div class="line"><a id="l02192" name="l02192"></a><span class="lineno"> 2192</span>    <span class="comment">//     scale = (2 - strength) * scale_strength1 + (strength - 1) * scale_strength2;</span></div>
+<div class="line"><a id="l02193" name="l02193"></a><span class="lineno"> 2193</span>    <span class="comment">//   }</span></div>
+<div class="line"><a id="l02194" name="l02194"></a><span class="lineno"> 2194</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l02195" name="l02195"></a><span class="lineno"> 2195</span> </div>
+<div class="line"><a id="l02196" name="l02196"></a><span class="lineno"> 2196</span>    partial.setParam(WAVE_SHAPE, *waveShape);</div>
+<div class="line"><a id="l02197" name="l02197"></a><span class="lineno"> 2197</span>    <span class="comment">//Add the partial to the sound.</span></div>
+<div class="line"><a id="l02198" name="l02198"></a><span class="lineno"> 2198</span>    newsound-&gt;add(partial);</div>
+<div class="line"><a id="l02199" name="l02199"></a><span class="lineno"> 2199</span>  }</div>
+<div class="line"><a id="l02200" name="l02200"></a><span class="lineno"> 2200</span>}</div>
+<div class="line"><a id="l02201" name="l02201"></a><span class="lineno"> 2201</span> </div>
+<div class="line"><a id="l02202" name="l02202"></a><span class="lineno"> 2202</span><span class="comment">//----------------------------------------------------------------------------//</span></div>
+<div class="line"><a id="l02203" name="l02203"></a><span class="lineno"> 2203</span> </div>
+<div class="line"><a id="l02204" name="l02204"></a><span class="lineno"> 2204</span><span class="keywordtype">double</span> Bottom::calculateFreqPartial(<span class="keywordtype">double</span> x1, <span class="keywordtype">double</span> y1, <span class="keywordtype">double</span> x2, <span class="keywordtype">double</span> y2, <span class="keywordtype">double</span> x){</div>
+<div class="line"><a id="l02205" name="l02205"></a><span class="lineno"> 2205</span>  <span class="comment">//return the amplitude (ratio) of the generated partial</span></div>
+<div class="line"><a id="l02206" name="l02206"></a><span class="lineno"> 2206</span>  <span class="comment">//the curve between two points (x1,y1) and (x2,y2) is modeled by y=a*2^(b*(x-x1))</span></div>
+<div class="line"><a id="l02207" name="l02207"></a><span class="lineno"> 2207</span>  <span class="comment">//assuming y2&gt;y1</span></div>
+<div class="line"><a id="l02208" name="l02208"></a><span class="lineno"> 2208</span>  <span class="keywordflow">if</span> ((x &gt; x2) || (x &lt; x1)){</div>
+<div class="line"><a id="l02209" name="l02209"></a><span class="lineno"> 2209</span>    cout &lt;&lt; <span class="stringliteral">&quot;Bottom::error in calculateFreqPartials&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l02210" name="l02210"></a><span class="lineno"> 2210</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l02211" name="l02211"></a><span class="lineno"> 2211</span>  }</div>
+<div class="line"><a id="l02212" name="l02212"></a><span class="lineno"> 2212</span>  <span class="keywordtype">double</span> a, b, y;</div>
+<div class="line"><a id="l02213" name="l02213"></a><span class="lineno"> 2213</span>  <span class="keywordflow">if</span> (y2 &gt;= y1){</div>
+<div class="line"><a id="l02214" name="l02214"></a><span class="lineno"> 2214</span>    a = y1;</div>
+<div class="line"><a id="l02215" name="l02215"></a><span class="lineno"> 2215</span>    b = (log2(y2 / y1)) / (x2 - x1);</div>
+<div class="line"><a id="l02216" name="l02216"></a><span class="lineno"> 2216</span>    y = a * pow(2, b * (x-x1) );</div>
+<div class="line"><a id="l02217" name="l02217"></a><span class="lineno"> 2217</span>  }</div>
+<div class="line"><a id="l02218" name="l02218"></a><span class="lineno"> 2218</span>  <span class="keywordflow">else</span>{</div>
+<div class="line"><a id="l02219" name="l02219"></a><span class="lineno"> 2219</span>    <span class="comment">//the downward curve is supposed to be symmetric (with respect to the</span></div>
+<div class="line"><a id="l02220" name="l02220"></a><span class="lineno"> 2220</span>    <span class="comment">//horizontal line y1) to the above case. Model the curve as if y2&gt;y1 and</span></div>
+<div class="line"><a id="l02221" name="l02221"></a><span class="lineno"> 2221</span>    <span class="comment">//take the symmetric result</span></div>
+<div class="line"><a id="l02222" name="l02222"></a><span class="lineno"> 2222</span>    <span class="keywordtype">double</span> y2_temp = y1 + (y1 - y2);</div>
+<div class="line"><a id="l02223" name="l02223"></a><span class="lineno"> 2223</span>    a = y1;</div>
+<div class="line"><a id="l02224" name="l02224"></a><span class="lineno"> 2224</span>    b = (log2(y2_temp / y1)) / (x2 - x1);</div>
+<div class="line"><a id="l02225" name="l02225"></a><span class="lineno"> 2225</span>    <span class="keywordtype">double</span> y_temp = a * pow(2, b * (x-x1) );</div>
+<div class="line"><a id="l02226" name="l02226"></a><span class="lineno"> 2226</span>    y = y1 - (y_temp - y1);</div>
+<div class="line"><a id="l02227" name="l02227"></a><span class="lineno"> 2227</span>  }</div>
+<div class="line"><a id="l02228" name="l02228"></a><span class="lineno"> 2228</span>  <span class="keywordflow">return</span> y;</div>
+<div class="line"><a id="l02229" name="l02229"></a><span class="lineno"> 2229</span>}</div>
 <div class="ttc" id="aBottom_8h_html"><div class="ttname"><a href="Bottom_8h.html">Bottom.h</a></div><div class="ttdoc">Leaf event in a DISSCO composition.</div></div>
 <div class="ttc" id="aCmodError_8h_html"><div class="ttname"><a href="CmodError_8h.html">CmodError.h</a></div></div>
 <div class="ttc" id="aDefine_8h_html_a2f670099bd8af05b9c7690c2ce7f9fe3"><div class="ttname"><a href="Define_8h.html#a2f670099bd8af05b9c7690c2ce7f9fe3">MINFREQ</a></div><div class="ttdeci">#define MINFREQ</div><div class="ttdef"><b>Definition</b> <a href="Define_8h_source.html#l00052">Define.h:52</a></div></div>
@@ -2320,9 +2356,9 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aclassEvent_html_afac83bb8750e444d149246f32400a973"><div class="ttname"><a href="classEvent.html#afac83bb8750e444d149246f32400a973">Event::buildSweep</a></div><div class="ttdeci">bool buildSweep()</div><div class="ttdef"><b>Definition</b> <a href="Event_8cpp_source.html#l00844">Event.cpp:844</a></div></div>
 <div class="ttc" id="aclassEvent_html_afc44d7912e4f7026f999477d2af21204"><div class="ttname"><a href="classEvent.html#afc44d7912e4f7026f999477d2af21204">Event::restartsRemaining</a></div><div class="ttdeci">int restartsRemaining</div><div class="ttdef"><b>Definition</b> <a href="Event_8h_source.html#l00227">Event.h:227</a></div></div>
 <div class="ttc" id="aclassModifier_html"><div class="ttname"><a href="classModifier.html">Modifier</a></div><div class="ttdoc">One configured modifier instance attached to a Bottom event.</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8h_source.html#l00046">Modifier.h:46</a></div></div>
-<div class="ttc" id="aclassModifier_html_a556b2483c0d0a9cc4859c61684316197"><div class="ttname"><a href="classModifier.html#a556b2483c0d0a9cc4859c61684316197">Modifier::willOccur</a></div><div class="ttdeci">bool willOccur(double checkPoint)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00184">Modifier.cpp:184</a></div></div>
-<div class="ttc" id="aclassModifier_html_a639c69b69fade3d47bfe19eec79ee81e"><div class="ttname"><a href="classModifier.html#a639c69b69fade3d47bfe19eec79ee81e">Modifier::applyModifier</a></div><div class="ttdeci">void applyModifier(Sound *snd)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00202">Modifier.cpp:202</a></div></div>
-<div class="ttc" id="aclassModifier_html_aa002bd3cbcadf45a204ef002c4ebb236"><div class="ttname"><a href="classModifier.html#aa002bd3cbcadf45a204ef002c4ebb236">Modifier::setCheckPoint</a></div><div class="ttdeci">void setCheckPoint(double checkPoint)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00196">Modifier.cpp:196</a></div></div>
+<div class="ttc" id="aclassModifier_html_a556b2483c0d0a9cc4859c61684316197"><div class="ttname"><a href="classModifier.html#a556b2483c0d0a9cc4859c61684316197">Modifier::willOccur</a></div><div class="ttdeci">bool willOccur(double checkPoint)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00196">Modifier.cpp:196</a></div></div>
+<div class="ttc" id="aclassModifier_html_a639c69b69fade3d47bfe19eec79ee81e"><div class="ttname"><a href="classModifier.html#a639c69b69fade3d47bfe19eec79ee81e">Modifier::applyModifier</a></div><div class="ttdeci">void applyModifier(Sound *snd)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00214">Modifier.cpp:214</a></div></div>
+<div class="ttc" id="aclassModifier_html_aa002bd3cbcadf45a204ef002c4ebb236"><div class="ttname"><a href="classModifier.html#aa002bd3cbcadf45a204ef002c4ebb236">Modifier::setCheckPoint</a></div><div class="ttdeci">void setCheckPoint(double checkPoint)</div><div class="ttdef"><b>Definition</b> <a href="Modifier_8cpp_source.html#l00208">Modifier.cpp:208</a></div></div>
 <div class="ttc" id="aclassNotationScore_html_a2333153794150dcb91e91a404e02b6c8"><div class="ttname"><a href="classNotationScore.html#a2333153794150dcb91e91a404e02b6c8">NotationScore::RegisterTempo</a></div><div class="ttdeci">void RegisterTempo(Tempo &amp;tempo, int numberOfStaff)</div><div class="ttdef"><b>Definition</b> <a href="NotationScore_8cpp_source.html#l00397">NotationScore.cpp:397</a></div></div>
 <div class="ttc" id="aclassNotationScore_html_a88f1f081fb6c29c7f5a078ce287637ee"><div class="ttname"><a href="classNotationScore.html#a88f1f081fb6c29c7f5a078ce287637ee">NotationScore::InsertNote</a></div><div class="ttdeci">void InsertNote(Note *n, Tempo &amp;tempo)</div><div class="ttdef"><b>Definition</b> <a href="NotationScore_8cpp_source.html#l00442">NotationScore.cpp:442</a></div></div>
 <div class="ttc" id="aclassNote_html"><div class="ttname"><a href="classNote.html">Note</a></div><div class="ttdoc">A single notated event emitted by a Bottom event.</div><div class="ttdef"><b>Definition</b> <a href="Note_8h_source.html#l00071">Note.h:71</a></div></div>

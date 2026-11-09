@@ -64,7 +64,7 @@ var searchData=
   ['modifierrulesdialog_61',['modifierrulesdialog',['../classModifierRulesDialog.html',1,'ModifierRulesDialog'],['../classModifierRulesDialog.html#af5e00336cb36dbd5403837736a30c95e',1,'ModifierRulesDialog::ModifierRulesDialog()']]],
   ['modifierrulesdialog_2ecpp_62',['ModifierRulesDialog.cpp',['../ModifierRulesDialog_8cpp.html',1,'']]],
   ['modifierrulesdialog_2ehpp_63',['ModifierRulesDialog.hpp',['../ModifierRulesDialog_8hpp.html',1,'']]],
-  ['modifiers_64',['modifiers',['../classModifiers.html',1,'Modifiers'],['../structNoteInfo.html#ac3ce3725dcbbeef41f79c85f6b7e3ccc',1,'NoteInfo::modifiers'],['../structHEvent.html#a2941077b07a525f8c7dac50691527bf5',1,'HEvent::modifiers'],['../structExtraInfo.html#a0b709d346b57056d4dc4157cfe64dccb',1,'ExtraInfo::modifiers'],['../classModifiers.html#a2d7a9c312eed8f9e9818c26bbbcff0a4',1,'Modifiers::Modifiers()']]],
+  ['modifiers_64',['modifiers',['../classModifiers.html',1,'Modifiers'],['../classModifiers.html#a2d7a9c312eed8f9e9818c26bbbcff0a4',1,'Modifiers::Modifiers()'],['../structNoteInfo.html#ac3ce3725dcbbeef41f79c85f6b7e3ccc',1,'NoteInfo::modifiers'],['../structHEvent.html#a2941077b07a525f8c7dac50691527bf5',1,'HEvent::modifiers'],['../structExtraInfo.html#a0b709d346b57056d4dc4157cfe64dccb',1,'ExtraInfo::modifiers']]],
   ['modifiers_2ecpp_65',['Modifiers.cpp',['../Modifiers_8cpp.html',1,'']]],
   ['modifiers_2ehpp_66',['Modifiers.hpp',['../Modifiers_8hpp.html',1,'']]],
   ['modifiersamplingscope_67',['ModifierSamplingScope',['../event__struct_8hpp.html#a5f62dc6002593678c13ece91e80b25bb',1,'event_struct.hpp']]],
