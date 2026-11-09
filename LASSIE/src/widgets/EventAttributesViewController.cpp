@@ -1473,8 +1473,56 @@ void EventAttributesViewController::updateModifierUsageUi()
     ui->modifierSamplingScopeCombo->setVisible(showSamplingScope);
 
     updateModifierUsageSummary();
+    applyNotationBottomState();
     if (ui->stackedWidget->currentWidget() == ui->standardPage)
         fixStackedWidgetLayout(ui->standardPage);
+}
+
+bool EventAttributesViewController::currentIsNotationBottom() const
+{
+    if (!m_hasCurrentEvent || m_curreventtype != bottom)
+        return false;
+
+    ProjectManager* projectManager = Inst::get_project_manager();
+    if (m_curreventindex < 0
+        || m_curreventindex >= projectManager->bottomevents().size()) {
+        return false;
+    }
+    // CMOD builds a note (not a sound) for Bottom names starting with 'n'.
+    return projectManager->bottomevents()[m_curreventindex]
+        .event.name.trimmed().startsWith(QLatin1Char('n'));
+}
+
+void EventAttributesViewController::applyNotationBottomState()
+{
+    // A notation Bottom produces score notes only: CMOD ignores carrier
+    // phase, spatialization, reverb and sound modifiers for it. Gray them
+    // out (values are kept) instead of letting them look effective.
+    const bool notation = currentIsNotationBottom();
+    const QString unusedTip =
+        notation ? tr("Not used by notation Bottoms (names starting with 'n').")
+                 : QString();
+
+    const QList<QWidget*> unusedWidgets = {
+        ui->phaseLabel, ui->phaseEntry, ui->BSPhaseButton,
+        ui->spaLabel, ui->spaEntry, ui->attributesStandardSpaButton,
+        ui->revLabel, ui->revEntry, ui->attributesStandardRevButton,
+        ui->modifierUsageControls, ui->modifiersLabel, ui->addModifierButton,
+    };
+    for (QWidget* widget : unusedWidgets) {
+        widget->setEnabled(!notation);
+        widget->setToolTip(unusedTip);
+    }
+    for (Modifiers* modifier : m_modifiers) {
+        modifier->setEnabled(!notation);
+        modifier->setToolTip(unusedTip);
+    }
+
+    if (notation) {
+        ui->modifierUsageSummaryLabel->setText(
+            tr("Notation Bottoms do not use modifiers. Use the playing "
+               "techniques in the Note object instead."));
+    }
 }
 
 void EventAttributesViewController::modifierSamplingScopeChanged(int index)
