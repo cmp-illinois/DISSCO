@@ -272,6 +272,18 @@ public:
    **/
    void setDetune(double direction, double spread, double velocity);
 
+   /**
+   * Gives one partial its own detune settings. They replace the Sound-level
+   * DETUNE_* values for that partial only; the other partials keep using the
+   * Sound-level values. Arguments are validated like setDetune().
+   *    \param partialIndex Zero-based index of the partial
+   *    \param direction Negative = detune (diverge), positive = tune (converge)
+   *    \param spread Detune spread in [0, 1]
+   *    \param velocity Detune velocity in [-1, 1]; 0.5 is a linear transition
+   **/
+   void setPartialDetune(int partialIndex, double direction, double spread,
+                         double velocity);
+
    /** 
    This function shows the corresponding detune parameters when detune is called on
    **/
@@ -279,19 +291,33 @@ public:
     
 private:
   
+    /** Detune settings for one partial (or for the whole Sound). **/
+    struct DetuneSettings {
+        double direction;
+        double spread;
+        double velocity;
+    };
+
+    /** Per-partial detune settings, keyed by partial index. **/
+    map<int, DetuneSettings> partialDetune_;
+
     /**
     *	This function creates a detuning envelope
 	 when exponentially interpolated.
     *	\param env The envelope
+    *	\param settings The detune settings to use
     **/
-    void setup_detuning_env(ExponentialInterpolator *env);
+    void setup_detuning_env(ExponentialInterpolator *env,
+                            const DetuneSettings& settings);
 
     /**
     *   This function creates a detuning envelope
          when linearly interpolated(DETUNE_VELOCITY == 0.5).
     *   \param env The envelope
+    *	\param settings The detune settings to use
     **/
-    void setup_detuning_env(LinearInterpolator *detuning_env); 
+    void setup_detuning_env(LinearInterpolator *detuning_env,
+                            const DetuneSettings& settings);
 
     /**
     *	Pointer to a filter object that will apply filter to this sound
