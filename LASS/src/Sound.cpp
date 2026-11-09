@@ -518,7 +518,7 @@ void Sound::setup_detuning_env(LinearInterpolator *detuning_env,
   double randy = (float)random() / (float)RAND_MAX;
 
   // determine the shape of the envelope
-  vel = settings.velocity;
+  vel = static_cast<float>(settings.velocity);
   x[0] = 0.0;
   y[0] = 1.0;
 
@@ -528,7 +528,7 @@ void Sound::setup_detuning_env(LinearInterpolator *detuning_env,
   y[2] = 0.0;
 
   // scale by the height spread of the envelope
-  spread0 = settings.spread;
+  spread0 = static_cast<float>(settings.spread);
   spread = static_cast<float>(spread0 * randy * 2.0 - spread0);
 /*
 cout << "    randy=" << randy << endl;
