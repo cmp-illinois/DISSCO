@@ -4,6 +4,7 @@
 
 #include <cmath>
 #include <cstddef>
+#include <iomanip>
 #include <iostream>
 #include <memory>
 #include <vector>
@@ -35,7 +36,17 @@ bool checkBackend(const std::vector<float>& input,
         const float expected = c.b0 * input[i] + c.b1 * x1 + c.b2 * x2
                              - c.a1 * y1 - c.a2 * y2;
         if (!near(gpu[i], expected)) {
-            std::cerr << "Backend mismatch at sample " << i << '\n';
+            std::cerr << std::setprecision(9)
+                      << "Backend mismatch at sample " << i
+                      << ", coefficients (b0,b1,b2,a1,a2) = ("
+                      << c.b0 << ',' << c.b1 << ',' << c.b2 << ','
+                      << c.a1 << ',' << c.a2 << ")"
+                      << ", actual " << gpu[i]
+                      << ", expected " << expected
+                      << ", absolute error "
+                      << std::fabs(static_cast<double>(gpu[i]) - expected)
+                      << ", tolerance "
+                      << 0.0002f + 0.001f * std::fabs(expected) << '\n';
             return false;
         }
         x2 = x1; x1 = input[i];
