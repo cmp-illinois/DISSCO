@@ -102,22 +102,17 @@ public:
 	void xml_print();
 
 private:
+	MultiTrack* try_filter_MultiTrack_cuda(MultiTrack& inWave) override;
 
 	/**
 	 * The gain for the filter
 	 **/
 	float g;
 	float gains[3];
-	/**
-	 * This queue holds past samples to implement the delay
-	 **/
-	Filter::hist_queue<m_sample_type> *y_hist;
-	Filter::hist_queue<m_sample_type> *x_hist;
-
-
-
+	// Normalized coefficients and the two previous input/output samples.
     	m_sample_type ba0, ba1, ba2, ba3, ba4;
     	m_sample_type bx1, bx2, by1, by2;
+	bool cudaEligible_;
 
 /* filter types */
 	enum {

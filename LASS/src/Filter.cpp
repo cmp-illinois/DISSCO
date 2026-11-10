@@ -38,6 +38,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //----------------------------------------------------------------------------//
 MultiTrack &Filter::do_filter_MultiTrack(MultiTrack &inWave)
 {
+	if (MultiTrack* cudaResult = try_filter_MultiTrack_cuda(inWave))
+	{
+		reset();
+		return *cudaResult;
+	}
+
 	MultiTrack *newMultiTrack;
 	Track *newTrack;
 	SoundSample *channel;
@@ -61,6 +67,11 @@ MultiTrack &Filter::do_filter_MultiTrack(MultiTrack &inWave)
     }
 
 	return *newMultiTrack;
+}
+
+MultiTrack* Filter::try_filter_MultiTrack_cuda(MultiTrack&)
+{
+	return nullptr;
 }
 
 //----------------------------------------------------------------------------//

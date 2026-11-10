@@ -112,6 +112,13 @@ public:
 	 **/
 	virtual void reset(void) = 0;
 
+protected:
+	// Return a newly allocated filtered track set when a specialized backend
+	// handled the entire input. A null result leaves the CPU path in charge.
+	virtual MultiTrack* try_filter_MultiTrack_cuda(MultiTrack& inWave);
+
+public:
+
 	/**
 	 * Every filter requires some sort of history of previous values.  Even
 	 * the simplest 1st order IIR filter requires the previous output.  For

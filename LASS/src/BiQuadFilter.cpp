@@ -41,6 +41,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <math.h>
 #include <stdlib.h>
 #include <stdexcept>
+#include <algorithm>
+#include <cmath>
+#include <memory>
+#ifdef LASS_WITH_CUDA
+#include "../CUDA/BiquadCuda.h"
+#endif
 #include "SoundSample.h"
 #include "Track.h"
 #include "MultiTrack.h"
@@ -145,67 +151,74 @@ BiQuadFilter::BiQuadFilter(int type, m_sample_type dbGain, m_sample_type freq,m_
 	// set parameters //////////////
 	g = dbGain;
 
-	// initialize y_hist queue
-	y_hist = new Filter::hist_queue<m_sample_type>(2);
-	y_hist->enqueue(0.0);
-	y_hist->enqueue(0.0);
-
-	x_hist = new Filter::hist_queue<m_sample_type>(2);
-	x_hist->enqueue(0.0);
-	x_hist->enqueue(0.0);
-
-	
+	cudaEligible_ = true;
 }
 
 
 //----------------------------------------------------------------------------//
 BiQuadFilter::~BiQuadFilter()
 {
-	delete y_hist;
-	delete x_hist;
 }
 
 //----------------------------------------------------------------------------//
 m_sample_type BiQuadFilter::do_filter(m_sample_type sample)
 {
-    
-    m_sample_type result;
-
-    bx1 = x_hist->dequeue();
-    bx2 = x_hist->dequeue();
-    by1 = y_hist->dequeue();
-    by2 = y_hist->dequeue();
-    /* compute result */
-    result = ba0 * sample + ba1 * bx1 + ba2 * bx2 - ba3 * by1 - ba4 * by2;
-
-    /* shift x1 to x2, sample to x1 */
-//    bx2 = bx1;
-//    bx1 = sample;
-      x_hist->enqueue(sample);
-      x_hist->enqueue(bx1);     	
-    /* shift y1 to y2, result to y1 */
-    by2 = by1;
-    by1 = result;
-    y_hist->enqueue(result);
-    y_hist->enqueue(by1);     	
-
-
-    return result;
-
-
-
-
-
-
+	const m_sample_type result =
+		ba0 * sample + ba1 * bx1 + ba2 * bx2 - ba3 * by1 - ba4 * by2;
+	bx2 = bx1;
+	bx1 = sample;
+	by2 = by1;
+	by1 = result;
+	cudaEligible_ = false;
+	return result;
 }
 
 //----------------------------------------------------------------------------//
 void BiQuadFilter::reset()
 {
-	// reinitialize y_hist queue
-	delete y_hist;
-	y_hist = new Filter::hist_queue<m_sample_type>(1);
-	y_hist->enqueue(0.0);
+	bx1 = bx2 = by1 = by2 = 0;
+	cudaEligible_ = true;
+}
+
+MultiTrack* BiQuadFilter::try_filter_MultiTrack_cuda(MultiTrack& inWave)
+{
+#ifdef LASS_WITH_CUDA
+	// Host/device transfers outweigh a CUDA launch for short sounds.
+	constexpr m_sample_count_type kMinimumCudaSamples = 32768;
+	m_sample_count_type totalSamples = 0;
+	for (Track* track : inWave) {
+		const m_sample_count_type count = track->getWave().getSampleCount();
+		if (count < 0) return nullptr;
+		if (totalSamples < kMinimumCudaSamples)
+			totalSamples += std::min(count, kMinimumCudaSamples - totalSamples);
+	}
+	if (!cudaEligible_ || totalSamples < kMinimumCudaSamples ||
+		!std::isfinite(ba0) || !std::isfinite(ba1) ||
+		!std::isfinite(ba2) || !std::isfinite(ba3) ||
+		!std::isfinite(ba4)) {
+		return nullptr;
+	}
+
+	const lass_cuda::BiquadCoefficients coefficients{ba0, ba1, ba2, ba3, ba4};
+	auto result = std::make_unique<MultiTrack>();
+	for (Track* track : inWave) {
+		SoundSample& input = track->getWave();
+		const m_sample_count_type count = input.getSampleCount();
+		auto output = std::make_unique<SoundSample>(count, input.getSamplingRate());
+		if (count > 0 && !lass_cuda::filterBiquad(&input[0], &(*output)[0],
+				static_cast<std::size_t>(count), coefficients)) {
+			return nullptr;
+		}
+		auto newTrack = std::make_unique<Track>(output.get());
+		output.release();
+		result->add(newTrack.get());
+		newTrack.release();
+	}
+	return result.release();
+#else
+	(void)inWave;
+	return nullptr;
+#endif
 }
 
 //----------------------------------------------------------------------------//
