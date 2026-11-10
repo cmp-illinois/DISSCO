@@ -152,9 +152,10 @@ bool selectUsableDevice() {
     int deviceCount = 0;
     if (cudaGetDeviceCount(&deviceCount) != cudaSuccess) return false;
     for (int device = 0; device < deviceCount; ++device) {
-        cudaDeviceProp properties{};
-        if (cudaGetDeviceProperties(&properties, device) != cudaSuccess ||
-            properties.computeMode == cudaComputeModeProhibited) continue;
+        int computeMode = cudaComputeModeProhibited;
+        if (cudaDeviceGetAttribute(&computeMode, cudaDevAttrComputeMode, device)
+                != cudaSuccess || computeMode == cudaComputeModeProhibited)
+            continue;
         if (cudaSetDevice(device) == cudaSuccess && cudaFree(nullptr) == cudaSuccess)
             return true;
     }
