@@ -36,6 +36,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Spatializer.h"
 #include "Reverb.h"
 
+#include <memory>
+
 //----------------------------------------------------------------------------//
 /**
 *	@file Partial.h
@@ -188,7 +190,16 @@ public:
 	 * - Both TRANS_WIDTH = 1103
 	 **/
 	Partial();
-    
+
+	/**
+	 * Copying a Partial gives the copy its own clone of the Spatializer and
+	 * shares the Reverb (see the members below). Partials are copied while a
+	 * Sound is being built, so the Spatializer used to leak on every copy.
+	 **/
+	Partial(const Partial& other);
+	Partial& operator=(const Partial& other);
+	~Partial() override;
+
 	/** ZIYUAN CHEN, July 2023
 	 * This returns a MultiTrack object of the rendered partial.
 	 * (In the former version, it returned a Track object, which is
@@ -214,8 +225,10 @@ public:
     void setSpatializer(Spatializer& s);
     
 	/**
-	 *   Use this object to perform reverb in the render() method
-	 *   \param newReverbObj A pointer to a Reverb object
+	 *   Use this object to perform reverb in the render() method.
+	 *   The Partial takes ownership of the Reverb (as Sound::use_reverb does)
+	 *   and frees it when the last copy of the Partial is destroyed.
+	 *   \param newReverbObj A pointer to a Reverb object allocated with new
 	**/
 	void use_reverb(Reverb *newReverbObj);
     
@@ -252,11 +265,14 @@ private:
 	 **/
 	m_value_type pmod(m_value_type num);
 
-	/** A Reverb object **/
-	Reverb *reverbObj;
+	/** The per-partial Reverb, if any. Owned, and shared between copies of
+	 *  this Partial: copies only happen while the Sound is being built, and
+	 *  only the copy stored in the Sound renders, so sharing the filter
+	 *  state is safe (and is what the copies did before, without freeing). **/
+	std::shared_ptr<Reverb> reverbObj;
 
-	/** A Spatializer object **/
-	Spatializer* spatializer_;
+	/** The Spatializer, owned; every copy of the Partial gets its own clone. **/
+	std::unique_ptr<Spatializer> spatializer_;
 
 };
 

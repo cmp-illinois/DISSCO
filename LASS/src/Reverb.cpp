@@ -168,6 +168,9 @@ Reverb::Reverb(Envelope *percentReverb, float *combGainList, float *lpGainList,
 
   ConstructorCommon(percentReverb, combGainList, lpGainList, gainAllPass,
 		    delay, samplingRate);
+  // The medium constructor above frees its temporary copy; this one leaked it
+  // on every construction. ConstructorCommon has already taken its own copy.
+  delete temp;
 }
 
 /*

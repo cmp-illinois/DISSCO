@@ -57,9 +57,35 @@ Partial::Partial()
     setParam(AMPTRANS_WIDTH, 1103);
     setParam(FREQTRANS_WIDTH, 1103);
 
-    reverbObj = NULL;
-    spatializer_ = new Spatializer();
+    spatializer_ = std::make_unique<Spatializer>();
 }
+
+//----------------------------------------------------------------------------//
+// Rule of three. Partials are copied while a Sound is built (Sound::add,
+// vector growth), and the default shallow copy shared spatializer_ without
+// ever freeing it. Each copy now owns a clone; the base ParameterLib already
+// deep-copies the dynamic parameters. Adapted from DISSCO 2.1 4ffd522.
+Partial::Partial(const Partial& other)
+    : ParameterLib<PartialStaticParam, PartialDynamicParam>(other),
+      reverbObj(other.reverbObj),
+      spatializer_(other.spatializer_ ? other.spatializer_->clone() : nullptr)
+{
+}
+
+Partial& Partial::operator=(const Partial& other)
+{
+    if (this != &other) {
+        // Clone first so a throwing clone leaves *this unchanged.
+        std::unique_ptr<Spatializer> spatializer(
+            other.spatializer_ ? other.spatializer_->clone() : nullptr);
+        ParameterLib<PartialStaticParam, PartialDynamicParam>::operator=(other);
+        reverbObj = other.reverbObj;
+        spatializer_ = std::move(spatializer);
+    }
+    return *this;
+}
+
+Partial::~Partial() = default;
 
 
 //----------------------------------------------------------------------------//
@@ -392,7 +418,7 @@ MultiTrack* Partial::render(int numChannels,
     ampSample.release();
 
     // do the reverb, if necessary
-    if(reverbObj != NULL)
+    if(reverbObj)
     {
         // do_reverb_Track() returns a freshly heap-allocated Track, so take
         // ownership of it directly instead of deep-copying its full-length
@@ -430,20 +456,22 @@ inline m_value_type Partial::pmod(m_value_type num)
 /* ZIYUAN CHEN, July 2023 */
 void Partial::setSpatializer(Spatializer& s)
 {
-    delete spatializer_;
-    spatializer_ = s.clone();
+    spatializer_.reset(s.clone());
 }
 
 //----------------------------------------------------------------------------//
 void Partial::use_reverb(Reverb *newReverbObj)
 {
-	reverbObj = newReverbObj;
+	// Take ownership, like Sound::use_reverb. Every per-partial Reverb that
+	// CMOD builds (Bottom, Apply = PARTIAL) was previously never freed.
+	if (newReverbObj != reverbObj.get())
+		reverbObj.reset(newReverbObj);
 }
 
 //----------------------------------------------------------------------------//
 m_time_type Partial::getTotalDuration(m_time_type dryDuration)
 {
-	return dryDuration + ( (reverbObj != 0) ? reverbObj->getDecay() : 0 );
+	return dryDuration + ( reverbObj ? reverbObj->getDecay() : 0 );
 }
 
 //----------------------------------------------------------------------------//
@@ -453,15 +481,15 @@ void Partial::xml_print( ofstream& xmlOutput, list<Reverb*>& revObjs, list<Dynam
 	xmlOutput << "\t\t<partial>" << endl;
 
         // Output reverb ID and update reverb collection if necessary
-        xmlOutput << "\t\t\t<reverb_ptr id=\"" << reinterpret_cast<m_xml_id_type>(reverbObj) << "\" />" << endl;
+        xmlOutput << "\t\t\t<reverb_ptr id=\"" << reinterpret_cast<m_xml_id_type>(reverbObj.get()) << "\" />" << endl;
         list<Reverb*>::const_iterator revit;
         for( revit=revObjs.begin(); revit != revObjs.end(); revit++ )
         {
-                if( (*revit) == reverbObj )
+                if( (*revit) == reverbObj.get() )
                         break;
         }
         if( revit == revObjs.end() ){
-                revObjs.push_back( reverbObj );
+                revObjs.push_back( reverbObj.get() );
         }
 
 	spatializer_->xml_print( xmlOutput );
@@ -552,7 +580,10 @@ void Partial::xml_read(XmlReader::xmltag* partialtag, DISSCO_HASHMAP<m_xml_id_ty
 
 		if(temp != NULL)
 		{
-			use_reverb(temp);
+			// Deprecated path: the hash may hand the same Reverb to several
+			// partials and keeps ownership of it, so do not take ownership
+			// here (unchanged from before; owning it would double-free).
+			reverbObj = std::shared_ptr<Reverb>(temp, [](Reverb*) {});
 		}
 	}
 
