@@ -35,6 +35,9 @@ ctest --test-dir build -R '^lass-cuda-biquad$' --output-on-failure
 
 The test compares the CUDA kernel with a CPU recurrence and checks two
 independent channels through LASS's public `Filter` path. It reports a skip
-when no usable GPU exists. For performance measurements, compare full project
+when no usable GPU exists. Each direct-backend case reports its maximum absolute
+error. The near-unit-pole stress case allows 0.001 absolute error because float
+rounding is amplified across chunk boundaries; the other cases retain the
+0.0002 absolute limit. For performance measurements, compare full project
 renders on the target hardware with `LASS_ENABLE_CUDA` on and off; the threshold
 is a transfer cost heuristic, not a measured crossover for every GPU.
