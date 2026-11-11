@@ -106,7 +106,11 @@ option, and library path.
 
 Use separate build directories and the same compiler, source revision, and
 Release settings for a useful comparison. `BUILD_TESTING=ON` creates the
-benchmark target. Run these commands from the DISSCO repository root:
+benchmark target. A `cmake --build` command only builds a directory that was
+already configured: run the matching `cmake -S ... -B ...` command first for
+each directory. On Delta, load the CUDA module before configuring both builds
+so they use the same host compiler; `LASS_ENABLE_CUDA=OFF` still keeps CUDA out
+of the CPU build. Run these commands from the DISSCO repository root:
 
 ```sh
 cmake -S LASS -B build-lass-cpu \
@@ -117,7 +121,6 @@ cmake -S LASS -B build-lass-cpu \
   -DSNDFILE_LIBRARY="$LASS_SNDFILE_PREFIX/lib/libsndfile.so"
 cmake --build build-lass-cpu --target lass-biquad-benchmark --parallel 4
 
-# Load a CUDA toolkit first; see the Delta example below.
 cmake -S LASS -B build-lass-cuda \
   -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=20 \
   -DCMAKE_MODULE_PATH="$PWD/cmake-modules" -DBUILD_TESTING=ON \
@@ -138,6 +141,19 @@ target. A missing target indicates that CUDA was not enabled. If `nvcc` rejects
 the host compiler, load a compiler supported by that CUDA toolkit and
 configure a fresh CUDA build directory.
 
+After pulling a revision that adds or changes CMake targets, rerun the
+`cmake -S LASS -B ...` command for each existing build directory before using
+`cmake --build`. If `build-lass-cpu` does not exist, the CPU configure command
+above creates it. If Make reports a missing `lass-biquad-benchmark` target,
+the build directory has not been regenerated with this target; rerun its
+configure command, then build. Keep the same libsndfile
+paths and CUDA module when reconfiguring. If the libsndfile prefix is no longer
+set in the shell, inspect the paths used by an earlier CUDA build:
+
+```sh
+grep -E '^SNDFILE_(INCLUDE_DIR|LIBRARY):' build-lass-cuda/CMakeCache.txt
+```
+
 ## Example: UIUC NCSA Delta
 
 Delta uses [Lmod modules](https://docs.ncsa.illinois.edu/systems/delta/en/latest/user_guide/software.html)
@@ -152,8 +168,8 @@ output reported driver `595.71.05` and `CUDA Version: 13.2`. That CUDA version
 is the driver's reported capability; check `nvcc --version` separately for the
 toolkit selected for a new build.
 
-On a login node, check the module and available GPU account. Configure the CPU
-build above before loading CUDA, then load CUDA and configure the CUDA build:
+On a login node, check the module and available GPU account. Load the module
+before configuring both build directories with the commands above:
 
 ```sh
 module spider cuda
@@ -202,6 +218,22 @@ ldd ./build-lass-cuda/lass-cuda-biquad-test
 `ldd` must not report `not found` for libsndfile or another shared library.
 The driver version shown by `nvidia-smi` and the toolkit version shown by
 `nvcc --version` are different checks.
+
+If `lass-cuda-biquad-test` prints `No usable CUDA device; GPU test skipped`,
+the CUDA result has **not** been tested. Check `hostname` and `nvidia-smi -L`
+before retrying. Delta's [login nodes have no GPUs](https://docs.ncsa.illinois.edu/systems/delta/en/latest/user_guide/architecture.html);
+return to a login shell and start the `srun --pty bash` GPU allocation above
+if the current host is a login node. A CUDA module provides `nvcc` for builds,
+but loading it does not allocate a GPU. An `salloc` allocation alone can leave
+the shell on the login node; launch a command with `srun` or use the interactive
+`srun --pty bash` example above.
+
+If the prompt is on a GPU compute node within a GPU allocation and
+`nvidia-smi -L` still cannot communicate with the driver, the node's GPU is
+not usable for this test. Record `hostname`, `SLURM_JOB_ID`, and the
+`nvidia-smi` error, then try a new GPU allocation or report the issue to Delta
+support. Installing a driver in a user environment will not resolve a missing
+node driver.
 
 ## Run the correctness test and benchmark
 
