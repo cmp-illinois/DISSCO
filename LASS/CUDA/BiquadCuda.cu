@@ -3,6 +3,7 @@
 
 #include <cuda_runtime.h>
 
+#include <atomic>
 #include <cstddef>
 #include <limits>
 
@@ -11,6 +12,7 @@ namespace {
 
 constexpr std::size_t kSamplesPerChunk = 256;
 constexpr unsigned int kThreadsPerBlock = 256;
+std::atomic<std::uint64_t> completedFilters{0};
 
 // At a chunk boundary, state is [y[n-1], y[n-2]]. The chunk maps its
 // incoming state to M * state + offset. This makes whole chunks independent.
@@ -168,6 +170,10 @@ bool hasUsableGpu() {
     return selectUsableDevice();
 }
 
+std::uint64_t successfulFilterCalls() {
+    return completedFilters.load(std::memory_order_relaxed);
+}
+
 bool filterBiquad(const float* input, float* output, std::size_t count,
                   BiquadCoefficients coefficients) {
     if (count == 0) return true;
@@ -214,6 +220,7 @@ bool filterBiquad(const float* input, float* output, std::size_t count,
                         cudaMemcpyDeviceToHost, stream.get()) != cudaSuccess ||
         cudaStreamSynchronize(stream.get()) != cudaSuccess)
         return false;
+    completedFilters.fetch_add(1, std::memory_order_relaxed);
     return true;
 }
 

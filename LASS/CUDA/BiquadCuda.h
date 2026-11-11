@@ -3,6 +3,7 @@
 #define LASS_CUDA_BIQUAD_CUDA_H
 
 #include <cstddef>
+#include <cstdint>
 
 namespace lass_cuda {
 
@@ -13,6 +14,10 @@ struct BiquadCoefficients {
 
 // Checks the runtime driver and initializes an accessible device context.
 bool hasUsableGpu();
+
+// Number of completed GPU filter calls in this process. Useful for checking
+// that a benchmark did not measure the CPU fallback in a CUDA-enabled build.
+std::uint64_t successfulFilterCalls();
 
 // Returns false if no usable CUDA device exists or any CUDA operation fails.
 // The caller may then recompute the entire channel on the CPU. Input and

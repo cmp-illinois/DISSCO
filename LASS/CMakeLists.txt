@@ -51,6 +51,15 @@ elseif(LASS_ENABLE_CUDA)
     message(STATUS "CUDA compiler or toolkit unavailable; using CPU filters")
 endif()
 
+if(BUILD_TESTING)
+    add_executable(lass-biquad-benchmark CUDA/BiquadBenchmark.cpp)
+    target_link_libraries(lass-biquad-benchmark PRIVATE LASS)
+    if(LASS_ENABLE_CUDA AND CMAKE_CUDA_COMPILER AND CUDAToolkit_FOUND)
+        target_compile_definitions(lass-biquad-benchmark PRIVATE LASS_BENCH_WITH_CUDA=1)
+        target_include_directories(lass-biquad-benchmark PRIVATE "${PROJECT_SOURCE_DIR}/CUDA")
+    endif()
+endif()
+
 ### libsndfile must be linked in just the same way as it is in CMOD ###
 target_link_libraries(LASS PUBLIC ${SNDFILE_LIBRARY})
 message(STATUS "libsndfile linked with target!")
