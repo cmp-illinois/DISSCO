@@ -41,9 +41,11 @@ void addDiagnostic(std::vector<Diagnostic>& diagnostics,
     diagnostics.push_back(Diagnostic{code, targetId, std::move(message)});
 }
 
+// defaultOnChances, when given, replaces each entry's compiled Default ON.
 double resolvedProbability(const std::vector<CompiledEntry>& entries,
                            std::size_t entryIndex,
-                           const std::vector<bool>& decisions)
+                           const std::vector<bool>& decisions,
+                           const std::vector<double>* defaultOnChances = nullptr)
 {
     const CompiledEntry& entry = entries[entryIndex];
     for (const CompiledRule& rule : entry.rules) {
@@ -55,7 +57,8 @@ double resolvedProbability(const std::vector<CompiledEntry>& entries,
         if (matches)
             return rule.onChance;
     }
-    return entry.defaultOnChance;
+    return defaultOnChances ? (*defaultOnChances)[entryIndex]
+                            : entry.defaultOnChance;
 }
 
 bool rulesCanOverlap(const CompiledRule& lhs, const CompiledRule& rhs)
@@ -139,6 +142,28 @@ Program::~Program() = default;
 
 Selection Program::select(const UnitRandom& nextUnit)
 {
+    return selectWith(nextUnit, nullptr);
+}
+
+Selection Program::select(const UnitRandom& nextUnit,
+                          const std::vector<double>& defaultOnChances)
+{
+    if (m_impl && defaultOnChances.size() != m_impl->entries.size()) {
+        throw std::invalid_argument(
+            "ModifierUsage needs one Default ON chance per modifier.");
+    }
+    for (const double chance : defaultOnChances) {
+        if (!validProbability(chance)) {
+            throw std::domain_error(
+                "ModifierUsage Default ON chances must be finite and between 0 and 1.");
+        }
+    }
+    return selectWith(nextUnit, &defaultOnChances);
+}
+
+Selection Program::selectWith(const UnitRandom& nextUnit,
+                              const std::vector<double>* defaultOnChances)
+{
     if (!m_impl)
         throw std::logic_error("Cannot select with a moved-from ModifierUsage Program.");
 
@@ -172,7 +197,8 @@ Selection Program::select(const UnitRandom& nextUnit)
 
     for (std::size_t i = 0; i < m_impl->entries.size(); ++i) {
         const long double probability = static_cast<long double>(
-            resolvedProbability(m_impl->entries, i, decisions));
+            resolvedProbability(m_impl->entries, i, decisions,
+                                defaultOnChances));
 
         if (remainder < probability) {
             decisions[i] = true;

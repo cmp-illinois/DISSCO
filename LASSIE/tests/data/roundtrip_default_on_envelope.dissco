@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ProjectRoot>
+ <ProjectConfiguration>
+  <Title>roundtrip_default_on_envelope</Title>
+  <FileFlag>THMLBsnv</FileFlag>
+  <TopEvent>0</TopEvent>
+  <PieceStartTime>0</PieceStartTime>
+  <Duration>40</Duration>
+  <Synthesis>True</Synthesis>
+  <Score>False</Score>
+  <GrandStaff>False</GrandStaff>
+  <NumberOfStaff>1</NumberOfStaff>
+  <NumberOfChannels>2</NumberOfChannels>
+  <SampleRate>44100</SampleRate>
+  <SampleSize>24</SampleSize>
+  <NumberOfThreads>1</NumberOfThreads>
+  <OutputParticel>True</OutputParticel>
+  <Seed>apple</Seed>
+ </ProjectConfiguration>
+ <NoteModifiers>
+  <DefaultModifiers>1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1</DefaultModifiers>
+  <CustomModifiers/>
+ </NoteModifiers>
+ <EnvelopeLibrary>
+2
+Envelope 1
+3
+0.000     0.000     LINEAR              FLEXIBLE    0.500
+0.500     1.000     LINEAR              FLEXIBLE    0.500
+1.000     0.000
+Envelope 2
+2
+0.000     1.000     LINEAR              FLEXIBLE    1.000
+1.000     1.000
+    </EnvelopeLibrary>
+ <MarkovModelLibrary>
+0
+</MarkovModelLibrary>
+ <Events>
+  <Event orderInPalette="-1">
+   <EventType>0</EventType>
+   <Name>0</Name>
+   <MaxChildDuration>40</MaxChildDuration>
+   <EDUPerBeat>60</EDUPerBeat>
+   <TimeSignature>
+    <Entry1>4</Entry1>
+    <Entry2>4</Entry2>
+   </TimeSignature>
+   <Tempo>
+    <MethodFlag>0</MethodFlag>
+    <Prefix/>
+    <NoteValue>2</NoteValue>
+    <FractionEntry1/>
+    <FractionEntry2/>
+    <ValueEntry>60</ValueEntry>
+   </Tempo>
+   <NumberOfChildren>
+    <MethodFlag>0</MethodFlag>
+    <Entry1>6</Entry1>
+    <Entry2/>
+    <Entry3/>
+   </NumberOfChildren>
+   <ChildEventDefinition>
+    <Entry1><Fun><Name>Select</Name><List>0, 8, 16, 18, 24, 32</List><Index><Fun><Name>CURRENT_CHILD_NUM</Name></Fun></Index></Fun></Entry1>
+    <Entry2>0</Entry2>
+    <Entry3>4</Entry3>
+    <AttackSieve/>
+    <DurationSieve/>
+    <DefinitionFlag>0</DefinitionFlag>
+    <StartTypeFlag>2</StartTypeFlag>
+    <DurationTypeFlag>2</DurationTypeFlag>
+   </ChildEventDefinition>
+   <Layers>
+    <Layer>
+     <ByLayer/>
+     <DiscretePackages>
+      <Package>
+       <EventName>s1</EventName>
+       <EventType>4</EventType>
+       <Weight>1</Weight>
+       <AttackEnvelope/>
+       <AttackEnvelopeScale>1</AttackEnvelopeScale>
+       <DurationEnvelope/>
+       <DurationEnvelopeScale>1</DurationEnvelopeScale>
+      </Package>
+     </DiscretePackages>
+    </Layer>
+   </Layers>
+   <Spatialization/>
+   <Reverb/>
+   <Filter/>
+   <Modifiers/>
+  </Event>
+  <Event orderInPalette="">
+   <EventType>4</EventType>
+   <Name>s1</Name>
+   <MaxChildDuration>5</MaxChildDuration>
+   <EDUPerBeat>60</EDUPerBeat>
+   <TimeSignature>
+    <Entry1>4</Entry1>
+    <Entry2>4</Entry2>
+   </TimeSignature>
+   <Tempo>
+    <MethodFlag>0</MethodFlag>
+    <Prefix>0</Prefix>
+    <NoteValue>2</NoteValue>
+    <FractionEntry1/>
+    <FractionEntry2/>
+    <ValueEntry>60</ValueEntry>
+   </Tempo>
+   <NumberOfChildren>
+    <MethodFlag>0</MethodFlag>
+    <Entry1>4</Entry1>
+    <Entry2/>
+    <Entry3/>
+   </NumberOfChildren>
+   <ChildEventDefinition>
+    <Entry1><Fun><Name>Select</Name><List>0, 0.5, 2.5, 3</List><Index><Fun><Name>CURRENT_CHILD_NUM</Name></Fun></Index></Fun></Entry1>
+    <Entry2>0</Entry2>
+    <Entry3>0.4</Entry3>
+    <AttackSieve/>
+    <DurationSieve/>
+    <DefinitionFlag>0</DefinitionFlag>
+    <StartTypeFlag>2</StartTypeFlag>
+    <DurationTypeFlag>2</DurationTypeFlag>
+   </ChildEventDefinition>
+   <Layers>
+    <Layer>
+     <ByLayer/>
+     <DiscretePackages>
+      <Package>
+       <EventName>sp1</EventName>
+       <EventType>5</EventType>
+       <Weight>1</Weight>
+       <AttackEnvelope/>
+       <AttackEnvelopeScale>1</AttackEnvelopeScale>
+       <DurationEnvelope/>
+       <DurationEnvelopeScale>1</DurationEnvelopeScale>
+      </Package>
+     </DiscretePackages>
+    </Layer>
+   </Layers>
+   <Spatialization/>
+   <Reverb/>
+   <Filter/>
+   <ExtraInfo>
+    <FrequencyInfo>
+     <FrequencyFlag>2</FrequencyFlag>
+     <FrequencyContinuumFlag>0</FrequencyContinuumFlag>
+     <FrequencyEntry1>440</FrequencyEntry1>
+     <FrequencyEntry2/>
+    </FrequencyInfo>
+    <Loudness>45</Loudness>
+    <Phase>0</Phase>
+    <Spatialization>
+     <Fun>
+      <Name>SPA</Name>
+      <Method>STEREO</Method>
+      <Apply>SOUND</Apply>
+      <Channels>
+       <Partials>
+        <P>
+         <Fun>
+          <Name>EnvLib</Name>
+          <Env>2</Env>
+          <Scale>0.5</Scale>
+         </Fun>
+        </P>
+       </Partials>
+      </Channels>
+     </Fun>
+    </Spatialization>
+    <Reverb/>
+    <Filter/>
+    <ModifierUsage samplingScope="per-sound" version="1"/>
+    <Modifiers><Modifier><Type>2</Type><ApplyHow>0</ApplyHow><Amplitude><Fun><Name>MakeEnvelope</Name><Xs><X>0</X><X>1</X></Xs><Ys><Y>2</Y><Y>2</Y></Ys><Types><T>LINEAR</T></Types><Pros><P>FLEXIBLE</P></Pros><Scale>1</Scale></Fun></Amplitude><Rate/><Width/><DetuneSpread/><DetuneDirection/><DetuneVelocity/><PartialResultString/><Usage id="11111111-1111-1111-1111-111111111111"><DefaultOn><Fun><Name>MakeEnvelope</Name><Xs><X>0</X><X>0.49</X><X>0.51</X><X>1</X></Xs><Ys><Y>0</Y><Y>0</Y><Y>1</Y><Y>1</Y></Ys><Types><T>LINEAR</T><T>LINEAR</T><T>LINEAR</T></Types><Pros><P>FLEXIBLE</P><P>FLEXIBLE</P><P>FLEXIBLE</P></Pros><Scale>1</Scale></Fun></DefaultOn><Exceptions/></Usage></Modifier></Modifiers>
+   </ExtraInfo>
+  </Event>
+  <Event orderInPalette="0">
+   <EventType>5</EventType>
+   <Name>sp1</Name>
+   <NumberOfPartials>1</NumberOfPartials>
+   <Deviation>0</Deviation>
+   <GenerateSpectrum/>
+   <Spectrum>
+    <Partial>
+     <Fun>
+      <Name>EnvLib</Name>
+      <Env>1</Env>
+      <Scale>1</Scale>
+     </Fun>
+    </Partial>
+   </Spectrum>
+  </Event>
+ </Events>
+</ProjectRoot>

@@ -81,8 +81,15 @@ void writeModifierUsage(QXmlStreamWriter& writer, const Modifier& modifier)
 {
     writer.writeStartElement(QStringLiteral("Usage"));
     writer.writeAttribute(QStringLiteral("id"), modifier.instance_id);
-    writer.writeAttribute(QStringLiteral("defaultOn"),
-                          modifier.default_on_chance);
+    // A Default ON envelope replaces the fixed chance. The attribute is left
+    // out so an older CMOD reports the project instead of ignoring the curve.
+    const QString envelope = modifier.default_on_envelope.trimmed();
+    if (envelope.isEmpty()) {
+        writer.writeAttribute(QStringLiteral("defaultOn"),
+                              modifier.default_on_chance);
+    } else {
+        writeElement(writer, QStringLiteral("DefaultOn"), envelope);
+    }
 
     writer.writeStartElement(QStringLiteral("Exceptions"));
     for (const ModifierChanceRule& rule : modifier.rules) {

@@ -96,6 +96,17 @@ class Bottom : public Event {
     struct ModifierUsageRuntime;
     std::unique_ptr<ModifierUsageRuntime> modifierUsageRuntime;
 
+    // Time span of the parent event, for Default ON envelopes.
+    TimeSpan parentTimeSpan;
+    bool hasParentTimeSpan = false;
+
+    /**
+     * Position (0 to 1) at which Default ON envelopes are read: the Bottom's
+     * start in its parent event for per-bottom sampling, or the current
+     * sound's start in the parent event for per-sound sampling.
+     **/
+    double defaultOnEnvelopePosition() const;
+
     //Current partial during the processing of the event
     int currPartialNum;
 
@@ -212,6 +223,15 @@ class Bottom : public Event {
      * construct each child.
      **/
     void constructChild(TimeSpan ts, int type, string name, Tempo tempo);
+
+    /**
+     * Gives this Bottom the time span of the event that created it. A Default
+     * ON envelope is read on that parent event's timeline.
+     **/
+    void setParentTimeSpan(const TimeSpan& span) {
+      parentTimeSpan = span;
+      hasParentTimeSpan = true;
+    }
 
     //getters
     pugi::xml_node getSPAElement(){return spatializationElement;}

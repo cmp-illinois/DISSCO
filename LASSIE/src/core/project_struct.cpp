@@ -218,7 +218,12 @@ namespace QtParser {
             modifier.default_on_chance = defaultOn;
 
         modifier.rules.clear();
+        modifier.default_on_envelope.clear();
         while (r.readNextStartElement()) {
+            if (r.name() == QStringView(u"DefaultOn")) {
+                modifier.default_on_envelope = readInner(r).trimmed();
+                continue;
+            }
             if (r.name() != QStringView(u"Exceptions")) {
                 r.skipCurrentElement();
                 continue;
@@ -233,7 +238,8 @@ namespace QtParser {
         }
 
         return ModifierUsageImportPolicy::hasCompleteMetadata(
-            id, hasDefaultOn, defaultOn);
+            id, hasDefaultOn, defaultOn,
+            !modifier.default_on_envelope.isEmpty());
     }
 
     inline Modifier parseModifier(QXmlStreamReader& r) {
