@@ -1289,8 +1289,10 @@ void Event::checkEvent(bool buildResult) {
 
   Event* e = NULL;
   if (childEventType == eventBottom){
-    e = (Event*) new Bottom(childElement, tsChild, childType, tempo, utilities, spatializationElement, 
+    Bottom* bottom = new Bottom(childElement, tsChild, childType, tempo, utilities, spatializationElement,
                             reverberationElement, filterElement, modifiersIncludingAncestorsElement);
+    bottom->setParentTimeSpan(ts);
+    e = (Event*) bottom;
     if(tsChild.startEDU.isDeterminate()){
       e->tempo = tempo;
     }

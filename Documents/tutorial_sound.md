@@ -732,6 +732,8 @@ For **DETUNE in PARTIAL mode**, the row's detuning envelope is a frequency multi
 
 After hearing individual effects at 100%, use theirprobabilities to create variety. The main **Default ON ** probability and **Use ON** probabiity controls display percentages: enter `50` for 50%. Inside a partial's Probability envelope, the equivalent value is `0.5`. A 50% chance applies to each selection; it does not guarantee that exactly half of a five-sound run will use the effect.
 
+**Changing the chance over time.** Default ON can also follow an envelope instead of a fixed percentage. Click **Envelope...** next to it and build an envelope whose values stay between 0 and 1. The envelope's timeline is the event that contains the Bottom, such as the Top or a Low. With **Per sound** sampling, each sound reads the envelope at its own start time in that event. With **Per bottom** sampling, each Bottom reads it once, at the Bottom's start. A rising envelope therefore makes the effect more likely later in the passage. Click **Use number** to go back to a fixed percentage.
+
 ### Prepare five separate sounds
 
 Start from a fresh `tutorial_sound.dissco` copy. In **Bottom s1**, enter all these settings; keep Top 0 and the one-partial Spectrum sp1 unchanged.

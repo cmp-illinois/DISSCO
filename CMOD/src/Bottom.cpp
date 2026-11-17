@@ -29,6 +29,7 @@
 #include "ModifierUsage.hpp"
 #include "Random.h"
 #include "Output.h"
+#include <algorithm>
 #include <cerrno>
 #include <cctype>
 #include <cmath>
@@ -47,6 +48,12 @@ static int test=0;
 struct Bottom::ModifierUsageRuntime {
   std::optional<dissco::modifier_usage::Program> program;
   std::vector<dissco::modifier_usage::ModifierId> modifierIds;
+  dissco::modifier_usage::SamplingScope scope =
+      dissco::modifier_usage::SamplingScope::PerSound;
+  // Parallel to modifierIds: the fixed Default ON chance, and the Default ON
+  // envelope expression (empty when Default ON is a fixed number).
+  std::vector<double> defaultOnChances;
+  std::vector<string> defaultOnEnvelopes;
 };
 
 namespace {
@@ -1619,6 +1626,7 @@ void Bottom::initializeModifierUsage(pugi::xml_node modifierUsageElement) {
         entry.defaultOnChance = std::numeric_limits<double>::quiet_NaN();
       }
       modifierUsageRuntime->modifierIds.push_back(entry.id);
+      modifierUsageRuntime->defaultOnEnvelopes.push_back(string());
       config.orderedModifiers.push_back(std::move(entry));
       continue;
     }
@@ -1638,11 +1646,22 @@ void Bottom::initializeModifierUsage(pugi::xml_node modifierUsageElement) {
       entry.id = std::move(syntheticId);
     }
     modifierUsageRuntime->modifierIds.push_back(entry.id);
-    if (!parseStrictDouble(usageElement.attribute("defaultOn").value(),
-                           entry.defaultOnChance)) {
-      entry.defaultOnChance = std::numeric_limits<double>::quiet_NaN();
-      adapterDiagnostics.push_back(
-          "modifier '" + entry.id + "' has an invalid defaultOn value.");
+    const pugi::xml_node defaultOnEnvelope = usageElement.child("DefaultOn");
+    if (defaultOnEnvelope
+        && defaultOnEnvelope.first_child().type() == pugi::node_element) {
+      // Default ON is an envelope, read at every selection. The compiled
+      // chance is only a valid placeholder; selection always overrides it.
+      modifierUsageRuntime->defaultOnEnvelopes.push_back(
+          XMLTC(defaultOnEnvelope));
+      entry.defaultOnChance = 1.0;
+    } else {
+      modifierUsageRuntime->defaultOnEnvelopes.push_back(string());
+      if (!parseStrictDouble(usageElement.attribute("defaultOn").value(),
+                             entry.defaultOnChance)) {
+        entry.defaultOnChance = std::numeric_limits<double>::quiet_NaN();
+        adapterDiagnostics.push_back(
+            "modifier '" + entry.id + "' has an invalid defaultOn value.");
+      }
     }
 
     pugi::xml_node exceptionsElement = usageElement.child("Exceptions");
@@ -1684,6 +1703,11 @@ void Bottom::initializeModifierUsage(pugi::xml_node modifierUsageElement) {
       entry.rules.push_back(std::move(rule));
     }
     config.orderedModifiers.push_back(std::move(entry));
+  }
+
+  modifierUsageRuntime->scope = config.scope;
+  for (const Entry& entry : config.orderedModifiers) {
+    modifierUsageRuntime->defaultOnChances.push_back(entry.defaultOnChance);
   }
 
   CompileOptions compileOptions;
@@ -2024,10 +2048,47 @@ void Bottom::applyModifierUsage(Sound *s, int numPartials) {
                    + "' has no runtime effect.");
     }
   }
+  // A Default ON envelope gives this selection's chance, read on the parent
+  // event's timeline. Without envelopes the compiled chances are used as-is.
+  const vector<string>& defaultOnEnvelopes =
+      modifierUsageRuntime->defaultOnEnvelopes;
+  const bool hasDefaultOnEnvelope = std::any_of(
+      defaultOnEnvelopes.begin(), defaultOnEnvelopes.end(),
+      [](const string& envelope) { return !envelope.empty(); });
+  vector<double> defaultOnChances = modifierUsageRuntime->defaultOnChances;
+  if (hasDefaultOnEnvelope) {
+    const double position = defaultOnEnvelopePosition();
+    for (std::size_t index = 0; index < defaultOnEnvelopes.size(); ++index) {
+      if (defaultOnEnvelopes[index].empty()) {
+        continue;
+      }
+      const ModifierId& modifierId = modifierUsageRuntime->modifierIds[index];
+      Envelope* envelope = static_cast<Envelope*>(utilities->evaluateObject(
+          defaultOnEnvelopes[index], this, eventEnv));
+      if (envelope == NULL) {
+        runtimeError("modifier '" + modifierId
+                     + "' has an invalid Default ON envelope.");
+      }
+      const double chance =
+          envelope->getValue(static_cast<m_value_type>(position), 1);
+      delete envelope;
+      if (!std::isfinite(chance) || chance < 0.0 || chance > 1.0) {
+        std::ostringstream detail;
+        detail << "modifier '" << modifierId << "' has a Default ON envelope "
+               << "value of " << chance << " at position " << position
+               << "; Default ON must stay between 0 and 1.";
+        runtimeError(detail.str());
+      }
+      defaultOnChances[index] = chance;
+    }
+  }
+
   Selection selection;
   try {
-    selection = modifierUsageRuntime->program->select(
-        []() { return Random::Rand(); });
+    const auto unitRandom = []() { return Random::Rand(); };
+    selection = hasDefaultOnEnvelope
+        ? modifierUsageRuntime->program->select(unitRandom, defaultOnChances)
+        : modifierUsageRuntime->program->select(unitRandom);
   } catch (const CmodError&) {
     throw;
   } catch (const std::exception& error) {
@@ -2061,6 +2122,26 @@ void Bottom::applyModifierUsage(Sound *s, int numPartials) {
 }
 
 //-----------------------------------------------------------------------------/
+
+double Bottom::defaultOnEnvelopePosition() const {
+  // Sever chose to read Default ON envelopes on the parent event's timeline
+  // in both sampling scopes (#230). checkPoint is the current sound's
+  // position inside this Bottom.
+  if (!hasParentTimeSpan || parentTimeSpan.duration <= 0.0f) {
+    return 0.0;
+  }
+  const bool perBottom = modifierUsageRuntime
+      && modifierUsageRuntime->scope
+             == dissco::modifier_usage::SamplingScope::PerBottom;
+  const double start = perBottom
+      ? ts.start
+      : ts.start + checkPoint * ts.duration;
+  const double position =
+      (start - parentTimeSpan.start) / parentTimeSpan.duration;
+  return std::clamp(position, 0.0, 1.0);
+}
+
+//----------------------------------------------------------------------------//
 
 void Bottom::applyModifiers(Sound *s, int numPartials) {
   applyModifierUsage(s, numPartials);

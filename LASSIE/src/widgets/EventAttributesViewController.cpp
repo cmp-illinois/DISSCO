@@ -1446,7 +1446,9 @@ void EventAttributesViewController::updateModifierUsageSummary()
                      0, 'f', 1));
     }
 
-    const QString overallDescription = analysis.overall_usage_available
+    const QString overallDescription = analysis.has_default_on_envelope
+        ? tr("changes over time, because a Default ON uses an envelope")
+        : analysis.overall_usage_available
         ? usages.join(QStringLiteral(" | "))
         : tr("not calculated above %1 modifiers; CMOD direct sampling "
              "remains linear")

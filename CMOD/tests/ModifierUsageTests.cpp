@@ -426,6 +426,48 @@ void testInvalidRandomValue()
     expect(threw, "Out-of-range random value was accepted");
 }
 
+// Default ON chances passed to select() replace the compiled ones for that
+// selection only, exceptions still win over them, and bad input is rejected.
+void testDefaultOnOverride()
+{
+    Config config;
+    config.orderedModifiers = {
+        Entry{"A", 1.0, {}},
+        Entry{"B", 1.0, {Rule{{Predicate{"A", true}}, 0.0}}}
+    };
+    CompileResult result = compile(std::move(config));
+    require(result.program.has_value(), "Override config failed to compile");
+    Program program = std::move(*result.program);
+
+    const Selection overridden = program.select([] { return 0.5; }, {0.25, 1.0});
+    expect(overridden.orderedOnIds == std::vector<ModifierId>{"B"},
+           "Overridden Default ON chance was not used");
+
+    const Selection exceptionWins = program.select([] { return 0.5; }, {1.0, 1.0});
+    expect(exceptionWins.orderedOnIds == std::vector<ModifierId>{"A"},
+           "Exception did not take precedence over the overridden Default ON");
+
+    const Selection compiled = program.select([] { return 0.5; });
+    expect(compiled.orderedOnIds == std::vector<ModifierId>{"A"},
+           "Compiled Default ON chances changed after an overridden selection");
+
+    bool sizeRejected = false;
+    try {
+        program.select([] { return 0.5; }, {0.5});
+    } catch (const std::invalid_argument&) {
+        sizeRejected = true;
+    }
+    expect(sizeRejected, "Wrong number of Default ON chances was accepted");
+
+    bool rangeRejected = false;
+    try {
+        program.select([] { return 0.5; }, {1.5, 0.5});
+    } catch (const std::domain_error&) {
+        rangeRejected = true;
+    }
+    expect(rangeRejected, "Out-of-range Default ON chance was accepted");
+}
+
 // Runs one test and reports it by name. A require() failure or unexpected
 // exception fails only that test; the remaining tests still run. Output goes
 // to std::cerr (unbuffered), so if a test crashes outright, the last "RUN"
@@ -473,6 +515,7 @@ int main()
     runTest("testOverallUsageModeSkip", testOverallUsageModeSkip, failedTests);
     runTest("testRuleOrderDoesNotAffectSelection", testRuleOrderDoesNotAffectSelection, failedTests);
     runTest("testInvalidRandomValue", testInvalidRandomValue, failedTests);
+    runTest("testDefaultOnOverride", testDefaultOnOverride, failedTests);
 
     if (!failedTests.empty()) {
         std::cerr << '\n' << failedTests.size() << " ModifierUsage test(s) failed:\n";

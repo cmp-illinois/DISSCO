@@ -208,8 +208,11 @@ namespace ModifierUsageImportPolicy {
 
 inline bool hasCompleteMetadata(const QString& stableId,
                                 bool hasDefaultOnAttribute,
-                                const QString& defaultOn)
+                                const QString& defaultOn,
+                                bool hasDefaultOnEnvelope = false)
 {
+    if (hasDefaultOnEnvelope)
+        return !stableId.trimmed().isEmpty();
     bool isNumber = false;
     const double chance = defaultOn.trimmed().toDouble(&isNumber);
     return !stableId.trimmed().isEmpty()
@@ -241,6 +244,10 @@ struct Modifier {
     QString instance_id =
         QUuid::createUuid().toString(QUuid::WithoutBraces);
     QString default_on_chance = QStringLiteral("1");
+    // Optional envelope for Default ON. When set, it replaces
+    // default_on_chance: CMOD reads it at each sound's (per sound) or the
+    // Bottom's (per bottom) position in the event that contains the Bottom.
+    QString default_on_envelope;
     QList<ModifierChanceRule> rules;
     // True only while importing a Modifier whose <Usage> metadata was absent
     // or incomplete.

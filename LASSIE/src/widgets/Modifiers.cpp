@@ -1,5 +1,6 @@
 #include "Modifiers.hpp"
 
+#include "../dialogs/FunctionGenerator.hpp"
 #include "../dialogs/ModifierDetailsDialog.hpp"
 #include "../dialogs/ModifierRulesDialog.hpp"
 #include "../inst.hpp"
@@ -58,6 +59,26 @@ Modifiers::Modifiers(Eventtype eventType, unsigned eventIndex,
             this, [this]() { openParameters(); });
     connect(ui->rulesButton, &QPushButton::clicked,
             this, [this]() { openRules(); });
+
+    m_defaultEnvelopeButton = new QPushButton(this);
+    m_defaultEnvelopeButton->setObjectName(
+        QStringLiteral("defaultChanceEnvelopeButton"));
+    m_defaultEnvelopeButton->setToolTip(
+        tr("Use an envelope so the Default ON chance changes over time. It is "
+           "read on the timeline of the event that contains the Bottom: at "
+           "each sound's start (Per sound) or at the Bottom's start "
+           "(Per bottom)."));
+    m_defaultNumberButton = new QPushButton(tr("Use number"), this);
+    m_defaultNumberButton->setObjectName(
+        QStringLiteral("defaultChanceNumberButton"));
+    m_defaultNumberButton->setToolTip(
+        tr("Remove the envelope and use a fixed Default ON chance."));
+    ui->defaultChanceLayout->addWidget(m_defaultEnvelopeButton);
+    ui->defaultChanceLayout->addWidget(m_defaultNumberButton);
+    connect(m_defaultEnvelopeButton, &QPushButton::clicked,
+            this, [this]() { openDefaultOnEnvelope(); });
+    connect(m_defaultNumberButton, &QPushButton::clicked,
+            this, [this]() { useDefaultOnNumber(); });
 
     connect(ui->modifierType,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -143,6 +164,12 @@ void Modifiers::updateRow()
         ui->defaultChanceSpin->setValue(
             validChance ? chance * 100.0 : 100.0);
     }
+    const bool hasEnvelope =
+        !modifier.default_on_envelope.trimmed().isEmpty();
+    ui->defaultChanceSpin->setVisible(!hasEnvelope);
+    m_defaultEnvelopeButton->setText(
+        hasEnvelope ? tr("Edit envelope...") : tr("Envelope..."));
+    m_defaultNumberButton->setVisible(hasEnvelope);
 
     const int ruleCount = modifier.rules.size();
     ui->rulesButton->setText(
@@ -168,6 +195,29 @@ void Modifiers::openParameters()
         return;
 
     backendModifier() = dialog.resultModifier();
+    updateRow();
+    emit dataChanged();
+}
+
+void Modifiers::openDefaultOnEnvelope()
+{
+    FunctionGenerator generator(this, FunctionReturnType::functionReturnENV,
+                                backendModifier().default_on_envelope);
+    if (generator.exec() != QDialog::Accepted)
+        return;
+    const QString envelope = generator.getResultString().trimmed();
+    if (envelope.isEmpty())
+        return;
+
+    backendModifier().default_on_envelope = envelope;
+    backendModifier().usage_metadata_needs_review = false;
+    updateRow();
+    emit dataChanged();
+}
+
+void Modifiers::useDefaultOnNumber()
+{
+    backendModifier().default_on_envelope.clear();
     updateRow();
     emit dataChanged();
 }

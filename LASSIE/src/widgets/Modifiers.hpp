@@ -3,6 +3,8 @@
 
 #include <QFrame>
 
+class QPushButton;
+
 #include "../core/event_struct.hpp"
 
 namespace Ui {
@@ -40,8 +42,13 @@ private:
     void updateRow();
     void openParameters();
     void openRules();
+    void openDefaultOnEnvelope();
+    void useDefaultOnNumber();
 
     Ui::Modifiers* ui;
+    // Default ON can be a fixed chance (spin box) or an envelope.
+    QPushButton* m_defaultEnvelopeButton = nullptr;
+    QPushButton* m_defaultNumberButton = nullptr;
     Eventtype m_eventType;
     unsigned m_eventIndex;
     int m_modifierIndex;

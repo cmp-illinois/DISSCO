@@ -149,8 +149,15 @@ ModifierUsageAnalysis analyzeModifierUsage(
             modifier, modifierIndex + 1, analysis.diagnostics);
         Entry entry;
         entry.id = utf8(modifier.instance_id);
-        entry.defaultOnChance =
-            parseProbability(modifier.default_on_chance);
+        // An envelope's chance depends on time; validate the rest of the
+        // configuration with a placeholder chance instead.
+        const bool hasEnvelope =
+            !modifier.default_on_envelope.trimmed().isEmpty();
+        analysis.has_default_on_envelope =
+            analysis.has_default_on_envelope || hasEnvelope;
+        entry.defaultOnChance = hasEnvelope
+            ? 1.0
+            : parseProbability(modifier.default_on_chance);
         entry.rules.reserve(
             static_cast<std::size_t>(modifier.rules.size()));
 

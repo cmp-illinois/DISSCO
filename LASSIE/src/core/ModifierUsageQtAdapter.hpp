@@ -12,6 +12,9 @@ struct ModifierUsageAnalysis {
     QVector<double> overall_on_chances;
     QStringList diagnostics;
     bool overall_usage_available = true;
+    // True when a Default ON uses an envelope, so its chance changes over
+    // time and overall_on_chances are not meaningful.
+    bool has_default_on_envelope = false;
 
     bool isValid() const { return diagnostics.isEmpty(); }
 };

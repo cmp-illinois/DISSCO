@@ -107,6 +107,16 @@ public:
     Selection select(const UnitRandom& nextUnit);
 
     /**
+     * Same as select(nextUnit), but uses defaultOnChances (one per modifier,
+     * in configured order) instead of each modifier's compiled Default ON
+     * chance. Exceptions still take precedence. This supports Default ON
+     * values that change over time. A size mismatch throws
+     * std::invalid_argument; a chance outside [0, 1] throws std::domain_error.
+     */
+    Selection select(const UnitRandom& nextUnit,
+                     const std::vector<double>& defaultOnChances);
+
+    /**
      * Exact marginal ON probability for every modifier, in configured order.
      * Empty when compilation explicitly skipped the exponential preview.
      */
@@ -115,6 +125,8 @@ public:
 private:
     struct Impl;
     explicit Program(std::unique_ptr<Impl> impl);
+    Selection selectWith(const UnitRandom& nextUnit,
+                         const std::vector<double>* defaultOnChances);
 
     std::unique_ptr<Impl> m_impl;
 
