@@ -1,5 +1,5 @@
 <map id="CMOD/src/Modifier.h" name="CMOD/src/Modifier.h">
-<area shape="rect" id="Node000001" title="Per&#45;note synthesis modifier (tremolo, vibrato, bend, etc.)." alt="" coords="403,5,557,31"/>
+<area shape="rect" id="Node000001" title="Per&#45;note synthesis modifier (tremolo, vibrato, ring_mod, bend, etc.)." alt="" coords="403,5,557,31"/>
 <area shape="rect" id="Node000002" href="$Bottom_8h.html" title="Leaf event in a DISSCO composition." alt="" coords="405,79,555,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="483,44,483,79,477,79,477,44"/>
 <area shape="rect" id="Node000004" href="$CMOD_8h.html" title="Umbrella header for the Composition Module (CMOD)." alt="" coords="230,152,373,177"/>

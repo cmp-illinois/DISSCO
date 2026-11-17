@@ -33,7 +33,7 @@
 <area shape="poly" id="edge25_Node000003_Node000028" title=" " alt="" coords="848,180,724,223,722,218,847,175"/>
 <area shape="rect" id="Node000029" href="$Define_8h.html" title="Project&#45;wide tuning constants and audible&#45;range limits for CMOD." alt="" coords="898,519,974,544"/>
 <area shape="poly" id="edge70_Node000003_Node000029" title=" " alt="" coords="908,175,961,200,1023,234,1074,272,1090,291,1096,310,1096,386,1093,409,1084,430,1055,467,1018,495,980,515,977,511,1015,490,1052,463,1080,428,1088,408,1091,386,1091,310,1085,294,1070,276,1020,239,959,205,905,180"/>
-<area shape="rect" id="Node000030" href="$Modifier_8h.html" title="Per&#45;note synthesis modifier (tremolo, vibrato, bend, etc.)." alt="" coords="918,372,1005,397"/>
+<area shape="rect" id="Node000030" href="$Modifier_8h.html" title="Per&#45;note synthesis modifier (tremolo, vibrato, ring_mod, bend, etc.)." alt="" coords="918,372,1005,397"/>
 <area shape="poly" id="edge73_Node000003_Node000030" title=" " alt="" coords="887,177,955,358,950,360,882,179"/>
 <area shape="rect" id="Node000031" href="$Event_8h.html" title="Core Event class — the common base for every layer in a DISSCO composition tree (top,..." alt="" coords="518,299,589,324"/>
 <area shape="poly" id="edge71_Node000003_Node000031" title=" " alt="" coords="843,170,796,174,740,184,681,201,625,228,592,257,569,289,564,286,589,253,623,223,679,196,739,179,796,169,842,165"/>

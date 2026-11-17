@@ -48,7 +48,7 @@
 <area shape="poly" id="edge98_Node000012_Node000014" title=" " alt="" coords="1657,106,1771,151,1835,184,1896,223,1936,261,1962,297,1958,300,1932,265,1893,227,1833,188,1769,156,1655,111"/>
 <area shape="rect" id="Node000016" href="$ModParser_8h.html" title="Expression parser for modular&#45;arithmetic sieve definitions." alt="" coords="3017,225,3186,251"/>
 <area shape="poly" id="edge99_Node000012_Node000016" title=" " alt="" coords="1699,91,2000,97,2393,108,2755,126,2886,137,2963,149,3001,165,3037,185,3089,223,3086,227,3034,189,2999,170,2962,155,2885,142,2755,131,2393,114,2000,103,1699,97"/>
-<area shape="rect" id="Node000019" href="$Modifier_8h.html" title="Per&#45;note synthesis modifier (tremolo, vibrato, bend, etc.)." alt="" coords="2867,299,3021,324"/>
+<area shape="rect" id="Node000019" href="$Modifier_8h.html" title="Per&#45;note synthesis modifier (tremolo, vibrato, ring_mod, bend, etc.)." alt="" coords="2867,299,3021,324"/>
 <area shape="poly" id="edge100_Node000012_Node000019" title=" " alt="" coords="1699,91,1958,100,2296,121,2467,138,2625,160,2758,188,2812,205,2856,223,2882,240,2905,260,2938,297,2934,300,2901,264,2879,244,2853,228,2810,210,2757,193,2624,165,2467,143,2296,126,1958,105,1699,97"/>
 <area shape="rect" id="Node000021" href="$Patter_8h.html" title="Pattern generator that emits one value per call." alt="" coords="1744,225,1883,251"/>
 <area shape="poly" id="edge104_Node000012_Node000021" title=" " alt="" coords="1635,110,1798,223,1795,227,1632,114"/>

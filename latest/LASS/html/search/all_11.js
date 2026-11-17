@@ -14,5 +14,7 @@ var searchData=
   ['reverb_2ecpp_11',['Reverb.cpp',['../Reverb_8cpp.html',1,'']]],
   ['reverb_2eh_12',['Reverb.h',['../Reverb_8h.html',1,'']]],
   ['reverb_5fnum_5fcomb_5ffilters_13',['REVERB_NUM_COMB_FILTERS',['../Reverb_8h.html#afea42ca0cd96b2023d112572d0b319e8',1,'Reverb.h']]],
-  ['reverbhash_14',['reverbHash',['../classScore.html#a8417662acbea071c5e68f1fef4b6348a',1,'Score']]]
+  ['reverbhash_14',['reverbHash',['../classScore.html#a8417662acbea071c5e68f1fef4b6348a',1,'Score']]],
+  ['ring_5fmod_5famp_15',['RING_MOD_AMP',['../Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a24bcf265da7122b5224a71d45fb2caba',1,'Partial.h']]],
+  ['ring_5fmod_5frate_16',['RING_MOD_RATE',['../Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372acf3ae03afd10a3f3575ae688186fc949',1,'Partial.h']]]
 ];

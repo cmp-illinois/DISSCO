@@ -10,7 +10,8 @@ var searchData=
   ['modifierfreqtrans_7',['modifierFreqtrans',['../lassie_8hpp.html#a96ba018ea46fb28e626c3b573aca5435af2bc99b085da1e179edc68181f51531a',1,'lassie.hpp']]],
   ['modifierglissando_8',['modifierGlissando',['../lassie_8hpp.html#a96ba018ea46fb28e626c3b573aca5435a91f0e04f4be8f5a11f2bcd1f4e3fcdfb',1,'lassie.hpp']]],
   ['modifierphasemod_9',['modifierPhaseMod',['../lassie_8hpp.html#a96ba018ea46fb28e626c3b573aca5435ac220d63fd9837a11baeceba0cf9fe2ec',1,'lassie.hpp']]],
-  ['modifiertremolo_10',['modifierTremolo',['../lassie_8hpp.html#a96ba018ea46fb28e626c3b573aca5435ab346e2533e34169a1aca13e51b67b352',1,'lassie.hpp']]],
-  ['modifiervibrato_11',['modifierVibrato',['../lassie_8hpp.html#a96ba018ea46fb28e626c3b573aca5435ac0387c816c9fd8c5eea3284101f961fb',1,'lassie.hpp']]],
-  ['modifierwave_5ftype_12',['modifierWave_type',['../lassie_8hpp.html#a96ba018ea46fb28e626c3b573aca5435a31e22e1018f426401fe8db02c3cc1f33',1,'lassie.hpp']]]
+  ['modifierringmodulation_10',['modifierRingModulation',['../lassie_8hpp.html#a96ba018ea46fb28e626c3b573aca5435a44bb14717d3a368f00edc0e74fdf6a7a',1,'lassie.hpp']]],
+  ['modifiertremolo_11',['modifierTremolo',['../lassie_8hpp.html#a96ba018ea46fb28e626c3b573aca5435ab346e2533e34169a1aca13e51b67b352',1,'lassie.hpp']]],
+  ['modifiervibrato_12',['modifierVibrato',['../lassie_8hpp.html#a96ba018ea46fb28e626c3b573aca5435ac0387c816c9fd8c5eea3284101f961fb',1,'lassie.hpp']]],
+  ['modifierwave_5ftype_13',['modifierWave_type',['../lassie_8hpp.html#a96ba018ea46fb28e626c3b573aca5435a31e22e1018f426401fe8db02c3cc1f33',1,'lassie.hpp']]]
 ];

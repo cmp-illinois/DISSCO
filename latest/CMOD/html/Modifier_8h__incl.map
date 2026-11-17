@@ -1,5 +1,5 @@
 <map id="CMOD/src/Modifier.h" name="CMOD/src/Modifier.h">
-<area shape="rect" id="Node000001" title="Per&#45;note synthesis modifier (tremolo, vibrato, bend, etc.)." alt="" coords="956,5,1111,31"/>
+<area shape="rect" id="Node000001" title="Per&#45;note synthesis modifier (tremolo, vibrato, ring_mod, bend, etc.)." alt="" coords="956,5,1111,31"/>
 <area shape="rect" id="Node000002" href="$Libraries_8h.html" title="Central include hub for CMOD." alt="" coords="988,152,1079,177"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1033,32,1024,79,1024,110,1029,138,1024,139,1019,110,1019,78,1028,31"/>
 <area shape="rect" id="Node000026" href="$Define_8h.html" title="Project&#45;wide tuning constants and audible&#45;range limits for CMOD." alt="" coords="1034,79,1110,104"/>

@@ -133,7 +133,7 @@
 <area shape="poly" id="edge87_Node000041_Node000034" title=" " alt="" coords="1380,90,1466,92,1570,101,1620,108,1665,119,1702,132,1726,150,1733,167,1734,190,1723,249,1703,310,1682,361,1677,359,1698,308,1718,247,1729,190,1728,168,1722,154,1699,137,1664,124,1619,114,1569,106,1466,98,1380,95"/>
 <area shape="poly" id="edge107_Node000041_Node000035" title=" " alt="" coords="1380,91,1457,95,1547,104,1628,122,1660,134,1681,150,1689,174,1687,207,1676,245,1659,287,1616,371,1578,435,1574,433,1611,368,1654,285,1671,244,1682,206,1684,175,1677,154,1657,139,1627,127,1546,110,1456,100,1380,96"/>
 <area shape="poly" id="edge88_Node000041_Node000040" title=" " alt="" coords="1380,89,1476,90,1595,97,1654,104,1706,115,1748,130,1777,150,1787,166,1793,183,1796,220,1791,256,1782,286,1777,285,1786,255,1791,220,1788,184,1782,168,1773,154,1746,135,1705,120,1653,110,1595,102,1476,95,1380,94"/>
-<area shape="rect" id="Node000042" href="$Modifier_8h.html" title="Per&#45;note synthesis modifier (tremolo, vibrato, bend, etc.)." alt="" coords="1313,372,1399,397"/>
+<area shape="rect" id="Node000042" href="$Modifier_8h.html" title="Per&#45;note synthesis modifier (tremolo, vibrato, ring_mod, bend, etc.)." alt="" coords="1313,372,1399,397"/>
 <area shape="poly" id="edge80_Node000041_Node000042" title=" " alt="" coords="1342,104,1357,358,1352,358,1337,104"/>
 <area shape="rect" id="Node000043" href="$Piece_8h.html" title="Top&#45;level composition object and supporting filesystem helpers." alt="" coords="1104,152,1173,177"/>
 <area shape="poly" id="edge89_Node000041_Node000043" title=" " alt="" coords="1307,107,1185,150,1184,145,1306,102"/>

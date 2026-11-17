@@ -312,33 +312,34 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        <span class="keywordflow">case</span> 0: <span class="comment">// Tremolo</span></div>
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="keywordflow">case</span> 1: <span class="comment">// Vibrato</span></div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        <span class="keywordflow">case</span> 7: <span class="comment">// Phase Modulation</span></div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            error = require(value.<a class="code hl_variable" href="structPartialModifierFormat_1_1Values.html#a5b3685ef841c8b2ce15350656cf47a04">magnitude</a>, <span class="stringliteral">&quot;Magnitude&quot;</span>);</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>            <span class="keywordflow">if</span> (error.isEmpty())</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>                error = require(value.<a class="code hl_variable" href="structPartialModifierFormat_1_1Values.html#a142061000b388cefea8e487df7be5faf">rate</a>, <span class="stringliteral">&quot;Rate&quot;</span>);</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <span class="keywordflow">case</span> 2: <span class="comment">// Glissando</span></div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="keywordflow">case</span> 6: <span class="comment">// Wave Type</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>            error = require(value.<a class="code hl_variable" href="structPartialModifierFormat_1_1Values.html#a5b3685ef841c8b2ce15350656cf47a04">magnitude</a>, <span class="stringliteral">&quot;Magnitude&quot;</span>);</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="keywordflow">case</span> 3: <span class="comment">// Detune</span></div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>            error = detuneRowError(row, value);</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        <span class="keywordflow">case</span> 4: <span class="comment">// Amplitude Transient</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="keywordflow">case</span> 5: <span class="comment">// Frequency Transient</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            error = require(value.<a class="code hl_variable" href="structPartialModifierFormat_1_1Values.html#a5b3685ef841c8b2ce15350656cf47a04">magnitude</a>, <span class="stringliteral">&quot;Magnitude&quot;</span>);</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>            <span class="keywordflow">if</span> (error.isEmpty())</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>                error = require(value.<a class="code hl_variable" href="structPartialModifierFormat_1_1Values.html#a55cc4a9cd800a4d4612664f04f3299de">width</a>, <span class="stringliteral">&quot;Width&quot;</span>);</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>            <span class="keywordflow">if</span> (error.isEmpty())</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>                error = require(value.<a class="code hl_variable" href="structPartialModifierFormat_1_1Values.html#a142061000b388cefea8e487df7be5faf">rate</a>, <span class="stringliteral">&quot;Rate&quot;</span>);</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <span class="keywordflow">default</span>:</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            <span class="keywordflow">return</span> translated(<span class="stringliteral">&quot;The selected modifier type is not supported.&quot;</span>);</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        }</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="keywordflow">if</span> (!error.isEmpty())</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>            <span class="keywordflow">return</span> error;</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    }</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <span class="keywordflow">return</span> {};</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>}</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="keywordflow">case</span> 8: <span class="comment">//Ring Modulation</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>            error = require(value.<a class="code hl_variable" href="structPartialModifierFormat_1_1Values.html#a5b3685ef841c8b2ce15350656cf47a04">magnitude</a>, <span class="stringliteral">&quot;Magnitude&quot;</span>);</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            <span class="keywordflow">if</span> (error.isEmpty())</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>                error = require(value.<a class="code hl_variable" href="structPartialModifierFormat_1_1Values.html#a142061000b388cefea8e487df7be5faf">rate</a>, <span class="stringliteral">&quot;Rate&quot;</span>);</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="keywordflow">case</span> 2: <span class="comment">// Glissando</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="keywordflow">case</span> 6: <span class="comment">// Wave Type</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>            error = require(value.<a class="code hl_variable" href="structPartialModifierFormat_1_1Values.html#a5b3685ef841c8b2ce15350656cf47a04">magnitude</a>, <span class="stringliteral">&quot;Magnitude&quot;</span>);</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        <span class="keywordflow">case</span> 3: <span class="comment">// Detune</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>            error = detuneRowError(row, value);</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="keywordflow">case</span> 4: <span class="comment">// Amplitude Transient</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <span class="keywordflow">case</span> 5: <span class="comment">// Frequency Transient</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>            error = require(value.<a class="code hl_variable" href="structPartialModifierFormat_1_1Values.html#a5b3685ef841c8b2ce15350656cf47a04">magnitude</a>, <span class="stringliteral">&quot;Magnitude&quot;</span>);</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>            <span class="keywordflow">if</span> (error.isEmpty())</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>                error = require(value.<a class="code hl_variable" href="structPartialModifierFormat_1_1Values.html#a55cc4a9cd800a4d4612664f04f3299de">width</a>, <span class="stringliteral">&quot;Width&quot;</span>);</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>            <span class="keywordflow">if</span> (error.isEmpty())</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>                error = require(value.<a class="code hl_variable" href="structPartialModifierFormat_1_1Values.html#a142061000b388cefea8e487df7be5faf">rate</a>, <span class="stringliteral">&quot;Rate&quot;</span>);</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>            <span class="keywordflow">return</span> translated(<span class="stringliteral">&quot;The selected modifier type is not supported.&quot;</span>);</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        }</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="keywordflow">if</span> (!error.isEmpty())</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>            <span class="keywordflow">return</span> error;</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    }</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="keywordflow">return</span> {};</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>}</div>
 </div>
 <div class="ttc" id="aPartialModifierFormat_8hpp_html"><div class="ttname"><a href="PartialModifierFormat_8hpp.html">PartialModifierFormat.hpp</a></div></div>
 <div class="ttc" id="anamespacePartialModifierFormat_html_a0cf3ac75b346cd1db0fbbfdfb1621ee4"><div class="ttname"><a href="namespacePartialModifierFormat.html#a0cf3ac75b346cd1db0fbbfdfb1621ee4">PartialModifierFormat::normalizedValue</a></div><div class="ttdeci">QString normalizedValue(const QString &amp;value, bool enabled)</div><div class="ttdef"><b>Definition</b> <a href="PartialModifierFormat_8cpp_source.html#l00110">PartialModifierFormat.cpp:110</a></div></div>
