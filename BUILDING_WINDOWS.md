@@ -1,7 +1,8 @@
 # Build and install LASSIE on Windows
 
 This guide builds **LASSIE**, the graphical editor, and **CMOD**, its composition
-and sound engine, from `DiyunZ/dissco`'s `main` branch. It then creates a portable
+and sound engine, from the `main` branch of
+[cmp-illinois/DISSCO](https://github.com/cmp-illinois/DISSCO). It then creates a portable
 application: a complete folder you can copy to another computer and run.
 
 **Only want the released application?** Follow [DOWNLOAD.md](DOWNLOAD.md).
@@ -85,7 +86,7 @@ x64 command prompt.
 Edit these four paths to match your computer, then paste the block:
 
 ~~~cmd
-set "DISSCO_ROOT=C:\dev\DISSCO-2.2.0"
+set "DISSCO_ROOT=C:\dev\DISSCO"
 set "VCPKG_ROOT=C:\dev\vcpkg"
 set "QT_ROOT=C:\Qt\6.11.1\msvc2022_64"
 set "LILYPOND_ROOT=C:\Tools\lilypond-2.26.0"
@@ -113,11 +114,13 @@ For a **new, empty source folder**:
 
 ~~~cmd
 if not exist "%DISSCO_ROOT%" mkdir "%DISSCO_ROOT%"
-git clone --depth 1 --branch main --single-branch https://github.com/DiyunZ/dissco.git "%DISSCO_ROOT%"
+git clone --depth 1 --branch main --single-branch https://github.com/cmp-illinois/DISSCO.git "%DISSCO_ROOT%"
 ~~~
 
 The explicit destination avoids confusion about the downloaded folder's name.
-The shallow clone omits old history to reduce the download.
+The shallow clone omits old history to reduce the download. To work on DISSCO
+itself (check out other branches, test a pull request, or push your own),
+leave out `--depth 1 --branch main --single-branch` to get the full repository.
 
 **Already have the repository?** Skip cloning. Do not delete an existing folder
 just to make the clone command work. Check the remote and branch:
@@ -128,7 +131,7 @@ git remote -v
 git branch --show-current
 ~~~
 
-The intended remote is `https://github.com/DiyunZ/dissco.git` and the branch is
+The intended remote is `https://github.com/cmp-illinois/DISSCO.git` and the branch is
 `main`. muParser and pugixml are included; no submodule setup is needed.
 
 ## 4. Install the C++ libraries
@@ -284,6 +287,12 @@ Ordinary edits can reuse it. Do not delete source or project files to reset a bu
 
 The PowerShell issue is explained in
 [Microsoft's module-path documentation](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_psmodulepath#starting-windows-powershell-from-powershell-7).
+
+## Verification record — 2026-11-05
+
+Windows 11 x64 (build 26200), MSVC 19.51, CMake 4.3.1, Ninja 1.13.2 and
+Qt 6.11.1, at commit 89d68abf: a full clone built with the commands above and
+all 12 CTest tests passed.
 
 ## Verification record — 2026-08-27
 

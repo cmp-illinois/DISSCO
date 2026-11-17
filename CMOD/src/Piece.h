@@ -83,7 +83,6 @@ struct PieceHelper {
 };
 
 //----------------------------------------------------------------------------//
-class FileValue;
 class Utilities;
 
 /**

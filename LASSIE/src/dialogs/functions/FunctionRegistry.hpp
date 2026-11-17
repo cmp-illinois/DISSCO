@@ -36,7 +36,7 @@ public:
      *  call to create() / functionsFor() / idFromXmlName(). Typically
      *  invoked once at startup from a central registration site. */
     template <typename T>
-    void registerType() {
+    void registerType(bool inMenu = true) {
         T proto;
         const CMODFunction id = proto.id();
         const QString xml = proto.xmlName();
@@ -45,9 +45,17 @@ public:
         e.xmlName = xml;
         e.displayName = proto.displayName();
         e.returnTypes = proto.supportedReturnTypes();
+        e.inMenu = inMenu;
         m_entries.insert(id, e);
         m_order.append(id);
         m_byXmlName.insert(xml, id);
+    }
+
+    /** Also recognize `oldXmlName` as `id`, so fields saved under a
+     *  function's old name still open in the picker. The picker writes
+     *  the current name. -- Tony Chai, 2026 */
+    void registerOldXmlName(const QString& oldXmlName, CMODFunction id) {
+        m_byXmlName.insert(oldXmlName, id);
     }
 
     /** Instantiate the widget for the given id. Returns nullptr if no
@@ -77,6 +85,7 @@ private:
         QString xmlName;
         QString displayName;
         QList<FunctionReturnType> returnTypes;
+        bool inMenu = true;   // false: still read, but not offered in the picker
     };
 
     QMap<CMODFunction, Entry> m_entries;

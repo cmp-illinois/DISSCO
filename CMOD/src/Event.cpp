@@ -645,6 +645,24 @@ int Event::checkedChildType(double value) const {
 
 // A child time in EDU is cut to a whole EDU. The score cannot show a time
 // that falls between two EDUs, so with score output such a value is an error.
+// Evaluates the child Start Time field. While it runs, CURRENT_TYPE and
+// CURRENT_LAYER give an error: the child's type is chosen after its start
+// time, so they would only see the previous child's type. -- Tony Chai, 2026
+double Event::evaluateChildStartTime() {
+  evaluatingChildStartTime = true;
+  try {
+    const double value =
+        utilities->evaluate(XMLTC(childStartTimeElement), (void*)this);
+    evaluatingChildStartTime = false;
+    return value;
+  } catch (...) {
+    evaluatingChildStartTime = false;
+    throw;
+  }
+}
+
+//----------------------------------------------------------------------------//
+
 void Event::checkWholeEDUs(float value, const string& field) const {
   if (!utilities->getScorePrinting() || fabs(value - round(value)) < 0.001f) return;
   throw CmodError(CmodError::Kind::Project,
@@ -693,7 +711,11 @@ bool Event::buildContinuum() {
     tsChild.durationEDU = childPt.dur;
     tsChild.duration = childPt.dur * tempo.getEDUDurationInSeconds().To<float>();
   } else {
-    rawChildStartTime = static_cast<float>(utilities->evaluate(XMLTC(childStartTimeElement),(void*)this));
+    // Bug fix: CURRENT_TYPE and CURRENT_LAYER here gave the previous child's
+    // type, since the type is chosen below. They now give an error in Start
+    // Time (Prof. Tipei: the start time must not depend on the type).
+    // -- Tony Chai, 2026
+    rawChildStartTime = static_cast<float>(evaluateChildStartTime());
     // how to process start time: EDU, SECONDS or PERCENTAGE
     if (startType == "1" ) { //"EDU"
       checkWholeEDUs(rawChildStartTime, "Start Time");
@@ -868,24 +890,41 @@ bool Event::buildSweep() {
     tsChild.duration = childPt.dur * tempo.getEDUDurationInSeconds().To<float>();
   } else {
     // get the start time
-//  rawChildStartTime =
-//    utilities->evaluate(XMLTC(childStartTimeElement),(void*)this);
+    // Bug fix: Sweep never read the Start Time field (the line was commented
+    // out), so 5, Random, Select, PREVIOUS_CHILD_END_TIME + 2 and a blank
+    // field all gave the same result. Prof. Tipei: Sweep must take any number
+    // or function there. The field now gives when the child starts, in the
+    // parent's time, like Continuum. A start at or before the previous
+    // child's end still means back to back, so Sweep children never overlap
+    // and projects that use PREVIOUS_CHILD_END_TIME, 0 or a blank field
+    // compose exactly as before. -- Tony Chai, 2026
+    const double requestedStart = evaluateChildStartTime();
+    // Numbers pass between functions as text with 6 decimals, so
+    // PREVIOUS_CHILD_END_TIME can come back up to 0.0000005 above the real
+    // end. Anything within this of the end counts as back to back.
+    const double roundingSlack = 1e-6;
 
     rawChildStartTime = static_cast<float>(previousChildEndTime);			//actually endTime
-//cout << "Event::buildSweep - rawChildStartTime=" << rawChildStartTime << endl;
 
-    // The child starts where the previous child ends, whatever units its
-    // times are given in. In EDU that is the previous child's exact end. In
-    // Seconds or as a Fraction it is the sum of the entered durations,
-    // converted to seconds exactly as CMOD has always computed it, so the
-    // sound of existing projects does not move by even one sample. When the
-    // start and the durations use different units, their sum means nothing,
-    // so the child starts at the previous child's end in seconds.
+    // Back to back, the child starts where the previous child ends, whatever
+    // units its times are given in. In EDU that is the previous child's exact
+    // end. In Seconds or as a Fraction it is the sum of the entered
+    // durations, converted to seconds exactly as CMOD has always computed it,
+    // so the sound of existing projects does not move by even one sample.
+    // When the start and the durations use different units, their sum means
+    // nothing, so the child starts at the previous child's end in seconds.
     if (startType == "1" && tsPrevious.endEDU.isDeterminate()) {	//EDU
       tsChild.startEDU = tsPrevious.endEDU;
+      if (Ratio((int)requestedStart, 1) > tsPrevious.endEDU) {	// later start
+        checkWholeEDUs(static_cast<float>(requestedStart), "Start Time");
+        rawChildStartTime = static_cast<float>(requestedStart);
+        tsChild.startEDU = Ratio((int)requestedStart, 1);
+      }
       tsChild.start = tsChild.startEDU.To<float>() *
         tempo.getEDUDurationInSeconds().To<float>();
     } else if (startType == durType && (startType == "2" || startType == "0")) {
+      if (requestedStart > previousChildEndTime + roundingSlack)	// later start
+        rawChildStartTime = static_cast<float>(requestedStart);
       if (startType == "2") {					//seconds
         tsChild.start = rawChildStartTime; 	// no conversion needed
       } else {							//fraction
@@ -897,6 +936,24 @@ bool Event::buildSweep() {
     } else {		//start and durations in different units
       tsChild.start = tsPrevious.end;
       tsChild.startEDU = Ratio(0, 0); // floating point is not exact: NaN
+
+      // A later start, converted to seconds from the Start Time unit
+      float requestedSeconds = -1;
+      if (startType == "1")					//EDU
+        requestedSeconds = static_cast<float>(requestedStart) *
+          tempo.getEDUDurationInSeconds().To<float>();
+      else if (startType == "2")				//seconds
+        requestedSeconds = static_cast<float>(requestedStart);
+      else if (startType == "0")				//fraction
+        requestedSeconds = static_cast<float>(requestedStart) * ts.duration;
+      if (requestedSeconds > tsPrevious.end + roundingSlack) {
+        rawChildStartTime = static_cast<float>(requestedStart);
+        tsChild.start = requestedSeconds;
+        if (startType == "1") {
+          checkWholeEDUs(rawChildStartTime, "Start Time");
+          tsChild.startEDU = Ratio((int)rawChildStartTime, 1);
+        }
+      }
     }
 
   // get the type

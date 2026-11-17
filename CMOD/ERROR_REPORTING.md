@@ -22,8 +22,9 @@ Build failed.
 Project diagnostics cover unreadable or malformed project XML, missing or invalid
 configuration, invalid numeric expressions and nested functions, missing object
 references, invalid Select indices, functions used without an event context,
-invalid child counts, and empty score staffs. Output diagnostics cover directory
-creation, temporary library files, audio/score writes, and LilyPond failures.
+CURRENT_TYPE or CURRENT_LAYER in a child Start Time, invalid child counts, and
+empty score staffs. Output diagnostics cover directory creation, audio/score
+writes, and LilyPond failures.
 Unexpected C++ exceptions ask the user to send developers the project, seed,
 and diagnostic. Hard process faults and remaining legacy direct-exit paths
 retain their existing handling; they are not made recoverable by these exceptions.

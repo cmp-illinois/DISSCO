@@ -1280,7 +1280,7 @@ void Piece::functionModifier(pugi::xml_node functionElement, int maxValue){ //Ne
 
   }
 
-  else if (functionName.compare("LN") == 0){
+  else if (functionName == "EXP_DECAY" || functionName == "LN"){
 
   }
 

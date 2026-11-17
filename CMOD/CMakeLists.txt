@@ -27,6 +27,16 @@ target_include_directories(ModifierUsage PUBLIC
 target_compile_features(ModifierUsage PUBLIC cxx_std_20)
 
 if(BUILD_TESTING)
+    # Checks the modifier usage rules Bottom uses for every sound. Written by
+    # Diyun (DiyunZ); restored after the code moved into CMOD. -- Tony Chai, 2026
+    add_executable(ModifierUsageTests
+        tests/ModifierUsageTests.cpp
+    )
+    target_link_libraries(ModifierUsageTests PRIVATE ModifierUsage)
+    target_compile_features(ModifierUsageTests PRIVATE cxx_std_20)
+
+    add_test(NAME CMOD.ModifierUsageTests COMMAND ModifierUsageTests)
+
     # Runs the real cmod program on the tutorial example projects and checks
     # the sound and particel it produces. -- Tony Chai, 2026
     add_executable(CmodExampleProjectsTests
@@ -41,7 +51,11 @@ if(BUILD_TESTING)
             $<TARGET_FILE:CMOD>
             "${CMAKE_SOURCE_DIR}/Documents/examples/tutorial_sound"
     )
-    set_tests_properties(CMOD.ExampleProjectsCompose PROPERTIES TIMEOUT 300)
+    # Each time limit is for that one test alone (not the whole run). This one
+    # composes each project three times and takes 2-10 s; 60 s leaves room for
+    # slow machines while a stuck run fails in a minute instead of five.
+    # -- Tony Chai, 2026
+    set_tests_properties(CMOD.ExampleProjectsCompose PROPERTIES TIMEOUT 60)
 
     # Checks the functions composers type into LASSIE fields (RandomInt,
     # Select, Stochos, ...). CMOD is only built as a program, so this
@@ -68,7 +82,8 @@ if(BUILD_TESTING)
     add_test(NAME CMOD.EventFunctions
         COMMAND CmodEventFunctionsTests $<TARGET_FILE:CMOD>
     )
-    set_tests_properties(CMOD.EventFunctions PROPERTIES TIMEOUT 120)
+    # Under 1 s; 60 s is still plenty. -- Tony Chai, 2026
+    set_tests_properties(CMOD.EventFunctions PROPERTIES TIMEOUT 60)
 
     # Tag every test registered in this folder (including future ones) with
     # the "CMOD" label, so CI can run and report each part of DISSCO as its
@@ -82,6 +97,12 @@ set(CMOD_EXECUTABLE_BASENAME "cmod")
 set_target_properties(CMOD PROPERTIES
     OUTPUT_NAME "${CMOD_EXECUTABLE_BASENAME}"
 )
+# Bug fix: on Windows, project paths with letters outside the system code
+# page reached cmod as "?". The manifest makes Windows give cmod UTF-8 paths;
+# CMake merges it into cmod.exe's own manifest. -- Tony Chai, 2026
+if(MSVC)
+    target_sources(CMOD PRIVATE cmod.manifest)
+endif()
 # CMOD is consumed by LASSIE as a standalone subprocess (QProcess::start),
 # not linked into it. No ENABLE_EXPORTS / WINDOWS_EXPORT_ALL_SYMBOLS is
 # needed — and adding them just to "make the link work" backfires on

@@ -27,19 +27,16 @@
 
 #include <pugixml.hpp>
 
-#include <chrono>
 #include <cmath>
-#include <filesystem>
 #include <functional>
 #include <iostream>
 #include <map>
 #include <memory>
 #include <set>
+#include <sstream>
 #include <string>
 #include <utility>
 #include <vector>
-
-namespace fs = std::filesystem;
 
 namespace {
 
@@ -251,6 +248,32 @@ void testPlainArithmetic()
     expectProjectError([] { eval("1/0"); }, "division by zero");
 }
 
+// A field that is just a number gives exactly (bit for bit) the same value
+// as that number inside an expression, and anything that isn't a valid
+// number (hex, "inf", "1e") is treated the same way either way.
+void testPlainNumbersReadLikeExpressions()
+{
+    // What a field gives: its value, or "error" if CMOD rejects it.
+    auto outcome = [](const std::string& field) -> std::string {
+        try {
+            const double value = eval(field);
+            std::ostringstream out;
+            out.precision(17);
+            out << value;
+            return out.str();
+        } catch (const CmodError&) {
+            return "error";
+        }
+    };
+    for (const std::string number : {"440", " 2.5 ", "-3", "+7", "1e3", "1.5E-2", "0.1",
+                                     "3.", ".25", "123456789.123456789", "0.30000000000000004",
+                                     "0x10", "inf", "nan", "1e", "1e400", "2 3"}) {
+        expect(outcome(number) == outcome("(" + number + ")"),
+               "plain \"" + number + "\" gives " + outcome(number) + " but (" + number
+                   + ") gives " + outcome("(" + number + ")"));
+    }
+}
+
 void testFunctionsInsideExpressions()
 {
     const std::string fib6 = fun("Fibonacci", {{"Entry", "6"}});
@@ -268,14 +291,18 @@ void testInverse()
     expectProjectError([] { eval(fun("Inverse", {{"Entry", "0"}})); }, "Inverse(0)");
 }
 
-// Despite its name, LN gives e^(-x) (1 / 2.71828^x), not the natural log.
-// These lock in what it does today; if that's ever corrected on purpose,
-// update the expected values here.
-void testLN()
+// EXP_DECAY gives e^(-x) (1 / 2.71828^x). It used to be called LN, though it
+// was never the natural log, and projects that still say LN must give the
+// same values.
+void testExpDecay()
 {
-    expectNear(eval(fun("LN", {{"Entry", "0"}})), 1.0, 1e-6, "LN(0)");
-    expectNear(eval(fun("LN", {{"Entry", "1"}})), 0.367879, 1e-5, "LN(1)");
-    expectNear(eval(fun("LN", {{"Entry", "2"}})), 0.135335, 1e-5, "LN(2)");
+    expectNear(eval(fun("EXP_DECAY", {{"Entry", "0"}})), 1.0, 1e-6, "EXP_DECAY(0)");
+    expectNear(eval(fun("EXP_DECAY", {{"Entry", "1"}})), 0.367879, 1e-5, "EXP_DECAY(1)");
+    expectNear(eval(fun("EXP_DECAY", {{"Entry", "2"}})), 0.135335, 1e-5, "EXP_DECAY(2)");
+    for (const char* entry : {"0", "1", "2", "-3"})
+        expectNear(eval(fun("LN", {{"Entry", entry}})),
+                   eval(fun("EXP_DECAY", {{"Entry", entry}})), 0,
+                   std::string("old name LN(") + entry + ") same as EXP_DECAY");
 }
 
 void testFibonacci()
@@ -776,15 +803,6 @@ void runTest(const std::string& name, void (*test)(), std::vector<std::string>& 
 
 int main()
 {
-    // CMOD writes a scratch file (lib.temp) into the current folder while
-    // loading the envelope library, so work in a fresh temporary folder.
-    const fs::path previous = fs::current_path();
-    const fs::path folder = fs::temp_directory_path()
-        / ("dissco-cmod-function-tests-"
-           + std::to_string(std::chrono::steady_clock::now().time_since_epoch().count()));
-    fs::create_directories(folder);
-    fs::current_path(folder);
-
     pugi::xml_document project;
     project.load_string(kTestProject);
     std::vector<std::string> failedTests;
@@ -793,9 +811,10 @@ int main()
         cmod = &utilities;
 
         runTest("plain arithmetic", testPlainArithmetic, failedTests);
+        runTest("plain numbers read like expressions", testPlainNumbersReadLikeExpressions, failedTests);
         runTest("functions inside expressions", testFunctionsInsideExpressions, failedTests);
         runTest("Inverse", testInverse, failedTests);
-        runTest("LN", testLN, failedTests);
+        runTest("EXP_DECAY (formerly LN)", testExpDecay, failedTests);
         runTest("Fibonacci", testFibonacci, failedTests);
         runTest("Decay", testDecay, failedTests);
         runTest("Select", testSelect, failedTests);
@@ -825,8 +844,6 @@ int main()
         failedTests.push_back("load test project");
     }
 
-    fs::current_path(previous);
-    fs::remove_all(folder);
 
     if (!failedTests.empty()) {
         std::cerr << '\n' << failedTests.size() << " CMOD function test(s) failed:\n";

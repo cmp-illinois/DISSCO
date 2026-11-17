@@ -841,17 +841,13 @@ bool ProjectManager::parse(Project* p, const QString& filepath,
         else if (elName == "EnvelopeLibrary") {
             QString envLibText = r.readElementText(QXmlStreamReader::IncludeChildElements);
             EnvelopeLibrary* envelopeLibrary = new EnvelopeLibrary();
+            // Bug fix: the library text was written to a temp file next to
+            // the project and loaded from there; in a folder LASSIE can't
+            // write to, it was silently skipped and the project opened with
+            // no envelopes. It's now read straight from the text. -- Tony Chai, 2026
             if (!envLibText.isEmpty()) {
-                QString tempPath = filepath + ".lib.temp";
-                QFile temp(tempPath);
-                if (temp.open(QIODevice::WriteOnly | QIODevice::Text)) {
-                    QTextStream out(&temp);
-                    out << envLibText;
-                    temp.close();
-                    envelopeLibrary->loadLibraryNewFormat(
-                        const_cast<char*>(tempPath.toLocal8Bit().constData()));
-                    QFile::remove(tempPath);
-                }
+                std::istringstream envLibStream(envLibText.toStdString());
+                envelopeLibrary->loadLibraryNewFormat(envLibStream);
             }
             EnvelopeLibraryEntry* previousEntry = nullptr;
             for (int i = 1; i <= envelopeLibrary->size(); i++) {

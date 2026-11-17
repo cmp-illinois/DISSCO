@@ -20,6 +20,7 @@
 #include "widgets/Modifiers.hpp"
 #include "windows/EnvelopeLibraryWindow.hpp"
 #include "../tests/ProjectRoundTripTest.hpp"
+#include "../tests/FunctionPickerTest.hpp"
 #endif
 #include "widgets/ComboBoxWheelGuard.hpp"
 #include "widgets/TextOverflowDisplayPolicy.hpp"
@@ -195,6 +196,10 @@ int main(int argc, char *argv[])
     // -- Tony Chai, 2026
     if (qEnvironmentVariableIsSet("DISSCO_TEST_PROJECT_ROUNDTRIP"))
         return runProjectRoundTripTest();
+    // What the function picker offers (also needs the registry).
+    // -- Tony Chai, 2026
+    if (qEnvironmentVariableIsSet("DISSCO_TEST_FUNCTION_PICKER"))
+        return runFunctionPickerTest();
 #endif
     Inst *m = Inst::instance();
     MainWindow *w = new MainWindow(m);

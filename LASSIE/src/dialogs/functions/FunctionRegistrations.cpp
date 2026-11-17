@@ -55,7 +55,10 @@ void registerAllFunctions() {
     r.registerType<PreviousChildDurationFunction>();
     r.registerType<AvailableEduFunction>();
     r.registerType<CurrentPartialNumFunction>();
-    r.registerType<CurrentSegmentFunction>();
+    // CURRENT_SEGMENT does nothing in today's CMOD (it warns and gives 0), so
+    // it's no longer offered; fields that already use it still open.
+    // Decided with Prof. Tipei. -- Tony Chai, 2026
+    r.registerType<CurrentSegmentFunction>(false);
     r.registerType<CurrentLayerFunction>();
 
     r.registerType<EnvLibFunction>();
@@ -76,4 +79,10 @@ void registerAllFunctions() {
     r.registerType<RevSimpleFunction>();
     r.registerType<RevMediumFunction>();
     r.registerType<RevAdvancedFunction>();
+
+    // Renamed functions: fields saved with the old name still open, and CMOD
+    // still reads both names. -- Tony Chai, 2026
+    r.registerOldXmlName(QStringLiteral("LN"), CMODFunction::functionLN);
+    r.registerOldXmlName(QStringLiteral("PREVIOUS_CHILD_DURATION"),
+                         CMODFunction::function_staticPREVIOUS_CHILD_DURATION);
 }

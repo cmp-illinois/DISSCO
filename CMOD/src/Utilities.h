@@ -368,7 +368,7 @@ private:
   string function_Randomizer(pugi::xml_node _functionElement, void* _object);
   string function_Inverse(pugi::xml_node _functionElement, void* _object);
   string function_Markov(pugi::xml_node _functionElement, void* _object);
-  string function_LN(pugi::xml_node _functionElement, void* _object);
+  string function_EXP_DECAY(pugi::xml_node _functionElement, void* _object);
   string function_RandomDensity(pugi::xml_node _functionElement, void* _object);
 
   /**
@@ -436,7 +436,7 @@ private:
    * \param _object The event to analyse
    * \return The event's previous child's duration
    */
-  string static_function_PREVIOUS_CHILD_DURATION(void* _object);
+  string static_function_PREVIOUS_CHILD_END_TIME(void* _object);
 
 
 

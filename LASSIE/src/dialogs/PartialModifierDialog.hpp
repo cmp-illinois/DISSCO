@@ -23,7 +23,8 @@ class QVBoxLayout;
  * CMOD's legacy format stores four adjacent <Envelope> elements for every
  * partial, in probability/magnitude/width/rate order.  This dialog deliberately
  * keeps that wire format while showing only the parameters consumed by the
- * selected modifier type.
+ * selected modifier type.  DETUNE stores plain numbers in the last three
+ * slots: spread (magnitude), direction (width) and velocity (rate).
  */
 class PartialModifierDialog : public QDialog
 {
@@ -53,6 +54,7 @@ private:
                           const QString& label,
                           const QString& value,
                           bool enabled,
+                          bool numeric,
                           QLineEdit** entry);
     void setPartialRowCount(int count);
     void openEnvelopeGenerator(QLineEdit* entry);

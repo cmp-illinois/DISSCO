@@ -50,6 +50,15 @@ if(BUILD_TESTING)
 
     add_test(NAME LASS.UnitTests COMMAND LASSTests)
 
+    # Checks what envelopes produce: values over time, sample-by-sample
+    # playback, copies, and saving/loading the envelope library. -- Tony Chai, 2026
+    add_executable(LassEnvelopeTests
+        tests/LassEnvelopeTests.cpp
+    )
+    target_link_libraries(LassEnvelopeTests PRIVATE LASS)
+    target_compile_features(LassEnvelopeTests PRIVATE cxx_std_20)
+    add_test(NAME LASS.Envelopes COMMAND LassEnvelopeTests)
+
     # Tag every test registered in this folder (including future ones) with
     # the "LASS" label, so CI can run and report each part of DISSCO as its
     # own step (ctest -L '^LASS$'). -- Tony Chai, 2026

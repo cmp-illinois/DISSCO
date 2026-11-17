@@ -26,9 +26,12 @@ class FunctionGenerator : public QDialog
     Q_OBJECT
 
 public:
+    // `excluded` functions aren't offered, here or in any function picker
+    // opened from inside this one (e.g. for an entry of Select).
     explicit FunctionGenerator(QWidget* parent = nullptr,
                                FunctionReturnType returnType = FunctionReturnType::functionReturnFloat,
-                               QString originalString = QString());
+                               QString originalString = QString(),
+                               QList<CMODFunction> excluded = {});
     ~FunctionGenerator() override;
 
     QString getResultString();
@@ -52,6 +55,11 @@ private:
     FunctionReturnType m_returnType;
     QString m_originalString;
     QString m_result;
+    QList<CMODFunction> m_excluded;
+
+    // Pickers that are open right now, outermost first; a new picker also
+    // leaves out whatever they leave out.
+    static QList<FunctionGenerator*> s_openGenerators;
 
     QMap<CMODFunction, FunctionWidget*> m_registeredWidgets;
     QMap<CMODFunction, int>             m_registeredPageIndex;

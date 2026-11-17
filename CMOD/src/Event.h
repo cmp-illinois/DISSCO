@@ -238,6 +238,11 @@ protected:
     //Stores value for the getter to the static function CURRENT_CHILD_TYPE
     int childType;
 
+    // True only while a child's Start Time is being evaluated. The child's
+    // type isn't chosen until after its start time, so CURRENT_TYPE and
+    // CURRENT_LAYER check this and refuse to run there. -- Tony Chai, 2026
+    bool evaluatingChildStartTime = false;
+
     //--------------------------- Discrete Matrix ----------------------------//
 
     Matrix* matrix;
@@ -311,7 +316,7 @@ protected:
     virtual ~Event();
 
 
-    //------------- Used by FileValue static functions  ------------//
+    //------------- Used by the event functions in Utilities ------------//
     /**
      *	Returns the events name
      **/
@@ -338,8 +343,19 @@ protected:
     int getCurrentChildType() {return childType;};
 
     /**
-    *   Returns the previous child duration
-    *		NOT USED
+    *   True while a child's Start Time is being evaluated
+    **/
+    bool isEvaluatingChildStartTime() const {return evaluatingChildStartTime;};
+
+    /**
+    *   Evaluates a child's Start Time field. CURRENT_TYPE and CURRENT_LAYER
+    *   give an error inside it, since the type is chosen after the start.
+    **/
+    double evaluateChildStartTime();
+
+    /**
+    *   Returns the previous child's end time (what PREVIOUS_CHILD_END_TIME,
+    *   formerly PREVIOUS_CHILD_DURATION, gives)
     **/
     double getPreviousChildEndTime(){ return previousChildEndTime;}
 

@@ -48,14 +48,16 @@ MultiTrack* Spatializer::spatialize_Track(Track& t, int numTracks)
     // create a new multitrack:
     MultiTrack* mt = new MultiTrack;
     
-    // add copies of the scaled track to this multitrack
-    for (int i=0; i<numTracks; i++)
+    // add copies of the scaled track to this multitrack; the last channel
+    // takes the scaled track itself instead of one more copy of it
+    for (int i=0; i<numTracks-1; i++)
     {
         mt->add( new Track(*scaledTrack) );
     }
-    
-    // delete the scaled track
-    delete scaledTrack;
+    if (numTracks > 0)
+        mt->add(scaledTrack);
+    else
+        delete scaledTrack;
     
     // return:
     return mt;

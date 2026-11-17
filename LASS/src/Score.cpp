@@ -32,6 +32,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "Score.h"
 #include "Types.h"
 
+#include <map>
 #include <memory>
 
 // Defined further down; maps a clipping mode to whether it reads the amp buffer.
@@ -44,8 +45,8 @@ struct ThreadEntry{
   //pointer to the score
   Score* score;
   int threadID;
-  //pointer to the vector<Sound*> sounds of the score
-  vector<Sound*, std::allocator<Sound*> >*  sounds;
+  //pointer to the deque<Sound*> sounds of the score
+  std::deque<Sound*>* sounds;
   int numChannels;
   int samplingRate;
   std::mutex* mutexSoundVector;
@@ -108,25 +109,33 @@ void render(ThreadEntry* _threadEntry){
   std::unique_ptr<ThreadEntry> owned(_threadEntry);
   ThreadEntry& threadEntry = *owned;
   while(true){
+    // Bug fix: sounds are now taken oldest first and numbered, so they can
+    // be mixed in the order the score got them (see compositeRenderedSounds).
+    // A place for this thread's rendered sound is reserved *before* taking a
+    // sound; otherwise later sounds could fill every place while the sound
+    // whose turn it is waits for one, and rendering would stop.
+    // -- Tony Chai, 2026
+    threadEntry.semEmptySlotsRendered->wait(); // Reserve a place for the result
     threadEntry.semFullSlotsSounds->wait(); // Wait for a full slot in sounds vector
 
     //Lock the sounds vector
     threadEntry.mutexSoundVector->lock();
 
       if (threadEntry.sounds->size()) {
-          *(threadEntry.soundsRendered) = *(threadEntry.soundsRendered) + 1;
+          const int soundNumber = ++*(threadEntry.soundsRendered);
           cout<<"Thread #"<<threadEntry.threadID<<": Rendering sound #"<<
-                *(threadEntry.soundsRendered)<<" of "<<
+                soundNumber<<" of "<<
                 *(threadEntry.soundObjectsCreated)<<endl;
 
-          Sound* sound = threadEntry.sounds->back();
-          threadEntry.sounds->pop_back();
+          Sound* sound = threadEntry.sounds->front();
+          threadEntry.sounds->pop_front();
           threadEntry.mutexSoundVector->unlock();
 
           // Render the sound outside the critical section
           MultiTrack* renderedSound = sound->render(threadEntry.numChannels,threadEntry.samplingRate);
 
-          threadEntry.score->addRenderedSound(sound->getParam(START_TIME), renderedSound);
+          threadEntry.score->addRenderedSound(soundNumber, sound->getParam(START_TIME),
+                                              renderedSound);
 
           delete sound;
 
@@ -135,6 +144,7 @@ void render(ThreadEntry* _threadEntry){
       else {
           threadEntry.mutexSoundVector->unlock();
           threadEntry.semFullSlotsSounds->post();  // Put back the full slot since no sound was consumed
+          threadEntry.semEmptySlotsRendered->post();  // Give back the unused place
           if (threadEntry.score->isDoneGettingSoundObjects())   // If the main thread is done adding sounds, return
             return;
       }
@@ -204,17 +214,14 @@ Score::Score(int _numThreads, int _numChannels, int _samplingRate )
 }
 
 
-void Score::addRenderedSound(m_time_type _startTime, MultiTrack* _renderedSound){
-
-  std::pair<m_time_type, MultiTrack*>* newPair = new pair<m_time_type, MultiTrack*>(_startTime, _renderedSound);
-  // active waiting for the vector size to be below 20 (if the main thread can't
-  // composite the rendered sound as fast the speed of worker threads produce
-  // rendered sounds, there is no need for the worker threads to rush.
-    semEmptySlotsRendered.wait();  // Wait for an empty slot in renderedSounds vector
-
+void Score::addRenderedSound(int _soundNumber, m_time_type _startTime,
+                             MultiTrack* _renderedSound){
+  // The worker reserved this sound's place before rendering it (see render()),
+  // so at most MAX_RENDERED_OBJECTS rendered sounds wait to be mixed, and
+  // worker threads don't rush ahead of the mixing.
     {
       std::lock_guard<std::mutex> lock(mutexVectorRenderedSound);
-      renderedSounds.push_back(newPair);
+      renderedSounds.push_back(RenderedSound{_soundNumber, _startTime, _renderedSound});
     }
 
     semFullSlotsRendered.post();  // Signal that there is a full slot in renderedSounds vector
@@ -223,26 +230,49 @@ void Score::addRenderedSound(m_time_type _startTime, MultiTrack* _renderedSound)
 
 
 void Score::compositeRenderedSounds(){
+  // Bug fix: each rendered sound was mixed in as soon as it was ready, newest
+  // first, so the mixing order depended on thread timing. Floating-point sums
+  // depend on their order, so the same project and seed could give a sound
+  // file with a few samples one step different. Sounds are now mixed strictly
+  // in the order the score got them: one that finishes early waits here until
+  // every sound before it has been mixed. -- Tony Chai, 2026
+  std::map<int, RenderedSound> waitingForTurn;
+  int nextSoundNumber = 1;
+  auto mix = [this](const RenderedSound& sound) {
+    checkScoreMultiTrackLength();
+    scoreMultiTrack->composite(*sound.track, sound.startTime);
+    delete sound.track;
+    semEmptySlotsRendered.post();  // Its place can hold another rendered sound
+  };
+
   while (true){
     semFullSlotsRendered.wait();
 
     mutexVectorRenderedSound.lock();
 
     if(renderedSounds.size()){
-      pair<m_time_type,MultiTrack*>* thisPair = renderedSounds.back();
+      const RenderedSound ready = renderedSounds.back();
       renderedSounds.pop_back();
       mutexVectorRenderedSound.unlock();
-      semEmptySlotsRendered.post();
-      checkScoreMultiTrackLength();
-      scoreMultiTrack->composite(*(thisPair->second), thisPair->first);
-      delete thisPair->second;
-      delete thisPair;
+      waitingForTurn.emplace(ready.number, ready);
+      // Mix every sound whose turn has come.
+      for (auto next = waitingForTurn.find(nextSoundNumber); next != waitingForTurn.end();
+           next = waitingForTurn.find(nextSoundNumber)) {
+        mix(next->second);
+        waitingForTurn.erase(next);
+        ++nextSoundNumber;
+      }
     }
     else{
       mutexVectorRenderedSound.unlock();
       semFullSlotsRendered.post();
-      if (workerThreadsAllJoined)
+      if (workerThreadsAllJoined) {
+        // Every sound has been rendered, so none should still be waiting;
+        // if one is, mix it anyway (in order) rather than lose it.
+        for (const auto& waiting : waitingForTurn)
+          mix(waiting.second);
         return;
+      }
     }
 
   }
