@@ -34,7 +34,7 @@ StochosFunction::StochosFunction(QWidget* parent)
     m_offsetEdit = new QLineEdit(this);
     offsetRow->addWidget(m_offsetEdit);
     layout->addLayout(offsetRow);
-    m_offsetEdit->setEnabled(false);
+
 
     // Scroll area for nodes
     m_scrollArea = new QScrollArea(this);
