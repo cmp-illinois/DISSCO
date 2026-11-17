@@ -104,6 +104,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a626bc643b5e7b7c94b3300851dbff2a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08d7c3a395d6c96ef841dd19675fac08" id="r_a08d7c3a395d6c96ef841dd19675fac08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structdissco_1_1modifier__usage_1_1Selection.html">Selection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdissco_1_1modifier__usage_1_1Program.html#a08d7c3a395d6c96ef841dd19675fac08">select</a> (const <a class="el" href="namespacedissco_1_1modifier__usage.html#a09538268844bb62bbbe985440099c176">UnitRandom</a> &amp;nextUnit)</td></tr>
 <tr class="separator:a08d7c3a395d6c96ef841dd19675fac08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadfd7327d7ec7ef303d6202e18d74087" id="r_aadfd7327d7ec7ef303d6202e18d74087"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structdissco_1_1modifier__usage_1_1Selection.html">Selection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdissco_1_1modifier__usage_1_1Program.html#aadfd7327d7ec7ef303d6202e18d74087">select</a> (const <a class="el" href="namespacedissco_1_1modifier__usage.html#a09538268844bb62bbbe985440099c176">UnitRandom</a> &amp;nextUnit, const std::vector&lt; double &gt; &amp;defaultOnChances)</td></tr>
+<tr class="separator:aadfd7327d7ec7ef303d6202e18d74087"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85cb074bada404c03cca66ae011b85a1" id="r_a85cb074bada404c03cca66ae011b85a1"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="structdissco_1_1modifier__usage_1_1OverallUsage.html">OverallUsage</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdissco_1_1modifier__usage_1_1Program.html#a85cb074bada404c03cca66ae011b85a1">overallUsage</a> () const noexcept</td></tr>
 <tr class="separator:a85cb074bada404c03cca66ae011b85a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -272,12 +274,12 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Exact marginal ON probability for every modifier, in configured order. Empty when compilation explicitly skipped the exponential preview. </p>
 
-<p class="definition">Definition at line <a class="el" href="ModifierUsage_8cpp_source.html#l00202">202</a> of file <a class="el" href="ModifierUsage_8cpp_source.html">ModifierUsage.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ModifierUsage_8cpp_source.html#l00228">228</a> of file <a class="el" href="ModifierUsage_8cpp_source.html">ModifierUsage.cpp</a>.</p>
 
 </div>
 </div>
 <a id="a08d7c3a395d6c96ef841dd19675fac08" name="a08d7c3a395d6c96ef841dd19675fac08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08d7c3a395d6c96ef841dd19675fac08">&#9670;&#160;</a></span>select()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a08d7c3a395d6c96ef841dd19675fac08">&#9670;&#160;</a></span>select() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -294,7 +296,38 @@ Friends</h2></td></tr>
 <p>Select modifiers with one uniform random value in [0, 1).</p>
 <p>Non-empty PerSound programs call nextUnit once per invocation. Non-empty PerBottom programs call it only for the first invocation and return that cached selection thereafter. Empty programs draw nothing. A missing callback or a non-finite/out-of-range result throws std::invalid_argument or std::domain_error respectively. </p>
 
-<p class="definition">Definition at line <a class="el" href="ModifierUsage_8cpp_source.html#l00140">140</a> of file <a class="el" href="ModifierUsage_8cpp_source.html">ModifierUsage.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ModifierUsage_8cpp_source.html#l00143">143</a> of file <a class="el" href="ModifierUsage_8cpp_source.html">ModifierUsage.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aadfd7327d7ec7ef303d6202e18d74087" name="aadfd7327d7ec7ef303d6202e18d74087"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadfd7327d7ec7ef303d6202e18d74087">&#9670;&#160;</a></span>select() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structdissco_1_1modifier__usage_1_1Selection.html">Selection</a> dissco::modifier_usage::Program::select </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacedissco_1_1modifier__usage.html#a09538268844bb62bbbe985440099c176">UnitRandom</a> &amp;&#160;</td>
+          <td class="paramname"><em>nextUnit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>defaultOnChances</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Same as select(nextUnit), but uses defaultOnChances (one per modifier, in configured order) instead of each modifier's compiled Default ON chance. Exceptions still take precedence. This supports Default ON values that change over time. A size mismatch throws std::invalid_argument; a chance outside [0, 1] throws std::domain_error. </p>
+
+<p class="definition">Definition at line <a class="el" href="ModifierUsage_8cpp_source.html#l00148">148</a> of file <a class="el" href="ModifierUsage_8cpp_source.html">ModifierUsage.cpp</a>.</p>
 
 </div>
 </div>
@@ -336,7 +369,7 @@ Friends</h2></td></tr>
 <p>Invalid configurations return diagnostics and no <a class="el" href="classdissco_1_1modifier__usage_1_1Program.html">Program</a>. <a class="el" href="structdissco_1_1modifier__usage_1_1Rule.html">Rule</a> order has no semantic effect: the most-specific matching rule wins. Two rules of equal specificity that can match the same history are rejected as ambiguous.</p>
 <p>Exact overall-usage calculation is exponential in the number of modifiers in the worst case, as required for arbitrary dependencies on earlier decisions. Runtime callers should select <a class="el" href="namespacedissco_1_1modifier__usage.html#a1282e634eaa434d5473ffa071ce248dba72ef2b9b6965d078e3c7f95487a82d1c">OverallUsageMode::Skip</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="ModifierUsage_8cpp_source.html#l00208">208</a> of file <a class="el" href="ModifierUsage_8cpp_source.html">ModifierUsage.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ModifierUsage_8cpp_source.html#l00234">234</a> of file <a class="el" href="ModifierUsage_8cpp_source.html">ModifierUsage.cpp</a>.</p>
 
 </div>
 </div>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['scope_0',['scope',['../structdissco_1_1modifier__usage_1_1Program_1_1Impl.html#a9d08cc5edc8a60c05496f1849e0628d8',1,'dissco::modifier_usage::Program::Impl::scope'],['../structdissco_1_1modifier__usage_1_1Config.html#a274fe9f1e6cd4a4fe9312112f9ba127d',1,'dissco::modifier_usage::Config::scope']]],
+  ['scope_0',['scope',['../structBottom_1_1ModifierUsageRuntime.html#a019932ae291f984a91400f83bd375339',1,'Bottom::ModifierUsageRuntime::scope'],['../structdissco_1_1modifier__usage_1_1Program_1_1Impl.html#a9d08cc5edc8a60c05496f1849e0628d8',1,'dissco::modifier_usage::Program::Impl::scope'],['../structdissco_1_1modifier__usage_1_1Config.html#a274fe9f1e6cd4a4fe9312112f9ba127d',1,'dissco::modifier_usage::Config::scope']]],
   ['sievealigned_1',['sieveAligned',['../classEvent.html#a203c45a8b0f064a8f1537a2312cf9248',1,'Event']]],
   ['sieveeventnames_2',['sieveEventnames',['../classUtilities.html#aa3cf3cde3623bde8f028cb2f68caa32a',1,'Utilities']]],
   ['spatializationelement_3',['spatializationElement',['../classEvent.html#a59ce688d3e31812a12ef8a899ef9efb0',1,'Event']]],

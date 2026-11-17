@@ -16,26 +16,26 @@
 <area shape="poly" id="edge100_Node000001_Node000045" title=" " alt="" coords="56,1553,81,1436,107,1345,142,1242,190,1132,250,1025,285,973,324,925,366,880,413,841,477,801,548,772,619,753,685,741,686,746,620,758,550,777,480,806,416,845,370,884,328,928,289,976,254,1027,194,1135,147,1244,112,1347,86,1438,61,1555"/>
 <area shape="rect" id="Node000057" href="$classUtilities.html#ab6db39514c8879ef56f09da59a0c22bd" title=" " alt="" coords="700,315,893,341"/>
 <area shape="poly" id="edge96_Node000001_Node000057" title=" " alt="" coords="54,1554,60,1347,75,1000,88,819,104,658,125,535,137,493,152,467,222,447,377,413,719,341,721,346,378,418,223,453,155,471,142,495,130,536,109,659,93,820,80,1000,65,1347,60,1554"/>
-<area shape="rect" id="Node000067" href="$structPieceHelper.html#a83d099d9ffdc29cf83935b927d172aa0" title="Creates the score files directory if it does not exist." alt="" coords="167,1739,353,1779"/>
-<area shape="poly" id="edge87_Node000001_Node000067" title=" " alt="" coords="63,1579,75,1608,94,1647,121,1688,155,1723,165,1730,162,1735,152,1727,117,1691,90,1650,70,1610,58,1580"/>
-<area shape="rect" id="Node000070" href="$structPieceHelper.html#abfe0ff1bd5655dfcdd27a11bba4248eb" title="Creates the sound files directory if it does not exist." alt="" coords="165,1575,355,1615"/>
-<area shape="poly" id="edge90_Node000001_Node000070" title=" " alt="" coords="106,1571,152,1577,151,1582,105,1576"/>
-<area shape="rect" id="Node000071" href="$classUtilities.html#abdaf48bb2075a2c263f419b5367a84c9" title=" " alt="" coords="183,1639,337,1665"/>
-<area shape="poly" id="edge92_Node000001_Node000071" title=" " alt="" coords="75,1577,111,1601,154,1624,179,1633,177,1638,152,1629,108,1606,72,1582"/>
-<area shape="rect" id="Node000072" href="$classOutput.html#ac19bb7ff37b8722ba903c26985e1c045" title=" " alt="" coords="210,1689,310,1714"/>
-<area shape="poly" id="edge95_Node000001_Node000072" title=" " alt="" coords="66,1578,101,1625,126,1652,155,1674,197,1690,195,1695,152,1678,122,1656,97,1629,62,1581"/>
-<area shape="rect" id="Node000073" href="$classPiece.html#a246df0480298dd8da7a13bf184d0dd6a" title="Gets the next available sound file." alt="" coords="170,1951,350,1977"/>
-<area shape="poly" id="edge97_Node000001_Node000073" title=" " alt="" coords="61,1579,71,1653,91,1762,119,1869,136,1911,155,1938,160,1942,156,1946,151,1942,132,1913,114,1871,86,1763,66,1654,56,1580"/>
-<area shape="rect" id="Node000075" href="$structPieceHelper.html#aea3dda5c3a4ff96dedd59159a85053c0" title="Converts a seed string into a seed number." alt="" coords="153,1803,367,1829"/>
-<area shape="poly" id="edge101_Node000001_Node000075" title=" " alt="" coords="61,1579,68,1620,85,1677,113,1738,132,1765,155,1789,163,1795,160,1799,152,1793,128,1768,108,1740,80,1679,63,1621,56,1580"/>
-<area shape="rect" id="Node000076" href="$classOutput.html#a948eb6bf60063432e8eb7127feb48adf" title=" " alt="" coords="195,1853,325,1878"/>
-<area shape="poly" id="edge102_Node000001_Node000076" title=" " alt="" coords="60,1579,64,1628,78,1699,90,1737,107,1775,128,1809,155,1839,182,1855,180,1860,152,1843,124,1813,102,1777,85,1739,73,1700,59,1629,54,1580"/>
-<area shape="rect" id="Node000077" href="$classNote.html#a6e1a38b045f9de544534ebc01db170b3" title=" " alt="" coords="199,1902,321,1927"/>
-<area shape="poly" id="edge103_Node000001_Node000077" title=" " alt="" coords="59,1579,61,1636,72,1720,84,1766,101,1811,124,1853,155,1889,170,1899,186,1906,184,1911,167,1904,152,1893,120,1856,96,1813,79,1767,67,1721,55,1637,54,1580"/>
-<area shape="rect" id="Node000078" href="$classPiece.html#a771d0080316cc04a12286560bb697355" title=" " alt="" coords="471,1474,565,1499"/>
-<area shape="poly" id="edge104_Node000001_Node000078" title=" " alt="" coords="76,1551,111,1533,153,1516,234,1498,317,1488,457,1483,457,1488,317,1494,235,1504,154,1521,113,1537,78,1556"/>
-<area shape="rect" id="Node000079" href="$classRandom.html#ad80943e1cb4b0a912cb7782597e9ec20" title=" " alt="" coords="202,2001,318,2026"/>
-<area shape="poly" id="edge108_Node000001_Node000079" title=" " alt="" coords="60,1579,69,1662,88,1785,101,1849,116,1908,134,1956,155,1987,171,1999,189,2006,187,2011,168,2004,151,1991,130,1958,111,1910,95,1851,82,1786,64,1662,55,1580"/>
+<area shape="rect" id="Node000068" href="$structPieceHelper.html#a83d099d9ffdc29cf83935b927d172aa0" title="Creates the score files directory if it does not exist." alt="" coords="167,1739,353,1779"/>
+<area shape="poly" id="edge87_Node000001_Node000068" title=" " alt="" coords="63,1579,75,1608,94,1647,121,1688,155,1723,165,1730,162,1735,152,1727,117,1691,90,1650,70,1610,58,1580"/>
+<area shape="rect" id="Node000071" href="$structPieceHelper.html#abfe0ff1bd5655dfcdd27a11bba4248eb" title="Creates the sound files directory if it does not exist." alt="" coords="165,1575,355,1615"/>
+<area shape="poly" id="edge90_Node000001_Node000071" title=" " alt="" coords="106,1571,152,1577,151,1582,105,1576"/>
+<area shape="rect" id="Node000072" href="$classUtilities.html#abdaf48bb2075a2c263f419b5367a84c9" title=" " alt="" coords="183,1639,337,1665"/>
+<area shape="poly" id="edge92_Node000001_Node000072" title=" " alt="" coords="75,1577,111,1601,154,1624,179,1633,177,1638,152,1629,108,1606,72,1582"/>
+<area shape="rect" id="Node000073" href="$classOutput.html#ac19bb7ff37b8722ba903c26985e1c045" title=" " alt="" coords="210,1689,310,1714"/>
+<area shape="poly" id="edge95_Node000001_Node000073" title=" " alt="" coords="66,1578,101,1625,126,1652,155,1674,197,1690,195,1695,152,1678,122,1656,97,1629,62,1581"/>
+<area shape="rect" id="Node000074" href="$classPiece.html#a246df0480298dd8da7a13bf184d0dd6a" title="Gets the next available sound file." alt="" coords="170,1951,350,1977"/>
+<area shape="poly" id="edge97_Node000001_Node000074" title=" " alt="" coords="61,1579,71,1653,91,1762,119,1869,136,1911,155,1938,160,1942,156,1946,151,1942,132,1913,114,1871,86,1763,66,1654,56,1580"/>
+<area shape="rect" id="Node000076" href="$structPieceHelper.html#aea3dda5c3a4ff96dedd59159a85053c0" title="Converts a seed string into a seed number." alt="" coords="153,1803,367,1829"/>
+<area shape="poly" id="edge101_Node000001_Node000076" title=" " alt="" coords="61,1579,68,1620,85,1677,113,1738,132,1765,155,1789,163,1795,160,1799,152,1793,128,1768,108,1740,80,1679,63,1621,56,1580"/>
+<area shape="rect" id="Node000077" href="$classOutput.html#a948eb6bf60063432e8eb7127feb48adf" title=" " alt="" coords="195,1853,325,1878"/>
+<area shape="poly" id="edge102_Node000001_Node000077" title=" " alt="" coords="60,1579,64,1628,78,1699,90,1737,107,1775,128,1809,155,1839,182,1855,180,1860,152,1843,124,1813,102,1777,85,1739,73,1700,59,1629,54,1580"/>
+<area shape="rect" id="Node000078" href="$classNote.html#a6e1a38b045f9de544534ebc01db170b3" title=" " alt="" coords="199,1902,321,1927"/>
+<area shape="poly" id="edge103_Node000001_Node000078" title=" " alt="" coords="59,1579,61,1636,72,1720,84,1766,101,1811,124,1853,155,1889,170,1899,186,1906,184,1911,167,1904,152,1893,120,1856,96,1813,79,1767,67,1721,55,1637,54,1580"/>
+<area shape="rect" id="Node000079" href="$classPiece.html#a771d0080316cc04a12286560bb697355" title=" " alt="" coords="471,1474,565,1499"/>
+<area shape="poly" id="edge104_Node000001_Node000079" title=" " alt="" coords="76,1551,111,1533,153,1516,234,1498,317,1488,457,1483,457,1488,317,1494,235,1504,154,1521,113,1537,78,1556"/>
+<area shape="rect" id="Node000080" href="$classRandom.html#ad80943e1cb4b0a912cb7782597e9ec20" title=" " alt="" coords="202,2001,318,2026"/>
+<area shape="poly" id="edge108_Node000001_Node000080" title=" " alt="" coords="60,1579,69,1662,88,1785,101,1849,116,1908,134,1956,155,1987,171,1999,189,2006,187,2011,168,2004,151,1991,130,1958,111,1910,95,1851,82,1786,64,1662,55,1580"/>
 <area shape="rect" id="Node000004" href="$classOutput.html#a53ae23dec7bc003b82685f6b4b2ced5a" title=" " alt="" coords="978,1525,1190,1550"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="881,1535,964,1535,964,1540,881,1540"/>
 <area shape="rect" id="Node000005" href="$classOutput.html#a7851909132fca5c59e09e29a74fb9f3f" title=" " alt="" coords="1244,1474,1448,1499"/>
@@ -73,10 +73,10 @@
 <area shape="poly" id="edge59_Node000017_Node000051" title=" " alt="" coords="286,1269,414,1207,477,1176,479,1181,416,1212,289,1274"/>
 <area shape="rect" id="Node000056" href="$classEvent.html#a2f3dcdaf8fdd89f2df97ebbd79ee7348" title=" " alt="" coords="447,425,589,450"/>
 <area shape="poly" id="edge73_Node000017_Node000056" title=" " alt="" coords="263,1270,506,462,511,464,268,1272"/>
-<area shape="rect" id="Node000059" href="$classTempo.html#ac45512c78a773fc2ff58050dcba25614" title=" " alt="" coords="717,1574,876,1599"/>
-<area shape="poly" id="edge82_Node000017_Node000059" title=" " alt="" coords="266,1296,280,1348,307,1422,327,1461,352,1499,381,1533,416,1560,452,1579,491,1593,532,1602,573,1606,653,1606,722,1599,723,1604,653,1612,573,1612,531,1607,490,1598,450,1584,413,1565,378,1537,348,1502,323,1464,303,1424,275,1350,261,1298"/>
-<area shape="rect" id="Node000060" href="$classEvent.html#acd7ee684016dad7977e2080df82467d1" title=" " alt="" coords="431,1271,605,1297"/>
-<area shape="poly" id="edge83_Node000017_Node000060" title=" " alt="" coords="337,1281,417,1281,417,1287,337,1287"/>
+<area shape="rect" id="Node000060" href="$classTempo.html#ac45512c78a773fc2ff58050dcba25614" title=" " alt="" coords="717,1574,876,1599"/>
+<area shape="poly" id="edge82_Node000017_Node000060" title=" " alt="" coords="266,1296,280,1348,307,1422,327,1461,352,1499,381,1533,416,1560,452,1579,491,1593,532,1602,573,1606,653,1606,722,1599,723,1604,653,1612,573,1612,531,1607,490,1598,450,1584,413,1565,378,1537,348,1502,323,1464,303,1424,275,1350,261,1298"/>
+<area shape="rect" id="Node000061" href="$classEvent.html#acd7ee684016dad7977e2080df82467d1" title=" " alt="" coords="431,1271,605,1297"/>
+<area shape="poly" id="edge83_Node000017_Node000061" title=" " alt="" coords="337,1281,417,1281,417,1287,337,1287"/>
 <area shape="poly" id="edge20_Node000018_Node000004" title=" " alt="" coords="874,1447,925,1460,992,1487,1049,1516,1047,1520,990,1492,923,1465,873,1452"/>
 <area shape="rect" id="Node000019" href="$structOutputNode.html#a9d769b6e880ee4b57a3540abebb81bab" title=" " alt="" coords="991,1374,1177,1399"/>
 <area shape="poly" id="edge19_Node000018_Node000019" title=" " alt="" coords="867,1423,999,1399,1000,1404,868,1429"/>
@@ -143,18 +143,18 @@
 <area shape="poly" id="edge75_Node000056_Node000023" title=" " alt="" coords="589,429,678,426,777,427,866,436,900,446,926,459,944,478,955,497,961,516,962,536,963,579,967,603,974,628,1024,729,1069,807,1065,810,1019,732,970,630,961,604,958,580,957,537,955,517,950,499,940,481,922,463,899,451,865,442,776,432,678,431,590,435"/>
 <area shape="poly" id="edge77_Node000056_Node000028" title=" " alt="" coords="575,447,781,500,875,529,908,542,926,554,953,592,967,627,972,661,971,696,965,769,966,811,975,857,998,933,1026,1008,1073,1121,1069,1123,1021,1010,993,935,969,858,961,811,960,769,966,696,967,662,962,628,948,594,922,558,905,547,873,534,779,505,574,453"/>
 <area shape="poly" id="edge76_Node000056_Node000057" title=" " alt="" coords="575,422,620,403,634,392,643,381,653,369,668,358,705,342,707,347,671,362,656,373,647,384,638,396,623,408,577,427"/>
-<area shape="poly" id="edge84_Node000060_Node000018" title=" " alt="" coords="588,1294,623,1314,641,1337,648,1361,654,1383,671,1405,708,1424,706,1429,668,1409,649,1386,642,1362,636,1340,620,1318,585,1299"/>
-<area shape="poly" id="edge85_Node000060_Node000044" title=" " alt="" coords="586,1294,717,1319,716,1325,585,1299"/>
-<area shape="poly" id="edge86_Node000060_Node000059" title=" " alt="" coords="529,1295,624,1460,636,1490,642,1516,651,1538,671,1559,705,1576,703,1581,668,1563,646,1541,637,1517,631,1492,619,1462,525,1298"/>
-<area shape="rect" id="Node000068" href="$structPieceHelper.html#a28358171bf3acd8d2dbee00838a6b5ae" title="Lists contents of directory." alt="" coords="691,1849,903,1874"/>
-<area shape="poly" id="edge88_Node000067_Node000068" title=" " alt="" coords="354,1774,716,1843,715,1849,353,1779"/>
-<area shape="rect" id="Node000069" href="$structPieceHelper.html#a4d29c17a334bec68b78518ba32e62481" title="Ensures a path has a backslash on the end." alt="" coords="423,1686,613,1711"/>
-<area shape="poly" id="edge89_Node000067_Node000069" title=" " alt="" coords="346,1736,449,1712,450,1717,347,1741"/>
-<area shape="poly" id="edge91_Node000070_Node000069" title=" " alt="" coords="337,1612,368,1624,392,1639,416,1655,469,1679,467,1683,413,1660,389,1644,365,1629,336,1617"/>
-<area shape="rect" id="Node000074" href="$structPieceHelper.html#ac1627097c7b14e54837fde3adf6f9d92" title="Checks to see if a file exists." alt="" coords="421,1913,615,1938"/>
-<area shape="poly" id="edge98_Node000073_Node000074" title=" " alt="" coords="345,1949,419,1937,420,1943,346,1954"/>
-<area shape="poly" id="edge99_Node000074_Node000068" title=" " alt="" coords="574,1910,726,1875,727,1880,575,1915"/>
-<area shape="poly" id="edge106_Node000078_Node000003" title=" " alt="" coords="566,1493,713,1520,712,1525,565,1498"/>
-<area shape="poly" id="edge105_Node000078_Node000018" title=" " alt="" coords="565,1476,708,1451,709,1456,566,1481"/>
-<area shape="poly" id="edge107_Node000078_Node000042" title=" " alt="" coords="566,1484,704,1485,704,1490,566,1490"/>
+<area shape="poly" id="edge84_Node000061_Node000018" title=" " alt="" coords="588,1294,623,1314,641,1337,648,1361,654,1383,671,1405,708,1424,706,1429,668,1409,649,1386,642,1362,636,1340,620,1318,585,1299"/>
+<area shape="poly" id="edge85_Node000061_Node000044" title=" " alt="" coords="586,1294,717,1319,716,1325,585,1299"/>
+<area shape="poly" id="edge86_Node000061_Node000060" title=" " alt="" coords="529,1295,624,1460,636,1490,642,1516,651,1538,671,1559,705,1576,703,1581,668,1563,646,1541,637,1517,631,1492,619,1462,525,1298"/>
+<area shape="rect" id="Node000069" href="$structPieceHelper.html#a28358171bf3acd8d2dbee00838a6b5ae" title="Lists contents of directory." alt="" coords="691,1849,903,1874"/>
+<area shape="poly" id="edge88_Node000068_Node000069" title=" " alt="" coords="354,1774,716,1843,715,1849,353,1779"/>
+<area shape="rect" id="Node000070" href="$structPieceHelper.html#a4d29c17a334bec68b78518ba32e62481" title="Ensures a path has a backslash on the end." alt="" coords="423,1686,613,1711"/>
+<area shape="poly" id="edge89_Node000068_Node000070" title=" " alt="" coords="346,1736,449,1712,450,1717,347,1741"/>
+<area shape="poly" id="edge91_Node000071_Node000070" title=" " alt="" coords="337,1612,368,1624,392,1639,416,1655,469,1679,467,1683,413,1660,389,1644,365,1629,336,1617"/>
+<area shape="rect" id="Node000075" href="$structPieceHelper.html#ac1627097c7b14e54837fde3adf6f9d92" title="Checks to see if a file exists." alt="" coords="421,1913,615,1938"/>
+<area shape="poly" id="edge98_Node000074_Node000075" title=" " alt="" coords="345,1949,419,1937,420,1943,346,1954"/>
+<area shape="poly" id="edge99_Node000075_Node000069" title=" " alt="" coords="574,1910,726,1875,727,1880,575,1915"/>
+<area shape="poly" id="edge106_Node000079_Node000003" title=" " alt="" coords="566,1493,713,1520,712,1525,565,1498"/>
+<area shape="poly" id="edge105_Node000079_Node000018" title=" " alt="" coords="565,1476,708,1451,709,1456,566,1481"/>
+<area shape="poly" id="edge107_Node000079_Node000042" title=" " alt="" coords="566,1484,704,1485,704,1490,566,1490"/>
 </map>

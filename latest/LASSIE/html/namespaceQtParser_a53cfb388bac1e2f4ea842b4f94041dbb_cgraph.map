@@ -1,9 +1,11 @@
 <map id="QtParser::parseModifierUsage" name="QtParser::parseModifierUsage">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,42,220,67"/>
-<area shape="rect" id="Node000002" href="$namespaceModifierUsageImportPolicy.html#a1dd2cf0b505e0296f7c223526678790b" title=" " alt="" coords="288,5,487,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,41,274,35,275,40,221,46"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,70,220,95"/>
+<area shape="rect" id="Node000002" href="$namespaceModifierUsageImportPolicy.html#a17e94bf0dbb5a77d14740439b5a6dab6" title=" " alt="" coords="288,5,487,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,67,277,46,278,51,175,73"/>
 <area shape="rect" id="Node000003" href="$namespaceQtParser.html#abdf08e73a7103831369cd249c5e41d11" title=" " alt="" coords="268,70,507,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,63,255,66,254,72,220,68"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="220,80,254,80,254,85,220,85"/>
+<area shape="rect" id="Node000005" href="$namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="314,119,461,145"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="185,93,303,114,302,119,184,98"/>
 <area shape="rect" id="Node000004" href="$namespaceQtParser.html#af29915f8225de418d99395fca9bc08e5" title=" " alt="" coords="555,70,763,95"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="507,80,541,80,541,85,507,85"/>
 </map>

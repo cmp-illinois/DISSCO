@@ -37,7 +37,7 @@ var searchData=
   ['partialmodifierformat_2ehpp_34',['PartialModifierFormat.hpp',['../PartialModifierFormat_8hpp.html',1,'']]],
   ['partialresult_5fstring_35',['partialresult_string',['../structModifier.html#ab9c87e79fa62739a970f1381db57fa11',1,'Modifier']]],
   ['partialrowconstraint_36',['PartialRowConstraint',['../structModifierUiPolicy_1_1PartialRowConstraint.html',1,'ModifierUiPolicy']]],
-  ['partials_37',['partials',['../classPartials.html',1,'Partials'],['../classPartials.html#a648435da3ce592885949c4c7d2446d80',1,'Partials::Partials()'],['../structSpectrum.html#a213ae845ff07f22b4511db82be225b73',1,'Spectrum::partials']]],
+  ['partials_37',['partials',['../classPartials.html',1,'Partials'],['../structSpectrum.html#a213ae845ff07f22b4511db82be225b73',1,'Spectrum::partials'],['../classPartials.html#a648435da3ce592885949c4c7d2446d80',1,'Partials::Partials()']]],
   ['partials_2ecpp_38',['Partials.cpp',['../Partials_8cpp.html',1,'']]],
   ['partials_2ehpp_39',['Partials.hpp',['../Partials_8hpp.html',1,'']]],
   ['pasteevent_40',['pasteEvent',['../classProjectView.html#a06003d78ccc1ea4e24f855b7ac1e1ec4',1,'ProjectView']]],
