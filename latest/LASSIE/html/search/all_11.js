@@ -2,7 +2,7 @@ var searchData=
 [
   ['samplerate_0',['samplerate',['../classProjectManager.html#ad5d216dc054dc2222943ca56adf6d394',1,'ProjectManager']]],
   ['samplesize_1',['samplesize',['../classProjectManager.html#a7aec9c50607113bf15792f1f3712f068',1,'ProjectManager']]],
-  ['samplingscopevisible_2',['samplingScopeVisible',['../namespaceModifierUiPolicy.html#a73f059181ee6c2caea54dcfa12a79d6a',1,'ModifierUiPolicy']]],
+  ['samplingscopevisible_2',['samplingScopeVisible',['../namespaceModifierUiPolicy.html#a0478935566e785c84db3724bc16c4f2f',1,'ModifierUiPolicy']]],
   ['save_3',['save',['../classProjectView.html#a2ccc2bcbd3fa20e55c9322e347da55e2',1,'ProjectView::save()'],['../namespaceNoteModifierSelection.html#a20d3108c5971f0faac81eda46b8c1159',1,'NoteModifierSelection::save()'],['../classProjectManager.html#aaf9a8076462e433a795d74678d8e2798',1,'ProjectManager::save(Project *)']]],
   ['saveas_4',['saveAs',['../classProjectManager.html#a4dfcbfc0e5d38aee067e573ad02ee30f',1,'ProjectManager']]],
   ['savemodifiertobackend_5',['saveModifierToBackend',['../classModifiers.html#a236532091cbc41fd513c6e22106eea26',1,'Modifiers']]],
