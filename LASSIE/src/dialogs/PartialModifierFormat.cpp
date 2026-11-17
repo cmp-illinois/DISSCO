@@ -221,6 +221,7 @@ QString PartialModifierFormat::validationError(int modifierType,
         case 0: // Tremolo
         case 1: // Vibrato
         case 7: // Phase Modulation
+        case 8: //Ring Modulation
             error = require(value.magnitude, "Magnitude");
             if (error.isEmpty())
                 error = require(value.rate, "Rate");

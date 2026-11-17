@@ -60,6 +60,9 @@ ParameterPresentation presentationFor(int modifierType)
     case 7:
         return {QObject::tr("Magnitude (cycle depth):"), QString(),
                 QObject::tr("Rate (Hz):"), true, false, true};
+    case 8: 
+        return {QObject::tr("Magnitude (depth):"), QString(),
+                QObject::tr("Rate (Hz):"), true, false, true};
     default:
         return {QObject::tr("Magnitude:"), QObject::tr("Width:"),
                 QObject::tr("Rate:"), true, true, true};

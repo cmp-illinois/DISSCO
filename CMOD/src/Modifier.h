@@ -26,7 +26,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 /**
  * @file Modifier.h
- * @brief Per-note synthesis modifier (tremolo, vibrato, bend, etc.).
+ * @brief Per-note synthesis modifier (tremolo, vibrato, ring_mod, bend, etc.).
  *
  * Modifiers are attached to Bottom events and reshape the rendered sound
  * after a Note has been chosen. Each Modifier carries a type tag, an
@@ -45,7 +45,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 class Modifier {
   private:
-    string type;      // TREMOLO, VIBRATO, BEND, etc
+    string type;      // TREMOLO, VIBRATO, BEND, RING_MOD, etc
     string applyHow;  // SOUND or PARTIAL
     Envelope* probEnv;
     double spread;

@@ -222,8 +222,8 @@ void Modifier::applyModifier(Sound* snd) {
 //----------------------------------------------------------------------------//
 
 void Modifier::applyModSound(Sound* snd) {
-  if (type == "FREQUENCY" || type == "GLISSANDO"
-      || type == "BEND") {
+  if (type == "FREQUENCY" || type == "GLISSANDO" 
+    || type == "BEND") {
     snd->setPartialParam(FREQ_ENV, *(env_values[0]));
   } else if (type == "TREMOLO") {
     snd->setPartialParam(TREMOLO_AMP, *(env_values[0]));
@@ -243,6 +243,16 @@ void Modifier::applyModSound(Sound* snd) {
     // Legacy single-envelope phase modifier: retain source compatibility,
     // but treat it as the fixed carrier offset rather than PM.
     snd->setPartialParam(CARRIER_PHASE, *(env_values[0]));
+  } else if (type == "RING_MOD") {
+    if (env_values.size() < 2 ||
+        env_values[0] == NULL || env_values[1] == NULL) {
+        cerr << "WARNING: RING_MOD requires magnitude and rate "
+                "envelopes; modifier skipped."
+             << endl;
+        return;
+    }
+    snd->setPartialParam(RING_MOD_AMP, *(env_values[0]));
+    snd->setPartialParam(RING_MOD_RATE, *(env_values[1]));
   } else if (type == "AMPTRANS") {
     snd->setPartialParam(AMPTRANS_AMP_ENV, *(env_values[0]));
     snd->setPartialParam(AMPTRANS_RATE_ENV, *(env_values[1]));
@@ -300,6 +310,21 @@ void Modifier::applyModPartial(Sound* snd) {
     env_values.pop_front();
   } else if (type == "PHASE") {
     snd->get(partialNum).setParam(CARRIER_PHASE, *(env_values.front()));
+    delete env_values.front();
+    env_values.pop_front();
+  } else if (type == "RING_MOD") {
+    if (env_values.size() < 2 ||
+        env_values[0] == NULL || env_values[1] == NULL) {
+        cerr << "WARNING: RING_MOD requires magnitude and rate "
+                "envelopes; modifier skipped."
+             << endl;
+        return;
+    }
+
+    snd->get(partialNum).setParam(RING_MOD_AMP, *(env_values.front()));
+    delete env_values.front();
+    env_values.pop_front();
+    snd->get(partialNum).setParam(RING_MOD_RATE, *(env_values.front()));
     delete env_values.front();
     env_values.pop_front();
   } else if (type == "AMPTRANS") {

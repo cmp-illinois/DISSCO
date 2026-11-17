@@ -92,6 +92,7 @@ inline QString displayName(int modifierType)
     case 5: return QStringLiteral("Frequency Transient");
     case 6: return QStringLiteral("Wave Type");
     case 7: return QStringLiteral("Phase Modulation");
+    case 8: return QStringLiteral("Ring Modulation");
     default: return QStringLiteral("Unknown Modifier");
     }
 }
@@ -156,7 +157,7 @@ inline bool rowCountAllowed(const PartialRowConstraint& constraint,
 // partial-result string.
 inline bool soundFieldApplies(int modifierType, int field)
 {
-    static constexpr bool fields[8][7] = {
+    static constexpr bool fields[9][7] = {
         /* TREMOLO   */ { true,  true,  false, false, false, false, false },
         /* VIBRATO   */ { true,  true,  false, false, false, false, false },
         /* GLISSANDO */ { true,  false, false, false, false, false, false },
@@ -165,15 +166,16 @@ inline bool soundFieldApplies(int modifierType, int field)
         /* FREQTRANS */ { true,  true,  true,  false, false, false, false },
         /* WAVE_TYPE */ { true,  false, false, false, false, false, false },
         /* PHASE_MOD */ { true,  true,  false, false, false, false, false },
+        /* RING_MOD  */ { true,  true,  false, false, false, false, false }
     };
-    if (modifierType < 0 || modifierType >= 8 || field < 0 || field >= fieldCount)
+    if (modifierType < 0 || modifierType >= 9 || field < 0 || field >= fieldCount)
         return false;
     return field < 6 && fields[modifierType][field];
 }
 
 inline bool fieldVisible(int modifierType, int field, bool applyByPartial)
 {
-    if (modifierType < 0 || modifierType >= 8 || field < 0 || field >= fieldCount)
+    if (modifierType < 0 || modifierType >= 9 || field < 0 || field >= fieldCount)
         return false;
     if (field == 6)
         return applyByPartial;

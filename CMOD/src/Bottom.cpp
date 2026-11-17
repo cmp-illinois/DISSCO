@@ -1788,13 +1788,13 @@ void Bottom::applyModifierUsage(Sound *s, int numPartials) {
 
     const string typeExpression = XMLTC(modifierElement.child("Type"));
     const double typeValue = utilities->evaluate(typeExpression, this);
-    if (!std::isfinite(typeValue) || typeValue < 0 || typeValue > 7
+    if (!std::isfinite(typeValue) || typeValue < 0 || typeValue > 8
         || std::floor(typeValue) != typeValue) {
       std::ostringstream value;
       value << typeValue;
       runtimeError("modifier '" + usageId + "' has invalid Type " + value.str()
                    + " (expression: " + typeExpression + "); choose an integer type "
-                     "from 0 (TREMOLO) through 7 (PHASE_MOD).");
+                     "from 0 (TREMOLO) through 8 (RING_MOD).");
     }
     const int modTypeCode = static_cast<int>(typeValue);
     string modType;
@@ -1807,10 +1807,11 @@ void Bottom::applyModifierUsage(Sound *s, int numPartials) {
       case 5: modType = "FREQTRANS"; break;
       case 6: modType = "WAVE_TYPE"; break;
       case 7: modType = "PHASE_MOD"; break;
+      case 8: modType = "RING_MOD"; break;
       default:
         runtimeError("modifier '" + usageId
                      + "' has unknown Type " + std::to_string(modTypeCode)
-                     + "; choose a modifier type from 0 (TREMOLO) through 7 (PHASE_MOD).");
+                     + "; choose a modifier type from 0 (TREMOLO) through 8 (RING_MOD).");
         continue;
     }
 
@@ -1911,7 +1912,7 @@ void Bottom::applyModifierUsage(Sound *s, int numPartials) {
 
       int requiredEnvelopeCount = 0;
       if (modType == "TREMOLO" || modType == "VIBRATO"
-          || modType == "PHASE_MOD") {
+          || modType == "PHASE_MOD" || modType == "RING_MOD") {
         requiredEnvelopeCount = 2;
       } else if (modType == "GLISSANDO" || modType == "WAVE_TYPE") {
         requiredEnvelopeCount = 1;
@@ -2027,7 +2028,7 @@ void Bottom::applyModifierUsage(Sound *s, int numPartials) {
 
       int requiredEnvelopeCount = 0;
       if (modType == "TREMOLO" || modType == "VIBRATO"
-          || modType == "PHASE_MOD") {
+          || modType == "PHASE_MOD" || modType == "RING_MOD") {
         requiredEnvelopeCount = 2;
       } else if (modType == "GLISSANDO" || modType == "WAVE_TYPE") {
         requiredEnvelopeCount = 1;

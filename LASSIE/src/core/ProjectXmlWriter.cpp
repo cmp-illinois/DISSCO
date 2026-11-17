@@ -35,7 +35,7 @@ void writeDomNode(QXmlStreamWriter& writer, const QDomNode& node)
 QString activeModifierField(const Modifier& modifier, int fieldIndex)
 {
     // Columns: amplitude, rate, width, spread, direction, velocity.
-    static constexpr bool fields[8][6] = {
+    static constexpr bool fields[9][6] = {
         /* TREMOLO   */ { true,  true,  false, false, false, false },
         /* VIBRATO   */ { true,  true,  false, false, false, false },
         /* GLISSANDO */ { true,  false, false, false, false, false },
@@ -44,9 +44,10 @@ QString activeModifierField(const Modifier& modifier, int fieldIndex)
         /* FREQTRANS */ { true,  true,  true,  false, false, false },
         /* WAVE_TYPE */ { true,  false, false, false, false, false },
         /* PHASE_MOD */ { true,  true,  false, false, false, false },
+        /* RING_MOD  */ { true,  true,  false, false, false, false }
     };
 
-    if (modifier.type >= 8 || fieldIndex < 0 || fieldIndex >= 6
+    if (modifier.type >= 9 || fieldIndex < 0 || fieldIndex >= 6
         || !fields[modifier.type][fieldIndex]) {
         return {};
     }

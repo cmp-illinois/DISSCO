@@ -54,7 +54,8 @@ enum class ModifierType {
   modifierAmptrans = 4,
   modifierFreqtrans = 5,
   modifierWave_type = 6,
-  modifierPhaseMod = 7
+  modifierPhaseMod = 7,
+  modifierRingModulation = 8
 };
 
 /**

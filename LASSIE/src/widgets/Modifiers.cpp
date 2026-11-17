@@ -16,7 +16,7 @@
 namespace {
 
 // Display order differs from the stable integer codes serialized for CMOD.
-constexpr int modifierTypesByDisplayOrder[] = {0, 1, 2, 3, 7, 4, 5, 6};
+constexpr int modifierTypesByDisplayOrder[] = {0, 1, 2, 3, 7, 8, 4, 5, 6};
 constexpr int modifierTypeCount =
     sizeof(modifierTypesByDisplayOrder) / sizeof(modifierTypesByDisplayOrder[0]);
 

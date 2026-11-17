@@ -97,6 +97,7 @@ void validateEffectParameters(const Modifier& modifier,
     case 0: // Tremolo
     case 1: // Vibrato
     case 7: // Phase Modulation
+    case 8: //Ring Modulation
         require(modifier.amplitude, QObject::tr("Magnitude"));
         require(modifier.rate, QObject::tr("Rate"));
         break;

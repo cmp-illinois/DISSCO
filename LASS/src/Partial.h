@@ -88,6 +88,13 @@ enum PartialStaticParam
 *		- The depth of phase modulation, expressed as a normalized cycle.
 *	- PHASE_RATE_ENV
 *		- The phase-modulation oscillator rate, expressed in Hz.
+*   - RING_MOD_AMP
+*       - The amplitude of the ring modulation sine wave.
+*       - Given as a scaling factor: 0 produces silence; 1 gives
+*         a multiplier ranging from -1 to +1.
+*   - RING_MOD_RATE
+*       - The frequency of the ring modulation sine wave.
+*       - Given in Hz.
 *	- FREQUENCY_DEVIATION ****Commmented out (i.e. not used anywhere, but can be put back in)*****
 *		- Specifies how randomly scaled the frequencies
 *		  of this partial will be.
@@ -160,7 +167,9 @@ enum PartialDynamicParam
     AMPTRANS_WIDTH,
     FREQTRANS_WIDTH,
     PHASE_AMP_ENV,
-    PHASE_RATE_ENV
+    PHASE_RATE_ENV,
+	RING_MOD_AMP,
+	RING_MOD_RATE
 };
 
 // the loudness routines will look at RELATIVE_AMPLITUDE, FREQUENCY,

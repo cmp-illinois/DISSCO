@@ -46,6 +46,8 @@ Partial::Partial()
     setParam(CARRIER_PHASE, 0.0);
     setParam(PHASE_AMP_ENV, 0.0);
     setParam(PHASE_RATE_ENV, 0.0);
+    setParam(RING_MOD_AMP, 0.0);
+    setParam(RING_MOD_RATE, 0.0);
     //setParam(GLISSANDO_ENV, 1.0); // (no gliss)
     setParam(FREQ_ENV, 1.0);  // nothing applied to change frequency
       setParam(DETUNING_ENV, 1.0); // (no detuning)            yes detuning ??
@@ -99,6 +101,8 @@ MultiTrack* Partial::render(int numChannels,
     getParam(PHASE).setDuration(duration);
     getParam(PHASE_AMP_ENV).setDuration(duration);
     getParam(PHASE_RATE_ENV).setDuration(duration);
+    getParam(RING_MOD_AMP).setDuration(duration);
+    getParam(RING_MOD_RATE).setDuration(duration);
     getParam(LOUDNESS_SCALAR).setDuration(duration);
     //getParam(FREQUENCY_DEVIATION).setDuration(duration);
     //getParam(GLISSANDO_ENV).setDuration(duration);
@@ -116,6 +120,8 @@ MultiTrack* Partial::render(int numChannels,
     getParam(VIBRATO_RATE).setSamplingRate(samplingRate);
     getParam(PHASE).setSamplingRate(samplingRate);
     getParam(PHASE_AMP_ENV).setSamplingRate(samplingRate);
+    getParam(RING_MOD_AMP).setSamplingRate(samplingRate);
+    getParam(RING_MOD_RATE).setSamplingRate(samplingRate);
     getParam(PHASE_RATE_ENV).setSamplingRate(samplingRate);
     getParam(LOUDNESS_SCALAR).setSamplingRate(samplingRate);
     //getParam(FREQUENCY_DEVIATION).setSamplingRate(samplingRate);
@@ -177,6 +183,8 @@ MultiTrack* Partial::render(int numChannels,
     ValIter phase_it = getParam(PHASE).valueIterator();
     ValIter phase_amp_it = getParam(PHASE_AMP_ENV).valueIterator();
     ValIter phase_rate_it = getParam(PHASE_RATE_ENV).valueIterator();
+    ValIter ring_mod_amp_it = getParam(RING_MOD_AMP).valueIterator();
+    ValIter ring_mod_rate_it = getParam(RING_MOD_RATE).valueIterator();
     ValIter loudnes_scalar_it = getParam(LOUDNESS_SCALAR).valueIterator();
     ValIter amptrans_width_it = getParam(AMPTRANS_WIDTH).valueIterator();
     ValIter freqtrans_width_it = getParam(FREQTRANS_WIDTH).valueIterator();
@@ -193,6 +201,7 @@ MultiTrack* Partial::render(int numChannels,
     m_value_type tremolo_phase = 0.0;
     m_value_type vibrato_phase = 0.0;
     m_value_type phase_mod_phase = 0.0;
+    m_value_type rm_phase = 0.0;
     m_value_type freq_phase = 0.0;
 
     // values used in the loop:
@@ -208,6 +217,7 @@ MultiTrack* Partial::render(int numChannels,
     m_value_type freqtrans_width = 0.0;
     m_time_type amptransprob;
     m_time_type freqtransprob;
+    m_value_type rm;
 
     srand(static_cast<unsigned int>(time(0)));
 
@@ -284,6 +294,16 @@ MultiTrack* Partial::render(int numChannels,
 
 	//apply transient modifier to amplitude
 	amplitude = amplitude + amptransient*amplitude;
+
+
+  //Ring Modulation
+  const m_value_type rm_amp = ring_mod_amp_it.next();
+  rm = static_cast<m_value_type>(rm_amp * sin(2.0 * M_PI * rm_phase));
+  rm_phase = pmod( rm_phase + (ring_mod_rate_it.next() / samplingRate) );
+
+	// Apply ring modulation to the amplitude already calculated above.
+      amplitude = static_cast<m_value_type>(amplitude * ((1.0 - rm_amp) + rm));
+
 
 
 	// FREQUENCY:
@@ -519,6 +539,14 @@ void Partial::xml_print( ofstream& xmlOutput, list<Reverb*>& revObjs, list<Dynam
 	getParam(PHASE_RATE_ENV).xml_print( xmlOutput, dynObjs );
 	xmlOutput << "\t\t\t</phase_rate_env>" << endl;
 
+  	xmlOutput << "\t\t\t<ring_mod_amp>" << endl;
+	getParam(RING_MOD_AMP).xml_print( xmlOutput, dynObjs );
+	xmlOutput << "\t\t\t</ring_mod_amp>" << endl;
+
+	xmlOutput << "\t\t\t<ring_mod_rate>" << endl;
+	getParam(RING_MOD_RATE).xml_print( xmlOutput, dynObjs );
+	xmlOutput << "\t\t\t</ring_mod_rate>" << endl;
+
 	//xmlOutput << "\t\t\t<frequency_deviation>" << endl;
 	//getParam(FREQUENCY_DEVIATION).xml_print( xmlOutput, dynObjs );
 	//xmlOutput << "\t\t\t</frequency_deviation>" << endl;
@@ -598,6 +626,10 @@ void Partial::xml_read(XmlReader::xmltag* partialtag, DISSCO_HASHMAP<m_xml_id_ty
 			auxLoadParam(PHASE_AMP_ENV,dvtag,dvHash);
 		else if(strcmp(dvtag->name,"phase_rate_env") == 0)
 			auxLoadParam(PHASE_RATE_ENV,dvtag,dvHash);
+		else if(strcmp(dvtag->name,"ring_mod_amp") == 0)
+			auxLoadParam(RING_MOD_AMP,dvtag,dvHash);
+		else if(strcmp(dvtag->name,"ring_mod_rate") == 0)
+			auxLoadParam(RING_MOD_RATE,dvtag,dvHash);
 		//else if(strcmp(dvtag->name,"frequency_deviation") == 0)
 		//auxLoadParam(FREQUENCY_DEVIATION,dvtag,dvHash);
 		//else if(strcmp(dvtag->name,"glissando_env") == 0)
