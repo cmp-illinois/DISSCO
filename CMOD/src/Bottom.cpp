@@ -777,6 +777,12 @@ void Bottom::setPartialSpectrum(Partial& part, int partNum, pugi::xml_node _elem
 //----------------------------------------------------------------------------//
 
 void Bottom::applySpatialization(Sound* s, int numPartials) {
+  // Spatialization is optional, like reverb and filter. Without it the sound
+  // is left unspatialized, which LASS already supports.
+  if (!spatializationElement
+      || Utilities::removeSpaces(XMLTC(spatializationElement)).empty()) {
+    return;
+  }
 
   pugi::xml_node SPAElement = utilities->evaluateSpa((void*) this); //this call will return a spa function, just in case users use "select" here.
 

@@ -75,9 +75,10 @@ inline bool usageSummaryVisible(Eventtype eventType)
     }
 }
 
-inline bool samplingScopeVisible(Eventtype eventType)
+// Sampling scope only matters once a Bottom has at least one modifier.
+inline bool samplingScopeVisible(Eventtype eventType, int modifierCount)
 {
-    return eventType == bottom;
+    return eventType == bottom && modifierCount > 0;
 }
 
 inline QString displayName(int modifierType)

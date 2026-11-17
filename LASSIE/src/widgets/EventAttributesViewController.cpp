@@ -604,10 +604,12 @@ void EventAttributesViewController::showCurrentEventData() {
     // Choose page based on type of currently shown event
     Eventtype type = m_curreventtype;
 
-    //  add (optional) after the text “spacialization”, “reverb”, “filter” on Hevents
-    bool isHEvent = (type == top || type == high || type == mid || type == low);
-    ui->spaLabel->setText(isHEvent ? "Spatialization (Optional):" : "Spatialization:");
-    ui->revLabel->setText(isHEvent ? "Reverb (Optional):" : "Reverb:");
+    // Spatialization, reverb, filter and modifiers are optional on every
+    // Top to Bottom event.
+    ui->spaLabel->setText(tr("Spatialization (Optional):"));
+    ui->revLabel->setText(tr("Reverb (Optional):"));
+    ui->filLabel->setText(tr("Filter (Optional):"));
+    ui->modifiersLabel->setText(tr("Modifiers (Optional):"));
     
     //qDebug() << "In showCurrentEventData saving " << type;
     switch(type) {
@@ -1410,9 +1412,7 @@ void EventAttributesViewController::updateModifierUsageSummary()
             : tr("each generated sound receives its own selection");
 
     if (!modifiers || modifiers->isEmpty()) {
-        showSummary(
-            tr("No modifiers yet. Add one below; %1.")
-                .arg(scopeDescription));
+        showSummary(tr("No modifiers yet. Add one below."));
         return;
     }
 
@@ -1474,8 +1474,9 @@ void EventAttributesViewController::updateModifierUsageUi()
 {
     ui->modifierUsageControls->setVisible(
         ModifierUiPolicy::usageSummaryVisible(m_curreventtype));
-    const bool showSamplingScope =
-        ModifierUiPolicy::samplingScopeVisible(m_curreventtype);
+    const QList<Modifier>* modifiers = currentModifierList();
+    const bool showSamplingScope = ModifierUiPolicy::samplingScopeVisible(
+        m_curreventtype, modifiers ? modifiers->size() : 0);
     ui->modifierSamplingScopeLabel->setVisible(showSamplingScope);
     ui->modifierSamplingScopeCombo->setVisible(showSamplingScope);
 
