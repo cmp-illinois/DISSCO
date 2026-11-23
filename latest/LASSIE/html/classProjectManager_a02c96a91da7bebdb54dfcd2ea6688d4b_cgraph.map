@@ -1,5 +1,5 @@
 <map id="ProjectManager::markModified" name="ProjectManager::markModified">
-<area shape="rect" id="Node000001" title="Mark the current project as having unsaved changes and emit dataModified()." alt="" coords="5,5,228,31"/>
-<area shape="rect" id="Node000002" href="$classProjectManager.html#ac3696b7040a19b457dc4e4d2dcbe3c11" title=" " alt="" coords="276,5,493,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,15,262,15,262,21,228,21"/>
+<area shape="rect" id="Node000001" title="Mark the current project as having unsaved changes and emit dataModified()." alt="" coords="5,5,227,33"/>
+<area shape="rect" id="Node000002" href="$classProjectManager.html#ac3696b7040a19b457dc4e4d2dcbe3c11" title=" " alt="" coords="275,5,491,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,17,262,19,257,19,227,22"/>
 </map>

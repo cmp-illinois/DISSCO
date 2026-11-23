@@ -19,13 +19,14 @@ var searchData=
   ['_7emultitrack_16',['~MultiTrack',['../classMultiTrack.html#a1d0d10c10c2122ffaabd57475c8136b6',1,'MultiTrack']]],
   ['_7epan_17',['~Pan',['../classPan.html#a35a83945980980b28c83f54ea5b72af4',1,'Pan']]],
   ['_7eparameterlib_18',['~ParameterLib',['../classParameterLib.html#a55e0c351e18040c53356db4dcf488ef2',1,'ParameterLib']]],
-  ['_7ereverb_19',['~Reverb',['../classReverb.html#ac346d0968d387c19fbfc2cb79c533250',1,'Reverb']]],
-  ['_7esound_20',['~Sound',['../classSound.html#a0907389078bf740be2a5763366ad3376',1,'Sound']]],
-  ['_7esoundsample_21',['~SoundSample',['../classSoundSample.html#ad382edfd59f3c068c0ec75840aef47ec',1,'SoundSample']]],
-  ['_7espatializer_22',['~Spatializer',['../classSpatializer.html#ab8ce14101ee86bac530bc605101db683',1,'Spatializer']]],
-  ['_7etagparam_23',['~tagparam',['../classXmlReader_1_1tagparam.html#a5a42d2436d590d47f7c26edf6689ce02',1,'XmlReader::tagparam']]],
-  ['_7etrack_24',['~Track',['../classTrack.html#a416e75e66accc8eb9e3fafc3e8555216',1,'Track']]],
-  ['_7exmlreader_25',['~XmlReader',['../classXmlReader.html#a8903e46b5682f43a291617886a9b1fbf',1,'XmlReader']]],
-  ['_7exmltag_26',['~xmltag',['../classXmlReader_1_1xmltag.html#a2613552daa9c51f226075d867880a5e5',1,'XmlReader::xmltag']]],
-  ['_7exmltagset_27',['~xmltagset',['../classXmlReader_1_1xmltagset.html#ab47764d4b60cc4e3d03fbac09666eb0f',1,'XmlReader::xmltagset']]]
+  ['_7epartial_19',['~Partial',['../classPartial.html#aed73743d537c94cc7abe0f578f6a23bb',1,'Partial']]],
+  ['_7ereverb_20',['~Reverb',['../classReverb.html#ac346d0968d387c19fbfc2cb79c533250',1,'Reverb']]],
+  ['_7esound_21',['~Sound',['../classSound.html#a0907389078bf740be2a5763366ad3376',1,'Sound']]],
+  ['_7esoundsample_22',['~SoundSample',['../classSoundSample.html#ad382edfd59f3c068c0ec75840aef47ec',1,'SoundSample']]],
+  ['_7espatializer_23',['~Spatializer',['../classSpatializer.html#ab8ce14101ee86bac530bc605101db683',1,'Spatializer']]],
+  ['_7etagparam_24',['~tagparam',['../classXmlReader_1_1tagparam.html#a5a42d2436d590d47f7c26edf6689ce02',1,'XmlReader::tagparam']]],
+  ['_7etrack_25',['~Track',['../classTrack.html#a416e75e66accc8eb9e3fafc3e8555216',1,'Track']]],
+  ['_7exmlreader_26',['~XmlReader',['../classXmlReader.html#a8903e46b5682f43a291617886a9b1fbf',1,'XmlReader']]],
+  ['_7exmltag_27',['~xmltag',['../classXmlReader_1_1xmltag.html#a2613552daa9c51f226075d867880a5e5',1,'XmlReader::xmltag']]],
+  ['_7exmltagset_28',['~xmltagset',['../classXmlReader_1_1xmltagset.html#ab47764d4b60cc4e3d03fbac09666eb0f',1,'XmlReader::xmltagset']]]
 ];

@@ -1,11 +1,11 @@
 <map id="LASSIE/src/dialogs/FunctionGenerator.hpp" name="LASSIE/src/dialogs/FunctionGenerator.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="125,5,298,45"/>
-<area shape="rect" id="Node000002" href="$lassie_8hpp.html" title="Project&#45;wide enum definitions for LASSIE." alt="" coords="5,93,105,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,48,92,89,89,85,173,43"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="129,93,203,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,47,182,83,177,80,198,44"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="228,93,288,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="225,44,246,80,242,83,220,47"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="312,93,383,119"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="245,43,317,84,314,89,243,48"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="125,5,297,50"/>
+<area shape="rect" id="Node000002" href="$lassie_8hpp.html" title="Project&#45;wide enum definitions for LASSIE." alt="" coords="5,98,105,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,50,95,93,92,88,167,51"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="129,98,202,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,49,182,86,178,82,197,52"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="227,98,286,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="224,48,244,85,239,84,222,53"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="310,98,379,126"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="247,48,313,90,308,90,246,53"/>
 </map>

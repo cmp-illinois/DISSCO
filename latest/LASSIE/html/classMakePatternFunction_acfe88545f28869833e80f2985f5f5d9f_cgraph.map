@@ -1,0 +1,15 @@
+<map id="MakePatternFunction::MakePatternFunction" name="MakePatternFunction::MakePatternFunction">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,65,171,110"/>
+<area shape="rect" id="Node000002" href="$classMultiEntryFunction.html#a192f702ddc83a30ad117252068513f24" title=" " alt="" coords="219,65,370,110"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,85,206,87,201,88,171,90"/>
+<area shape="rect" id="Node000003" href="$classFunctionWidget.html#aea5e13a6c630b4d9c8e0afdbbb9d73b3" title=" " alt="" coords="440,5,625,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="369,66,424,55,429,54,371,71"/>
+<area shape="rect" id="Node000004" href="$classFunctionEntryRow.html#a1ad1acac51bef6487d6dd874e3cfd1b7" title=" " alt="" coords="418,74,646,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="370,85,405,87,400,88,370,90"/>
+<area shape="rect" id="Node000007" href="$classFunctionWidget.html#a18e240ccf56093e61a9989420ec5155a" title=" " alt="" coords="426,126,638,154"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="370,101,454,122,448,122,370,107"/>
+<area shape="rect" id="Node000005" href="$classFunctionEntryRow.html#aae0dd4ec56f622e2582815125cf3124d" title=" " alt="" coords="694,65,895,110"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="647,85,682,88,676,88,647,90"/>
+<area shape="rect" id="Node000006" href="$classFunctionEntryRow.html#ae99dc4a98078640c9d4f49cf7d0d251b" title=" " alt="" coords="943,74,1166,102"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="895,85,930,88,925,88,895,90"/>
+</map>

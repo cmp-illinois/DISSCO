@@ -1,7 +1,7 @@
 <map id="Sound::getTotalDuration" name="Sound::getTotalDuration">
-<area shape="rect" id="Node000001" title=" " alt="" coords="165,31,344,56"/>
-<area shape="rect" id="Node000002" href="$classScore.html#a21eb4c3d1a905b6a64f4121805a271a7" title=" " alt="" coords="16,5,107,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,33,106,27,107,21,152,27"/>
-<area shape="rect" id="Node000003" href="$classSound.html#a4f246242d337ab7ef8a646f69f2a04ae" title=" " alt="" coords="5,55,117,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="152,59,118,63,117,58,152,53"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="165,32,342,60"/>
+<area shape="rect" id="Node000002" href="$classScore.html#a21eb4c3d1a905b6a64f4121805a271a7" title=" " alt="" coords="16,5,106,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,32,106,28,106,23,152,30"/>
+<area shape="rect" id="Node000003" href="$classSound.html#a4f246242d337ab7ef8a646f69f2a04ae" title=" " alt="" coords="5,57,117,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="147,60,117,66,117,61,152,59"/>
 </map>

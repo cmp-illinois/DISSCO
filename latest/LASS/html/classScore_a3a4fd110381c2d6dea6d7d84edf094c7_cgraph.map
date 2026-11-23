@@ -1,17 +1,23 @@
 <map id="Score::checkScoreMultiTrackLength" name="Score::checkScoreMultiTrackLength">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,71,212,111"/>
-<area shape="rect" id="Node000002" href="$classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d" title=" " alt="" coords="260,79,425,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,89,246,89,246,94,212,94"/>
-<area shape="rect" id="Node000003" href="$classTrack.html#a684dc87cb52830a8e9708973b230a9fa" title=" " alt="" coords="473,29,605,55"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="393,76,474,55,476,61,395,81"/>
-<area shape="rect" id="Node000007" href="$classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283" title=" " alt="" coords="480,79,599,104"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="426,89,466,89,466,94,426,94"/>
-<area shape="rect" id="Node000008" href="$classMultiTrack.html#a58628666119ee3c39068e41ef9430d1e" title=" " alt="" coords="478,128,601,153"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="395,101,476,122,474,127,393,107"/>
-<area shape="rect" id="Node000004" href="$classSoundSample.html#a53b3afff0865d19546b82beede0a4132" title=" " alt="" coords="653,5,840,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="605,32,640,28,640,33,606,37"/>
-<area shape="rect" id="Node000006" href="$classTrack.html#a3e7092c64e99d7c15280243167cacb06" title=" " alt="" coords="688,55,805,80"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="606,47,675,56,674,61,605,53"/>
-<area shape="rect" id="Node000005" href="$classSoundSample.html#a8fe1248c64570253ba40d68a75114057" title=" " alt="" coords="888,5,1115,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="840,15,874,15,874,21,840,21"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,153,212,198"/>
+<area shape="rect" id="Node000002" href="$classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d" title=" " alt="" coords="260,161,424,189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,173,247,175,241,176,212,178"/>
+<area shape="rect" id="Node000003" href="$classTrack.html#a684dc87cb52830a8e9708973b230a9fa" title=" " alt="" coords="488,83,619,110"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="376,158,471,121,490,117,495,115,473,126,378,163"/>
+<area shape="rect" id="Node000009" href="$classMultiTrack.html#ac63f602f0d8c705e33cfa71080346283" title=" " alt="" coords="495,135,612,162"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="424,162,482,157,477,158,425,167"/>
+<area shape="rect" id="Node000010" href="$classMultiTrack.html#a6b7b95de0cb774045f0bae131f3a7ba9" title=" " alt="" coords="472,187,635,214"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="425,182,459,189,454,189,425,188"/>
+<area shape="rect" id="Node000011" href="$classMultiTrack.html#a58628666119ee3c39068e41ef9430d1e" title=" " alt="" coords="492,239,615,266"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="379,187,473,223,496,234,490,233,471,228,378,192"/>
+<area shape="rect" id="Node000004" href="$classSoundSample.html#a53b3afff0865d19546b82beede0a4132" title=" " alt="" coords="683,31,870,58"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="616,79,702,62,697,63,617,85"/>
+<area shape="rect" id="Node000007" href="$classTrack.html#a3e7092c64e99d7c15280243167cacb06" title=" " alt="" coords="718,83,835,110"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="620,94,705,96,700,97,620,99"/>
+<area shape="rect" id="Node000008" href="$classTrack.html#a2922a37082e0f31c2872cf81c8b69e06" title=" " alt="" coords="728,135,825,162"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="616,108,715,134,710,134,616,114"/>
+<area shape="rect" id="Node000005" href="$classSoundSample.html#a8fe1248c64570253ba40d68a75114057" title=" " alt="" coords="918,5,1144,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="870,33,905,32,899,32,871,38"/>
+<area shape="rect" id="Node000006" href="$classSoundSample.html#afac3bd89adf1afa5c3d22c873cdf302e" title=" " alt="" coords="927,57,1134,85"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="870,52,914,58,909,59,870,57"/>
 </map>

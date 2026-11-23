@@ -1,10 +1,10 @@
 <map id="XmlReader::xmltag" name="XmlReader::xmltag">
-<area shape="rect" id="Node000001" title=" " alt="" coords="15,93,163,119"/>
-<area shape="rect" id="Node000003" href="$classXmlReader_1_1xmltagset.html" title=" " alt="" coords="5,183,173,209"/>
-<area shape="poly" id="edge4_Node000003_Node000001" title=" " alt="" coords="68,131,61,143,61,157,78,181,74,184,56,158,56,142,63,128"/>
-<area shape="rect" id="Node000002" href="$classXmlReader_1_1tagparam.html" title=" " alt="" coords="7,5,172,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,45,92,93,87,93,87,45"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="187,10,199,18,190,25,172,28,172,23,188,20,193,18,184,15"/>
-<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="87,169,87,119,92,119,92,169"/>
-<area shape="poly" id="edge5_Node000003_Node000003" title=" " alt="" coords="188,188,200,196,192,204,174,207,173,201,190,199,195,196,185,192"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="15,106,163,134"/>
+<area shape="rect" id="Node000003" href="$classXmlReader_1_1xmltagset.html" title=" " alt="" coords="5,216,173,244"/>
+<area shape="poly" id="edge4_Node000003_Node000001" title=" " alt="" coords="62,148,58,159,56,170,59,182,67,199,79,216,74,216,63,202,53,184,51,170,54,157,64,143"/>
+<area shape="rect" id="Node000002" href="$classXmlReader_1_1tagparam.html" title=" " alt="" coords="7,5,171,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,46,92,106,86,105,88,51"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="186,10,198,19,190,27,173,30,170,26,188,22,193,19,187,16"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="87,200,88,158,89,136,91,132,93,158,93,201"/>
+<area shape="poly" id="edge5_Node000003_Node000003" title=" " alt="" coords="189,220,199,230,191,239,173,243,173,238,189,235,194,230,187,225"/>
 </map>

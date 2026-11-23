@@ -1,5 +1,9 @@
 <map id="SPAChannel::removeChannelRequested" name="SPAChannel::removeChannelRequested">
-<area shape="rect" id="Node000001" title=" " alt="" coords="237,5,448,45"/>
-<area shape="rect" id="Node000002" href="$classSPAChannel.html#ae435759c86d7f3cb7539549db12179a3" title=" " alt="" coords="5,13,189,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,28,190,28,190,23,224,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="481,5,690,50"/>
+<area shape="rect" id="Node000002" href="$classSPAChannel.html#ae435759c86d7f3cb7539549db12179a3" title=" " alt="" coords="250,14,433,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="463,37,434,39,434,34,468,37"/>
+<area shape="poly" id="edge4_Node000002_Node000001" title=" " alt="" coords="449,16,483,19,478,19,449,21"/>
+<area shape="rect" id="Node000003" href="$classSPAChannel.html#af0d40b42e85816f51097973d7de89fdb" title=" " alt="" coords="5,5,202,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="231,37,202,39,202,34,236,37"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="217,16,252,19,246,19,217,21"/>
 </map>

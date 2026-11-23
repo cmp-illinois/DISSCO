@@ -1,62 +1,62 @@
 <map id="QtParser::parseBottomEventChildren" name="QtParser::parseBottomEventChildren">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,291,212,331"/>
-<area shape="rect" id="Node000002" href="$namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="1043,523,1217,549"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,329,184,391,221,427,262,459,325,505,377,537,433,562,507,583,585,596,665,602,746,601,824,595,965,574,1071,550,1072,555,966,579,824,600,746,606,665,607,585,602,506,588,431,567,375,542,322,509,258,463,218,431,180,395,124,333"/>
-<area shape="rect" id="Node000003" href="$namespaceQtParser.html#a571d780a01c558d8bdb88e943c240925" title=" " alt="" coords="269,197,449,222"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="158,288,313,225,315,230,160,293"/>
-<area shape="rect" id="Node000006" href="$namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="1029,224,1231,264"/>
-<area shape="poly" id="edge39_Node000001_Node000006" title=" " alt="" coords="128,288,184,237,220,208,259,182,324,143,377,116,433,97,506,80,566,70,614,66,662,70,722,80,825,107,924,143,1012,181,1081,215,1079,220,1010,186,922,148,823,112,721,85,661,75,614,72,567,75,507,85,434,102,379,121,326,148,261,186,223,212,188,241,132,292"/>
-<area shape="rect" id="Node000013" href="$namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="260,425,459,450"/>
-<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="151,328,322,416,320,421,148,333"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="450,204,562,208,699,224,771,240,842,261,911,288,976,323,1003,343,1027,366,1068,417,1099,468,1120,509,1115,512,1095,470,1064,420,1023,369,999,347,973,328,909,293,840,266,769,245,698,230,562,213,450,209"/>
-<area shape="rect" id="Node000004" href="$namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="769,383,975,423"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="373,220,427,275,465,307,508,332,569,357,633,374,697,386,756,394,755,399,696,392,632,379,567,362,505,337,462,311,423,279,369,224"/>
-<area shape="rect" id="Node000005" href="$namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="1331,215,1478,241"/>
-<area shape="poly" id="edge15_Node000003_Node000005" title=" " alt="" coords="449,201,507,199,712,194,872,193,1032,198,1238,209,1318,216,1317,221,1237,215,1032,203,872,198,712,199,507,204,450,206"/>
-<area shape="rect" id="Node000007" href="$namespaceQtParser.html#a56ec96ed6c93fec2529fa92dcdb5f351" title=" " alt="" coords="523,95,705,121"/>
-<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="384,194,439,167,506,138,551,122,553,127,508,142,441,171,386,199"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="933,380,1351,242,1353,248,935,385"/>
-<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="904,380,1083,269,1086,274,907,385"/>
-<area shape="rect" id="Node000008" href="$namespaceQtParser.html#a573d00e495962e6d43cb0136e1fbcaa0" title=" " alt="" coords="785,17,959,42"/>
-<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="656,93,816,43,817,49,658,98"/>
-<area shape="poly" id="edge14_Node000008_Node000005" title=" " alt="" coords="915,40,975,59,1023,75,1132,103,1179,116,1238,138,1311,172,1372,206,1370,211,1309,177,1236,142,1177,121,1130,108,1022,80,974,64,913,45"/>
-<area shape="rect" id="Node000009" href="$namespaceQtParser.html#a53cfb388bac1e2f4ea842b4f94041dbb" title=" " alt="" coords="1023,41,1237,66"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="960,35,1009,39,1009,45,959,40"/>
-<area shape="poly" id="edge13_Node000009_Node000005" title=" " alt="" coords="1187,64,1239,84,1282,112,1323,145,1384,203,1381,207,1319,149,1279,117,1236,89,1185,69"/>
-<area shape="rect" id="Node000010" href="$namespaceModifierUsageImportPolicy.html#a17e94bf0dbb5a77d14740439b5a6dab6" title=" " alt="" coords="1305,5,1504,45"/>
-<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="1237,40,1291,34,1292,39,1238,45"/>
-<area shape="rect" id="Node000011" href="$namespaceQtParser.html#abdf08e73a7103831369cd249c5e41d11" title=" " alt="" coords="1285,70,1524,95"/>
-<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="1238,62,1273,66,1272,71,1237,67"/>
-<area shape="rect" id="Node000012" href="$namespaceQtParser.html#af29915f8225de418d99395fca9bc08e5" title=" " alt="" coords="1572,70,1780,95"/>
-<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="1524,80,1558,80,1558,85,1524,85"/>
-<area shape="poly" id="edge17_Node000013_Node000004" title=" " alt="" coords="459,428,755,408,756,413,459,433"/>
-<area shape="poly" id="edge38_Node000013_Node000006" title=" " alt="" coords="366,423,386,393,417,353,458,314,505,283,569,258,636,240,705,227,774,220,904,218,1015,225,1015,231,904,223,774,226,706,233,638,245,571,263,508,288,461,318,421,357,390,396,370,426"/>
-<area shape="rect" id="Node000014" href="$namespaceQtParser.html#ad31f75c47a3863aa051c67b45a2350b4" title=" " alt="" coords="507,298,721,323"/>
-<area shape="poly" id="edge18_Node000013_Node000014" title=" " alt="" coords="385,422,574,327,576,332,387,427"/>
-<area shape="rect" id="Node000015" href="$namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3" title=" " alt="" coords="535,675,693,701"/>
-<area shape="poly" id="edge21_Node000013_Node000015" title=" " alt="" coords="375,448,509,583,591,663,587,667,505,587,371,452"/>
-<area shape="rect" id="Node000019" href="$namespaceQtParser.html#af0cdf6c8d3bf375e76aa058dbd5690d1" title=" " alt="" coords="511,450,717,475"/>
-<area shape="poly" id="edge29_Node000013_Node000019" title=" " alt="" coords="459,445,498,448,497,454,459,450"/>
-<area shape="rect" id="Node000020" href="$namespaceQtParser.html#a8be54a861c2c957a4a887f266ffea752" title=" " alt="" coords="532,499,696,525"/>
-<area shape="poly" id="edge32_Node000013_Node000020" title=" " alt="" coords="397,448,507,484,543,493,541,499,506,489,395,453"/>
-<area shape="rect" id="Node000021" href="$namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="527,549,701,574"/>
-<area shape="poly" id="edge35_Node000013_Node000021" title=" " alt="" coords="377,448,433,490,469,514,508,534,532,542,530,547,506,538,466,518,430,495,374,452"/>
-<area shape="poly" id="edge19_Node000014_Node000002" title=" " alt="" coords="722,308,782,313,847,324,914,342,976,368,1021,400,1061,438,1092,477,1116,510,1111,513,1088,480,1057,442,1018,404,973,373,912,347,846,329,781,318,721,313"/>
-<area shape="poly" id="edge20_Node000014_Node000004" title=" " alt="" coords="663,321,722,340,770,362,805,375,803,380,768,366,720,345,661,326"/>
-<area shape="poly" id="edge22_Node000015_Node000002" title=" " alt="" coords="693,682,826,666,901,650,974,628,1009,612,1044,593,1100,555,1103,559,1047,598,1012,617,976,633,902,655,827,671,693,687"/>
-<area shape="poly" id="edge28_Node000015_Node000005" title=" " alt="" coords="693,694,812,697,883,693,958,683,1033,666,1107,641,1175,605,1207,583,1235,558,1268,522,1297,481,1343,395,1375,315,1394,254,1399,255,1380,316,1348,398,1301,484,1272,525,1239,562,1210,587,1178,610,1109,646,1035,671,959,688,884,698,812,702,693,699"/>
-<area shape="rect" id="Node000016" href="$namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3" title=" " alt="" coords="785,751,959,777"/>
-<area shape="poly" id="edge23_Node000015_Node000016" title=" " alt="" coords="659,698,815,745,814,750,657,703"/>
-<area shape="poly" id="edge24_Node000016_Node000002" title=" " alt="" coords="888,749,973,679,1104,556,1108,560,976,683,891,753"/>
-<area shape="rect" id="Node000017" href="$event__struct_8hpp.html#a1eb2b768082eec56a45815689a721cd3" title="Convert a display string (e.g. &quot;Top&quot;, &quot;High&quot;) to the integer enum value as a string." alt="" coords="1037,801,1223,841"/>
-<area shape="poly" id="edge25_Node000016_Node000017" title=" " alt="" coords="931,774,1027,796,1026,801,929,779"/>
-<area shape="rect" id="Node000018" href="$namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="1040,751,1220,777"/>
-<area shape="poly" id="edge26_Node000016_Node000018" title=" " alt="" coords="959,761,1026,761,1026,767,959,767"/>
-<area shape="poly" id="edge27_Node000018_Node000005" title=" " alt="" coords="1205,749,1236,730,1282,674,1320,610,1348,542,1369,472,1383,406,1393,345,1400,254,1405,255,1398,345,1389,406,1374,474,1353,544,1324,613,1287,677,1239,734,1208,754"/>
-<area shape="poly" id="edge30_Node000019_Node000002" title=" " alt="" coords="718,470,841,484,975,503,1058,518,1057,523,974,508,840,489,717,475"/>
-<area shape="poly" id="edge31_Node000019_Node000004" title=" " alt="" coords="669,447,772,423,773,428,670,453"/>
-<area shape="poly" id="edge33_Node000020_Node000002" title=" " alt="" coords="696,513,1030,529,1030,534,696,518"/>
-<area shape="poly" id="edge34_Node000020_Node000004" title=" " alt="" coords="680,497,720,484,777,457,828,428,830,433,780,462,722,489,682,502"/>
-<area shape="poly" id="edge36_Node000021_Node000002" title=" " alt="" coords="702,554,1029,538,1030,544,702,560"/>
-<area shape="poly" id="edge37_Node000021_Node000004" title=" " alt="" coords="688,546,720,534,756,511,790,484,843,431,847,435,793,488,759,515,723,538,690,551"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,296,211,341"/>
+<area shape="rect" id="Node000002" href="$namespaceQtParser.html#a1c607189c29e0941542d67ce06688db6" title="Consume any remaining children of the element currently being read, advancing to its EndElement." alt="" coords="1039,534,1211,562"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,338,185,401,221,436,260,468,323,515,375,549,430,575,505,597,581,611,659,617,737,616,814,610,953,589,1063,566,1058,567,954,594,815,615,738,621,659,622,580,616,503,602,428,580,372,554,320,520,257,472,218,440,181,405,128,344"/>
+<area shape="rect" id="Node000003" href="$namespaceQtParser.html#a571d780a01c558d8bdb88e943c240925" title=" " alt="" coords="268,203,447,231"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,293,309,235,306,239,167,297"/>
+<area shape="rect" id="Node000006" href="$namespaceQtParser.html#a2bd311787418e867c53dc77117fc3db9" title=" " alt="" coords="1024,228,1226,273"/>
+<area shape="poly" id="edge39_Node000001_Node000006" title=" " alt="" coords="129,294,185,243,257,189,322,151,375,124,430,105,503,88,563,77,611,74,658,78,718,88,817,113,914,148,1000,185,1070,220,1065,221,998,190,912,153,816,118,717,93,657,83,611,79,564,83,505,93,432,110,377,129,325,155,260,194,188,247,134,297"/>
+<area shape="rect" id="Node000013" href="$namespaceQtParser.html#abcec34232af90241661ab2c936d01aed" title="Parse the shared &quot;HEvent core&quot; children of &lt;Event&gt;: from &lt;EventName&gt; through &lt;Filter&gt;...." alt="" coords="259,431,456,459"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="154,339,317,422,312,425,154,344"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="447,211,560,214,695,230,767,245,838,266,907,293,971,328,998,348,1022,371,1063,423,1094,475,1115,521,1110,519,1089,478,1058,426,1018,375,994,352,968,333,905,298,836,271,766,250,695,235,559,219,449,216"/>
+<area shape="rect" id="Node000004" href="$namespaceQtParser.html#a387efee55ea44adf6780ea1bffc18d68" title=" " alt="" coords="765,389,970,434"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="370,228,426,285,463,316,505,341,565,365,629,383,692,395,753,405,747,406,691,400,628,388,564,371,503,346,460,320,422,289,370,234"/>
+<area shape="rect" id="Node000005" href="$namespaceQtParser.html#ab06fb415401799718483a80844375996" title="Capture the inner content of the element currently at StartElement. Returns plain text for text&#45;only ..." alt="" coords="1326,222,1472,250"/>
+<area shape="poly" id="edge15_Node000003_Node000005" title=" " alt="" coords="446,207,504,204,709,197,868,195,1028,200,1232,213,1313,223,1308,224,1232,218,1027,206,868,201,709,202,504,209,449,212"/>
+<area shape="rect" id="Node000007" href="$namespaceQtParser.html#a56ec96ed6c93fec2529fa92dcdb5f351" title=" " alt="" coords="520,102,701,130"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="384,201,438,173,503,145,544,133,540,136,505,150,441,178,387,205"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="936,386,1342,254,1337,256,938,391"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="903,387,1072,283,1077,280,906,391"/>
+<area shape="rect" id="Node000008" href="$namespaceQtParser.html#a573d00e495962e6d43cb0136e1fbcaa0" title=" " alt="" coords="781,22,954,50"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="657,99,809,53,804,56,659,103"/>
+<area shape="poly" id="edge14_Node000008_Node000005" title=" " alt="" coords="914,47,1018,80,1127,109,1174,123,1233,145,1303,178,1364,214,1358,214,1300,183,1231,150,1172,128,1125,114,1017,85,915,53"/>
+<area shape="rect" id="Node000009" href="$namespaceQtParser.html#a53cfb388bac1e2f4ea842b4f94041dbb" title=" " alt="" coords="1018,43,1232,71"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="954,40,1005,46,999,48,955,45"/>
+<area shape="poly" id="edge13_Node000009_Node000005" title=" " alt="" coords="1184,69,1233,89,1276,117,1315,149,1377,211,1372,210,1312,153,1273,122,1231,94,1184,74"/>
+<area shape="rect" id="Node000010" href="$namespaceModifierUsageImportPolicy.html#a17e94bf0dbb5a77d14740439b5a6dab6" title=" " alt="" coords="1300,5,1497,50"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="1232,43,1287,39,1282,41,1233,48"/>
+<area shape="rect" id="Node000011" href="$namespaceQtParser.html#abdf08e73a7103831369cd249c5e41d11" title=" " alt="" coords="1280,74,1517,102"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="1232,66,1267,72,1262,73,1233,72"/>
+<area shape="rect" id="Node000012" href="$namespaceQtParser.html#af29915f8225de418d99395fca9bc08e5" title=" " alt="" coords="1565,74,1773,102"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="1517,85,1552,87,1547,88,1518,90"/>
+<area shape="poly" id="edge17_Node000013_Node000004" title=" " alt="" coords="456,436,752,418,747,421,457,441"/>
+<area shape="poly" id="edge38_Node000013_Node000006" title=" " alt="" coords="365,429,385,399,416,360,456,321,503,291,566,266,632,247,700,235,768,228,898,225,1011,234,1006,235,898,230,769,233,701,240,634,253,568,271,505,295,459,325,420,364,389,402,369,432"/>
+<area shape="rect" id="Node000014" href="$namespaceQtParser.html#ad31f75c47a3863aa051c67b45a2350b4" title=" " alt="" coords="504,304,717,332"/>
+<area shape="poly" id="edge18_Node000013_Node000014" title=" " alt="" coords="385,428,569,338,565,341,388,433"/>
+<area shape="rect" id="Node000015" href="$namespaceQtParser.html#a02b3427c7ac51e304c8a6e46e98576b3" title=" " alt="" coords="532,686,689,714"/>
+<area shape="poly" id="edge21_Node000013_Node000015" title=" " alt="" coords="372,457,506,598,585,675,580,675,502,602,371,462"/>
+<area shape="rect" id="Node000019" href="$namespaceQtParser.html#af0cdf6c8d3bf375e76aa058dbd5690d1" title=" " alt="" coords="508,456,713,484"/>
+<area shape="poly" id="edge29_Node000013_Node000019" title=" " alt="" coords="456,452,495,458,490,459,457,457"/>
+<area shape="rect" id="Node000020" href="$namespaceQtParser.html#a8be54a861c2c957a4a887f266ffea752" title=" " alt="" coords="529,508,692,536"/>
+<area shape="poly" id="edge32_Node000013_Node000020" title=" " alt="" coords="397,457,505,493,536,504,531,505,503,498,397,462"/>
+<area shape="rect" id="Node000021" href="$namespaceQtParser.html#a0a930180da8911c655bfd3dd7e83706b" title=" " alt="" coords="524,560,697,588"/>
+<area shape="poly" id="edge35_Node000013_Node000021" title=" " alt="" coords="375,456,431,501,467,525,505,545,526,555,520,556,503,550,464,529,428,505,374,462"/>
+<area shape="poly" id="edge19_Node000014_Node000002" title=" " alt="" coords="717,315,778,320,843,330,909,348,971,375,1016,406,1055,445,1087,485,1110,521,1105,520,1082,488,1051,449,1013,411,968,379,907,353,842,335,777,325,718,320"/>
+<area shape="poly" id="edge20_Node000014_Node000004" title=" " alt="" coords="663,330,718,348,766,368,799,383,794,383,764,373,716,353,664,335"/>
+<area shape="poly" id="edge22_Node000015_Node000002" title=" " alt="" coords="689,693,822,677,896,662,969,640,1037,606,1091,572,1096,570,1039,611,971,645,898,667,823,683,690,699"/>
+<area shape="poly" id="edge28_Node000015_Node000005" title=" " alt="" coords="689,705,808,709,879,705,954,696,1029,679,1102,654,1170,618,1201,596,1230,571,1263,535,1291,494,1337,408,1369,326,1388,267,1392,263,1374,328,1342,410,1296,497,1267,538,1234,575,1205,600,1173,623,1104,659,1030,684,955,701,880,710,808,714,689,711"/>
+<area shape="rect" id="Node000016" href="$namespaceQtParser.html#aa4986866630aa6d8569d6d6361a012b3" title=" " alt="" coords="781,762,954,790"/>
+<area shape="poly" id="edge23_Node000015_Node000016" title=" " alt="" coords="661,711,806,757,801,757,660,717"/>
+<area shape="poly" id="edge24_Node000016_Node000002" title=" " alt="" coords="886,759,968,691,1096,574,1101,572,971,695,888,764"/>
+<area shape="rect" id="Node000017" href="$event__struct_8hpp.html#a1eb2b768082eec56a45815689a721cd3" title="Convert a display string (e.g. &quot;Top&quot;, &quot;High&quot;) to the integer enum value as a string." alt="" coords="1032,813,1218,858"/>
+<area shape="poly" id="edge25_Node000016_Node000017" title=" " alt="" coords="930,787,1019,811,1014,810,930,793"/>
+<area shape="rect" id="Node000018" href="$namespaceQtParser.html#a372f5d21adb222d0915eb0e1ed6467c4" title="Advance to the next child StartElement and return its inner content. Returns an empty QString if no f..." alt="" coords="1035,762,1214,790"/>
+<area shape="poly" id="edge26_Node000016_Node000018" title=" " alt="" coords="955,773,1022,776,1017,776,955,778"/>
+<area shape="poly" id="edge27_Node000018_Node000005" title=" " alt="" coords="1204,759,1230,742,1277,686,1314,622,1342,554,1363,484,1377,417,1387,356,1395,267,1398,263,1392,357,1383,418,1368,486,1347,556,1319,624,1281,689,1234,746,1206,764"/>
+<area shape="poly" id="edge30_Node000019_Node000002" title=" " alt="" coords="713,478,837,493,970,513,1047,530,1042,530,969,518,836,499,714,484"/>
+<area shape="poly" id="edge31_Node000019_Node000004" title=" " alt="" coords="673,453,755,437,750,439,675,458"/>
+<area shape="poly" id="edge33_Node000020_Node000002" title=" " alt="" coords="692,524,1026,542,1021,544,693,529"/>
+<area shape="poly" id="edge34_Node000020_Node000004" title=" " alt="" coords="679,505,716,493,770,468,817,444,822,441,772,473,718,498,681,510"/>
+<area shape="poly" id="edge36_Node000021_Node000002" title=" " alt="" coords="697,567,1026,552,1021,554,698,573"/>
+<area shape="poly" id="edge37_Node000021_Node000004" title=" " alt="" coords="687,557,716,545,751,523,783,497,836,447,840,444,787,501,754,527,719,550,689,562"/>
 </map>

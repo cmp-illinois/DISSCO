@@ -1,5 +1,8 @@
 <map id="MainWindow::readSettings" name="MainWindow::readSettings">
-<area shape="rect" id="Node000001" title=" " alt="" coords="251,5,445,31"/>
-<area shape="rect" id="Node000002" href="$classMainWindow.html#a3c01f12b25b07bb6c146b8ca1cc89b77" title="Build the main window and bind it to the application singleton." alt="" coords="5,5,203,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,21,203,21,203,15,237,15"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="465,29,659,57"/>
+<area shape="rect" id="Node000002" href="$classMainWindow.html#a3c01f12b25b07bb6c146b8ca1cc89b77" title="Build the main window and bind it to the application singleton." alt="" coords="221,29,417,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="447,43,417,46,417,41,452,43"/>
+<area shape="poly" id="edge3_Node000002_Node000002" title=" " alt="" coords="357,14,344,10,319,8,295,10,282,15,278,20,284,30,279,28,273,20,278,11,294,5,319,3,346,5,362,14"/>
+<area shape="rect" id="Node000003" href="$classMainWindow.html#ab43b7a45b545abf4d62ae4a1cd38e715" title="Access the most recently constructed MainWindow." alt="" coords="5,29,173,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="203,43,173,46,173,41,208,43"/>
 </map>

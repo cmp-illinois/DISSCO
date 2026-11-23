@@ -1,5 +1,7 @@
 <map id="DynamicVariable::xml_print" name="DynamicVariable::xml_print">
-<area shape="rect" id="Node000001" title=" " alt="" coords="187,5,353,45"/>
-<area shape="rect" id="Node000002" href="$classPartial.html#aec07cb8ba220a9b4a0757fe066b75502" title=" " alt="" coords="5,13,139,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,28,139,28,139,23,173,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="186,24,351,68"/>
+<area shape="rect" id="Node000002" href="$classPartial.html#aec07cb8ba220a9b4a0757fe066b75502" title=" " alt="" coords="5,5,138,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,33,138,31,138,25,173,32"/>
+<area shape="rect" id="Node000003" href="$classSound.html#ab7a9319e24feb87fb043ca6574c31941" title=" " alt="" coords="6,57,137,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,59,138,65,137,60,173,58"/>
 </map>

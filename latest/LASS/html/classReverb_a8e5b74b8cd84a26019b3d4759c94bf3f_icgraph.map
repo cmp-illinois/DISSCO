@@ -1,20 +1,12 @@
 <map id="Reverb::reset" name="Reverb::reset">
-<area shape="rect" id="Node000001" title=" " alt="" coords="769,129,879,155"/>
-<area shape="poly" id="edge9_Node000001_Node000001" title=" " alt="" coords="861,120,851,111,824,108,802,110,790,115,788,120,794,128,790,131,783,121,786,111,801,105,824,103,853,106,864,115"/>
-<area shape="rect" id="Node000002" href="$classReverb.html#a42bdd4e8f5d952841436c79f73d43a17" title=" " alt="" coords="507,80,721,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="756,129,668,108,670,103,757,124"/>
-<area shape="rect" id="Node000007" href="$classReverb.html#ace20af68ae86853a9e9ef803b9eb2a4d" title=" " alt="" coords="523,153,705,179"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="756,152,706,158,705,153,755,147"/>
-<area shape="rect" id="Node000003" href="$classReverb.html#a8bd7f920f397363c7265ace64f78a1e2" title=" " alt="" coords="244,5,459,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="563,78,458,45,413,33,414,28,459,39,565,73"/>
-<area shape="rect" id="Node000004" href="$classScore.html#ac480924baa909e86012b9672e1be2ec7" title=" " alt="" coords="256,55,447,80"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="493,84,447,79,447,74,493,78"/>
-<area shape="rect" id="Node000006" href="$classSound.html#a4f246242d337ab7ef8a646f69f2a04ae" title=" " alt="" coords="295,104,407,129"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="493,106,408,114,407,109,493,101"/>
-<area shape="rect" id="Node000005" href="$classScore.html#a70de1da2f362a695b56f6738d8a33ac1" title=" " alt="" coords="5,55,196,80"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="242,70,196,70,196,65,242,65"/>
-<area shape="rect" id="Node000008" href="$classReverb.html#ac8dd1a7ca6f03d889159ff37ca98b546" title=" " alt="" coords="260,153,443,179"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="509,169,443,169,443,163,509,163"/>
-<area shape="rect" id="Node000009" href="$classPartial.html#a6ab80d7069346d873d3811de427a53d8" title=" " alt="" coords="295,203,408,228"/>
-<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="533,184,409,207,408,202,532,179"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="530,32,638,60"/>
+<area shape="poly" id="edge5_Node000001_Node000001" title=" " alt="" coords="618,16,607,13,584,11,562,13,551,17,548,23,553,33,548,30,542,23,547,13,561,7,584,5,609,8,624,17"/>
+<area shape="rect" id="Node000002" href="$classReverb.html#a42bdd4e8f5d952841436c79f73d43a17" title=" " alt="" coords="268,5,482,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="512,37,483,36,483,30,517,37"/>
+<area shape="rect" id="Node000004" href="$classReverb.html#ace20af68ae86853a9e9ef803b9eb2a4d" title=" " alt="" coords="284,57,466,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="517,54,466,63,466,57,512,54"/>
+<area shape="rect" id="Node000003" href="$classReverb.html#a8bd7f920f397363c7265ace64f78a1e2" title=" " alt="" coords="5,5,220,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="249,20,220,22,220,17,255,19"/>
+<area shape="rect" id="Node000005" href="$classReverb.html#ac8dd1a7ca6f03d889159ff37ca98b546" title=" " alt="" coords="22,57,203,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="266,71,204,74,204,69,272,71"/>
 </map>

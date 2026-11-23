@@ -1,0 +1,15 @@
+<map id="ReadSPAFileFunction::ReadSPAFileFunction" name="ReadSPAFileFunction::ReadSPAFileFunction">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,65,170,110"/>
+<area shape="rect" id="Node000002" href="$classMultiEntryFunction.html#a192f702ddc83a30ad117252068513f24" title=" " alt="" coords="218,65,369,110"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,85,204,87,199,88,171,90"/>
+<area shape="rect" id="Node000003" href="$classFunctionWidget.html#aea5e13a6c630b4d9c8e0afdbbb9d73b3" title=" " alt="" coords="438,5,624,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="368,66,423,55,428,54,370,71"/>
+<area shape="rect" id="Node000004" href="$classFunctionEntryRow.html#a1ad1acac51bef6487d6dd874e3cfd1b7" title=" " alt="" coords="417,74,645,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="369,85,404,87,399,88,369,90"/>
+<area shape="rect" id="Node000007" href="$classFunctionWidget.html#a18e240ccf56093e61a9989420ec5155a" title=" " alt="" coords="425,126,637,154"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="369,101,453,122,447,122,369,107"/>
+<area shape="rect" id="Node000005" href="$classFunctionEntryRow.html#aae0dd4ec56f622e2582815125cf3124d" title=" " alt="" coords="693,65,894,110"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="646,85,681,88,675,88,646,90"/>
+<area shape="rect" id="Node000006" href="$classFunctionEntryRow.html#ae99dc4a98078640c9d4f49cf7d0d251b" title=" " alt="" coords="942,74,1165,102"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="894,85,929,88,924,88,894,90"/>
+</map>

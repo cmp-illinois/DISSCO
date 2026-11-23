@@ -1,7 +1,7 @@
 var searchData=
 [
   ['fieldcount_0',['fieldCount',['../namespaceModifierUiPolicy.html#a048d1c2b34de1201058e033168523cf5',1,'ModifierUiPolicy']]],
-  ['filter_1',['filter',['../structHEvent.html#a2eb7b688952396a6fa6e7c71744f363a',1,'HEvent::filter'],['../structExtraInfo.html#aedff9c43e869e1764ab2426120d08d38',1,'ExtraInfo::filter']]],
+  ['filter_1',['filter',['../structExtraInfo.html#aedff9c43e869e1764ab2426120d08d38',1,'ExtraInfo::filter'],['../structHEvent.html#a2eb7b688952396a6fa6e7c71744f363a',1,'HEvent::filter']]],
   ['filter_5fbuilder_2',['filter_builder',['../structFilterEvent.html#ad51f1b7c57fb3ee5721b02d1aaca342c',1,'FilterEvent']]],
   ['fnreturntype_3',['fnReturnType',['../structMultiEntryFunction_1_1EntrySpec.html#af5ef0c82ba5c5a7b9c62e6e4ef4cac41',1,'MultiEntryFunction::EntrySpec']]],
   ['fnvisible_4',['fnVisible',['../structMultiEntryFunction_1_1EntrySpec.html#a0232b106819e193ab6404bdc6f6f8d1a',1,'MultiEntryFunction::EntrySpec']]],

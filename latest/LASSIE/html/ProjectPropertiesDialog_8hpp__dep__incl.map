@@ -1,25 +1,25 @@
 <map id="LASSIE/src/dialogs/ProjectPropertiesDialog.hpp" name="LASSIE/src/dialogs/ProjectPropertiesDialog.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="176,5,383,45"/>
-<area shape="rect" id="Node000002" href="$ProjectPropertiesDialog_8cpp.html" title=" " alt="" coords="35,93,241,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,55,170,96,168,91,235,50"/>
-<area shape="rect" id="Node000003" href="$ProjectViewController_8cpp.html" title=" " alt="" coords="5,181,199,221"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="281,60,274,98,266,118,255,135,220,164,180,184,177,179,217,160,251,132,261,115,269,97,276,59"/>
-<area shape="rect" id="Node000004" href="$ProjectViewController_8hpp.html" title=" " alt="" coords="495,93,690,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="362,46,525,91,523,96,361,52"/>
-<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="482,137,199,186,198,181,481,131"/>
-<area shape="rect" id="Node000005" href="$EventAttributesViewController_8cpp.html" title=" " alt="" coords="223,181,472,221"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="527,140,402,184,400,179,525,135"/>
-<area shape="rect" id="Node000006" href="$PaletteViewController_8cpp.html" title=" " alt="" coords="496,181,689,221"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="595,147,595,181,590,181,590,147"/>
-<area shape="rect" id="Node000007" href="$EnvelopeLibraryWindow_8hpp.html" title=" " alt="" coords="714,181,925,221"/>
-<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="656,136,771,179,769,184,654,141"/>
-<area shape="rect" id="Node000010" href="$MainWindow_8cpp.html" title=" " alt="" coords="917,269,1068,309"/>
-<area shape="poly" id="edge11_Node000004_Node000010" title=" " alt="" coords="704,123,839,145,898,160,938,179,958,199,973,223,991,268,986,270,969,226,954,203,935,184,896,165,838,150,703,128"/>
-<area shape="rect" id="Node000011" href="$MarkovModelLibraryWindow_8cpp.html" title=" " alt="" coords="999,181,1237,221"/>
-<area shape="poly" id="edge12_Node000004_Node000011" title=" " alt="" coords="704,130,1003,179,1002,184,703,135"/>
-<area shape="rect" id="Node000008" href="$EnvLibDrawingArea_8cpp.html" title=" " alt="" coords="480,269,660,309"/>
-<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="752,228,625,272,624,267,751,223"/>
-<area shape="rect" id="Node000009" href="$EnvelopeLibraryWindow_8cpp.html" title=" " alt="" coords="684,269,893,309"/>
-<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="810,235,798,270,793,268,805,234"/>
-<area shape="poly" id="edge10_Node000007_Node000010" title=" " alt="" coords="871,225,956,267,954,272,868,230"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="176,5,382,50"/>
+<area shape="rect" id="Node000002" href="$ProjectPropertiesDialog_8cpp.html" title=" " alt="" coords="36,98,242,143"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,61,174,100,170,96,235,57"/>
+<area shape="rect" id="Node000003" href="$ProjectViewController_8cpp.html" title=" " alt="" coords="5,191,198,235"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="280,63,275,106,267,126,256,144,223,173,185,192,183,188,220,168,251,141,262,124,270,104,277,68"/>
+<area shape="rect" id="Node000004" href="$ProjectViewController_8hpp.html" title=" " alt="" coords="493,98,686,143"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="367,52,518,97,513,98,367,57"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="476,144,210,193,199,195,197,190,209,188,478,139"/>
+<area shape="rect" id="Node000005" href="$EventAttributesViewController_8cpp.html" title=" " alt="" coords="221,191,470,235"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="520,147,405,193,403,188,515,149"/>
+<area shape="rect" id="Node000006" href="$PaletteViewController_8cpp.html" title=" " alt="" coords="493,191,686,235"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="591,156,592,192,587,189,588,160"/>
+<area shape="rect" id="Node000007" href="$EnvelopeLibraryWindow_8hpp.html" title=" " alt="" coords="710,191,920,235"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="658,146,764,190,758,190,657,152"/>
+<area shape="rect" id="Node000010" href="$MainWindow_8cpp.html" title=" " alt="" coords="913,283,1063,328"/>
+<area shape="poly" id="edge11_Node000004_Node000010" title=" " alt="" coords="702,131,836,153,894,169,934,189,954,210,969,235,986,284,981,282,964,237,950,213,931,193,892,174,835,159,702,136"/>
+<area shape="rect" id="Node000011" href="$MarkovModelLibraryWindow_8cpp.html" title=" " alt="" coords="995,191,1232,235"/>
+<area shape="poly" id="edge12_Node000004_Node000011" title=" " alt="" coords="702,138,998,191,992,192,701,144"/>
+<area shape="rect" id="Node000008" href="$EnvLibDrawingArea_8cpp.html" title=" " alt="" coords="477,283,656,328"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="744,241,627,285,626,280,739,242"/>
+<area shape="rect" id="Node000009" href="$EnvelopeLibraryWindow_8cpp.html" title=" " alt="" coords="680,283,888,328"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="805,249,793,285,790,281,800,252"/>
+<area shape="poly" id="edge10_Node000007_Node000010" title=" " alt="" coords="870,240,950,283,944,283,869,245"/>
 </map>

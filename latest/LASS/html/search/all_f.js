@@ -1,15 +1,15 @@
 var searchData=
 [
-  ['pan_0',['pan',['../classPan.html',1,'Pan'],['../classPan.html#aa1a7ac92d60af88c1736c1199f1bc290',1,'Pan::Pan()']]],
+  ['pan_0',['Pan',['../classPan.html',1,'Pan'],['../classPan.html#aa1a7ac92d60af88c1736c1199f1bc290',1,'Pan::Pan()']]],
   ['pan_2ecpp_1',['Pan.cpp',['../Pan_8cpp.html',1,'']]],
   ['pan_2eh_2',['Pan.h',['../Pan_8h.html',1,'']]],
-  ['parameterlib_3',['parameterlib',['../classParameterLib.html',1,'ParameterLib&lt; StaticT, DynamicT &gt;'],['../classParameterLib.html#aed264c6bc8c0a8eecbd4b9cb1669fe31',1,'ParameterLib::ParameterLib(const ParameterLib&lt; StaticT, DynamicT &gt; &amp;pl)'],['../classParameterLib.html#a02e5ad0a7b28796be4d55508d619824c',1,'ParameterLib::ParameterLib()']]],
+  ['parameterlib_3',['ParameterLib',['../classParameterLib.html',1,'ParameterLib&lt; StaticT, DynamicT &gt;'],['../classParameterLib.html#a02e5ad0a7b28796be4d55508d619824c',1,'ParameterLib::ParameterLib()'],['../classParameterLib.html#aed264c6bc8c0a8eecbd4b9cb1669fe31',1,'ParameterLib::ParameterLib(const ParameterLib&lt; StaticT, DynamicT &gt; &amp;pl)']]],
   ['parameterlib_2ecpp_4',['ParameterLib.cpp',['../ParameterLib_8cpp.html',1,'']]],
   ['parameterlib_2eh_5',['ParameterLib.h',['../ParameterLib_8h.html',1,'']]],
   ['parameterlib_3c_20partialstaticparam_2c_20partialdynamicparam_20_3e_6',['ParameterLib&lt; PartialStaticParam, PartialDynamicParam &gt;',['../classParameterLib.html',1,'']]],
   ['parameterlib_3c_20soundstaticparam_2c_20sounddynamicparam_20_3e_7',['ParameterLib&lt; SoundStaticParam, SoundDynamicParam &gt;',['../classParameterLib.html',1,'']]],
   ['params_8',['params',['../classXmlReader_1_1xmltag.html#a14faf55726d228d9475d573af86713db',1,'XmlReader::xmltag']]],
-  ['partial_9',['partial',['../classPartial.html',1,'Partial'],['../classPartial.html#a5a82d672a1798f7eb78628b3b707c04e',1,'Partial::Partial()']]],
+  ['partial_9',['Partial',['../classPartial.html',1,'Partial'],['../classPartial.html#a5a82d672a1798f7eb78628b3b707c04e',1,'Partial::Partial()'],['../classPartial.html#a0d5d09370ff15123acd19234b07c2ddd',1,'Partial::Partial(const Partial &amp;other)']]],
   ['partial_2ecpp_10',['Partial.cpp',['../Partial_8cpp.html',1,'']]],
   ['partial_2eh_11',['Partial.h',['../Partial_8h.html',1,'']]],
   ['partial_5fnum_12',['PARTIAL_NUM',['../Partial_8h.html#a62dc27a60fb5ec2fdcd248cea649f681a94b264befa40813fec14f1f34e83b33a',1,'Partial.h']]],
@@ -19,8 +19,9 @@ var searchData=
   ['phase_5famp_5fenv_16',['PHASE_AMP_ENV',['../Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a312bc24f890701808061d5beaa6405e4',1,'Partial.h']]],
   ['phase_5frate_5fenv_17',['PHASE_RATE_ENV',['../Partial_8h.html#ad32e52ba876fe18e207dfcf53b0e9372a5ec4ee82ec72d77bddaa1ec5feab7aae',1,'Partial.h']]],
   ['post_18',['post',['../classSemaphore.html#a99bb4da0df09d6f3181c2a376dd5b8f0',1,'Semaphore']]],
-  ['print_19',['print',['../classProbabilityEnvelope.html#a073d65e1c0a0718879523989013089a4',1,'ProbabilityEnvelope::print()'],['../classSpatializer.html#ada9e6f2bdf61fcd779fea15ddf444936',1,'Spatializer::print()'],['../classDynamicVariableSequence.html#a0de08370d41cfe7d509b985fd2e7e8ec',1,'DynamicVariableSequence::Print()'],['../classMultiPan.html#a21f61e6da65345a83a094301361cf733',1,'MultiPan::print()'],['../classEnvelope.html#a01310b230d146104637e19630866c3ec',1,'Envelope::print()']]],
-  ['probabilityenvelope_20',['probabilityenvelope',['../classProbabilityEnvelope.html#a0e601fb77035256f363b4f7c1ca2709d',1,'ProbabilityEnvelope::ProbabilityEnvelope()'],['../classProbabilityEnvelope.html#a0058b0a97bdc47fade569361be382639',1,'ProbabilityEnvelope::ProbabilityEnvelope(const Envelope &amp;other)'],['../classProbabilityEnvelope.html',1,'ProbabilityEnvelope']]],
-  ['probabilityenvelope_2ecpp_21',['ProbabilityEnvelope.cpp',['../ProbabilityEnvelope_8cpp.html',1,'']]],
-  ['probabilityenvelope_2eh_22',['ProbabilityEnvelope.h',['../ProbabilityEnvelope_8h.html',1,'']]]
+  ['print_19',['Print',['../classDynamicVariableSequence.html#a0de08370d41cfe7d509b985fd2e7e8ec',1,'DynamicVariableSequence']]],
+  ['print_20',['print',['../classEnvelope.html#a01310b230d146104637e19630866c3ec',1,'Envelope::print()'],['../classMultiPan.html#a21f61e6da65345a83a094301361cf733',1,'MultiPan::print()'],['../classProbabilityEnvelope.html#a073d65e1c0a0718879523989013089a4',1,'ProbabilityEnvelope::print()'],['../classSpatializer.html#ada9e6f2bdf61fcd779fea15ddf444936',1,'Spatializer::print()']]],
+  ['probabilityenvelope_21',['ProbabilityEnvelope',['../classProbabilityEnvelope.html',1,'ProbabilityEnvelope'],['../classProbabilityEnvelope.html#a0e601fb77035256f363b4f7c1ca2709d',1,'ProbabilityEnvelope::ProbabilityEnvelope()'],['../classProbabilityEnvelope.html#a0058b0a97bdc47fade569361be382639',1,'ProbabilityEnvelope::ProbabilityEnvelope(const Envelope &amp;other)']]],
+  ['probabilityenvelope_2ecpp_22',['ProbabilityEnvelope.cpp',['../ProbabilityEnvelope_8cpp.html',1,'']]],
+  ['probabilityenvelope_2eh_23',['ProbabilityEnvelope.h',['../ProbabilityEnvelope_8h.html',1,'']]]
 ];

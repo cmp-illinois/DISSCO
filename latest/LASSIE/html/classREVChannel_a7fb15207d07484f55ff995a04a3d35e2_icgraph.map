@@ -1,5 +1,9 @@
 <map id="REVChannel::removeChannelRequested" name="REVChannel::removeChannelRequested">
-<area shape="rect" id="Node000001" title=" " alt="" coords="241,5,453,45"/>
-<area shape="rect" id="Node000002" href="$classREVChannel.html#abda76caeccce2af3122c3f68387b6c24" title=" " alt="" coords="5,13,193,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,28,193,28,193,23,228,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="487,5,698,50"/>
+<area shape="rect" id="Node000002" href="$classREVChannel.html#abda76caeccce2af3122c3f68387b6c24" title=" " alt="" coords="252,14,439,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="469,37,439,39,439,34,474,37"/>
+<area shape="poly" id="edge4_Node000002_Node000001" title=" " alt="" coords="454,16,489,19,484,19,454,21"/>
+<area shape="rect" id="Node000003" href="$classREVChannel.html#ae53e839ac8b16539f46874c3c89b051e" title=" " alt="" coords="5,5,204,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="233,37,204,39,204,34,239,37"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="219,16,254,19,249,19,219,21"/>
 </map>

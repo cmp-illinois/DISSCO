@@ -1,5 +1,9 @@
 <map id="DynamicVariableSequence::DynamicVariableSequence" name="DynamicVariableSequence::DynamicVariableSequence">
-<area shape="rect" id="Node000001" title="Constructor &#45; no parameters...assumes data will be given later." alt="" coords="249,5,453,45"/>
-<area shape="rect" id="Node000002" href="$classDynamicVariableSequence.html#a4a07c0959730a311f8e48fe58c27a157" title=" " alt="" coords="5,5,201,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,28,202,28,202,23,236,23"/>
+<area shape="rect" id="Node000001" title="Constructor &#45; no parameters...assumes data will be given later." alt="" coords="257,75,460,119"/>
+<area shape="rect" id="Node000002" href="$classDynamicVariableSequence.html#aeafc9abe627f68fb4994c29b771533cf" title=" " alt="" coords="9,5,205,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="258,71,191,53,191,48,263,69"/>
+<area shape="rect" id="Node000003" href="$classDynamicVariableSequence.html#a4a07c0959730a311f8e48fe58c27a157" title=" " alt="" coords="9,75,205,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="239,98,206,100,205,94,244,96"/>
+<area shape="rect" id="Node000004" href="$classDynamicVariableSequence.html#a20f36789606ed9ee73b418379ef69d8e" title="Constructor &#45; no parameters...assumes data will be given later." alt="" coords="5,144,209,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="263,123,191,146,190,141,258,125"/>
 </map>

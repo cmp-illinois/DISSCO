@@ -1,0 +1,15 @@
+<map id="TimeSignature::operator==" name="TimeSignature::operator==">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,83,207,111"/>
+<area shape="rect" id="Node000002" href="$structTimeSignature.html#ac46159b35f8e7777b5c1648aaa378a1e" title=" " alt="" coords="255,83,474,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,94,242,96,237,98,208,100"/>
+<area shape="rect" id="Node000003" href="$structTimeSignature.html#a44e670f49b9b4a167c62121aba9a9f93" title=" " alt="" coords="522,5,708,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="416,80,515,55,520,54,418,85"/>
+<area shape="rect" id="Node000004" href="$structTimeSignature.html#aa5b16f0fa1d1c88ae9b58971512bb195" title=" " alt="" coords="522,75,708,119"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="474,94,509,97,503,97,475,100"/>
+<area shape="rect" id="Node000007" href="$classNote.html#a03026f5244abb170a163ee10e199ffdf" title=" " alt="" coords="554,143,676,171"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="425,109,542,139,537,139,425,114"/>
+<area shape="rect" id="Node000005" href="$structTimeSignature.html#af05d336db1c7d494e11a1bb490f8deec" title=" " alt="" coords="756,45,942,90"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="708,83,738,82,743,81,709,88"/>
+<area shape="rect" id="Node000006" href="$classNote.html#a6e1a38b045f9de544534ebc01db170b3" title=" " alt="" coords="788,114,910,142"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="709,107,775,118,770,118,708,112"/>
+</map>

@@ -1,19 +1,19 @@
 <map id="DynamicVariable" name="DynamicVariable">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,139,105"/>
-<area shape="rect" id="Node000002" href="$classConstant.html" title=" " alt="" coords="245,5,325,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,72,186,39,244,23,245,29,188,45,112,77"/>
-<area shape="rect" id="Node000003" href="$classDynamicVariableSequence.html" title=" " alt="" coords="187,55,383,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="152,80,186,76,187,82,153,86"/>
-<area shape="rect" id="Node000004" href="$classEnvelope.html" title=" " alt="" coords="243,104,326,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="153,99,243,109,242,115,152,104"/>
-<area shape="rect" id="Node000006" href="$classInterpolator.html" title=" " alt="" coords="235,165,334,191"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="116,108,188,138,251,163,249,168,186,143,114,113"/>
-<area shape="rect" id="Node000005" href="$classProbabilityEnvelope.html" title="Envelope subclass with probability&#45;distribution semantics." alt="" coords="442,91,594,116"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="339,111,441,105,442,110,340,116"/>
-<area shape="rect" id="Node000007" href="$classCubicSplineInterpolator.html" title=" " alt="" coords="431,140,605,165"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="347,169,430,159,431,165,348,174"/>
-<area shape="rect" id="Node000008" href="$classExponentialInterpolator.html" title=" " alt="" coords="431,189,605,215"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="348,182,431,190,430,196,348,187"/>
-<area shape="rect" id="Node000009" href="$classLinearInterpolator.html" title=" " alt="" coords="449,239,587,264"/>
-<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="337,193,431,223,473,236,472,241,430,229,336,198"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,84,138,112"/>
+<area shape="rect" id="Node000002" href="$classConstant.html" title=" " alt="" coords="244,5,323,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,75,185,43,245,27,241,30,187,48,116,79"/>
+<area shape="rect" id="Node000003" href="$classDynamicVariableSequence.html" title=" " alt="" coords="186,57,381,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="152,85,187,82,183,85,154,90"/>
+<area shape="rect" id="Node000004" href="$classEnvelope.html" title=" " alt="" coords="243,109,324,137"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="153,105,245,117,240,120,154,110"/>
+<area shape="rect" id="Node000006" href="$classInterpolator.html" title=" " alt="" coords="235,175,332,202"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="118,116,187,146,249,173,244,175,185,151,118,121"/>
+<area shape="rect" id="Node000005" href="$classProbabilityEnvelope.html" title="Envelope subclass with probability&#45;distribution semantics." alt="" coords="440,96,592,124"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="339,117,443,113,437,115,340,123"/>
+<area shape="rect" id="Node000007" href="$classCubicSplineInterpolator.html" title=" " alt="" coords="430,148,603,176"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="347,179,432,171,426,172,348,184"/>
+<area shape="rect" id="Node000008" href="$classExponentialInterpolator.html" title=" " alt="" coords="429,200,603,228"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="347,193,431,204,426,205,347,198"/>
+<area shape="rect" id="Node000009" href="$classLinearInterpolator.html" title=" " alt="" coords="448,252,585,280"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="339,205,430,237,470,252,465,251,428,242,338,211"/>
 </map>

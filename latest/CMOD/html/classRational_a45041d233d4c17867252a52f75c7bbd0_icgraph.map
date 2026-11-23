@@ -1,9 +1,9 @@
 <map id="Rational::fromString" name="Rational::fromString">
-<area shape="rect" id="Node000001" title=" " alt="" coords="204,55,357,80"/>
-<area shape="rect" id="Node000002" href="$classRational.html#ae7455c6d32052c3277005152b27fea47" title=" " alt="" coords="5,5,156,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,54,132,33,134,28,216,49"/>
-<area shape="rect" id="Node000003" href="$classRational.html#a2ba449725872103de6754d51a38740ba" title=" " alt="" coords="11,55,150,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="190,70,150,70,150,65,190,65"/>
-<area shape="rect" id="Node000004" href="$classRational.html#a200f424c228ebac5603f9fd4a69f7215" title=" " alt="" coords="11,104,150,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="216,86,134,107,132,101,215,81"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="250,57,402,85"/>
+<area shape="rect" id="Node000002" href="$classRational.html#ae7455c6d32052c3277005152b27fea47" title=" " alt="" coords="5,5,202,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,54,166,36,166,31,251,52"/>
+<area shape="rect" id="Node000003" href="$classRational.html#a2ba449725872103de6754d51a38740ba" title=" " alt="" coords="11,57,196,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="232,72,197,74,196,69,237,71"/>
+<area shape="rect" id="Node000004" href="$classRational.html#a200f424c228ebac5603f9fd4a69f7215" title=" " alt="" coords="11,109,196,137"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="251,89,167,111,165,106,246,90"/>
 </map>

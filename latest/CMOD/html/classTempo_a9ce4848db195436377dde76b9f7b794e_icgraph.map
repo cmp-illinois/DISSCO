@@ -1,5 +1,16 @@
 <map id="Tempo::getTimeSignatureBeatsPerBar" name="Tempo::getTimeSignatureBeatsPerBar">
-<area shape="rect" id="Node000001" title=" " alt="" coords="157,5,384,45"/>
-<area shape="rect" id="Node000002" href="$classEvent.html#a4f7a2537d2729b0035ff13ee67c40377" title=" " alt="" coords="5,13,109,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,28,109,28,109,23,144,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="705,48,930,92"/>
+<area shape="rect" id="Node000002" href="$classEvent.html#a4f7a2537d2729b0035ff13ee67c40377" title=" " alt="" coords="553,56,657,84"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="687,70,657,72,657,67,692,70"/>
+<area shape="rect" id="Node000003" href="$classBottom.html#a920c62eb3993c14855eaae08e4ff5dd3" title=" " alt="" coords="372,5,497,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="539,51,483,36,484,31,544,51"/>
+<area shape="rect" id="Node000004" href="$classEvent.html#af43248915d08da44962951c1a4d0b4c8" title=" " alt="" coords="158,56,310,84"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="535,71,311,72,311,67,540,69"/>
+<area shape="rect" id="Node000006" href="$classEvent.html#a2f3dcdaf8fdd89f2df97ebbd79ee7348" title=" " alt="" coords="364,107,505,134"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="544,88,484,109,483,103,539,89"/>
+<area shape="rect" id="Node000005" href="$classPiece.html#a4dc9d0d3627fc2208b7da6a36a2ca9c2" title=" " alt="" coords="5,56,105,84"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="140,71,105,72,104,67,145,69"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="360,102,292,87,292,82,365,102"/>
+<area shape="rect" id="Node000007" href="$classBottom.html#a32e301cf566271d4072951c1a851e88c" title=" " alt="" coords="153,108,316,136"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="346,121,317,124,316,119,351,121"/>
 </map>

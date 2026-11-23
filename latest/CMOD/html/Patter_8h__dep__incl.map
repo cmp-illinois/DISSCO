@@ -1,39 +1,39 @@
 <map id="CMOD/src/Patter.h" name="CMOD/src/Patter.h">
-<area shape="rect" id="Node000001" title="Pattern generator that emits one value per call." alt="" coords="229,5,368,31"/>
-<area shape="rect" id="Node000002" href="$Bottom_8h.html" title="Leaf event in a DISSCO composition." alt="" coords="503,225,654,251"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="382,20,452,26,524,37,586,53,610,64,626,77,637,96,640,116,638,138,631,159,611,198,590,227,586,224,606,195,626,157,632,137,635,117,632,98,622,80,607,68,585,58,523,42,451,31,382,25"/>
-<area shape="rect" id="Node000004" href="$CMOD_8h.html" title="Umbrella header for the Composition Module (CMOD)." alt="" coords="189,299,331,324"/>
-<area shape="poly" id="edge11_Node000001_Node000004" title=" " alt="" coords="283,43,260,80,233,151,220,226,218,238,220,250,233,276,250,297,246,300,229,279,215,251,213,238,215,225,227,149,255,77,278,40"/>
-<area shape="rect" id="Node000008" href="$Utilities_8cpp.html" title=" " alt="" coords="5,445,173,471"/>
-<area shape="poly" id="edge19_Node000001_Node000008" title=" " alt="" coords="217,33,157,48,100,74,76,91,58,111,46,135,41,164,41,313,46,351,58,389,85,444,80,446,53,390,41,353,36,313,36,163,41,134,53,108,73,87,97,69,155,43,215,28"/>
-<area shape="rect" id="Node000010" href="$Event_8h.html" title="Core Event class — the common base for every layer in a DISSCO composition tree (top,..." alt="" coords="287,152,425,177"/>
-<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="283,43,268,73,266,88,270,103,281,118,295,131,327,150,324,154,292,135,277,122,266,105,261,88,263,71,278,40"/>
-<area shape="rect" id="Node000012" href="$Patter_8cpp.html" title=" " alt="" coords="457,79,612,104"/>
-<area shape="poly" id="edge18_Node000001_Node000012" title=" " alt="" coords="350,32,497,76,496,81,349,37"/>
-<area shape="rect" id="Node000013" href="$Utilities_8h.html" title="XML evaluator and bridge between CMOD Events and the LASS Score." alt="" coords="279,79,433,104"/>
-<area shape="poly" id="edge20_Node000001_Node000013" title=" " alt="" coords="319,40,349,77,345,80,314,43"/>
-<area shape="rect" id="Node000003" href="$Bottom_8cpp.html" title=" " alt="" coords="535,299,700,324"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="594,262,613,297,609,300,589,264"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="515,256,312,301,311,296,514,251"/>
-<area shape="rect" id="Node000009" href="$Event_8cpp.html" title=" " alt="" coords="356,299,511,324"/>
-<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="544,259,458,301,456,296,542,254"/>
-<area shape="rect" id="Node000005" href="$Piece_8h.html" title="Top&#45;level composition object and supporting filesystem helpers." alt="" coords="198,372,335,397"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="256,337,261,371,256,372,251,338"/>
-<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="348,376,567,355,662,340,694,331,710,322,716,311,716,301,710,291,698,282,665,266,627,253,628,248,667,261,701,277,713,288,721,299,722,312,714,326,696,336,663,345,568,361,349,381"/>
-<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="270,359,265,325,271,324,276,358"/>
-<area shape="rect" id="Node000006" href="$Main_8cpp.html" title="CMOD command&#45;line entry point." alt="" coords="197,445,347,471"/>
-<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="271,411,274,445,268,445,266,411"/>
-<area shape="rect" id="Node000007" href="$Piece-experimental_8cpp.html" title=" " alt="" coords="519,445,763,471"/>
-<area shape="poly" id="edge8_Node000005_Node000007" title=" " alt="" coords="340,397,581,443,580,448,340,402"/>
-<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="226,405,119,448,117,443,224,400"/>
-<area shape="poly" id="edge13_Node000010_Node000002" title=" " alt="" coords="405,179,543,223,542,228,404,184"/>
-<area shape="poly" id="edge14_Node000010_Node000004" title=" " alt="" coords="378,187,395,218,397,235,392,252,377,269,359,283,319,301,316,296,356,278,373,266,387,249,392,235,390,220,373,189"/>
-<area shape="poly" id="edge17_Node000010_Node000008" title=" " alt="" coords="298,184,257,202,219,227,194,254,171,284,135,347,109,405,95,446,90,444,104,403,130,344,167,281,190,250,216,223,254,197,296,179"/>
-<area shape="poly" id="edge15_Node000010_Node000009" title=" " alt="" coords="394,182,417,200,436,224,442,244,443,264,439,299,434,298,438,264,437,245,431,227,414,204,391,186"/>
-<area shape="rect" id="Node000011" href="$Note_8cpp.html" title=" " alt="" coords="229,225,377,251"/>
-<area shape="poly" id="edge16_Node000010_Node000011" title=" " alt="" coords="341,190,313,227,309,224,337,187"/>
-<area shape="poly" id="edge21_Node000013_Node000002" title=" " alt="" coords="387,109,562,223,559,227,384,114"/>
-<area shape="poly" id="edge23_Node000013_Node000007" title=" " alt="" coords="447,102,554,120,665,148,714,166,754,186,781,210,788,223,791,236,791,313,787,337,778,360,763,380,746,398,706,428,669,448,667,443,703,423,742,394,759,377,773,357,782,336,785,312,785,237,783,225,776,213,751,191,712,171,664,153,552,125,446,107"/>
-<area shape="poly" id="edge24_Node000013_Node000008" title=" " alt="" coords="267,106,207,122,150,147,127,164,108,185,96,209,92,237,92,313,92,445,87,445,87,313,87,236,91,207,104,182,123,161,147,143,205,117,265,101"/>
-<area shape="poly" id="edge22_Node000013_Node000010" title=" " alt="" coords="359,118,359,152,353,152,353,118"/>
+<area shape="rect" id="Node000001" title="Pattern generator that emits one value per call." alt="" coords="228,5,366,33"/>
+<area shape="rect" id="Node000002" href="$Bottom_8h.html" title="Leaf event in a DISSCO composition." alt="" coords="500,232,649,260"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="381,22,451,28,523,39,584,55,607,66,623,79,634,98,637,120,635,141,629,163,608,203,587,234,583,230,604,201,624,161,630,140,632,120,629,100,619,83,604,71,582,60,522,44,451,33,383,27"/>
+<area shape="rect" id="Node000004" href="$CMOD_8h.html" title="Umbrella header for the Composition Module (CMOD)." alt="" coords="187,308,330,336"/>
+<area shape="poly" id="edge11_Node000001_Node000004" title=" " alt="" coords="279,43,259,82,232,155,218,233,216,246,218,259,231,285,248,308,243,307,227,288,213,261,211,246,213,232,226,154,255,80,276,48"/>
+<area shape="rect" id="Node000008" href="$Utilities_8cpp.html" title=" " alt="" coords="5,459,173,487"/>
+<area shape="poly" id="edge19_Node000001_Node000008" title=" " alt="" coords="211,35,154,52,99,79,75,96,57,117,45,141,41,169,41,323,46,362,57,400,84,458,79,459,52,402,40,364,36,323,36,169,40,140,53,114,72,93,96,74,153,47,214,31"/>
+<area shape="rect" id="Node000010" href="$Event_8h.html" title="Core Event class — the common base for every layer in a DISSCO composition tree (top,..." alt="" coords="285,157,424,184"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="279,44,266,77,265,93,269,108,279,122,292,135,324,155,319,157,289,139,275,126,264,110,259,93,261,76,276,48"/>
+<area shape="rect" id="Node000012" href="$Patter_8cpp.html" title=" " alt="" coords="455,81,608,109"/>
+<area shape="poly" id="edge18_Node000001_Node000012" title=" " alt="" coords="353,35,492,79,487,82,353,41"/>
+<area shape="rect" id="Node000013" href="$Utilities_8h.html" title="XML evaluator and bridge between CMOD Events and the LASS Score." alt="" coords="278,81,430,109"/>
+<area shape="poly" id="edge20_Node000001_Node000013" title=" " alt="" coords="317,43,347,80,342,81,316,48"/>
+<area shape="rect" id="Node000003" href="$Bottom_8cpp.html" title=" " alt="" coords="531,308,695,336"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="589,271,609,308,604,307,587,276"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="501,265,316,310,314,305,505,263"/>
+<area shape="rect" id="Node000009" href="$Event_8cpp.html" title=" " alt="" coords="354,308,507,336"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="537,266,457,310,455,305,533,269"/>
+<area shape="rect" id="Node000005" href="$Piece_8h.html" title="Top&#45;level composition object and supporting filesystem helpers." alt="" coords="196,384,332,411"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="253,349,258,384,253,382,250,354"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="347,395,446,392,553,383,603,376,647,365,682,351,706,334,712,323,712,312,706,303,695,293,663,276,626,263,627,258,665,271,698,289,710,299,717,311,717,324,710,337,685,356,649,370,604,381,554,389,446,398,347,400"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="268,367,265,338,268,334,273,369"/>
+<area shape="rect" id="Node000006" href="$Main_8cpp.html" title="CMOD command&#45;line entry point." alt="" coords="196,459,344,487"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="268,425,271,460,267,457,264,429"/>
+<area shape="rect" id="Node000007" href="$Piece-experimental_8cpp.html" title=" " alt="" coords="515,459,759,487"/>
+<area shape="poly" id="edge8_Node000005_Node000007" title=" " alt="" coords="346,412,572,458,567,459,345,418"/>
+<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="221,418,121,461,119,456,216,417"/>
+<area shape="poly" id="edge13_Node000010_Node000002" title=" " alt="" coords="408,187,538,231,532,233,408,192"/>
+<area shape="poly" id="edge14_Node000010_Node000004" title=" " alt="" coords="376,194,392,227,394,245,389,261,375,278,358,292,320,310,317,305,355,287,371,274,384,259,389,244,387,229,374,199"/>
+<area shape="poly" id="edge17_Node000010_Node000008" title=" " alt="" coords="287,192,252,210,217,234,192,262,169,292,133,358,109,418,95,460,90,458,104,416,128,355,165,289,188,258,214,230,249,205,291,188"/>
+<area shape="poly" id="edge15_Node000010_Node000009" title=" " alt="" coords="394,190,416,209,433,231,439,251,441,273,436,309,431,306,435,272,434,252,428,234,413,212,394,196"/>
+<area shape="rect" id="Node000011" href="$Note_8cpp.html" title=" " alt="" coords="227,232,375,260"/>
+<area shape="poly" id="edge16_Node000010_Node000011" title=" " alt="" coords="338,195,312,234,308,230,334,199"/>
+<area shape="poly" id="edge21_Node000013_Node000002" title=" " alt="" coords="387,115,558,231,553,233,385,120"/>
+<area shape="poly" id="edge23_Node000013_Node000007" title=" " alt="" coords="423,110,532,138,650,174,746,210,775,228,786,244,786,323,783,348,774,371,760,391,742,410,704,440,666,461,665,456,701,436,739,406,755,388,769,368,778,347,781,323,781,246,771,232,743,215,648,179,530,144,424,116"/>
+<area shape="poly" id="edge24_Node000013_Node000008" title=" " alt="" coords="261,111,204,128,148,155,126,172,108,193,96,217,92,245,92,323,92,459,86,458,86,323,86,245,91,215,103,190,122,168,146,150,202,123,265,107"/>
+<area shape="poly" id="edge22_Node000013_Node000010" title=" " alt="" coords="355,122,357,157,352,155,353,127"/>
 </map>

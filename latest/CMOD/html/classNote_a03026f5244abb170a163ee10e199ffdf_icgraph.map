@@ -1,26 +1,32 @@
 <map id="Note::str_to_int" name="Note::str_to_int">
-<area shape="rect" id="Node000001" title=" " alt="" coords="852,104,975,129"/>
-<area shape="rect" id="Node000002" href="$classEvent.html#afd668de01df3250b4d0fbe21a26555ff" title=" " alt="" coords="623,55,765,80"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="844,103,803,94,753,83,754,77,805,89,846,98"/>
-<area shape="rect" id="Node000009" href="$structTimeSignature.html#ac46159b35f8e7777b5c1648aaa378a1e" title=" " alt="" coords="584,104,804,129"/>
-<area shape="poly" id="edge13_Node000001_Node000009" title=" " alt="" coords="838,119,804,119,804,114,838,114"/>
-<area shape="rect" id="Node000010" href="$structTimeSignature.html#a05f565a2c5fbf53d715efc7178e94cb9" title=" " alt="" coords="584,153,804,179"/>
-<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="846,135,805,145,754,156,753,151,803,139,844,130"/>
-<area shape="rect" id="Node000003" href="$classEvent.html#ada22a83088a037dcf7d1b41cece0dbbb" title=" " alt="" coords="365,5,536,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="617,55,514,33,515,28,618,49"/>
-<area shape="rect" id="Node000007" href="$classEvent.html#a0c7072f17e5a13ab0229c1113e6c0f67" title=" " alt="" coords="374,55,527,80"/>
-<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="609,70,527,70,527,65,609,65"/>
-<area shape="rect" id="Node000008" href="$classEvent.html#afac83bb8750e444d149246f32400a973" title=" " alt="" coords="379,104,522,129"/>
-<area shape="poly" id="edge10_Node000002_Node000008" title=" " alt="" coords="618,85,515,107,514,101,617,80"/>
-<area shape="rect" id="Node000004" href="$classBottom.html#a32e301cf566271d4072951c1a851e88c" title=" " alt="" coords="153,19,317,44"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="352,27,318,29,318,24,352,21"/>
-<area shape="rect" id="Node000005" href="$classEvent.html#af43248915d08da44962951c1a4d0b4c8" title=" " alt="" coords="159,92,312,117"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="387,37,366,44,309,70,261,94,259,89,307,65,364,40,385,32"/>
-<area shape="poly" id="edge5_Node000005_Node000005" title=" " alt="" coords="267,82,258,74,235,71,216,73,207,77,205,83,210,90,206,93,199,84,203,74,215,68,235,65,260,69,270,78"/>
-<area shape="rect" id="Node000006" href="$classPiece.html#a4dc9d0d3627fc2208b7da6a36a2ca9c2" title=" " alt="" coords="5,92,105,117"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="145,107,105,107,105,102,145,102"/>
-<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="360,55,311,47,312,41,361,50"/>
-<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="364,85,309,95,308,89,363,80"/>
-<area shape="poly" id="edge11_Node000008_Node000004" title=" " alt="" coords="383,102,364,94,340,75,316,58,288,47,290,42,319,53,343,71,367,89,385,97"/>
-<area shape="poly" id="edge12_Node000008_Node000005" title=" " alt="" coords="365,115,312,112,312,106,365,109"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="913,187,1034,214"/>
+<area shape="rect" id="Node000002" href="$classEvent.html#afd668de01df3250b4d0fbe21a26555ff" title=" " alt="" coords="685,84,825,112"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="925,180,786,115,787,110,931,180"/>
+<area shape="rect" id="Node000009" href="$structTimeSignature.html#ac46159b35f8e7777b5c1648aaa378a1e" title=" " alt="" coords="645,187,865,214"/>
+<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="895,201,865,203,865,198,900,200"/>
+<area shape="rect" id="Node000013" href="$structTimeSignature.html#a05f565a2c5fbf53d715efc7178e94cb9" title=" " alt="" coords="645,239,865,266"/>
+<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="900,218,817,241,816,235,895,219"/>
+<area shape="rect" id="Node000003" href="$classEvent.html#ada22a83088a037dcf7d1b41cece0dbbb" title=" " alt="" coords="412,5,581,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="696,79,597,48,554,36,554,31,598,43,701,78"/>
+<area shape="rect" id="Node000007" href="$classEvent.html#a0c7072f17e5a13ab0229c1113e6c0f67" title=" " alt="" coords="420,57,573,85"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="667,90,573,82,573,76,672,89"/>
+<area shape="rect" id="Node000008" href="$classEvent.html#afac83bb8750e444d149246f32400a973" title=" " alt="" coords="426,109,567,137"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="667,107,568,119,567,114,672,106"/>
+<area shape="rect" id="Node000004" href="$classBottom.html#a32e301cf566271d4072951c1a851e88c" title=" " alt="" coords="169,97,332,125"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="410,40,397,48,383,57,374,67,364,77,349,87,319,99,317,94,347,82,361,73,370,63,380,53,395,43,415,37"/>
+<area shape="rect" id="Node000005" href="$classEvent.html#af43248915d08da44962951c1a4d0b4c8" title=" " alt="" coords="174,45,326,73"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="394,37,328,49,326,44,399,34"/>
+<area shape="rect" id="Node000006" href="$classPiece.html#a4dc9d0d3627fc2208b7da6a36a2ca9c2" title=" " alt="" coords="5,45,105,73"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="157,61,106,62,104,57,161,57"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="403,87,333,100,332,95,408,85"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="402,68,327,65,326,60,407,66"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="408,120,333,118,332,112,413,118"/>
+<area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="424,106,307,76,307,71,429,104"/>
+<area shape="rect" id="Node000010" href="$structTimeSignature.html#accdd735820640f796dac11b384d9a628" title=" " alt="" coords="153,173,348,201"/>
+<area shape="poly" id="edge13_Node000009_Node000010" title=" " alt="" coords="627,199,349,192,348,187,632,196"/>
+<area shape="rect" id="Node000011" href="$structTimeSignature.html#a02ae21671dd586565bdc860fcd3ece19" title=" " alt="" coords="396,263,597,290"/>
+<area shape="poly" id="edge14_Node000009_Node000011" title=" " alt="" coords="674,218,646,230,598,252,559,265,558,260,596,247,644,225,669,219"/>
+<area shape="rect" id="Node000012" href="$structTimeSignature.html#a202d74c2ebe0591aa08ab8de6d772633" title=" " alt="" coords="396,211,597,238"/>
+<area shape="poly" id="edge15_Node000009_Node000012" title=" " alt="" coords="627,212,598,218,597,212,632,212"/>
+<area shape="poly" id="edge16_Node000012_Node000010" title=" " alt="" coords="383,208,346,204,346,199,389,208"/>
 </map>

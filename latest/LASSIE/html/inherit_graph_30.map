@@ -1,23 +1,23 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,228,79,253"/>
-<area shape="rect" id="Node000001" href="$classEventAttributesViewController.html" title=" " alt="" coords="127,5,345,31"/>
-<area shape="poly" id="edge7_Node000000_Node000001" title=" " alt="" coords="44,214,52,175,67,128,90,80,106,59,125,40,143,29,146,33,128,44,110,62,95,83,72,130,57,176,49,215"/>
-<area shape="rect" id="Node000002" href="$classFunctionEntryRow.html" title=" " alt="" coords="167,55,305,80"/>
-<area shape="poly" id="edge8_Node000000_Node000002" title=" " alt="" coords="48,214,74,151,97,117,125,89,144,78,166,71,167,76,147,83,128,93,101,121,79,154,53,216"/>
-<area shape="rect" id="Node000003" href="$classLayerBox.html" title=" " alt="" coords="195,104,277,129"/>
-<area shape="poly" id="edge9_Node000000_Node000003" title=" " alt="" coords="55,215,84,175,103,155,125,138,159,124,194,117,195,122,161,129,128,143,107,159,88,179,59,218"/>
-<area shape="rect" id="Node000004" href="$classMakeEnvelopeRow.html" title=" " alt="" coords="163,153,309,179"/>
-<area shape="poly" id="edge10_Node000000_Node000004" title=" " alt="" coords="71,217,126,188,162,176,164,181,128,192,74,222"/>
-<area shape="rect" id="Node000005" href="$classModifiers.html" title=" " alt="" coords="195,203,277,228"/>
-<area shape="poly" id="edge11_Node000000_Node000005" title=" " alt="" coords="92,232,194,218,195,223,93,237"/>
-<area shape="rect" id="Node000006" href="$classPartials.html" title=" " alt="" coords="201,252,271,277"/>
-<area shape="poly" id="edge12_Node000000_Node000006" title=" " alt="" coords="93,244,201,258,200,263,92,249"/>
-<area shape="rect" id="Node000007" href="$classREVChannel.html" title=" " alt="" coords="185,301,287,327"/>
-<area shape="poly" id="edge13_Node000000_Node000007" title=" " alt="" coords="74,258,128,286,186,303,184,308,126,291,72,263"/>
-<area shape="rect" id="Node000008" href="$classSPAChannel.html" title=" " alt="" coords="187,351,285,376"/>
-<area shape="poly" id="edge14_Node000000_Node000008" title=" " alt="" coords="60,264,89,301,107,320,128,336,157,349,187,356,186,361,155,354,125,340,104,324,85,305,56,267"/>
-<area shape="rect" id="Node000009" href="$classSelect.html" title=" " alt="" coords="205,400,267,425"/>
-<area shape="poly" id="edge15_Node000000_Node000009" title=" " alt="" coords="53,266,80,327,101,359,128,385,146,396,166,403,205,409,204,415,165,408,144,400,125,389,97,362,75,329,48,268"/>
-<area shape="rect" id="Node000010" href="$classStochos.html" title=" " alt="" coords="199,449,273,475"/>
-<area shape="poly" id="edge16_Node000000_Node000010" title=" " alt="" coords="50,267,58,305,72,350,95,396,111,417,128,435,144,445,162,452,199,459,198,464,161,457,142,450,125,439,106,420,91,399,67,352,52,306,44,268"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,240,78,268"/>
+<area shape="rect" id="Node000001" href="$classEventAttributesViewController.html" title=" " alt="" coords="126,5,344,33"/>
+<area shape="poly" id="edge7_Node000000_Node000001" title=" " alt="" coords="43,224,51,183,66,135,89,86,105,63,124,44,146,31,143,36,127,48,109,67,94,89,71,137,56,185,49,225"/>
+<area shape="rect" id="Node000002" href="$classFunctionEntryRow.html" title=" " alt="" coords="166,57,304,85"/>
+<area shape="poly" id="edge8_Node000000_Node000002" title=" " alt="" coords="48,225,58,194,74,159,96,125,124,96,143,84,167,77,163,81,146,89,127,100,100,128,79,162,63,196,53,226"/>
+<area shape="rect" id="Node000003" href="$classLayerBox.html" title=" " alt="" coords="194,109,276,137"/>
+<area shape="poly" id="edge9_Node000000_Node000003" title=" " alt="" coords="55,225,84,185,103,165,124,148,158,132,195,125,191,129,160,137,127,152,106,169,88,188,60,228"/>
+<area shape="rect" id="Node000004" href="$classMakeEnvelopeRow.html" title=" " alt="" coords="163,161,307,189"/>
+<area shape="poly" id="edge10_Node000000_Node000004" title=" " alt="" coords="72,229,125,199,164,187,160,191,127,204,76,233"/>
+<area shape="rect" id="Node000005" href="$classModifiers.html" title=" " alt="" coords="194,213,276,241"/>
+<area shape="poly" id="edge11_Node000000_Node000005" title=" " alt="" coords="92,244,195,231,192,235,95,249"/>
+<area shape="rect" id="Node000006" href="$classPartials.html" title=" " alt="" coords="200,265,270,293"/>
+<area shape="poly" id="edge12_Node000000_Node000006" title=" " alt="" coords="93,258,201,273,198,276,94,263"/>
+<area shape="rect" id="Node000007" href="$classREVChannel.html" title=" " alt="" coords="185,317,285,345"/>
+<area shape="poly" id="edge13_Node000000_Node000007" title=" " alt="" coords="75,274,127,302,187,321,182,324,125,307,75,279"/>
+<area shape="rect" id="Node000008" href="$classSPAChannel.html" title=" " alt="" coords="186,369,284,397"/>
+<area shape="poly" id="edge14_Node000000_Node000008" title=" " alt="" coords="58,279,88,319,107,338,127,354,156,368,188,377,183,379,154,373,124,359,103,342,84,322,58,284"/>
+<area shape="rect" id="Node000009" href="$classSelect.html" title=" " alt="" coords="204,421,266,449"/>
+<area shape="poly" id="edge15_Node000000_Node000009" title=" " alt="" coords="51,280,79,345,100,379,127,406,145,417,165,425,206,434,201,435,164,430,143,422,124,411,96,382,74,348,50,285"/>
+<area shape="rect" id="Node000010" href="$classStochos.html" title=" " alt="" coords="199,473,271,501"/>
+<area shape="poly" id="edge16_Node000000_Node000010" title=" " alt="" coords="46,280,56,322,71,370,94,418,109,440,127,458,143,469,161,477,201,486,196,487,160,482,141,474,124,463,105,443,89,421,66,372,51,324,46,286"/>
 </map>

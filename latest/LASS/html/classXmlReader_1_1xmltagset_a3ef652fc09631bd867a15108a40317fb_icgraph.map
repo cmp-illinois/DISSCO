@@ -1,0 +1,23 @@
+<map id="XmlReader::xmltagset::xmltagset" name="XmlReader::xmltagset::xmltagset">
+<area shape="rect" id="Node000001" title=" " alt="" coords="970,40,1137,84"/>
+<area shape="rect" id="Node000002" href="$classXmlReader_1_1xmltagset.html#a3efe4a048f5f3e72441e08e2959262bc" title=" " alt="" coords="722,5,922,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="952,44,901,36,901,31,957,44"/>
+<area shape="rect" id="Node000004" href="$classXmlReader_1_1xmltagset.html#a8d9c775e373d51793507238993db7fdb" title=" " alt="" coords="738,81,906,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="957,79,907,91,906,86,952,80"/>
+<area shape="rect" id="Node000003" href="$classXmlReader.html#a10b70989e8b704fed7974ca01266cb2f" title=" " alt="" coords="449,5,674,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="704,20,675,22,675,17,709,19"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="858,65,846,62,822,59,800,61,787,66,782,72,783,82,778,79,776,71,784,62,799,56,822,54,847,57,863,66"/>
+<area shape="rect" id="Node000005" href="$classXmlReader_1_1xmltagset.html#a5b1dbfb02d0da93232285c907959a6a0" title=" " alt="" coords="478,81,645,126"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="720,103,646,106,646,101,725,103"/>
+<area shape="rect" id="Node000006" href="$classEnvelope.html#a147185ea88b0784464dd96a6030db1fa" title=" " alt="" coords="243,11,393,38"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="473,76,400,54,363,42,363,36,402,49,478,75"/>
+<area shape="rect" id="Node000008" href="$classInterpolator.html#a3b12598576173eb1ade8c15da2d90ba7" title=" " alt="" coords="235,63,401,90"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="459,93,402,88,401,83,465,92"/>
+<area shape="rect" id="Node000009" href="$classReverb.html#ae2ec03f17618e0eb4bc75c8b0a53f6e4" title=" " alt="" coords="250,115,386,142"/>
+<area shape="poly" id="edge10_Node000005_Node000009" title=" " alt="" coords="459,114,387,124,386,119,465,113"/>
+<area shape="rect" id="Node000010" href="$classSound.html#aa2c1dbd8d0e7b629e81ad3566adec0d4" title=" " alt="" coords="253,167,383,194"/>
+<area shape="poly" id="edge11_Node000005_Node000010" title=" " alt="" coords="477,130,365,169,363,164,471,131"/>
+<area shape="rect" id="Node000007" href="$classDynamicVariable.html#afcd9e37f0d36f06d24293476606ca6ce" title=" " alt="" coords="5,29,187,74"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="225,37,188,43,186,38,230,34"/>
+<area shape="poly" id="edge9_Node000008_Node000007" title=" " alt="" coords="217,66,187,64,187,59,222,64"/>
+</map>

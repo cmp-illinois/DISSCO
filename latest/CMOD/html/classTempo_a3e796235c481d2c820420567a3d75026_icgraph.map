@@ -1,0 +1,9 @@
+<map id="Tempo::Tempo" name="Tempo::Tempo">
+<area shape="rect" id="Node000001" title=" " alt="" coords="233,57,348,85"/>
+<area shape="rect" id="Node000002" href="$classTempo.html#af5e179e65285982a11c09a1d80bcdfcf" title=" " alt="" coords="5,5,185,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,54,150,36,150,31,223,52"/>
+<area shape="rect" id="Node000003" href="$classTempo.html#a6ee66dd4296ee86992f32a211d87acde" title=" " alt="" coords="26,57,164,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="214,72,165,74,164,69,219,70"/>
+<area shape="rect" id="Node000004" href="$classTempo.html#a3058404a7067bf686e9f707987fffc53" title=" " alt="" coords="37,109,153,137"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="223,89,151,111,149,106,218,90"/>
+</map>

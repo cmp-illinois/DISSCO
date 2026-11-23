@@ -1,0 +1,15 @@
+<map id="EnvelopeLibraryEntry::EnvelopeLibraryEntry" name="EnvelopeLibraryEntry::EnvelopeLibraryEntry">
+<area shape="rect" id="Node000001" title="Create a fresh envelope with given index." alt="" coords="915,75,1083,119"/>
+<area shape="rect" id="Node000002" href="$classEnvelopeLibraryEntry.html#ab105d968e5b39a0f6bee2731eb2e9a88" title="Append a new, empty envelope entry after this one." alt="" coords="702,5,863,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="910,69,854,53,855,48,915,70"/>
+<area shape="rect" id="Node000003" href="$classEnvelopeLibraryEntry.html#a68de4e5e1dc354afb4ed3a7bf9663016" title="Append a duplicated envelope entry after this one." alt="" coords="702,75,863,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="897,97,863,100,863,94,902,97"/>
+<area shape="rect" id="Node000007" href="$classEnvelopeLibraryEntry.html#acfe38e76f9fffdaa67ce9c99a280ac34" title="Copy&#45;construct an entry from an existing one." alt="" coords="698,144,867,189"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="915,124,855,146,854,141,910,125"/>
+<area shape="rect" id="Node000004" href="$namespaceEnvelopeUtilities.html#a4395145df1803e65d6da9e3edff4bf6d" title=" " alt="" coords="466,75,650,119"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="684,97,651,100,651,94,689,97"/>
+<area shape="rect" id="Node000005" href="$classEnvelopeLibraryWindow.html#aa5ccfd6bcfce9d10dbd3706bb2645b60" title="Duplicate the selected envelope." alt="" coords="240,75,418,119"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="448,97,419,100,418,94,453,97"/>
+<area shape="rect" id="Node000006" href="$classEnvelopeLibraryWindow.html#a0fc6921f519c11a1692c3a45a79fc900" title="Constructor: builds the UI." alt="" coords="5,75,192,119"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="222,98,193,100,192,94,227,96"/>
+</map>

@@ -1,4 +1,8 @@
 <map id="Interpolator::scale" name="Interpolator::scale">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,145,55"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="99,18,92,11,75,8,61,10,54,15,52,20,56,28,52,30,47,21,49,11,59,5,75,3,95,6,103,15"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="486,29,625,57"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="590,14,579,10,556,8,534,10,522,15,519,20,524,30,519,28,513,20,518,11,532,5,556,3,581,5,596,14"/>
+<area shape="rect" id="Node000002" href="$classInterpolator.html#abaf7551ab59a8833c4f1da7baec680a8" title=" " alt="" coords="249,29,438,57"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="468,43,439,46,439,41,473,43"/>
+<area shape="rect" id="Node000003" href="$classDynamicVariableSequence.html#a08f1b4a4bb7e92c31c620fe3fd252a29" title=" " alt="" coords="5,21,201,66"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="230,43,201,46,201,41,235,43"/>
 </map>

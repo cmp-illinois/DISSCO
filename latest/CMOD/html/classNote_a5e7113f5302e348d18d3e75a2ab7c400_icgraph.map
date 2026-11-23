@@ -1,14 +1,14 @@
 <map id="Note::setPitchNum" name="Note::setPitchNum">
-<area shape="rect" id="Node000001" title=" " alt="" coords="879,31,1023,56"/>
-<area shape="rect" id="Node000002" href="$classNote.html#a93196e0ab249a4737fe399315a11f3f5" title=" " alt="" coords="657,5,799,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="865,36,799,29,800,23,866,31"/>
-<area shape="rect" id="Node000006" href="$classNote.html#a28bc31df03279f2e2ea425dd786c46a5" title=" " alt="" coords="625,55,831,80"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="865,55,831,59,831,54,865,50"/>
-<area shape="rect" id="Node000003" href="$classBottom.html#a8375b8cbfeebf69b5b140563422270e5" title=" " alt="" coords="436,31,577,56"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="643,30,578,38,577,33,643,25"/>
-<area shape="rect" id="Node000004" href="$classBottom.html#ad5249403159b27ec898f289b15c93915" title=" " alt="" coords="217,31,388,56"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="422,46,388,46,388,41,422,41"/>
-<area shape="rect" id="Node000005" href="$classBottom.html#a32e301cf566271d4072951c1a851e88c" title=" " alt="" coords="5,31,169,56"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="204,46,170,46,170,41,204,41"/>
-<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="611,57,577,54,578,48,612,52"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="876,32,1019,60"/>
+<area shape="rect" id="Node000002" href="$classNote.html#a93196e0ab249a4737fe399315a11f3f5" title=" " alt="" coords="655,5,796,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="858,35,796,30,797,25,863,35"/>
+<area shape="rect" id="Node000006" href="$classNote.html#a28bc31df03279f2e2ea425dd786c46a5" title=" " alt="" coords="623,57,828,85"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="863,56,828,62,828,57,858,56"/>
+<area shape="rect" id="Node000003" href="$classBottom.html#a8375b8cbfeebf69b5b140563422270e5" title=" " alt="" coords="435,32,575,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="642,29,576,40,575,35,637,30"/>
+<area shape="rect" id="Node000004" href="$classBottom.html#ad5249403159b27ec898f289b15c93915" title=" " alt="" coords="217,32,387,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="417,46,388,48,387,43,422,46"/>
+<area shape="rect" id="Node000005" href="$classBottom.html#a32e301cf566271d4072951c1a851e88c" title=" " alt="" coords="5,32,169,60"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="198,46,169,48,169,43,204,45"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="605,58,576,57,576,51,611,58"/>
 </map>

@@ -1,0 +1,23 @@
+<map id="Partials::deleteRequested" name="Partials::deleteRequested">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,100,193,128"/>
+<area shape="rect" id="Node000002" href="$classPartials.html#a648435da3ce592885949c4c7d2446d80" title=" " alt="" coords="241,100,366,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,121,228,122,223,124,193,126"/>
+<area shape="poly" id="edge5_Node000002_Node000001" title=" " alt="" coords="238,107,209,108,208,103,243,105"/>
+<area shape="rect" id="Node000003" href="$classFunctionEntryRow.html#ad45583a2381b5cdd542918d2ed9e97b3" title=" " alt="" coords="435,5,621,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="331,97,413,60,430,56,435,55,415,65,333,102"/>
+<area shape="rect" id="Node000006" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="432,126,624,154"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="366,119,420,127,414,127,367,124"/>
+<area shape="rect" id="Node000008" href="$classProjectManager.html#a02c96a91da7bebdb54dfcd2ea6688d4b" title="Mark the current project as having unsaved changes and emit dataModified()." alt="" coords="418,178,639,206"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="332,126,415,163,444,174,439,173,413,167,331,131"/>
+<area shape="rect" id="Node000010" href="$classFunctionEntryRow.html#a1ad1acac51bef6487d6dd874e3cfd1b7" title=" " alt="" coords="414,74,642,102"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="366,104,401,103,396,104,367,110"/>
+<area shape="rect" id="Node000004" href="$classFunctionEntryRow.html#aae0dd4ec56f622e2582815125cf3124d" title=" " alt="" coords="698,32,899,77"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="622,34,686,43,680,43,622,40"/>
+<area shape="rect" id="Node000005" href="$classFunctionEntryRow.html#ae99dc4a98078640c9d4f49cf7d0d251b" title=" " alt="" coords="955,40,1178,68"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="899,52,942,54,937,55,900,57"/>
+<area shape="rect" id="Node000007" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="744,126,853,154"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="624,137,731,139,726,140,624,142"/>
+<area shape="rect" id="Node000009" href="$classProjectManager.html#ac3696b7040a19b457dc4e4d2dcbe3c11" title=" " alt="" coords="690,178,907,206"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="639,189,678,192,672,192,639,194"/>
+<area shape="poly" id="edge11_Node000010_Node000004" title=" " alt="" coords="642,71,686,68,680,69,643,76"/>
+</map>

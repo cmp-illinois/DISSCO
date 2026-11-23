@@ -1,9 +1,9 @@
 <map id="EventAttributesViewController" name="EventAttributesViewController">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,168,224,193"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="57,80,130,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,118,114,167,109,168,97,119"/>
-<area shape="rect" id="Node000003" href="$classProjectView.html" title=" " alt="" coords="155,80,253,105"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,117,129,169,125,166,180,113"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="167,5,241,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="207,45,207,80,201,80,201,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,183,224,211"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="41,82,113,110"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,123,112,182,107,182,86,127"/>
+<area shape="rect" id="Node000003" href="$classProjectView.html" title=" " alt="" coords="137,82,236,110"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="171,122,126,184,122,180,166,123"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="150,5,223,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="188,46,189,83,184,81,185,51"/>
 </map>

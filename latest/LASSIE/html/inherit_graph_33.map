@@ -1,19 +1,19 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,179,80,204"/>
-<area shape="rect" id="Node000001" href="$classComboBoxWheelGuard.html" title=" " alt="" coords="139,5,312,31"/>
-<area shape="poly" id="edge21_Node000000_Node000001" title=" " alt="" coords="49,164,76,102,98,68,126,40,147,28,149,33,130,44,102,72,81,104,54,167"/>
-<area shape="rect" id="Node000002" href="$classInst.html" title="Process&#45;wide singleton that owns LASSIE&#39;s top&#45;level services." alt="" coords="202,55,249,80"/>
-<area shape="poly" id="edge22_Node000000_Node000002" title=" " alt="" coords="56,165,85,126,105,106,127,89,165,73,201,66,202,72,167,78,129,94,108,110,89,129,60,168"/>
-<area shape="rect" id="Node000003" href="$classProject.html" title="Aggregate state for a single open DISSCO project." alt="" coords="192,104,259,129"/>
-<area shape="poly" id="edge23_Node000000_Node000003" title=" " alt="" coords="72,169,127,138,191,120,192,125,129,143,74,173"/>
-<area shape="rect" id="Node000004" href="$classProjectManager.html" title="Owner and broker for all open Project instances." alt="" coords="163,153,287,179"/>
-<area shape="poly" id="edge24_Node000000_Node000004" title=" " alt="" coords="94,182,163,172,164,177,94,187"/>
-<area shape="rect" id="Node000005" href="$classProjectView.html" title=" " alt="" coords="176,203,275,228"/>
-<area shape="poly" id="edge25_Node000000_Node000005" title=" " alt="" coords="94,195,176,206,175,212,94,201"/>
-<area shape="rect" id="Node000006" href="$classTextOverflowDisplayPolicy.html" title=" " alt="" coords="128,252,323,277"/>
-<area shape="poly" id="edge26_Node000000_Node000006" title=" " alt="" coords="76,209,129,237,167,249,165,254,127,242,73,214"/>
-<area shape="rect" id="Node000007" href="$classUpdater.html" title="In&#45;app &quot;Check for Updates&quot; client backed by the GitHub Releases API." alt="" coords="188,301,263,327"/>
-<area shape="poly" id="edge27_Node000000_Node000007" title=" " alt="" coords="61,214,90,252,109,271,129,286,158,300,188,307,187,312,157,305,127,291,105,275,86,256,57,218"/>
-<area shape="rect" id="Node000008" href="$classWindowShortcutPolicy.html" title=" " alt="" coords="142,351,309,376"/>
-<area shape="poly" id="edge28_Node000000_Node000008" title=" " alt="" coords="54,216,81,277,103,309,130,336,152,348,149,353,126,340,99,312,77,280,49,218"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,188,79,216"/>
+<area shape="rect" id="Node000001" href="$classComboBoxWheelGuard.html" title=" " alt="" coords="138,5,310,33"/>
+<area shape="poly" id="edge21_Node000000_Node000001" title=" " alt="" coords="48,173,75,108,97,73,125,44,149,31,146,36,128,48,101,76,80,110,53,174"/>
+<area shape="rect" id="Node000002" href="$classInst.html" title="Process&#45;wide singleton that owns LASSIE&#39;s top&#45;level services." alt="" coords="201,57,246,85"/>
+<area shape="poly" id="edge22_Node000000_Node000002" title=" " alt="" coords="56,173,85,133,104,113,125,96,164,79,203,72,199,75,165,84,128,100,107,117,89,136,61,176"/>
+<area shape="rect" id="Node000003" href="$classProject.html" title="Aggregate state for a single open DISSCO project." alt="" coords="191,109,257,137"/>
+<area shape="poly" id="edge23_Node000000_Node000003" title=" " alt="" coords="73,177,126,147,192,128,188,132,128,152,76,181"/>
+<area shape="rect" id="Node000004" href="$classProjectManager.html" title="Owner and broker for all open Project instances." alt="" coords="162,161,286,189"/>
+<area shape="poly" id="edge24_Node000000_Node000004" title=" " alt="" coords="93,192,164,182,160,186,95,197"/>
+<area shape="rect" id="Node000005" href="$classProjectView.html" title=" " alt="" coords="175,213,273,241"/>
+<area shape="poly" id="edge25_Node000000_Node000005" title=" " alt="" coords="93,206,176,219,172,222,95,212"/>
+<area shape="rect" id="Node000006" href="$classTextOverflowDisplayPolicy.html" title=" " alt="" coords="127,265,321,293"/>
+<area shape="poly" id="edge26_Node000000_Node000006" title=" " alt="" coords="76,222,128,250,163,264,158,266,126,255,76,227"/>
+<area shape="rect" id="Node000007" href="$classUpdater.html" title="In&#45;app &quot;Check for Updates&quot; client backed by the GitHub Releases API." alt="" coords="187,317,260,345"/>
+<area shape="poly" id="edge27_Node000000_Node000007" title=" " alt="" coords="59,227,89,267,108,286,128,302,157,316,189,326,184,327,155,321,125,307,104,290,85,270,59,232"/>
+<area shape="rect" id="Node000008" href="$classWindowShortcutPolicy.html" title=" " alt="" coords="141,369,307,397"/>
+<area shape="poly" id="edge28_Node000000_Node000008" title=" " alt="" coords="52,228,80,293,101,326,128,354,150,369,145,369,125,359,97,330,76,296,50,233"/>
 </map>

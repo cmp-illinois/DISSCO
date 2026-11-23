@@ -20,7 +20,7 @@ var searchData=
   ['evaluatespa_17',['evaluateSpa',['../classUtilities.html#af2a6125668cb8a5ee960b34db6dd8823',1,'Utilities']]],
   ['evaluatespectrumelement_18',['evaluateSpectrumElement',['../classUtilities.html#a5ed86bfa06e36ddb7404bb2b4c577996',1,'Utilities']]],
   ['evaluatingchildstarttime_19',['evaluatingChildStartTime',['../classEvent.html#a67a41ddf5f56888bea2409b2aa22deb5',1,'Event']]],
-  ['event_20',['event',['../classEvent.html',1,'Event'],['../classEvent.html#a4f7a2537d2729b0035ff13ee67c40377',1,'Event::Event()']]],
+  ['event_20',['Event',['../classEvent.html',1,'Event'],['../classEvent.html#a4f7a2537d2729b0035ff13ee67c40377',1,'Event::Event()']]],
   ['event_2ecpp_21',['Event.cpp',['../Event_8cpp.html',1,'']]],
   ['event_2eh_22',['Event.h',['../Event_8h.html',1,'']]],
   ['eventbottom_23',['eventBottom',['../Libraries_8h.html#a2628ea8d12e8b2563c32f05dc7fff6faab1482f4a440441e849d4d5dd60a9e81f',1,'Libraries.h']]],

@@ -1,13 +1,14 @@
 <map id="EventAttributesViewController::EventAttributesViewController" name="EventAttributesViewController::EventAttributesViewController">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,232,63"/>
-<area shape="rect" id="Node000002" href="$namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160" title=" " alt="" coords="280,31,431,56"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,41,266,41,266,46,232,46"/>
-<area shape="rect" id="Node000003" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="494,5,686,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="430,33,480,27,481,32,431,38"/>
-<area shape="rect" id="Node000005" href="$classProjectManager.html#a02c96a91da7bebdb54dfcd2ea6688d4b" title="Mark the current project as having unsaved changes and emit dataModified()." alt="" coords="479,55,701,80"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="431,48,466,52,465,57,430,54"/>
-<area shape="rect" id="Node000004" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="803,5,913,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="686,15,790,15,790,21,686,21"/>
-<area shape="rect" id="Node000006" href="$classProjectManager.html#ac3696b7040a19b457dc4e4d2dcbe3c11" title=" " alt="" coords="749,55,967,80"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="702,65,735,65,735,70,702,70"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,232,74"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="74,28,72,19,80,10,95,5,119,3,144,5,161,14,155,14,143,10,118,8,96,10,83,15,77,21,79,30"/>
+<area shape="rect" id="Node000002" href="$namespaceMUtilities.html#af0186a1311c3bcb1d2040a21dc4ba160" title=" " alt="" coords="280,38,429,66"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="232,49,267,51,262,52,232,54"/>
+<area shape="rect" id="Node000003" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="492,11,683,39"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="429,41,474,38,479,37,430,46"/>
+<area shape="rect" id="Node000005" href="$classProjectManager.html#a02c96a91da7bebdb54dfcd2ea6688d4b" title="Mark the current project as having unsaved changes and emit dataModified()." alt="" coords="477,63,698,91"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="429,57,464,63,459,63,429,62"/>
+<area shape="rect" id="Node000004" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="800,11,909,39"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="684,22,788,25,782,25,684,28"/>
+<area shape="rect" id="Node000006" href="$classProjectManager.html#ac3696b7040a19b457dc4e4d2dcbe3c11" title=" " alt="" coords="746,63,963,91"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="699,74,734,77,728,77,699,80"/>
 </map>

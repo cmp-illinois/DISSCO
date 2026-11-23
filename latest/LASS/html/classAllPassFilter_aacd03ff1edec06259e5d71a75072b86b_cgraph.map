@@ -1,13 +1,15 @@
 <map id="AllPassFilter::xml_read" name="AllPassFilter::xml_read">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,75,176,101"/>
-<area shape="rect" id="Node000002" href="$classXmlReader_1_1xmltag.html#a4106875a07a0bf0080e0bc4e396da589" title=" " alt="" coords="224,8,380,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,73,217,49,219,54,137,78"/>
-<area shape="rect" id="Node000004" href="$classAllPassFilter.html#ab00a7e7072c7e1114326cfc78d7f8d10" title=" " alt="" coords="229,75,375,101"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="176,85,215,85,215,91,176,91"/>
-<area shape="rect" id="Node000006" href="$classAllPassFilter.html#a4c855e8415e916dfab31bbf3e84eec8f" title=" " alt="" coords="230,125,374,150"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="146,98,234,119,233,124,145,103"/>
-<area shape="rect" id="Node000003" href="$classXmlReader_1_1xmltag.html#ad6a217ae1be50cb448b51b8334ccb9e0" title=" " alt="" coords="428,5,584,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="380,24,414,24,415,29,380,30"/>
-<area shape="rect" id="Node000005" href="$classFilter_1_1hist__queue.html#a17542b5fc79565d3baa039d2cfb18184" title=" " alt="" coords="439,69,573,109"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="375,86,425,86,425,91,375,91"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,108,175,136"/>
+<area shape="rect" id="Node000002" href="$classXmlReader_1_1xmltag.html#a4106875a07a0bf0080e0bc4e396da589" title=" " alt="" coords="223,40,378,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,105,210,87,206,90,142,110"/>
+<area shape="rect" id="Node000006" href="$classAllPassFilter.html#ab00a7e7072c7e1114326cfc78d7f8d10" title=" " alt="" coords="228,108,373,136"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="175,120,215,122,210,123,176,125"/>
+<area shape="rect" id="Node000007" href="$classAllPassFilter.html#a4c855e8415e916dfab31bbf3e84eec8f" title=" " alt="" coords="229,160,372,188"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="149,134,229,155,224,157,149,139"/>
+<area shape="rect" id="Node000003" href="$classXmlReader_1_1xmltag.html#ad6a217ae1be50cb448b51b8334ccb9e0" title=" " alt="" coords="426,5,581,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="377,47,413,43,408,44,379,52"/>
+<area shape="rect" id="Node000005" href="$classXmlReader_1_1xmltag.html#a16c5fda9a7e0f4c3c55b449fc9205e46" title=" " alt="" coords="426,75,581,119"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="378,73,413,81,408,81,378,78"/>
+<area shape="rect" id="Node000004" href="$classXmlReader_1_1xmltag.html#a0fb35b30eb3afe6e1eb9bbaa890d6d0e" title=" " alt="" coords="629,5,785,50"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="581,25,616,27,611,28,582,30"/>
 </map>

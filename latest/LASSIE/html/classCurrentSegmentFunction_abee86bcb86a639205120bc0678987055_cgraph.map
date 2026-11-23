@@ -1,0 +1,15 @@
+<map id="CurrentSegmentFunction::CurrentSegmentFunction" name="CurrentSegmentFunction::CurrentSegmentFunction">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,65,196,110"/>
+<area shape="rect" id="Node000002" href="$classMultiEntryFunction.html#a192f702ddc83a30ad117252068513f24" title=" " alt="" coords="244,65,395,110"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,85,231,87,226,88,196,90"/>
+<area shape="rect" id="Node000003" href="$classFunctionWidget.html#aea5e13a6c630b4d9c8e0afdbbb9d73b3" title=" " alt="" coords="464,5,650,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="394,66,449,55,454,54,396,71"/>
+<area shape="rect" id="Node000004" href="$classFunctionEntryRow.html#a1ad1acac51bef6487d6dd874e3cfd1b7" title=" " alt="" coords="443,74,671,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="395,85,430,87,425,88,395,90"/>
+<area shape="rect" id="Node000007" href="$classFunctionWidget.html#a18e240ccf56093e61a9989420ec5155a" title=" " alt="" coords="451,126,663,154"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="395,101,479,122,473,122,395,107"/>
+<area shape="rect" id="Node000005" href="$classFunctionEntryRow.html#aae0dd4ec56f622e2582815125cf3124d" title=" " alt="" coords="719,65,920,110"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="672,85,707,88,701,88,672,90"/>
+<area shape="rect" id="Node000006" href="$classFunctionEntryRow.html#ae99dc4a98078640c9d4f49cf7d0d251b" title=" " alt="" coords="968,74,1191,102"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="920,85,955,88,950,88,920,90"/>
+</map>

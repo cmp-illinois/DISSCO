@@ -1,5 +1,5 @@
 <map id="NotationScore::Build" name="NotationScore::Build">
-<area shape="rect" id="Node000001" title=" " alt="" coords="153,5,308,31"/>
-<area shape="rect" id="Node000002" href="$classPiece.html#a4dc9d0d3627fc2208b7da6a36a2ca9c2" title=" " alt="" coords="5,5,105,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,21,106,21,106,15,139,15"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="252,5,406,33"/>
+<area shape="rect" id="Node000002" href="$classNotationScore.html#a9fcb6628558106290b6455eb2d46c449" title=" " alt="" coords="5,5,204,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,19,204,22,204,17,239,19"/>
 </map>

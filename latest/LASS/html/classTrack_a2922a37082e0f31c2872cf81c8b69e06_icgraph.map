@@ -1,0 +1,23 @@
+<map id="Track::Track" name="Track::Track">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1191,119,1289,146"/>
+<area shape="rect" id="Node000002" href="$classTrack.html#a684dc87cb52830a8e9708973b230a9fa" title=" " alt="" coords="1012,67,1143,94"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1177,113,1123,98,1124,92,1182,114"/>
+<area shape="rect" id="Node000010" href="$classTrack.html#a262c89a531611eb9a4574c5154ec8cc6" title=" " alt="" coords="1013,119,1142,146"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1173,133,1143,135,1143,130,1178,132"/>
+<area shape="rect" id="Node000011" href="$classTrack.html#a59d4102c391f760fbb582f2db44c45b9" title=" " alt="" coords="1029,171,1126,198"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1182,151,1124,173,1123,167,1177,152"/>
+<area shape="rect" id="Node000003" href="$classMultiTrack.html#a330f89f6bbf73c2290f9a628ed47333d" title=" " alt="" coords="800,67,964,94"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="994,81,965,83,965,78,999,80"/>
+<area shape="rect" id="Node000004" href="$classScore.html#a3a4fd110381c2d6dea6d7d84edf094c7" title=" " alt="" coords="545,24,752,68"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="781,66,752,64,752,59,787,66"/>
+<area shape="rect" id="Node000009" href="$classSpatializer.html#a66c634b61bd59f6afaeeb8fd46350525" title=" " alt="" coords="568,93,729,138"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="787,95,730,106,729,101,781,95"/>
+<area shape="rect" id="Node000005" href="$classScore.html#a5454303993d1efa3db744d9d6e39bf58" title=" " alt="" coords="302,24,497,68"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="527,46,498,48,497,43,532,45"/>
+<area shape="rect" id="Node000006" href="$Score_8cpp.html#a2e1065ce25c966cc4228e217e80ce1e7" title=" " alt="" coords="165,32,254,60"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="284,47,255,48,254,43,289,45"/>
+<area shape="rect" id="Node000007" href="$classSound.html#a4f246242d337ab7ef8a646f69f2a04ae" title=" " alt="" coords="5,5,117,33"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="147,36,118,32,116,27,152,34"/>
+<area shape="rect" id="Node000008" href="$classScore.html#acb0a205511c777b06c258f673f7e0d4d" title=" " alt="" coords="10,57,112,85"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="147,58,113,65,111,60,152,54"/>
+</map>

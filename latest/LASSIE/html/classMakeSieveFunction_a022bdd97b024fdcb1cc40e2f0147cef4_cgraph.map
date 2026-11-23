@@ -1,7 +1,13 @@
 <map id="MakeSieveFunction::MakeSieveFunction" name="MakeSieveFunction::MakeSieveFunction">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,161,63"/>
-<area shape="rect" id="Node000002" href="$classFunctionEntryRow.html#a1ad1acac51bef6487d6dd874e3cfd1b7" title=" " alt="" coords="209,5,439,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,32,195,29,196,34,162,38"/>
-<area shape="rect" id="Node000003" href="$classFunctionWidget.html#a18e240ccf56093e61a9989420ec5155a" title=" " alt="" coords="217,55,431,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="162,48,204,53,203,58,162,54"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,65,161,110"/>
+<area shape="rect" id="Node000002" href="$classFunctionWidget.html#aea5e13a6c630b4d9c8e0afdbbb9d73b3" title=" " alt="" coords="230,5,416,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,66,218,53,214,55,162,71"/>
+<area shape="rect" id="Node000003" href="$classFunctionEntryRow.html#a1ad1acac51bef6487d6dd874e3cfd1b7" title=" " alt="" coords="209,74,437,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,85,196,87,190,88,161,90"/>
+<area shape="rect" id="Node000006" href="$classFunctionWidget.html#a18e240ccf56093e61a9989420ec5155a" title=" " alt="" coords="217,126,429,154"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="161,102,243,121,238,123,160,107"/>
+<area shape="rect" id="Node000004" href="$classFunctionEntryRow.html#aae0dd4ec56f622e2582815125cf3124d" title=" " alt="" coords="485,65,685,110"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="437,85,472,87,467,88,437,90"/>
+<area shape="rect" id="Node000005" href="$classFunctionEntryRow.html#ae99dc4a98078640c9d4f49cf7d0d251b" title=" " alt="" coords="733,74,957,102"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="686,85,721,88,715,88,686,90"/>
 </map>

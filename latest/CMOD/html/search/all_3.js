@@ -1,7 +1,7 @@
 var searchData=
 [
   ['d_0',['d',['../classRational.html#a7efb76a6cb6b38146a5a8e86c83d8cc3',1,'Rational']]],
-  ['defaultonchance_1',['defaultonchance',['../structdissco_1_1modifier__usage_1_1Entry.html#acbd769388ee737a1c8a9164f7fc509d9',1,'dissco::modifier_usage::Entry::defaultOnChance'],['../ModifierUsage_8cpp.html#ada91e6a1e5f2308aa8bb4073dff13069',1,'defaultOnChance:&#160;ModifierUsage.cpp']]],
+  ['defaultonchance_1',['defaultOnChance',['../structdissco_1_1modifier__usage_1_1Entry.html#acbd769388ee737a1c8a9164f7fc509d9',1,'dissco::modifier_usage::Entry']]],
   ['defaultonchances_2',['defaultOnChances',['../structBottom_1_1ModifierUsageRuntime.html#abed761fedf50ba152ff788cb494666ec',1,'Bottom::ModifierUsageRuntime']]],
   ['defaultonenvelopes_3',['defaultOnEnvelopes',['../structBottom_1_1ModifierUsageRuntime.html#ad0ee769d5e40dce0cf5414b43af2e399',1,'Bottom::ModifierUsageRuntime']]],
   ['define_2eh_4',['Define.h',['../Define_8h.html',1,'']]],

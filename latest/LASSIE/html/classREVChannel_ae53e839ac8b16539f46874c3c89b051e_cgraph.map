@@ -1,0 +1,17 @@
+<map id="REVChannel::insertChannelRequested" name="REVChannel::insertChannelRequested">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,36,204,81"/>
+<area shape="rect" id="Node000002" href="$classREVChannel.html#abda76caeccce2af3122c3f68387b6c24" title=" " alt="" coords="252,44,439,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,65,239,67,234,68,204,70"/>
+<area shape="poly" id="edge2_Node000002_Node000001" title=" " alt="" coords="249,50,220,52,219,47,254,49"/>
+<area shape="rect" id="Node000003" href="$classREVChannel.html#a7fb15207d07484f55ff995a04a3d35e2" title=" " alt="" coords="496,5,707,50"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="439,53,482,51,477,52,440,58"/>
+<area shape="rect" id="Node000004" href="$classFunctionEntryRow.html#a1ad1acac51bef6487d6dd874e3cfd1b7" title=" " alt="" coords="487,74,715,102"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="439,66,474,73,469,73,440,72"/>
+<area shape="rect" id="Node000007" href="$classREVChannel.html#a9ea63b1ddb6dc26391c058f9851319f3" title=" " alt="" coords="506,126,697,154"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="380,70,488,110,520,122,514,121,486,116,379,75"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="492,32,418,44,417,39,498,31"/>
+<area shape="rect" id="Node000005" href="$classFunctionEntryRow.html#aae0dd4ec56f622e2582815125cf3124d" title=" " alt="" coords="763,65,964,110"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="716,85,751,88,745,88,716,90"/>
+<area shape="rect" id="Node000006" href="$classFunctionEntryRow.html#ae99dc4a98078640c9d4f49cf7d0d251b" title=" " alt="" coords="1012,74,1235,102"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="964,85,999,88,994,88,964,90"/>
+</map>

@@ -1,9 +1,13 @@
 <map id="MakeEnvelopeFunction::MakeEnvelopeFunction" name="MakeEnvelopeFunction::MakeEnvelopeFunction">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,47,185,87"/>
-<area shape="rect" id="Node000002" href="$classFunctionEntryRow.html#a2e57aabad525e069114ac13f7deaf8a1" title=" " alt="" coords="251,5,445,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,47,269,31,270,36,186,52"/>
-<area shape="rect" id="Node000003" href="$classFunctionEntryRow.html#a1ad1acac51bef6487d6dd874e3cfd1b7" title=" " alt="" coords="233,55,463,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="186,65,220,65,220,70,186,70"/>
-<area shape="rect" id="Node000004" href="$classFunctionWidget.html#a18e240ccf56093e61a9989420ec5155a" title=" " alt="" coords="241,104,455,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="186,82,270,99,269,104,185,87"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,65,185,110"/>
+<area shape="rect" id="Node000002" href="$classFunctionWidget.html#aea5e13a6c630b4d9c8e0afdbbb9d73b3" title=" " alt="" coords="254,5,440,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,64,241,52,236,54,186,69"/>
+<area shape="rect" id="Node000003" href="$classFunctionEntryRow.html#a1ad1acac51bef6487d6dd874e3cfd1b7" title=" " alt="" coords="233,74,461,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,85,220,87,214,88,186,90"/>
+<area shape="rect" id="Node000006" href="$classFunctionWidget.html#a18e240ccf56093e61a9989420ec5155a" title=" " alt="" coords="241,126,453,154"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="185,104,264,122,259,123,185,109"/>
+<area shape="rect" id="Node000004" href="$classFunctionEntryRow.html#aae0dd4ec56f622e2582815125cf3124d" title=" " alt="" coords="509,65,709,110"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="461,85,496,87,491,88,461,90"/>
+<area shape="rect" id="Node000005" href="$classFunctionEntryRow.html#ae99dc4a98078640c9d4f49cf7d0d251b" title=" " alt="" coords="757,74,981,102"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="710,85,745,88,739,88,710,90"/>
 </map>

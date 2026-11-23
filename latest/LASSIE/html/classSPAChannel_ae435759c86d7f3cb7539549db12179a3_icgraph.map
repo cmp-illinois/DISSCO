@@ -1,0 +1,9 @@
+<map id="SPAChannel::SPAChannel" name="SPAChannel::SPAChannel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="263,48,446,76"/>
+<area shape="rect" id="Node000002" href="$classSPAChannel.html#af0d40b42e85816f51097973d7de89fdb" title=" " alt="" coords="12,5,208,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="245,56,209,53,209,48,250,56"/>
+<area shape="rect" id="Node000003" href="$classSPAChannel.html#a4057d10afa26bb155a55dc0f8e4d87d9" title=" " alt="" coords="5,75,215,119"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="292,79,215,94,215,88,287,80"/>
+<area shape="poly" id="edge2_Node000002_Node000001" title=" " alt="" coords="224,32,307,47,301,49,224,37"/>
+<area shape="poly" id="edge4_Node000003_Node000001" title=" " alt="" coords="224,69,265,66,260,67,225,74"/>
+</map>

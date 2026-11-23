@@ -1,17 +1,15 @@
 <map id="Track::getWave" name="Track::getWave">
-<area shape="rect" id="Node000001" title=" " alt="" coords="467,112,588,137"/>
-<area shape="rect" id="Node000002" href="$classFilter.html#a6f1dedd0740028cdccf12e899cf181c5" title=" " alt="" coords="249,5,406,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="501,104,463,73,417,44,388,33,390,28,420,40,466,69,504,100"/>
-<area shape="rect" id="Node000003" href="$classReverb.html#ace20af68ae86853a9e9ef803b9eb2a4d" title=" " alt="" coords="236,55,419,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="470,111,418,95,374,83,375,78,419,90,472,105"/>
-<area shape="rect" id="Node000006" href="$classMultiPan.html#ae814ca649cb2909bc482c9e138e049c9" title=" " alt="" coords="253,105,402,145"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="453,127,402,127,402,122,453,122"/>
-<area shape="rect" id="Node000007" href="$classPan.html#a69e820c09fd00c0c38ee415d0a5ed4e6" title=" " alt="" coords="249,169,406,195"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="472,144,419,159,375,172,374,167,418,154,470,139"/>
-<area shape="rect" id="Node000008" href="$classAuWriter.html#ae020c03d45cf00c4b6cb22564c6a6f7d" title=" " alt="" coords="267,219,387,244"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="504,149,466,181,420,210,388,222,387,217,417,205,463,176,501,145"/>
-<area shape="rect" id="Node000004" href="$classReverb.html#ac8dd1a7ca6f03d889159ff37ca98b546" title=" " alt="" coords="5,31,188,56"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="222,59,188,55,188,50,223,54"/>
-<area shape="rect" id="Node000005" href="$classPartial.html#a6ab80d7069346d873d3811de427a53d8" title=" " alt="" coords="40,80,153,105"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="222,82,154,89,153,84,222,76"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="464,117,584,145"/>
+<area shape="rect" id="Node000002" href="$classFilter.html#a6f1dedd0740028cdccf12e899cf181c5" title=" " alt="" coords="247,5,404,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="495,106,459,77,415,48,387,36,387,31,417,43,462,73,500,107"/>
+<area shape="rect" id="Node000003" href="$classReverb.html#ace20af68ae86853a9e9ef803b9eb2a4d" title=" " alt="" coords="235,57,416,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="463,112,415,99,379,88,379,83,417,94,468,112"/>
+<area shape="rect" id="Node000005" href="$classMultiPan.html#ae814ca649cb2909bc482c9e138e049c9" title=" " alt="" coords="251,109,400,154"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="446,132,400,134,400,129,451,131"/>
+<area shape="rect" id="Node000006" href="$classPan.html#a69e820c09fd00c0c38ee415d0a5ed4e6" title=" " alt="" coords="247,177,404,205"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="468,150,417,168,379,179,378,174,415,163,463,151"/>
+<area shape="rect" id="Node000007" href="$classAuWriter.html#ae020c03d45cf00c4b6cb22564c6a6f7d" title=" " alt="" coords="266,229,385,257"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="500,155,462,189,417,219,386,232,385,227,415,214,459,185,495,157"/>
+<area shape="rect" id="Node000004" href="$classReverb.html#ac8dd1a7ca6f03d889159ff37ca98b546" title=" " alt="" coords="5,57,187,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="217,72,188,74,186,69,222,70"/>
 </map>

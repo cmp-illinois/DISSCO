@@ -1,9 +1,7 @@
 <map id="Filter::do_filter_SoundSample" name="Filter::do_filter_SoundSample">
-<area shape="rect" id="Node000001" title=" " alt="" coords="404,31,616,56"/>
-<area shape="rect" id="Node000002" href="$classFilter.html#a65ee6011869f1304d5dc1b9cbed5792f" title=" " alt="" coords="165,5,356,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="390,34,356,30,357,25,391,29"/>
-<area shape="rect" id="Node000004" href="$classFilter.html#a6f1dedd0740028cdccf12e899cf181c5" title=" " alt="" coords="182,55,339,80"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="390,58,340,62,339,57,390,52"/>
-<area shape="rect" id="Node000003" href="$classSound.html#a4f246242d337ab7ef8a646f69f2a04ae" title=" " alt="" coords="5,5,117,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="151,21,118,21,118,15,151,15"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="243,32,454,60"/>
+<area shape="rect" id="Node000002" href="$classFilter.html#a65ee6011869f1304d5dc1b9cbed5792f" title=" " alt="" coords="5,5,195,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,33,195,32,195,27,230,32"/>
+<area shape="rect" id="Node000003" href="$classFilter.html#a6f1dedd0740028cdccf12e899cf181c5" title=" " alt="" coords="22,57,178,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="224,59,179,66,178,61,230,58"/>
 </map>

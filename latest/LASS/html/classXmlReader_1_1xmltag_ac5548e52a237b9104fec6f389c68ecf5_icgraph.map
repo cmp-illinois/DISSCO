@@ -1,9 +1,11 @@
 <map id="XmlReader::xmltag::destroyTag" name="XmlReader::xmltag::destroyTag">
-<area shape="rect" id="Node000001" title=" " alt="" coords="481,27,637,67"/>
-<area shape="rect" id="Node000002" href="$classXmlReader.html#ae40848fcb60577d56f1c035105199195" title=" " alt="" coords="280,35,433,60"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="468,50,434,50,434,45,468,45"/>
-<area shape="rect" id="Node000003" href="$classXmlReader.html#a10b70989e8b704fed7974ca01266cb2f" title=" " alt="" coords="5,5,232,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="266,39,221,33,222,28,266,34"/>
-<area shape="rect" id="Node000004" href="$classDynamicVariableSequence.html#a37900a2002a46e2585eb1960c473e74b" title=" " alt="" coords="21,55,217,95"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="267,61,217,66,216,61,266,55"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="482,57,637,102"/>
+<area shape="rect" id="Node000002" href="$classXmlReader.html#ae40848fcb60577d56f1c035105199195" title=" " alt="" coords="280,35,432,62"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="464,65,433,63,433,57,470,65"/>
+<area shape="rect" id="Node000005" href="$classXmlReader_1_1xmltag.html#a2613552daa9c51f226075d867880a5e5" title=" " alt="" coords="279,86,434,131"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="469,92,435,100,434,95,464,93"/>
+<area shape="rect" id="Node000003" href="$classXmlReader.html#a10b70989e8b704fed7974ca01266cb2f" title=" " alt="" coords="5,5,231,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="262,38,231,36,231,30,267,37"/>
+<area shape="rect" id="Node000004" href="$classDynamicVariableSequence.html#a37900a2002a46e2585eb1960c473e74b" title=" " alt="" coords="20,57,216,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="262,61,217,69,216,64,267,60"/>
 </map>

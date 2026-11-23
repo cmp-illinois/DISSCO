@@ -1,0 +1,17 @@
+<map id="XmlReader::xmltagset::auxfind" name="XmlReader::xmltagset::auxfind">
+<area shape="rect" id="Node000001" title=" " alt="" coords="664,76,832,120"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="782,60,770,56,748,54,728,56,716,61,711,67,711,76,707,73,705,65,712,56,727,51,748,49,771,51,787,61"/>
+<area shape="rect" id="Node000002" href="$classXmlReader_1_1xmltagset.html#a5b1dbfb02d0da93232285c907959a6a0" title=" " alt="" coords="449,76,616,120"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="646,98,617,100,617,95,651,98"/>
+<area shape="rect" id="Node000003" href="$classEnvelope.html#a147185ea88b0784464dd96a6030db1fa" title=" " alt="" coords="243,5,393,33"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="460,70,400,48,365,36,365,31,402,43,465,69"/>
+<area shape="rect" id="Node000005" href="$classInterpolator.html#a3b12598576173eb1ade8c15da2d90ba7" title=" " alt="" coords="235,57,401,85"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="431,86,402,84,401,79,436,85"/>
+<area shape="rect" id="Node000006" href="$classReverb.html#ae2ec03f17618e0eb4bc75c8b0a53f6e4" title=" " alt="" coords="250,109,386,137"/>
+<area shape="poly" id="edge7_Node000002_Node000006" title=" " alt="" coords="431,110,387,118,386,112,436,109"/>
+<area shape="rect" id="Node000007" href="$classSound.html#aa2c1dbd8d0e7b629e81ad3566adec0d4" title=" " alt="" coords="253,161,383,189"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="463,126,402,151,365,163,364,158,400,146,458,127"/>
+<area shape="rect" id="Node000004" href="$classDynamicVariable.html#afcd9e37f0d36f06d24293476606ca6ce" title=" " alt="" coords="5,24,187,68"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="225,31,188,37,186,32,230,29"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="217,61,187,59,187,54,222,59"/>
+</map>

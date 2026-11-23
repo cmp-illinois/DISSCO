@@ -1,21 +1,21 @@
 <map id="LASSIE/src/widgets/ModifierUiPolicy.hpp" name="LASSIE/src/widgets/ModifierUiPolicy.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="272,5,431,45"/>
-<area shape="rect" id="Node000002" href="$event__struct_8hpp.html" title=" " alt="" coords="83,93,257,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="309,48,210,90,208,85,307,43"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="5,167,76,192"/>
-<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="272,40,156,62,106,77,73,95,63,108,55,123,46,153,41,152,50,121,58,105,70,91,104,73,155,57,271,34"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="265,167,328,192"/>
-<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="345,47,325,94,306,154,301,152,319,92,340,45"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="333,93,484,119"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="367,44,394,80,390,84,363,47"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="509,93,594,119"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="400,43,510,86,508,91,398,48"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="618,93,677,119"/>
-<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="425,43,605,90,604,96,423,48"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="100,167,155,192"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="165,120,143,156,139,154,161,118"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="150,121,75,162,73,157,148,116"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="179,167,241,192"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="179,118,199,153,194,156,174,120"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="192,116,265,157,263,162,189,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="268,5,425,50"/>
+<area shape="rect" id="Node000002" href="$event__struct_8hpp.html" title=" " alt="" coords="80,98,254,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="297,52,210,94,208,89,301,49"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,174,75,201"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="265,42,152,66,102,82,70,100,60,113,52,128,44,160,39,158,47,126,55,110,66,96,100,77,151,61,269,38"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="261,174,323,201"/>
+<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="338,49,319,99,300,160,296,157,313,97,334,52"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="328,98,478,126"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="362,48,388,86,383,84,360,53"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="502,98,586,126"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="399,48,501,91,496,92,399,53"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="611,98,669,126"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="426,47,598,97,593,98,425,53"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="98,174,152,201"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="162,125,142,162,138,158,157,128"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="146,127,77,168,74,164,142,125"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="176,174,237,201"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="175,124,195,160,190,159,173,129"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="190,124,260,165,254,166,188,129"/>
 </map>

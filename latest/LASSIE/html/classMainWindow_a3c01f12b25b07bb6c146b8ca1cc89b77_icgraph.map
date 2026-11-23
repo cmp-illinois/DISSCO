@@ -1,0 +1,6 @@
+<map id="MainWindow::MainWindow" name="MainWindow::MainWindow">
+<area shape="rect" id="Node000001" title="Build the main window and bind it to the application singleton." alt="" coords="221,29,417,57"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="357,14,344,10,319,8,295,10,282,15,278,20,284,30,279,28,273,20,278,11,294,5,319,3,346,5,362,14"/>
+<area shape="rect" id="Node000002" href="$classMainWindow.html#ab43b7a45b545abf4d62ae4a1cd38e715" title="Access the most recently constructed MainWindow." alt="" coords="5,29,173,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,43,173,46,173,41,208,43"/>
+</map>

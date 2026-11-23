@@ -1,9 +1,5 @@
 <map id="Spatializer::spatialize_Track" name="Spatializer::spatialize_Track">
-<area shape="rect" id="Node000001" title=" " alt="" coords="376,27,539,67"/>
-<area shape="rect" id="Node000002" href="$classPartial.html#a6ab80d7069346d873d3811de427a53d8" title=" " alt="" coords="190,5,303,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="362,37,303,29,304,23,362,31"/>
-<area shape="rect" id="Node000003" href="$classSpatializer.html#a66c634b61bd59f6afaeeb8fd46350525" title=" " alt="" coords="165,55,328,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="363,63,329,67,328,62,362,57"/>
-<area shape="rect" id="Node000004" href="$classSound.html#a4f246242d337ab7ef8a646f69f2a04ae" title=" " alt="" coords="5,63,117,88"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="152,78,118,78,118,73,152,73"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="215,5,376,50"/>
+<area shape="rect" id="Node000002" href="$classSpatializer.html#a66c634b61bd59f6afaeeb8fd46350525" title=" " alt="" coords="5,5,167,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,28,167,30,167,25,202,27"/>
 </map>

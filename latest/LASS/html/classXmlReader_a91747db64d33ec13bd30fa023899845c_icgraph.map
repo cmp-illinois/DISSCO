@@ -1,6 +1,6 @@
 <map id="XmlReader::readXMLDocument" name="XmlReader::readXMLDocument">
-<area shape="rect" id="Node000001" title=" " alt="" coords="280,29,507,55"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="443,20,440,16,431,12,393,8,364,10,348,15,345,20,353,27,349,31,339,21,344,11,363,5,393,3,433,7,443,12,447,18"/>
-<area shape="rect" id="Node000002" href="$classXmlReader.html#a10b70989e8b704fed7974ca01266cb2f" title=" " alt="" coords="5,29,232,55"/>
-<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="266,45,232,45,232,39,266,39"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="279,29,504,57"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="437,14,422,10,391,8,363,10,347,15,343,20,350,30,345,28,337,20,343,11,362,5,391,3,423,5,442,14"/>
+<area shape="rect" id="Node000002" href="$classXmlReader.html#a10b70989e8b704fed7974ca01266cb2f" title=" " alt="" coords="5,29,231,57"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="261,43,231,46,231,41,266,43"/>
 </map>

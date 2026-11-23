@@ -1,9 +1,9 @@
 <map id="MakePatternFunction" name="MakePatternFunction">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,225,164,251"/>
-<area shape="rect" id="Node000002" href="$classMultiEntryFunction.html" title=" " alt="" coords="13,152,157,177"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,191,87,225,82,225,82,191"/>
-<area shape="rect" id="Node000003" href="$classFunctionWidget.html" title=" " alt="" coords="23,79,146,104"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="87,118,87,152,82,152,82,118"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="45,5,124,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="87,44,87,79,82,79,82,44"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,232,163,260"/>
+<area shape="rect" id="Node000002" href="$classMultiEntryFunction.html" title=" " alt="" coords="12,157,156,184"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,198,87,233,81,231,82,202"/>
+<area shape="rect" id="Node000003" href="$classFunctionWidget.html" title=" " alt="" coords="23,81,145,109"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="85,122,87,157,81,156,83,127"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="45,5,123,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="85,46,87,81,81,80,83,51"/>
 </map>

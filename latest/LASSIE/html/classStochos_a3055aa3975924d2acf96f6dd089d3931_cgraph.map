@@ -1,0 +1,21 @@
+<map id="Stochos::deleteRequested" name="Stochos::deleteRequested">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,162,196,190"/>
+<area shape="rect" id="Node000002" href="$classStochos.html#a6d933d91ec235b0827c7b51c0352a172" title=" " alt="" coords="244,162,375,190"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,182,231,184,226,185,196,187"/>
+<area shape="poly" id="edge5_Node000002_Node000001" title=" " alt="" coords="241,168,211,169,211,164,246,167"/>
+<area shape="rect" id="Node000003" href="$classFunctionEntryRow.html#ad45583a2381b5cdd542918d2ed9e97b3" title=" " alt="" coords="444,67,630,111"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="338,159,422,121,440,118,445,116,424,126,340,164"/>
+<area shape="rect" id="Node000005" href="$classFunctionEntryRow.html#ae99dc4a98078640c9d4f49cf7d0d251b" title=" " alt="" coords="948,46,1171,74"/>
+<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="317,159,332,135,356,104,386,75,422,52,497,26,575,11,654,4,733,4,808,9,878,18,992,42,987,42,877,23,808,14,733,9,655,9,576,16,498,31,424,57,389,79,360,108,336,138,320,163"/>
+<area shape="rect" id="Node000006" href="$classStochos.html#a2707a8c5b17408ad59c34f45090545b0" title=" " alt="" coords="458,135,616,163"/>
+<area shape="poly" id="edge7_Node000002_Node000006" title=" " alt="" coords="375,166,446,160,440,161,376,171"/>
+<area shape="rect" id="Node000007" href="$classStochos.html#ac71e4b22ed1b5461d10781d5d869f7bf" title=" " alt="" coords="439,187,635,215"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="368,188,427,197,421,198,368,193"/>
+<area shape="rect" id="Node000008" href="$classFunctionEntryRow.html#a1ad1acac51bef6487d6dd874e3cfd1b7" title=" " alt="" coords="423,239,651,267"/>
+<area shape="poly" id="edge10_Node000002_Node000008" title=" " alt="" coords="339,188,424,224,453,235,448,235,422,229,338,193"/>
+<area shape="rect" id="Node000004" href="$classFunctionEntryRow.html#aae0dd4ec56f622e2582815125cf3124d" title=" " alt="" coords="699,67,900,111"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="630,87,686,89,681,90,631,92"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="900,75,935,74,930,75,901,80"/>
+<area shape="poly" id="edge9_Node000007_Node000002" title=" " alt="" coords="476,187,390,179,390,173,481,186"/>
+<area shape="poly" id="edge11_Node000008_Node000004" title=" " alt="" coords="621,236,650,224,685,202,717,175,768,125,773,123,721,179,688,206,653,229,622,241"/>
+</map>

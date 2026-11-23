@@ -1,9 +1,9 @@
 <map id="LASS/src/EnvelopeLibrary.h" name="LASS/src/EnvelopeLibrary.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="206,5,403,31"/>
-<area shape="rect" id="Node000002" href="$Envelope_8cpp.html" title=" " alt="" coords="5,79,175,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="258,37,126,81,124,76,256,32"/>
-<area shape="rect" id="Node000003" href="$EnvelopeLibrary_8cpp.html" title=" " alt="" coords="199,79,411,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="307,44,307,79,302,79,302,44"/>
-<area shape="rect" id="Node000004" href="$LASS_8h.html" title="Umbrella header for the LASS additive sound synthesis library." alt="" coords="435,79,561,104"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="349,33,467,76,465,81,347,38"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="205,5,401,33"/>
+<area shape="rect" id="Node000002" href="$Envelope_8cpp.html" title=" " alt="" coords="5,81,174,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="252,40,128,83,127,78,248,37"/>
+<area shape="rect" id="Node000003" href="$EnvelopeLibrary_8cpp.html" title=" " alt="" coords="197,81,408,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="305,47,305,82,301,79,301,51"/>
+<area shape="rect" id="Node000004" href="$LASS_8h.html" title="Umbrella header for the LASS additive sound synthesis library." alt="" coords="433,81,559,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="352,36,465,80,459,81,351,41"/>
 </map>

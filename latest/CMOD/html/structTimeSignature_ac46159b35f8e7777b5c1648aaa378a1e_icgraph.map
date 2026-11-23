@@ -1,0 +1,10 @@
+<map id="TimeSignature::TimeSignature" name="TimeSignature::TimeSignature">
+<area shape="rect" id="Node000001" title=" " alt="" coords="498,23,717,50"/>
+<area shape="rect" id="Node000002" href="$structTimeSignature.html#accdd735820640f796dac11b384d9a628" title=" " alt="" coords="5,24,201,52"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="515,20,450,14,349,8,249,14,169,26,168,21,248,9,349,3,450,9,520,19"/>
+<area shape="rect" id="Node000003" href="$structTimeSignature.html#a02ae21671dd586565bdc860fcd3ece19" title=" " alt="" coords="249,23,450,50"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="480,37,451,39,450,34,485,36"/>
+<area shape="rect" id="Node000004" href="$structTimeSignature.html#a202d74c2ebe0591aa08ab8de6d772633" title=" " alt="" coords="249,75,450,102"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="523,54,422,77,422,71,518,54"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="262,72,173,55,174,50,267,70"/>
+</map>

@@ -1,5 +1,7 @@
 <map id="Envelope::addToShape" name="Envelope::addToShape">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,173,31"/>
-<area shape="rect" id="Node000002" href="$classEnvelope.html#a4050bd9aee0956dc8cebb2c313535cea" title=" " alt="" coords="221,5,389,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,15,208,15,208,21,174,21"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,32,173,60"/>
+<area shape="rect" id="Node000002" href="$classEnvelope.html#a4050bd9aee0956dc8cebb2c313535cea" title=" " alt="" coords="221,5,388,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,33,208,31,202,32,174,38"/>
+<area shape="rect" id="Node000003" href="$classEnvelope.html#ac609dfa5fe79dd719530e8c29bb35725" title=" " alt="" coords="230,57,379,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="173,53,217,60,211,61,173,58"/>
 </map>

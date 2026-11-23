@@ -1,5 +1,9 @@
 <map id="XmlReader::xmltag::findChildParamValue" name="XmlReader::xmltag::findChildParamValue">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,161,45"/>
-<area shape="rect" id="Node000002" href="$classXmlReader_1_1xmltag.html#ad6a217ae1be50cb448b51b8334ccb9e0" title=" " alt="" coords="209,5,365,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,23,196,23,196,28,161,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,40,161,85"/>
+<area shape="rect" id="Node000002" href="$classXmlReader_1_1xmltag.html#ad6a217ae1be50cb448b51b8334ccb9e0" title=" " alt="" coords="209,5,364,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,47,196,43,190,44,161,52"/>
+<area shape="rect" id="Node000004" href="$classXmlReader_1_1xmltag.html#a16c5fda9a7e0f4c3c55b449fc9205e46" title=" " alt="" coords="209,75,364,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="161,73,196,81,190,81,161,78"/>
+<area shape="rect" id="Node000003" href="$classXmlReader_1_1xmltag.html#a0fb35b30eb3afe6e1eb9bbaa890d6d0e" title=" " alt="" coords="412,5,567,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="364,25,399,27,394,28,364,30"/>
 </map>

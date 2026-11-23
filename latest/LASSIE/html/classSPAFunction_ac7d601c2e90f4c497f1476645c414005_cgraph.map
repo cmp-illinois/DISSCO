@@ -1,8 +1,34 @@
 <map id="SPAFunction::populateFromXML" name="SPAFunction::populateFromXML">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,42,232,67"/>
-<area shape="rect" id="Node000002" href="$classFunctionWidget.html#a7081ba54096387d4537dc54271e7febf" title=" " alt="" coords="280,5,473,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,39,266,35,267,40,231,45"/>
-<area shape="rect" id="Node000003" href="$classFunctionWidget.html#a62272a2c379e0070770409cbe2eb51f2" title=" " alt="" coords="521,42,715,67"/>
-<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="232,54,280,55,473,55,508,54,508,60,473,60,280,60,232,59"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="474,34,508,39,507,44,473,40"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,403,232,431"/>
+<area shape="rect" id="Node000002" href="$classSPAChannel.html#a60708c3e815c57867a582008997d54dc" title=" " alt="" coords="297,220,455,248"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,401,341,255,343,260,141,405"/>
+<area shape="rect" id="Node000012" href="$classFunctionWidget.html#a7081ba54096387d4537dc54271e7febf" title=" " alt="" coords="280,335,472,379"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="180,400,267,382,262,384,182,405"/>
+<area shape="rect" id="Node000013" href="$classFunctionWidget.html#a62272a2c379e0070770409cbe2eb51f2" title=" " alt="" coords="550,403,743,431"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="232,414,536,415,534,419,232,420"/>
+<area shape="rect" id="Node000014" href="$classSPAChannel.html#a8ca23309bac51df4900b5a8a913c13dc" title=" " alt="" coords="292,454,460,482"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="193,429,289,449,284,451,192,434"/>
+<area shape="rect" id="Node000015" href="$classSPAChannel.html#a8088f557dcc8d21cd3cd3834c93a4556" title=" " alt="" coords="285,506,466,534"/>
+<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="147,429,208,459,281,491,306,501,300,501,279,495,205,464,146,434"/>
+<area shape="rect" id="Node000003" href="$classFunctionEntryRow.html#ad45583a2381b5cdd542918d2ed9e97b3" title=" " alt="" coords="554,5,740,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="383,219,402,186,433,143,472,98,519,60,541,50,537,54,521,65,476,102,437,147,407,189,387,222"/>
+<area shape="rect" id="Node000006" href="$classFunctionEntryRow.html#a40173e0d79d52fc2e1e289873527f9d6" title=" " alt="" coords="556,75,738,119"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="391,218,445,174,481,150,519,129,543,121,539,124,521,134,484,155,449,179,395,222"/>
+<area shape="rect" id="Node000007" href="$classSPAChannel.html#af642547b6b3fcae3c0baef38d5069409" title=" " alt="" coords="528,143,765,171"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="413,217,519,181,557,174,552,176,521,186,415,222"/>
+<area shape="rect" id="Node000008" href="$classSPAChannel.html#a47006894ad10c38081f7f83949454c45" title=" " alt="" coords="520,195,773,223"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="455,224,507,221,502,223,456,229"/>
+<area shape="rect" id="Node000009" href="$classFunctionEntryRow.html#a1ad1acac51bef6487d6dd874e3cfd1b7" title=" " alt="" coords="532,247,761,275"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="455,239,519,247,514,249,456,245"/>
+<area shape="rect" id="Node000010" href="$classSPAChannel.html#acdd62ebd6cb22c27cf2fc0b5fd591711" title=" " alt="" coords="552,299,741,327"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="413,246,521,284,557,295,552,296,519,289,413,251"/>
+<area shape="rect" id="Node000011" href="$classSPAChannel.html#af06bd3f7b885899e49cbd3e93d71c686" title=" " alt="" coords="550,351,743,379"/>
+<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="392,246,447,291,483,315,521,336,543,346,538,346,519,341,480,320,444,295,392,251"/>
+<area shape="rect" id="Node000004" href="$classFunctionEntryRow.html#aae0dd4ec56f622e2582815125cf3124d" title=" " alt="" coords="821,75,1022,119"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="738,48,818,70,813,71,739,53"/>
+<area shape="rect" id="Node000005" href="$classFunctionEntryRow.html#ae99dc4a98078640c9d4f49cf7d0d251b" title=" " alt="" coords="1070,83,1293,111"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1022,94,1057,96,1052,98,1023,100"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="738,94,809,96,804,98,739,100"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="742,244,772,232,807,210,839,183,891,133,895,130,843,187,810,214,775,237,744,249"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="472,377,521,388,564,399,559,400,519,393,472,382"/>
 </map>

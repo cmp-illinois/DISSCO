@@ -1,24 +1,7 @@
 <map id="Semaphore::post" name="Semaphore::post">
-<area shape="rect" id="Node000001" title=" " alt="" coords="648,135,780,160"/>
-<area shape="rect" id="Node000002" href="$classScore.html#a21eb4c3d1a905b6a64f4121805a271a7" title=" " alt="" coords="457,5,547,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="692,126,652,84,626,62,599,44,573,34,547,27,548,21,575,29,601,40,629,58,655,80,696,122"/>
-<area shape="rect" id="Node000003" href="$classScore.html#ae1562b3836f23823e3c1ba5441d54089" title=" " alt="" coords="406,55,598,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="671,132,599,102,544,83,545,78,601,97,673,127"/>
-<area shape="rect" id="Node000004" href="$Score_8cpp.html#a39d69126a1c6f253e4f8e8dbe365ee1d" title=" " alt="" coords="229,105,293,131"/>
-<area shape="poly" id="edge12_Node000001_Node000004" title=" " alt="" coords="634,145,293,123,293,117,634,140"/>
-<area shape="rect" id="Node000006" href="$classScore.html#a5454303993d1efa3db744d9d6e39bf58" title=" " alt="" coords="404,155,600,195"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="635,160,601,165,600,160,634,155"/>
-<area shape="rect" id="Node000009" href="$classScore.html#a70de1da2f362a695b56f6738d8a33ac1" title=" " alt="" coords="165,245,356,271"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="683,170,645,191,601,210,539,227,474,240,356,255,356,250,474,235,537,222,599,205,642,186,680,165"/>
-<area shape="rect" id="Node000010" href="$classScore.html#ac480924baa909e86012b9672e1be2ec7" title=" " alt="" coords="407,271,597,296"/>
-<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="695,172,654,213,601,254,556,273,554,268,599,249,651,209,691,169"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="427,86,294,114,292,109,426,80"/>
-<area shape="rect" id="Node000005" href="$classScore.html#acb0a205511c777b06c258f673f7e0d4d" title=" " alt="" coords="10,109,113,135"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="215,122,113,124,113,118,215,116"/>
-<area shape="rect" id="Node000007" href="$Score_8cpp.html#a2e1065ce25c966cc4228e217e80ce1e7" title=" " alt="" coords="215,161,306,187"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="390,177,306,177,306,172,390,172"/>
-<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="201,161,110,137,111,132,203,156"/>
-<area shape="rect" id="Node000008" href="$classSound.html#a4f246242d337ab7ef8a646f69f2a04ae" title=" " alt="" coords="5,161,117,187"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="202,177,118,177,118,171,202,171"/>
-<area shape="poly" id="edge11_Node000010_Node000009" title=" " alt="" coords="393,275,356,271,356,265,393,269"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="266,5,397,33"/>
+<area shape="rect" id="Node000002" href="$Score_8cpp.html#a39d69126a1c6f253e4f8e8dbe365ee1d" title=" " alt="" coords="155,5,218,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="248,19,219,22,219,17,253,19"/>
+<area shape="rect" id="Node000003" href="$classScore.html#acb0a205511c777b06c258f673f7e0d4d" title=" " alt="" coords="5,5,107,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="136,19,107,22,107,17,142,19"/>
 </map>

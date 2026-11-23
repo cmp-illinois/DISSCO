@@ -1,9 +1,9 @@
 <map id="ReadSIVFileFunction" name="ReadSIVFileFunction">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,225,160,251"/>
-<area shape="rect" id="Node000002" href="$classMultiEntryFunction.html" title=" " alt="" coords="11,152,155,177"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,191,85,225,80,225,80,191"/>
-<area shape="rect" id="Node000003" href="$classFunctionWidget.html" title=" " alt="" coords="21,79,144,104"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="85,118,85,152,80,152,80,118"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="43,5,122,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="85,44,85,79,80,79,80,44"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,232,159,260"/>
+<area shape="rect" id="Node000002" href="$classMultiEntryFunction.html" title=" " alt="" coords="10,157,154,184"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,198,85,233,79,231,80,202"/>
+<area shape="rect" id="Node000003" href="$classFunctionWidget.html" title=" " alt="" coords="21,81,143,109"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,122,85,157,79,156,81,127"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="43,5,121,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="83,46,85,81,79,80,81,51"/>
 </map>

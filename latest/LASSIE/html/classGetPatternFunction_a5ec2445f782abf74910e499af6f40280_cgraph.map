@@ -1,7 +1,13 @@
 <map id="GetPatternFunction::GetPatternFunction" name="GetPatternFunction::GetPatternFunction">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,160,63"/>
-<area shape="rect" id="Node000002" href="$classFunctionEntryRow.html#a1ad1acac51bef6487d6dd874e3cfd1b7" title=" " alt="" coords="208,5,437,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,33,194,29,195,34,161,38"/>
-<area shape="rect" id="Node000003" href="$classFunctionWidget.html#a18e240ccf56093e61a9989420ec5155a" title=" " alt="" coords="216,55,429,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,48,202,53,202,58,160,54"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,65,159,110"/>
+<area shape="rect" id="Node000002" href="$classFunctionWidget.html#aea5e13a6c630b4d9c8e0afdbbb9d73b3" title=" " alt="" coords="228,5,414,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,66,217,53,212,55,160,71"/>
+<area shape="rect" id="Node000003" href="$classFunctionEntryRow.html#a1ad1acac51bef6487d6dd874e3cfd1b7" title=" " alt="" coords="207,74,435,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="158,85,194,87,188,88,159,90"/>
+<area shape="rect" id="Node000006" href="$classFunctionWidget.html#a18e240ccf56093e61a9989420ec5155a" title=" " alt="" coords="215,126,427,154"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="159,102,242,121,236,123,158,107"/>
+<area shape="rect" id="Node000004" href="$classFunctionEntryRow.html#aae0dd4ec56f622e2582815125cf3124d" title=" " alt="" coords="483,65,683,110"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="435,85,470,87,465,88,435,90"/>
+<area shape="rect" id="Node000005" href="$classFunctionEntryRow.html#ae99dc4a98078640c9d4f49cf7d0d251b" title=" " alt="" coords="731,74,955,102"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="684,85,719,88,713,88,684,90"/>
 </map>

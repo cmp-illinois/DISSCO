@@ -1,5 +1,9 @@
 <map id="Stochos::nodeTextChanged" name="Stochos::nodeTextChanged">
-<area shape="rect" id="Node000001" title=" " alt="" coords="185,5,383,31"/>
-<area shape="rect" id="Node000002" href="$classStochos.html#a6d933d91ec235b0827c7b51c0352a172" title=" " alt="" coords="5,5,137,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,21,138,21,138,15,171,15"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="423,5,619,33"/>
+<area shape="rect" id="Node000002" href="$classStochos.html#a6d933d91ec235b0827c7b51c0352a172" title=" " alt="" coords="244,5,375,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="405,28,375,30,375,25,410,28"/>
+<area shape="poly" id="edge4_Node000002_Node000001" title=" " alt="" coords="390,8,425,10,420,10,391,13"/>
+<area shape="rect" id="Node000003" href="$classStochos.html#a3055aa3975924d2acf96f6dd089d3931" title=" " alt="" coords="5,5,196,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="226,28,196,31,196,25,231,28"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="211,8,246,11,241,11,211,13"/>
 </map>

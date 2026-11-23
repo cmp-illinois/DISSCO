@@ -5,7 +5,7 @@ var searchData=
   ['addrow_2',['addRow',['../classSPAChannel.html#a60708c3e815c57867a582008997d54dc',1,'SPAChannel']]],
   ['adjustboundary_3',['adjustBoundary',['../classEnvLibDrawingArea.html#a049ecb2a281b1b7801303d5cc354f890',1,'EnvLibDrawingArea']]],
   ['allocate_4',['allocate',['../namespaceRandomOrderIntId.html#afdd05e73403cd63f59edf7633eaf0ac7',1,'RandomOrderIntId']]],
-  ['analyzemodifierusage_5',['analyzemodifierusage',['../ModifierUsageQtAdapter_8cpp.html#a1fc53dde22a30485078927449563fec7',1,'analyzeModifierUsage(const QList&lt; Modifier &gt; &amp;modifiers, ModifierSamplingScope scope):&#160;ModifierUsageQtAdapter.cpp'],['../ModifierUsageQtAdapter_8hpp.html#a1fc53dde22a30485078927449563fec7',1,'analyzeModifierUsage(const QList&lt; Modifier &gt; &amp;modifiers, ModifierSamplingScope scope):&#160;ModifierUsageQtAdapter.cpp']]],
+  ['analyzemodifierusage_5',['analyzeModifierUsage',['../ModifierUsageQtAdapter_8cpp.html#a1fc53dde22a30485078927449563fec7',1,'analyzeModifierUsage(const QList&lt; Modifier &gt; &amp;modifiers, ModifierSamplingScope scope):&#160;ModifierUsageQtAdapter.cpp'],['../ModifierUsageQtAdapter_8hpp.html#a1fc53dde22a30485078927449563fec7',1,'analyzeModifierUsage(const QList&lt; Modifier &gt; &amp;modifiers, ModifierSamplingScope scope):&#160;ModifierUsageQtAdapter.cpp']]],
   ['applydelete_6',['applyDelete',['../namespaceLayerRefs.html#a410d03c150173c0657c0336438235edd',1,'LayerRefs']]],
   ['applyrename_7',['applyRename',['../namespaceLayerRefs.html#aa403055b505274bee957a47ea9e9c6b5',1,'LayerRefs']]],
   ['applysnapshot_8',['applySnapshot',['../classMarkovModelLibraryWindow.html#af257338a2db81b202cfe5b2ddebb6c1e',1,'MarkovModelLibraryWindow']]],

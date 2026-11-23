@@ -1,4 +1,5 @@
 <map id="EnvelopeLibraryEntry::duplicateEnvelope" name="EnvelopeLibraryEntry::duplicateEnvelope">
-<area shape="rect" id="Node000001" title="Append a duplicated envelope entry after this one." alt="" coords="5,29,167,69"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="55,29,53,20,58,11,69,5,86,3,105,6,116,13,112,17,103,11,86,8,71,10,62,14,59,21,60,28"/>
+<area shape="rect" id="Node000001" title="Append a duplicated envelope entry after this one." alt="" coords="5,5,166,50"/>
+<area shape="rect" id="Node000002" href="$classEnvelopeLibraryEntry.html#a52e549515cfe254ee4ac6c64acb3a091" title="Create a fresh envelope with given index." alt="" coords="214,5,382,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,25,201,27,196,28,166,30"/>
 </map>

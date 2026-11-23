@@ -1,0 +1,15 @@
+<map id="LayerBox::deleteRequested" name="LayerBox::deleteRequested">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,57,206,85"/>
+<area shape="rect" id="Node000002" href="$classLayerBox.html#af4f626e754364178bf94507edd498083" title=" " alt="" coords="254,57,405,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,69,240,71,235,72,206,74"/>
+<area shape="rect" id="Node000003" href="$event__struct_8hpp.html#a32e387433b9a78370ca1870b7cae98bb" title="Convert an Eventtype enum value to a human&#45;readable display string." alt="" coords="470,5,658,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="395,54,480,38,486,36,396,59"/>
+<area shape="rect" id="Node000004" href="$classInst.html#a730b7c5af1b0c9ed3804c8c028aadb76" title=" " alt="" coords="468,57,659,85"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="405,69,455,71,450,71,405,74"/>
+<area shape="rect" id="Node000006" href="$classProjectManager.html#a02c96a91da7bebdb54dfcd2ea6688d4b" title="Mark the current project as having unsaved changes and emit dataModified()." alt="" coords="453,109,674,137"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="395,83,486,105,480,105,395,88"/>
+<area shape="rect" id="Node000005" href="$classInst.html#a381828beaa899ba49afd23d835ac514f" title=" " alt="" coords="776,57,885,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="660,69,764,71,758,71,660,74"/>
+<area shape="rect" id="Node000007" href="$classProjectManager.html#ac3696b7040a19b457dc4e4d2dcbe3c11" title=" " alt="" coords="722,109,939,137"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="675,121,710,123,704,123,675,126"/>
+</map>

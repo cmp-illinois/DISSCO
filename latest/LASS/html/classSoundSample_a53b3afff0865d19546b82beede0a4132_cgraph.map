@@ -1,5 +1,7 @@
 <map id="SoundSample::composite" name="SoundSample::composite">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,192,31"/>
-<area shape="rect" id="Node000002" href="$classSoundSample.html#a8fe1248c64570253ba40d68a75114057" title=" " alt="" coords="240,5,467,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,15,226,15,226,21,192,21"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,32,192,60"/>
+<area shape="rect" id="Node000002" href="$classSoundSample.html#a8fe1248c64570253ba40d68a75114057" title=" " alt="" coords="240,5,466,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,33,227,32,221,33,193,39"/>
+<area shape="rect" id="Node000003" href="$classSoundSample.html#afac3bd89adf1afa5c3d22c873cdf302e" title=" " alt="" coords="249,57,456,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,52,236,59,231,59,192,58"/>
 </map>

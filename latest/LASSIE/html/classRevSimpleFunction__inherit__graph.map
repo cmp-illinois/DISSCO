@@ -1,9 +1,9 @@
 <map id="RevSimpleFunction" name="RevSimpleFunction">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,225,152,251"/>
-<area shape="rect" id="Node000002" href="$classRevFunctionBase.html" title=" " alt="" coords="11,152,146,177"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,191,81,225,76,225,76,191"/>
-<area shape="rect" id="Node000003" href="$classFunctionWidget.html" title=" " alt="" coords="17,79,140,104"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="81,118,81,152,76,152,76,118"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="39,5,118,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="81,44,81,79,76,79,76,44"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,232,152,260"/>
+<area shape="rect" id="Node000002" href="$classRevFunctionBase.html" title=" " alt="" coords="12,157,145,184"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,198,81,233,76,231,77,202"/>
+<area shape="rect" id="Node000003" href="$classFunctionWidget.html" title=" " alt="" coords="17,81,140,109"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="80,122,81,157,76,156,77,127"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="40,5,117,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="79,46,81,81,76,80,78,51"/>
 </map>

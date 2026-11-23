@@ -1,0 +1,15 @@
+<map id="SpectrumGenFunction::SpectrumGenFunction" name="SpectrumGenFunction::SpectrumGenFunction">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,65,178,110"/>
+<area shape="rect" id="Node000002" href="$classMultiEntryFunction.html#a192f702ddc83a30ad117252068513f24" title=" " alt="" coords="226,65,377,110"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="178,85,213,87,207,88,179,90"/>
+<area shape="rect" id="Node000003" href="$classFunctionWidget.html#aea5e13a6c630b4d9c8e0afdbbb9d73b3" title=" " alt="" coords="446,5,632,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="376,66,431,55,436,54,378,71"/>
+<area shape="rect" id="Node000004" href="$classFunctionEntryRow.html#a1ad1acac51bef6487d6dd874e3cfd1b7" title=" " alt="" coords="425,74,653,102"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="377,85,412,87,407,88,377,90"/>
+<area shape="rect" id="Node000007" href="$classFunctionWidget.html#a18e240ccf56093e61a9989420ec5155a" title=" " alt="" coords="433,126,645,154"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="377,101,461,122,455,122,377,107"/>
+<area shape="rect" id="Node000005" href="$classFunctionEntryRow.html#aae0dd4ec56f622e2582815125cf3124d" title=" " alt="" coords="701,65,902,110"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="654,85,689,88,683,88,654,90"/>
+<area shape="rect" id="Node000006" href="$classFunctionEntryRow.html#ae99dc4a98078640c9d4f49cf7d0d251b" title=" " alt="" coords="950,74,1173,102"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="902,85,937,88,932,88,902,90"/>
+</map>
