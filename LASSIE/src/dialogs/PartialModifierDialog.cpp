@@ -2,18 +2,20 @@
 
 #include "FunctionGenerator.hpp"
 #include "FunctionXmlFormat.hpp"
+#include "ResultStringBox.hpp"
 
+#include <QAbstractTextDocumentLayout>
 #include <QDialogButtonBox>
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QLineEdit>
 #include <QMessageBox>
-#include <QPlainTextEdit>
 #include <QPushButton>
 #include <QScrollArea>
 #include <QSpinBox>
 #include <QStringList>
+#include <QTextEdit>
 #include <QVBoxLayout>
 
 #include <algorithm>
@@ -169,11 +171,16 @@ PartialModifierDialog::PartialModifierDialog(QWidget* parent,
 
     auto* previewLabel = new QLabel(tr("Generated Partial Result String:"), this);
     mainLayout->addWidget(previewLabel);
-    m_preview = new QPlainTextEdit(this);
+    m_preview = new QTextEdit(this);
+    m_preview->setObjectName(QStringLiteral("partialResultPreview"));
     m_preview->setReadOnly(true);
-    m_preview->setMaximumHeight(100);
-    m_preview->setLineWrapMode(QPlainTextEdit::NoWrap);
-    m_preview->setToolTip(tr("Generated expression on one line. Scroll horizontally to read it; edit the partial rows above to change values."));
+    ResultStringBox::setUp(m_preview);
+    connect(m_preview->document()->documentLayout(),
+            &QAbstractTextDocumentLayout::documentSizeChanged, this, [this]() {
+        ResultStringBox::fitHeight(m_preview, 2, 8);
+    });
+    ResultStringBox::fitHeight(m_preview, 2, 8);
+    m_preview->setToolTip(tr("Generated expression. Long expressions wrap at the edge of the box. Edit the partial rows above to change values."));
     mainLayout->addWidget(m_preview);
 
     auto* buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel,

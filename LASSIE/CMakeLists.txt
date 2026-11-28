@@ -29,6 +29,7 @@ qt_add_executable(LASSIE
     src/core/ModifierUsageQtAdapter.cpp src/core/ModifierUsageQtAdapter.hpp
     src/dialogs/FunctionGenerator.cpp src/dialogs/FunctionGenerator.hpp src/ui/FunctionGenerator.ui
     src/dialogs/FunctionXmlFormat.cpp src/dialogs/FunctionXmlFormat.hpp
+    src/dialogs/ResultStringBox.cpp src/dialogs/ResultStringBox.hpp
     src/dialogs/PartialModifierDialog.cpp src/dialogs/PartialModifierDialog.hpp
     src/dialogs/ModifierDetailsDialog.cpp src/dialogs/ModifierDetailsDialog.hpp
     src/dialogs/ModifierRulesDialog.cpp src/dialogs/ModifierRulesDialog.hpp
@@ -268,6 +269,20 @@ if(BUILD_TESTING)
     )
     set_tests_properties(LASSIE.FunctionPicker PROPERTIES
         ENVIRONMENT "QT_QPA_PLATFORM=offscreen;DISSCO_TEST_FUNCTION_PICKER=1"
+        TIMEOUT 30
+    )
+
+    # The function picker's Result String box wraps a long function string
+    # at the box edge, shows all of it and stays editable.
+    target_sources(LASSIE PRIVATE
+        tests/ResultStringWrapTest.cpp
+        tests/ResultStringWrapTest.hpp
+    )
+    add_test(NAME LASSIE.ResultStringWrap
+        COMMAND LASSIE
+    )
+    set_tests_properties(LASSIE.ResultStringWrap PROPERTIES
+        ENVIRONMENT "QT_QPA_PLATFORM=offscreen;QT_FORCE_STDERR_LOGGING=1;DISSCO_TEST_RESULT_STRING_WRAP=1"
         TIMEOUT 30
     )
 

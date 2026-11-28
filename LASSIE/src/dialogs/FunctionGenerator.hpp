@@ -36,11 +36,23 @@ public:
 
     QString getResultString();
 
+protected:
+    bool eventFilter(QObject* watched, QEvent* event) override;
+
 private slots:
     void handleFunctionChanged(int index);
 
 private:
+    // The Result String box shows 2 to 12 lines; longer expressions scroll.
+    static constexpr int kResultMinimumLines = 2;
+    static constexpr int kResultMaximumLines = 12;
+
     void setupUi();
+
+    // Fit the Result String box to its wrapped text, then the dialog to
+    // the box.
+    void fitResultBoxToText();
+    void fitDialogToResultBox();
 
     // Lazily build (and cache) the registered FunctionWidget for `id`,
     // appending it to functionStackedWidget on first use. Returns nullptr
@@ -55,6 +67,9 @@ private:
     FunctionReturnType m_returnType;
     QString m_originalString;
     QString m_result;
+    // The dialog's fitted height without the Result String box, set by
+    // resizeToFitCurrentPage(); 0 until then.
+    int m_heightWithoutResult = 0;
     QList<CMODFunction> m_excluded;
 
     // Pickers that are open right now, outermost first; a new picker also

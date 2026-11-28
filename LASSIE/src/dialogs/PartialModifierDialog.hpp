@@ -10,11 +10,11 @@
 
 class QLabel;
 class QLineEdit;
-class QPlainTextEdit;
 class QPushButton;
 class QGroupBox;
 class QSpinBox;
 class QScrollArea;
+class QTextEdit;
 class QVBoxLayout;
 
 /**
@@ -75,7 +75,7 @@ private:
     QLabel* m_countWarningLabel = nullptr;
     QLabel* m_statusLabel = nullptr;
     QString m_statusContext;
-    QPlainTextEdit* m_preview = nullptr;
+    QTextEdit* m_preview = nullptr;
 };
 
 #endif // PARTIALMODIFIERDIALOG_HPP
