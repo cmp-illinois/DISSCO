@@ -10,9 +10,11 @@
 #include <QDebug>
 #include <QDialogButtonBox>
 #include <QDir>
+#include <QFontInfo>
 #include <QKeyEvent>
 #include <QPushButton>
 #include <QScrollBar>
+#include <QStyle>
 #include <QStringList>
 #include <QTextBlock>
 #include <QTextCursor>
@@ -73,9 +75,24 @@ int runResultStringWrapTest()
         return condition;
     };
 
+    // Sizes to report with a failure, to tell platforms and styles apart.
+    const auto describe = [](const QTextEdit* box) {
+        return QStringLiteral(" [style %1, font %2 %3px, box %4x%5, viewport %6x%7, "
+                              "contents margins %8+%9, text height %10, lines %11, scroll %12]")
+            .arg(box->style()->name(), box->font().family())
+            .arg(QFontInfo(box->font()).pixelSize())
+            .arg(box->width()).arg(box->height())
+            .arg(box->viewport()->width()).arg(box->viewport()->height())
+            .arg(box->contentsMargins().top()).arg(box->contentsMargins().bottom())
+            .arg(box->document()->size().height())
+            .arg(wrappedLines(box).size())
+            .arg(box->verticalScrollBar()->maximum());
+    };
+
     // The box wraps the text at its edge, at any character, and is tall
     // enough to show all of it.
-    const auto checkWrapsAndShowsAll = [&](const QTextEdit* box, const QString& what) {
+    const auto checkWrapsAndShowsAll = [&](const QTextEdit* box, const QString& rawWhat) {
+        const QString what = rawWhat + describe(box);
         const QList<QTextLine> lines = wrappedLines(box);
         check(lines.size() > 1, what + ": long text must wrap onto several lines");
         check(box->horizontalScrollBar()->maximum() == 0,
@@ -95,7 +112,11 @@ int runResultStringWrapTest()
     };
 
     // The box and the buttons below it must fit inside the dialog.
-    const auto checkInsideDialog = [&](QDialog& dialog, const QTextEdit* box, const QString& what) {
+    const auto checkInsideDialog = [&](QDialog& dialog, const QTextEdit* box, const QString& rawWhat) {
+        const QString what = rawWhat + describe(box)
+            + QStringLiteral(" [dialog %1x%2, minimum height %3, layout minimum height %4]")
+                  .arg(dialog.width()).arg(dialog.height()).arg(dialog.minimumHeight())
+                  .arg(dialog.layout()->totalMinimumSize().height());
         const QRect boxRect(box->mapTo(&dialog, QPoint()), box->size());
         auto* buttons = dialog.findChild<QDialogButtonBox*>();
         const QRect buttonRect(buttons->mapTo(&dialog, QPoint()), buttons->size());
