@@ -69,6 +69,8 @@ QList<QTextLine> wrappedLines(const QTextEdit* box)
 
 int runResultStringWrapTest()
 {
+    // The Result String box is at most this many lines tall; longer text scrolls.
+    constexpr int kResultLines = 12;
     bool passed = true;
     const auto check = [&passed](bool condition, const QString& message) {
         if (!condition) { qCritical().noquote() << message; passed = false; }
@@ -89,9 +91,30 @@ int runResultStringWrapTest()
             .arg(box->verticalScrollBar()->maximum());
     };
 
-    // The box wraps the text at its edge, at any character, and is tall
-    // enough to show all of it.
-    const auto checkWrapsAndShowsAll = [&](const QTextEdit* box, const QString& rawWhat) {
+    // The box shows all of its text. With a `limit`, text longer than `limit`
+    // lines may scroll instead, once the box shows `limit` lines. Checks at
+    // a width the test does not set need the limit: how much text fits a
+    // line there depends on the platform's fonts.
+    const auto checkShowsAll = [&](const QTextEdit* box, const QString& what, int limit) {
+        if (limit > 0 && wrappedLines(box).size() > limit) {
+            check(box->verticalScrollBar()->maximum() > 0,
+                  what + ": text longer than the limit must scroll");
+            check(box->viewport()->height() >= limit * box->fontMetrics().lineSpacing(),
+                  what + QStringLiteral(": the box must show %1 lines before it scrolls").arg(limit));
+            return;
+        }
+        check(box->verticalScrollBar()->maximum() == 0,
+              what + ": the whole text must be visible without scrolling");
+        QTextCursor end(box->document());
+        end.movePosition(QTextCursor::End);
+        check(box->viewport()->rect().contains(box->cursorRect(end)),
+              what + ": the end of the text must be inside the box");
+    };
+
+    // The box wraps the text at its edge, at any character, and shows it
+    // as checkShowsAll describes.
+    const auto checkWrapsAndShowsAll = [&](const QTextEdit* box, const QString& rawWhat,
+                                           int limit = 0) {
         const QString what = rawWhat + describe(box);
         const QList<QTextLine> lines = wrappedLines(box);
         check(lines.size() > 1, what + ": long text must wrap onto several lines");
@@ -103,12 +126,7 @@ int runResultStringWrapTest()
             check(lines[i].naturalTextWidth() > lines[i].width() - 2 * charWidth,
                   what + QStringLiteral(": line %1 must reach the edge of the box").arg(i + 1));
         }
-        check(box->verticalScrollBar()->maximum() == 0,
-              what + ": the whole text must be visible without scrolling");
-        QTextCursor end(box->document());
-        end.movePosition(QTextCursor::End);
-        check(box->viewport()->rect().contains(box->cursorRect(end)),
-              what + ": the end of the text must be inside the box");
+        checkShowsAll(box, what, limit);
     };
 
     // The box and the buttons below it must fit inside the dialog.
@@ -122,7 +140,11 @@ int runResultStringWrapTest()
         const QRect buttonRect(buttons->mapTo(&dialog, QPoint()), buttons->size());
         check(dialog.rect().contains(boxRect) && dialog.rect().contains(buttonRect),
               what + ": the box and the OK button must be inside the dialog");
-        check(boxRect.bottom() < buttonRect.top(), what + ": the box must not cover the buttons");
+        check(boxRect.bottom() < buttonRect.top(),
+              what + QStringLiteral(" [box y %1-%2, buttons y %3-%4]")
+                         .arg(boxRect.top()).arg(boxRect.bottom())
+                         .arg(buttonRect.top()).arg(buttonRect.bottom())
+                  + ": the box must not cover the buttons");
         check(dialog.height() >= dialog.layout()->totalMinimumSize().height(),
               what + ": the dialog must be tall enough for all its fields");
     };
@@ -136,7 +158,7 @@ int runResultStringWrapTest()
     if (!check(box != nullptr, "Result String box is missing")) return 1;
     check(box->toPlainText() == longXml, "Opening the dialog must show the string unchanged");
     // First at the size the dialog opens with, then at the width of the report.
-    checkWrapsAndShowsAll(box, "Long string at opening size");
+    checkWrapsAndShowsAll(box, "Long string at opening size", kResultLines);
     checkInsideDialog(dialog, box, "Long string at opening size");
     saveScreenshot(&dialog, "result-string-long-opening-size.png");
     dialog.resize(900, dialog.height());
@@ -152,7 +174,8 @@ int runResultStringWrapTest()
     settle();
     auto* shortBox = shortDialog.findChild<QTextEdit*>("resultTextEdit");
     check(shortBox->height() < box->height(), "The box must grow for a longer string");
-    check(wrappedLines(shortBox).size() == 1, "A short string must stay on one line");
+    check(wrappedLines(shortBox).size() <= 2 && shortBox->verticalScrollBar()->maximum() == 0,
+          "A short string must fit in the smallest box without scrolling");
     saveScreenshot(&shortDialog, "result-string-short.png");
     shortDialog.close();
 
@@ -216,15 +239,14 @@ int runResultStringWrapTest()
             options->setCurrentIndex(options->findText(QString::fromLatin1(name)));
             settle();
             const QString what = QStringLiteral("After switching to %1").arg(QString::fromLatin1(name));
-            check(switchingBox->verticalScrollBar()->maximum() == 0,
-                  what + ": the whole text must be visible without scrolling");
+            checkShowsAll(switchingBox, what + describe(switchingBox), kResultLines);
             checkInsideDialog(switching, switchingBox, what);
         }
-        checkWrapsAndShowsAll(switchingBox, "After switching back to Select");
+        checkWrapsAndShowsAll(switchingBox, "After switching back to Select", kResultLines);
     }
 
     // 6. Pasting a long string into an empty dialog grows the box as well.
-    //    The empty dialog is narrow, so use a string that fits in 12 lines.
+    //    The empty dialog is narrow, so the string is shorter than the others.
     FunctionGenerator empty(nullptr, FunctionReturnType::functionReturnFloat);
     empty.show();
     settle();
@@ -234,7 +256,7 @@ int runResultStringWrapTest()
     emptyBox->insertPlainText(pastedXml);
     settle();
     check(emptyBox->height() > emptyHeight, "The box must grow when a long string is pasted");
-    checkWrapsAndShowsAll(emptyBox, "Pasted into an empty dialog");
+    checkWrapsAndShowsAll(emptyBox, "Pasted into an empty dialog", kResultLines);
     checkInsideDialog(empty, emptyBox, "Pasted into an empty dialog");
     check(empty.getResultString() == pastedXml, "A pasted string must be returned unchanged");
     empty.close();
@@ -250,6 +272,7 @@ int runResultStringWrapTest()
           "Only a very long string should need to scroll");
     check(veryLongBox->horizontalScrollBar()->maximum() == 0,
           "A very long string must still wrap instead of scrolling sideways");
+    checkWrapsAndShowsAll(veryLongBox, "Very long string", kResultLines);
     checkInsideDialog(veryLong, veryLongBox, "Very long string");
     saveScreenshot(&veryLong, "result-string-very-long.png");
     veryLong.close();

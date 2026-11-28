@@ -16,6 +16,7 @@
 #include <QKeyEvent>
 #include <QStackedWidget>
 #include <QTextEdit>
+#include <QTimer>
 #include <QVariant>
 #include <QXmlStreamReader>
 
@@ -154,15 +155,26 @@ bool FunctionGenerator::eventFilter(QObject* watched, QEvent* event)
 
 void FunctionGenerator::fitResultBoxToText()
 {
-    const int dialogMinimum = minimumHeight();
     const int change = ResultStringBox::fitHeight(ui->resultTextEdit,
                                                   kResultMinimumLines,
                                                   kResultMaximumLines);
+    // This often runs inside a layout pass of the dialog: the box re-wraps
+    // when the layout changes its width. Resizing the dialog from there
+    // leaves the widgets below the box at stale positions, so fit the dialog
+    // once the pass is over.
+    if (change != 0)
+        QTimer::singleShot(0, this, &FunctionGenerator::fitDialogToResultBox);
+}
+
+void FunctionGenerator::fitDialogToResultBox()
+{
     // resizeToFitCurrentPage() fixes the dialog's minimum height. Keep it in
     // step with the box, so a taller box makes the dialog taller instead of
     // squeezing the function fields.
-    if (change != 0 && dialogMinimum > 0)
-        setMinimumHeight(qMax(1, minimumHeight() + change));
+    if (m_heightWithoutResult > 0)
+        setMinimumHeight(m_heightWithoutResult + ui->resultTextEdit->minimumHeight());
+    layout()->invalidate();
+    layout()->activate();
 }
 
 FunctionWidget* FunctionGenerator::ensureRegisteredWidget(CMODFunction id)
@@ -212,6 +224,10 @@ void FunctionGenerator::resizeToFitCurrentPage()
     ui->functionStackedWidget->layout()->activate();
     layout()->activate();
     const QSize ideal = sizeHint();
+    m_heightWithoutResult = ideal.height() - ui->resultTextEdit->minimumHeight();
     resize(ideal);
     setMinimumSize(ideal);
+    // The new width can re-wrap the Result String and change its height.
+    fitDialogToResultBox();
+    resize(width(), minimumHeight());
 }
