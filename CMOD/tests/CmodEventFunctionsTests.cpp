@@ -4,6 +4,9 @@
 // place between children), plus how Sweep reads its Start Time and the rule
 // that a Start Time can't use the child's type. -- Tony Chai, 2026
 //
+// Also checks that a note Bottom ("n...") ignores its unused modifier
+// settings, which LASSIE hides.
+//
 // Usage (ctest passes this): CmodEventFunctionsTests <cmod>
 //
 // These functions only have a value while a piece is being composed, so each
@@ -102,6 +105,7 @@ struct EventSpec {
     std::string durationUnit = "2";
     std::vector<std::vector<Choice>> layers;
     std::string frequency = "440";    // Bottom only, in Hz
+    std::string samplingScope = "per-sound"; // Bottom only: Modifier Usage
 };
 
 std::string eventXml(const EventSpec& event)
@@ -141,7 +145,8 @@ std::string eventXml(const EventSpec& event)
                           {"Channels", "<Partials><P>" + fun("EnvLib", {{"Env", "2"}, {"Scale", "0.5"}})
                                            + "</P></Partials>"}})
             + "</Spatialization><Reverb/><Filter/>"
-               "<ModifierUsage samplingScope=\"per-sound\" version=\"1\"/><Modifiers/></ExtraInfo>";
+               "<ModifierUsage samplingScope=\""
+            + event.samplingScope + "\" version=\"1\"/><Modifiers/></ExtraInfo>";
     } else {
         xml += "<Modifiers/>";
     }
@@ -177,10 +182,19 @@ std::string spectrumXml(int partials, const std::string& deviation)
            "<Spectrum>" + spectrum + "</Spectrum></Event>";
 }
 
+// A Note object, which a note Bottom ("n...") builds instead of a sound.
+std::string noteXml(const std::string& name)
+{
+    return "<Event orderInPalette=\"0\"><EventType>12</EventType><Name>" + name
+        + "</Name><NoteInfo><Staffs>0</Staffs><Modifiers/></NoteInfo></Event>";
+}
+
 // A 30-second piece (1800 EDU: 60 BPM, 60 EDU per beat) whose top event is
-// named "0", with synthesis off and the particel on.
+// named "0", with synthesis off and the particel on. `objects` is added after
+// the spectrum "sp1" (e.g. Note objects).
 std::string projectXml(const std::vector<EventSpec>& events, int partials = 1,
-                       const std::string& deviation = "0")
+                       const std::string& deviation = "0",
+                       const std::string& objects = "")
 {
     std::string xml =
         "<?xml version='1.0' encoding='UTF-8'?><ProjectRoot><ProjectConfiguration>"
@@ -200,7 +214,7 @@ std::string projectXml(const std::vector<EventSpec>& events, int partials = 1,
         "1.000     1.000\n</EnvelopeLibrary><MarkovModelLibrary>\n0\n</MarkovModelLibrary><Events>";
     for (const EventSpec& event : events)
         xml += eventXml(event);
-    return xml + spectrumXml(partials, deviation) + "</Events></ProjectRoot>";
+    return xml + spectrumXml(partials, deviation) + objects + "</Events></ProjectRoot>";
 }
 
 // ---------------------------------------------------------------------------
@@ -801,6 +815,30 @@ void testGetPatternPerParent()
                          + ", Duration = GetPattern from 1, intervals 1, 1, 1: child durations");
 }
 
+// A note Bottom ("n...") builds notes, never sounds, so its modifiers have no
+// effect and LASSIE hides them. CMOD must not stop on a broken modifier
+// setting there, but must still stop on it in a sound Bottom.
+void testNoteBottomIgnoresModifierSettings()
+{
+    const std::string brokenScope = "not-a-scope";
+    const std::string rejected = "Invalid Modifier Usage configuration";
+
+    EventSpec top;
+    top.layers = {{{"s1", 4}}};
+    EventSpec sound = soundEvent("s1");
+    sound.samplingScope = brokenScope;
+    expectCmodError(projectXml({top, sound}), rejected,
+                    "sound Bottom with an invalid Modifier Usage sampling scope");
+
+    top.layers = {{{"n1", 4}}};
+    EventSpec note = soundEvent("n1");
+    note.layers = {{{"no0", 12}}};
+    note.samplingScope = brokenScope;
+    const ReportNode report = compose(projectXml({top, note}, 1, "0", noteXml("no0")));
+    expect(!findAll(report, "Note").empty(),
+           "note Bottom with an invalid sampling scope: CMOD must still build its notes");
+}
+
 // Runs one test and reports it by name; a failure stops only that test.
 void runTest(const std::string& name, void (*test)(), std::vector<std::string>& failedTests)
 {
@@ -846,6 +884,8 @@ int main(int argc, char** argv)
     runTest("GetPattern remembers its place", testGetPatternRemembers, failedTests);
     runTest("GetPattern memory is per parent", testGetPatternPerParent, failedTests);
     runTest("comparison next to a function", testComparisonNextToFunction, failedTests);
+    runTest("note Bottom ignores its modifier settings", testNoteBottomIgnoresModifierSettings,
+            failedTests);
 
     if (!failedTests.empty()) {
         std::cerr << '\n' << failedTests.size() << " CMOD event function test(s) failed:\n";

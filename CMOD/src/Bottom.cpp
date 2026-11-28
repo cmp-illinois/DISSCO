@@ -176,7 +176,12 @@ Bottom::Bottom(pugi::xml_node _element,
 
   // Modifier Usage is now the only runtime path. Files without the marker are
   // adapted below with explicit, deterministic best-effort defaults.
-  initializeModifierUsage(extraInfo.child("ModifierUsage"));
+  // A note Bottom ("n...") never builds a sound, so its modifiers are unused
+  // and LASSIE hides them; do not reject settings the user cannot see.
+  // Checking draws no random numbers, so skipping it leaves the piece as is.
+  if (name.substr(0, 1) != "n") {
+    initializeModifierUsage(extraInfo.child("ModifierUsage"));
+  }
 
 }
 

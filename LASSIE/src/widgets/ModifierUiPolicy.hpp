@@ -81,6 +81,20 @@ inline bool samplingScopeVisible(Eventtype eventType, int modifierCount)
     return eventType == bottom && modifierCount > 0;
 }
 
+// Spatialization, reverb, filter and modifiers change only synthesized sound.
+// Show them only where they can have an effect: not when the project has
+// Sound Synthesis turned off (CMOD discards every sound), and not on a Bottom
+// whose name starts with "n" (CMOD builds notes from it, never sounds).
+// Hidden values stay in the project file.
+inline bool soundOnlyFieldsVisible(Eventtype eventType,
+                                   bool soundSynthesis,
+                                   const QString& eventName)
+{
+    if (!soundSynthesis)
+        return false;
+    return !(eventType == bottom && eventName.startsWith(QLatin1Char('n')));
+}
+
 inline QString displayName(int modifierType)
 {
     switch (modifierType) {

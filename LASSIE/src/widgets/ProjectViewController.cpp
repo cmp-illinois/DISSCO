@@ -943,6 +943,10 @@ void ProjectView::setProperties() {
 
         if (changed)
             MUtilities::modified();
+        // Sound Synthesis decides whether spatialization, reverb, filter and
+        // modifiers are shown on the event page.
+        if (eventAttributesView)
+            eventAttributesView->refreshSoundOnlyFields();
         delete projectPropertiesDialog;
         projectPropertiesDialog = NULL;
     }

@@ -77,6 +77,10 @@ public:
     // Update the displayed name entry if typeStr/index matches the currently shown event
     void updateNameEntryIfShowing(const QString& typeStr, int index, const QString& name);
 
+    // Re-apply which sound-only fields (spatialization, reverb, filter,
+    // modifiers) are shown, e.g. after Sound Synthesis is turned on or off.
+    void refreshSoundOnlyFields();
+
     // Rebuild all visible LayerBox widgets from the backend. Call after the
     // backend's discrete_packages have been mutated externally.
     void reloadAllLayerBoxes();
@@ -191,6 +195,7 @@ private:
     void updateModifierUsageUi();
     bool currentIsNotationBottom() const;
     void applyNotationBottomState();
+    bool soundOnlyFieldsVisible() const;
     void updateModifierUsageSummary();
     void deleteModifierRow(Modifiers* row);
     void moveModifierRow(Modifiers* row, int offset);
