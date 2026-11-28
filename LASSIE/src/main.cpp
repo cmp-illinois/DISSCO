@@ -21,6 +21,7 @@
 #include "windows/EnvelopeLibraryWindow.hpp"
 #include "../tests/ProjectRoundTripTest.hpp"
 #include "../tests/FunctionPickerTest.hpp"
+#include "../tests/SoundOnlyFieldsTest.hpp"
 #endif
 #include "widgets/ComboBoxWheelGuard.hpp"
 #include "widgets/TextOverflowDisplayPolicy.hpp"
@@ -200,6 +201,10 @@ int main(int argc, char *argv[])
     // -- Tony Chai, 2026
     if (qEnvironmentVariableIsSet("DISSCO_TEST_FUNCTION_PICKER"))
         return runFunctionPickerTest();
+    // Sound-only fields are hidden where they cannot change the output
+    // (needs the registry to open a project).
+    if (qEnvironmentVariableIsSet("DISSCO_TEST_SOUND_ONLY_FIELDS"))
+        return runSoundOnlyFieldsTest();
 #endif
     Inst *m = Inst::instance();
     MainWindow *w = new MainWindow(m);

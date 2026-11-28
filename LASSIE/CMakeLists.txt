@@ -271,6 +271,20 @@ if(BUILD_TESTING)
         TIMEOUT 30
     )
 
+    # Spatialization, reverb, filter and modifiers are hidden with Sound
+    # Synthesis off and on note Bottoms ("n..."), and their values are kept.
+    target_sources(LASSIE PRIVATE
+        tests/SoundOnlyFieldsTest.cpp
+        tests/SoundOnlyFieldsTest.hpp
+    )
+    add_test(NAME LASSIE.SoundOnlyFields
+        COMMAND LASSIE
+    )
+    set_tests_properties(LASSIE.SoundOnlyFields PROPERTIES
+        ENVIRONMENT "QT_QPA_PLATFORM=offscreen;DISSCO_TEST_SOUND_ONLY_FIELDS=1;DISSCO_TEST_PROJECT=${CMAKE_SOURCE_DIR}/Documents/examples/tutorial_sound/first_sound.dissco"
+        TIMEOUT 30
+    )
+
     # Tag every test registered in this folder (including future ones) with
     # the "LASSIE" label, so CI can run and report each part of DISSCO as its
     # own step (ctest -L '^LASSIE$'). -- Tony Chai, 2026

@@ -241,6 +241,10 @@ void EventAttributesViewController::updateNameEntryIfShowing(const QString& type
     else if (et == reverb)    ui->revNameEntry->setText(name);
     else if (et == note)      ui->noteNameEntry->setText(name);
     else if (et == filter)    ui->filNameEntry->setText(name);
+
+    // A Bottom renamed between "s..." and "n..." changes which fields apply.
+    if (et == bottom)
+        refreshSoundOnlyFields();
 }
 
 void EventAttributesViewController::reloadAllLayerBoxes() {
@@ -1470,10 +1474,63 @@ void EventAttributesViewController::updateModifierUsageSummary()
     showSummary(summary);
 }
 
+bool EventAttributesViewController::soundOnlyFieldsVisible() const
+{
+    ProjectManager* pm = Inst::get_project_manager();
+    QString eventName;
+    if (m_curreventtype == bottom && m_curreventindex >= 0
+        && m_curreventindex < pm->bottomevents().size()) {
+        eventName = pm->bottomevents()[m_curreventindex].event.name;
+    }
+    return ModifierUiPolicy::soundOnlyFieldsVisible(
+        m_curreventtype, pm->synthesis(), eventName);
+}
+
+void EventAttributesViewController::refreshSoundOnlyFields()
+{
+    if (!m_hasCurrentEvent || m_curreventtype > bottom)
+        return;
+    updateModifierUsageUi();
+    // The modifier summary is the page's only word-wrapped label, so hiding
+    // or showing it changes whether the page height depends on its width.
+    // This view's layout caches that answer. Once pending layout work has
+    // run, drop the cache and resize, as ProjectView::showAttributes does
+    // after showing an event; otherwise the scroll area keeps the old height
+    // (blank gaps, or a cut-off page bottom).
+    QTimer::singleShot(0, this, [this]() {
+        ui->stackedWidget->updateGeometry();
+        if (layout()) {
+            layout()->invalidate();
+            layout()->activate();
+        }
+        adjustSize();
+    });
+}
+
 void EventAttributesViewController::updateModifierUsageUi()
 {
+    // Hide, never clear: the values stay in the project and come back when
+    // the fields apply again.
+    const bool soundOnlyVisible = soundOnlyFieldsVisible();
+    for (QWidget* widget : {static_cast<QWidget*>(ui->spaLabel),
+                            static_cast<QWidget*>(ui->spaEntry),
+                            static_cast<QWidget*>(ui->attributesStandardSpaButton),
+                            static_cast<QWidget*>(ui->revLabel),
+                            static_cast<QWidget*>(ui->revEntry),
+                            static_cast<QWidget*>(ui->attributesStandardRevButton),
+                            static_cast<QWidget*>(ui->filLabel),
+                            static_cast<QWidget*>(ui->filEntry),
+                            static_cast<QWidget*>(ui->attributesStandardFilButton),
+                            static_cast<QWidget*>(ui->modifiersLabel),
+                            static_cast<QWidget*>(ui->addModifierButton)}) {
+        widget->setVisible(soundOnlyVisible);
+    }
+    for (Modifiers* row : m_modifiers)
+        row->setVisible(soundOnlyVisible);
+
     ui->modifierUsageControls->setVisible(
-        ModifierUiPolicy::usageSummaryVisible(m_curreventtype));
+        soundOnlyVisible
+        && ModifierUiPolicy::usageSummaryVisible(m_curreventtype));
     const QList<Modifier>* modifiers = currentModifierList();
     const bool showSamplingScope = ModifierUiPolicy::samplingScopeVisible(
         m_curreventtype, modifiers ? modifiers->size() : 0);
