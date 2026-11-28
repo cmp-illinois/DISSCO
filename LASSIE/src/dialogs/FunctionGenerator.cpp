@@ -1,5 +1,6 @@
 #include "FunctionGenerator.hpp"
 #include "FunctionXmlFormat.hpp"
+#include "ResultStringBox.hpp"
 #include "../core/RandomOrderIntId.hpp"
 #include "../ui/ui_FunctionGenerator.h"
 
@@ -7,10 +8,12 @@
 #include "functions/FunctionWidget.hpp"
 #include "functions/impl/RandomOrderIntFunction.hpp"
 
+#include <QAbstractTextDocumentLayout>
 #include <QComboBox>
 #include <QDialogButtonBox>
 #include <QFontDatabase>
 #include <QFontInfo>
+#include <QKeyEvent>
 #include <QStackedWidget>
 #include <QTextEdit>
 #include <QVariant>
@@ -92,11 +95,13 @@ void FunctionGenerator::setupUi()
     }
     resultFont.setStyleHint(QFont::Monospace);
     ui->resultTextEdit->setFont(resultFont);
-    ui->resultTextEdit->setAcceptRichText(false);
-    ui->resultTextEdit->setLineWrapMode(QTextEdit::NoWrap);
-    ui->resultTextEdit->setMinimumHeight(ui->resultTextEdit->fontMetrics().lineSpacing() * 3);
-    ui->resultTextEdit->setMaximumHeight(ui->resultTextEdit->fontMetrics().lineSpacing() * 4);
-    ui->resultTextEdit->setToolTip(tr("Function expression on one line. Scroll horizontally to read longer expressions. Use the fields above to edit parameters."));
+    ResultStringBox::setUp(ui->resultTextEdit);
+    ui->resultTextEdit->installEventFilter(this);
+    connect(ui->resultTextEdit->document()->documentLayout(),
+            &QAbstractTextDocumentLayout::documentSizeChanged,
+            this, &FunctionGenerator::fitResultBoxToText);
+    fitResultBoxToText();
+    ui->resultTextEdit->setToolTip(tr("Function expression. Long expressions wrap at the edge of the box. Edit it here or with the fields above."));
     connect(ui->buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
     connect(ui->buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
@@ -134,6 +139,30 @@ void FunctionGenerator::setupUi()
     // Populating the controls may emit xmlChanged, but opening the dialog
     // must not replace manual XML edits or fields unknown to the form.
     ui->resultTextEdit->setPlainText(FunctionXmlFormat::preview(m_originalString));
+}
+
+bool FunctionGenerator::eventFilter(QObject* watched, QEvent* event)
+{
+    // The expression is one line of XML. Enter must not add a line break.
+    if (watched == ui->resultTextEdit && event->type() == QEvent::KeyPress) {
+        const int key = static_cast<QKeyEvent*>(event)->key();
+        if (key == Qt::Key_Return || key == Qt::Key_Enter)
+            return true;
+    }
+    return QDialog::eventFilter(watched, event);
+}
+
+void FunctionGenerator::fitResultBoxToText()
+{
+    const int dialogMinimum = minimumHeight();
+    const int change = ResultStringBox::fitHeight(ui->resultTextEdit,
+                                                  kResultMinimumLines,
+                                                  kResultMaximumLines);
+    // resizeToFitCurrentPage() fixes the dialog's minimum height. Keep it in
+    // step with the box, so a taller box makes the dialog taller instead of
+    // squeezing the function fields.
+    if (change != 0 && dialogMinimum > 0)
+        setMinimumHeight(qMax(1, minimumHeight() + change));
 }
 
 FunctionWidget* FunctionGenerator::ensureRegisteredWidget(CMODFunction id)

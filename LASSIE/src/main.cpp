@@ -21,6 +21,7 @@
 #include "windows/EnvelopeLibraryWindow.hpp"
 #include "../tests/ProjectRoundTripTest.hpp"
 #include "../tests/FunctionPickerTest.hpp"
+#include "../tests/ResultStringWrapTest.hpp"
 #endif
 #include "widgets/ComboBoxWheelGuard.hpp"
 #include "widgets/TextOverflowDisplayPolicy.hpp"
@@ -200,6 +201,10 @@ int main(int argc, char *argv[])
     // -- Tony Chai, 2026
     if (qEnvironmentVariableIsSet("DISSCO_TEST_FUNCTION_PICKER"))
         return runFunctionPickerTest();
+    // Result String box wraps long strings and stays editable (needs the
+    // registry).
+    if (qEnvironmentVariableIsSet("DISSCO_TEST_RESULT_STRING_WRAP"))
+        return runResultStringWrapTest();
 #endif
     Inst *m = Inst::instance();
     MainWindow *w = new MainWindow(m);
